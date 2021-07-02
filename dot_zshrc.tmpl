@@ -268,7 +268,7 @@ function fzfind() {
 
 function fzfjump() {
   local depth=${2:-1}
-  cd $(find "$1" -maxdepth=$depth | fzf)
+  cd $(find "$1" -maxdepth "$depth" | fzf)
 }
 
 alias adb-screenshot="adb shell screencap -p | \
