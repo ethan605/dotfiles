@@ -263,7 +263,7 @@ function __load-onfido-envs() {
 # [[[ Aliases
 function fzfind() {
   preview="bat {-1} --color=always --style=numbers"
-  find $1 -type f | fzf --preview $preview
+  find -type f "$@" | fzf --preview $preview
 }
 
 alias adb-screenshot="adb shell screencap -p | \
