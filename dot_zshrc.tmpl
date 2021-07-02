@@ -266,7 +266,7 @@ function fzfind() {
   find "$@" -type f | fzf --preview $preview
 }
 
-function fzjump() {
+function fj() {
   cd $(find "$1" -maxdepth 1 | fzf)
 }
 
@@ -277,9 +277,9 @@ alias adb-screenshot='adb shell screencap -p | \
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 alias chezdiff='chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX'
 
-alias fzgbD='git branch -D $(git branch | fzf --multi)'
-alias fzgm='git merge $(git branch | fzf)'
-alias fzgsw='git switch $(git branch | fzf)'
+alias fbD='git branch -D $(git branch | fzf --multi)'
+alias fm='git merge $(git branch | fzf)'
+alias fsw='git switch $(git branch | fzf)'
 
 alias tme='tmux attach -t ethanify || tmux new -s ethanify'
 alias tmo='tmux attach -t onfido || tmux new -s onfido'
