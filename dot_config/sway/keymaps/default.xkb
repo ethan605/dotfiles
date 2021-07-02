@@ -1,0 +1,17 @@
+# vim:filetype=config
+xkb_keymap {
+  xkb_keycodes  { include "evdev+aliases(qwerty)" };
+  xkb_types     { include "complete" };
+  xkb_compat    { include "complete" };
+  xkb_geometry  { include "pc(pc105)" };
+  xkb_symbols   {
+    # Using custom keymaps vim+media in ~/.xkb/symbols
+    include "pc+us+inet(evdev)+vim+media"
+
+    # Use Capslock as left Control
+    key <CAPS> { [ Control_L ] };
+
+    # Use left Control as AltGr
+    key <LCTL> { [ ISO_Level3_Shift ] };
+  };
+};

@@ -1,0 +1,51 @@
+# vim:syntax=gitignore
+
+# Global ignores
+LICENSE
+README.md
+
+Library/LaunchAgents/ethanify*.plist
+
+# MacOS-exclusive files
+{{ if ne .chezmoi.os "darwin" }}
+
+.Brewfile
+.config/ethanify/auto-update_darwin
+.config/karabiner
+.config/onfido-vpn/update-resolv-conf
+Library
+
+{{ end }}
+
+# Linux-exclusive files
+{{ if ne .chezmoi.os "linux" }}
+
+.gtkrc-2.0
+.config/chrome-flags*.conf
+.config/mimeapps.list
+
+.config/autostart
+.config/fontconfig
+.config/foot
+.config/gtk-3.0
+.config/i3
+.config/i3blocks
+.config/imv
+.config/logiops
+.config/mako
+.config/mpd
+.config/ncmpcpp
+.config/rofi
+.config/solaar
+.config/swappy
+.config/sway
+.config/swaylock
+.config/termite
+.config/wallpapers
+.config/waybar
+.config/wofi
+.icons
+.local
+.xkb
+
+{{ end }}

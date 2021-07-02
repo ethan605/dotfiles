@@ -1,0 +1,77 @@
+# vim:filetype=dosini:foldenable:foldmethod=marker
+
+# {{{ Directories
+
+ncmpcpp_directory   = ~/MEGA/Music
+lyrics_directory    = ~/.config/ncmpcpp/lyrics
+
+# }}}
+
+# {{{ Connection
+
+mpd_host                = localhost
+mpd_port                = 6600
+mpd_connection_timeout  = 5
+mpd_music_dir           = ~/MEGA/Music
+mpd_crossfade_time      = 5
+
+# }}}
+
+# {{{ Music visualizer
+
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "mpd_fifo"
+visualizer_in_stereo = "yes"
+visualizer_type = spectrum
+visualizer_look = "+|"
+
+# }}}
+
+# {{{ System encoding
+
+# system_encoding = ""
+
+# }}}
+
+# {{{ Delays
+
+# playlist_disable_highlight_delay  = 5
+# message_delay_time                = 5
+
+# }}}
+
+# {{{ Theme
+
+[header]
+header_visibility   = yes
+header_window_color = default
+volume_color        = green
+state_line_color    = black
+
+[playlist]
+playlist_display_mode   = classic
+song_list_format        = $5%t $R$6%a $4%b
+now_playing_prefix      = 契$b
+now_playing_suffix      = $/b
+browser_playlist_prefix = "$1»$1 "
+
+[statusbar]
+progressbar_look          = ━━━
+progressbar_color         = black
+statusbar_visibility      = yes
+progressbar_elapsed_color = cyan
+statusbar_color           = green
+song_status_format        = {%t - %a}
+display_bitrate           = yes
+
+[library]
+song_library_format = {{%a - %t}|{%f}}{$R%l}
+empty_tag_color     = cyan
+
+[global]
+main_window_color   = default
+centered_cursor     = yes
+enable_window_title = yes
+external_editor     = nvim
+
+# }}}

@@ -1,0 +1,8 @@
+[gpg]
+  recipient = "thanhnx.605@gmail.com"
+[merge]
+  command = "nvim"
+  args = "-d"
+[git]
+  autoCommit = true
+  autoPush = true

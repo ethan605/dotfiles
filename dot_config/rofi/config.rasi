@@ -1,0 +1,13 @@
+/*
+ * vim:filetype=css
+ */
+configuration {
+  modi: "run,drun,window";
+  font: "Samsung Sans 12";
+  bw: 1;
+  show-icons: true;
+  terminal: "termite";
+  matching: "fuzzy";
+  theme: "~/.config/rofi/themes/snazzy.rasi";
+}
+

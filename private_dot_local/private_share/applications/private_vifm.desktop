@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=System;FileTools;FileManager;Utility;ConsoleOnly;
+Comment=Vi[m] like ncurses based file manager
+Exec=termite --title=Vifm --exec='/usr/bin/zsh -c "vifm --select %F"'
+GenericName=File Manager
+Icon=vifm
+Name=Vifm
+Terminal=false
+TryExec=vifm
+Type=Application
+Keywords=File;Directory;Browse;
+MimeType=x-scheme-handler/file;inode/directory;

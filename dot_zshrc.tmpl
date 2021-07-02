@@ -1,0 +1,322 @@
+# vim:fileencoding=utf-8:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+
+# [[[ Global variables
+export LANG=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
+export EDITOR=nvim
+export REACT_EDITOR=nvim
+export FZF_DEFAULT_OPTS='
+  --color=gutter:0,prompt:2,spinner:3
+  --color=hl+:5,fg+:7,bg+:0
+  --color=hl:5,pointer:5,marker:2
+  --cycle
+  --height=50%
+  --layout=reverse
+'
+
+{{- if eq .chezmoi.os "darwin" }}
+
+export TOOLCHAINS=swift
+export JDK_HOME="/usr/local/opt/openjdk"
+export JAVA_HOME="$JDK_HOME/bin"
+
+# Rewrite $PATH
+PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
+
+# Replace macOS utilities with GNU ones
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/diffutils/bin:$PATH"
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+{{- else if eq .chezmoi.os "linux" }}
+
+export JDK_HOME="/usr/lib/jvm/default"
+export JAVA_HOME="$JDK_HOME"
+export TERMINFO=/usr/share/terminfo
+export GPG_TTY=$(tty)
+
+# XDG base directories
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_DATA_DIRS=/usr/local/share:/usr/share
+export XDG_CONFIG_DIRS=/etc/xdg
+
+# IBus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+PATH="$HOME/.local/bin:$PATH"
+
+{{- end }}
+
+# Use OpenJDK
+PATH="$JAVA_HOME:$PATH"
+
+# Local node env
+PATH="./node_modules/.bin:$PATH"
+export PATH
+#]]]
+
+# [[[ Init functions
+function __load-asdf() {
+{{- if eq .chezmoi.os "linux" }}
+
+  [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
+
+{{- end }}
+}
+
+function __load-autojump() {
+{{- if eq .chezmoi.os "darwin" }}
+
+  [ -f /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
+
+{{- else if eq .chezmoi.os "linux" }}
+
+  [ -f /etc/profile.d/autojump.zsh ] && source /etc/profile.d/autojump.zsh
+
+{{- end }}
+}
+
+# Colors
+function __load-colors() {
+  # Man page
+  export MANPAGER='less -s -M +Gg'
+
+  # Bat
+  export BAT_THEME='Sublime Snazzy'
+}
+
+function __load-key-bindings() {
+  bindkey -v
+
+  autoload -U edit-command-line
+  zle -N edit-command-line
+  bindkey -M vicmd 'vv' edit-command-line
+
+  bindkey '^w' backward-kill-word
+  bindkey '^h' backward-delete-char
+  bindkey "^l" forward-word
+
+  # allow ctrl-a and ctrl-e to move to beginning/end of line
+  bindkey '^a' beginning-of-line
+  bindkey '^e' end-of-line
+
+{{- if eq .chezmoi.os "darwin" }}
+
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+
+{{- else if eq .chezmoi.os "linux" }}
+
+  source /usr/share/fzf/key-bindings.zsh
+
+{{- end }}
+}
+
+function __load-nvm() {
+{{- if eq .chezmoi.os "darwin" }}
+
+  export NVM_DIR=/usr/local/opt/nvm
+
+{{- else if eq .chezmoi.os "linux" }}
+
+  export NVM_DIR=$HOME/.nvm
+
+{{- end }}
+
+  export NVM_LAZY_LOAD=true
+
+  if [[ -s $NVM_DIR/nvm.sh ]]; then
+    source $NVM_DIR/nvm.sh --no-use
+    {{- if eq .chezmoi.os "linux" }}
+    nvm use default
+    {{- end }}
+  fi
+}
+
+# Auto call `nvm use` in folders with .nvmrc
+function __load-nvmrc() {
+  local node_version=$(nvm version)
+  local nvmrc_path=$(nvm_find_nvmrc)
+
+  if [[ -n $nvmrc_path ]]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [[ $nvmrc_node_version = "N/A" ]]; then
+      nvm install
+      nvm use --delete-prefix
+    elif [[ $nvmrc_node_version != $node_version ]]; then
+      nvm use --delete-prefix
+    fi
+  elif [[ $node_version != $(nvm version default) ]]; then
+    echo "Reverting to nvm default version"
+    nvm use --delete-prefix default
+  fi
+}
+
+function __load-pure-prompt() {
+  PURE_PROMPT_SYMBOL="λ"            # originally "❯"
+  PURE_PROMPT_VICMD_SYMBOL="ε"      # originally "❮"
+  prompt pure
+}
+
+function __load-pyenv() {
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  command -v pyenv > /dev/null && eval "$(pyenv init --path)"
+}
+
+function __load-rvm() {
+  RVM_DIR="$HOME/.rvm"
+  [[ -s "$RVM_DIR/scripts/rvm" ]] && source "$RVM_DIR/scripts/rvm"
+}
+
+{{- if eq .chezmoi.os "linux" }}
+
+function __load-ssh() {
+  export SSH_ASKPASS="$HOME/.local/bin/ssh-pass"
+  eval $(keychain --eval --quiet $HOME/.ssh/id_ed25519)
+}
+
+function __load-sway() {
+  if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    # Be careful - one of these could break IBus
+    # export QT_QPA_PLATFORM=wayland
+    # export QT_QPA_PLATFORM=wayland-egl
+    # export QT_QPA_PLATFORMTHEME=qt5ct
+    # export QT_WAYLAND_FORCE_DPI=physical
+    # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+    # export SDL_VIDEODRIVER=wayland
+    # export _JAVA_AWT_WM_NONREPARENTING=1
+    # export BROWSER=firefox
+    export MOZ_ENABLE_WAYLAND=1
+    export TERM=termite
+    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
+
+    exec sway -d 2> $HOME/.logs/sway.log
+  fi
+}
+
+{{- end }}
+
+function __load-plugins() {
+  ZSH=$HOME/.oh-my-zsh
+  plugins=(colored-man-pages git pass)
+  fpath+=$HOME/.zsh_functions
+
+  source $ZSH/oh-my-zsh.sh
+
+{{- if eq .chezmoi.os "darwin" }}
+
+  source /usr/local/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/local/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+{{- else if eq .chezmoi.os "linux" }}
+
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+{{- end }}
+
+  # Autoloads
+  autoload -U add-zsh-hook; add-zsh-hook chpwd __load-nvmrc
+  autoload -U promptinit; promptinit
+}
+
+function __load-onfido-envs() {
+# Onfido envs
+{{- if eq .chezmoi.os "darwin" }}
+
+  source "/Users/ethan.nguyen/Library/Application Support/creds/nexus"
+
+{{- else if eq .chezmoi.os "linux" }}
+  
+  # Linuxbrew
+  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+  export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+
+  source ~/.config/creds/nexus
+
+{{- end }}
+
+  # Onfido secrets
+  export SDK_TOKEN_FACTORY_SECRET="{{ pass "dotfiles/zshrc/onfido-sdk-token" }}"
+  export LOKALISE_TOKEN="{{ pass "dotfiles/zshrc/lokalise-token" }}"
+  export LOKALISE_PROJECT_ID="{{ pass "dotfiles/zshrc/lokalise-project-id" }}"
+  export BROWSERSTACK_USERNAME="{{ pass "dotfiles/zshrc/browserstack-username" }}"
+  export BROWSERSTACK_ACCESS_KEY="{{ pass "dotfiles/zshrc/browserstack-access-key" }}"
+}
+#]]]
+
+# [[[ Aliases
+function fzfind() {
+  preview="bat {-1} --color=always --style=numbers"
+  find $1 -type f | fzf --preview $preview
+}
+
+alias adb-screenshot="adb shell screencap -p | \
+  perl -pe 's/\x0D\x0A/\x0A/g' > \
+  $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png"
+
+alias color-palette="curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash"
+alias chezdiff="chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX"
+
+alias tme="tmux attach -t ethanify || tmux new -s ethanify"
+alias tmo="tmux attach -t onfido || tmux new -s onfido"
+
+# Remap system commands
+alias ls="ls --almost-all --color --human-readable --time-style=+'[%Y-%m-%d %H:%M:%S]'"
+alias nano=nvim
+alias rm='rm -i'
+alias vi=nvim
+
+{{- if eq .chezmoi.os "darwin" }}
+
+alias load-time="time /usr/local/bin/zsh -ic exit"
+alias policy-off="sudo spctl --master-disable"
+alias policy-on="sudo spctl --master-enable"
+alias xdg-open="open"
+
+{{- else if eq .chezmoi.os "linux" }}
+
+alias clippick="clipman pick --print0 --tool=CUSTOM --tool-args='fzf --read0'"
+alias load-time="time /usr/bin/zsh -ic exit"
+alias ncmpcpp="ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings"
+alias wl-chrome="google-chrome-stable -enable-features=UseOzonePlatform -ozone-platform=wayland"
+
+{{- end }}
+#]]]
+
+# [[[ Initialisation
+{{- if eq .chezmoi.os "linux" }}
+
+__load-sway
+__load-ssh
+
+{{- end }}
+
+# Base envs
+__load-plugins # always load plugins first
+__load-key-bindings
+__load-pure-prompt
+__load-colors
+__load-autojump
+
+# Dev tools
+__load-asdf
+__load-nvm
+__load-pyenv
+__load-rvm
+#]]]

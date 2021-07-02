@@ -1,0 +1,50 @@
+# vim:syntax=gitconfig
+[user]
+  name = Ethan Nguyen
+  email = ethan.nguyen@onfido.com
+  signingkey = C086CD9B4DBCBBC0
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
+[core]
+  excludesfile = {{ .chezmoi.homedir }}/.gitignore_global
+  autocrlf = false
+  pager = diff-so-fancy | less --tabs=2 -RFX
+[pull]
+  ff = only
+{{- if eq .chezmoi.os "darwin" }}
+[credential]
+  helper = osxkeychain
+{{- end }}
+[alias]
+  adog = log --all --decorate --oneline --graph
+[diff "gpg"]
+  textconv = gpg --no-tty --decrypt --quiet
+[blame "gpg"]
+  textconv = gpg --no-tty --decrypt --quiet
+[url "git@gitlab.eu-west-1.mgmt.onfido.xyz:"]
+	insteadOf = https://gitlab.eu-west-1.mgmt.onfido.xyz/
+[interactive]
+  diffFilter = diff-so-fancy --patch
+[color]
+  ui = true
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[diff-so-fancy]
+  first-run = false

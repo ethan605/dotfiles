@@ -1,0 +1,17 @@
+# vim:filetype=config
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+  # Control system with XF media keys
+  key <FK01> { [ F1,  F1,   XFMonBrightnessDown,  XFMonBrightnessDown   ] };
+  key <FK02> { [ F2,  F2,   XFMonBrightnessUp,    XFMonBrightnessUp     ] };
+  key <FK03> { [ F3                                                     ] };
+  key <FK04> { [ F4                                                     ] };
+  key <FK05> { [ F5                                                     ] };
+  key <FK06> { [ F6                                                     ] };
+  key <FK07> { [ F7,  F7,   XF86AudioPrev,        XF86AudioPrev         ] };
+  key <FK08> { [ F8,  F8,   XF86AudioPlay,        XF86AudioPlay         ] };
+  key <FK09> { [ F9,  F9,   XF86AudioNext,        XF86AudioNext         ] };
+  key <FK10> { [ F10, F10,  XF86AudioMute,        XF86AudioMicMute      ] };
+  key <FK11> { [ F11, F11,  XF86AudioLowerVolume, XF86AudioLowerVolume  ] };
+  key <FK12> { [ F12, F12,  XF86AudioRaiseVolume, XF86AudioRaiseVolume  ] };
+};

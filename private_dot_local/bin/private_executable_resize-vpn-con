@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Look for a Termite container with name starting with $1
+function find_con_id() {
+  local prefix=$1
+
+  local sway_tree=$(swaymsg -t get_tree)
+
+  local con_name=$(echo "$sway_tree" | \
+    jq -r ".. | objects | select(.app_id==\"termite\") | .name | select(startswith(\"$prefix\"))" | \
+    sed 's/"/\\"/g'
+  )
+
+  local con_id=$(echo "$sway_tree" | \
+    jq -r ".. | objects | select(.name==\"$con_name\") | .id")
+
+  echo "$con_id"
+}
+
+function main() {
+  # First look for a Termite container with name "aws-vpn-linux ..."
+  local con_id=$(find_con_id aws-vpn-linux)
+
+  # If it doesn't exist, look for another Termite container with name "onfido-vpn ..."
+  if [ -z $con_id ]; then
+    con_id=$(find_con_id onfido-vpn)
+  fi
+
+  # Enable floating, resize to 360x560, move to (10;10) of the current display
+  swaymsg "\
+    [con_id=$con_id] floating enable; \
+    [con_id=$con_id] resize set width 360; \
+    [con_id=$con_id] resize set height 560; \
+    [con_id=$con_id] move position 10 10 \
+  "
+}
+
+main "$@"
