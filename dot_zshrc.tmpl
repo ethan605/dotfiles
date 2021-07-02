@@ -277,21 +277,22 @@ alias adb-screenshot='adb shell screencap -p | \
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 alias chezdiff='chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX'
 
-alias fzgsw='git switch $(git branch | fzf)'
 alias fzgbD='git branch -D $(git branch | fzf --multi)'
+alias fzgm='git merge $(git branch | fzf)'
+alias fzgsw='git switch $(git branch | fzf)'
 
 alias tme='tmux attach -t ethanify || tmux new -s ethanify'
 alias tmo='tmux attach -t onfido || tmux new -s onfido'
 
 # Remap system commands
-alias ls='ls --almost-all --color --human-readable --time-style=+"[%Y-%m-%d %H:%M:%S]"'
 alias nano=nvim
-alias rm='rm -i'
 alias vi=nvim
+alias rm='rm -i'
 
 {{- if eq .chezmoi.os "darwin" }}
 
 alias load-time='time /usr/local/bin/zsh -ic exit'
+alias ls='ls --almost-all --color --human-readable --time-style=+"[%Y-%m-%d %H:%M:%S]"'
 alias policy-off='sudo spctl --master-disable'
 alias policy-on='sudo spctl --master-enable'
 alias xdg-open='open'
