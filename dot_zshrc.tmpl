@@ -266,37 +266,37 @@ function fzfind() {
   find "$@" -type f | fzf --preview $preview
 }
 
-alias adb-screenshot="adb shell screencap -p | \
-  perl -pe 's/\x0D\x0A/\x0A/g' > \
-  $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png"
+alias adb-screenshot='adb shell screencap -p | \
+  perl -pe "s/\x0D\x0A/\x0A/g" > \
+  $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png'
 
-alias color-palette="curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash"
-alias chezdiff="chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX"
+alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
+alias chezdiff='chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX'
 
-alias fzjump="cd $(find \"$1\" -maxdepth 1 | fzf)"
+alias fzjump='cd $(find $1 -maxdepth 1 | fzf)'
 
-alias tme="tmux attach -t ethanify || tmux new -s ethanify"
-alias tmo="tmux attach -t onfido || tmux new -s onfido"
+alias tme='tmux attach -t ethanify || tmux new -s ethanify'
+alias tmo='tmux attach -t onfido || tmux new -s onfido'
 
 # Remap system commands
-alias ls="ls --almost-all --color --human-readable --time-style=+'[%Y-%m-%d %H:%M:%S]'"
+alias ls='ls --almost-all --color --human-readable --time-style=+"[%Y-%m-%d %H:%M:%S]"'
 alias nano=nvim
 alias rm='rm -i'
 alias vi=nvim
 
 {{- if eq .chezmoi.os "darwin" }}
 
-alias load-time="time /usr/local/bin/zsh -ic exit"
-alias policy-off="sudo spctl --master-disable"
-alias policy-on="sudo spctl --master-enable"
-alias xdg-open="open"
+alias load-time='time /usr/local/bin/zsh -ic exit'
+alias policy-off='sudo spctl --master-disable'
+alias policy-on='sudo spctl --master-enable'
+alias xdg-open='open'
 
 {{- else if eq .chezmoi.os "linux" }}
 
-alias clippick="clipman pick --print0 --tool=CUSTOM --tool-args='fzf --read0'"
-alias load-time="time /usr/bin/zsh -ic exit"
-alias ncmpcpp="ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings"
-alias wl-chrome="google-chrome-stable -enable-features=UseOzonePlatform -ozone-platform=wayland"
+alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
+alias load-time='time /usr/bin/zsh -ic exit'
+alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
+alias wl-chrome='google-chrome-stable -enable-features=UseOzonePlatform -ozone-platform=wayland'
 
 {{- end }}
 #]]]
