@@ -273,7 +273,7 @@ alias adb-screenshot="adb shell screencap -p | \
 alias color-palette="curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash"
 alias chezdiff="chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX"
 
-alias fzjump="cd $(find "$1" -maxdepth 1 | fzf)"
+alias fzjump="cd $(find \"$1\" -maxdepth 1 | fzf)"
 
 alias tme="tmux attach -t ethanify || tmux new -s ethanify"
 alias tmo="tmux attach -t onfido || tmux new -s onfido"
