@@ -266,16 +266,14 @@ function fzfind() {
   find "$@" -type f | fzf --preview $preview
 }
 
-function fzfjump() {
-  cd $(find "$1" -maxdepth 1 | fzf)
-}
-
 alias adb-screenshot="adb shell screencap -p | \
   perl -pe 's/\x0D\x0A/\x0A/g' > \
   $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png"
 
 alias color-palette="curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash"
 alias chezdiff="chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX"
+
+alias fzjump="cd $(find "$1" -maxdepth 1 | fzf)"
 
 alias tme="tmux attach -t ethanify || tmux new -s ethanify"
 alias tmo="tmux attach -t onfido || tmux new -s onfido"
