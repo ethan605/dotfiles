@@ -10,7 +10,7 @@ function find_con_id() {
   local sway_tree=$(swaymsg -t get_tree)
 
   local con_name=$(echo "$sway_tree" | \
-    jq -r ".. | objects | select(.app_id==\"termite\") | .name | select(startswith(\"$prefix\"))" | \
+    jq -r ".. | objects | select(.app_id==\"termite\") | .name | select(contains(\"$prefix\"))" | \
     sed 's/"/\\"/g'
   )
 
@@ -22,11 +22,11 @@ function find_con_id() {
 
 function main() {
   # First look for a Termite container with name "aws-vpn-linux ..."
-  local con_id=$(find_con_id aws-vpn-linux)
+  local con_id=$(find_con_id aws-vpn-client)
 
   # If it doesn't exist, look for another Termite container with name "onfido-vpn ..."
   if [ -z $con_id ]; then
-    con_id=$(find_con_id onfido-vpn)
+    con_id=$(find_con_id legacy-vpn-linux)
   fi
 
   # Enable floating, resize to 360x560, move to (10;10) of the current display
