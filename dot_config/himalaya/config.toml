@@ -1,0 +1,50 @@
+name = "Thanh Nguyen"
+downloads-dir = "/home/ethanify/.mail"
+default-page-size = 50
+signature = """
+---
+Thanh Nguyen (Ethan)
+Software Engineer
+Onfido
+"""
+
+[primary]
+default = true
+email = "thanhnx.605@gmail.com"
+
+imap-host = "imap.gmail.com"
+imap-port = 993
+imap-login = "thanhnx.605@gmail.com"
+imap-passwd-cmd = "pass dotfiles/mails/thanhnx.605@gmail.com"
+
+smtp-host = "smtp.gmail.com"
+smtp-port = 465
+smtp-login = "thanhnx.605@gmail.com"
+smtp-passwd-cmd = "pass dotfiles/mails/thanhnx.605@gmail.com"
+
+[secondary]
+email = "xtnguyen605@gmail.com"
+
+imap-host = "imap.gmail.com"
+imap-port = 993
+imap-login = "xtnguyen605@gmail.com"
+imap-passwd-cmd = "pass dotfiles/mails/xtnguyen605@gmail.com"
+
+smtp-host = "smtp.gmail.com"
+smtp-port = 465
+smtp-login = "xtnguyen605@gmail.com"
+smtp-passwd-cmd = "pass dotfiles/mails/xtnguyen605@gmail.com"
+
+[outlook]
+email = "thanhnx.605@live.com"
+
+imap-host = "outlook.office365.com"
+imap-port = 993
+imap-login = "thanhnx.605@live.com"
+imap-passwd-cmd = "pass dotfiles/mails/thanhnx.605@live.com"
+
+smtp-host = "smtp.office365.com"
+smtp-port = 587
+smtp-starttls = true
+smtp-login = "thanhnx.605@live.com"
+smtp-passwd-cmd = "pass dotfiles/mails/thanhnx.605@live.com"
