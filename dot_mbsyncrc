@@ -7,7 +7,7 @@
 IMAPAccount Primary
 Host imap.gmail.com
 User thanhnx.605@gmail.com
-Passcmd "pass dotfiles/mbsync/primary"
+Passcmd "pass dotfiles/mails/thanhnx.605@gmail.com"
 SSLType IMAPS
 Authmechs LOGIN
 CertificateFile /usr/local/etc/openssl@1.1/cert.pem
@@ -73,7 +73,7 @@ Channel Primary-*
 IMAPAccount UK-Alias
 Host imap.gmail.com
 User xtnguyen605@gmail.com
-Passcmd "pass dotfiles/mbsync/uk-alias"
+Passcmd "pass dotfiles/mails/xtnguyen605@gmail.com"
 SSLType IMAPS
 Authmechs LOGIN
 CertificateFile /usr/local/etc/openssl@1.1/cert.pem
@@ -138,7 +138,7 @@ Channel UK-Alias-*
 IMAPAccount Outlook
 Host outlook.office365.com
 User thanhnx.605@live.com
-Passcmd "pass dotfiles/mbsync/outlook"
+Passcmd "pass dotfiles/mails/thanhnx.605@live.com"
 SSLType IMAPS
 Authmechs LOGIN
 CertificateFile /usr/local/etc/openssl@1.1/cert.pem
