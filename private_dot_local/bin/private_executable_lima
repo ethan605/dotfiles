@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o pipefail
+set -o nounset
+
+function browse_mails() {
+  local account=${1:-primary}
+  local list=$(himalaya --account=$account --output=json list)
+  local list_size=$(echo "$list" | jq -r '.response | length')
+
+  if [[ $list_size -eq 0 ]]; then
+    echo "Empty mailbox"
+    return
+  fi
+
+  local subject=$(echo "$list" | jq -r '.response[] | .subject' | fzf)
+  local uid=$(echo "$list" | jq -r ".response[] | select(.subject==\"$subject\") | .uid")
+
+  local tmpfile=$(mktemp --suffix=.html)
+  himalaya --account=$account read --mime-type=html "$uid" > "$tmpfile"
+  firefox "$tmpfile"
+}
+
+function main() {
+  local sub_command=$1
+  shift
+
+  case "$sub_command" in
+    browse) browse_mails "$@";;
+  esac
+}
+
+main "$@"
