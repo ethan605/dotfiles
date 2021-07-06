@@ -5,6 +5,8 @@ LICENSE
 README.md
 
 Library/LaunchAgents/ethanify*.plist
+.mbsyncrc
+.config/neomutt
 
 # MacOS-exclusive files
 {{ if ne .chezmoi.os "darwin" }}
