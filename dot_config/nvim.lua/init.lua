@@ -1,48 +1,41 @@
 -- vim:fileencoding=utf-8:foldenable:foldmethod=marker
 
 -- {{{ Plugins
-require "paq" {
-  "savq/paq-nvim";
+require("packer").startup(function()
+  use 'wbthomason/packer.nvim'
 
-  -- General plugins
-  "airblade/vim-rooter";
-  "easymotion/vim-easymotion";
-  "jiangmiao/auto-pairs";
-  "junegunn/fzf";
-  "junegunn/fzf.vim";
-  "preservim/nerdcommenter";
-  "tpope/vim-surround";
-  {
-    "iamcco/markdown-preview.nvim", run = function()
-      vim.cmd("!cd $XDG_DATA_HOME/nvim/site/pack/paqs/start/markdown-preview.nvim/app && npm install")
-    end
-  };
-  { "mg979/vim-visual-multi", branch = "master" };
+  use "airblade/vim-rooter"
+  use "easymotion/vim-easymotion"
+  use "jiangmiao/auto-pairs"
+  use "junegunn/fzf"
+  use "junegunn/fzf.vim"
+  use "preservim/nerdcommenter"
+  use "tpope/vim-surround"
+  use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
+  use { "mg979/vim-visual-multi", branch = "master" }
 
   -- NERDTree
-  "Xuyuanp/nerdtree-git-plugin";
-  "preservim/nerdTree";
-  "ryanoasis/vim-devicons";
+  use "Xuyuanp/nerdtree-git-plugin"
+  use "preservim/nerdTree"
+  use "ryanoasis/vim-devicons"
 
   -- Git
-  "APZelos/blamer.nvim";
-  "shumphrey/fugitive-gitlab.vim";
-  "tommcdo/vim-fubitive";
-  "tpope/vim-fugitive";
-  "tpope/vim-rhubarb";
+  use "APZelos/blamer.nvim"
+  use "shumphrey/fugitive-gitlab.vim"
+  use "tommcdo/vim-fubitive"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-rhubarb"
 
   -- UI
-  "Yggdroot/indentLine";
-  "bling/vim-airline";
-  "connorholyday/vim-snazzy";
-  "vim-airline/vim-airline-themes";
+  use "Yggdroot/indentLine"
+  use "bling/vim-airline"
+  use "connorholyday/vim-snazzy"
+  use "vim-airline/vim-airline-themes"
 
   -- Languages support
-  -- "hrsh7th/nvim-compe";
-  -- "neovim/nvim-lspconfig";
-  -- {"lervag/vimtex", opt=true};
-  { "fatih/vim-go", run = function() vim.cmd("GoUpdateBinaries") end };
-}
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { "fatih/vim-go", run = ":GoUpdateBinaries" };
+end)
 -- }}}
 
 -- {{{ Settings
