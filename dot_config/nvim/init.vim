@@ -1,6 +1,6 @@
 " vim:fileencoding=utf-8:foldenable:foldmethod=marker
 
-" {{{ 1. Plugins
+" {{{ Plugins
 call plug#begin()
 
 Plug '/usr/local/bin/fzf'
@@ -55,89 +55,7 @@ endif
 call plug#end()
 " }}}
 
-" {{{ 2. Variables
-
-" Disable unused providers
-let g:loaded_python_provider = 0
-let g:loaded_perl_provider = 0
-
-" Disable typescript from vim-polyglot
-" in favour of peitalin/vim-jsx-typescript
-" let g:polyglot_disabled = ['typescript']
-
-" For vim-airline
-let g:airline_theme = 'powerlineish'
-let g:airline_powerline_fonts = 1
-
-" For vim-flow
-let g:flow#enable = 0
-
-" For vim-go
-let g:go_fmt_autosave = 1
-let g:go_imports_autosave = 1
-let g:go_metalinter_autosave = 1
-let g:go_mod_fmt_autosave = 1
-
-" For indentLine
-let g:indentLine_char = '·'
-let g:indentLine_enabled = 1
-
-" For NERDTree
-let g:NERDSpaceDelims = 1 
-let g:NERDTreeIgnore = ['\~$', 'node_modules']
-
-" For material-monokai
-let g:materialmonokai_italic = 1
-let g:materialmonokai_subtle_airline = 1
-let g:materialmonokai_subtle_spell = 1
-
-" For markdown-preview
-let g:mkdp_preview_options = {
-  \ 'maid': { 'sequence': { 'showSequenceNumbers': 'true' } },
-  \ }
-
-" Show hidden files in NERDTree
-let NERDTreeShowHidden = 1
-
-" For vim-fugitive
-let g:fugitive_gitlab_domains = ['https://gitlab.eu-west-1.mgmt.onfido.xyz/']
-
-" For vim-go
-let g:go_doc_keywordprg_enabled = 0
-
-if has('nvim')
-  " For blamer.nvim
-  let g:blamer_delay = 500
-  let g:blamer_enabled = 1
-  let g:blamer_show_in_visual_modes = 0
-  let g:blamer_template = '<author>, <author-time> • <summary>'
-
-  " For coc.nvim
-  let g:coc_global_extensions = [
-    \ 'coc-deno',
-    \ 'coc-elixir',
-    \ 'coc-eslint',
-    \ 'coc-go',
-    \ 'coc-html',
-    \ 'coc-java',
-    \ 'coc-json',
-    \ 'coc-kotlin',
-    \ 'coc-prettier',
-    \ 'coc-snippets',
-    \ 'coc-solargraph',
-    \ 'coc-swagger',
-    \ 'coc-tabnine'
-    \ ]
-  let g:coc_snippet_next = '<c-j>'
-  let g:coc_snippet_prev = '<c-k>'
-endif
-
-if !has('nvim')
-  let g:NERDTreeGitStatusConcealBrackets = 1
-endif
-" }}}
-
-" {{{ 3. Settings
+" {{{ Settings
 set autoread                " Auto reload file from outside changes
 set autowrite               " Auto reload file from outside changes
 set background=dark         " For dark themes
@@ -191,7 +109,85 @@ set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 set runtimepath+=/usr/local/opt/fzf 
 " }}}
 
-" {{{ 4. Color scheme
+" {{{ Variables
+
+" Disable unused providers
+let g:loaded_python_provider = 0
+let g:loaded_perl_provider = 0
+
+" Disable typescript from vim-polyglot
+" in favour of peitalin/vim-jsx-typescript
+" let g:polyglot_disabled = ['typescript']
+
+" For vim-airline
+let g:airline_theme = 'powerlineish'
+let g:airline_powerline_fonts = 1
+
+" For vim-flow
+let g:flow#enable = 0
+
+" For vim-go
+let g:go_doc_keywordprg_enabled = 0
+let g:go_fmt_autosave = 1
+let g:go_imports_autosave = 1
+let g:go_metalinter_autosave = 1
+let g:go_mod_fmt_autosave = 1
+
+" For indentLine
+let g:indentLine_char = '·'
+let g:indentLine_enabled = 1
+
+" For NERDTree
+let g:NERDSpaceDelims = 1 
+let g:NERDTreeIgnore = ['\~$', 'node_modules']
+let g:NERDTreeShowHidden = 1
+
+" For material-monokai
+let g:materialmonokai_italic = 1
+let g:materialmonokai_subtle_airline = 1
+let g:materialmonokai_subtle_spell = 1
+
+" For markdown-preview
+let g:mkdp_preview_options = {
+  \ 'maid': { 'sequence': { 'showSequenceNumbers': 'true' } },
+  \ }
+
+" For vim-fugitive
+let g:fugitive_gitlab_domains = ['https://gitlab.eu-west-1.mgmt.onfido.xyz/']
+
+if has('nvim')
+  " For blamer.nvim
+  let g:blamer_delay = 500
+  let g:blamer_enabled = 1
+  let g:blamer_show_in_visual_modes = 0
+  let g:blamer_template = '<author>, <author-time> • <summary>'
+
+  " For coc.nvim
+  let g:coc_global_extensions = [
+    \ 'coc-deno',
+    \ 'coc-elixir',
+    \ 'coc-eslint',
+    \ 'coc-go',
+    \ 'coc-html',
+    \ 'coc-java',
+    \ 'coc-json',
+    \ 'coc-kotlin',
+    \ 'coc-prettier',
+    \ 'coc-snippets',
+    \ 'coc-solargraph',
+    \ 'coc-swagger',
+    \ 'coc-tabnine'
+    \ ]
+  let g:coc_snippet_next = '<c-j>'
+  let g:coc_snippet_prev = '<c-k>'
+endif
+
+if !has('nvim')
+  let g:NERDTreeGitStatusConcealBrackets = 1
+endif
+" }}}
+
+" {{{ Color scheme
 filetype plugin on
 syntax on
 set termguicolors
@@ -202,9 +198,7 @@ if !has('nvim')
   set t_ZH=[3m
   set t_ZR=[23m
 endif
-" }}}
 
-" {{{ 5. Highlight colors
 " Line limit column colors
 hi ColorColumn      guibg=gray            guifg=fg 
 
@@ -234,9 +228,12 @@ if !has('nvim')
 
   hi clear            SignColumn
 endif
+
+" Show a mark for characters at column 120
+call matchadd('ColorColumn', '\%120v', 120)
 " }}}
 
-" {{{ 6.Custom functions
+" {{{ Custom functions
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -268,7 +265,7 @@ if has('nvim')
 endif
 " }}}
 
-" {{{ 7. Remaps
+" {{{ Remaps
 " Toggle NERDTree with focusing current file's location
 nmap <silent> <c-o> :call <sid>smarter_NERDTreeToggle()<cr>
 
@@ -328,7 +325,7 @@ if has('nvim')
 endif
 " }}}
 
-" {{{ 8. Auto commands
+" {{{ Auto commands
 " Performance tweaks for large files
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
@@ -353,9 +350,4 @@ autocmd BufWritePost *.py call flake8#Flake8()
 
 " Autofix for Prettier on save
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-" }}}
-
-" {{{ 9. Misc
-" Show a mark for characters at column 100
-call matchadd('ColorColumn', '\%120v', 120)
 " }}}
