@@ -1,12 +1,14 @@
-# Global variables
+# vim:fileencoding=utf-8:filetype=bash:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+# [[[ Global variables
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 export EDITOR=nvim
 export REACT_EDITOR=nvim
 export FZF_DEFAULT_OPTS='
-  --color=gutter:0,spinner:3
-  --color=hl:5,pointer:5,marker:2
+  --color=gutter:0,prompt:2,spinner:3
   --color=hl+:5,fg+:7,bg+:0
+  --color=hl:5,pointer:5,marker:2
+  --cycle
   --height=50%
   --layout=reverse
 '
@@ -30,12 +32,11 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
-# Use OpenJDK
-PATH="$JAVA_HOME:$PATH"
-
 {{- else if eq .chezmoi.os "linux" }}
 
-export BROWSER=firefox
+export JDK_HOME="/usr/lib/jvm/default"
+export JAVA_HOME="$JDK_HOME"
+export TERMINFO=/usr/share/terminfo
 export GPG_TTY=$(tty)
 
 # XDG base directories
@@ -54,30 +55,31 @@ PATH="$HOME/.local/bin:$PATH"
 
 {{- end }}
 
+# Use OpenJDK
+PATH="$JAVA_HOME:$PATH"
+
 # Local node env
 PATH="./node_modules/.bin:$PATH"
-
-# Global rvm env
-PATH="$HOME/.rvm/bin:$PATH"
-
 export PATH
+# ]]]
 
-# Onfido secrets
-export SDK_TOKEN_FACTORY_SECRET="{{ pass "dotfiles/zshrc/onfido-sdk-token" }}"
-export LOKALISE_TOKEN="{{ pass "dotfiles/zshrc/lokalise-token" }}"
-export LOKALISE_PROJECT_ID="{{ pass "dotfiles/zshrc/lokalise-project-id" }}"
-export BROWSERSTACK_USERNAME="{{ pass "dotfiles/zshrc/browserstack-username" }}"
-export BROWSERSTACK_ACCESS_KEY="{{ pass "dotfiles/zshrc/browserstack-access-key" }}"
+# [[[ Init functions
+function __load-asdf() {
+{{- if eq .chezmoi.os "linux" }}
 
-# Custon functions
+  [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
+
+{{- end }}
+}
+
 function __load-autojump() {
 {{- if eq .chezmoi.os "darwin" }}
 
-  [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+  [ -f /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
 
 {{- else if eq .chezmoi.os "linux" }}
 
-  [ -f $HOME/.autojump/etc/profile.d/autojump.sh ] && . $HOME/.autojump/etc/profile.d/autojump.sh
+  [ -f /etc/profile.d/autojump.zsh ] && source /etc/profile.d/autojump.zsh
 
 {{- end }}
 }
@@ -157,12 +159,12 @@ function __load-pyenv() {
   command -v pyenv > /dev/null && eval "$(pyenv init -)"
 }
 
-{{- if eq .chezmoi.os "linux" }}
-
 function __load-rvm() {
-  RVM_DIR=/usr/share/rvm
+  RVM_DIR="$HOME/.rvm"
   [[ -s "$RVM_DIR/scripts/rvm" ]] && source "$RVM_DIR/scripts/rvm"
 }
+
+{{- if eq .chezmoi.os "linux" }}
 
 function __load-ssh() {
   export SSH_ASKPASS="$HOME/.local/bin/ssh-pass"
@@ -185,52 +187,101 @@ function __load-plugins() {
 {{- end }}
 }
 
-# Aliases
-alias adb-screenshot="adb shell screencap -p | \
-  perl -pe 's/\x0D\x0A/\x0A/g' > \
-  $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png"
+function __load-onfido-envs() {
+  # Onfido envs
+{{- if eq .chezmoi.os "darwin" }}
 
-alias color-palette="curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash"
+  source "/Users/ethan.nguyen/Library/Application Support/creds/nexus"
 
-alias fzfind="find * -type f | fzf"
+{{- else if eq .chezmoi.os "linux" }}
+  
+  # Linuxbrew
+  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+  export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
-alias tme="tmux attach -t ethanify || tmux new -s ethanify"
-alias tmo="tmux attach -t onfido || tmux new -s onfido"
+  source ~/.config/creds/nexus
+
+{{- end }}
+
+  # Onfido secrets
+  export SDK_TOKEN_FACTORY_SECRET="{{ pass "dotfiles/zshrc/onfido-sdk-token" }}"
+  export LOKALISE_TOKEN="{{ pass "dotfiles/zshrc/lokalise-token" }}"
+  export LOKALISE_PROJECT_ID="{{ pass "dotfiles/zshrc/lokalise-project-id" }}"
+  export BROWSERSTACK_USERNAME="{{ pass "dotfiles/zshrc/browserstack-username" }}"
+  export BROWSERSTACK_ACCESS_KEY="{{ pass "dotfiles/zshrc/browserstack-access-key" }}"
+}
+# ]]]
+
+# [[[ Aliases
+function fzfind() {
+  preview="bat {-1} --color=always --style=numbers"
+  find "$@" -type f | fzf --preview $preview
+}
+
+function fj() {
+  local depth=${2:-1}
+  cd "$(find "$1" -maxdepth $depth | fzf)"
+}
+
+alias adb-screenshot='adb shell screencap -p | \
+  perl -pe "s/\x0D\x0A/\x0A/g" > \
+  $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png'
+
+alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
+alias chezdiff='chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX'
+
+alias fbD='git branch -D $(git branch | fzf --multi)'
+alias fm='git merge $(git branch | fzf)'
+alias fsw='git switch $(git branch | fzf)'
+
+alias tme='tmux attach -t ethanify || tmux new -s ethanify'
+alias tmo='tmux attach -t onfido || tmux new -s onfido'
 
 # Remap system commands
-# alias bat="env -uCOLORTERM bat --number --color always --wrap never"
-alias ls="ls --almost-all --color --human-readable --time-style=+'[%Y-%m-%d %H:%M:%S]'"
 alias nano=nvim
-alias rm="rm -i"
 alias vi=nvim
+alias rm='rm -i'
 
 {{- if eq .chezmoi.os "darwin" }}
 
-alias load-time="time /usr/local/bin/zsh -ic exit"
-alias policy-off="sudo spctl --master-disable"
-alias policy-on="sudo spctl --master-enable"
-alias xdg-open="open"
+alias load-time='time /usr/local/bin/zsh -ic exit'
+alias ls='ls --almost-all --color --human-readable --time-style=+"[%Y-%m-%d %H:%M:%S]"'
+alias policy-off='sudo spctl --master-disable'
+alias policy-on='sudo spctl --master-enable'
+alias xdg-open='open'
 
 {{- else if eq .chezmoi.os "linux" }}
 
-alias load-time="time /usr/bin/zsh -ic exit"
-alias ncmpcpp="ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings"
-alias wl-chrome="google-chrome-stable -enable-features=UseOzonePlatform -ozone-platform=wayland"
+alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
+alias load-time='time /usr/bin/zsh -ic exit'
+alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
+alias wl-chrome='google-chrome-stable -enable-features=UseOzonePlatform -ozone-platform=wayland'
 
 {{- end }}
+#]]]
 
-# Autoloads
-__load-colors
-__load-autojump
-__load-pure-prompt
-__load-plugins
-
+# [[[ Autoloads
 {{- if eq .chezmoi.os "linux" }}
 
+__load-sway
 __load-ssh
-__load-rvm
 
 {{- end }}
 
+# Base envs
+__load-plugins # always load plugins first
+__load-key-bindings
+__load-pure-prompt
+__load-colors
+__load-autojump
+
+# Dev tools
+__load-asdf
 __load-nvm
 __load-pyenv
+__load-rvm
+# ]]]

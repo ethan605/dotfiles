@@ -1,4 +1,4 @@
-# vim: fileencoding=utf-8:ft=muttrc:foldenable:foldmethod=marker
+# vim: fileencoding=utf-8:filetype=muttrc:foldenable:foldmethod=marker
 
 # Based on: https://github.com/altercation/mutt-colors-solarized/blob/master/mutt-colors-solarized-dark-16.muttrc
 # for background in 16 color terminal, valid background colors include:

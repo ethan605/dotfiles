@@ -1,4 +1,4 @@
-" vim:ft=vim
+" vim:fileencoding=utf-8:filetype=vim
 highlight clear
 
 highlight Win cterm=none ctermfg=255 ctermbg=none
