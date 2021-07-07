@@ -20,3 +20,6 @@ vim.cmd [[
 
 -- Call Flake8 on write for Python files
 vim.cmd [[ autocmd BufWritePost *.py call flake8#Flake8() ]]
+
+-- Use prettier-stylelint for CSS
+vim.cmd [[ autocmd FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint" ]]

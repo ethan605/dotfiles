@@ -44,3 +44,7 @@ vim.g.go_fmt_autosave = true
 vim.g.go_imports_autosave = true
 vim.g.go_metalinter_autosave = true
 vim.g.go_mod_fmt_autosave = true
+
+-- For vim-prettier
+vim.g["prettier#autoformat"] = true
+vim.g["prettier#autoformat_require_pragma"] = false

@@ -31,28 +31,22 @@ return require("packer").startup(function()
   use "vim-airline/vim-airline-themes"
 
   -- Languages support
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  -- use "alampros/vim-styled-jsx"
   -- use "andreshazard/vim-freemarker"
-  -- use "ap/vim-css-color"
-  -- use "chunkhang/vim-mbsync"
-  -- use "darfink/vim-plist"
   -- use "editorconfig/editorconfig-vim"
   -- use "flowtype/vim-flow"
   -- use "jeffkreeftmeijer/vim-numbertoggle"
-  -- use "jparise/vim-graphql"
   -- use "kevinoid/vim-jsonc"
-  -- use "mattn/emmet-vim"
-  -- use "mkitt/tabline.vim"
   -- use "neomutt/neomutt.vim"
-  -- use "niftylettuce/vim-jinja"
-  use "nvie/vim-flake8"
-  -- use "pangloss/vim-javascript"
-  -- use "peitalin/vim-jsx-typescript"
-  -- use "sheerun/vim-polyglot"
-  -- use "shumphrey/fugitive-gitlab.vim"
+  -- use "chunkhang/vim-mbsync"
   -- use "wogong/msmtp.vim"
+  use "alampros/vim-styled-jsx"
+  use "ap/vim-css-color"
+  use "darfink/vim-plist"
+  use "niftylettuce/vim-jinja"
+  use "nvie/vim-flake8"
   use { "fatih/vim-go", run = ":GoUpdateBinaries" }
+  use { "prettier/vim-prettier", branch = "release/0.x", run = "npm install" }
   use { "styled-components/vim-styled-components", branch = "main" }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 end)
 
