@@ -1,0 +1,17 @@
+{
+  "coc.preferences.rootPatterns": [".gitmodules", ".vim"],
+  "clangd.path": "/home/ethanify/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "css",
+    "scss",
+    "json",
+    "Markdown"
+  ],
+  "java.trace.server": "verbose",
+  "tsserver.log": "verbose",
+  "tsserver.trace.server": "verbose"
+}
