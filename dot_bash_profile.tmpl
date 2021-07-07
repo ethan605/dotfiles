@@ -267,14 +267,12 @@ alias wl-chrome='google-chrome-stable -enable-features=UseOzonePlatform -ozone-p
 # [[[ Autoloads
 {{- if eq .chezmoi.os "linux" }}
 
-__load-sway
 __load-ssh
 
 {{- end }}
 
 # Base envs
 __load-plugins # always load plugins first
-__load-key-bindings
 __load-pure-prompt
 __load-colors
 __load-autojump
