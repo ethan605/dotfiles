@@ -120,6 +120,30 @@ vim.g.go_metalinter_autosave = true
 vim.g.go_mod_fmt_autosave = true
 -- }}}
 
+-- {{{ Keymaps
+vim.api.nvim_set_keymap("n", "<C-o>", "v:lua smarterNERDTreeToggle()<cr>", { noremap = true, silent = true })
+
+-- Copy current file's path
+vim.api.nvim_set_keymap("n", "ycf", ":let @+=@%<cr>", { noremap = true, silent = true })
+
+-- Quick files opening
+vim.api.nvim_set_keymap("n", "<c-p>", ":GFiles<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<c-g>", ":GFiles?<cr>", { noremap = true, silent = true })
+
+-- Leader + space to hide search highlights
+vim.api.nvim_set_keymap("n", "<leader><space>", ":nohlsearch<cr>", { noremap = true, silent = true })
+-- }}}
+
+-- {{{ Custom functions
+function smarterNERDTreeToggle()
+  if vim.bo.filetype == "nerdtree" then
+    vim.cmd [[ :NERDTreeToggle ]]
+  else
+    vim.cmd [[ :NERDTreeFind ]]
+  end
+end
+-- }}}
+
 -- {{{ Color scheme
 vim.cmd [[filetype plugin on]]
 vim.cmd [[syntax on]]
