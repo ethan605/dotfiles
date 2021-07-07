@@ -79,7 +79,7 @@ function __load-autojump() {
 
 {{- else if eq .chezmoi.os "linux" }}
 
-  [ -f /etc/profile.d/autojump.zsh ] && source /etc/profile.d/autojump.zsh
+  [ -f /etc/profile.d/autojump.sh ] && source /etc/profile.d/autojump.sh
 
 {{- end }}
 }
