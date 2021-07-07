@@ -3,27 +3,45 @@
 " {{{ Plugins
 call plug#begin()
 
-Plug '/usr/local/bin/fzf'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Yggdroot/indentLine'
-Plug 'airblade/vim-gitgutter'
+" General plugins
 Plug 'airblade/vim-rooter'
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
+Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
+
+" NERDTree
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdTree'
+Plug 'ryanoasis/vim-devicons'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tommcdo/vim-fubitive'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
+" UI
+Plug 'Yggdroot/indentLine'
+Plug 'bling/vim-airline'
+Plug 'connorholyday/vim-snazzy'
+Plug 'vim-airline/vim-airline-themes'
+
+" Languages support
 Plug 'alampros/vim-styled-jsx'
 Plug 'andreshazard/vim-freemarker'
 Plug 'ap/vim-css-color'
-Plug 'bling/vim-airline'
 Plug 'chunkhang/vim-mbsync'
-Plug 'connorholyday/vim-snazzy'
 Plug 'darfink/vim-plist'
-Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'flowtype/vim-flow'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'jiangmiao/auto-pairs'
 Plug 'jparise/vim-graphql'
-Plug 'junegunn/fzf.vim'
 Plug 'kevinoid/vim-jsonc'
 Plug 'mattn/emmet-vim'
 Plug 'mkitt/tabline.vim'
@@ -32,18 +50,9 @@ Plug 'niftylettuce/vim-jinja'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'preservim/nerdTree'
-Plug 'preservim/nerdcommenter'
-Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tommcdo/vim-fubitive'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'voldikss/vim-floaterm'
 Plug 'wogong/msmtp.vim'
 
@@ -77,7 +86,7 @@ set modeline                " Enable modeline.
 set modelines=1             " Enable modeline.
 set nobackup                " Some LSP servers have issues with backup files
 set noerrorbells            " No beeps.
-set nofoldenable			" Not folding by default
+set nofoldenable			      " Not folding by default
 set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
 set nostartofline           " Do not jump to first character with page commands.
 set noswapfile              " Disable swap files
@@ -106,7 +115,7 @@ set backupdir=~/tmp,/tmp
 set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 
 " Add fzf to run time path
-set runtimepath+=/usr/local/opt/fzf 
+set runtimepath+=/usr/local/opt/fzf
 " }}}
 
 " {{{ Variables
@@ -114,10 +123,6 @@ set runtimepath+=/usr/local/opt/fzf
 " Disable unused providers
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
-
-" Disable typescript from vim-polyglot
-" in favour of peitalin/vim-jsx-typescript
-" let g:polyglot_disabled = ['typescript']
 
 " For vim-airline
 let g:airline_theme = 'powerlineish'
@@ -141,11 +146,6 @@ let g:indentLine_enabled = 1
 let g:NERDSpaceDelims = 1 
 let g:NERDTreeIgnore = ['\~$', 'node_modules']
 let g:NERDTreeShowHidden = 1
-
-" For material-monokai
-let g:materialmonokai_italic = 1
-let g:materialmonokai_subtle_airline = 1
-let g:materialmonokai_subtle_spell = 1
 
 " For markdown-preview
 let g:mkdp_preview_options = {
