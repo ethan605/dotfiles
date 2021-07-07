@@ -5,29 +5,43 @@ require "paq" {
   "savq/paq-nvim";
 
   -- General plugins
+  "airblade/vim-rooter";
+  "easymotion/vim-easymotion";
+  "jiangmiao/auto-pairs";
+  "junegunn/fzf";
+  "junegunn/fzf.vim";
+  "preservim/nerdcommenter";
+  "tpope/vim-surround";
+  {
+    "iamcco/markdown-preview.nvim", run = function()
+      vim.cmd("!cd $XDG_DATA_HOME/nvim/site/pack/paqs/start/markdown-preview.nvim/app && npm install")
+    end
+  };
+  { "mg979/vim-visual-multi", branch = "master" };
+
+  -- NERDTree
+  "Xuyuanp/nerdtree-git-plugin";
+  "preservim/nerdTree";
+  "ryanoasis/vim-devicons";
+
+  -- Git
   "APZelos/blamer.nvim";
+  "shumphrey/fugitive-gitlab.vim";
+  "tommcdo/vim-fubitive";
+  "tpope/vim-fugitive";
+  "tpope/vim-rhubarb";
+
+  -- UI
   "Yggdroot/indentLine";
   "bling/vim-airline";
   "connorholyday/vim-snazzy";
-  "easymotion/vim-easymotion";
-  "junegunn/fzf";
-  "junegunn/fzf.vim";
-  "preservim/nerdTree";
-  "preservim/nerdcommenter";
-  "ryanoasis/vim-devicons";
-  "shumphrey/fugitive-gitlab.vim";
-  "tpope/vim-fugitive";
-  "tpope/vim-rhubarb";
-  "tpope/vim-surround";
   "vim-airline/vim-airline-themes";
-
-  -- { "iamcco/markdown-preview.nvim", run = "cd app && npm install" };
-  { "mg979/vim-visual-multi", branch = "master" };
 
   -- Languages support
   -- "hrsh7th/nvim-compe";
   -- "neovim/nvim-lspconfig";
   -- {"lervag/vimtex", opt=true};
+  { "fatih/vim-go", run = function() vim.cmd("GoUpdateBinaries") end };
 }
 -- }}}
 
@@ -120,30 +134,6 @@ vim.g.go_metalinter_autosave = true
 vim.g.go_mod_fmt_autosave = true
 -- }}}
 
--- {{{ Keymaps
-vim.api.nvim_set_keymap("n", "<C-o>", "v:lua smarterNERDTreeToggle()<cr>", { noremap = true, silent = true })
-
--- Copy current file's path
-vim.api.nvim_set_keymap("n", "ycf", ":let @+=@%<cr>", { noremap = true, silent = true })
-
--- Quick files opening
-vim.api.nvim_set_keymap("n", "<c-p>", ":GFiles<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<c-g>", ":GFiles?<cr>", { noremap = true, silent = true })
-
--- Leader + space to hide search highlights
-vim.api.nvim_set_keymap("n", "<leader><space>", ":nohlsearch<cr>", { noremap = true, silent = true })
--- }}}
-
--- {{{ Custom functions
-function smarterNERDTreeToggle()
-  if vim.bo.filetype == "nerdtree" then
-    vim.cmd [[ :NERDTreeToggle ]]
-  else
-    vim.cmd [[ :NERDTreeFind ]]
-  end
-end
--- }}}
-
 -- {{{ Color scheme
 vim.cmd [[filetype plugin on]]
 vim.cmd [[syntax on]]
@@ -163,4 +153,35 @@ vim.cmd [[hi MatchParen   gui=bold  guibg=none  guifg=#ff6ac1]]
 
 -- Show a mark for characters at column 120
 vim.cmd [[call matchadd("ColorColumn", "\%120v", 120)]]
+-- }}}
+
+-- {{{ Keymaps
+-- Smarter NERDTree toggle
+local default_keymap_opts = { noremap = true, silent = true }
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-o>",
+  ":lua if vim.bo.filetype == 'nerdtree' then vim.cmd [[ :NERDTreeToggle ]] else vim.cmd [[ :NERDTreeFind ]] end<cr>",
+  default_keymap_opts
+)
+
+-- Copy current file's path
+vim.api.nvim_set_keymap("n", "ycf", ":let @+=@%<cr>", default_keymap_opts)
+
+-- Quick files opening
+vim.api.nvim_set_keymap("n", "<c-p>", ":GFiles<cr>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "<c-g>", ":GFiles?<cr>", default_keymap_opts)
+
+-- Leader + space to hide search highlights
+vim.api.nvim_set_keymap("n", "<leader><space>", ":nohlsearch<cr>", default_keymap_opts)
+
+-- Leader as Easymotion prefix
+vim.api.nvim_set_keymap("n", "<leader>", "<Plug>(easymotion-prefix)", { silent = true })
+-- }}}
+
+-- {{{ Custom functions
+-- function smarterNERDTreeToggle()
+  -- if vim.bo.filetype == "nerdtree" then vim.cmd [[ :NERDTreeToggle ]] else vim.cmd [[ :NERDTreeFind ]] end
+-- end
 -- }}}
