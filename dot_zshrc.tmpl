@@ -265,6 +265,10 @@ function fzfind() {
   find "$@" -type f | fzf --preview $preview
 }
 
+function chezdiff() {
+  chezmoi diff "$@" 2> /dev/null | diff-so-fancy | less --tabs=2 -RFX
+}
+
 function jf() {
   local depth=${2:-1}
   cd "$(find "$1" -maxdepth $depth | fzf)"
@@ -275,7 +279,6 @@ alias adb-screenshot='adb shell screencap -p | \
   $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png'
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias chezdiff='chezmoi diff &> /dev/null | diff-so-fancy | less --tabs=2 -RFX'
 
 alias gbDf='git branch -D $(git branch | fzf --multi)'
 alias gmf='git merge $(git branch | fzf)'
