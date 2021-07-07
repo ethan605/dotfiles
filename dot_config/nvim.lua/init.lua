@@ -11,6 +11,7 @@ require("packer").startup(function()
   use "junegunn/fzf.vim"
   use "preservim/nerdcommenter"
   use "tpope/vim-surround"
+  -- use "voldikss/vim-floaterm"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
   use { "mg979/vim-visual-multi", branch = "master" }
 
@@ -34,7 +35,28 @@ require("packer").startup(function()
 
   -- Languages support
   -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { "fatih/vim-go", run = ":GoUpdateBinaries" };
+  -- use "alampros/vim-styled-jsx"
+  -- use "andreshazard/vim-freemarker"
+  -- use "ap/vim-css-color"
+  -- use "chunkhang/vim-mbsync"
+  -- use "darfink/vim-plist"
+  -- use "editorconfig/editorconfig-vim"
+  -- use "flowtype/vim-flow"
+  -- use "jeffkreeftmeijer/vim-numbertoggle"
+  -- use "jparise/vim-graphql"
+  -- use "kevinoid/vim-jsonc"
+  -- use "mattn/emmet-vim"
+  -- use "mkitt/tabline.vim"
+  -- use "neomutt/neomutt.vim"
+  -- use "niftylettuce/vim-jinja"
+  -- use "nvie/vim-flake8"
+  -- use "pangloss/vim-javascript"
+  -- use "peitalin/vim-jsx-typescript"
+  -- use "sheerun/vim-polyglot"
+  -- use "shumphrey/fugitive-gitlab.vim"
+  -- use "wogong/msmtp.vim"
+  use { "fatih/vim-go", run = ":GoUpdateBinaries" }
+  use { "styled-components/vim-styled-components", branch = "main" }
 end)
 -- }}}
 
@@ -113,13 +135,17 @@ vim.g.mkdp_preview_options = {
   disable_filename = false,
   disable_sync_scroll = false,
   hide_yaml_meta = true,
-  maid = { sequence = { showSequenceNumbers = true } },
+  maid = {
+    sequence = {
+      showSequenceNumbers = true
+    }
+  },
   sync_scroll_type = "middle",
 }
 
 -- For NERDTree
 vim.g.NERDSpaceDelims = true
-vim.g.NERDTreeIgnore = { "\\~$", "node_modules" }
+vim.g.NERDTreeIgnore = { "~$", "node_modules" }
 vim.g.NERDTreeShowHidden = true
 
 -- For vim-airline
