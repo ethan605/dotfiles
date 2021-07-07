@@ -82,7 +82,7 @@ vim.opt.writebackup = false               -- Some LSP servers have issues with b
 
 vim.opt.clipboard:append("unnamedplus")           -- Use system clipboard over vim's buffers
 vim.opt.formatoptions:append("o")                 -- Continue comment marker in new lines.
-vim.opt.listchars = { eol = "¬" }                 -- Hidden characters
+-- vim.opt.listchars = { eol = "¬" }                 -- Hidden characters
 vim.opt.runtimepath:append("/usr/local/opt/fzf")  -- Add fzf to run time path
 vim.opt.shortmess:append("c")                     -- don't give 'ins-completion-menu' messages.
 
@@ -106,6 +106,16 @@ vim.g.blamer_template = "<author>, <author-time> • <summary>"
 -- For indentLine
 vim.g.indentLine_char = "·"
 vim.g.indentLine_enabled = true
+
+-- For markdown-preview
+vim.g.mkdp_preview_options = {
+  content_editable = false,
+  disable_filename = false,
+  disable_sync_scroll = false,
+  hide_yaml_meta = true,
+  maid = { sequence = { showSequenceNumbers = true } },
+  sync_scroll_type = "middle",
+}
 
 -- For NERDTree
 vim.g.NERDSpaceDelims = true
@@ -171,6 +181,9 @@ vim.api.nvim_set_keymap("n", "<leader><space>", ":nohlsearch<cr>", default_keyma
 
 -- Leader as Easymotion prefix
 vim.api.nvim_set_keymap("n", "<leader>", "<Plug>(easymotion-prefix)", { silent = true })
+
+-- Search globally with RipGrep
+vim.api.nvim_set_keymap("n", "<c-s>", ":Rg<space>", { noremap = true })
 -- }}}
 
 -- {{{ Custom functions
