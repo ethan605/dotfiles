@@ -16,6 +16,7 @@ Library/LaunchAgents/ethanify*.plist
 .config/ethanify/auto-update_darwin
 .config/karabiner
 .config/onfido-vpn/update-resolv-conf
+.vimrc
 Library
 
 {{ end }}
