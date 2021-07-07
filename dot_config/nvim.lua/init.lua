@@ -49,7 +49,7 @@ require("packer").startup(function()
   -- use "mkitt/tabline.vim"
   -- use "neomutt/neomutt.vim"
   -- use "niftylettuce/vim-jinja"
-  -- use "nvie/vim-flake8"
+  use "nvie/vim-flake8"
   -- use "pangloss/vim-javascript"
   -- use "peitalin/vim-jsx-typescript"
   -- use "sheerun/vim-polyglot"
@@ -145,7 +145,7 @@ vim.g.mkdp_preview_options = {
 
 -- For NERDTree
 vim.g.NERDSpaceDelims = true
-vim.g.NERDTreeIgnore = { "~$", "node_modules" }
+vim.g.NERDTreeIgnore = { "\\~$", "node_modules" }
 vim.g.NERDTreeShowHidden = true
 
 -- For vim-airline
@@ -212,8 +212,27 @@ vim.api.nvim_set_keymap("n", "<leader>", "<Plug>(easymotion-prefix)", { silent =
 vim.api.nvim_set_keymap("n", "<c-s>", ":Rg<space>", { noremap = true })
 -- }}}
 
--- {{{ Custom functions
--- function smarterNERDTreeToggle()
-  -- if vim.bo.filetype == "nerdtree" then vim.cmd [[ :NERDTreeToggle ]] else vim.cmd [[ :NERDTreeFind ]] end
--- end
+-- {{{ Autocommands
+-- Performance tweaks for large files
+vim.cmd [[
+  autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+  autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+]]
+
+-- Disable unnecessary conceals for markdowns
+vim.cmd [[
+  augroup markdown_concealing
+    autocmd!
+    autocmd FileType markdown let g:indentLine_enabled=0
+    autocmd FileType markdown set conceallevel=0
+  augroup END
+]]
+
+-- Force syntax highlight for specific file types
+vim.cmd [[
+  autocmd BufNewFile,BufRead .prettierrc set syntax=json
+]]
+
+-- Call Flake8 on write for Python files
+vim.cmd [[ autocmd BufWritePost *.py call flake8#Flake8() ]]
 -- }}}
