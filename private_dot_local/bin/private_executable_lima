@@ -39,6 +39,13 @@ function browse_mails() {
   local account=${1:-primary}
   local uid=$(select_mail single "$account")
 
+  read_mail "$account" "$uid"
+}
+
+function read_mail() {
+  local account=$1
+  local uid=$2
+
   local tmpfile=$(mktemp --suffix=.html)
   himalaya --account="$account" read --mime-type=html "$uid" > "$tmpfile"
   firefox "$tmpfile"
@@ -69,6 +76,7 @@ function main() {
 
   case "$sub_command" in
     browse) browse_mails "$@";;
+    read) read_mail "$@";;
     delete) delete_mails "$@";;
     move) move_mails "$@";;
   esac
