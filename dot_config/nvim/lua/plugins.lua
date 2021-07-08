@@ -33,6 +33,7 @@ return require("packer").startup(function()
   use "vim-airline/vim-airline-themes"
 
   -- Languages support
+  use "neovim/nvim-lspconfig"
   use "alampros/vim-styled-jsx"
   use "andreshazard/vim-freemarker"
   use "ap/vim-css-color"
