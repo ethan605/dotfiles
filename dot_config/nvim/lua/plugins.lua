@@ -14,6 +14,7 @@ return require("packer").startup(function()
 
   -- NERDTree
   use "Xuyuanp/nerdtree-git-plugin"
+  use "kyazdani42/nvim-web-devicons"
   use "preservim/nerdTree"
   use "ryanoasis/vim-devicons"
 
@@ -28,6 +29,7 @@ return require("packer").startup(function()
   use "Yggdroot/indentLine"
   use "bling/vim-airline"
   use "connorholyday/vim-snazzy"
+  use "romgrk/barbar.nvim"
   use "vim-airline/vim-airline-themes"
 
   -- Languages support

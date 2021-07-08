@@ -43,10 +43,13 @@ vim.opt.clipboard:append("unnamedplus")           -- Use system clipboard over v
 vim.opt.formatoptions:append("o")                 -- Continue comment marker in new lines.
 vim.opt.showbreak = "↪ "
 vim.opt.listchars = {                             -- Hidden characters
+  conceal = "|",
+  eol = "¬",
+  extends = "…",
   nbsp = "␣",
+  precedes = "…",
   tab = "→ ",
   trail = "·",
-  eol = "¬",
 }
 vim.opt.runtimepath:append("/usr/local/opt/fzf")  -- Add fzf to run time path
 vim.opt.shortmess:append("c")                     -- don't give 'ins-completion-menu' messages.

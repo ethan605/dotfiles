@@ -1,15 +1,19 @@
-vim.cmd [[filetype plugin on]]
-vim.cmd [[syntax on]]
-vim.cmd [[set termguicolors]]
-vim.cmd [[colorscheme snazzy]]
+vim.cmd [[
+  filetype plugin on
+  syntax on
+  set termguicolors
+  colorscheme snazzy
+]]
 
 -- Line limit column colors
 vim.cmd [[hi ColorColumn  guibg=gray  guifg=fg]]
 
 -- TabLine highlight colors
-vim.cmd [[hi TabLine      gui=none          guibg=bg  guifg=white]]
-vim.cmd [[hi TabLineFill  gui=none          guibg=bg]]
-vim.cmd [[hi TabLineSel   gui=bold,inverse]]
+vim.cmd [[
+  hi TabLine      gui=none  guibg=bg      guifg=white
+  hi TabLineFill  gui=none  guibg=bg
+  hi TabLineSel   gui=bold  guifg=white
+]]
 
 -- Matched parentheses colors
 vim.cmd [[hi MatchParen   gui=bold  guibg=none  guifg=#ff6ac1]]

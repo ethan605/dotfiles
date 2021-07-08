@@ -2,6 +2,13 @@
 vim.g.loaded_python_provider = false
 vim.g.loaded_perl_provider = false
 
+-- For barbar
+vim.g.bufferline = {
+  clickable = false,
+  closable = false,
+  no_name_title = " Unnamed",
+}
+
 -- For blamer.nvim
 vim.g.blamer_delay = 500
 vim.g.blamer_enabled = true
