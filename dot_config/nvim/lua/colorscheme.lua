@@ -12,7 +12,7 @@ vim.cmd [[hi ColorColumn  guibg=gray  guifg=fg]]
 vim.cmd [[
   hi TabLine      gui=none  guibg=bg      guifg=white
   hi TabLineFill  gui=none  guibg=bg
-  hi TabLineSel   gui=bold  guifg=white
+  hi TabLineSel   gui=bold,inverse
 ]]
 
 -- Matched parentheses colors

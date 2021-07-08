@@ -4,9 +4,9 @@ vim.g.loaded_perl_provider = false
 
 -- For barbar
 vim.g.bufferline = {
+  animation = false,
   clickable = false,
   closable = false,
-  no_name_title = " Unnamed",
 }
 
 -- For blamer.nvim

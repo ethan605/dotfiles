@@ -48,4 +48,3 @@ return require("packer").startup(function()
   use { "styled-components/vim-styled-components", branch = "main" }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 end)
-
