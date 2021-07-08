@@ -1,4 +1,5 @@
 require("plugins")
+require("treesitter")
 require("settings")
 require("variables")
 require("colorscheme")
