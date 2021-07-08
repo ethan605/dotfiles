@@ -13,11 +13,12 @@ export FZF_DEFAULT_OPTS='
   --layout=reverse
 '
 
+export GOPATH="$HOME/go"
+
 {{- if eq .chezmoi.os "darwin" }}
 
 export TOOLCHAINS=swift
 export JDK_HOME="/usr/local/opt/openjdk"
-export JAVA_HOME="$JDK_HOME/bin"
 
 # Rewrite $PATH
 PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
@@ -35,7 +36,6 @@ PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 {{- else if eq .chezmoi.os "linux" }}
 
 export JDK_HOME="/usr/lib/jvm/default"
-export JAVA_HOME="$JDK_HOME"
 export TERMINFO=/usr/share/terminfo
 export GPG_TTY=$(tty)
 
@@ -55,11 +55,16 @@ PATH="$HOME/.local/bin:$PATH"
 
 {{- end }}
 
+# Use Go binaries
+PATH="$GOPATH/bin:$PATH"
+
 # Use OpenJDK
+export JAVA_HOME="$JDK_HOME/bin"
 PATH="$JAVA_HOME:$PATH"
 
 # Local node env
 PATH="./node_modules/.bin:$PATH"
+
 export PATH
 #]]]
 
