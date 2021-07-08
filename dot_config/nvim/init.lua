@@ -1,7 +1,9 @@
 require("plugins")
-require("treesitter")
 require("settings")
 require("variables")
 require("colorscheme")
 require("keymaps")
 require("autocommands")
+
+require("treesitter")
+require("lsp")
