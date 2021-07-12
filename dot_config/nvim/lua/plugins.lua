@@ -18,7 +18,7 @@ require("packer").startup(function()
   use "Xuyuanp/nerdtree-git-plugin"
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
-  -- use "preservim/nerdTree"
+  --use "preservim/nerdTree"
   --use "ryanoasis/vim-devicons"
 
   -- Git

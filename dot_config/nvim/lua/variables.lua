@@ -34,10 +34,10 @@ vim.g.mkdp_preview_options = {
 }
 
 -- For NvimTree
-vim.g.nvim_tree_auto_open = true
+--vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_ignore = { ".git", "node_modules" }
-vim.g.nvim_tree_git_hl = true
-vim.g.nvim_tree_highlight_opened_files = true
+vim.g.nvim_tree_git_hl = 1
+vim.g.nvim_tree_highlight_opened_files = 1
 
 -- For vim-fugitive
 vim.g.fugitive_gitlab_domains = { "https://gitlab.eu-west-1.mgmt.onfido.xyz/" }
