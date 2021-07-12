@@ -22,28 +22,28 @@ vim.api.nvim_set_keymap("n", "<leader>", "<Plug>(easymotion-prefix)", { silent =
 vim.api.nvim_set_keymap("n", "<C-s>", ":Rg<space>", { noremap = true })
 
 -- Move to previous/next tab
-vim.api.nvim_set_keymap("n", "<A-,>", ":BufferPrevious<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-.>", ":BufferNext<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "g[", ":BufferPrevious<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "g]", ":BufferNext<CR>", default_keymap_opts)
 
 -- Re-order to previous/next tab
-vim.api.nvim_set_keymap("n", "<A-<>", ":BufferMovePrevious<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A->>", ":BufferMoveNext<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "g{", ":BufferMovePrevious<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "g}", ":BufferMoveNext<CR>", default_keymap_opts)
 
 -- Goto tab in position
-vim.api.nvim_set_keymap("n", "<A-1>", ":BufferGoto 1<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-2>", ":BufferGoto 2<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-3>", ":BufferGoto 3<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-4>", ":BufferGoto 4<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-5>", ":BufferGoto 5<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-6>", ":BufferGoto 6<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-7>", ":BufferGoto 7<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-8>", ":BufferGoto 8<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-9>", ":BufferGoto 9<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-0>", ":BufferLast<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt1", ":BufferGoto 1<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt2", ":BufferGoto 2<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt3", ":BufferGoto 3<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt4", ":BufferGoto 4<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt5", ":BufferGoto 5<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt6", ":BufferGoto 6<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt7", ":BufferGoto 7<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt8", ":BufferGoto 8<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt9", ":BufferGoto 9<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gt0", ":BufferLast<CR>", default_keymap_opts)
 
 -- Manipulate tabs
-vim.api.nvim_set_keymap("n", "<A-c>", ":BufferClose<CR>", default_keymap_opts)
-vim.api.nvim_set_keymap("n", "<A-s>", ":BufferPick<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gc", ":BufferClose<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "gs", ":BufferPick<CR>", default_keymap_opts)
 
 -- Lspsaga
 vim.api.nvim_set_keymap("n", "gh", ":Lspsaga lsp_finder<CR>", default_keymap_opts)
