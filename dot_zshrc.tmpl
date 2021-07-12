@@ -368,19 +368,16 @@ alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
 #]]]
 
 # [[[ Autoloads
-{{- if eq .chezmoi.os "darwin" }}
-
-__load-oh-my-zsh
-
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
 
 __load-sway
 __load-ssh
-__load-zim
 
 {{- end }}
 
 # Base envs
+# __load-oh-my-zsh
+__load-zim
 __load-key-bindings
 __load-colors
 __load-autojump
