@@ -11,6 +11,7 @@ require("packer").startup(function()
   use "mhinz/vim-startify"
   use "preservim/nerdcommenter"
   use "tpope/vim-surround"
+  use "liuchengxu/vista.vim"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
   use { "mg979/vim-visual-multi", branch = "master" }
 
@@ -18,8 +19,6 @@ require("packer").startup(function()
   use "Xuyuanp/nerdtree-git-plugin"
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
-  --use "preservim/nerdTree"
-  --use "ryanoasis/vim-devicons"
 
   -- Git
   use "APZelos/blamer.nvim"
