@@ -1,3 +1,5 @@
+require("lsp.saga")
+
 local nvim_lsp = require("lspconfig")
 local utils = require("lsp.utils")
 
@@ -5,7 +7,6 @@ local utils = require("lsp.utils")
 -- map buffer local keybindings when the language server attaches
 local servers = {
   "bashls",
-  -- "diagnosticls",
   -- "elixirls",
   "gopls",
   "graphql",

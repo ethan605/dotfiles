@@ -47,3 +47,9 @@ vim.api.nvim_set_keymap("n", "<A-0>", ":BufferLast<CR>", default_keymap_opts)
 -- Manipulate tabs
 vim.api.nvim_set_keymap("n", "<A-c>", ":BufferClose<CR>", default_keymap_opts)
 vim.api.nvim_set_keymap("n", "<A-s>", ":BufferPick<CR>", default_keymap_opts)
+
+-- Lspsaga
+vim.api.nvim_set_keymap("n", "gh", ":Lspsaga lsp_finder<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "ca", ":Lspsaga code_action<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("v", "ca", ":<C-U>Lspsaga range_code_action<CR>", default_keymap_opts)
+vim.api.nvim_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", default_keymap_opts)

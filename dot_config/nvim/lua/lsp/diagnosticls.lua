@@ -4,7 +4,7 @@ require("lspconfig").diagnosticls.setup {
     linters = {
       eslint = {
         command = "./node_modules/.bin/eslint",
-        rootPatterns = {".git"},
+        rootPatterns = {".eslintrc.js", ".eslintrc", ".git"},
         debounce = 100,
         args = {
           "--stdin",
@@ -20,7 +20,7 @@ require("lspconfig").diagnosticls.setup {
           column = "column",
           endLine = "endLine",
           endColumn = "endColumn",
-          message = "${message} [${ruleId}]",
+          message = "[eslint] ${message} [${ruleId}]",
           security = "severity"
         },
         securities = {
@@ -28,10 +28,10 @@ require("lspconfig").diagnosticls.setup {
           [1] = "warning"
         }
       },
-      filetypes = {
-        javascript = "eslint",
-        typescript = "eslint"
-      }
+    },
+    filetypes = {
+      javascript = "eslint",
+      typescript = "eslint"
     }
   }
 }
