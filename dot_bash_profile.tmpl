@@ -69,7 +69,11 @@ export PATH
 
 # [[[ Init functions
 function __load-asdf() {
-{{- if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "darwin" }}
+
+  echo "load asdf" > /dev/null
+
+{{- else if eq .chezmoi.os "linux" }}
 
   [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
 
