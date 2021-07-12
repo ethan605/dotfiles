@@ -99,6 +99,7 @@ function __load-colors() {
 }
 
 function __load-key-bindings() {
+  # Set editor default keymap to vi
   bindkey -v
 
   autoload -U edit-command-line
@@ -107,11 +108,21 @@ function __load-key-bindings() {
 
   bindkey '^w' backward-kill-word
   bindkey '^h' backward-delete-char
-  bindkey "^l" forward-word
+  bindkey '^l' forward-word
 
   # allow ctrl-a and ctrl-e to move to beginning/end of line
   bindkey '^a' beginning-of-line
   bindkey '^e' end-of-line
+
+  # Bind up and down keys
+  zmodload -F zsh/terminfo +p:terminfo
+  if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
+    bindkey ${terminfo[kcuu1]} history-substring-search-up
+    bindkey ${terminfo[kcud1]} history-substring-search-down
+  fi
+
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
 
 {{- if eq .chezmoi.os "darwin" }}
 
