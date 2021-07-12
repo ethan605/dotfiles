@@ -1,15 +1,12 @@
--- Smarter NERDTree toggle
 local default_keymap_opts = { noremap = true, silent = true }
 
+-- Smarter NvimTree toggle
 vim.api.nvim_set_keymap(
   "n",
   "<C-o>",
-  ":lua if vim.bo.filetype == 'nerdtree' then vim.cmd [[ :NERDTreeToggle ]] else vim.cmd [[ :NERDTreeFind ]] end<cr>",
+  ":lua if vim.bo.filetype == 'NvimTree' then vim.cmd [[ :NvimTreeToggle ]] else vim.cmd [[ :NvimTreeFindFile ]] end<cr>",
   default_keymap_opts
 )
-
--- Copy current file's path
-vim.api.nvim_set_keymap("n", "ycf", ":let @+=@%<cr>", default_keymap_opts)
 
 -- Quick files opening
 vim.api.nvim_set_keymap("n", "<C-p>", ":GFiles<cr>", default_keymap_opts)

@@ -1,12 +1,14 @@
-return require("packer").startup(function()
+require("packer").startup(function()
   use "wbthomason/packer.nvim"
 
+  -- Common plugins
   use "airblade/vim-rooter"
   use "codota/tabnine-vim"
   use "easymotion/vim-easymotion"
   use "jiangmiao/auto-pairs"
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
+  use "mhinz/vim-startify"
   use "preservim/nerdcommenter"
   use "tpope/vim-surround"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
@@ -15,8 +17,9 @@ return require("packer").startup(function()
   -- NERDTree
   use "Xuyuanp/nerdtree-git-plugin"
   use "kyazdani42/nvim-web-devicons"
-  use "preservim/nerdTree"
-  use "ryanoasis/vim-devicons"
+  use "kyazdani42/nvim-tree.lua"
+  -- use "preservim/nerdTree"
+  --use "ryanoasis/vim-devicons"
 
   -- Git
   use "APZelos/blamer.nvim"
@@ -27,10 +30,9 @@ return require("packer").startup(function()
 
   -- UI
   use "Yggdroot/indentLine"
-  use "bling/vim-airline"
+  use "hoob3rt/lualine.nvim"
   use "connorholyday/vim-snazzy"
   use "romgrk/barbar.nvim"
-  use "vim-airline/vim-airline-themes"
 
   -- Languages support
   use "alampros/vim-styled-jsx"
@@ -50,3 +52,11 @@ return require("packer").startup(function()
   use { "styled-components/vim-styled-components", branch = "main" }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 end)
+
+require("lualine").setup {
+  options = {
+    component_separators = "",
+    section_separators = "",
+    theme = "powerline",
+  }
+}
