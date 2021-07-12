@@ -1,0 +1,17 @@
+# vim:fileencoding=utf-8:filetype=conf
+# Sets sane Zsh built-in environment options.
+zmodule environment
+
+# Provides handy git aliases and functions.
+zmodule git
+
+# Utility aliases and functions. Adds colour to ls, grep and less.
+zmodule utility
+
+zmodule sindresorhus/pure --source async.zsh --source pure.zsh
+zmodule fzf
+zmodule completion
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-completions
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-syntax-highlighting
