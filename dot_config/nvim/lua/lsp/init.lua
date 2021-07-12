@@ -5,6 +5,7 @@ local utils = require("lsp.utils")
 -- map buffer local keybindings when the language server attaches
 local servers = {
   "bashls",
+  -- "diagnosticls",
   -- "elixirls",
   "gopls",
   "graphql",
@@ -23,4 +24,5 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require("lsp.diagnosticls")
 require("lsp.sumneko_lua")

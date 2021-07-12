@@ -55,3 +55,4 @@ vim.g.go_mod_fmt_autosave = true
 -- For vim-prettier
 vim.g["prettier#autoformat"] = true
 vim.g["prettier#autoformat_require_pragma"] = false
+vim.g["prettier#autoformat_config_present"] = true
