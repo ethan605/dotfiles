@@ -302,7 +302,7 @@ function __load-zim() {
   fi
   source ${ZIM_HOME}/init.zsh
 
-  # autoload -U add-zsh-hook; add-zsh-hook chpwd __load-nvmrc
+  autoload -U add-zsh-hook; add-zsh-hook chpwd __load-nvmrc
 
   # Custom symbols for pure prompt
   PURE_PROMPT_SYMBOL="λ"            # originally "❯"
