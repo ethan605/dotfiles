@@ -302,7 +302,7 @@ function __load-zim() {
   fi
   source ${ZIM_HOME}/init.zsh
 
-  autoload -U add-zsh-hook; add-zsh-hook chpwd __load-nvmrc
+  # autoload -U add-zsh-hook; add-zsh-hook chpwd __load-nvmrc
 
   # Custom symbols for pure prompt
   PURE_PROMPT_SYMBOL="λ"            # originally "❯"
@@ -327,6 +327,7 @@ alias adb-screenshot='adb shell screencap -p | \
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 
 alias gbD='git branch -D $(git branch | fzf --multi)'
+alias gcm='git commit -m'
 alias gm='git merge $(git branch | fzf)'
 alias gsw='git switch $(git branch | fzf)'
 # git-branch-current is a zim's git function: https://github.com/zimfw/git
@@ -353,7 +354,6 @@ alias xdg-open='open'
 alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
 alias load-time='time /usr/bin/zsh -ic exit'
 alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
-alias wl-chrome='google-chrome-stable -enable-features=UseOzonePlatform -ozone-platform=wayland'
 
 {{- end }}
 #]]]
