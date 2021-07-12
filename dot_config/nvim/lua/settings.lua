@@ -3,6 +3,7 @@ vim.opt.autowrite = true                  -- Auto reload file from outside chang
 vim.opt.background = "dark"               -- For dark themes
 vim.opt.backup = false                    -- Some LSP servers have issues with backup files
 vim.opt.cmdheight = 2                     -- Better display for messages
+vim.opt.completeopt = "menuone,noselect"  -- For nvim-compe
 vim.opt.conceallevel = 0                  -- Disable markdown conceal
 vim.opt.directory = "/tmp"                -- Location for temporary files
 vim.opt.encoding = "UTF-8"                -- Encoding
