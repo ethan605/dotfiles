@@ -2,9 +2,6 @@
 # Sets sane Zsh built-in environment options.
 zmodule environment
 
-# Provides handy git aliases and functions.
-zmodule git
-
 # Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
 
