@@ -11,6 +11,7 @@ local servers = {
   "gopls",
   "graphql",
   "html",
+  "jdtls",
   "jsonls",
   "pyright",
   "solargraph",
