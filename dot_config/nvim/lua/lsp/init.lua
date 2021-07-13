@@ -26,5 +26,5 @@ for _, lsp in ipairs(servers) do
 end
 
 require("lsp.diagnosticls")
--- require("lsp.elixirls")
+require("lsp.elixirls")
 require("lsp.sumneko_lua")
