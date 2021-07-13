@@ -14,8 +14,6 @@ require("packer").startup(function()
   use "liuchengxu/vista.vim"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
   use { "mg979/vim-visual-multi", branch = "master" }
-  -- use "codota/tabnine-vim"
-  -- use "jiangmiao/auto-pairs"
 
   -- NERDTree
   use "Xuyuanp/nerdtree-git-plugin"
@@ -23,7 +21,7 @@ require("packer").startup(function()
     "preservim/nerdtree",
     requires = {
       "ryanoasis/vim-devicons",
-      "tiagofumo/vim-nerdtree-syntax-highlight"
+      "tiagofumo/vim-nerdtree-syntax-highlight",
     }
   }
   --[[ use {
@@ -47,7 +45,7 @@ require("packer").startup(function()
   use {
     "romgrk/barbar.nvim",
     requires = {
-      "kyazdani42/nvim-web-devicons"
+      "kyazdani42/nvim-web-devicons",
     }
   }
 
@@ -55,7 +53,11 @@ require("packer").startup(function()
   use "glepnir/lspsaga.nvim"
   use {
     "hrsh7th/nvim-compe",
-    requires = { "hrsh7th/vim-vsnip" }
+    requires = {
+      "hrsh7th/vim-vsnip",
+      { "tamago324/compe-zsh", requires = { "nvim-lua/plenary.nvim" } },
+      { "tzachar/compe-tabnine", run = "./install.sh" },
+    }
   }
   use "neovim/nvim-lspconfig"
   use "norcalli/snippets.nvim"
@@ -77,6 +79,8 @@ require("packer").startup(function()
   use { "styled-components/vim-styled-components", branch = "main" }
 end)
 
-require("plugins.lualine")
 require("plugins.auto-pairs")
 require("plugins.compe")
+require("plugins.lualine")
+
+require("snippets").use_suggested_mappings()

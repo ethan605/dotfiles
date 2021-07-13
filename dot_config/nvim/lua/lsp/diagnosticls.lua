@@ -11,7 +11,7 @@ require("lspconfig").diagnosticls.setup {
           "--stdin-filename",
           "%filepath",
           "--format",
-          "json"
+          "json",
         },
         sourceName = "eslint",
         parseJson = {
@@ -21,17 +21,17 @@ require("lspconfig").diagnosticls.setup {
           endLine = "endLine",
           endColumn = "endColumn",
           message = "[eslint] ${message} [${ruleId}]",
-          security = "severity"
+          security = "severity",
         },
         securities = {
           [2] = "error",
           [1] = "warning"
-        }
+        },
       },
     },
     filetypes = {
       javascript = "eslint",
-      typescript = "eslint"
+      typescript = "eslint",
     }
   }
 }
