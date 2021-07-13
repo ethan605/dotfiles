@@ -4,7 +4,6 @@
 LICENSE
 README.md
 
-Library/LaunchAgents/ethanify*.plist
 .mbsyncrc
 .config/neomutt
 .config/nvim.old
@@ -14,7 +13,6 @@ Library/LaunchAgents/ethanify*.plist
 {{ if ne .chezmoi.os "darwin" }}
 
 .Brewfile
-.config/ethanify/auto-update_darwin
 .config/karabiner
 .config/onfido-vpn/update-resolv-conf
 .vimrc
@@ -26,11 +24,8 @@ Library
 # [[[ Linux-exclusive files
 {{ if ne .chezmoi.os "linux" }}
 
-.gtkrc-2.0
-.config/chrome-flags*.conf
-.config/mimeapps.list
-
 .config/autostart
+.config/chrome-flags.conf
 .config/fontconfig
 .config/foot
 .config/gtk-3.0
@@ -40,6 +35,7 @@ Library
 .config/imv
 .config/logiops
 .config/mako
+.config/mimeapps.list
 .config/mpd
 .config/ncmpcpp
 .config/rofi
@@ -52,6 +48,7 @@ Library
 .config/wallpapers
 .config/waybar
 .config/wofi
+.gtkrc-2.0
 .icons
 .local
 .xkb
