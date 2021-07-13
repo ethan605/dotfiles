@@ -606,7 +606,15 @@ hide_window_decorations no
 
 #: [[[ Advanced
 
+{{- if eq .chezmoi.os "darwin" }}
+
 # shell .
+
+{{- else if eq .chezmoi.os "linux" }}
+
+shell /usr/bin/env bash -l
+
+{{- end }}
 
 #: The shell program to execute. The default value of . means to use
 #: whatever shell is set as the default shell for the current user.

@@ -2,6 +2,7 @@
 # [[[ Global variables
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
+export LESS='--tabs=2 --RAW-CONTROL-CHARS --no-init'
 export EDITOR=nvim
 export REACT_EDITOR=nvim
 export FZF_DEFAULT_OPTS='
@@ -317,7 +318,7 @@ function fzfind() {
 }
 
 function chezdiff() {
-  chezmoi diff "$@" 2> /dev/null | diff-so-fancy | less --tabs=2 -RFX
+  chezmoi diff "$@" 2> /dev/null | diff-so-fancy | less
 }
 
 alias adb-screenshot='adb shell screencap -p | \
