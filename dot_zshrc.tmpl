@@ -18,9 +18,14 @@ export GOPATH="$HOME/go"
 
 {{- if eq .chezmoi.os "darwin" }}
 
-export TOOLCHAINS=swift
+# JDK & JDTLS
 export JDK_HOME="/usr/local/opt/openjdk"
-export JAVA_HOME="$JDK_HOME/bin"
+export JAR=$(find /usr/local/lib/jdtls-launcher/jdtls/plugins/*equinox.launcher_*.jar)
+export JDTLS_CONFIG="/usr/local/lib/jdtls-launcher/jdtls/config_mac"
+export WORKSPACE="$HOME/Work"
+export JAVA_HOME="$JDK_HOME"
+
+export TOOLCHAINS=swift
 
 # Rewrite $PATH
 PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
@@ -41,7 +46,7 @@ PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export JDK_HOME="/usr/lib/jvm/default"
 export JAR=$(pacman -Ql jdtls | grep -Po "(?<=jdtls\s).*equinox.launcher_.*.jar")
 export JDTLS_CONFIG="$XDG_CACHE_HOME/nvim/lspconfig/jdtls/config_linux"
-export WORKSPACE=$HOME/Work
+export WORKSPACE="$HOME/Work"
 export JAVA_HOME="$JDK_HOME"
 
 export TERMINFO=/usr/share/terminfo
