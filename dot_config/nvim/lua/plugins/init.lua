@@ -5,13 +5,14 @@ require("packer").startup(function()
   -- Common plugins
   use "airblade/vim-rooter"
   use "easymotion/vim-easymotion"
-  use "windwp/nvim-autopairs"
+  use "editorconfig/editorconfig-vim"
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
+  use "liuchengxu/vista.vim"
   use "mhinz/vim-startify"
   use "preservim/nerdcommenter"
   use "tpope/vim-surround"
-  use "liuchengxu/vista.vim"
+  use "windwp/nvim-autopairs"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
   use { "mg979/vim-visual-multi", branch = "master" }
 
@@ -63,20 +64,22 @@ require("packer").startup(function()
   use "norcalli/snippets.nvim"
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
-  -- Languages support
-  use "alampros/vim-styled-jsx"
-  use "andreshazard/vim-freemarker"
-  use "ap/vim-css-color"
-  use "chunkhang/vim-mbsync"
+  -- Syntax highlight
   use "darfink/vim-plist"
-  use "editorconfig/editorconfig-vim"
-  use "neomutt/neomutt.vim"
-  use "niftylettuce/vim-jinja"
+  use "sheerun/vim-polyglot"
+  -- use "alampros/vim-styled-jsx"
+  -- use "andreshazard/vim-freemarker"
+  -- use "chunkhang/vim-mbsync"
+  -- use "neomutt/neomutt.vim"
+  -- use "niftylettuce/vim-jinja"
+  -- use "wogong/msmtp.vim"
+  -- use { "styled-components/vim-styled-components", branch = "main" }
+
+  -- Toolings
+  use "ap/vim-css-color"
   use "nvie/vim-flake8"
-  use "wogong/msmtp.vim"
   use { "fatih/vim-go", run = ":GoUpdateBinaries" }
   use { "prettier/vim-prettier", branch = "release/0.x", run = "npm install" }
-  use { "styled-components/vim-styled-components", branch = "main" }
 end)
 
 require("plugins.auto-pairs")
