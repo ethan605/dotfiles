@@ -326,6 +326,8 @@ alias adb-screenshot='adb shell screencap -p | \
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 
+alias npm-backup='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" > ~/.npm_modules'
+
 alias ga='git add'
 alias gaa='git add --all'
 alias gau='git add --update'
