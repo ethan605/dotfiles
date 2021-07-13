@@ -17,8 +17,19 @@ require("packer").startup(function()
 
   -- NERDTree
   use "Xuyuanp/nerdtree-git-plugin"
-  use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
+  use {
+    "preservim/nerdtree",
+    requires = {
+      { "ryanoasis/vim-devicons" },
+      { "tiagofumo/vim-nerdtree-syntax-highlight" }
+    }
+  }
+  --[[ use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      { "kyazdani42/nvim-web-devicons" }
+    }
+  } ]]
 
   -- Git
   use "APZelos/blamer.nvim"
@@ -31,7 +42,12 @@ require("packer").startup(function()
   use "Yggdroot/indentLine"
   use "hoob3rt/lualine.nvim"
   use "connorholyday/vim-snazzy"
-  use "romgrk/barbar.nvim"
+  use {
+    "romgrk/barbar.nvim",
+    requires = {
+      { "kyazdani42/nvim-web-devicons" }
+    }
+  }
 
   -- LSP & TreeSitter
   use "glepnir/lspsaga.nvim"
