@@ -13,6 +13,12 @@ require("packer").startup(function()
   use "preservim/nerdcommenter"
   use "tpope/vim-surround"
   use "windwp/nvim-autopairs"
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup()
+    end
+  }
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
   use { "mg979/vim-visual-multi", branch = "master" }
 
@@ -61,7 +67,12 @@ require("packer").startup(function()
     }
   }
   use "neovim/nvim-lspconfig"
-  use "norcalli/snippets.nvim"
+  use {
+    "norcalli/snippets.nvim",
+    config = function ()
+      require("snippets").use_suggested_mappings()
+    end
+  }
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
   -- Syntax highlight
@@ -85,5 +96,3 @@ end)
 require("plugins.auto-pairs")
 require("plugins.compe")
 require("plugins.lualine")
-
-require("snippets").use_suggested_mappings()
