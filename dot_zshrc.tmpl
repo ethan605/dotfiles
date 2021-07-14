@@ -282,25 +282,25 @@ function __load-zim() {
   # Set history file
   HISTFILE=~/.zsh_history
 
-  # Remove older command from the history if a duplicate is to be added.
-  setopt HIST_IGNORE_ALL_DUPS
-
-  # Prompt for spelling correction of commands.
-  setopt CORRECT
-
   # Customize spelling correction prompt.
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
   # Remove path separator from WORDCHARS.
   WORDCHARS=${WORDCHARS//[\/]}
 
+  # Custom symbols for pure prompt
+  PURE_PROMPT_SYMBOL="λ"            # originally "❯"
+  PURE_PROMPT_VICMD_SYMBOL="ε"      # originally "❮"
+
+  # Remove older command from the history if a duplicate is to be added.
+  setopt HIST_IGNORE_ALL_DUPS
+
+  # Prompt for spelling correction of commands.
+  setopt CORRECT
+
   # Set a custom path for the completion dump file.
   # If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
   zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
-
-  # Set what highlighters will be used.
-  # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
   if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
     # Update static initialization script if it does not exist or it's outdated, before sourcing it
@@ -309,10 +309,6 @@ function __load-zim() {
   source ${ZIM_HOME}/init.zsh
 
   autoload -U add-zsh-hook; add-zsh-hook chpwd __load-nvmrc
-
-  # Custom symbols for pure prompt
-  PURE_PROMPT_SYMBOL="λ"            # originally "❯"
-  PURE_PROMPT_VICMD_SYMBOL="ε"      # originally "❮"
 }
 #]]]
 
