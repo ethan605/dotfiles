@@ -23,6 +23,9 @@ vim.api.nvim_set_keymap("n", "<C-g>", ":GFiles?<cr>", default_opts)
 -- Leader + Space to hide search highlights
 vim.api.nvim_set_keymap("n", "<Leader><Space>", ":nohlsearch<cr>", default_opts)
 
+-- Leader + v to toggle Vista
+vim.api.nvim_set_keymap("n", "<Leader>v", ":Vista!!<cr>", default_opts)
+
 -- Leader as Easymotion prefix
 vim.api.nvim_set_keymap("n", "<Leader>", "<Plug>(easymotion-prefix)", { silent = true })
 
