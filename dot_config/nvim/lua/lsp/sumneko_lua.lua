@@ -13,7 +13,7 @@ require("lspconfig").sumneko_lua.setup {
   flags = utils.default_flags,
   on_attach = utils.on_attach,
 
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
   settings = {
     Lua = {
       runtime = {
