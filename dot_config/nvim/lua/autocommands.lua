@@ -28,3 +28,6 @@ vim.cmd [[
 
 -- Use prettier-stylelint for CSS
 vim.cmd [[ autocmd FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint" ]]
+
+-- Update lightbulb on cursor move
+vim.cmd [[ autocmd CursorHold,CursorHoldI * lua require("nvim-lightbulb").update_lightbulb() ]]

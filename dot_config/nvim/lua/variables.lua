@@ -44,9 +44,6 @@ vim.g.NERDTreeShowHidden = true
 --vim.g.nvim_tree_git_hl = 1
 --vim.g.nvim_tree_highlight_opened_files = 1
 
--- For vim-fugitive
-vim.g.fugitive_gitlab_domains = { "https://gitlab.eu-west-1.mgmt.onfido.xyz/" }
-
 -- For vim-go
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_fmt_autosave = true
