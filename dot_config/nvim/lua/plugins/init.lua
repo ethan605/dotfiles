@@ -15,6 +15,7 @@ require("packer").startup(function()
   use "windwp/nvim-autopairs"
   use {
     "folke/twilight.nvim",
+    opt = true,
     config = function()
       require("twilight").setup()
     end
@@ -40,10 +41,22 @@ require("packer").startup(function()
 
   -- Git
   use "APZelos/blamer.nvim"
-  use "shumphrey/fugitive-gitlab.vim"
-  use "tommcdo/vim-fubitive"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-rhubarb"
+  use {
+    "lewis6991/gitsigns.nvim",
+    opt = true,
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function ()
+      require("gitsigns").setup()
+    end
+  }
+  use {
+    "ruifm/gitlinker.nvim",
+    opt = true,
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("plugins.gitlinker")
+    end
+  }
 
   -- UI
   use "Yggdroot/indentLine"
@@ -57,20 +70,38 @@ require("packer").startup(function()
   }
 
   -- LSP & TreeSitter
-  use "glepnir/lspsaga.nvim"
+  use "neovim/nvim-lspconfig"
+  use "kosayoda/nvim-lightbulb"
   use {
     "hrsh7th/nvim-compe",
     requires = {
       "hrsh7th/vim-vsnip",
-      { "tamago324/compe-zsh", requires = { "nvim-lua/plenary.nvim" } },
+      { "tamago324/compe-zsh", opt = true, requires = { "nvim-lua/plenary.nvim" } },
       { "tzachar/compe-tabnine", run = "./install.sh" },
     }
   }
-  use "neovim/nvim-lspconfig"
   use {
     "norcalli/snippets.nvim",
+    opt = true,
     config = function ()
       require("snippets").use_suggested_mappings()
+    end
+  }
+  use {
+    "ojroques/nvim-lspfuzzy",
+    requires = {
+      "junegunn/fzf",
+      "junegunn/fzf.vim",
+    },
+    config = function ()
+      require("lspfuzzy").setup {}
+    end
+  }
+  use {
+    "onsails/lspkind-nvim",
+    opt = true,
+    config = function ()
+      require("lspkind").init()
     end
   }
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
@@ -78,13 +109,6 @@ require("packer").startup(function()
   -- Syntax highlight
   use "darfink/vim-plist"
   use "sheerun/vim-polyglot"
-  -- use "alampros/vim-styled-jsx"
-  -- use "andreshazard/vim-freemarker"
-  -- use "chunkhang/vim-mbsync"
-  -- use "neomutt/neomutt.vim"
-  -- use "niftylettuce/vim-jinja"
-  -- use "wogong/msmtp.vim"
-  -- use { "styled-components/vim-styled-components", branch = "main" }
 
   -- Toolings
   use "ap/vim-css-color"

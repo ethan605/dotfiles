@@ -1,5 +1,3 @@
-require("lsp.saga")
-
 local nvim_lsp = require("lspconfig")
 local utils = require("lsp.utils")
 
