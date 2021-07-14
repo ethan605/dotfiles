@@ -1,3 +1,4 @@
+-- vim:fileencoding=utf-8:filetype=lua
 local utils = require("lsp.utils")
 
 require("lspconfig").kotlin_language_server.setup {
@@ -5,5 +6,5 @@ require("lspconfig").kotlin_language_server.setup {
   flags = utils.default_flags,
   on_attach = utils.on_attach,
 
-  cmd = { "/home/ethanify/Work/kotlin-language-server/server/build/install/server/bin/kotlin-language-server" };
+  cmd = { "{{ .chezmoi.homedir }}/.cache/nvim/lspconfig/kotlin_language_server/kotlin-language-server" };
 }
