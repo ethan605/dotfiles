@@ -1,0 +1,9 @@
+local utils = require("lsp.utils")
+
+require("lspconfig").kotlin_language_server.setup {
+  capabilities = utils.capabilities,
+  flags = utils.default_flags,
+  on_attach = utils.on_attach,
+
+  cmd = { "/home/ethanify/Work/kotlin-language-server/server/build/install/server/bin/kotlin-language-server" };
+}
