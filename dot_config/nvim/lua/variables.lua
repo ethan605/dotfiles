@@ -55,4 +55,4 @@ vim.g.go_metalinter_autosave = true
 vim.g.go_mod_fmt_autosave = true
 
 -- For vista.vim
-vim.g.vista_sidebar_width = 40
+vim.g.vista_sidebar_width = 50
