@@ -6,7 +6,7 @@ vim.cmd [[
 ]]
 
 -- Line limit column colors
-vim.cmd [[hi ColorColumn  guibg=gray  guifg=fg]]
+vim.cmd [[ hi ColorColumn guibg=gray guifg=fg ]]
 
 -- TabLine highlight colors
 vim.cmd [[
@@ -18,7 +18,7 @@ vim.cmd [[
 ]]
 
 -- Matched parentheses colors
-vim.cmd [[hi MatchParen   gui=bold  guibg=none  guifg=#ff6ac1]]
+vim.cmd [[ hi MatchParen gui=bold guibg=none guifg=#ff6ac1 ]]
 
 -- Show a mark for characters at column 120
-vim.cmd [[call matchadd("ColorColumn", "\%120v", 120)]]
+vim.cmd [[ call matchadd("ColorColumn", "\%120v", 120) ]]
