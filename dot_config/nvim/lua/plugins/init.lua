@@ -15,7 +15,6 @@ require("packer").startup(function()
   use "windwp/nvim-autopairs"
   use {
     "folke/twilight.nvim",
-    opt = true,
     config = function()
       require("twilight").setup()
     end
@@ -43,7 +42,6 @@ require("packer").startup(function()
   use "APZelos/blamer.nvim"
   use {
     "lewis6991/gitsigns.nvim",
-    opt = true,
     requires = { "nvim-lua/plenary.nvim" },
     config = function ()
       require("gitsigns").setup()
@@ -51,7 +49,6 @@ require("packer").startup(function()
   }
   use {
     "ruifm/gitlinker.nvim",
-    opt = true,
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("plugins.gitlinker")
@@ -76,13 +73,15 @@ require("packer").startup(function()
     "hrsh7th/nvim-compe",
     requires = {
       "hrsh7th/vim-vsnip",
-      { "tamago324/compe-zsh", opt = true, requires = { "nvim-lua/plenary.nvim" } },
+      {
+        "tamago324/compe-zsh",
+        requires = { "nvim-lua/plenary.nvim" },
+      },
       { "tzachar/compe-tabnine", run = "./install.sh" },
     }
   }
   use {
     "norcalli/snippets.nvim",
-    opt = true,
     config = function ()
       require("snippets").use_suggested_mappings()
     end
@@ -99,7 +98,6 @@ require("packer").startup(function()
   }
   use {
     "onsails/lspkind-nvim",
-    opt = true,
     config = function ()
       require("lspkind").init()
     end
