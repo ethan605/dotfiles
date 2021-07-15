@@ -20,6 +20,8 @@ vim.api.nvim_set_keymap(
 -- )
 
 -- Open files with FZF
+vim.api.nvim_set_keymap("n", "<C-b>", ":Buffers<cr>", default_opts)
+vim.api.nvim_set_keymap("n", "<C-f>", ":Files<cr>", default_opts)
 vim.api.nvim_set_keymap("n", "<C-p>", ":GFiles<cr>", default_opts)
 vim.api.nvim_set_keymap("n", "<C-g>", ":GFiles?<cr>", default_opts)
 
