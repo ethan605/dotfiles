@@ -40,6 +40,7 @@ require("packer").startup(function()
 
   -- Git
   use "APZelos/blamer.nvim"
+  use "tpope/vim-fugitive"
   use {
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
