@@ -6,5 +6,5 @@ Host *
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 Host {{ .work.git_domain }}
-  ProxyCommand ssh -q ethan.nguyen@work.local nc %h %p
+  ProxyCommand ssh -q ethan.nguyen@work-macbook.local nc %h %p
 {{- end }}
