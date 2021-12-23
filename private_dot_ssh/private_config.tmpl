@@ -5,6 +5,6 @@ Host *
   UseKeychain yes
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
-Host {{ .work.gitlab_domain }}
+Host {{ .work.git_domain }}
   ProxyCommand ssh -q ethan.nguyen@work.local nc %h %p
 {{- end }}
