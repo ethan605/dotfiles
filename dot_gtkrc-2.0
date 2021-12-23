@@ -1,0 +1,13 @@
+# vim:filetype=config
+gtk-can-change-accels=1
+
+gtk-theme-name=Breeze-Dark
+gtk-icon-theme-name=breeze-dark
+gtk-cursor-theme-name=Breeze_Snow
+gtk-font-name=Cantarell 12
+
+style "user-font"
+{
+  font_name="Cantarell 12"
+}
+widget_class "*" style "user-font"

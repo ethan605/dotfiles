@@ -1,0 +1,194 @@
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+  70% {
+    color: #eff0eb;
+  }
+
+  to {
+    color: #eff0eb;
+    background-color: orange;
+  }
+}
+
+@keyframes blink-critical {
+  70% {
+    color: #eff0eb;
+  }
+
+  to {
+    color: #eff0eb;
+    background-color: #ff5c57;
+  }
+}
+
+/* Reset all styles */
+* {
+  border-radius: 0;
+  border: none;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+  background: #282a36;
+  color: #eff0eb;
+  font-family: Cantarell, Haskplex Nerd, sans-serif;
+  font-size: 14px;
+}
+
+/* Workspaces */
+#workspaces button {
+  background: #282a36;
+  color: #eff0eb;
+  padding: 0 15px;
+}
+
+#workspaces button:hover {
+  background-color: #eff0eb;
+  color: #282a36;
+}
+
+#workspaces button.focused {
+  background-color: #5af78e;
+  color: #282a36;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  background-color: #ff5c57;
+  color: #282a36;
+}
+
+/* Window title in the middle */
+#window {
+  font-weight: bold;
+}
+
+/* All modules */
+#mode,
+#custom-mpd,
+#network,
+#custom-vpn,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#pulseaudio,
+#tray {
+  padding: 0 8px;
+}
+
+#mode {
+  background: #686868;
+}
+
+#custom-mpd {
+  background-color: #57c7ff;
+  color: #282a36;
+}
+
+#network {
+  /* No styles */
+}
+
+#network.disconnected {
+  color: orange;
+}
+
+#cpu {
+  /* No styles */
+}
+
+#cpu.warning {
+  color: orange;
+}
+
+#cpu.critical {
+  color: #ff5c57;
+}
+
+#memory {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#memory.warning {
+  color: orange;
+}
+
+#memory.critical {
+  color: #ff5c57;
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}
+
+#temperature {
+  /* No styles */
+}
+
+#temperature.critical {
+  color: #ff5c57;
+}
+
+#battery {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.warning {
+  color: orange;
+}
+
+#battery.critical {
+  color: #ff5c57;
+}
+
+#battery.warning.discharging {
+  animation-name: blink-warning;
+  animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}
+
+#pulseaudio {
+  /* No styles */
+}
+
+#pulseaudio.muted {
+  color: orange;
+  /* No styles */
+}
+
+#custom-ibus {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#custom-ibus.Vi {
+  color: #ff5c57;
+}
+
+#tray {
+  /* No styles */
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#custom-arch {
+  color: #1793d1;
+  font-size: 20px;
+  padding-left: 8px;
+  padding-right: 5px;
+}

@@ -1,0 +1,168 @@
+// vim:fileencoding=utf-8:syntax=json5
+{
+  "position": "top",
+  "layer": "bottom",
+  "height": 30,
+
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "custom/mpd"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [
+    "network",
+    "custom/vpn",
+    "cpu",
+    "memory",
+    "temperature",
+    "battery",
+    "pulseaudio",
+    "tray",
+    "clock",
+    "custom/arch"
+  ],
+
+  // -------------------------------------------------------------------------
+  // Modules
+  // -------------------------------------------------------------------------
+
+  "sway/workspaces": {
+    "all-outputs": false,
+    "disable-scroll": true,
+    "format": "{name}"
+  },
+
+  "sway/mode": {
+    "format": "    {}",
+    "tooltip": false
+  },
+
+  "custom/mpd": {
+    "return-type": "json",
+    "interval": 3,
+    "format": "{icon}  {}",
+    "format-icons": {
+      "paused": " ",
+      "playing": " "
+    },
+    "exec": "$HOME/.local/bin/mpd-utils waybar-output", 
+    "exec-if": "pgrep mpd",
+    "on-click": "mpc toggle",
+    "on-click-right": "termite --title=ncmpcpp --exec=ncmpcpp"
+  },
+
+  "sway/window": {
+    "max-length": 50
+  },
+
+  "network": {
+    "interval": 5,
+    "format-wifi": "    {essid}",
+    "format-ethernet": "    {ipaddr}",
+    "format-disconnected": " ",
+    "tooltip-format-wifi": "{bandwidthUpBits} {bandwidthDownBits} | {ifname}: {ipaddr}",
+    "tooltip-format-ethernet": "{bandwidthUpBits} {bandwidthDownBits} | {ifname}: {ipaddr}",
+    "tooltip-format-disconnected": "Network disconnected"
+  },
+
+  "custom/vpn": {
+    "interval": 5,
+    "format": " VPN",
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "return-type": "json"
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "   {usage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "   {used:0.1f}GB",
+    "tooltip-format": "Avail.: {avail:0.1f}GB | Total: {total:0.1f}GB",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  "temperature": {
+  {{- if eq .chezmoi.hostname "lunarch" }}
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+  {{- end }}
+    "critical-threshold": 80,
+    "interval": 5,
+    "format": "{icon}  {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "" 
+    ],
+    "on-click": "termite --title=Sensors --exec='/usr/bin/zsh -c \"sensors | less -zn\"'",
+    "tooltip": true
+  },
+
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon}  {volume}% ",
+    "format-muted": "  ",
+    "format-icons": {
+      "car": " ",
+      "handsfree": " ",
+      "headphones": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "default": [" ", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    // Connected to AC
+    "format": "  {icon} {capacity}%",
+    // Not connected to AC
+    "format-discharging": "{icon} {capacity}%",
+    "format-icons": [
+      "  ",
+      "  ",
+      "  ",
+      "  ",
+      "  " 
+    ],
+    "tooltip": true
+  },
+
+  "tray": {
+    "icon-size": 22,
+    "spacing": 10
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "{:%e %b %H:%M}",
+    "tooltip-format": "{:%A %e %B %Y %H:%M:%S}"
+  },
+
+  "custom/arch": {
+    "format": " ",
+    "tooltip": false
+  }
+}

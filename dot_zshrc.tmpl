@@ -1,0 +1,378 @@
+# vim:fileencoding=utf-8:filetype=zsh:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+# [[[ Global variables
+export LANG=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
+export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --squeeze-blank-lines --tabs=2'
+export MANPAGER='less +Gg'
+export BAT_THEME='Sublime Snazzy'
+export FZF_DEFAULT_OPTS='
+  --color=gutter:0,prompt:2,spinner:3
+  --color=hl+:5,fg+:7,bg+:0
+  --color=hl:5,pointer:5,marker:2
+  --cycle
+  --height=50%
+  --layout=reverse
+  --marker="›"
+  --pointer="›"
+  --prompt="❯ "
+'
+export EDITOR=nvim
+export REACT_EDITOR=nvim
+
+export GOPATH="$HOME/go"
+
+{{- if eq .chezmoi.os "darwin" }}
+
+# JDK & JDTLS
+export JDK_HOME="/usr/local/opt/openjdk"
+export JAR=$(find /usr/local/lib/jdtls-launcher/jdtls/plugins/*equinox.launcher_*.jar)
+export JDTLS_CONFIG="/usr/local/lib/jdtls-launcher/jdtls/config_mac"
+export WORKSPACE="$HOME/Work/jdtls"
+export JAVA_HOME="$JDK_HOME"
+
+export TOOLCHAINS=swift
+
+# Rewrite $PATH
+PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
+
+# Replace macOS utilities with GNU ones
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/diffutils/bin:$PATH"
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+{{- else if eq .chezmoi.os "linux" }}
+
+# JDK & JDTLS
+export JDK_HOME="/usr/lib/jvm/default"
+export JAR=$(pacman -Ql jdtls | grep -Po "(?<=jdtls\s).*equinox.launcher_.*.jar")
+export JDTLS_CONFIG="$XDG_CACHE_HOME/nvim/lspconfig/jdtls/config_linux"
+export WORKSPACE="$HOME/Work/jdtls"
+export JAVA_HOME="$JDK_HOME"
+
+export TERMINFO=/usr/share/terminfo
+export GPG_TTY=$(tty)
+
+# XDG base directories
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_DATA_DIRS=/usr/local/share:/usr/share
+export XDG_CONFIG_DIRS=/etc/xdg
+
+# Input method
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+#export GTK_IM_MODULE=ibus
+#export XMODIFIERS=@im=ibus
+#export QT_IM_MODULE=ibus
+
+PATH="$HOME/.local/bin:$PATH"
+
+{{- end }}
+
+PATH="$GOPATH/bin:$PATH"
+PATH="$JAVA_HOME:$PATH"
+PATH="./node_modules/.bin:$PATH"
+export PATH
+#]]]
+
+# [[[ Init functions
+function __load-asdf() {
+{{- if eq .chezmoi.os "darwin" }}
+
+  [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ] && source "$(brew --prefix asdf)/libexec/asdf.sh"
+
+{{- else if eq .chezmoi.os "linux" }}
+
+  [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
+
+{{- end }}
+}
+
+function __load-key-bindings() {
+  # Set editor default keymap to vi
+  bindkey -v
+
+  autoload -U edit-command-line
+  zle -N edit-command-line
+  bindkey -M vicmd 'vv' edit-command-line
+
+  bindkey '^w' backward-kill-word
+  bindkey '^h' backward-delete-char
+  bindkey '^l' forward-word
+
+  # Allow Ctrl-a and Ctrl-e to move to beginning/end of line
+  bindkey '^a' beginning-of-line
+  bindkey '^e' end-of-line
+
+  # Shift+Tab as reverse completion
+  bindkey '^[[Z' reverse-menu-complete
+
+  # Bind up and down keys
+  zmodload -F zsh/terminfo +p:terminfo
+  if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
+    bindkey ${terminfo[kcuu1]} history-substring-search-up
+    bindkey ${terminfo[kcud1]} history-substring-search-down
+  fi
+
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
+
+{{- if eq .chezmoi.os "darwin" }}
+
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+
+{{- else if eq .chezmoi.os "linux" }}
+
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+
+{{- end }}
+}
+
+function __load-perl() {
+{{- if eq .chezmoi.os "linux" }}
+
+  export PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
+  export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+  export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+  export PERL_MB_OPT="--install_base \"$HOME/perl5\""
+  export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+
+{{- end }}
+}
+
+{{- if eq .chezmoi.os "linux" }}
+
+function __load-ssh() {
+  export SSH_ASKPASS="$HOME/.local/bin/ssh-pass"
+  eval $(keychain --eval --quiet $HOME/.ssh/id_ed25519)
+}
+
+function __load-sway() {
+  if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    # Be careful - one of these could break IBus
+    # export QT_QPA_PLATFORM=wayland
+    # export QT_QPA_PLATFORM=wayland-egl
+    # export QT_QPA_PLATFORMTHEME=qt5ct
+    # export QT_WAYLAND_FORCE_DPI=physical
+    # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+    # export SDL_VIDEODRIVER=wayland
+    # export _JAVA_AWT_WM_NONREPARENTING=1
+    # export BROWSER=firefox
+    export MOZ_ENABLE_WAYLAND=1
+    export TERM=termite
+    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
+
+    exec sway -d 2> $HOME/.logs/sway.log
+  fi
+}
+
+{{- end }}
+
+function __load-zim() {
+  # Set history file
+  HISTFILE=~/.zsh_history
+
+  # Customize spelling correction prompt.
+  SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+
+  # Remove usable components (/.-=) from WORDCHARS.
+  WORDCHARS=${WORDCHARS//[\/\.\-=]}
+
+  # Custom symbols for pure prompt
+  #PURE_PROMPT_SYMBOL='λ'            # originally '❯'
+  #PURE_PROMPT_VICMD_SYMBOL='ε'      # originally '❮'
+
+  # Set what highlighters will be used.
+  # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+  FORGIT_DIFF_PAGER='delta --side-by-side'
+
+  # Remove older command from the history if a duplicate is to be added.
+  setopt HIST_IGNORE_ALL_DUPS
+
+  # Prompt for spelling correction of commands.
+  setopt CORRECT
+
+  # Set a custom path for the completion dump file.
+  # If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
+  zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
+
+  if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+    # Update static initialization script if it does not exist or it's outdated, before sourcing it
+    source ${ZIM_HOME}/zimfw.zsh init -q
+  fi
+  source ${ZIM_HOME}/init.zsh
+}
+
+function __load-zsh-plugins() {
+  eval "$(starship init zsh)"
+  eval "$(zoxide init zsh)"
+  eval "$(direnv hook zsh)"
+}
+#]]]
+
+# [[[ Aliases
+function chezdiff() {
+  chezmoi diff "$@" | delta --side-by-side
+}
+
+function fzfind() {
+  preview="bat {-1} --color=always --style=numbers"
+  find "$@" -type f | fzf --preview $preview
+}
+
+function load_work_envs() {
+{{- if eq .chezmoi.os "darwin" }}
+
+  # Creds
+  source "/Users/ethan.nguyen/Library/Application Support/creds/nexus"
+
+{{- else if eq .chezmoi.os "linux" }}
+  
+  # Linuxbrew
+  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+  export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+
+  source ~/.config/creds/nexus
+  
+{{- end }}
+
+  export SDK_TOKEN_FACTORY_SECRET="{{ pass "work/sdk-token-factory-secret" }}"
+  export LOKALISE_TOKEN="{{ pass "work/lokalise-token" }}"
+  export LOKALISE_PROJECT_ID="{{ pass "work/lokalise-project-id" }}"
+  export BROWSERSTACK_USERNAME="{{ pass "work/browserstack-username" }}"
+  export BROWSERSTACK_ACCESS_KEY="{{ pass "work/browserstack-access-key" }}"
+}
+
+{{- if eq .chezmoi.os "linux" }}
+
+function workplace_proxy() {
+  local proxy_host="work-macbook.local"
+  local proxy_ip=$(getent hosts "$proxy_host" | awk '{ print $1 }')
+
+  local docker_file="$HOME/.docker/config.json"
+  local docker_proxy="http://$proxy_ip:9090/"
+
+  local sub_command=${1-}
+
+  # Toggle system-wise
+  if [[ -z "$sub_command" ]]; then
+    # On
+    if [[ -z "$http_proxy" ]]; then
+      export http_proxy="http://$proxy_host:9090/"
+      export https_proxy=$http_proxy
+      export no_proxy="localhost,127.0.0.1,192.168.1.1,::1,*.local"
+      export HTTP_PROXY=$http_proxy
+      export HTTPS_PROXY=$http_proxy
+      export NO_PROXY=$no_proxy
+
+      echo "VPN proxy enabled: $http_proxy"
+    else
+      unset http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY
+
+      echo "VPN proxy disabled"
+    fi
+  fi
+
+  # Toggle docker-wise
+  if [[ "$sub_command" == "docker" ]]; then
+    local has_proxies=$(cat "$docker_file" | jq -r '.proxies')
+
+    # On
+    if [[ "$has_proxies" == "null" ]]; then
+      local docker_config=$(cat "$docker_file" |
+        jq -r ".proxies = { default: { httpProxy: \"$docker_proxy\", httpsProxy: \"$docker_proxy\", noProxy: \"$no_proxy\" } }")
+      echo "$docker_config" >| "$docker_file"
+
+      echo "VPN proxy enabled for Docker:"
+      echo "$docker_config" | jq -r
+    else # Off
+      local docker_config=$(cat "$docker_file" | jq -r 'del(.proxies)')
+      echo "$docker_config" >| "$docker_file"
+
+      echo "VPN proxy disabled for Docker:"
+      echo "$docker_config" | jq -r
+    fi
+  fi
+}
+
+{{- end }}
+
+alias adb-screenshot='adb shell screencap -p | \
+  perl -pe "s/\x0D\x0A/\x0A/g" > \
+  $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png'
+
+alias chezls='chezmoi diff | grep "diff --git a/"'
+
+alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
+
+alias gaa='git add --all'
+alias gau='git add --update'
+alias gcl='git clone --recurse-submodules'
+alias gcm='git commit -m'
+alias gfl='git fetch && git pull origin $(git branch --show-current)'
+alias ggl='git pull origin $(git branch --show-current)'
+alias ggp='git push origin $(git branch --show-current)'
+alias ggpu='git push -u origin $(git branch --show-current)'
+alias glgg='git log --all --decorate --graph'
+alias glgo='git log --all --decorate --graph --oneline'
+alias gst='git status'
+
+alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
+
+# Remap system commands
+alias nano=nvim
+alias vi=nvim
+alias vim=nvim
+alias rm='rm -i'
+
+{{- if eq .chezmoi.os "darwin" }}
+
+alias load-time='time /usr/local/bin/zsh -ic exit'
+alias ls='ls --almost-all --color --human-readable --time-style=+"[%Y-%m-%d %H:%M:%S]"'
+alias policy-off='sudo spctl --master-disable'
+alias policy-on='sudo spctl --master-enable'
+alias xdg-open='open'
+
+{{- else if eq .chezmoi.os "linux" }}
+
+alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
+alias load-time='time /usr/bin/zsh -ic exit'
+alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
+alias fix-solaar='solaar config 92DCEA13 hires-smooth-invert true'
+
+{{- end }}
+#]]]
+
+# [[[ Autoloads
+{{- if eq .chezmoi.os "linux" }}
+
+__load-sway
+__load-ssh
+
+{{- end }}
+
+# Base envs
+__load-zim
+__load-key-bindings
+__load-zsh-plugins
+
+# Dev tools
+__load-asdf
+__load-perl
+#]]]

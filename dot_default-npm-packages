@@ -1,0 +1,15 @@
+bash-language-server
+corepack
+diagnostic-languageserver
+dockerfile-language-server-nodejs
+graphql-language-service-cli
+graphql
+neovim
+npm
+prettier-stylelint
+prettier
+pyright
+typescript-language-server
+typescript
+vim-language-server
+vscode-langservers-extracted

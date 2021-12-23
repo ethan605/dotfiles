@@ -1,0 +1,10 @@
+Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519
+{{- if eq .chezmoi.os "darwin" }}
+  UseKeychain yes
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
+Host {{ .work.gitlab_domain }}
+  ProxyCommand ssh -q ethan.nguyen@work.local nc %h %p
+{{- end }}

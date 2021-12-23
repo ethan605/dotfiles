@@ -1,0 +1,191 @@
+# Common configs
+command_timeout = 1000
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$cmake\
+$conda\
+$crystal\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$zig\
+$aws\
+$gcloud\
+$kubernetes\
+$openstack\
+$vagrant\
+$env_var\
+$cmd_duration\
+$line_break\
+$shlvl\
+$jobs\
+${custom.venv}\
+$character"""
+
+[username]
+format = "[$user]($style) "
+
+[hostname]
+format = "[@](bright-black) [$hostname]($style) "
+
+[shlvl]
+disabled = false
+symbol = "↕️"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+fish_style_pwd_dir_length = 1
+truncation_length = 3
+style = "bold blue"
+
+[git_branch]
+format = " [$branch]($style)"
+style = "bright-black"
+
+[git_commit]
+format = "~[$hash]($style)"
+style = "purple"
+
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+
+[cmd_duration]
+format = " [$duration]($style)"
+
+[character]
+error_symbol = "[λ](red)"
+success_symbol = "[λ](purple)"
+vicmd_symbol = "[ε](purple)"
+
+# Custom
+
+[custom.venv]
+command = 'basename "$VIRTUAL_ENV"'
+format = "[$output]($style) "
+style = "bright-black"
+when = 'test "$VIRTUAL_ENV" != ""'
+
+# Platforms support
+
+[aws]
+format = ' [$symbol($profile)( \($region\))( \[$duration\])]($style)'
+symbol = " "
+
+[docker_context]
+format = " [$symbol$context]($style)"
+style = "bold #0db7ed"
+symbol = " "
+
+[kubernetes]
+disabled = false
+format = " [$symbol$context]($style)[@](bright-black)[$namespace]($style)"
+style = "bold #326ce5"
+symbol = "⎈"
+[kubernetes.context_aliases]
+"arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-01" = "tf-dev-01"
+"arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-02" = "tf-dev-02"
+"arn:aws:eks:eu-west-1:609445407176:cluster/tf-pre-prod-01" = "tf-pre-prod-01"
+"arn:aws:eks:eu-west-1:609445407176:cluster/tf-pre-prod-02" = "tf-pre-prod-02"
+"arn:aws:eks:eu-west-1:226817515299:cluster/tf-prod-eu-01" = "tf-prod-eu-01"
+"arn:aws:eks:eu-west-1:226817515299:cluster/tf-prod-eu-02" = "tf-prod-eu-02"
+"arn:aws:eks:ca-central-1:226817515299:cluster/tf-prod-ca-01" = "tf-prod-ca-01"
+"arn:aws:eks:ca-central-1:226817515299:cluster/tf-prod-ca-02" = "tf-prod-ca-02"
+"arn:aws:eks:us-east-1:226817515299:cluster/tf-prod-us-01" = "tf-prod-us-01"
+"arn:aws:eks:us-east-1:226817515299:cluster/tf-prod-us-02" = "tf-prod-us-02"
+
+[gcloud]
+format = ' [$symbol$account(@$domain)(\($region\))]($style)'
+symbol = " "
+
+# Languages support
+
+[deno]
+format = " [$symbol$version]($style)"
+version_format = "$raw"
+
+[elixir]
+format = ' [$symbol$version \(OTP $otp_version\)]($style)'
+style = "bold #6e4a7e"
+symbol = " "
+version_format = "$raw"
+
+[golang]
+format = " [$symbol$version]($style)"
+style = "bold #29beb0"
+symbol = " "
+version_format = "$raw"
+
+[java]
+format = " [$symbol$version]($style)"
+style = "bold #ffa518"
+symbol = " "
+version_format = "$raw"
+
+[kotlin]
+format = " [$symbol$version]($style)"
+style = "bold #1aa2d4"
+version_format = "$raw"
+
+[lua]
+format = " [$symbol$version]($style)"
+style = "bold #29beb0"
+symbol = " "
+version_format = "$raw"
+
+[nodejs]
+format = " [$symbol$version]($style)"
+style = "bold #3c873a"
+version_format = "$raw"
+
+[python]
+format = " [$symbol$version]($style)"
+style = "bold #ffd43b"
+symbol = " "
+version_format = "$raw"
+
+[ruby]
+format = " [$symbol$version]($style)"
+style = "bold #d51f06"
+symbol = " "
+version_format = "$raw"
+
+[rust]
+format = " [$symbol$version]($style)"
+style = "bold #b7410e"
+symbol = " "
+version_format = "$raw"
+
+[terraform]
+format = " [$symbol$workspace]($style)"
+style = "bold #844fba"

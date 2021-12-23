@@ -1,0 +1,17 @@
+# vim:fileencoding=utf-8:filetype=conf
+# Default modules
+zmodule environment
+zmodule utility
+
+# Official modules
+zmodule completion
+zmodule exa
+zmodule fzf
+
+# Community modules
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-completions
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-syntax-highlighting
+
+zmodule ethan605/forgit

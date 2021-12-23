@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd "${HOME}/.mail"
+folder="$(find * -type d ! -name cur ! -name new ! -name tmp ! -name Drafts | fzf)"
+echo "push '<save-message>=$folder<enter>'"

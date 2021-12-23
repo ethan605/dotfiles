@@ -1,0 +1,238 @@
+" vim:fileencoding=utf-8:foldenable:foldmethod=marker
+
+" {{{ Plugins
+call plug#begin()
+
+" General plugins
+Plug 'airblade/vim-rooter'
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
+
+" NERDTree
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdTree'
+Plug 'ryanoasis/vim-devicons'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tommcdo/vim-fubitive'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
+" UI
+Plug 'Yggdroot/indentLine'
+Plug 'bling/vim-airline'
+Plug 'connorholyday/vim-snazzy'
+Plug 'vim-airline/vim-airline-themes'
+
+" Languages support
+Plug 'alampros/vim-styled-jsx'
+Plug 'andreshazard/vim-freemarker'
+Plug 'ap/vim-css-color'
+Plug 'chunkhang/vim-mbsync'
+Plug 'darfink/vim-plist'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'flowtype/vim-flow'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jparise/vim-graphql'
+Plug 'kevinoid/vim-jsonc'
+Plug 'mattn/emmet-vim'
+Plug 'mkitt/tabline.vim'
+Plug 'neomutt/neomutt.vim'
+Plug 'niftylettuce/vim-jinja'
+Plug 'nvie/vim-flake8'
+Plug 'pangloss/vim-javascript'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'sheerun/vim-polyglot'
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'voldikss/vim-floaterm'
+Plug 'wogong/msmtp.vim'
+
+call plug#end()
+" }}}
+
+" {{{ Settings
+set autoread                " Auto reload file from outside changes
+set autowrite               " Auto reload file from outside changes
+set background=dark         " For dark themes
+set clipboard+=unnamedplus  " Use system clipboard over vim's buffers
+set cmdheight=2             " Better display for messages
+set conceallevel=0          " Disable markdown conceal
+set directory=/tmp          " Location for temporary files
+set encoding=UTF-8          " Encoding
+set expandtab               " Insert spaces when TAB is pressed.
+set foldenable					    " Enable code folding
+set foldmethod=marker       " Using marker to fold by default
+set formatoptions+=o        " Continue comment marker in new lines.
+set hlsearch                " Highlight searches
+set ignorecase              " Search with smart case
+set incsearch               " Incremental search
+set linespace=0             " Set line-spacing to minimum.
+set listchars+=eol:¬        " Hidden characters
+set modeline                " Enable modeline.
+set modelines=1             " Enable modeline.
+set nobackup                " Some LSP servers have issues with backup files
+set noerrorbells            " No beeps.
+set nofoldenable			      " Not folding by default
+set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
+set nostartofline           " Do not jump to first character with page commands.
+set noswapfile              " Disable swap files
+set nowritebackup           " Some LSP servers have issues with backup files
+set number relativenumber   " Show hybrid line numbers on the left side.
+set ruler                   " Show the line and column numbers of the cursor.
+set scrolloff=3             " Show next 3 lines while scrolling.
+set shiftwidth=2            " Indentation amount for < and > commands.
+set shortmess+=c            " don't give 'ins-completion-menu' messages.
+set showcmd                 " Show (partial) command in status line.
+set showmatch               " Show matching brackets.
+set showmode                " Show current mode.
+set sidescrolloff=5         " Show next 5 columns while side-scrolling.
+set signcolumn=yes          " always show signcolumns
+set smartcase               " Search with smart case
+set softtabstop=2           " Render TABs using this many spaces.
+set splitbelow              " Horizontal split below current.
+set splitright              " Vertical split to right of current.
+set tabstop=2               " Render TABs using this many spaces.
+set textwidth=0             " Hard-wrap long lines as you type them.
+set updatetime=300          " You will have bad experience for diagnostic messages when it's default 4000.
+
+" Configure backups
+set backupcopy=yes
+set backupdir=~/tmp,/tmp
+set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
+
+" Add fzf to run time path
+set runtimepath+=/usr/local/opt/fzf
+" }}}
+
+" {{{ Variables
+
+" Disable unused providers
+let g:loaded_python_provider = 0
+let g:loaded_perl_provider = 0
+
+" For vim-airline
+let g:airline_theme = 'powerlineish'
+let g:airline_powerline_fonts = 1
+
+" For vim-flow
+let g:flow#enable = 0
+
+" For vim-go
+let g:go_doc_keywordprg_enabled = 0
+let g:go_fmt_autosave = 1
+let g:go_imports_autosave = 1
+let g:go_metalinter_autosave = 1
+let g:go_mod_fmt_autosave = 1
+
+" For indentLine
+let g:indentLine_char = '·'
+let g:indentLine_enabled = 1
+
+" For NERDTree
+let g:NERDSpaceDelims = 1 
+let g:NERDTreeGitStatusConcealBrackets = 1
+let g:NERDTreeIgnore = ['\~$', 'node_modules']
+let g:NERDTreeShowHidden = 1
+
+" For markdown-preview
+let g:mkdp_preview_options = {
+  \ 'maid': { 'sequence': { 'showSequenceNumbers': 'true' } },
+  \ }
+" }}}
+
+" {{{ Color scheme
+filetype plugin on
+syntax on
+set termguicolors
+colorscheme snazzy
+
+" Configure special characters
+set t_ZH=[3m
+set t_ZR=[23m
+
+" Line limit column colors
+hi ColorColumn      guibg=gray            guifg=fg 
+
+" TabLine highlight colors
+hi TabLine          gui=none              guibg=bg        guifg=white
+hi TabLineFill      gui=none              guibg=bg
+hi TabLineSel       gui=bold,inverse
+
+hi Visual           ctermbg=white       ctermfg=black
+
+" Matched parentheses colors
+hi MatchParen       cterm=bold          ctermbg=none    ctermfg=magenta
+
+hi clear            SignColumn
+
+" Show a mark for characters at column 120
+call matchadd('ColorColumn', '\%120v', 120)
+" }}}
+
+" {{{ Custom functions
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:smarter_NERDTreeToggle()
+  if &filetype == 'nerdtree'
+    :NERDTreeToggle
+  else
+    :NERDTreeFind
+  endif
+endfunction
+" }}}
+
+" {{{ Remaps
+" Toggle NERDTree with focusing current file's location
+nmap <silent> <c-o> :call <sid>smarter_NERDTreeToggle()<cr>
+
+" Quick files opening
+nmap <silent> <c-p> :GFiles<cr>
+nmap <silent> <c-g> :GFiles?<cr>
+
+" Copy current file's path
+nmap <silent> ycf :let @+=@%<cr>
+
+" Easymotion prefix
+nmap <silent> <leader> <Plug>(easymotion-prefix)
+
+" Leader + space to hide search highlights
+nmap <silent> <leader><space> :nohlsearch<cr>
+" }}}
+
+" {{{ Auto commands
+" Performance tweaks for large files
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+augroup javascript_folding
+  autocmd!
+  autocmd FileType javascript setlocal foldmethod=syntax
+augroup END
+
+" Disable unnecessary conceals for markdowns
+augroup markdown_concealing
+  autocmd!
+  autocmd FileType markdown let g:indentLine_enabled=0
+  autocmd FileType markdown set conceallevel=0
+augroup END
+
+" Force syntax highlight for specific file types
+autocmd BufNewFile,BufRead vifmrc set syntax=vim
+autocmd BufNewFile,BufRead .prettierrc set syntax=json
+
+autocmd BufWritePost *.py call flake8#Flake8()
+
+" Autofix for Prettier on save
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+" }}}

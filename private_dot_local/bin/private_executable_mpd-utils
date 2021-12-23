@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+WHITELIST_ENGINES=( xkb:us::eng Bamboo )
+declare -A ENGINES_MAPPING=( [xkb:us::eng]=En [Bamboo]=Vi )
+
+function waybar_output() {
+  local state=$(mpc | grep -E -o "playing|paused")
+
+  if [[ -z "$state" ]]; then
+    exit
+  fi
+
+  declare -A result_hash=(
+    [alt]="$state"
+    [text]="$(mpc current)"
+  )
+
+  local output=$(
+    for key in "${!result_hash[@]}"; do
+      echo "$key" 
+      echo "${result_hash[$key]}"
+    done
+  )
+
+  echo "$output" | jq \
+    --unbuffered \
+    --null-input \
+    --raw-input \
+    --compact-output \
+    'reduce inputs as $i ({}; . + { ($i): (input|(tonumber? // .)) })'
+}
+
+function main() {
+  local sub_command=${1-}
+
+  case "$sub_command" in
+    state) get-state ;;
+    waybar-output) waybar_output ;;
+    *) ;;
+  esac
+}
+
+main "$@"

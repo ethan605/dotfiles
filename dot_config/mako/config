@@ -1,0 +1,14 @@
+# vim:filetype=dosini
+font=Cantarell 12
+background-color=#282a36
+text-color=#eff0eb
+border-color=#57c7ff
+border-radius=4
+border-size=1
+margin=12
+padding=12
+
+output=DP-3
+
+[urgency=high]
+border-color=#ff5c57

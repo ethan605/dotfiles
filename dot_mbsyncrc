@@ -1,0 +1,184 @@
+# vim:syntax=mbsync
+
+#################################
+##### thanhnx.605@gmail.com #####
+#################################
+
+IMAPAccount Primary
+Host imap.gmail.com
+User thanhnx.605@gmail.com
+Passcmd "pass dotfiles/mails/thanhnx.605@gmail.com"
+SSLType IMAPS
+Authmechs LOGIN
+CertificateFile /usr/local/etc/openssl@1.1/cert.pem
+
+IMAPStore Primary-remote
+Account Primary
+
+MaildirStore Primary-local
+Path ~/.mail/Primary/
+Inbox ~/.mail/Primary/inbox/
+Subfolders Verbatim
+
+Channel Primary
+Master :Primary-remote:
+Slave :Primary-local:
+Patterns College "College/*" Personal "Personal/*" Work "Work/*" "e-Personal/*"
+Create Both
+Expunge Both
+SyncState *
+
+Channel Primary-Inbox
+Master :Primary-remote:INBOX
+Slave :Primary-local:Inbox
+Create Both
+Expunge Both
+SyncState *
+
+Channel Primary-Sent
+Master :Primary-remote:"[Gmail]/Sent Mail"
+Slave :Primary-local:Sent
+Create Both
+Expunge Both
+SyncState *
+
+Channel Primary-Drafts
+Master :Primary-remote:"[Gmail]/Drafts"
+Slave :Primary-local:Drafts
+Create Both
+Expunge Both
+SyncState *
+
+Channel Primary-Spam
+Master :Primary-remote:"[Gmail]/Spam"
+Slave :Primary-local:Spam
+Create Both
+Expunge Both
+SyncState *
+
+Channel Primary-Trash
+Master :Primary-remote:"[Gmail]/Bin"
+Slave :Primary-local:Trash
+Create Both
+Expunge Both
+SyncState *
+
+Group Primary
+Channel Primary-*
+
+#################################
+##### xtnguyen605@gmail.com #####
+#################################
+
+IMAPAccount UK-Alias
+Host imap.gmail.com
+User xtnguyen605@gmail.com
+Passcmd "pass dotfiles/mails/xtnguyen605@gmail.com"
+SSLType IMAPS
+Authmechs LOGIN
+CertificateFile /usr/local/etc/openssl@1.1/cert.pem
+
+IMAPStore UK-Alias-remote
+Account UK-Alias
+
+MaildirStore UK-Alias-local
+Path ~/.mail/UK-Alias/
+Inbox ~/.mail/UK-Alias/inbox/
+Subfolders Verbatim
+
+Channel UK-Alias-Inbox
+Master :UK-Alias-remote:INBOX
+Slave :UK-Alias-local:Inbox
+Create Both
+Expunge Both
+SyncState *
+
+Channel UK-Alias-Sent
+Master :UK-Alias-remote:"[Gmail]/Sent Mail"
+Slave :UK-Alias-local:Sent
+Create Both
+Expunge Both
+SyncState *
+
+Channel UK-Alias-Drafts
+Master :UK-Alias-remote:"[Gmail]/Drafts"
+Slave :UK-Alias-local:Drafts
+Create Both
+Expunge Both
+SyncState *
+
+Channel UK-Alias-Spam
+Master :UK-Alias-remote:"[Gmail]/Spam"
+Slave :UK-Alias-local:Spam
+Create Both
+Expunge Both
+SyncState *
+
+Channel UK-Alias-Archive
+Master :UK-Alias-remote:"[Gmail]/All Mail"
+Slave :UK-Alias-local:Archive
+Create Both
+Expunge Both
+SyncState *
+
+Channel UK-Alias-Trash
+Master :UK-Alias-remote:"[Gmail]/Trash"
+Slave :UK-Alias-local:Trash
+Create Both
+Expunge Both
+SyncState *
+
+Group UK-Alias
+Channel UK-Alias-*
+
+#################################
+##### thanhnx.605@live.com ######
+#################################
+
+IMAPAccount Outlook
+Host outlook.office365.com
+User thanhnx.605@live.com
+Passcmd "pass dotfiles/mails/thanhnx.605@live.com"
+SSLType IMAPS
+Authmechs LOGIN
+CertificateFile /usr/local/etc/openssl@1.1/cert.pem
+
+IMAPStore Outlook-remote
+Account Outlook
+
+MaildirStore Outlook-local
+Path ~/.mail/Outlook/
+Inbox ~/.mail/Outlook/inbox/
+Subfolders Verbatim
+
+Channel Outlook
+Master :Outlook-remote:
+Slave :Outlook-local:
+Patterns Archive Drafts GetTechTalent Insurance Personal Sent Work
+Create Both
+Expunge Both
+SyncState *
+
+Channel Outlook-Inbo
+Master :Outlook-remote:INBOX
+Slave :Outlook-local:Inbox
+Create Both
+Expunge Both
+SyncState *
+
+Channel Outlook-Spam
+Master :Outlook-remote:Junk
+Slave :Outlook-local:Spam
+Create Both
+Expunge Both
+SyncState *
+
+Channel Outlook-Trash
+Master :Outlook-remote:Deleted
+Slave :Outlook-local:Trash
+Create Both
+Expunge Both
+SyncState *
+
+Group Outlook
+Channel Outlook-*

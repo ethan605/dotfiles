@@ -1,0 +1,2 @@
+# vim:filetype=zsh
+: ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}

@@ -1,0 +1,63 @@
+# vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+LICENSE
+README.md
+slack_theme
+.Brewfile_darwin
+.Brewfile_linux
+
+# [[[ Obsolete configs - keep for future reference only
+.bash_profile
+.bash_prompt
+.config/neomutt
+.config/nvim.old
+.config/rofi
+.config/wezterm
+.local/bin/ibus-engines
+.mbsyncrc
+.tmux.conf
+.tmux.conf.local
+.vimrc
+# ]]]
+
+# [[[ MacOS-exclusive files
+{{ if ne .chezmoi.os "darwin" }}
+
+.config/karabiner
+.config/kitty
+Library
+
+{{ end }}
+# ]]]
+
+# [[[ Linux-exclusive files
+{{ if ne .chezmoi.os "linux" }}
+
+.config/autostart
+.config/chrome-flags.conf
+.config/fontconfig
+.config/foot
+.config/gtk-3.0
+.config/i3
+.config/i3blocks
+.config/imv
+.config/logiops
+.config/mako
+.config/mimeapps.list
+.config/mpd
+.config/ncmpcpp
+.config/solaar
+.config/swappy
+.config/sway
+.config/swaylock
+.config/systemd
+.config/termite
+.config/wallpapers
+.config/waybar
+.config/wofi
+.gtkrc-2.0
+.icons
+.local
+.xkb
+
+{{ end }}
+# ]]]

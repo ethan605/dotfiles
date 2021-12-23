@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+function focused_output() {
+  swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
+}
+
+function focused_window() {
+  swaymsg -t get_tree \
+    | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"'
+}
+
+function main() {
+  local sub_command=${1-}
+
+  case "$sub_command" in
+    focused-output) focused_output ;;
+    focused-window) focused_window ;;
+    *) ;;
+  esac
+}
+
+main "$@"

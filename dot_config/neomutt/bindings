@@ -1,0 +1,67 @@
+# vim:syntax=neomuttrc:foldenable:foldmethod=marker
+
+# {{{ 1. General
+bind index <tab> sync-mailbox
+# }}}
+
+# {{{ 2.Messages navigation
+bind index,pager k previous-entry
+bind index,pager j next-entry
+bind index,pager \cu half-up
+bind index,pager \cd half-down
+bind index,pager e next-line
+bind index,pager y previous-line
+bind pager G bottom
+bind index G last-entry
+bind index o display-message
+
+# Remap `g` key
+bind index,pager g noop
+bind pager gg top
+bind index gg first-entry
+
+bind index,pager @ compose-to-sender
+bind index,pager R group-reply
+bind index <space> collapse-thread
+# }}}
+
+# {{{ 3.Sidebar navigation
+bind index,pager \cj sidebar-next
+bind index,pager \ck sidebar-prev
+bind index,pager \cl sidebar-open
+bind index,pager \ch sidebar-toggle-visible
+# }}}
+
+# {{{ 4. Composer
+bind attach o view-mailcap
+bind compose P postpone-message
+bind index p recall-message
+# }}}
+
+# {{{ 5. Find mails
+bind editor <tab> complete-query
+# macro index F "<shell-escape>mu find --clearlinks --format=links --linksdir=${HOME}/.mu/results " "mu find"
+# macro index \cf "<change-folder-readonly>${HOME}/.mu/results<enter>" "mu find results"
+# }}}
+
+# {{{ 6. Macros
+macro index,pager \cr \
+  "<shell-escape>mbsync -a<enter>" \
+  "sync all emails"
+
+macro index,pager A \
+  ":source ${HOME}/.config/neomutt/scripts/fzf-archive-message|<enter>" \
+  "archive message"
+
+macro index,pager M \
+  ":source ${HOME}/.config/neomutt/scripts/fzf-save-message|<enter>" \
+  "move entry to a folder"
+
+macro index,pager \cp \
+  ":source ${HOME}/.config/neomutt/scripts/fzf-change-folder|<enter>" \
+  "open a folder"
+
+macro index,pager U \
+  "<pipe-message>urlscan<enter>" \
+  "extract urls in the message"
+# }}}

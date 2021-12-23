@@ -1,0 +1,4 @@
+-- vim:fileencoding=utf-8:filetype=lua
+require("lspconfig").elixirls.setup {
+  cmd = { "{{ .chezmoi.homeDir }}/.cache/nvim/lspconfig/elixir-ls/language_server.sh" },
+}
