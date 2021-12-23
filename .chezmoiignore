@@ -2,21 +2,11 @@
 LICENSE
 README.md
 slack_theme
-.Brewfile_darwin
-.Brewfile_linux
 
 # [[[ Obsolete configs - keep for future reference only
-.bash_profile
-.bash_prompt
 .config/neomutt
-.config/nvim.old
-.config/rofi
-.config/wezterm
 .local/bin/ibus-engines
 .mbsyncrc
-.tmux.conf
-.tmux.conf.local
-.vimrc
 # ]]]
 
 # [[[ MacOS-exclusive files
