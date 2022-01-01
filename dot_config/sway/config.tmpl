@@ -6,24 +6,28 @@
 set $mod    Mod4
 
 # Home row direction keys, like vim
-set $left   h
-set $down   j
-set $up     k
-set $right  l
+set {
+  $left   h
+  $down   j
+  $up     k
+  $right  l
+}
 
 # Extra workspaces
-set $wsf1   "11:  ₁"
-set $wsf2   "12:  ₂"
-set $wsf3   "13:  ₃"
-set $wsf4   "14:  ₄"
-set $wsf5   "15:  ₅"
-set $wsf6   "16:  ₆"
-set $wsf7   "17:  ₇"
-set $wsf8   "18:  ₈"
-set $wsf9   "19:  ₉"
-set $wsf10  "20:  ₀"
-set $wsf11  "21:  ₁"
-set $wsf12  "22:  ₂"
+set {
+  $wsf1   "11:  ₁"
+  $wsf2   "12:  ₂"
+  $wsf3   "13:  ₃"
+  $wsf4   "14:  ₄"
+  $wsf5   "15:  ₅"
+  $wsf6   "16:  ₆"
+  $wsf7   "17:  ₇"
+  $wsf8   "18:  ₈"
+  $wsf9   "19:  ₉"
+  $wsf10  "20:  ₀"
+  $wsf11  "21:  ₁"
+  $wsf12  "22:  ₂"
+}
 
 # ]]]
 
@@ -37,11 +41,13 @@ default_border pixel      1
 default_floating_border   normal
 hide_edge_borders         smart
 
-set $black  #282a36
-set $blue   #57c7ff
-set $gray   #d8d8d8
-set $red    #ff5c57
-set $white  #eff0eb
+set {
+  $black  "#282a36"
+  $blue   "#57c7ff"
+  $gray   "#d8d8d8"
+  $red    "#ff5c57"
+  $white  "#eff0eb"
+}
 
 # Colors                  border  bg      text    indi    childborder
 client.focused            $blue   $blue   $white  $gray   $blue
@@ -63,30 +69,35 @@ exec_always {
 }
 
 # Force floating mode by applications
-for_window [app_id="blueman-assistant"]           floating enable
-for_window [app_id="blueman-manager"]             floating enable
-for_window [app_id="ibus-extension-gtk3"]         floating enable
-for_window [app_id="mpv"]                         floating enable
-for_window [app_id="pavucontrol"]                 floating enable
-for_window [app_id="solaar"]                      floating enable
-for_window [app_id="telegramdesktop"]             floating enable
-for_window [app_id="virt-manager"]                floating enable
-for_window [app_id="zoom"]                        floating enable
-for_window [app_id="org.fcitx.fcitx5-config-qt"]  floating enable
-for_window [instance="megasync"]                  floating enable
+for_window {
+  [app_id="blueman-assistant"]            floating enable
+  [app_id="blueman-manager"]              floating enable
+  [app_id="ibus-extension-gtk3"]          floating enable
+  [app_id="mpv"]                          floating enable
+  [app_id="pavucontrol"]                  floating enable
+  [app_id="solaar"]                       floating enable
+  [app_id="telegramdesktop"]              floating enable
+  [app_id="virt-manager"]                 floating enable
+  [app_id="zoom"]                         floating enable
+  [app_id="org.fcitx.fcitx5-config-qt"]   floating enable
+  [instance="megasync"]                   floating enable
+  [instance="nxplayer.bin"]               floating enable
+}
 
 # Assign workspaces for non-terminal stuffs
-assign [app_id="firefox(developeredition)*"]    workspace $wsf1
-assign [app_id="thunderbird"]                   workspace $wsf2
-assign [app_id="google-chrome"]                 workspace $wsf3
-assign [instance="slack"]                       workspace $wsf4
-assign [app_id="zoom"]                          workspace $wsf5
-assign [app_id="telegramdesktop"]               workspace $wsf6
-assign [instance="postman"]                     workspace $wsf7
-assign [instance="spotify"]                     workspace $wsf8
+assign {
+  [app_id="firefox(developeredition)*"]     workspace $wsf1
+  [app_id="thunderbird"]                    workspace $wsf2
+  [app_id="google-chrome"]                  workspace $wsf3
+  [instance="slack"]                        workspace $wsf4
+  [app_id="zoom"]                           workspace $wsf5
+  [app_id="telegramdesktop"]                workspace $wsf6
+  [instance="postman"]                      workspace $wsf7
+  [instance="spotify"]                      workspace $wsf8
 
-# Google Chrome instance for tests
-assign [instance="google-chrome"]               workspace 10
+  # Google Chrome instance for tests
+  [instance="google-chrome"]                workspace 10
+}
 
 # ]]]
 
