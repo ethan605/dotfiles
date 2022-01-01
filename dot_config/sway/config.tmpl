@@ -339,66 +339,74 @@ bindsym {
 
 # [[[ Key bindings - layout stuff
 
-# Split horizontally and vertically
-bindsym $mod+b splith
-bindsym $mod+v splitv
+bindsym {
+  # Split horizontally and vertically
+  $mod+b splith
+  $mod+v splitv
 
-# Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+  # Switch the current container between different layout styles
+  $mod+s layout stacking
+  $mod+w layout tabbed
+  $mod+e layout toggle split
 
-# Make the current focus fullscreen
-bindsym $mod+f fullscreen
+  # Make the current focus fullscreen
+  $mod+f fullscreen
 
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
+  # Toggle the current focus between tiling and floating mode
+  $mod+Shift+space floating toggle
 
-# Swap focus between the tiling area and the floating area
-bindsym $mod+tab focus mode_toggle
+  # Swap focus between the tiling area and the floating area
+  $mod+tab focus mode_toggle
 
-# Move focus to the parent container
-bindsym $mod+a focus parent
+  # Move focus to the parent container
+  $mod+a focus parent
+}
 
 # ]]]
 
 # [[[ Key bindings - Scratchpad
 
-# Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym {
+  # Move the currently focused window to the scratchpad
+  $mod+Shift+minus move scratchpad
 
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
+  # Show the next scratchpad window or hide the focused scratchpad window.
+  # If there are multiple scratchpad windows, this command cycles through them.
+  $mod+minus scratchpad show
+}
 
 # ]]]
 
 # [[[ Key bindings - resize mode
 
 mode "resize" {
-  bindsym $left resize shrink width 10px
-  bindsym $down resize grow height 10px
-  bindsym $up resize shrink height 10px
-  bindsym $right resize grow width 10px
+  bindsym {
+    $left resize shrink width 10px
+    $down resize grow height 10px
+    $up resize shrink height 10px
+    $right resize grow width 10px
 
-  bindsym left resize shrink width 10px
-  bindsym down resize grow height 10px
-  bindsym up resize shrink height 10px
-  bindsym right resize grow width 10px
+    left resize shrink width 10px
+    down resize grow height 10px
+    up resize shrink height 10px
+    right resize grow width 10px
 
-  bindsym Shift+$left resize shrink width 100px
-  bindsym Shift+$down resize grow height 100px
-  bindsym Shift+$up resize shrink height 100px
-  bindsym Shift+$right resize grow width 100px
+    Shift+$left resize shrink width 100px
+    Shift+$down resize grow height 100px
+    Shift+$up resize shrink height 100px
+    Shift+$right resize grow width 100px
 
-  bindsym Shift+left resize shrink width 100px
-  bindsym Shift+down resize grow height 100px
-  bindsym Shift+up resize shrink height 100px
-  bindsym Shift+right resize grow width 100px
+    Shift+left resize shrink width 100px
+    Shift+down resize grow height 100px
+    Shift+up resize shrink height 100px
+    Shift+right resize grow width 100px
+  }
 
-  # Return to default mode
-  bindsym return mode "default"
-  bindsym escape mode "default"
+  # Return or escape to default mode
+  bindsym {
+    return mode "default"
+    escape mode "default"
+  }
 }
 
 bindsym $mod+r mode "resize"
@@ -410,14 +418,17 @@ bindsym $mod+r mode "resize"
 set $mode-system System: (L)ock | (E)xit | (R)eboot | (S)hutdown
 
 mode "$mode-system" {
-  bindsym Shift+l exec swaylock, mode "default"
-  bindsym Shift+e exit
-  bindsym Shift+r exec systemctl reboot, mode "default"
-  bindsym Shift+s exec systemctl poweroff -i, mode "default"
+  bindsym {
+    Shift+l exec swaylock, mode "default"
+    Shift+e exit
+    Shift+r exec systemctl reboot, mode "default"
+    Shift+s exec systemctl poweroff -i, mode "default"
+  }
 
-  # return to default mode
-  bindsym return mode "default"
-  bindsym escape mode "default"
+  # Escape to default mode
+  bindsym {
+    escape mode "default"
+  }
 }
 
 bindsym $mod+Shift+e mode "$mode-system"
@@ -426,24 +437,30 @@ bindsym $mod+Shift+e mode "$mode-system"
 
 # [[[ Key bindings - media
 
-# bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-# bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+#bindsym --locked {
+  #XF86MonBrightnessDown exec brightnessctl set 5%-
+  #XF86MonBrightnessUp exec brightnessctl set +5%
+#}
 
-# F7 - Play previous
-bindsym --locked XF86AudioPrev exec mpc prev
-# F8 - Toggle play/pause
-bindsym --locked XF86AudioPlay exec mpc toggle
-# F9 - Play next
-bindsym --locked XF86AudioNext exec mpc next
+bindsym --locked {
+  # F7 - Play previous
+  XF86AudioPrev exec mpc prev
+  # F8 - Toggle play/pause
+  XF86AudioPlay exec mpc toggle
+  # F9 - Play next
+  XF86AudioNext exec mpc next
+}
 
-# F10 - Toggle mute/unmute volume
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-# Shift F10 - Toggle mute/unmute microphone
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# F11 - Decrease volume by 5%
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-# F12 - Increase volume by 5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked {
+  # F10 - Toggle mute/unmute volume
+  XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+  # Shift F10 - Toggle mute/unmute microphone
+  XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+  # F11 - Decrease volume by 5%
+  XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+  # F12 - Increase volume by 5%
+  XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+}
 
 # ]]]
 
