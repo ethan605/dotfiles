@@ -194,31 +194,47 @@ exec swayidle -w \
 # Preferred terminal
 bindsym $mod+Return exec foot
 # bindsym $mod+Return exec alacritty
-# bindsym $mod+Return exec kitty
-# bindsym $mod+Return exec wezterm
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
 # Lock immediately
 bindsym $mod+Ctrl+q exec swaylock
 
-# Bemenu app launcher
-bindsym $mod+d exec j4-dmenu-desktop --dmenu='bemenu-utils launcher' --term="foot"
+# Bemenu
+bindsym {
+  # App launcher
+  $mod+d exec j4-dmenu-desktop --dmenu='bemenu-utils launcher' --term="foot"
 
-# Bemenu runner
-bindsym $mod+Shift+d exec j4-dmenu-desktop --dmenu='bemenu-utils runner' --term="foot"
+  # Command runner
+  $mod+Shift+d exec j4-dmenu-desktop --dmenu='bemenu-utils runner' --term="foot"
 
-# Bemenu emoji picker
-bindsym Ctrl+Alt+e exec j4-dmenu-desktop --dmenu='bemenu-utils emoji' --term="foot"
+  # Emoji picker
+  Ctrl+Alt+e exec j4-dmenu-desktop --dmenu='bemenu-utils emoji' --term="foot"
 
-# Bemenu fcitx5 quickphrase picker
-bindsym Ctrl+Alt+Shift+e exec j4-dmenu-desktop --dmenu='bemenu-utils quickphrase' --term="foot"
+  # Fcitx5 quickphrase picker
+  Ctrl+Alt+Shift+e exec j4-dmenu-desktop --dmenu='bemenu-utils quickphrase' --term="foot"
+}
 
 # Open wofi as apps launcher, configured at $XDG_CONFIG_HOME/wofi/config
 bindsym $mod+Space exec wofi
 
+# Clear all notifications
 bindsym $mod+Ctrl+a exec makoctl dismiss --all
+
+bindsym --release {
+  # Capture screenshot of the focused output
+  $mod+Ctrl+3 exec /usr/share/sway/scripts/grimshot copy output && wl-paste | swappy -f - && wl-copy --clear
+
+  # Capture screenshot of the focused window
+  $mod+Ctrl+4 exec /usr/share/sway/scripts/grimshot copy window && wl-paste | swappy -f - && wl-copy --clear
+
+  # Capture screenshot of an area
+  $mod+Ctrl+5 exec /usr/share/sway/scripts/grimshot copy area && wl-paste | swappy -f - && wl-copy --clear
+}
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -226,24 +242,6 @@ bindsym $mod+Ctrl+a exec makoctl dismiss --all
 # Change normal to inverse to use left mouse button for resizing and right
 # mouse button for dragging.
 floating_modifier $mod normal
-
-# Reload the configuration file
-bindsym $mod+Shift+c reload
-
-# Change IBus input methods
-bindsym Ctrl+Alt+Space exec ~/.local/bin/ibus-engines next-engine
-
-# Capture screenshot of the focused output
-bindsym --release $mod+Ctrl+3 exec /usr/share/sway/scripts/grimshot \
-  copy output && wl-paste | swappy -f - && wl-copy --clear
-
-# Capture screenshot of the focused window
-bindsym --release $mod+Ctrl+4 exec /usr/share/sway/scripts/grimshot \
-  copy window && wl-paste | swappy -f - && wl-copy --clear
-
-# Capture screenshot of an area
-bindsym --release $mod+Ctrl+5 exec /usr/share/sway/scripts/grimshot \
-  copy area && wl-paste | swappy -f - && wl-copy --clear
 
 # ]]]
 
