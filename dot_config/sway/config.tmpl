@@ -126,42 +126,54 @@ input type:keyboard {
 
 # [[[ Output configuration
 
-# Wallpaper
-output * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
-
 {{- if eq .chezmoi.hostname "lunarch" }}
 
 # Positions and scalings
-# Dell P2421D - 2560x1444@60Hz
-output DP-3 position 0 0
-# Dell U2419H - 1920x1080@60Hz
-output DP-4 position 2560 0
+output {
+  # Wallpaper
+  * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
+
+  # Dell P2421D - 2560x1444@60Hz
+  DP-3 position 0 0
+
+  # Dell U2419H - 1920x1080@60Hz
+  DP-4 position 2560 0
+}
 
 focus output DP-3
 
-workspace 1 output DP-3
-workspace 2 output DP-3
-workspace 3 output DP-3
-workspace 4 output DP-3
-workspace 5 output DP-3
-workspace 6 output DP-3
-workspace 7 output DP-3
-workspace 8 output DP-3
-workspace 9 output DP-3
-workspace 10 output DP-3
+workspace {
+  1 output DP-3
+  2 output DP-3
+  3 output DP-3
+  4 output DP-3
+  5 output DP-3
+  6 output DP-3
+  7 output DP-3
+  8 output DP-3
+  9 output DP-3
+  10 output DP-3
+}
 
-workspace $wsf1 output DP-4
-workspace $wsf2 output DP-4
-workspace $wsf3 output DP-4
-workspace $wsf4 output DP-4
-workspace $wsf5 output DP-4
-workspace $wsf6 output DP-4
-workspace $wsf7 output DP-4
-workspace $wsf8 output DP-4
-workspace $wsf9 output DP-4
-workspace $wsf10 output DP-4
-workspace $wsf11 output DP-4
-workspace $wsf12 output DP-4
+workspace {
+  $wsf1 output DP-4
+  $wsf2 output DP-4
+  $wsf3 output DP-4
+  $wsf4 output DP-4
+  $wsf5 output DP-4
+  $wsf6 output DP-4
+  $wsf7 output DP-4
+  $wsf8 output DP-4
+  $wsf9 output DP-4
+  $wsf10 output DP-4
+  $wsf11 output DP-4
+  $wsf12 output DP-4
+}
+
+{{- else }}
+
+# Wallpaper
+output * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
 
 {{- end }}
 
