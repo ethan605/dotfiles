@@ -215,8 +215,12 @@ function __load-zim() {
 
   source ${ZIM_HOME}/init.zsh
 
+{{- if eq .chezmoi.os "linux" }}
+
   autoload -Uz add-zsh-hook
   add-zsh-hook -Uz chpwd osc7_cwd
+
+{{- end }}
 }
 
 function __load-zsh-plugins() {
@@ -227,6 +231,8 @@ function __load-zsh-plugins() {
 #]]]
 
 # [[[ Aliases
+{{- if eq .chezmoi.os "linux" }}
+
 function __urlencode() {
   local length="${#1}"
   for (( i = 0; i < length; i++ )); do
@@ -241,6 +247,8 @@ function __urlencode() {
 function osc7_cwd() {
   printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(__urlencode "$PWD")"
 }
+
+{{- end }}
 
 function chezdiff() {
   chezmoi diff "$@" | delta --side-by-side
