@@ -1,6 +1,6 @@
-" vim:fileencoding=utf-8:filetype=vim:foldenable:foldmethod=marker
+" vim:fileencoding=utf-8:filetype=vim:foldenable:foldmethod=marker:foldmarker=[[[,]]]
 
-" {{{ 1. General config
+" [[[ 1. General config
 " Use Neovim as default editor
 set vicmd=nvim
 
@@ -109,9 +109,9 @@ command! reload :write | restart
 
 " Empty the ruler. By default, it shows the number of directories+files.
 " set rulerformat=
-" }}}
+" ]]]
 
-" {{{ 2. File preview & file opening
+" [[[ 2. File preview & file opening
 
 " Text based files
 filetype <text/*>,<application/json> nvim %c
@@ -168,9 +168,9 @@ fileviewer *.tlz lzip --list --verbose %c
 
 " All other files
 fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
-" }}}
+" ]]]
 
-" {{{ 3. Key mappings 
+" [[[ 3. Key mappings 
 
 " Go to the file that is right before "../" for going to the top most file
 nnoremap gg ggj
@@ -213,9 +213,9 @@ nnoremap mkd :mkdir<space>
 " Quickly shrink left pane
 nnoremap <c-v> <c-w>50|
 
-" }}}
+" ]]]
 
-" {{{ 4. Icons
+" [[[ 4. Icons
 
 " file types
 set classify='  :dir:/,  :exe:,  :reg:,  :link:'
@@ -319,4 +319,4 @@ set classify+='  ::*.vim::'
 set classify+='﵂  ::*.vue::'
 set classify+='  ::*.xml::'
 set classify+='  ::*.xul::'
-" }}}
+" ]]]
