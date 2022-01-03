@@ -134,7 +134,15 @@ filetype *.zip
   \ unzip %c
 
 " All other files
+{{- if eq .chezmoi.os "darwin" }}
+
+filetype * open %c &
+
+{{- else if eq .chezmoi.os "linux" }}
+
 filetype * xdg-open %c &
+
+{{- end }}
 
 " Dont show preview on ../
 fileviewer ../ echo > /dev/null
