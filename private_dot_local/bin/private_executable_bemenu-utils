@@ -8,10 +8,8 @@ function load_bemenu() {
   "$command" \
     --ignorecase \
     --prompt "$prompt" \
-    --bottom \
     --grab \
     --line-height 30 \
-    --no-overlap \
     --tb "#282a36" --tf "#ff6ac1" \
     --hb "#ff6ac1" --hf "#282a36" \
     --nb "#282a36" --nf "#eff0eb" \
