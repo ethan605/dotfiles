@@ -51,7 +51,7 @@
     "exec": "$HOME/.local/bin/mpd-utils waybar-output", 
     "exec-if": "pgrep mpd",
     "on-click": "mpc toggle",
-    "on-click-right": "termite --title=ncmpcpp --exec=ncmpcpp"
+    "on-click-right": "foot ncmpcpp"
   },
 
   "sway/window": {
@@ -109,7 +109,7 @@
       "",
       "" 
     ],
-    "on-click": "termite --title=Sensors --exec='/usr/bin/zsh -c \"sensors | less -zn\"'",
+    "on-click": "foot /usr/bin/zsh -c 'sensors | less'",
     "tooltip": true
   },
 

@@ -13,5 +13,5 @@ print_command=true
 prompt=
 show=drun
 show_all=true
-term=termite
+term=foot
 width=20%
