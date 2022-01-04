@@ -72,14 +72,15 @@ exec_always {
 for_window {
   [app_id="blueman-assistant"]            floating enable
   [app_id="blueman-manager"]              floating enable
+  [app_id="galculator"]                   floating enable
   [app_id="ibus-extension-gtk3"]          floating enable
   [app_id="mpv"]                          floating enable
+  [app_id="org.fcitx.fcitx5-config-qt"]   floating enable
   [app_id="pavucontrol"]                  floating enable
   [app_id="solaar"]                       floating enable
   [app_id="telegramdesktop"]              floating enable
   [app_id="virt-manager"]                 floating enable
   [app_id="zoom"]                         floating enable
-  [app_id="org.fcitx.fcitx5-config-qt"]   floating enable
   [instance="megasync"]                   floating enable
   [instance="nxplayer.bin"]               floating enable
 }
@@ -94,6 +95,7 @@ assign {
   [app_id="telegramdesktop"]                workspace $wsf6
   [instance="postman"]                      workspace $wsf7
   [instance="spotify"]                      workspace $wsf8
+  [instance="nomachine"]                    workspace $wsf9
 
   # Google Chrome instance for tests
   [instance="google-chrome"]                workspace 10
