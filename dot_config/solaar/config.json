@@ -6,7 +6,7 @@
       "change-host": false,
       "divert-keys": false,
       "dpi": false,
-      "hires-smooth-invert": true,
+      "hires-smooth-invert": false,
       "hires-smooth-resolution": false,
       "reprogrammable-keys": false,
       "smart-shift": false,
@@ -41,5 +41,5 @@
     "thumb-scroll-invert": false,
     "thumb-scroll-mode": true
   },
-  "_version": "1.1.0"
+  "_version": "1.1.1"
 }
