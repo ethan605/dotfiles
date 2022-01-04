@@ -6,7 +6,7 @@
       "change-host": false,
       "divert-keys": false,
       "dpi": false,
-      "hires-smooth-invert": false,
+      "hires-smooth-invert": true,
       "hires-smooth-resolution": false,
       "reprogrammable-keys": false,
       "smart-shift": false,
@@ -25,7 +25,7 @@
     },
     "dpi": "1200",
     "dpi-sliding": 0,
-    "hires-smooth-invert": true,
+    "hires-smooth-invert": false,
     "hires-smooth-resolution": true,
     "mouse-gestures": 0,
     "reprogrammable-keys": {
