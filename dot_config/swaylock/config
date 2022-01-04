@@ -4,7 +4,6 @@ daemonize
 ignore-empty-password
 indicator
 indicator-caps-lock
-# screenshots
 effect-blur=4x4
 image=~/.config/wallpapers/arch-snow-1920x1080.png
 
