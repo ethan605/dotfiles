@@ -4,6 +4,8 @@ README.md
 slack_theme
 
 # [[[ Obsolete configs - keep for future reference only
+.config/i3
+.config/i3blocks
 .config/neomutt
 .local/bin/ibus-engines
 .mbsyncrc
@@ -27,8 +29,6 @@ Library
 .config/fontconfig
 .config/foot
 .config/gtk-3.0
-.config/i3
-.config/i3blocks
 .config/imv
 .config/logiops
 .config/mako
