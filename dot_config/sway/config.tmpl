@@ -29,6 +29,9 @@ set {
   $wsf12  "22:  ₂"
 }
 
+set $term foot
+#set $term alacritty
+
 # ]]]
 
 # [[[ UIs
@@ -202,8 +205,7 @@ exec swayidle -w \
 # [[[ Key bindings - basic
 
 # Preferred terminal
-bindsym $mod+Return exec foot
-# bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $term
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -217,19 +219,19 @@ bindsym $mod+Ctrl+q exec swaylock
 # Bemenu
 bindsym {
   # App launcher
-  $mod+d exec j4-dmenu-desktop --dmenu='bemenu-utils launcher' --term="foot"
+  $mod+d exec j4-dmenu-desktop --dmenu="bemenu-utils launcher" --term=$term
 
   # Command runner
-  $mod+Shift+d exec j4-dmenu-desktop --dmenu='bemenu-utils runner' --term="foot"
+  $mod+Shift+d exec j4-dmenu-desktop --dmenu="bemenu-utils runner" --term=$term
 
   # Calc
-  $mod+Equal exec j4-dmenu-desktop --dmenu='bemenu-utils calc' --term="foot"
+  $mod+Equal exec j4-dmenu-desktop --dmenu="bemenu-utils calc" --term=$term
 
   # Emoji picker
-  Ctrl+Alt+e exec j4-dmenu-desktop --dmenu='bemenu-utils emoji' --term="foot"
+  Ctrl+Alt+e exec j4-dmenu-desktop --dmenu="bemenu-utils emoji" --term=$term
 
   # Fcitx5 quickphrase picker
-  Ctrl+Alt+Shift+e exec j4-dmenu-desktop --dmenu='bemenu-utils quickphrase' --term="foot"
+  Ctrl+Alt+Shift+e exec j4-dmenu-desktop --dmenu="bemenu-utils quickphrase" --term=$term
 }
 
 # Open wofi as apps launcher, configured at $XDG_CONFIG_HOME/wofi/config
