@@ -4,8 +4,6 @@ README.md
 slack_theme
 
 # [[[ Obsolete configs - keep for future reference only
-.config/i3
-.config/i3blocks
 .config/neomutt
 .local/bin/fix-solaar
 .local/bin/ibus-engines

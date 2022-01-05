@@ -1,7 +1,0 @@
-# Global properties
-separator=true
-separator_block_width=15
-
-[time]
-command=date '+%d %b %H:%M'
-interval=1
