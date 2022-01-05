@@ -4,7 +4,9 @@ README.md
 slack_theme
 
 # [[[ Obsolete configs - keep for future reference only
+.config/logiops
 .config/neomutt
+.config/termite
 .local/bin/fix-solaar
 .local/bin/ibus-engines
 .mbsyncrc
@@ -29,7 +31,6 @@ Library
 .config/foot
 .config/gtk-3.0
 .config/imv
-.config/logiops
 .config/mako
 .config/mimeapps.list
 .config/mpd
@@ -39,7 +40,6 @@ Library
 .config/sway
 .config/swaylock
 .config/systemd
-.config/termite
 .config/wallpapers
 .config/waybar
 .config/wofi
