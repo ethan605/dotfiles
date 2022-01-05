@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+function load_bemenu() {
+  local prompt=${1:-"bemenu"}
+
+  bemenu \
+    --ignorecase \
+    --prompt "$prompt" \
+    --grab \
+    --line-height 30 \
+    --tb "#282a36" --tf "#ff6ac1" \
+    --hb "#ff6ac1" --hf "#282a36" \
+    --nb "#282a36" --nf "#eff0eb" \
+    --fb "#282a36" --ff "#eff0eb" \
+    --fn "pango:Cantarell 14"
+}
+
+function calc() {
+  # Based on https://github.com/barbuk/menu-qalc
+  # which is based on https://github.com/onespaceman/menu-calc
+  answer=""
+
+  if [ -n "${1-}" ]; then
+    answer=$(echo "$1" | qalc +u8 -color=never -terse | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}')
+  fi
+
+  action=$(echo -e "Clear\nClose" | load_bemenu "= $answer")
+
+  case $action in
+    "Clear") $0 ;;
+    "Close") ;;
+    "") ;;
+    *) $0 calc "$action" "$@" ;;
+  esac
+}
+
+function main() {
+  local sub_command=${1-}
+  shift
+
+  case "$sub_command" in
+    calc) calc "$@" ;;
+    *) ;;
+  esac
+}
+
+main "$@"

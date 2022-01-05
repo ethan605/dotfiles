@@ -1,11 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euxo pipefail
 
 function load_bemenu() {
   local prompt=${1:-"bemenu"}
-  local command=${2:-bemenu}
 
-  "$command" \
+  bemenu \
     --ignorecase \
     --prompt "$prompt" \
     --grab \
@@ -19,6 +18,25 @@ function load_bemenu() {
 
 function launcher() {
   load_bemenu "🔎"
+}
+
+function calc() {
+  # Based on https://github.com/barbuk/menu-qalc
+  # which is based on https://github.com/onespaceman/menu-calc
+  answer=""
+
+  if [ -n "${1-}" ]; then
+    answer=$(echo "$1" | qalc +u8 -color=never -terse | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}')
+  fi
+
+  action=$(echo -e "Clear\nClose" | load_bemenu "= $answer")
+
+  case $action in
+    "Clear") $0 ;;
+    "Close") ;;
+    "") ;;
+    *) $0 calc "$action" "$@" ;;
+  esac
 }
 
 function quickphrase() {
@@ -1855,10 +1873,12 @@ EOM
 
 function main() {
   local sub_command=${1-}
+  shift
 
   case "$sub_command" in
     launcher) load_bemenu "🔎" ;;
     runner) load_bemenu " " bemenu-run ;;
+    calc) calc "$@" ;;
     emoji) emoji ;;
     quickphrase) quickphrase ;;
     *) ;;
