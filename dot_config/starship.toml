@@ -1,6 +1,7 @@
 # Common configs
 command_timeout = 1000
 format = """
+$sudo\
 $username\
 $hostname\
 $directory\
@@ -53,6 +54,11 @@ $shlvl\
 $jobs\
 ${custom.venv}\
 $character"""
+
+[sudo]
+format = "[sudo]($style) "
+style = "bold red"
+disabled = false
 
 [username]
 format = "[$user]($style) "
