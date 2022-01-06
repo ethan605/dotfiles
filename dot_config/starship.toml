@@ -47,6 +47,7 @@ $openstack\
 $vagrant\
 $env_var\
 $cmd_duration\
+${custom.proxy}\
 $line_break\
 $shlvl\
 $jobs\
@@ -90,6 +91,13 @@ vicmd_symbol = "[ε](purple)"
 
 # Custom
 
+[custom.proxy]
+command = 'echo $HTTPS_PROXY | sed "s/http\:\/\///gi;s/\/$//gi"'
+format = " [$symbol$output]($style)"
+style = "#ffaf87"
+when = 'test "$HTTPS_PROXY" != ""'
+symbol = "旅"
+
 [custom.venv]
 command = 'basename "$VIRTUAL_ENV"'
 format = "[$output]($style) "
@@ -100,6 +108,7 @@ when = 'test "$VIRTUAL_ENV" != ""'
 
 [aws]
 format = ' [$symbol($profile)( \($region\))( \[$duration\])]($style)'
+style = "bold #ff9900"
 symbol = " "
 
 [docker_context]
