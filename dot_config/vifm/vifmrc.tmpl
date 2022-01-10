@@ -196,11 +196,23 @@ vnoremap w :view<cr>gv
 " Open file in the background using its default program
 nnoremap gb :file &<cr>l
 
+{{- if eq .chezmoi.os "darwin" }}
+
 " Yank current directory path into the clipboard
-nnoremap yd :!echo %d | xclip -i -selection clipboard %i<cr>
+nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
 
 " Yank current file path into the clipboard
-nnoremap yf :!echo %c:p | xclip -i -selection clipboard %i<cr>
+nnoremap yf :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
+{{- else if eq .chezmoi.os "linux" }}
+
+" Yank current directory path into the clipboard
+nnoremap yd :!echo %d | wl-copy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+
+" Yank current file path into the clipboard
+nnoremap yf :!echo %c:p | wl-copy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+
+{{- end }}
 
 " Mappings for faster renaming
 nnoremap I cw<c-a>
