@@ -32,7 +32,7 @@ function calc() {
   action=$(echo -e "Clear\nClose" | load_bemenu "= $answer")
 
   case $action in
-    "Clear") $0 ;;
+    "Clear") $0 calc ;;
     "Close") ;;
     "") ;;
     *) $0 calc "$action" "$@" ;;
