@@ -9,6 +9,7 @@ slack_theme
 .config/termite
 .local/bin/fix-solaar
 .local/bin/ibus-engines
+.local/bin/virt-utils
 .mbsyncrc
 # ]]]
 
