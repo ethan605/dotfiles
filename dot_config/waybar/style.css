@@ -71,7 +71,7 @@
 
 /* All modules */
 #mode,
-#custom-mpd,
+#mpd,
 #network,
 #custom-vpn,
 #cpu,
@@ -87,7 +87,7 @@
   background: #686868;
 }
 
-#custom-mpd {
+#mpd {
   background-color: #57c7ff;
   color: #282a36;
 }
