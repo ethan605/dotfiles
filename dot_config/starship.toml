@@ -96,7 +96,6 @@ success_symbol = "[λ](purple)"
 vicmd_symbol = "[ε](purple)"
 
 # Custom
-
 [custom.proxy]
 command = 'echo $HTTPS_PROXY | sed "s/http\:\/\///gi;s/\/$//gi"'
 format = " [$symbol$output]($style)"
@@ -111,7 +110,6 @@ style = "bright-black"
 when = 'test "$VIRTUAL_ENV" != ""'
 
 # Platforms support
-
 [aws]
 format = ' [$symbol($profile)( \($region\))( \[$duration\])]($style)'
 style = "bold #ff9900"
@@ -144,7 +142,6 @@ format = ' [$symbol$account(@$domain)(\($region\))]($style)'
 symbol = " "
 
 # Languages support
-
 [deno]
 format = " [$symbol$version]($style)"
 version_format = "$raw"
