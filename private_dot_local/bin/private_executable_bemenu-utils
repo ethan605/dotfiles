@@ -42,7 +42,10 @@ function calc() {
 function quickphrase() {
   cat /usr/share/fcitx5/data/quickphrase.d/emoji-eac.mb \
     | sed -r 's/:(.*):\s*(.*)/\2 \1/gi; s/_/ /gi' \
-    | load_bemenu "quickphrase"
+    | load_bemenu "quickphrase" \
+    | cut -d ' ' -f 1 \
+    | tr -d '\n' \
+    | wl-copy
 }
 
 function emoji() {
