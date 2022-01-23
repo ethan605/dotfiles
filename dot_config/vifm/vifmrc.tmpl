@@ -147,10 +147,9 @@ filetype * xdg-open %c &
 " Dont show preview on ../
 fileviewer ../ echo > /dev/null
 
-" Show ls in the preview window, it creates a similar look as ranger.
-" The default directory tree thing is really messy
-fileviewer */ tree -alC -L 1 %c | sed -e 's/\\//g'
-fileviewer .*/ tree -alC -L 1 %c | sed -e 's/\\//g'
+" Show content tree in the preview window for directories
+fileviewer */ exa --all --color=always --group-directories-first --level=1 --long --no-filesize --no-time --no-user --tree %c
+fileviewer .*/ exa --all --color=always --group-directories-first --level=1 --long --no-filesize --no-time --no-user --tree %c
 
 " Text files
 fileviewer <text/*>,<application/json>
