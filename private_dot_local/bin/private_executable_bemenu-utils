@@ -29,11 +29,11 @@ function calc() {
     answer=$(echo "$1" | qalc +u8 -color=never -terse | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}')
   fi
 
-  action=$(echo -e "Clear\nClose" | load_bemenu "= $answer")
+  action=$(echo -e " Copy \n Clear " | load_bemenu "= $answer")
 
   case $action in
-    "Clear") $0 calc ;;
-    "Close") ;;
+    " Copy ") echo -n "$answer" | wl-copy ;;
+    " Clear ") $0 calc ;;
     "") ;;
     *) $0 calc "$action" "$@" ;;
   esac
