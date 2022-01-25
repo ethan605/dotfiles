@@ -6,5 +6,9 @@ require("lspconfig").kotlin_language_server.setup {
   flags = utils.default_flags,
   on_attach = utils.on_attach,
 
+{{- if eq .chezmoi.os "linux" }}
   cmd = { "/usr/share/kotlin/kotlin-language-server/bin/kotlin-language-server" };
+{{- else if eq .chezmoi.os "darwin" }}
+  cmd = { "{{ .chezmoi.homeDir }}/.cache/nvim/lspconfig/kotlin_language_server/kotlin-language-server" };
+{{- end }}
 }
