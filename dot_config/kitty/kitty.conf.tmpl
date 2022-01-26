@@ -7,10 +7,14 @@ bold_font         OperatorMonoLig Nerd Font Book
 italic_font       OperatorMonoLig Nerd Font Light Italic
 bold_italic_font  OperatorMonoLig Nerd Font Book Italic
 
-{{- if eq .chezmoi.os "darwin" }}
-font_size 18.0
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
+
 font_size 15.0
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+font_size 18.0
+
 {{- end }}
 
 # adjust_line_height  0

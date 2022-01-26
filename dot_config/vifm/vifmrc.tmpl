@@ -134,13 +134,13 @@ filetype *.zip
   \ unzip %c
 
 " All other files
-{{- if eq .chezmoi.os "darwin" }}
-
-filetype * qlmanage -p %c >> /dev/null 2>&1 &
-
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
 
 filetype * xdg-open %c &
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+filetype * qlmanage -p %c >> /dev/null 2>&1 &
 
 {{- end }}
 
@@ -195,21 +195,21 @@ vnoremap w :view<cr>gv
 " Open file in the background using its default program
 nnoremap gb :file &<cr>l
 
-{{- if eq .chezmoi.os "darwin" }}
-
-" Yank current directory path into the clipboard
-nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
-
-" Yank current file path into the clipboard
-nnoremap yf :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
-
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
 
 " Yank current directory path into the clipboard
 nnoremap yd :!echo -n %d | wl-copy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
 
 " Yank current file path into the clipboard
 nnoremap yf :!echo -n %c:p | wl-copy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+" Yank current directory path into the clipboard
+nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+
+" Yank current file path into the clipboard
+nnoremap yf :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
 
 {{- end }}
 
