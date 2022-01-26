@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Solaar
-Exec=solaar --window=hide --battery-icons=solaar
+Exec=solaar --window=hide
 Icon=solaar
 StartupNotify=false
 Terminal=false
