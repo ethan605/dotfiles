@@ -21,31 +21,7 @@ export REACT_EDITOR=nvim
 
 export GOPATH="$HOME/go"
 
-{{- if eq .chezmoi.os "darwin" }}
-
-# JDK & JDTLS
-export JDK_HOME="/usr/local/opt/openjdk"
-export JAR=$(find /usr/local/lib/jdtls-launcher/jdtls/plugins/*equinox.launcher_*.jar)
-export JDTLS_CONFIG="/usr/local/lib/jdtls-launcher/jdtls/config_mac"
-export WORKSPACE="$HOME/Work/jdtls"
-export JAVA_HOME="$JDK_HOME"
-
-export TOOLCHAINS=swift
-
-# Rewrite $PATH
-PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
-
-# Replace macOS utilities with GNU ones
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/diffutils/bin:$PATH"
-PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
 
 # JDK & JDTLS
 export JDK_HOME="/usr/lib/jvm/default"
@@ -74,6 +50,30 @@ export QT_IM_MODULE=fcitx
 
 PATH="$HOME/.local/bin:$PATH"
 
+{{- else if eq .chezmoi.os "darwin" }}
+
+# JDK & JDTLS
+export JDK_HOME="/usr/local/opt/openjdk"
+export JAR=$(find /usr/local/lib/jdtls-launcher/jdtls/plugins/*equinox.launcher_*.jar)
+export JDTLS_CONFIG="/usr/local/lib/jdtls-launcher/jdtls/config_mac"
+export WORKSPACE="$HOME/Work/jdtls"
+export JAVA_HOME="$JDK_HOME"
+
+export TOOLCHAINS=swift
+
+# Rewrite $PATH
+PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
+
+# Replace macOS utilities with GNU ones
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/diffutils/bin:$PATH"
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
 {{- end }}
 
 PATH="$GOPATH/bin:$PATH"
@@ -84,13 +84,13 @@ export PATH
 
 # [[[ Init functions
 function __load-asdf() {
-{{- if eq .chezmoi.os "darwin" }}
-
-  [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ] && source "$(brew --prefix asdf)/libexec/asdf.sh"
-
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
 
   [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+  [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ] && source "$(brew --prefix asdf)/libexec/asdf.sh"
 
 {{- end }}
 }
@@ -124,15 +124,15 @@ function __load-key-bindings() {
   bindkey -M vicmd 'k' history-substring-search-up
   bindkey -M vicmd 'j' history-substring-search-down
 
-{{- if eq .chezmoi.os "darwin" }}
-
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-  source /usr/local/opt/fzf/shell/completion.zsh
-
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
 
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
 
 {{- end }}
 }
@@ -260,12 +260,7 @@ function fzfind() {
 }
 
 function load_work_envs() {
-{{- if eq .chezmoi.os "darwin" }}
-
-  # Creds
-  source "/Users/ethan.nguyen/Library/Application Support/creds/nexus"
-
-{{- else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" }}
   
   # Linuxbrew
   export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
@@ -276,7 +271,12 @@ function load_work_envs() {
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
   source ~/.config/creds/nexus
-  
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+  # Creds
+  source "/Users/ethan.nguyen/Library/Application Support/creds/nexus"
+
 {{- end }}
 
   export SDK_TOKEN_FACTORY_SECRET="{{ pass "work/sdk-token-factory-secret" }}"
@@ -340,14 +340,26 @@ function workplace_proxy() {
 
 {{- end }}
 
-alias adb-screenshot='adb shell screencap -p | \
-  perl -pe "s/\x0D\x0A/\x0A/g" > \
-  $HOME/Downloads/Android_screenshot_$(date +%Y-%m-%d_%H.%M.%S).png'
-
 alias chezls='chezmoi diff | grep "diff --git a/"'
-
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
+alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
 
+{{- if eq .chezmoi.os "linux" }}
+
+alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
+alias load-time='time /usr/bin/zsh -ic exit'
+alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+alias load-time='time /usr/local/bin/zsh -ic exit'
+alias policy-off='sudo spctl --master-disable'
+alias policy-on='sudo spctl --master-enable'
+alias xdg-open='open'
+
+{{- end }}
+
+# Git
 alias gaa='git add --all'
 alias gau='git add --update'
 alias gcl='git clone --recurse-submodules'
@@ -360,30 +372,11 @@ alias glgg='git log --all --decorate --graph'
 alias glgo='git log --all --decorate --graph --oneline'
 alias gst='git status'
 
-alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
-
 # Remap system commands
 alias nano=nvim
 alias vi=nvim
 alias vim=nvim
 alias rm='rm -i'
-
-{{- if eq .chezmoi.os "darwin" }}
-
-alias load-time='time /usr/local/bin/zsh -ic exit'
-alias ls='ls --almost-all --color --human-readable --time-style=+"[%Y-%m-%d %H:%M:%S]"'
-alias policy-off='sudo spctl --master-disable'
-alias policy-on='sudo spctl --master-enable'
-alias xdg-open='open'
-
-{{- else if eq .chezmoi.os "linux" }}
-
-alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
-alias load-time='time /usr/bin/zsh -ic exit'
-alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
-alias fix-solaar='solaar config 92DCEA13 hires-smooth-invert true'
-
-{{- end }}
 #]]]
 
 # [[[ Autoloads
