@@ -7,8 +7,12 @@ require("lspconfig").kotlin_language_server.setup {
   on_attach = utils.on_attach,
 
 {{- if eq .chezmoi.os "linux" }}
+
   cmd = { "/usr/share/kotlin/kotlin-language-server/bin/kotlin-language-server" };
+
 {{- else if eq .chezmoi.os "darwin" }}
+
   cmd = { "/usr/local/Cellar/kotlin-language-server/1.2.0/bin/kotlin-language-server" };
+
 {{- end }}
 }
