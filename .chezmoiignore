@@ -13,16 +13,6 @@ slack_theme
 .mbsyncrc
 # ]]]
 
-# [[[ MacOS-exclusive files
-{{ if ne .chezmoi.os "darwin" }}
-
-.config/karabiner
-.config/kitty
-Library
-
-{{ end }}
-# ]]]
-
 # [[[ Linux-exclusive files
 {{ if ne .chezmoi.os "linux" }}
 
@@ -48,6 +38,16 @@ Library
 .icons
 .local
 .xkb
+
+{{ end }}
+# ]]]
+
+# [[[ MacOS-exclusive files
+{{ if ne .chezmoi.os "darwin" }}
+
+.config/karabiner
+.config/kitty
+Library
 
 {{ end }}
 # ]]]
