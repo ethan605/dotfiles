@@ -152,8 +152,7 @@ function __load-perl() {
 {{- if eq .chezmoi.os "linux" }}
 
 function __load-ssh() {
-  export SSH_ASKPASS="$HOME/.local/bin/ssh-pass"
-  eval $(keychain --eval --quiet $HOME/.ssh/id_ed25519)
+  SSH_ASKPASS="$HOME/.local/bin/ssh-pass" eval $(keychain --eval --quiet "$HOME/.ssh/id_ed25519")
 }
 
 function __load-sway() {
