@@ -18,7 +18,6 @@ export FZF_DEFAULT_OPTS='
 '
 export EDITOR=nvim
 export REACT_EDITOR=nvim
-
 export GOPATH="$HOME/go"
 
 {{- if eq .chezmoi.os "linux" }}
@@ -29,6 +28,7 @@ export JAR=$(pacman -Ql jdtls | grep -Po "(?<=jdtls\s).*equinox.launcher_.*.jar"
 export JDTLS_CONFIG="$XDG_CACHE_HOME/nvim/lspconfig/jdtls/config_linux"
 export WORKSPACE="$HOME/Work/jdtls"
 export JAVA_HOME="$JDK_HOME"
+PATH="$JAVA_HOME:$PATH"
 
 export TERMINFO=/usr/share/terminfo
 export GPG_TTY=$(tty)
@@ -44,11 +44,6 @@ export XDG_CONFIG_DIRS=/etc/xdg
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
-#export GTK_IM_MODULE=ibus
-#export XMODIFIERS=@im=ibus
-#export QT_IM_MODULE=ibus
-
-PATH="$HOME/.local/bin:$PATH"
 
 {{- else if eq .chezmoi.os "darwin" }}
 
@@ -58,6 +53,7 @@ export JAR=$(find /usr/local/lib/jdtls-launcher/jdtls/plugins/*equinox.launcher_
 export JDTLS_CONFIG="/usr/local/lib/jdtls-launcher/jdtls/config_mac"
 export WORKSPACE="$HOME/Work/jdtls"
 export JAVA_HOME="$JDK_HOME"
+PATH="$JAVA_HOME:$PATH"
 
 export TOOLCHAINS=swift
 
@@ -74,11 +70,11 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
+PATH="$GOPATH/bin:$PATH"
+PATH="./node_modules/.bin:$PATH"
+
 {{- end }}
 
-PATH="$GOPATH/bin:$PATH"
-PATH="$JAVA_HOME:$PATH"
-PATH="./node_modules/.bin:$PATH"
 export PATH
 #]]]
 
