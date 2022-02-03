@@ -125,15 +125,13 @@ symbol = " "
 disabled = false
 format = " [$symbol$context]($style)[@](bright-black)[$namespace]($style)"
 style = "bold #326ce5"
+
 {{- if eq .chezmoi.os "linux" }}
-
 symbol = "⎈"
-
 {{- else if eq .chezmoi.os "darwin" }}
-
 symbol = "⎈ "
-
 {{- end }}
+
 [kubernetes.context_aliases]
 "arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-01" = "tf-dev-01"
 "arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-02" = "tf-dev-02"
