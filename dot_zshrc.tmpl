@@ -267,12 +267,12 @@ function load_work_envs() {
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
-  source ~/.config/creds/nexus
+  source "$HOME/.config/creds/nexus"
 
 {{- else if eq .chezmoi.os "darwin" }}
 
   # Creds
-  source "/Users/ethan.nguyen/Library/Application Support/creds/nexus"
+  source "$HOME/Library/Application Support/creds/nexus"
 
 {{- end }}
 
