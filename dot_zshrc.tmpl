@@ -294,7 +294,7 @@ function workplace_proxy() {
   local proxy_ip=$(getent hosts "$proxy_host" | awk '{ print $1 }')
 
   local docker_file="$HOME/.docker/config.json"
-  local docker_proxy="http://$proxy_ip:9090/"
+  local docker_proxy="http://$proxy_ip:3128/"
 
   local sub_command=${1-}
 
@@ -302,7 +302,7 @@ function workplace_proxy() {
   if [[ -z "$sub_command" ]]; then
     # On
     if [[ -z "$http_proxy" ]]; then
-      export http_proxy="http://$proxy_host:9090/"
+      export http_proxy="http://$proxy_host:3128/"
       export https_proxy=$http_proxy
       export no_proxy="localhost,127.0.0.1,192.168.1.1,::1,*.local"
       export HTTP_PROXY=$http_proxy
