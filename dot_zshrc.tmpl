@@ -227,6 +227,21 @@ function __load-zsh-plugins() {
   eval "$(zoxide init zsh)"
   eval "$(direnv hook zsh)"
 }
+
+function __load-work-envs() {
+  # Creds
+{{- if eq .chezmoi.os "linux" }}
+  source "$HOME/.config/creds/nexus"
+{{- else if eq .chezmoi.os "darwin" }}
+  source "$HOME/Library/Application Support/creds/nexus"
+{{- end }}
+
+  export SDK_TOKEN_FACTORY_SECRET="{{ pass "work/sdk-token-factory-secret" }}"
+  export LOKALISE_TOKEN="{{ pass "work/lokalise-token" }}"
+  export LOKALISE_PROJECT_ID="{{ pass "work/lokalise-project-id" }}"
+  export BROWSERSTACK_USERNAME="{{ pass "work/browserstack-username" }}"
+  export BROWSERSTACK_ACCESS_KEY="{{ pass "work/browserstack-access-key" }}"
+}
 #]]]
 
 # [[[ Aliases
@@ -256,33 +271,6 @@ function chezdiff() {
 function fzfind() {
   preview="bat {-1} --color=always --style=numbers"
   find "$@" -type f | fzf --preview $preview
-}
-
-function load_work_envs() {
-{{- if eq .chezmoi.os "linux" }}
-  
-  # Linuxbrew
-  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
-  export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
-
-  source "$HOME/.config/creds/nexus"
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-  # Creds
-  source "$HOME/Library/Application Support/creds/nexus"
-
-{{- end }}
-
-  export SDK_TOKEN_FACTORY_SECRET="{{ pass "work/sdk-token-factory-secret" }}"
-  export LOKALISE_TOKEN="{{ pass "work/lokalise-token" }}"
-  export LOKALISE_PROJECT_ID="{{ pass "work/lokalise-project-id" }}"
-  export BROWSERSTACK_USERNAME="{{ pass "work/browserstack-username" }}"
-  export BROWSERSTACK_ACCESS_KEY="{{ pass "work/browserstack-access-key" }}"
 }
 
 {{- if eq .chezmoi.os "linux" }}
@@ -394,4 +382,5 @@ __load-zsh-plugins
 # Dev tools
 __load-asdf
 __load-perl
+__load-work-envs
 #]]]
