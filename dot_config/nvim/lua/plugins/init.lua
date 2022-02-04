@@ -99,7 +99,7 @@ require("packer").startup(function()
   use {
     "onsails/lspkind-nvim",
     config = function()
-      require("lspkind").init()
+      require("lspkind").init {}
     end
   }
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
