@@ -18,6 +18,7 @@ slack_theme
 
 .config/autostart
 .config/chrome-flags.conf
+.config/fcitx5
 .config/fontconfig
 .config/foot
 .config/gtk-3.0
