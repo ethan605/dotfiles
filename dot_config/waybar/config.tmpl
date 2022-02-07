@@ -15,6 +15,7 @@
   "modules-right": [
     "network",
     "custom/vpn",
+    "custom/nordlynx",
     "cpu",
     "memory",
     "temperature",
@@ -86,6 +87,12 @@
     "return-type": "json"
   },
 
+  "custom/nordlynx": {
+    "format": "旅 VPN",
+    "exec": "ip route | grep 'nordlynx'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/nordlynx"
+  },
+
   "cpu": {
     "interval": 5,
     "format": "   {usage}%",
@@ -106,9 +113,9 @@
   },
 
   "temperature": {
-  {{- if eq .chezmoi.hostname "lunarch" }}
+{{- if eq .chezmoi.hostname "lunarch" }}
     "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-  {{- end }}
+{{- end }}
     "critical-threshold": 80,
     "interval": 5,
     "format": "{icon}  {temperatureC}°C",
