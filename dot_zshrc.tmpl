@@ -12,9 +12,9 @@ export FZF_DEFAULT_OPTS='
   --cycle
   --marker="›"
   --no-height
-  --reverse
   --pointer="›"
   --prompt="❯ "
+  --reverse
 '
 export EDITOR=nvim
 export REACT_EDITOR=nvim
@@ -327,7 +327,6 @@ function workplace_proxy() {
 
 {{- end }}
 
-alias chezls='chezmoi diff | grep "diff --git a/"'
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
 
@@ -360,12 +359,14 @@ alias glgo='git log --all --decorate --graph --oneline'
 alias gst='git status'
 
 # Remap system commands
-alias nano=nvim
+alias c=chezmoi
 alias f=vifm
+alias nano=nvim
+alias rm='rm -i'
+alias top='gotop --color=monokai --layout=minimal'
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
-alias rm='rm -i'
 #]]]
 
 # [[[ Autoloads
