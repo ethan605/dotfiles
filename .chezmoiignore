@@ -27,6 +27,7 @@ slack_theme
 .config/mimeapps.list
 .config/mpd
 .config/ncmpcpp
+.config/nordvpn
 .config/solaar
 .config/swappy
 .config/sway
