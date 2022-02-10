@@ -49,8 +49,12 @@ require("packer").startup(function()
     end
   }
   use {
-    "romgrk/barbar.nvim",
+    "akinsho/bufferline.nvim",
+    --"romgrk/barbar.nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
+    config = function ()
+      require("plugins.bufferline")
+    end
   }
 
   -- Git
