@@ -8,14 +8,13 @@ vim.cmd [[
 -- Line limit column colors
 vim.cmd [[ hi ColorColumn guibg=gray guifg=fg ]]
 
--- TabLine highlight colors
-vim.cmd [[
-  hi TabLine        gui=none              guibg=bg        guifg=white
-  hi TabLineFill    gui=none              guibg=bg
-  hi TabLineSel     gui=bold,inverse
-
-  hi BufferInactive guifg=gray
-]]
+-- Tab line colors for Barbar
+--vim.cmd [[
+  --hi TabLine        gui=none              guibg=bg        guifg=white
+  --hi TabLineFill    gui=none              guibg=bg
+  --hi TabLineSel     gui=bold,inverse
+  --hi BufferInactive guifg=gray
+--]]
 
 -- Matched parentheses colors
 vim.cmd [[ hi MatchParen gui=bold guibg=none guifg=#ff6ac1 ]]
