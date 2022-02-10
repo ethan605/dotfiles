@@ -1,4 +1,4 @@
-local reset_highlight = { guibg = "bg" }
+local reset_highlight = { guibg = "none" }
 
 local diagnostics_indicator = function(count, level)
   local icon = level:match("error") and " " or " "
@@ -9,17 +9,14 @@ require("bufferline").setup {
   highlights = {
     fill = reset_highlight,
     background = reset_highlight,
-    buffer_visible = reset_highlight,
+
     buffer_selected = { gui = "bold" },
-    separator = { guifg = "bg", guibg = "bg" },
+    buffer_visible = reset_highlight,
+
+    duplicate = reset_highlight,
+    pick = reset_highlight,
   },
   options = {
-    -- Reset mouse commands
-    close_command = nil,
-    left_mouse_command = nil,
-    middle_mouse_command = nil,
-    right_mouse_command = nil,
-
     -- Diagnostics
     diagnostics = "nvim_lsp",
     diagnostics_indicator = diagnostics_indicator,
@@ -29,15 +26,19 @@ require("bufferline").setup {
     always_show_bufferline = true,
     enforce_regular_tabs = false,
     numbers = "buffer_id",
+    separator_style = {"", ""},
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    show_tab_indicators = true,
+
+    -- Side bar
     offsets = {
       {
         filetype = "NvimTree",
+        highlight = "Directory",
         text = "NvimTree",
         text_align = "center",
       },
     },
-    show_buffer_close_icons = false,
-    show_close_icon = false,
-    show_tab_indicators = true,
   },
 }
