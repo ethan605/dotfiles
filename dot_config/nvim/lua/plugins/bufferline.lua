@@ -1,4 +1,5 @@
-local reset_highlight = { guibg = "none" }
+local no_bg_style = { guibg = "none" }
+local bold_only_style = { gui = "bold" }
 
 local diagnostics_indicator = function(count, level)
   local icon = level:match("error") and " " or " "
@@ -7,14 +8,33 @@ end
 
 require("bufferline").setup {
   highlights = {
-    fill = reset_highlight,
-    background = reset_highlight,
+    fill = no_bg_style,
+    background = no_bg_style,
 
-    buffer_selected = { gui = "bold" },
-    buffer_visible = reset_highlight,
+    -- Selected styles
+    buffer_selected = bold_only_style,
+    error_selected = bold_only_style,
+    error_diagnostic_selected = bold_only_style,
+    warning_selected = bold_only_style,
+    warning_diagnostic_selected = bold_only_style,
 
-    duplicate = reset_highlight,
-    pick = reset_highlight,
+    -- Visible styles
+    buffer_visible = no_bg_style,
+    diagnostic_visible = no_bg_style,
+    error_visible = no_bg_style,
+    error_diagnostic_visible = no_bg_style,
+    warning_visible = no_bg_style,
+    warning_diagnostic_visible = no_bg_style,
+
+    -- Default styles
+    diagnostic = no_bg_style,
+    error = no_bg_style,
+    error_diagnostic = no_bg_style,
+    warning = no_bg_style,
+    warning_diagnostic = no_bg_style,
+
+    duplicate = no_bg_style,
+    pick = no_bg_style,
   },
   options = {
     -- Diagnostics
