@@ -244,7 +244,7 @@ function __load-work-envs() {
 }
 #]]]
 
-# [[[ Aliases
+# [[[ Utils
 {{- if eq .chezmoi.os "linux" }}
 
 function __urlencode() {
@@ -261,19 +261,6 @@ function __urlencode() {
 function osc7_cwd() {
   printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(__urlencode "$PWD")"
 }
-
-{{- end }}
-
-function chezdiff() {
-  chezmoi diff "$@" | delta --side-by-side
-}
-
-function fzfind() {
-  preview="bat {-1} --color=always --style=numbers"
-  find "$@" -type f | fzf --preview $preview
-}
-
-{{- if eq .chezmoi.os "linux" }}
 
 function workplace_proxy() {
   local proxy_host="work-macbook.local"
@@ -327,8 +314,15 @@ function workplace_proxy() {
 
 {{- end }}
 
-alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
+#]]]
+
+#[[[ Aliases
+# Remap system commands
+alias nano=nvim
+alias rm='rm --interactive'
+alias top='gotop --color=monokai --layout=minimal'
+alias vi=nvim
+alias vim=nvim
 
 {{- if eq .chezmoi.os "linux" }}
 
@@ -345,28 +339,49 @@ alias xdg-open='open'
 
 {{- end }}
 
-# Git
+alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
+alias creds-login='creds aws login -n $(echo -e "Development\nPre-Prod\nProduction" | fzf) role/tf-engineers-role'
+alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
+
+# Shortcuts
+alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
+alias c=chezmoi
+function cdiff() { chezmoi diff "$@" | delta --side-by-side }
+alias d='nvim -d'
+alias f=vifm
+
+alias g=git
 alias gaa='git add --all'
 alias gau='git add --update'
+alias gb='git branch --all'
 alias gcl='git clone --recurse-submodules'
 alias gcm='git commit -m'
 alias gfl='git fetch --prune && git pull origin $(git branch --show-current)'
 alias ggl='git pull origin $(git branch --show-current)'
 alias ggp='git push origin $(git branch --show-current)'
-alias ggpu='git push -u origin $(git branch --show-current)'
+alias ggpu='git push --set-upstream origin $(git branch --show-current)'
 alias glgg='git log --all --decorate --graph'
 alias glgo='git log --all --decorate --graph --oneline'
+alias gri='git rebase --interactive'
 alias gst='git status'
 
-# Remap system commands
-alias c=chezmoi
-alias f=vifm
-alias nano=nvim
-alias rm='rm -i'
-alias top='gotop --color=monokai --layout=minimal'
+alias k=kubectl
+alias kag='kubectl argo rollouts get rollout'
+function kp() { kubectl get pods -lapp="$1" }
+function kx() {
+  pod=$(kubectl get pods -lapp="$1" | fzf --header-lines=1 | cut -d' ' -f1)
+  kubectl exec -it "$pod" -- bash
+}
+
+alias p=pass
+alias pc='pass -c'
+alias pe='pass tailedit'
+alias po='pass otp -c'
+function pp() {
+  entry=$(fd --type=file .gpg ~/.password-store | sed "s|^$HOME/.password-store/||;s|.gpg$||" | fzf)
+  pass show "$entry" | bat --language=yaml --paging=always
+}
 alias v=nvim
-alias vi=nvim
-alias vim=nvim
 #]]]
 
 # [[[ Autoloads
