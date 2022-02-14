@@ -169,8 +169,6 @@ output {
   $dell-fhd bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-right.jpg fill
 }
 
-focus output DP-2
-
 workspace {
   1 output $dell-qhd
   2 output $dell-qhd
@@ -520,3 +518,6 @@ include /etc/sway/config.d/*
 #xwayland disable
 
 # ]]]
+
+# Workaround until MST is working better in Wayland
+focus output DP-2
