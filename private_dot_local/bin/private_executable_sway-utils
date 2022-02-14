@@ -1,25 +1,33 @@
 #!/usr/bin/env bash
-set -euxo pipefail
-
-function focus_display() {
-  dell_qhd=$(swaymsg -t get_outputs | jq -r '.[] | select(.model == "DELL P2421DC") | .name')
-  swaymsg focus output "$dell_qhd"
-}
+set -euo pipefail
 
 function focused_output() {
   swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'
 }
 
 function focused_window() {
-  swaymsg -t get_tree \
-    | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"'
+  swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"'
+}
+
+function list_wayland_cons() {
+  swaymsg -t get_tree | jq -r '.. | select(.app_id?) | {"id": .id, "name": .name, "app_id": .app_id, "pid": .pid}'
+}
+
+function list_xwayland_cons() {
+  swaymsg -t get_tree | jq -r '.. | select(.instance?) | {"class": .class, "instance": .instance, "title": .title}'
+}
+
+function list_outputs() {
+  swaymsg -t get_outputs | jq -r '.[] | {"name": .name, "identifier": "\(.make) \(.model) \(.serial)"}'
 }
 
 function main() {
   local sub_command=${1-}
 
   case "$sub_command" in
-    focus-display) focus_display ;;
+    list-outputs) list_outputs ;;
+    list-wayland) list_wayland_cons ;;
+    list-xwayland) list_xwayland_cons ;;
     focused-output) focused_output ;;
     focused-window) focused_window ;;
     *) ;;
