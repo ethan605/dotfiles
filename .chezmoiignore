@@ -18,10 +18,12 @@ slack_theme
 
 .config/autostart
 .config/chrome-flags.conf
+.config/chrome-dev-flags.conf
 .config/fcitx5
 .config/fontconfig
 .config/foot
 .config/gtk-3.0
+.config/i3
 .config/imv
 .config/mako
 .config/mimeapps.list
@@ -39,6 +41,7 @@ slack_theme
 .gtkrc-2.0
 .icons
 .local
+.xinitrc
 .xkb
 
 {{ end }}
