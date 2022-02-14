@@ -246,64 +246,17 @@ function __load-work-envs() {
 
 # [[[ Utils
 function creds-login() {
-  profile=$(echo -e "Development\nPre-Prod\nProduction" | fzf)
-  [[ -z "$profile" ]] && return 1
-  "$HOME/Work/creds/venv/bin/creds" aws login -n "$profile" role/tf-engineers-role
-}
+{{- if eq .chezmoi.os "linux" }}
+  creds="$HOME/Work/creds/venv/bin/creds"
+{{- else if eq .chezmoi.os "darwin" }}
+  creds='creds'
+{{- end}}
 
-# Shared helper to utilise FZF for Kubectl
-function __kubectl_fzf() {
-  query="${$(printf ' %q' "$@"):1}"       # convert input args into a single string
-  [[ ! -z "$query" ]] && query="^$query"  # prepend ^ if query isn't empty
-  fzf --header-lines=1 --query="$query" | cut -d' ' -f1
-}
-
-# K8s - show an argo rollout
-function kargo() {
-  rollout=$(kubectl argo rollouts list rollout | __kubectl_fzf "$@")
-  [[ -z "$rollout" ]] && return 1
-  kubectl argo rollouts get rollout "$rollout"
-}
-
-# K8s - show an argo rollouts (with context)
-function kargo!() {
-  context=$(kubectx | fzf)
-  [[ -z "$context" ]] && return 1
-  rollout=$(kubectl argo rollouts list rollout --context="$context" | __kubectl_fzf "$@")
-  [[ -z "$rollout" ]] && return 1
-  kubectl argo rollouts get rollout "$rollout" --context="$context"
-}
-
-# K8s - ssh to a pod
-function kexec() {
-  pod=$(kubectl get pods | __kubectl_fzf "$@")
-  [[ -z "$pod" ]] && return 1
-  kubectl exec -it "$pod" -- bash
-}
-
-# K8s - ssh to a pod (with context)
-function kexec!() {
-  context=$(kubectx | fzf)
-  [[ -z "$context" ]] && return 1
-  pod=$(kubectl get pods --context="$context" | __kubectl_fzf "$@")
-  [[ -z "$pod" ]] && return 1
-  kubectl exec -it "$pod" --context="$context" -- bash
-}
-
-# K8s - list pods
-function kpods() {
-  app=$(kubectl get services | __kubectl_fzf "$@")
-  [[ -z "$app" ]] && return 1
-  kubectl get pods -lapp="$app"
-}
-
-# K8s - list pods (with context)
-function kpods!() {
-  context=$(kubectx | fzf)
-  [[ -z "$context" ]] && return 1
-  app=$(kubectl get services --context="$context" | __kubectl_fzf "$@")
-  [[ -z "$app" ]] && return 1
-  kubectl get pods -lapp="$app" --context="$context"
+  local selected=$("$creds" aws list 2> /dev/null | fzf --header-lines=4 | sed 's/ \+/ /g')
+  [[ -z "$selected" ]] && return 1
+  local profile=$(echo "$selected" | cut -d' ' -f2)
+  local role=$(echo "$selected" | cut -d' ' -f3)
+  "$creds" aws login -n "$profile" "$role"
 }
 
 function __pass_fzf() {
@@ -430,6 +383,7 @@ alias xdg-open='open'
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
+alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw compile'
 
 # Shortcuts
 alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
