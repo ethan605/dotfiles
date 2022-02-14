@@ -13,23 +13,35 @@ require("bufferline").setup {
 
     -- Selected styles
     buffer_selected = bold_only_style,
-    error_selected = bold_only_style,
     error_diagnostic_selected = bold_only_style,
-    warning_selected = bold_only_style,
+    error_selected = bold_only_style,
+    hint_diagnostic_selected = bold_only_style,
+    hint_selected = bold_only_style,
+    info_diagnostic_selected = bold_only_style,
+    info_selected = bold_only_style,
     warning_diagnostic_selected = bold_only_style,
+    warning_selected = bold_only_style,
 
     -- Visible styles
     buffer_visible = no_bg_style,
     diagnostic_visible = no_bg_style,
-    error_visible = no_bg_style,
     error_diagnostic_visible = no_bg_style,
-    warning_visible = no_bg_style,
+    error_visible = no_bg_style,
+    hint_diagnostic_visible = no_bg_style,
+    hint_visible = no_bg_style,
+    info_diagnostic_visible = no_bg_style,
+    info_visible = no_bg_style,
     warning_diagnostic_visible = no_bg_style,
+    warning_visible = no_bg_style,
 
     -- Default styles
     diagnostic = no_bg_style,
     error = no_bg_style,
     error_diagnostic = no_bg_style,
+    hint = no_bg_style,
+    hint_diagnostic = no_bg_style,
+    info = no_bg_style,
+    info_diagnostic = no_bg_style,
     warning = no_bg_style,
     warning_diagnostic = no_bg_style,
 
