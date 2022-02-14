@@ -172,7 +172,6 @@ function __load-sway() {
     export XDG_CURRENT_DESKTOP=sway
 
     exec sway -d 2> $HOME/.logs/sway.log
-    __load-ssh
   fi
 }
 
@@ -418,6 +417,7 @@ alias w='watch --color --differences --no-wrap --exec'
 {{- if eq .chezmoi.os "linux" }}
 
 __load-sway
+__load-ssh
 
 {{- end }}
 
