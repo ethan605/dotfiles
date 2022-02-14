@@ -245,6 +245,42 @@ function __load-work-envs() {
 #]]]
 
 # [[[ Utils
+function __kubectl_fzf() {
+  query="${$(printf ' %q' "$@"):1}"       # convert input args into a single string
+  [[ ! -z "$query" ]] && query="^$query"  # prepend ^ if query isn't empty
+  fzf --header-lines=1 --query="$query" | cut -d' ' -f1
+}
+function kargo() {
+  rollout=$(kubectl argo rollouts list rollout | __kubectl_fzf "$@")
+  [[ -z "$rollout" ]] && return 1 || kubectl argo rollouts get rollout "$rollout"
+}
+function kargo!() {
+  context=$(kubectx | fzf)
+  [[ -z "$context" ]] && return 1
+  rollout=$(kubectl argo rollouts list rollout --context="$context" | __kubectl_fzf "$@")
+  [[ -z "$rollout" ]] && return 1 || kubectl argo rollouts get rollout "$rollout" --context="$context"
+}
+function kexec() {
+  pod=$(kubectl get pods | __kubectl_fzf "$@")
+  [[ -z "$pod" ]] && return 1 || kubectl exec -it "$pod" -- bash
+}
+function kexec!() {
+  context=$(kubectx | fzf)
+  [[ -z "$context" ]] && return 1
+  pod=$(kubectl get pods --context="$context" | __kubectl_fzf "$@")
+  [[ -z "$pod" ]] && return 1 || kubectl exec -it "$pod" --context="$context" -- bash
+}
+function kpods() {
+  app=$(kubectl get services | __kubectl_fzf "$@")
+  [[ -z "$app" ]] && return 1 || kubectl get pods -lapp="$app"
+}
+function kpods!() {
+  context=$(kubectx | fzf)
+  [[ -z "$context" ]] && return 1
+  app=$(kubectl get services --context="$context" | __kubectl_fzf "$@")
+  [[ -z "$app" ]] && return 1 || kubectl get pods -lapp="$app" --context="$context"
+}
+
 {{- if eq .chezmoi.os "linux" }}
 
 function __urlencode() {
@@ -365,14 +401,6 @@ alias glgo='git log --all --decorate --graph --oneline'
 alias gri='git rebase --interactive'
 alias gst='git status'
 
-alias k=kubectl
-alias kag='kubectl argo rollouts get rollout'
-function kp() { kubectl get pods -lapp="$1" }
-function kx() {
-  pod=$(kubectl get pods -lapp="$1" | fzf --header-lines=1 | cut -d' ' -f1)
-  kubectl exec -it "$pod" -- bash
-}
-
 alias p=pass
 alias pc='pass -c'
 alias pe='pass tailedit'
@@ -382,6 +410,7 @@ function pp() {
   pass show "$entry" | bat --language=yaml --paging=always
 }
 alias v=nvim
+alias w='watch --color --differences --no-wrap --exec'
 #]]]
 
 # [[[ Autoloads
