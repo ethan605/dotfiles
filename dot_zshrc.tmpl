@@ -247,7 +247,8 @@ function __load-work-envs() {
 # [[[ Utils
 function creds-login() {
   profile=$(echo -e "Development\nPre-Prod\nProduction" | fzf)
-  [[ -z "$profile" ]] && return 1 || creds aws login -n "$profile" role/tf-engineers-role
+  [[ -z "$profile" ]] && return 1
+  "$HOME/Work/creds/venv/bin/creds" aws login -n "$profile" role/tf-engineers-role
 }
 
 # Shared helper to utilise FZF for Kubectl
@@ -260,7 +261,8 @@ function __kubectl_fzf() {
 # K8s - show an argo rollout
 function kargo() {
   rollout=$(kubectl argo rollouts list rollout | __kubectl_fzf "$@")
-  [[ -z "$rollout" ]] && return 1 || kubectl argo rollouts get rollout "$rollout"
+  [[ -z "$rollout" ]] && return 1
+  kubectl argo rollouts get rollout "$rollout"
 }
 
 # K8s - show an argo rollouts (with context)
@@ -268,13 +270,15 @@ function kargo!() {
   context=$(kubectx | fzf)
   [[ -z "$context" ]] && return 1
   rollout=$(kubectl argo rollouts list rollout --context="$context" | __kubectl_fzf "$@")
-  [[ -z "$rollout" ]] && return 1 || kubectl argo rollouts get rollout "$rollout" --context="$context"
+  [[ -z "$rollout" ]] && return 1
+  kubectl argo rollouts get rollout "$rollout" --context="$context"
 }
 
 # K8s - ssh to a pod
 function kexec() {
   pod=$(kubectl get pods | __kubectl_fzf "$@")
-  [[ -z "$pod" ]] && return 1 || kubectl exec -it "$pod" -- bash
+  [[ -z "$pod" ]] && return 1
+  kubectl exec -it "$pod" -- bash
 }
 
 # K8s - ssh to a pod (with context)
@@ -282,13 +286,15 @@ function kexec!() {
   context=$(kubectx | fzf)
   [[ -z "$context" ]] && return 1
   pod=$(kubectl get pods --context="$context" | __kubectl_fzf "$@")
-  [[ -z "$pod" ]] && return 1 || kubectl exec -it "$pod" --context="$context" -- bash
+  [[ -z "$pod" ]] && return 1
+  kubectl exec -it "$pod" --context="$context" -- bash
 }
 
 # K8s - list pods
 function kpods() {
   app=$(kubectl get services | __kubectl_fzf "$@")
-  [[ -z "$app" ]] && return 1 || kubectl get pods -lapp="$app"
+  [[ -z "$app" ]] && return 1
+  kubectl get pods -lapp="$app"
 }
 
 # K8s - list pods (with context)
@@ -296,7 +302,36 @@ function kpods!() {
   context=$(kubectx | fzf)
   [[ -z "$context" ]] && return 1
   app=$(kubectl get services --context="$context" | __kubectl_fzf "$@")
-  [[ -z "$app" ]] && return 1 || kubectl get pods -lapp="$app" --context="$context"
+  [[ -z "$app" ]] && return 1
+  kubectl get pods -lapp="$app" --context="$context"
+}
+
+function __pass_fzf() {
+  fd --type=file .gpg ~/.password-store | sed "s|^$HOME/.password-store/||;s|.gpg$||" | fzf
+}
+
+function pclip() {
+  entry=${1:-$(__pass_fzf)}
+  [[ -z "$entry" ]] && return 1
+  pass --clip "$entry"
+}
+
+function pedit() {
+  entry=${1:-$(__pass_fzf)}
+  [[ -z "$entry" ]] && return 1
+  pass tailedit "$entry"
+}
+
+function potp() {
+  entry=${1:-$(__pass_fzf)}
+  [[ -z "$entry" ]] && return 1
+  pass otp -c "$entry"
+}
+
+function pshow() {
+  entry=${1:-$(__pass_fzf)}
+  [[ -z "$entry" ]] && return 1
+  pass show "$entry" | bat --language=yaml --paging=always
 }
 
 {{- if eq .chezmoi.os "linux" }}
@@ -418,14 +453,6 @@ alias glgo='git log --all --decorate --graph --oneline'
 alias gri='git rebase --interactive'
 alias gst='git status'
 
-alias p=pass
-alias pc='pass -c'
-alias pe='pass tailedit'
-alias po='pass otp -c'
-function pp() {
-  entry=$(fd --type=file .gpg ~/.password-store | sed "s|^$HOME/.password-store/||;s|.gpg$||" | fzf)
-  pass show "$entry" | bat --language=yaml --paging=always
-}
 alias v=nvim
 alias w='watch --color --differences --no-wrap --exec'
 #]]]
