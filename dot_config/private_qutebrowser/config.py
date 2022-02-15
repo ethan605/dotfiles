@@ -6,7 +6,24 @@ c: ConfigContainer = c  # noqa: F821 pylint: disable=E0602,C0103
 config.load_autoconfig(False)
 c.auto_save.session = True
 c.completion.shrink = True
-c.fonts.statusbar = "12 Cantarell"
+
+# Fonts
+c.fonts.completion.entry = "12pt OperatorMonoLig Nerd Font"
+c.fonts.completion.category = "bold 12pt OperatorMonoLig Nerd Font"
+c.fonts.debug_console = "12pt OperatorMonoLig Nerd Font"
+c.fonts.downloads = "12pt OperatorMonoLig Nerd Font"
+c.fonts.hints = "12pt OperatorMonoLig Nerd Font"
+c.fonts.keyhint = "12pt OperatorMonoLig Nerd Font"
+c.fonts.messages.error = "12pt OperatorMonoLig Nerd Font"
+c.fonts.messages.info = "12pt OperatorMonoLig Nerd Font"
+c.fonts.messages.warning = "12pt OperatorMonoLig Nerd Font"
+c.fonts.prompts = "12pt Cantarell"
+c.fonts.statusbar = "12pt OperatorMonoLig Nerd Font"
+c.fonts.tabs.selected = "14pt Cantarell"
+c.fonts.tabs.unselected = "14pt Cantarell"
+c.fonts.web.family.fixed = "OperatorMonoLig Nerd Font"
+c.fonts.web.family.sans_serif = "OperatorMonoLig Nerd Font"
+c.fonts.web.family.serif = "OperatorMonoLig Nerd Font"
 
 
 class Colors:
