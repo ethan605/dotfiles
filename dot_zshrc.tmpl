@@ -156,8 +156,10 @@ function __load-ssh() {
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-  eval $(ssh-agent)
-  cat ~/.ssh/id_ed25519 | DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" ssh-add -
+  if [[ ! -z "$SSH_CLIENT" && ! -z "$SSH_TTY" ]]; then
+    eval $(ssh-agent)
+    cat ~/.ssh/id_ed25519 | DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" ssh-add -
+  fi
 
 {{- end }}
 }
@@ -398,11 +400,10 @@ alias w='watch --color --differences --errexit --exec'
 
 # [[[ Autoloads
 {{- if eq .chezmoi.os "linux" }}
-
 __load-sway
-__load-ssh
-
 {{- end }}
+
+__load-ssh
 
 # Base envs
 __load-zim
