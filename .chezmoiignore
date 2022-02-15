@@ -13,6 +13,11 @@ slack_theme
 .mbsyncrc
 # ]]]
 
+# [[[ For experiments only
+.config/i3
+.xinitrc
+# ]]]
+
 # [[[ Linux-exclusive files
 {{ if ne .chezmoi.os "linux" }}
 
@@ -23,7 +28,6 @@ slack_theme
 .config/fontconfig
 .config/foot
 .config/gtk-3.0
-.config/i3
 .config/imv
 .config/mako
 .config/mimeapps.list
@@ -41,7 +45,6 @@ slack_theme
 .gtkrc-2.0
 .icons
 .local
-.xinitrc
 .xkb
 
 {{ end }}
