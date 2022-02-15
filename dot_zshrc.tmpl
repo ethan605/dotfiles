@@ -247,13 +247,16 @@ function __load-work-envs() {
 # [[[ Utils
 function creds-login() {
 {{- if eq .chezmoi.os "linux" }}
-  creds="$HOME/Work/creds/venv/bin/creds"
+  local creds="$HOME/Work/creds/venv/bin/creds"
 {{- else if eq .chezmoi.os "darwin" }}
-  creds='creds'
+  local creds='creds'
 {{- end}}
 
-  local selected=$("$creds" aws list 2> /dev/null | fzf --header-lines=4 | sed 's/ \+/ /g')
+  local options=$("$creds" aws list 2> /dev/null)
+  local header_lines=$(echo "$options" | rg -n "\-{4,}" | cut -d':' -f1)
+  local selected=$(echo "$options" | fzf --header-lines="$header_lines" | sed 's/\s\+/ /g')
   [[ -z "$selected" ]] && return 1
+
   local profile=$(echo "$selected" | cut -d' ' -f2)
   local role=$(echo "$selected" | cut -d' ' -f3)
   "$creds" aws login -n "$profile" "$role"
@@ -263,6 +266,7 @@ function creds-login() {
 
 function __urlencode() {
   local length="${#1}"
+
   for (( i = 0; i < length; i++ )); do
     local c="${1:$i:1}"
     case $c in
