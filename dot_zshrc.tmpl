@@ -147,13 +147,21 @@ function __load-perl() {
 {{- end }}
 }
 
+function __load-ssh() {
 {{- if eq .chezmoi.os "linux" }}
 
-function __load-ssh() {
   export SSH_ASKPASS="$HOME/.local/bin/ssh-pass"
   eval $(keychain --eval --quiet "$HOME/.ssh/id_ed25519")
   unset SSH_ASKPASS
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+  eval $(ssh-agent) && cat ~/.ssh/id_ed25519 | DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" ssh-add -
+
+{{- end }}
 }
+
+{{- if eq .chezmoi.os "linux" }}
 
 function __load-sway() {
   if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
