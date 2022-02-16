@@ -25,13 +25,24 @@ class Fonts:
 
 
 config.load_autoconfig(False)
+
+# Key bindings
+config.bind("d", "nop")
+config.bind("gc", "tab-close")
 config.bind("g[", "tab-prev")
 config.bind("g]", "tab-next")
 config.bind("yl", "yank pretty-url")
 
 c.auto_save.session = True
 c.completion.shrink = True
+c.confirm_quit = ["multiple-tabs", "downloads"]
 c.editor.command = ["foot", "-e", "nvim", "{file}"]
+c.url.searchengines = {
+    "DEFAULT": "https://duckduckgo.com/?q={}",
+    "arch": "https://wiki.archlinux.org/?search={}",
+    "crunch": "https://www.crunchbase.com/textsearch?q={}",
+    "define": "https://dictionary.cambridge.org/search/direct/?datasetsearch=english&q={}",
+}
 
 # Fonts
 fonts = Fonts()
@@ -42,7 +53,7 @@ c.fonts.debug_console = f"{fonts.medium} {fonts.fixed}"
 c.fonts.downloads = f"{fonts.medium} {fonts.fixed}"
 c.fonts.hints = f"{fonts.medium} {fonts.fixed}"
 c.fonts.keyhint = f"{fonts.medium} {fonts.fixed}"
-c.fonts.prompts = f"{fonts.medium} {fonts.sans}"
+c.fonts.prompts = f"{fonts.large} {fonts.sans}"
 c.fonts.statusbar = f"{fonts.medium} {fonts.fixed}"
 c.fonts.messages.error = f"{fonts.medium} {fonts.fixed}"
 c.fonts.messages.info = f"{fonts.medium} {fonts.fixed}"
@@ -109,7 +120,7 @@ c.colors.messages.info.fg = colors.magenta
 c.colors.messages.info.bg = colors.black
 c.colors.messages.info.border = colors.black
 
-c.colors.prompts.fg = colors.magenta
+c.colors.prompts.fg = colors.white
 c.colors.prompts.bg = colors.black
 c.colors.prompts.border = colors.black
 c.colors.prompts.selected.fg = colors.magenta
@@ -169,4 +180,4 @@ c.colors.tabs.selected.odd.bg = colors.blue
 c.colors.tabs.selected.even.fg = colors.black
 c.colors.tabs.selected.even.bg = colors.blue
 
-c.colors.webpage.bg = colors.black
+# c.colors.webpage.bg = colors.black
