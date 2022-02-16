@@ -16,20 +16,19 @@ function load_bemenu() {
     --fn "pango:Cantarell 14"
 }
 
-function launcher() {
-  load_bemenu "🔎"
-}
-
 function calc() {
   # Based on https://github.com/barbuk/menu-qalc
   # which is based on https://github.com/onespaceman/menu-calc
-  answer=""
+  local answer=""
 
   if [ -n "${1-}" ]; then
-    answer=$(echo "$1" | qalc +u8 -color=never -terse | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}')
+    answer=$(echo "$1" \
+      | qalc +u8 -color=never -terse \
+      | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}'
+    )
   fi
 
-  action=$(echo -e " Copy \n Clear " | load_bemenu "= $answer")
+  local action=$(echo -e " Copy \n Clear " | load_bemenu "= $answer")
 
   case $action in
     " Copy ") echo -n "$answer" | wl-copy ;;
