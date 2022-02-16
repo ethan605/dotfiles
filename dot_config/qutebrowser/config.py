@@ -27,11 +27,10 @@ class Fonts:
 config.load_autoconfig(False)
 
 # Key bindings
-config.bind("d", "nop")
+config.unbind("d")
 config.bind("gc", "tab-close")
 config.bind("g[", "tab-prev")
 config.bind("g]", "tab-next")
-config.bind("yl", "yank pretty-url")
 
 c.auto_save.session = True
 c.completion.shrink = True
