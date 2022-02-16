@@ -101,7 +101,7 @@ c.colors.downloads.stop.bg = colors.blue
 c.colors.downloads.error.fg = colors.black
 
 c.colors.hints.fg = colors.black
-c.colors.hints.bg = colors.green
+c.colors.hints.bg = colors.yellow
 c.colors.hints.match.fg = colors.magenta
 
 c.colors.keyhint.suffix.fg = colors.magenta
@@ -180,4 +180,4 @@ c.colors.tabs.selected.odd.bg = colors.blue
 c.colors.tabs.selected.even.fg = colors.black
 c.colors.tabs.selected.even.bg = colors.blue
 
-# c.colors.webpage.bg = colors.black
+c.colors.webpage.bg = colors.white
