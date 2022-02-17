@@ -340,6 +340,13 @@ function workplace_proxy() {
   fi
 }
 
+{{- else if eq .chezmoi.os "darwin" }}
+
+function fix-keyboard() {
+  # Based on: https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+  hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x7000000E1}]}'
+}
+
 {{- end }}
 
 #]]]
@@ -361,9 +368,6 @@ alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
 {{- else if eq .chezmoi.os "darwin" }}
 
 alias brewed='brew update --verbose && brew upgrade --verbose && brew cleanup --prune=all'
-function fix-keyboard() {
-  hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x7000000E1}]}'
-}
 alias load-time='time /usr/local/bin/zsh -ic exit'
 alias policy-off='sudo spctl --master-disable'
 alias policy-on='sudo spctl --master-enable'
