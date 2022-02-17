@@ -28,6 +28,8 @@ config.load_autoconfig(False)
 
 # Key bindings
 config.unbind("d")
+config.unbind("J")
+config.unbind("K")
 config.bind("gc", "tab-close")
 config.bind("g[", "tab-prev")
 config.bind("g]", "tab-next")
@@ -46,22 +48,27 @@ c.url.searchengines = {
 # Fonts
 fonts = Fonts()
 
-c.fonts.completion.entry = f"{fonts.medium} {fonts.fixed}"
-c.fonts.completion.category = f"bold {fonts.medium} {fonts.fixed}"
-c.fonts.debug_console = f"{fonts.medium} {fonts.fixed}"
-c.fonts.downloads = f"{fonts.medium} {fonts.fixed}"
-c.fonts.hints = f"{fonts.medium} {fonts.fixed}"
-c.fonts.keyhint = f"{fonts.medium} {fonts.fixed}"
+c.fonts.default_family = fonts.fixed
+c.fonts.default_size = fonts.medium
+# c.fonts.completion.category = f"bold {fonts.medium} {fonts.fixed}"
+# c.fonts.completion.entry = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.debug_console = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.downloads = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.hints = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.keyhint = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.messages.error = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.messages.info = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.messages.warning = f"{fonts.medium} {fonts.fixed}"
 c.fonts.prompts = f"{fonts.large} {fonts.sans}"
-c.fonts.statusbar = f"{fonts.medium} {fonts.fixed}"
-c.fonts.messages.error = f"{fonts.medium} {fonts.fixed}"
-c.fonts.messages.info = f"{fonts.medium} {fonts.fixed}"
-c.fonts.messages.warning = f"{fonts.medium} {fonts.fixed}"
+# c.fonts.statusbar = f"{fonts.medium} {fonts.fixed}"
 c.fonts.tabs.selected = f"{fonts.large} {fonts.sans}"
 c.fonts.tabs.unselected = f"{fonts.large} {fonts.sans}"
 c.fonts.web.family.fixed = fonts.fixed
 c.fonts.web.family.sans_serif = fonts.sans
 c.fonts.web.family.serif = fonts.sans
+c.fonts.web.family.standard = fonts.sans
+c.fonts.web.size.default = 17
+c.fonts.web.size.default_fixed = 14
 
 # Colors
 colors = Colors()
@@ -99,9 +106,10 @@ c.colors.downloads.stop.fg = colors.black
 c.colors.downloads.stop.bg = colors.blue
 c.colors.downloads.error.fg = colors.black
 
+c.hints.border = f"1px solid {colors.yellow}"
 c.colors.hints.fg = colors.black
 c.colors.hints.bg = colors.yellow
-c.colors.hints.match.fg = colors.magenta
+c.colors.hints.match.fg = colors.red
 
 c.colors.keyhint.suffix.fg = colors.magenta
 c.colors.keyhint.fg = colors.magenta
