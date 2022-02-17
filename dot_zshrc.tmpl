@@ -45,8 +45,6 @@ export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
-PATH="$HOME/.local/bin:$PATH"
-
 {{- else if eq .chezmoi.os "darwin" }}
 
 # JDK & JDTLS
@@ -77,6 +75,7 @@ PATH="./node_modules/.bin:$PATH"
 
 {{- end }}
 
+PATH="$HOME/.local/bin:$PATH"
 export PATH
 #]]]
 
