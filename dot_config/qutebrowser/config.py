@@ -32,6 +32,7 @@ config.unbind("K")
 config.bind("gc", "tab-close")
 config.bind("g[", "tab-prev")
 config.bind("g]", "tab-next")
+config.bind("<Shift+Escape>", ":fake-key <Escape>")
 
 config.set("auto_save.session", True)
 config.set("completion.shrink", True)
