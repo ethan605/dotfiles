@@ -4,6 +4,7 @@ README.md
 slack_theme
 
 # [[[ Obsolete configs - keep for future reference only
+.config/karabiner
 .config/kitty
 .config/logiops
 .config/neomutt
@@ -55,7 +56,6 @@ slack_theme
 # [[[ MacOS-exclusive files
 {{ if ne .chezmoi.os "darwin" }}
 
-.config/karabiner
 Library
 
 {{ end }}
