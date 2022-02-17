@@ -1,5 +1,6 @@
 from qutebrowser.config.configfiles import ConfigAPI  # noqa: F401
 from qutebrowser.config.config import ConfigContainer  # noqa: F401
+
 config: ConfigAPI = config  # noqa: F821 pylint: disable=E0602,C0103
 c: ConfigContainer = c  # noqa: F821 pylint: disable=E0602,C0103
 
@@ -19,9 +20,9 @@ class Colors:
 class Fonts:
     sans = "Cantarell"
     fixed = "OperatorMonoLig Nerd Font"
-    small = "10pt"
-    medium = "12pt"
-    large = "14pt"
+    medium = 12
+    large = 14
+    web = 17
 
 
 config.load_autoconfig(False)
@@ -34,41 +35,37 @@ config.bind("gc", "tab-close")
 config.bind("g[", "tab-prev")
 config.bind("g]", "tab-next")
 
-c.auto_save.session = True
-c.completion.shrink = True
-c.confirm_quit = ["multiple-tabs", "downloads"]
-c.editor.command = ["foot", "-e", "nvim", "{file}"]
-c.url.searchengines = {
-    "DEFAULT": "https://duckduckgo.com/?q={}",
-    "arch": "https://wiki.archlinux.org/?search={}",
-    "crunch": "https://www.crunchbase.com/textsearch?q={}",
-    "define": "https://dictionary.cambridge.org/search/direct/?datasetsearch=english&q={}",
-}
+config.set("auto_save.session", True)
+config.set("completion.shrink", True)
+config.set("confirm_quit", ["multiple-tabs", "downloads"])
+config.set("content.notifications.enabled", True, "https://web.whatsapp.com/")
+config.set(
+    "content.tls.certificate_errors", "load-insecurely", "https://127.0.0.1:8384/"
+)
+config.set("editor.command", ["foot", "-e", "nvim", "{file}"])
+config.set(
+    "url.searchengines",
+    {
+        "DEFAULT": "https://duckduckgo.com/?q={}",
+        "arch": "https://wiki.archlinux.org/?search={}",
+        "crunch": "https://www.crunchbase.com/textsearch?q={}",
+        "define": "https://dictionary.cambridge.org/search/direct/?datasetsearch=english&q={}",
+    },
+)
 
 # Fonts
 fonts = Fonts()
 
-c.fonts.default_family = fonts.fixed
-c.fonts.default_size = fonts.medium
-# c.fonts.completion.category = f"bold {fonts.medium} {fonts.fixed}"
-# c.fonts.completion.entry = f"{fonts.medium} {fonts.fixed}"
-# c.fonts.debug_console = f"{fonts.medium} {fonts.fixed}"
-# c.fonts.downloads = f"{fonts.medium} {fonts.fixed}"
-# c.fonts.hints = f"{fonts.medium} {fonts.fixed}"
-# c.fonts.keyhint = f"{fonts.medium} {fonts.fixed}"
-# c.fonts.messages.error = f"{fonts.medium} {fonts.fixed}"
-# c.fonts.messages.info = f"{fonts.medium} {fonts.fixed}"
-# c.fonts.messages.warning = f"{fonts.medium} {fonts.fixed}"
-c.fonts.prompts = f"{fonts.large} {fonts.sans}"
-# c.fonts.statusbar = f"{fonts.medium} {fonts.fixed}"
-c.fonts.tabs.selected = f"{fonts.large} {fonts.sans}"
-c.fonts.tabs.unselected = f"{fonts.large} {fonts.sans}"
-c.fonts.web.family.fixed = fonts.fixed
-c.fonts.web.family.sans_serif = fonts.sans
-c.fonts.web.family.serif = fonts.sans
-c.fonts.web.family.standard = fonts.sans
-c.fonts.web.size.default = 17
-c.fonts.web.size.default_fixed = 14
+config.set("fonts.default_family", fonts.fixed)
+config.set("fonts.default_size", f"{fonts.medium}pt")
+config.set("fonts.tabs.selected", f"{fonts.large}pt {fonts.sans}")
+config.set("fonts.tabs.unselected", f"{fonts.large}pt {fonts.sans}")
+config.set("fonts.web.family.fixed", fonts.fixed)
+config.set("fonts.web.family.sans_serif", fonts.sans)
+config.set("fonts.web.family.serif", fonts.sans)
+config.set("fonts.web.family.standard", fonts.sans)
+config.set("fonts.web.size.default", fonts.web)
+config.set("fonts.web.size.default_fixed", fonts.medium)
 
 # Colors
 colors = Colors()
