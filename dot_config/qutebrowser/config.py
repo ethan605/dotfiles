@@ -1,8 +1,6 @@
-from qutebrowser.config.configfiles import ConfigAPI  # noqa: F401
-from qutebrowser.config.config import ConfigContainer  # noqa: F401
+from qutebrowser.config.configfiles import ConfigAPI
 
-config: ConfigAPI = config  # noqa: F821 pylint: disable=E0602,C0103
-c: ConfigContainer = c  # noqa: F821 pylint: disable=E0602,C0103
+config: ConfigAPI = config
 
 
 class Colors:
@@ -70,118 +68,118 @@ config.set("fonts.web.size.default_fixed", fonts.medium)
 # Colors
 colors = Colors()
 
-c.colors.completion.fg = colors.white
-c.colors.completion.odd.bg = colors.black
-c.colors.completion.even.bg = colors.black
+config.set("colors.completion.fg", colors.white)
+config.set("colors.completion.odd.bg", colors.black)
+config.set("colors.completion.even.bg", colors.black)
 
-c.colors.completion.category.fg = colors.magenta
-c.colors.completion.category.bg = colors.black
-c.colors.completion.category.border.top = colors.black
-c.colors.completion.category.border.bottom = colors.black
+config.set("colors.completion.category.fg", colors.magenta)
+config.set("colors.completion.category.bg", colors.black)
+config.set("colors.completion.category.border.top", colors.black)
+config.set("colors.completion.category.border.bottom", colors.black)
 
-c.colors.completion.item.selected.fg = colors.black
-c.colors.completion.item.selected.bg = colors.yellow
-c.colors.completion.item.selected.border.top = colors.yellow
-c.colors.completion.item.selected.border.bottom = colors.yellow
-c.colors.completion.item.selected.match.fg = colors.magenta
+config.set("colors.completion.item.selected.fg", colors.black)
+config.set("colors.completion.item.selected.bg", colors.yellow)
+config.set("colors.completion.item.selected.border.top", colors.yellow)
+config.set("colors.completion.item.selected.border.bottom", colors.yellow)
+config.set("colors.completion.item.selected.match.fg", colors.magenta)
 
-c.colors.completion.match.fg = colors.magenta
-c.colors.completion.scrollbar.fg = colors.magenta
-c.colors.completion.scrollbar.bg = colors.black
+config.set("colors.completion.match.fg", colors.magenta)
+config.set("colors.completion.scrollbar.fg", colors.magenta)
+config.set("colors.completion.scrollbar.bg", colors.black)
 
-c.colors.contextmenu.disabled.fg = colors.light_black
-c.colors.contextmenu.disabled.bg = colors.black
-c.colors.contextmenu.menu.fg = colors.white
-c.colors.contextmenu.menu.bg = colors.black
-c.colors.contextmenu.selected.fg = colors.black
-c.colors.contextmenu.selected.bg = colors.blue
+config.set("colors.contextmenu.disabled.fg", colors.light_black)
+config.set("colors.contextmenu.disabled.bg", colors.black)
+config.set("colors.contextmenu.menu.fg", colors.white)
+config.set("colors.contextmenu.menu.bg", colors.black)
+config.set("colors.contextmenu.selected.fg", colors.black)
+config.set("colors.contextmenu.selected.bg", colors.blue)
 
-c.colors.downloads.bar.bg = colors.black
-c.colors.downloads.start.fg = colors.black
-c.colors.downloads.start.bg = colors.magenta
-c.colors.downloads.stop.fg = colors.black
-c.colors.downloads.stop.bg = colors.blue
-c.colors.downloads.error.fg = colors.black
+config.set("colors.downloads.bar.bg", colors.black)
+config.set("colors.downloads.start.fg", colors.black)
+config.set("colors.downloads.start.bg", colors.magenta)
+config.set("colors.downloads.stop.fg", colors.black)
+config.set("colors.downloads.stop.bg", colors.blue)
+config.set("colors.downloads.error.fg", colors.black)
 
-c.hints.border = f"1px solid {colors.yellow}"
-c.colors.hints.fg = colors.black
-c.colors.hints.bg = colors.yellow
-c.colors.hints.match.fg = colors.red
+config.set("hints.border", f"1px solid {colors.yellow}")
+config.set("colors.hints.fg", colors.black)
+config.set("colors.hints.bg", colors.yellow)
+config.set("colors.hints.match.fg", colors.red)
 
-c.colors.keyhint.suffix.fg = colors.magenta
-c.colors.keyhint.fg = colors.magenta
-c.colors.keyhint.bg = colors.black
+config.set("colors.keyhint.suffix.fg", colors.magenta)
+config.set("colors.keyhint.fg", colors.magenta)
+config.set("colors.keyhint.bg", colors.black)
 
-c.colors.messages.error.fg = colors.black
-c.colors.messages.error.bg = colors.red
-c.colors.messages.error.border = colors.red
+config.set("colors.messages.error.fg", colors.black)
+config.set("colors.messages.error.bg", colors.red)
+config.set("colors.messages.error.border", colors.red)
 
-c.colors.messages.warning.fg = colors.black
-c.colors.messages.warning.bg = colors.yellow
-c.colors.messages.warning.border = colors.yellow
+config.set("colors.messages.warning.fg", colors.black)
+config.set("colors.messages.warning.bg", colors.yellow)
+config.set("colors.messages.warning.border", colors.yellow)
 
-c.colors.messages.info.fg = colors.magenta
-c.colors.messages.info.bg = colors.black
-c.colors.messages.info.border = colors.black
+config.set("colors.messages.info.fg", colors.magenta)
+config.set("colors.messages.info.bg", colors.black)
+config.set("colors.messages.info.border", colors.black)
 
-c.colors.prompts.fg = colors.white
-c.colors.prompts.bg = colors.black
-c.colors.prompts.border = colors.black
-c.colors.prompts.selected.fg = colors.magenta
-c.colors.prompts.selected.bg = colors.green
+config.set("colors.prompts.fg", colors.white)
+config.set("colors.prompts.bg", colors.black)
+config.set("colors.prompts.border", colors.black)
+config.set("colors.prompts.selected.fg", colors.magenta)
+config.set("colors.prompts.selected.bg", colors.green)
 
-c.colors.statusbar.normal.fg = colors.magenta
-c.colors.statusbar.normal.bg = colors.black
-c.colors.statusbar.insert.fg = colors.blue
-c.colors.statusbar.insert.bg = colors.black
-c.colors.statusbar.passthrough.fg = colors.green
-c.colors.statusbar.passthrough.bg = colors.black
-c.colors.statusbar.private.fg = colors.cyan
-c.colors.statusbar.private.bg = colors.black
+config.set("colors.statusbar.normal.fg", colors.magenta)
+config.set("colors.statusbar.normal.bg", colors.black)
+config.set("colors.statusbar.insert.fg", colors.blue)
+config.set("colors.statusbar.insert.bg", colors.black)
+config.set("colors.statusbar.passthrough.fg", colors.green)
+config.set("colors.statusbar.passthrough.bg", colors.black)
+config.set("colors.statusbar.private.fg", colors.cyan)
+config.set("colors.statusbar.private.bg", colors.black)
 
-c.colors.statusbar.command.fg = colors.white
-c.colors.statusbar.command.bg = colors.black
-c.colors.statusbar.command.private.fg = colors.cyan
-c.colors.statusbar.command.private.bg = colors.red
+config.set("colors.statusbar.command.fg", colors.white)
+config.set("colors.statusbar.command.bg", colors.black)
+config.set("colors.statusbar.command.private.fg", colors.cyan)
+config.set("colors.statusbar.command.private.bg", colors.red)
 
-c.colors.statusbar.caret.fg = colors.magenta
-c.colors.statusbar.caret.bg = colors.black
-c.colors.statusbar.caret.selection.fg = colors.magenta
-c.colors.statusbar.caret.selection.bg = colors.black
+config.set("colors.statusbar.caret.fg", colors.magenta)
+config.set("colors.statusbar.caret.bg", colors.black)
+config.set("colors.statusbar.caret.selection.fg", colors.magenta)
+config.set("colors.statusbar.caret.selection.bg", colors.black)
 
-c.colors.statusbar.progress.bg = colors.magenta
+config.set("colors.statusbar.progress.bg", colors.magenta)
 
-c.colors.statusbar.url.fg = colors.magenta
-c.colors.statusbar.url.hover.fg = colors.green
-c.colors.statusbar.url.success.http.fg = colors.yellow
-c.colors.statusbar.url.success.https.fg = colors.white
-c.colors.statusbar.url.warn.fg = colors.yellow
-c.colors.statusbar.url.error.fg = colors.red
+config.set("colors.statusbar.url.fg", colors.magenta)
+config.set("colors.statusbar.url.hover.fg", colors.green)
+config.set("colors.statusbar.url.success.http.fg", colors.yellow)
+config.set("colors.statusbar.url.success.https.fg", colors.white)
+config.set("colors.statusbar.url.warn.fg", colors.yellow)
+config.set("colors.statusbar.url.error.fg", colors.red)
 
-c.colors.tabs.bar.bg = colors.black
+config.set("colors.tabs.bar.bg", colors.black)
 
-c.colors.tabs.indicator.start = colors.magenta
-c.colors.tabs.indicator.stop = colors.blue
-c.colors.tabs.indicator.error = colors.red
+config.set("colors.tabs.indicator.start", colors.magenta)
+config.set("colors.tabs.indicator.stop", colors.blue)
+config.set("colors.tabs.indicator.error", colors.red)
 
-c.colors.tabs.odd.fg = colors.white
-c.colors.tabs.odd.bg = colors.black
-c.colors.tabs.even.fg = colors.white
-c.colors.tabs.even.bg = colors.black
+config.set("colors.tabs.odd.fg", colors.white)
+config.set("colors.tabs.odd.bg", colors.black)
+config.set("colors.tabs.even.fg", colors.white)
+config.set("colors.tabs.even.bg", colors.black)
 
-c.colors.tabs.pinned.even.fg = colors.white
-c.colors.tabs.pinned.even.bg = colors.black
-c.colors.tabs.pinned.odd.fg = colors.white
-c.colors.tabs.pinned.odd.bg = colors.black
+config.set("colors.tabs.pinned.even.fg", colors.white)
+config.set("colors.tabs.pinned.even.bg", colors.black)
+config.set("colors.tabs.pinned.odd.fg", colors.white)
+config.set("colors.tabs.pinned.odd.bg", colors.black)
 
-c.colors.tabs.pinned.selected.even.fg = colors.black
-c.colors.tabs.pinned.selected.even.bg = colors.blue
-c.colors.tabs.pinned.selected.odd.fg = colors.black
-c.colors.tabs.pinned.selected.odd.bg = colors.blue
+config.set("colors.tabs.pinned.selected.even.fg", colors.black)
+config.set("colors.tabs.pinned.selected.even.bg", colors.blue)
+config.set("colors.tabs.pinned.selected.odd.fg", colors.black)
+config.set("colors.tabs.pinned.selected.odd.bg", colors.blue)
 
-c.colors.tabs.selected.odd.fg = colors.black
-c.colors.tabs.selected.odd.bg = colors.blue
-c.colors.tabs.selected.even.fg = colors.black
-c.colors.tabs.selected.even.bg = colors.blue
+config.set("colors.tabs.selected.odd.fg", colors.black)
+config.set("colors.tabs.selected.odd.bg", colors.blue)
+config.set("colors.tabs.selected.even.fg", colors.black)
+config.set("colors.tabs.selected.even.bg", colors.blue)
 
-c.colors.webpage.bg = colors.white
+config.set("colors.webpage.bg", colors.white)
