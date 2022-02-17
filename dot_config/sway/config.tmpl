@@ -230,17 +230,17 @@ bindsym {
   # App launcher
   $mod+d exec j4-dmenu-desktop --dmenu="bemenu-utils launcher" --term=$term
 
-  # Command runner
-  $mod+Shift+d exec j4-dmenu-desktop --dmenu="bemenu-utils runner" --term=$term
-
   # Calc
-  $mod+Equal exec j4-dmenu-desktop --dmenu="bemenu-utils calc" --term=$term
+  $mod+Equal exec bemenu-utils calc
 
-  # Emoji picker
-  Ctrl+Alt+e exec j4-dmenu-desktop --dmenu="bemenu-utils emoji" --term=$term
+  # Pass
+  $mod+Shift+p exec bemenu-utils pass
 
   # Fcitx5 quickphrase picker
-  Ctrl+Alt+Shift+e exec j4-dmenu-desktop --dmenu="bemenu-utils quickphrase" --term=$term
+  Ctrl+Alt+e exec bemenu-utils quickphrase
+
+  # Emoji picker
+  Ctrl+Alt+Shift+e exec bemenu-utils emoji
 }
 
 # Open wofi as apps launcher, configured at $XDG_CONFIG_HOME/wofi/config
