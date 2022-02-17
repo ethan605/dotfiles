@@ -47,6 +47,8 @@ require("bufferline").setup {
 
     duplicate = no_bg_style,
     pick = no_bg_style,
+
+    tab_selected = { gui = "bold", guifg = "cyan" }
   },
   options = {
     -- Diagnostics

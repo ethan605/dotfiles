@@ -28,6 +28,5 @@ vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", default_opts)
 vim.api.nvim_set_keymap("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", default_opts)
 vim.api.nvim_set_keymap("n", "]c", "<cmd>Gitsigns next_hunk<CR>", default_opts)
 
---require("keymaps.barbar")
 require("keymaps.bufferline")
 require("keymaps.compe")
