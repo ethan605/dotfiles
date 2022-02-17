@@ -4,6 +4,7 @@ README.md
 slack_theme
 
 # [[[ Obsolete configs - keep for future reference only
+.config/kitty
 .config/logiops
 .config/neomutt
 .config/termite
@@ -34,6 +35,7 @@ slack_theme
 .config/mpd
 .config/ncmpcpp
 .config/nordvpn
+.config/qutebrowser
 .config/solaar
 .config/swappy
 .config/sway
@@ -54,7 +56,6 @@ slack_theme
 {{ if ne .chezmoi.os "darwin" }}
 
 .config/karabiner
-.config/kitty
 Library
 
 {{ end }}
