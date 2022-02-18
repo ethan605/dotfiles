@@ -290,7 +290,12 @@ function osc7_cwd() {
   printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(__urlencode "$PWD")"
 }
 
-function workplace_proxy() {
+function nord_dns() {
+  device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
+  nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
+}
+
+function work_proxy() {
   local proxy_host="work-macbook.local"
   local proxy_ip=$(getent hosts "$proxy_host" | awk '{ print $1 }')
 
@@ -342,7 +347,7 @@ function workplace_proxy() {
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-function fix-keyboard() {
+function fix_keyboard() {
   # Based on: https://developer.apple.com/library/archive/technotes/tn2450/_index.html
   hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x7000000E1}]}'
 }
