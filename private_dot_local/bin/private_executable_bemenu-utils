@@ -53,7 +53,7 @@ function calc() {
 }
 
 function pass() {
-  local backend_opts="bemenu ${BEMENU_OPTS[@]}"
+  local backend_opts="bemenu ${BEMENU_OPTS[@]} --prompt pass"
   tessen --backend="$backend_opts" --action=copy
 }
 
