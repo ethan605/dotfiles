@@ -49,9 +49,10 @@ config.set(
     "url.searchengines",
     {
         "DEFAULT": "https://duckduckgo.com/?q={}",
-        "arch": "https://wiki.archlinux.org/?search={}",
-        "crunch": "https://www.crunchbase.com/textsearch?q={}",
-        "define": "https://dictionary.cambridge.org/search/direct/?datasetsearch=english&q={}",
+        "warch": "https://wiki.archlinux.org/?search={}",
+        "pac": "https://archlinux.org/packages/?q={}",
+        "aur": "https://aur.archlinux.org/packages?K={}",
+        "dict": "https://dictionary.cambridge.org/search/direct/?datasetsearch=english&q={}",
     },
 )
 
