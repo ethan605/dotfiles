@@ -4,7 +4,6 @@ set -euxo pipefail
 BEMENU_OPTS=(
   --ignorecase
   --prompt bemenu
-  --grab
   --line-height 30
   --tb '#282a36'
   --tf '#ff6ac1'
@@ -52,11 +51,6 @@ function calc() {
   esac
 }
 
-function pass() {
-  local backend_opts="bemenu ${BEMENU_OPTS[@]} --prompt pass"
-  tessen --backend="$backend_opts" --action=copy
-}
-
 function quickphrase() {
   cat /usr/share/fcitx5/data/quickphrase.d/emoji-eac.mb \
     | sed -r 's/:(.*):\s*(.*)/\2 \1/gi; s/_/ /gi' \
@@ -74,7 +68,6 @@ function main() {
     launcher) bemenu "${BEMENU_OPTS[@]}" --prompt "🔎" ;;
     calc) calc "$@" ;;
     emoji) emoji ;;
-    pass) pass ;;
     quickphrase) quickphrase ;;
     *) ;;
   esac
