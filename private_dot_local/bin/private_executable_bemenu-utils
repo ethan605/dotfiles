@@ -51,7 +51,7 @@ function launcher() {
 }
 
 function pass() {
-  BEMENU_OPTS="$BEMENU_OPTS --prompt pass" tessen --dmenu=bemenu --action=copy
+  BEMENU_OPTS="$BEMENU_OPTS --prompt pass" tessen
 }
 
 function quickphrase() {
