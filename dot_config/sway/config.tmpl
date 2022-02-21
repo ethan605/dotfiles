@@ -1,4 +1,4 @@
-# vim:fileencoding=utf-8:filetype=config:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+# vim:fileencoding=utf-8:filetype=conf:foldenable:foldmethod=marker:foldmarker=[[[,]]]
 
 # [[[ Variables
 
@@ -225,7 +225,7 @@ bindsym $mod+Shift+c reload
 # Lock immediately
 bindsym $mod+Ctrl+q exec swaylock
 
-# Bemenu
+# Launchers
 bindsym {
   # App launcher
   $mod+d exec j4-dmenu-desktop --dmenu="bemenu-utils launcher" --term=$term
@@ -233,14 +233,14 @@ bindsym {
   # Calc
   $mod+Equal exec bemenu-utils calc
 
-  # Pass
-  $mod+Shift+p exec bemenu-utils pass
-
   # Fcitx5 quickphrase picker
   Ctrl+Alt+e exec bemenu-utils quickphrase
 
   # Emoji picker
   Ctrl+Alt+Shift+e exec bemenu-utils emoji
+
+  # Pass
+  $mod+Shift+p exec tessen
 }
 
 # Open wofi as apps launcher, configured at $XDG_CONFIG_HOME/wofi/config
