@@ -1,0 +1,4 @@
+# vim:fileencoding=utf-8:filetype=bash
+dmenu_backend="wofi"
+action="copy"
+userkey="login"
