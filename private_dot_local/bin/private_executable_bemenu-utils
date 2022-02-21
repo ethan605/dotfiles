@@ -1,29 +1,15 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-BEMENU_OPTS=(
+export BEMENU_OPTS='
   --ignorecase
-  --prompt bemenu
   --line-height 30
-  --tb '#282a36'
-  --tf '#ff6ac1'
-  --hb '#ff6ac1'
-  --hf '#282a36'
-  --nb '#282a36'
-  --nf '#eff0eb'
-  --fb '#282a36'
-  --ff '#eff0eb'
-  --fn 'pango:Cantarell 14'
-)
-
-function emoji() {
-  # Based on https://github.com/dln/wofi-emoji
-  cat "$XDG_DATA_HOME/emoji.txt" \
-    | bemenu "${BEMENU_OPTS[@]}" --prompt emoji \
-    | cut -d ' ' -f 1 \
-    | tr -d '\n' \
-    | wl-copy
-}
+  --tb #282a36 --tf #ff6ac1
+  --hb #ff6ac1 --hf #282a36
+  --nb #282a36 --nf #eff0eb
+  --fb #282a36 --ff #eff0eb
+  --fn "pango:Cantarell 14"
+'
 
 function calc() {
   # Based on https://github.com/barbuk/menu-qalc
@@ -40,7 +26,7 @@ function calc() {
   fi
 
   local action=$(echo -e "$opt_copy\n$opt_clear" \
-    | bemenu "${BEMENU_OPTS[@]}" --prompt "= $answer"
+    | bemenu --prompt "= $answer"
   )
 
   case $action in
@@ -51,10 +37,27 @@ function calc() {
   esac
 }
 
+function emoji() {
+  # Based on https://github.com/dln/wofi-emoji
+  cat "$XDG_DATA_HOME/emoji.txt" \
+    | bemenu --prompt 'emoji' \
+    | cut -d ' ' -f 1 \
+    | tr -d '\n' \
+    | wl-copy
+}
+
+function launcher() {
+  bemenu --prompt '🔎'
+}
+
+function pass() {
+  BEMENU_OPTS="$BEMENU_OPTS --prompt pass" tessen --dmenu=bemenu --action=copy
+}
+
 function quickphrase() {
   cat /usr/share/fcitx5/data/quickphrase.d/emoji-eac.mb \
     | sed -r 's/:(.*):\s*(.*)/\2 \1/gi; s/_/ /gi' \
-    | bemenu "${BEMENU_OPTS[@]}" --prompt quickphrase \
+    | bemenu --prompt 'quickphrase' \
     | cut -d ' ' -f 1 \
     | tr -d '\n' \
     | wl-copy
@@ -65,9 +68,10 @@ function main() {
   shift
 
   case "$sub_command" in
-    launcher) bemenu "${BEMENU_OPTS[@]}" --prompt "🔎" ;;
+    launcher) launcher ;;
     calc) calc "$@" ;;
     emoji) emoji ;;
+    pass) pass ;;
     quickphrase) quickphrase ;;
     *) ;;
   esac
