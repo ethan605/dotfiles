@@ -174,26 +174,12 @@ fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
 " Go to the file that is right before "../" for going to the top most file
 nnoremap gg ggj
 
-" Quick shortcuts to some dirs 
-nnoremap dts :cd ~/.dotfiles<cr>
-nnoremap dcs :cd ~/Documents<cr>
-nnoremap dls :cd ~/Downloads<cr>
-nnoremap drb :cd ~/Dropbox<cr>
-nnoremap mov :cd ~/Movies<cr>
-nnoremap msc :cd ~/MEGA/Music<cr>
-
-" Start shell in current directory
-nnoremap s :shell<cr>
-
 " Display sorting dialog
 nnoremap S :sort<cr>
 
 " Toggle visibility of preview window
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
-
-" Open file in the background using its default program
-nnoremap gb :file &<cr>l
 
 {{- if eq .chezmoi.os "linux" }}
 
@@ -217,12 +203,6 @@ nnoremap yf :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to cl
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
-
-" Make a new directory
-nnoremap mkd :mkdir<space>
-
-" Quickly shrink left pane
-nnoremap <c-v> <c-w>50|
 
 " ]]]
 
