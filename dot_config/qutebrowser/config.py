@@ -44,6 +44,7 @@ config.set("content.notifications.enabled", True, "https://web.whatsapp.com/")
 config.set(
     "content.tls.certificate_errors", "load-insecurely", "https://127.0.0.1:8384/"
 )
+config.set("download.open_dispatcher", "xdg-open")
 config.set("editor.command", ["foot", "-e", "nvim", "{file}"])
 config.set(
     "url.searchengines",
