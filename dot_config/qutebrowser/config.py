@@ -26,9 +26,12 @@ class Fonts:
 config.load_autoconfig(False)
 
 # Key bindings
+config.unbind("cd")
 config.unbind("d")
 config.unbind("J")
 config.unbind("K")
+config.bind("dc", "download-clear")
+config.bind("do", "download-open")
 config.bind(";r", "hint all right-click")
 config.bind("<Shift+Escape>", ":fake-key <Escape>")
 config.bind("<Shift+j>", "scroll-px 0 50")
@@ -44,7 +47,7 @@ config.set("content.notifications.enabled", True, "https://web.whatsapp.com/")
 config.set(
     "content.tls.certificate_errors", "load-insecurely", "https://127.0.0.1:8384/"
 )
-config.set("download.open_dispatcher", "xdg-open")
+config.set("downloads.open_dispatcher", "xdg-open")
 config.set("editor.command", ["foot", "-e", "nvim", "{file}"])
 config.set(
     "url.searchengines",
