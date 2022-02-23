@@ -45,6 +45,10 @@ config.set("completion.shrink", True)
 config.set("confirm_quit", ["multiple-tabs", "downloads"])
 config.set("content.notifications.enabled", True, "https://web.whatsapp.com/")
 config.set(
+    "content.headers.user_agent",
+    "Mozilla/5.0 (X11; Linux x86_64; rv:97.0) Gecko/20100101 Firefox/97.0",
+)
+config.set(
     "content.tls.certificate_errors", "load-insecurely", "https://127.0.0.1:8384/"
 )
 config.set("downloads.open_dispatcher", "xdg-open")
