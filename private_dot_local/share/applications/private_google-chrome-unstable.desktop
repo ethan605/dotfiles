@@ -4,7 +4,7 @@ Name=Google Chrome Dev
 GenericName=Web Browser
 Comment=Access the Internet
 StartupWMClass=Google-chrome
-Exec=/usr/bin/google-chrome-unstable %U --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4892.0 Safari/537.36"
+Exec=/usr/bin/google-chrome-unstable --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4892.0 Safari/537.36" %U
 StartupNotify=true
 Terminal=false
 Icon=google-chrome
