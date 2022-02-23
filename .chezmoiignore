@@ -42,6 +42,7 @@ slack_theme
 .config/sway
 .config/swaylock
 .config/systemd
+.config/tessen
 .config/wallpapers
 .config/waybar
 .config/wofi
