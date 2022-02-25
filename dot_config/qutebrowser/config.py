@@ -44,6 +44,7 @@ config.set("auto_save.session", True)
 config.set("completion.shrink", True)
 config.set("confirm_quit", ["multiple-tabs", "downloads"])
 config.set("content.blocking.method", "both")
+config.set("content.blocking.whitelist", ["click.redditmail.com"])
 config.set("content.notifications.enabled", True, "https://web.whatsapp.com/")
 config.set(
     "content.headers.user_agent",
