@@ -352,6 +352,19 @@ function fix_keyboard() {
   hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x7000000E1}]}'
 }
 
+function aws_vpn() {
+  local sub_command=${1-}
+  [[ -z "$sub_command" ]] && echo "Usage: $(basename $0) up|down|restart"
+
+  local launchd_agent="$HOME/Library/LaunchAgents/com.aws.vpn-client.plist"
+
+  case "$sub_command" in
+    up) launchctl load "$launchd_agent" ;;
+    down) launchctl unload "$launchd_agent" ;;
+    restart) launchctl unload "$launchd_agent" && launchctl load "$launchd_agent" ;;
+  esac
+}
+
 {{- end }}
 
 #]]]
