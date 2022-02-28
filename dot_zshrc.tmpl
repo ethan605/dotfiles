@@ -293,11 +293,8 @@ function nord_dns() {
 }
 
 function work_proxy() {
-  local proxy_host="work-macbook.local"
-  local proxy_ip=$(getent hosts "$proxy_host" | awk '{ print $1 }')
-
-  local docker_file="$HOME/.docker/config.json"
-  local docker_proxy="http://$proxy_ip:3128/"
+  local proxy_host="localhost"
+  local proxy_port=3128
 
   local sub_command=${1-}
 
@@ -326,6 +323,10 @@ function work_proxy() {
 
     # On
     if [[ "$has_proxies" == "null" ]]; then
+      local docker_file="$HOME/.docker/config.json"
+      local proxy_ip=$(getent ahostsv4 "$proxy_host" | rg "STREAM $proxy_host" | awk '{ print $1 }')
+      local docker_proxy="http://$proxy_ip:$proxy_port/"
+
       local docker_config=$(cat "$docker_file" |
         jq -r ".proxies = { default: { httpProxy: \"$docker_proxy\", httpsProxy: \"$docker_proxy\", noProxy: \"$no_proxy\" } }")
       echo "$docker_config" >| "$docker_file"
