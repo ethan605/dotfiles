@@ -26,9 +26,6 @@ export GOPATH="$HOME/go"
 export JDK_HOME="/usr/lib/jvm/default"
 export JAR=$(pacman -Ql jdtls | grep -Po "(?<=jdtls\s).*equinox.launcher_.*.jar")
 export JDTLS_CONFIG="$XDG_CACHE_HOME/nvim/lspconfig/jdtls/config_linux"
-export WORKSPACE="$HOME/Work/jdtls"
-export JAVA_HOME="$JDK_HOME"
-PATH="$JAVA_HOME:$PATH"
 
 export TERMINFO=/usr/share/terminfo
 export GPG_TTY=$(tty)
@@ -51,9 +48,6 @@ export QT_IM_MODULE=fcitx
 export JDK_HOME="/usr/local/opt/openjdk"
 export JAR=$(find /usr/local/lib/jdtls-launcher/jdtls/plugins/*equinox.launcher_*.jar)
 export JDTLS_CONFIG="/usr/local/lib/jdtls-launcher/jdtls/config_mac"
-export WORKSPACE="$HOME/Work/jdtls"
-export JAVA_HOME="$JDK_HOME"
-PATH="$JAVA_HOME:$PATH"
 
 export TOOLCHAINS=swift
 
@@ -70,11 +64,14 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
-PATH="$GOPATH/bin:$PATH"
 PATH="./node_modules/.bin:$PATH"
 
 {{- end }}
 
+export WORKSPACE="$HOME/Work/jdtls"
+export JAVA_HOME="$JDK_HOME"
+PATH="$JAVA_HOME:$PATH"
+PATH="$GOPATH/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 export PATH
 #]]]
