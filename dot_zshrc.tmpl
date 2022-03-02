@@ -319,11 +319,11 @@ function work_proxy() {
 
   # Toggle docker-wise
   if [[ "$sub_command" == "docker" ]]; then
+    local docker_file="$HOME/.docker/config.json"
     local has_proxies=$(cat "$docker_file" | jq -r '.proxies')
 
     # On
     if [[ "$has_proxies" == "null" ]]; then
-      local docker_file="$HOME/.docker/config.json"
       local proxy_ip=$(getent ahostsv4 "$proxy_host" | rg "STREAM $proxy_host" | awk '{ print $1 }')
       local docker_proxy="http://$proxy_ip:$proxy_port/"
 
