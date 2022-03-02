@@ -295,6 +295,7 @@ function nord_dns() {
 function work_proxy() {
   local proxy_host="localhost"
   local proxy_port=3128
+  local proxy_ip=$(ifconfig | rg "inet 192" | awk '{ print $2 }')
 
   local sub_command=${1-}
 
@@ -302,7 +303,7 @@ function work_proxy() {
   if [[ -z "$sub_command" ]]; then
     # On
     if [[ -z "$http_proxy" ]]; then
-      export http_proxy="http://$proxy_host:3128/"
+      export http_proxy="http://$proxy_host:$port/"
       export https_proxy=$http_proxy
       export no_proxy="localhost,127.0.0.1,192.168.1.1,::1,*.local"
       export HTTP_PROXY=$http_proxy
@@ -324,7 +325,6 @@ function work_proxy() {
 
     # On
     if [[ "$has_proxies" == "null" ]]; then
-      local proxy_ip=$(getent ahostsv4 "$proxy_host" | rg "STREAM $proxy_host" | awk '{ print $1 }')
       local docker_proxy="http://$proxy_ip:$proxy_port/"
 
       local docker_config=$(cat "$docker_file" |
