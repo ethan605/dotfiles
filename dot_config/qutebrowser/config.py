@@ -59,6 +59,7 @@ config.set(
     "url.searchengines",
     {
         "DEFAULT": "https://duckduckgo.com/?q={}",
+        "github": "https://github.com/search?q={}",
         "google": "https://www.google.com/search?q={}",
         "warch": "https://wiki.archlinux.org/?search={}",
         "pac": "https://archlinux.org/packages/?q={}",
