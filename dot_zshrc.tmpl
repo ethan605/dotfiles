@@ -22,6 +22,10 @@ export GOPATH="$HOME/go"
 
 {{- if eq .chezmoi.os "linux" }}
 
+# Docker
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
+
 # JDK & JDTLS
 export JDK_HOME="/usr/lib/jvm/default"
 export JAR=$(pacman -Ql jdtls | grep -Po "(?<=jdtls\s).*equinox.launcher_.*.jar")
