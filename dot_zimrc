@@ -14,5 +14,4 @@ zmodule zsh-users/zsh-completions
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-syntax-highlighting
 
-zmodule ethan605/forgit
 zmodule ethan605/fzfsh
