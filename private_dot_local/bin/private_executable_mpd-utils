@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -Eeuo pipefail
 
 WHITELIST_ENGINES=( xkb:us::eng Bamboo )
 declare -A ENGINES_MAPPING=( [xkb:us::eng]=En [Bamboo]=Vi )
