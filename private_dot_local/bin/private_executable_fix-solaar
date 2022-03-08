@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -Eeuo pipefail
 
 solaar config 92DCEA13 hires-smooth-invert true

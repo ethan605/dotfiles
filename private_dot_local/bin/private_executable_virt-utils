@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -Eeuo pipefail
 
 GVT_DOM="0000:00"
 GVT_PCI="0000:00:02.0"
