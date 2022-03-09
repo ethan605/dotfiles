@@ -24,6 +24,6 @@ Host *
 {{- if eq .chezmoi.os "linux" }}
 
 Host {{ .work.git_domain }}
-  ProxyCommand ssh vpn@localhost -p 2222 nc %h %p
+  ProxyJump vpn@localhost:2222
 
 {{- end }}
