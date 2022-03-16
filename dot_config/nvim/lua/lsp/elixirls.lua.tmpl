@@ -1,4 +1,6 @@
 -- vim:fileencoding=utf-8:filetype=lua
+local utils = require("lsp.utils")
+
 require("lspconfig").elixirls.setup {
   capabilities = utils.capabilities,
   flags = utils.default_flags,
