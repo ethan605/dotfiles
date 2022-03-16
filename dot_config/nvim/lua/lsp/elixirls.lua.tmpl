@@ -1,5 +1,9 @@
 -- vim:fileencoding=utf-8:filetype=lua
 require("lspconfig").elixirls.setup {
+  capabilities = utils.capabilities,
+  flags = utils.default_flags,
+  on_attach = utils.on_attach,
+
 {{- if eq .chezmoi.os "linux" }}
 
   cmd = { "/usr/lib/elixir-ls/language_server.sh" },
