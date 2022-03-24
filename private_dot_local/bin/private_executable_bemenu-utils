@@ -33,7 +33,7 @@ function calc() {
     "$opt_copy") echo -n "$answer" | wl-copy ;;
     "$opt_clear") $0 calc ;;
     "") ;;
-    *) $0 calc "$action" "$@" ;;
+    *) $0 calc "$answer $action" "$@" ;;
   esac
 }
 
