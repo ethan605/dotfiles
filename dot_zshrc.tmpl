@@ -34,10 +34,7 @@ export XDG_CONFIG_DIRS=/etc/xdg
 
 # JDK & JDTLS
 export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
-export JDTLS_HOME="$HOME/Work/jdtls"
-#export JDK_HOME="/usr/lib/jvm/default"
-#export JAR=$(pacman -Ql jdtls | grep -Po "(?<=jdtls\s).*equinox.launcher_.*.jar")
-#export JDTLS_CONFIG="$XDG_CACHE_HOME/nvim/lspconfig/jdtls/config_linux"
+export JDTLS_HOME="/usr/share/java/jdtls"
 
 # Input method
 export GTK_IM_MODULE=fcitx
