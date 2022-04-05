@@ -64,14 +64,13 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
-PATH="./node_modules/.bin:$PATH"
-
 {{- end }}
 
 export JAVA_HOME="$JDK_HOME"
 PATH="$JAVA_HOME:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
+PATH="./node_modules/.bin:$PATH"
 export PATH
 #]]]
 
