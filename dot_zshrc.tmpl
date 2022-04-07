@@ -45,10 +45,6 @@ export QT_IM_MODULE=fcitx
 
 export TOOLCHAINS=swift
 
-# JDK & JDTLS
-export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
-export JDTLS_HOME="/usr/local/lib/jdtls-launcher"
-
 # Rewrite $PATH
 PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
 
@@ -61,6 +57,10 @@ PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+# JDK & JDTLS
+export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
+export JDTLS_HOME="/usr/local/lib/jdtls-launcher"
 
 {{- end }}
 
