@@ -1,7 +1,7 @@
 -- Nvim providers
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
-vim.g.python3_host_prog = '/usr/bin/python'
+vim.g.python3_host_prog = '$HOME/.asdf/installs/python/3.10.4/bin/python'
 
 -- For barbar
 vim.g.bufferline = {
