@@ -1,6 +1,7 @@
 -- Nvim providers
-vim.g.loaded_python_provider = false
-vim.g.loaded_perl_provider = false
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = '/usr/bin/python'
 
 -- For barbar
 vim.g.bufferline = {
