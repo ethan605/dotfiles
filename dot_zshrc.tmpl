@@ -249,7 +249,11 @@ function __load-work-envs() {
 
 # [[[ Utils
 function creds() {
-  local cmd="$HOME/Work/creds/venv/bin/creds"
+{{- if eq .chezmoi.os "linux" }}
+local cmd="$HOME/Work/creds/venv/bin/creds"
+{{- else if eq .chezmoi.os "darwin" }}
+  local cmd="/usr/local/bin/creds"
+{{- end }}
   local sub_command=${1-}
 
   # Pass all arguments to the cmd if the sub command isn't "login"
