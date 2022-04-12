@@ -1,4 +1,3 @@
--- vim:fileencoding=utf-8:filetype=lua
 require "nvim-treesitter.configs".setup {
   ensure_installed = "all",
   highlight = { enable = true },
