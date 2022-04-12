@@ -1,14 +1,5 @@
 -- vim:fileencoding=utf-8:filetype=lua
 require "nvim-treesitter.configs".setup {
-{{- if eq .chezmoi.os "linux" }}
-
   ensure_installed = "all",
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-  ensure_installed = "maintained",
-
-{{- end }}
-
   highlight = { enable = true },
 }
