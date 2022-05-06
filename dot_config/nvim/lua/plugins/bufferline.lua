@@ -11,6 +11,19 @@ require("bufferline").setup {
     fill = no_bg_style,
     background = no_bg_style,
 
+    -- Default styles
+    diagnostic = no_bg_style,
+    error = no_bg_style,
+    error_diagnostic = no_bg_style,
+    hint = no_bg_style,
+    hint_diagnostic = no_bg_style,
+    info = no_bg_style,
+    info_diagnostic = no_bg_style,
+    modified = no_bg_style,
+    numbers = no_bg_style,
+    warning = no_bg_style,
+    warning_diagnostic = no_bg_style,
+
     -- Selected styles
     buffer_selected = bold_only_style,
     error_diagnostic_selected = bold_only_style,
@@ -19,6 +32,7 @@ require("bufferline").setup {
     hint_selected = bold_only_style,
     info_diagnostic_selected = bold_only_style,
     info_selected = bold_only_style,
+    modified_selected = bold_only_style,
     numbers_selected = bold_only_style,
     warning_diagnostic_selected = bold_only_style,
     warning_selected = bold_only_style,
@@ -32,21 +46,10 @@ require("bufferline").setup {
     hint_visible = no_bg_style,
     info_diagnostic_visible = no_bg_style,
     info_visible = no_bg_style,
+    modified_visible = no_bg_style,
     numbers_visible = bold_only_style,
     warning_diagnostic_visible = no_bg_style,
     warning_visible = no_bg_style,
-
-    -- Default styles
-    diagnostic = no_bg_style,
-    error = no_bg_style,
-    error_diagnostic = no_bg_style,
-    hint = no_bg_style,
-    hint_diagnostic = no_bg_style,
-    info = no_bg_style,
-    info_diagnostic = no_bg_style,
-    numbers = no_bg_style,
-    warning = no_bg_style,
-    warning_diagnostic = no_bg_style,
 
     duplicate = no_bg_style,
     pick = no_bg_style,
