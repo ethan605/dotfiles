@@ -12,6 +12,7 @@ slack_theme
 .local/bin/fix-solaar
 .local/bin/ibus-engines
 .local/bin/virt-utils
+.local/share/applications/slack.desktop
 .mbsyncrc
 # ]]]
 
