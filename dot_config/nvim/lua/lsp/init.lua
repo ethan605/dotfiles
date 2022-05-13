@@ -14,6 +14,7 @@ local servers = {
   "html",
   "jdtls",
   "jsonls",
+  "ltex",
   "pyright",
   "solargraph",
   "tsserver",
