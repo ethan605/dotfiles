@@ -35,16 +35,6 @@ vim.g.mkdp_preview_options = {
   sync_scroll_type = "middle",
 }
 
--- For NvimTree
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_highlight_opened_files = 1
-vim.g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1,
-}
-
 -- For vim-go
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_fmt_autosave = true
