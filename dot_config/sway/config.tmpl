@@ -103,7 +103,8 @@ for_window {
   [instance="fcitx5-config-qt"]           floating enable
   [instance="megasync"]                   floating enable
   [instance="nxplayer.bin"]               floating enable
-  [instance="zoom|zoom.real "]            floating enable, inhibit_idle focus
+  [instance="signal"]                     floating enable
+  [instance="zoom*"]                      floating enable, inhibit_idle focus
 }
 
 # Assign workspaces for non-terminal stuffs
@@ -119,6 +120,7 @@ assign {
   [app_id="zoom"]                           workspace $wsf5
   [instance="zoom"]                         workspace $wsf5
   [app_id="telegramdesktop"]                workspace $wsf6
+  [instance="signal"]                       workspace $wsf6
   [instance="postman"]                      workspace $wsf7
   [instance="spotify"]                      workspace $wsf8
   [instance="nxplayer.bin"]                 workspace $wsf9
