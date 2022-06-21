@@ -261,7 +261,8 @@ bindsym --release {
   $mod+Ctrl+4 exec /usr/share/sway/scripts/grimshot copy window && wl-paste | swappy -f - && wl-copy --clear
 
   # Capture screenshot of an area
-  $mod+Ctrl+5 exec /usr/share/sway/scripts/grimshot copy area && wl-paste | swappy -f - && wl-copy --clear
+  #$mod+Ctrl+5 exec /usr/share/sway/scripts/grimshot copy area && wl-paste | swappy -f - && wl-copy --clear
+  $mod+Ctrl+5 exec flameshot gui
 }
 
 # Drag floating windows by holding down $mod and left mouse button.
