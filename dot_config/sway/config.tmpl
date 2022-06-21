@@ -522,6 +522,11 @@ include /etc/sway/config.d/*
 # Pure Wayland environment
 #xwayland disable
 
+# For flameshot
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 # ]]]
 
 # Workaround until MST is working better in Wayland
