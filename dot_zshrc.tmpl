@@ -157,19 +157,18 @@ function __load-ssh() {
 
 function __load-sway() {
   if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    # Be careful - one of these could break IBus
-    # export QT_QPA_PLATFORM=wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
     # export QT_QPA_PLATFORM=wayland-egl
     # export QT_QPA_PLATFORMTHEME=qt5ct
     # export QT_WAYLAND_FORCE_DPI=physical
     # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-    # export SDL_VIDEODRIVER=wayland
-    # export _JAVA_AWT_WM_NONREPARENTING=1
-    # export BROWSER=firefox
-    export MOZ_ENABLE_WAYLAND=1
-    export TERM=termite
-    export XDG_SESSION_TYPE=wayland
+    export QT_QPA_PLATFORM=wayland
+    export SDL_VIDEODRIVER=wayland
     export XDG_CURRENT_DESKTOP=sway
+    export XDG_SESSION_TYPE=wayland
+    export TERM=termite
+    export MOZ_ENABLE_WAYLAND=1
+    # export BROWSER=firefox
 
     exec sway -d 2> $HOME/.logs/sway.log
   fi
