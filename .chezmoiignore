@@ -25,11 +25,12 @@ slack_theme
 {{ if ne .chezmoi.os "linux" }}
 
 .config/autostart
-.config/chrome-flags.conf
 .config/chrome-dev-flags.conf
+.config/chrome-flags.conf
 .config/fcitx5
 .config/fontconfig
 .config/foot
+.config/google-chrome
 .config/gtk-3.0
 .config/imv
 .config/mako
@@ -50,6 +51,7 @@ slack_theme
 .gtkrc-2.0
 .icons
 .local
+.mozilla
 .xkb
 
 {{ end }}
