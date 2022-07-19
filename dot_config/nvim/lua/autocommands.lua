@@ -19,7 +19,9 @@ vim.cmd [[
 ]]
 
 -- Call Flake8 on write for Python files
-vim.cmd [[ autocmd BufWritePost *.py call flake8#Flake8() ]]
+vim.cmd [[
+  autocmd BufWritePost *.py call flake8#Flake8()
+]]
 
 -- Autoformat with Prettier on save
 vim.cmd [[
@@ -27,7 +29,11 @@ vim.cmd [[
 ]]
 
 -- Use prettier-stylelint for CSS
-vim.cmd [[ autocmd FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint" ]]
+vim.cmd [[
+  autocmd FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
+]]
 
 -- Update lightbulb on cursor move
-vim.cmd [[ autocmd CursorHold,CursorHoldI * lua require("nvim-lightbulb").update_lightbulb() ]]
+vim.cmd [[
+  autocmd CursorHold,CursorHoldI * lua require("nvim-lightbulb").update_lightbulb()
+]]
