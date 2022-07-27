@@ -19,6 +19,7 @@ vim.g.blamer_template = "<author>, <author-time> • <summary>"
 
 -- For indentLine
 vim.g.indentLine_char = "·"
+vim.g.indentLine_setConceal = 0
 vim.g.indentLine_enabled = true
 
 -- For markdown-preview
