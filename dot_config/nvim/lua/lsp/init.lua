@@ -12,7 +12,6 @@ local servers = {
   "gopls",
   "graphql",
   "html",
-  "jdtls",
   "jsonls",
   "ltex",
   "pyright",
@@ -31,5 +30,6 @@ end
 
 require("lsp.diagnosticls")
 require("lsp.elixirls")
+--require("lsp.jdtls")
 require("lsp.kotlin_language_server")
 require("lsp.sumneko_lua")
