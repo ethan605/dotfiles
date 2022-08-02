@@ -32,8 +32,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share
 export XDG_CONFIG_DIRS=/etc/xdg
 
-export JDTLS_HOME="/usr/share/java/jdtls"
-
 # Input method
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -56,10 +54,9 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
-export JDTLS_HOME="/usr/local/lib/jdtls-launcher"
-
 {{- end }}
 
+export JDTLS_HOME="{{ .chezmoi.homeDir }}/.local/opt/jdtls-launcher"
 export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
 export JAVA_HOME="$JDK_HOME"
 PATH="$JAVA_HOME:$PATH"
