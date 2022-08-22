@@ -1,5 +1,5 @@
-local no_bg_style = { guibg = "none" }
-local bold_only_style = { gui = "bold" }
+local no_bg_style = { bg = "none" }
+local bold_only_style = { bold = true }
 
 local diagnostics_indicator = function(count, level)
   local icon = level:match("error") and " " or " "
@@ -54,7 +54,7 @@ require("bufferline").setup {
     duplicate = no_bg_style,
     pick = no_bg_style,
 
-    tab_selected = { gui = "bold", guifg = "cyan" }
+    tab_selected = { bold = true, fg = "cyan" }
   },
   options = {
     -- Diagnostics
