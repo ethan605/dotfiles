@@ -37,6 +37,8 @@ export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
+export JDTLS_HOME="/usr/share/java/jdtls"
+
 {{- else if eq .chezmoi.os "darwin" }}
 
 export TOOLCHAINS=swift
@@ -54,9 +56,10 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
+export JDTLS_HOME="{{ .chezmoi.homeDir }}/.local/opt/jdtls-launcher"
+
 {{- end }}
 
-export JDTLS_HOME="{{ .chezmoi.homeDir }}/.local/opt/jdtls-launcher"
 export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
 export JAVA_HOME="$JDK_HOME"
 PATH="$JAVA_HOME:$PATH"
