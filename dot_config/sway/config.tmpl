@@ -30,14 +30,22 @@ set {
 }
 
 set $term foot
-#set $term alacritty
 
 # Themes
 set $gnome-schema org.gnome.desktop.interface
 set $font "Cantarell 12"
 #set $cursor-theme Breeze_Snow
 set $cursor-theme phinger-cursors
+
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+
+set $cursor-size 64
+
+{{- else }}
+
 set $cursor-size 32
+
+{{- end }}
 
 # Outputs
 # Dell P2421D - 2560x1444@60Hz
@@ -203,6 +211,15 @@ workspace {
   $wsf10 output $dell-fhd
   $wsf11 output $dell-fhd
   $wsf12 output $dell-fhd
+}
+
+{{- end }}
+
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+
+output eDP-1 {
+  bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-left.jpg fill
+  scale 2
 }
 
 {{- end }}
@@ -532,5 +549,9 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 
 # ]]]
 
+{{- if eq .chezmoi.hostname "lunarch" }}
+
 # Workaround until MST is working better in Wayland
 focus output DP-2
+
+{{- end }}
