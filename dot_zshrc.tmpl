@@ -168,6 +168,7 @@ function __load-sway() {
     export XDG_SESSION_TYPE=wayland
     export TERM=termite
     export MOZ_ENABLE_WAYLAND=1
+    export DISPLAY=${DISPLAY:-:0}
     # export BROWSER=firefox
 
     exec sway -d 2> $HOME/.logs/sway.log
