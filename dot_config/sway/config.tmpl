@@ -505,15 +505,15 @@ bindsym --locked {
 
 bindsym --locked {
   # F1 - Toggle mute/unmute volume
-  XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && \
-    brightness-utils toggle-audio-mute
+  XF86AudioMute exec brightness-utils toggle-audio-mute && \
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
   # F2 - Decrease volume by 5%
   XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
   # F3 - Increase volume by 5%
   XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
   # F4 - Toggle mute/unmute microphone
-  XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && \
-    brightness-utils toggle-mic-mute
+  XF86AudioMicMute exec brightness-utils toggle-mic-mute && \
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
   # F5 - Backlight down
   XF86MonBrightnessDown exec brightnessctl set 5%-
