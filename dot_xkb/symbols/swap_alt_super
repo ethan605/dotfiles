@@ -1,0 +1,9 @@
+# vim:filetype=config
+default partial modifier_keys
+xkb_symbols "basic" {
+  # Use left Alt as left Win
+  key <LALT> { [ Super_L, Super_L   ] };
+
+  # Use left Win as left Alt
+  key <LWIN> { [ Alt_L,   Alt_L     ] };
+};

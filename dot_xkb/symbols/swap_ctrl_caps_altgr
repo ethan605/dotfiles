@@ -1,0 +1,9 @@
+# vim:filetype=config
+default partial modifier_keys
+xkb_symbols "basic" {
+  # Use Capslock as left Control
+  key <CAPS> { [ Control_L ] };
+
+  # Use left Control as AltGr
+  key <LCTL> { [ ISO_Level3_Shift ] };
+};

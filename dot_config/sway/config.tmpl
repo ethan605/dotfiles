@@ -131,8 +131,6 @@ assign {
 
 # [[[ Input configuration
 
-{{- if eq .chezmoi.hostname "lunarch" }}
-
 # Custom keymaps
 input type:keyboard {
   xkb_file ~/.config/sway/keymaps/default.xkb
@@ -142,17 +140,23 @@ input "19266:24672:qmkbuilder_KBD75" {
   xkb_file ~/.config/sway/keymaps/kbd75.xkb
 }
 
-{{- else if eq .chezmoi.hostname "vmarch" }}
-
-input type:keyboard {
-  xkb_file ~/.config/sway/keymaps/kbd75.xkb
-}
-
-{{- end }}
-
 input "1133:16514:Logitech_MX_Master_3000" {
   natural_scroll enabled
 }
+
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+
+# Thinkpad keyboard
+input "1:1:AT_Translated_Set_2_keyboard" {
+  xkb_file ~/.config/sway/keymaps/thinkpad.xkb
+}
+
+# Thinkpad trackpad
+input "1739:52824:SYNA8008:00_06CB:CE58_Touchpad" {
+  natural_scroll enabled
+}
+
+{{- end }}
 
 # ]]]
 
