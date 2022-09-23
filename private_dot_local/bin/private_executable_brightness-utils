@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+function toggle_device() {
+  local device=$1
+
+  local current_val=$(brightnessctl --device="$device" get)
+  local max_val=$(brightnessctl --device="$device" max)
+
+  if [[ "$current_val" -eq "$max_val" ]]; then
+    brightnessctl --device="$device" set 0
+  else
+    brightnessctl --device="$device" set "$max_val"
+  fi
+}
+
+function main() {
+  local sub_command=${1-}
+
+  case "$sub_command" in
+    toggle-audio-mute) toggle_device platform::mute ;;
+    toggle-mic-mute) toggle_device platform::micmute ;;
+    *) ;;
+  esac
+}
+
+main "$@"

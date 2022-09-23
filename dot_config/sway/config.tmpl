@@ -36,16 +36,7 @@ set $gnome-schema org.gnome.desktop.interface
 set $font "Cantarell 12"
 #set $cursor-theme Breeze_Snow
 set $cursor-theme phinger-cursors
-
-{{- if eq .chezmoi.hostname "PF3XSEPR" }}
-
-set $cursor-size 64
-
-{{- else }}
-
 set $cursor-size 32
-
-{{- end }}
 
 # Outputs
 # Dell P2421D - 2560x1444@60Hz
@@ -486,10 +477,7 @@ bindsym $mod+Shift+e mode "$mode-system"
 
 # [[[ Key bindings - media
 
-#bindsym --locked {
-  #XF86MonBrightnessDown exec brightnessctl set 5%-
-  #XF86MonBrightnessUp exec brightnessctl set +5%
-#}
+{{- if eq .chezmoi.hostname "lunarch" }}
 
 bindsym --locked {
   # F7 - Play previous
@@ -510,6 +498,30 @@ bindsym --locked {
   # F12 - Increase volume by 5%
   XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 }
+
+{{- end }}
+
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+
+bindsym --locked {
+  # F1 - Toggle mute/unmute volume
+  XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && \
+    brightness-utils toggle-audio-mute
+  # F2 - Decrease volume by 5%
+  XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+  # F3 - Increase volume by 5%
+  XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+  # F4 - Toggle mute/unmute microphone
+  XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && \
+    brightness-utils toggle-mic-mute
+
+  # F5 - Backlight down
+  XF86MonBrightnessDown exec brightnessctl set 5%-
+  # F6 - Backlight up
+  XF86MonBrightnessUp exec brightnessctl set +5%
+}
+
+{{- end }}
 
 # ]]]
 
