@@ -78,7 +78,6 @@
 #cpu,
 #memory,
 #temperature,
-#battery,
 #pulseaudio,
 #tray {
   padding: 0 8px;
@@ -185,6 +184,7 @@
 
 #clock {
   font-weight: bold;
+  margin-left: -8px;
 }
 
 #custom-arch {
