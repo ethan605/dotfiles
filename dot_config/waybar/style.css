@@ -140,7 +140,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  padding-right: 8px;
+  padding-right: 12px;
 }
 
 #battery.warning {
