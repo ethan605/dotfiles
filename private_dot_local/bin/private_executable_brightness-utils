@@ -14,12 +14,22 @@ function toggle_device() {
   fi
 }
 
+function get_percentage() {
+  local device=$1
+
+  local current_val=$(brightnessctl --device="$device" get)
+  local max_val=$(brightnessctl --device="$device" max)
+
+  echo $(("$current_val"*100/"$max_val"))
+}
+
 function main() {
   local sub_command=${1-}
 
   case "$sub_command" in
     toggle-audio-mute) toggle_device platform::mute ;;
     toggle-mic-mute) toggle_device platform::micmute ;;
+    get-backlight-percentage) get_percentage intel_backlight ;;
     *) ;;
   esac
 }
