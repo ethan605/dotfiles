@@ -19,9 +19,11 @@
     "cpu",
     "memory",
     "temperature",
-    "custom/brightness",
-    "battery",
     "pulseaudio",
+    {{- if eq .chezmoi.hostname "PF3XSEPR" }}
+      "custom/brightness",
+      "battery",
+    {{- end }}
     "tray",
     "clock",
     "custom/arch"
