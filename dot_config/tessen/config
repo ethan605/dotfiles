@@ -1,4 +1,3 @@
 # vim:fileencoding=utf-8:filetype=bash
-action="both"
 dmenu_backend="bemenu"
 userkey="login"
