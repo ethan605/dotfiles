@@ -19,6 +19,7 @@
     "cpu",
     "memory",
     "temperature",
+    "custom/brightness",
     "battery",
     "pulseaudio",
     "tray",
@@ -93,6 +94,12 @@
     "exec": "ip route | grep nordlynx"
   },
 
+  "custom/brightness": {
+    "interval": 10,
+    "format": "    {}% ",
+    "exec": "brightness-utils get-backlight-percentage"
+  },
+
   "cpu": {
     "interval": 5,
     "format": "   {usage}%",
@@ -154,9 +161,9 @@
       "critical": 15
     },
     // Connected to AC
-    "format": " {capacity}% {icon}",
+    "format": "  {capacity}% {icon}",
     // Not connected to AC
-    "format-discharging": "{capacity}% {icon}",
+    "format-discharging": "  {capacity}% {icon}",
     "format-icons": [
       "  ",
       "  ",
