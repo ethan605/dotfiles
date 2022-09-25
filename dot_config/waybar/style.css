@@ -4,7 +4,7 @@
 
 @keyframes blink-warning {
   to {
-    color: #eff0eb;
+    color: orange;
   }
 }
 
@@ -28,7 +28,7 @@
   background: #282a36;
   color: #eff0eb;
   font-family: Cantarell, Haskplex Nerd, sans-serif;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 /* Workspaces */
@@ -130,6 +130,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  background-color: transparent;
 }
 
 #battery.warning {
