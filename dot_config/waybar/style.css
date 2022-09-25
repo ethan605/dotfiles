@@ -3,24 +3,14 @@
  * -------------------------------------------------------------------------- */
 
 @keyframes blink-warning {
-  70% {
-    color: #eff0eb;
-  }
-
   to {
     color: #eff0eb;
-    background-color: orange;
   }
 }
 
 @keyframes blink-critical {
-  70% {
-    color: #eff0eb;
-  }
-
   to {
-    color: #eff0eb;
-    background-color: #ff5c57;
+    color: #ff5c57;
   }
 }
 
@@ -152,12 +142,12 @@
 
 #battery.warning.discharging {
   animation-name: blink-warning;
-  animation-duration: 3s;
+  animation-duration: 1.5s;
 }
 
 #battery.critical.discharging {
   animation-name: blink-critical;
-  animation-duration: 2s;
+  animation-duration: 0.75s;
 }
 
 #custom-performance-mode {
