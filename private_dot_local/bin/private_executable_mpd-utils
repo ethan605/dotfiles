@@ -35,7 +35,6 @@ function main() {
   local sub_command=${1-}
 
   case "$sub_command" in
-    state) get-state ;;
     waybar-output) waybar_output ;;
     *) ;;
   esac

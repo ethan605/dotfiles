@@ -38,7 +38,7 @@
   background: #282a36;
   color: #eff0eb;
   font-family: Cantarell, Haskplex Nerd, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* Workspaces */
@@ -160,6 +160,22 @@
   animation-duration: 2s;
 }
 
+#custom-performance-mode {
+  font-weight: bold;
+}
+
+#custom-performance-mode.low-power {
+  color: #57c7ff;
+}
+
+#custom-performance-mode.balanced {
+  color: #eff0eb;
+}
+
+#custom-performance-mode.performance {
+  color: #ff5c57;
+}
+
 #pulseaudio {
   /* No styles */
 }
@@ -167,15 +183,6 @@
 #pulseaudio.muted {
   color: orange;
   /* No styles */
-}
-
-#custom-ibus {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-#custom-ibus.Vi {
-  color: #ff5c57;
 }
 
 #clock {
