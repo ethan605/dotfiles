@@ -23,6 +23,7 @@
     {{- if eq .chezmoi.hostname "PF3XSEPR" }}
     "custom/brightness",
     "battery",
+    "custom/performance-mode",
     {{- end }}
     "tray",
     "clock",
@@ -96,12 +97,6 @@
     "exec": "ip route | grep nordlynx"
   },
 
-  "custom/brightness": {
-    "interval": 5,
-    "format": "    {}% ",
-    "exec": "brightness-utils get-backlight-percentage"
-  },
-
   "cpu": {
     "interval": 5,
     "format": "   {usage}%",
@@ -156,6 +151,12 @@
     "on-click": "pavucontrol"
   },
 
+  "custom/brightness": {
+    "interval": 5,
+    "format": "    {}% ",
+    "exec": "brightness-utils get-backlight-percentage"
+  },
+
   "battery": {
     "interval": 10,
     "states": {
@@ -173,6 +174,14 @@
       "  ",
       "  " 
     ],
+    "tooltip": true
+  },
+
+  "custom/performance-mode": {
+    "interval": 5,
+    "format": "{}",
+    "exec": "thinkpad-utils performance-mode",
+    "return-type": "json",
     "tooltip": true
   },
 
