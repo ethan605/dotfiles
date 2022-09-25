@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+function get_performance_mode() {
+  declare -A mode_hash=(
+    [balanced]="B"
+    [low-power]="L"
+    [performance]="P"
+  )
+
+  local mode=$(cat /sys/firmware/acpi/platform_profile)
+
+  local json=$(cat << EOF
+  {
+    "text": "${mode_hash[$mode]}",
+    "class": "$mode",
+    "tooltip": "Fn+l - Low-power mode\nFn+m - Balanced mode\nFn+h - Performance mode"
+  }
+EOF
+)
+
+  echo "$json" | jq --compact-output
+}
+
+function main() {
+  local sub_command=${1-}
+
+  case "$sub_command" in
+    performance-mode) get_performance_mode ;;
+    *) ;;
+  esac
+}
+
+main "$@"
