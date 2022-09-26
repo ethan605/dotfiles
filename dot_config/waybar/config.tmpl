@@ -14,17 +14,19 @@
   ],
   "modules-right": [
     "custom/vpn",
+{{- if eq .chezmoi.hostname "lunarch" }}
     "custom/nordlynx",
+{{- end }}
     "network",
     "cpu",
     "memory",
     "temperature",
     "pulseaudio",
-    {{- if eq .chezmoi.hostname "PF3XSEPR" }}
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
     "custom/brightness",
     "battery",
     "custom/performance-mode",
-    {{- end }}
+{{- end }}
     "tray",
     "clock",
     "custom/arch"
@@ -86,9 +88,10 @@
   "custom/vpn": {
     "interval": 5,
     "format": "旅 VPN",
-    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec": "thinkpad-utils vpn-info",
     "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
-    "return-type": "json"
+    "return-type": "json",
+    "tooltip": true
   },
 
   "custom/nordlynx": {
