@@ -34,7 +34,11 @@
   background: #282a36;
   color: #eff0eb;
   font-family: Cantarell, Haskplex Nerd, sans-serif;
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
   font-size: 16px;
+{{- else }}
+  font-size: 14px;
+{{- end }}
 }
 
 /* Workspaces */
