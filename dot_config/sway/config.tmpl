@@ -16,17 +16,17 @@ set {
 # Extra workspaces
 set {
   $wsf1   "11:  ₁"
-  $wsf2   "12:  ₂"
+  $wsf2   "12:  ₂"
   $wsf3   "13:  ₃"
   $wsf4   "14:  ₄"
   $wsf5   "15:  ₅"
-  $wsf6   "16:  ₆"
-  $wsf7   "17:  ₇"
-  $wsf8   "18:  ₈"
-  $wsf9   "19:  ₉"
-  $wsf10  "20:  ₀"
-  $wsf11  "21:  ₁"
-  $wsf12  "22:  ₂"
+  $wsf6   "12:  ₆"
+  $wsf7   "17:  ₇"
+  $wsf8   "18:  ₈"
+  $wsf9   "19:  ₉"
+  $wsf10  "20:  ₁₀"
+  $wsf11  "21:  ₁₁"
+  $wsf12  "22:旅  ₁₂"
 }
 
 set $term foot
@@ -119,20 +119,20 @@ for_window {
 # Assign workspaces for non-terminal stuffs
 assign {
   [app_id="firefox(developeredition)*"]     workspace $wsf1
-  [app_id="org.qutebrowser.qutebrowser"]    workspace $wsf1
-  [app_id="thunderbird"]                    workspace $wsf2
-  [app_id="geary"]                          workspace $wsf2
+  [app_id="telegramdesktop"]                workspace $wsf2
   [app_id="google-chrome"]                  workspace $wsf3
   [instance="google-chrome"]                workspace $wsf3
   [app_id="Slack"]                          workspace $wsf4
   [instance="slack"]                        workspace $wsf4
   [app_id="zoom"]                           workspace $wsf5
   [instance="zoom"]                         workspace $wsf5
-  [app_id="telegramdesktop"]                workspace $wsf6
+
+  [app_id="org.qutebrowser.qutebrowser"]    workspace $wsf6
+  [app_id="thunderbird"]                    workspace $wsf6
+  [app_id="geary"]                          workspace $wsf6
   [instance="signal"]                       workspace $wsf6
-  [instance="postman"]                      workspace $wsf7
-  [instance="spotify"]                      workspace $wsf8
-  [instance="nxplayer.bin"]                 workspace $wsf9
+  [instance="postman"]                      workspace $wsf6
+  [instance="spotify"]                      workspace $wsf6
 }
 
 # ]]]
