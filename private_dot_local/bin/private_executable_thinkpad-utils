@@ -22,11 +22,23 @@ EOF
   echo "$json" | jq --compact-output
 }
 
+function get_vpn_info() {
+  local json=$(cat << EOF
+  {
+    "tooltip": "   $(ip route | rg 'tun0 proto kernel' | cut -d'/' -f1)"
+  }
+EOF
+)
+
+  echo "$json" | jq --compact-output
+}
+
 function main() {
   local sub_command=${1-}
 
   case "$sub_command" in
     performance-mode) get_performance_mode ;;
+    vpn-info) get_vpn_info ;;
     *) ;;
   esac
 }
