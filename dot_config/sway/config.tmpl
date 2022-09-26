@@ -170,16 +170,15 @@ input "1739:52824:SYNA8008:00_06CB:CE58_Touchpad" {
 # Default wallpaper
 output * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
 
-{{- if eq .chezmoi.hostname "lunarch" }}
-
 # Per-monitor positions & wallpaper
 output {
-  $dell-qhd position 0 0
   $dell-qhd bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-left.jpg fill
+  $dell-qhd position 0 0
+  $dell-qhd scale 2
 
   # Dell U2419H - 1920x1080@60Hz
-  $dell-fhd position 2560 0
   $dell-fhd bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-right.jpg fill
+  $dell-fhd position 2560 0
 }
 
 workspace {
@@ -210,12 +209,11 @@ workspace {
   $wsf12 output $dell-fhd
 }
 
-{{- end }}
-
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
 
 output eDP-1 {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-left.jpg fill
+  position 4480 0
   scale 2
 }
 
@@ -574,7 +572,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 
 {{- if eq .chezmoi.hostname "lunarch" }}
 
-# Workaround until MST is working better in Wayland
+# Workaround until MST is working better for Intel 10710U
 focus output DP-2
 
 {{- end }}
