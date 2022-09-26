@@ -4,6 +4,7 @@ README.md
 slack_theme
 
 # [[[ Obsolete configs - keep for future reference only
+
 .config/karabiner
 .config/kitty
 .config/logiops
@@ -14,6 +15,7 @@ slack_theme
 .local/bin/virt-utils
 .local/share/applications/slack.desktop
 .mbsyncrc
+
 # ]]]
 
 # [[[ For experiments only
@@ -25,8 +27,6 @@ slack_theme
 {{ if ne .chezmoi.os "linux" }}
 
 .config/autostart
-.config/chrome-dev-flags.conf
-.config/chrome-flags.conf
 .config/fcitx5
 .config/fontconfig
 .config/foot
@@ -37,7 +37,6 @@ slack_theme
 .config/mimeapps.list
 .config/mpd
 .config/ncmpcpp
-.config/nordvpn
 .config/qutebrowser
 .config/solaar
 .config/swappy
@@ -53,6 +52,18 @@ slack_theme
 .local
 .mozilla
 .xkb
+
+# Personal exclusive files
+{{ if ne .chezmoi.hostname "lunarch" }}
+.config/chrome-dev-flags.conf
+.config/chrome-flags.conf
+.config/nordvpn
+{{ end }}
+
+# Work-related exclusive files
+{{ if ne .chezmoi.hostname "PF3XSEPR" }}
+.config/sway/keymaps/thinkpad.xkb
+{{ end }}
 
 {{ end }}
 # ]]]
