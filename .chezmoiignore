@@ -62,6 +62,7 @@ slack_theme
 .config/chrome-dev-flags.conf
 .config/chrome-flags.conf
 .config/nordvpn
+.local/share/applications/google-chrome-ua.desktop
 
 {{ end }}
 # ]]]
