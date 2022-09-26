@@ -24,7 +24,7 @@ slack_theme
 # ]]]
 
 # [[[ Linux-exclusive files
-{{ if ne .chezmoi.os "linux" }}
+{{- if ne .chezmoi.os "linux" }}
 
 .config/autostart
 .config/fcitx5
@@ -53,17 +53,25 @@ slack_theme
 .mozilla
 .xkb
 
-# Personal exclusive files
+{{- end }}
+# ]]]
+
+# [[[ Personal exclusive files
 {{ if ne .chezmoi.hostname "lunarch" }}
+
 .config/chrome-dev-flags.conf
 .config/chrome-flags.conf
 .config/nordvpn
-{{ end }}
 
-# Work-related exclusive files
-{{ if ne .chezmoi.hostname "PF3XSEPR" }}
-.config/sway/keymaps/thinkpad.xkb
 {{ end }}
+# ]]]
+
+# [[[ Work-related exclusive files
+{{ if ne .chezmoi.hostname "PF3XSEPR" }}
+
+.config/sway/keymaps/thinkpad.xkb
+.local/bin/brightness-utils
+.local/bin/thinkpad-utils
 
 {{ end }}
 # ]]]
