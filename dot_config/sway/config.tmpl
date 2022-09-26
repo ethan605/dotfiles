@@ -492,9 +492,7 @@ bindsym --locked {
   XF86AudioPlay exec mpc toggle
   # F9 - Play next
   XF86AudioNext exec mpc next
-}
 
-bindsym --locked {
   # F10 - Toggle mute/unmute volume
   XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
   # Shift F10 - Toggle mute/unmute microphone
@@ -521,10 +519,10 @@ bindsym --locked {
   XF86AudioMicMute exec brightness-utils toggle-mic-mute && \
     pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-  # F5 - Backlight down
-  XF86MonBrightnessDown exec brightnessctl set 5%-
-  # F6 - Backlight up
-  XF86MonBrightnessUp exec brightnessctl set +5%
+  # F5 - Decrease screen backlight by 5%
+  XF86MonBrightnessDown exec brightnessctl --device=intel_backlight set 5%-
+  # F6 - Increase screen backlight by 5%
+  XF86MonBrightnessUp exec brightnessctl --device=intel_backlight set +5%
 }
 
 {{- end }}
