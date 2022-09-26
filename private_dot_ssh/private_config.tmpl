@@ -19,7 +19,7 @@ Host *
 
 {{- end }}
 
-{{- if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.hostname "lunarch" }}
 
 Host {{ .work.git_domain }}
   ProxyJump vpn@localhost:2222
