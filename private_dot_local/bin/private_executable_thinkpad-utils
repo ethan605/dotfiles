@@ -23,9 +23,11 @@ EOF
 }
 
 function get_vpn_info() {
+  local ipaddr=$(ip route | rg 'dev tun0 proto' | cut -d' ' -f9)
+
   local json=$(cat << EOF
   {
-    "tooltip": "   $(ip route | rg 'tun0 proto kernel' | cut -d'/' -f1)"
+    "tooltip": "    $ipaddr"
   }
 EOF
 )
