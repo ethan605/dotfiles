@@ -534,16 +534,18 @@ bindsym $mod+Shift+e mode "$mode-system"
 
 # [[[ Key bindings - media
 
+bindsym --locked {
+  # Play previous
+  XF86AudioPrev exec mpc prev
+  # Toggle play/pause
+  XF86AudioPlay exec mpc toggle
+  # Play next
+  XF86AudioNext exec mpc next
+}
+
 {{- if eq .chezmoi.hostname "lunarch" }}
 
 bindsym --locked {
-  # F7 - Play previous
-  XF86AudioPrev exec mpc prev
-  # F8 - Toggle play/pause
-  XF86AudioPlay exec mpc toggle
-  # F9 - Play next
-  XF86AudioNext exec mpc next
-
   # F10 - Toggle mute/unmute volume
   XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
   # Shift F10 - Toggle mute/unmute microphone
