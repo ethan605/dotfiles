@@ -224,21 +224,6 @@ function __load-zsh-plugins() {
   eval "$(zoxide init zsh)"
   eval "$(direnv hook zsh)"
 }
-
-function __load-work-envs() {
-  # Creds
-{{- if eq .chezmoi.os "linux" }}
-  source "$HOME/.config/creds/nexus"
-{{- else if eq .chezmoi.os "darwin" }}
-  source "$HOME/Library/Application Support/creds/nexus"
-{{- end }}
-
-  export SDK_TOKEN_FACTORY_SECRET="{{ pass "work/sdk-token-factory-secret" }}"
-  export LOKALISE_TOKEN="{{ pass "work/lokalise-token" }}"
-  export LOKALISE_PROJECT_ID="{{ pass "work/lokalise-project-id" }}"
-  export BROWSERSTACK_USERNAME="{{ pass "work/browserstack-username" }}"
-  export BROWSERSTACK_ACCESS_KEY="{{ pass "work/browserstack-access-key" }}"
-}
 #]]]
 
 # [[[ Utils
@@ -417,5 +402,8 @@ __load-zsh-plugins
 # Dev tools
 __load-asdf
 __load-perl
-__load-work-envs
+
+{{- if eq .chezmoi.hostname "PF3XSEPR"}}
+source "$HOME/.config/work_envs"
+{{- end }}
 #]]]
