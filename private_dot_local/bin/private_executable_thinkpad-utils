@@ -8,9 +8,10 @@ function get_performance_mode() {
     [performance]="P"
   )
 
-  local mode=$(cat /sys/firmware/acpi/platform_profile)
+  local mode json
 
-  local json=$(cat << EOF
+  mode=$(cat /sys/firmware/acpi/platform_profile)
+  json=$(cat << EOF
   {
     "text": "${mode_hash[$mode]}",
     "class": "$mode",
@@ -23,9 +24,10 @@ EOF
 }
 
 function get_vpn_info() {
-  local ipaddr=$(ip route | rg 'dev tun0 proto' | cut -d' ' -f9)
+  local ipaddr json
 
-  local json=$(cat << EOF
+  ipaddr=$(ip route | rg 'dev tun0 proto' | cut -d' ' -f9)
+  json=$(cat << EOF
   {
     "tooltip": "    $ipaddr"
   }

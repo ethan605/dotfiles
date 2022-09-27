@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-echo $(pass dotfiles/ssh)
+pass dotfiles/ssh

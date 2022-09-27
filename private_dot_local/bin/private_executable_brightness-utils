@@ -2,10 +2,10 @@
 set -Eeuo pipefail
 
 function toggle_device() {
-  local device=$1
+  local device=$1 current_val max_val
 
-  local current_val=$(brightnessctl --device="$device" get)
-  local max_val=$(brightnessctl --device="$device" max)
+  current_val=$(brightnessctl --device="$device" get)
+  max_val=$(brightnessctl --device="$device" max)
 
   if [[ "$current_val" -eq "$max_val" ]]; then
     brightnessctl --device="$device" set 0
@@ -15,10 +15,10 @@ function toggle_device() {
 }
 
 function get_percentage() {
-  local device=$1
+  local device=$1 current_val max_val
 
-  local current_val=$(brightnessctl --device="$device" get)
-  local max_val=$(brightnessctl --device="$device" max)
+  current_val=$(brightnessctl --device="$device" get)
+  max_val=$(brightnessctl --device="$device" max)
 
   echo $(("$current_val"*100/"$max_val"))
 }
