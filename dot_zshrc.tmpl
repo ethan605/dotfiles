@@ -229,7 +229,7 @@ function __load-zsh-plugins() {
 # [[[ Utils
 function creds() {
 {{- if eq .chezmoi.os "linux" }}
-local cmd="$HOME/Work/creds/venv/bin/creds"
+  local cmd="$HOME/Work/creds/venv/bin/creds"
 {{- else if eq .chezmoi.os "darwin" }}
   local cmd="/usr/local/bin/creds"
 {{- end }}
@@ -274,75 +274,11 @@ function nord_dns() {
   nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
 }
 
-function work_proxy() {
-  local proxy_host="localhost"
-  local proxy_port=3128
-  local proxy_ip=$(ifconfig | rg "inet 192" | awk '{ print $2 }')
-
-  local sub_command=${1-}
-
-  # Toggle system-wise
-  if [[ -z "$sub_command" ]]; then
-    # On
-    if [[ -z "$http_proxy" ]]; then
-      export http_proxy="http://$proxy_host:$proxy_port/"
-      export https_proxy=$http_proxy
-      export no_proxy="localhost,127.0.0.1,192.168.1.1,::1,*.local"
-      export HTTP_PROXY=$http_proxy
-      export HTTPS_PROXY=$http_proxy
-      export NO_PROXY=$no_proxy
-
-      echo "VPN proxy enabled: $http_proxy"
-    else
-      unset http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY
-
-      echo "VPN proxy disabled"
-    fi
-  fi
-
-  # Toggle docker-wise
-  if [[ "$sub_command" == "docker" ]]; then
-    local docker_file="$HOME/.docker/config.json"
-    local has_proxies=$(cat "$docker_file" | jq -r '.proxies')
-
-    # On
-    if [[ "$has_proxies" == "null" ]]; then
-      local docker_proxy="http://$proxy_ip:$proxy_port/"
-
-      local docker_config=$(cat "$docker_file" |
-        jq -r ".proxies = { default: { httpProxy: \"$docker_proxy\", httpsProxy: \"$docker_proxy\", noProxy: \"$no_proxy\" } }")
-      echo "$docker_config" >| "$docker_file"
-
-      echo "VPN proxy enabled for Docker:"
-      echo "$docker_config" | jq -r
-    else # Off
-      local docker_config=$(cat "$docker_file" | jq -r 'del(.proxies)')
-      echo "$docker_config" >| "$docker_file"
-
-      echo "VPN proxy disabled for Docker:"
-      echo "$docker_config" | jq -r
-    fi
-  fi
-}
-
 {{- else if eq .chezmoi.os "darwin" }}
 
 function fix_keyboard() {
   # Based on: https://developer.apple.com/library/archive/technotes/tn2450/_index.html
   hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x7000000E1}]}'
-}
-
-function aws_vpn() {
-  local sub_command=${1-}
-  [[ -z "$sub_command" ]] && echo "Usage: $(basename $0) up|down|restart"
-
-  local launchd_agent="$HOME/Library/LaunchAgents/com.aws.vpn-client.plist"
-
-  case "$sub_command" in
-    up) launchctl load "$launchd_agent" ;;
-    down) launchctl unload "$launchd_agent" ;;
-    restart) launchctl unload "$launchd_agent" && launchctl load "$launchd_agent" ;;
-  esac
 }
 
 {{- end }}
@@ -392,8 +328,6 @@ alias w='watch --color --differences --errexit --exec'
 __load-sway
 {{- end }}
 
-__load-ssh
-
 # Base envs
 __load-zim
 __load-key-bindings
@@ -406,4 +340,6 @@ __load-perl
 {{- if eq .chezmoi.hostname "PF3XSEPR"}}
 source "$HOME/.config/work_envs"
 {{- end }}
+
+__load-ssh
 #]]]
