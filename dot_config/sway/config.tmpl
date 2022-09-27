@@ -175,6 +175,8 @@ input "1739:52824:SYNA8008:00_06CB:CE58_Touchpad" {
 # Default wallpaper
 output * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
 
+{{- if eq .chezmoi.hostname "lunarch" }}
+
 # Dell P2421D - 2560x1444@60Hz
 output $dell-qhd {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-left.jpg fill
@@ -187,13 +189,55 @@ output $dell-fhd {
   position 2560 0
 }
 
+workspace {
+  1 output $dell-qhd
+  2 output $dell-qhd
+  3 output $dell-qhd
+  4 output $dell-qhd
+  5 output $dell-qhd
+  6 output $dell-qhd
+  7 output $dell-qhd
+  8 output $dell-qhd
+  9 output $dell-qhd
+  10 output $dell-qhd
+}
+
+workspace {
+  $wsf1 output $dell-fhd
+  $wsf2 output $dell-fhd
+  $wsf3 output $dell-fhd
+  $wsf4 output $dell-fhd
+  $wsf5 output $dell-fhd
+  $wsf6 output $dell-fhd
+  $wsf7 output $dell-fhd
+  $wsf8 output $dell-fhd
+  $wsf9 output $dell-fhd
+  $wsf10 output $dell-fhd
+  $wsf11 output $dell-fhd
+  $wsf12 output $dell-fhd
+}
+
+{{- end }}
+
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
+
+# Dell P2421D - 2560x1444@60Hz
+output $dell-qhd {
+  bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-left.jpg fill
+  position 0 0
+}
 
 # Thinkpad built-in monitor - 3840x2400@60Hz
 output $thinkpad-uhd {
   bg ~/.config/wallpapers/x1c-g9-3840x2400.png fill
-  position 4480 0
+  position 2560 0
   scale 2
+}
+
+# Dell U2419H - 1920x1080@60Hz
+output $dell-fhd {
+  transform 270
+  position 4480 0
 }
 
 workspace {
@@ -220,36 +264,6 @@ workspace {
   $wsf4 output $dell-fhd
   $wsf5 output $dell-fhd
   $wsf6 output $dell-fhd
-  $wsf10 output $dell-fhd
-  $wsf11 output $dell-fhd
-  $wsf12 output $dell-fhd
-}
-
-{{- else }}
-
-workspace {
-  1 output $dell-qhd
-  2 output $dell-qhd
-  3 output $dell-qhd
-  4 output $dell-qhd
-  5 output $dell-qhd
-  6 output $dell-qhd
-  7 output $dell-qhd
-  8 output $dell-qhd
-  9 output $dell-qhd
-  10 output $dell-qhd
-}
-
-workspace {
-  $wsf1 output $dell-fhd
-  $wsf2 output $dell-fhd
-  $wsf3 output $dell-fhd
-  $wsf4 output $dell-fhd
-  $wsf5 output $dell-fhd
-  $wsf6 output $dell-fhd
-  $wsf7 output $dell-fhd
-  $wsf8 output $dell-fhd
-  $wsf9 output $dell-fhd
   $wsf10 output $dell-fhd
   $wsf11 output $dell-fhd
   $wsf12 output $dell-fhd
