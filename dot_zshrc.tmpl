@@ -38,6 +38,7 @@ export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
 export JDTLS_HOME="/usr/share/java/jdtls"
+export JDK_HOME="/usr/lib/jvm/default-runtime"
 
 {{- else if eq .chezmoi.os "darwin" }}
 
@@ -57,10 +58,10 @@ PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 export JDTLS_HOME="{{ .chezmoi.homeDir }}/.local/opt/jdtls-launcher"
+export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
 
 {{- end }}
 
-export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
 export JAVA_HOME="$JDK_HOME"
 PATH="$JAVA_HOME:$PATH"
 PATH="$GOPATH/bin:$PATH"
