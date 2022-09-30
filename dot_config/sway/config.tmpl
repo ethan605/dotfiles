@@ -30,6 +30,8 @@ set {
 }
 
 set $term foot
+set $session-lock "swaylock"
+#set $session-lock "gtklock --config=$HOME/.config/gtklock/config"
 
 # Themes
 set $gnome-schema org.gnome.desktop.interface
@@ -277,10 +279,10 @@ workspace {
 # [[[ Idle & lock
 
 exec swayidle -w \
-	timeout 300 'swaylock' \
+	timeout 300 '$session-lock' \
   timeout 330 'swaymsg "output * dpms off"' \
   resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock'
+	before-sleep '$session-lock'
 
 # ]]]
 
@@ -296,7 +298,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 
 # Lock immediately
-bindsym $mod+Ctrl+q exec swaylock
+bindsym $mod+Ctrl+q exec $session-lock
 
 # Launchers
 bindsym {
@@ -516,7 +518,7 @@ set $mode-system System: (L)ock | (E)xit | (R)eboot | (S)hutdown
 
 mode "$mode-system" {
   bindsym {
-    Shift+l exec swaylock, mode "default"
+    Shift+l exec $session-lock, mode "default"
     Shift+e exit
     Shift+r exec systemctl reboot, mode "default"
     Shift+s exec systemctl poweroff -i, mode "default"
@@ -585,7 +587,7 @@ bindsym --locked {
 # [[[ Key bindings - special switches
 
 # Lock immediately when close the lid
-bindswitch lid:on exec swaylock
+bindswitch lid:on exec $session-lock
 
 # ]]]
 
