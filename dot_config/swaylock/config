@@ -1,18 +1,12 @@
 # vim:filetype=dosini
-clock
 daemonize
-ignore-empty-password
-indicator
-indicator-caps-lock
-effect-blur=4x4
-image=~/.config/wallpapers/arch-snow-1920x1080.png
-
-# Content
 font=Cantarell
-timestr=%k:%M
-datestr=%B %d %Y
+#ignore-empty-password
+image=~/.config/wallpapers/arch-snow-1920x1080-blur.png
 
 # Indicator
+#indicator-idle-visible
+indicator-caps-lock
 indicator-radius=100
 
 text-color=#eff0eb
@@ -36,3 +30,10 @@ ring-ver-color=#57c7ff
 inside-wrong-color=#ff5c57
 line-wrong-color=#ff5c57
 ring-wrong-color=#ff5c57
+
+# swaylock-effects options
+#indicator
+#effect-blur=4x4
+#clock
+#timestr=%k:%M
+#datestr=%B %d %Y
