@@ -140,15 +140,13 @@ function __load-perl() {
 function __load-ssh() {
 {{- if eq .chezmoi.os "linux" }}
 
-  #export SSH_ASKPASS="$HOME/.local/bin/ssh-pass"
   eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" keychain --eval --quiet "$HOME/.ssh/id_ed25519")
-  #unset SSH_ASKPASS
 
 {{- else if eq .chezmoi.os "darwin" }}
 
   if [[ ! -z "$SSH_CLIENT" && ! -z "$SSH_TTY" ]]; then
     eval $(ssh-agent)
-    cat ~/.ssh/id_ed25519 | DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" ssh-add -
+    cat "$HOME/.ssh/id_ed25519" | DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" ssh-add -
   fi
 
 {{- end }}
@@ -172,6 +170,7 @@ function __load-sway() {
     # export BROWSER=firefox
 
     exec sway -d 2> $HOME/.logs/sway.log
+    __load-ssh
   fi
 }
 
@@ -325,10 +324,6 @@ alias w='watch --color --differences --errexit --exec'
 #]]]
 
 # [[[ Autoloads
-{{- if eq .chezmoi.os "linux" }}
-__load-sway
-{{- end }}
-
 # Base envs
 __load-zim
 __load-key-bindings
@@ -342,5 +337,7 @@ __load-perl
 source "$HOME/.config/work_envs"
 {{- end }}
 
-__load-ssh
+{{- if eq .chezmoi.os "linux" }}
+__load-sway
+{{- end }}
 #]]]
