@@ -231,6 +231,15 @@ function __load-zsh-plugins() {
 #]]]
 
 # [[[ Utils
+{{- if eq .chezmoi.hostname "lunarch" }}
+
+function nord_dns() {
+  device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
+  nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
+}
+
+{{- else }}
+
 function creds() {
 {{- if eq .chezmoi.os "linux" }}
   local cmd="$HOME/Work/creds/venv/bin/creds"
@@ -255,6 +264,8 @@ function creds() {
   "$cmd" aws login -n "$profile" "$role"
 }
 
+{{- end }}
+
 {{- if eq .chezmoi.os "linux" }}
 
 function __urlencode() {
@@ -273,11 +284,6 @@ function osc7_cwd() {
   printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(__urlencode "$PWD")"
 }
 
-function nord_dns() {
-  device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
-  nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
-}
-
 {{- else if eq .chezmoi.os "darwin" }}
 
 function fix_keyboard() {
@@ -286,7 +292,6 @@ function fix_keyboard() {
 }
 
 {{- end }}
-
 #]]]
 
 #[[[ Aliases
