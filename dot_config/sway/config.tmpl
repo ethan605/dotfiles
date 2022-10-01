@@ -278,11 +278,12 @@ workspace {
 
 # [[[ Idle & lock
 
+# gtklock doesn't work very well with swayidle
 exec swayidle -w \
-	timeout 300 '$session-lock' \
+	timeout 300 'swaylock' \
   timeout 330 'swaymsg "output * dpms off"' \
   resume 'swaymsg "output * dpms on"' \
-	before-sleep '$session-lock'
+	before-sleep 'swaylock'
 
 # ]]]
 
