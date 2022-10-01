@@ -32,6 +32,7 @@ slack_theme
 .config/foot
 .config/google-chrome
 .config/gtk-3.0
+.config/gtklock
 .config/imv
 .config/mako
 .config/mimeapps.list
