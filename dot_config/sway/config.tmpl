@@ -14,6 +14,7 @@ set {
 }
 
 # Extra workspaces
+{{- if eq .chezmoi.hostname "lunarch" }}
 set {
   $wsf1   "11:  ₁"
   $wsf2   "12:  ₂"
@@ -28,6 +29,24 @@ set {
   $wsf11  "21:  ₁₁"
   $wsf12  "22:旅  ₁₂"
 }
+{{- end }}
+
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+set {
+  $wsf1   "11:  ₁"
+  $wsf2   "12:  ₂"
+  $wsf3   "13:  ₃"
+  $wsf4   "14:  ₄"
+  $wsf5   "15:  ₅"
+  $wsf6   "12:  ₆"
+  $wsf7   "17:  ₇"
+  $wsf8   "18:  ₈"
+  $wsf9   "19:  ₉"
+  $wsf10  "20:  ₁₀"
+  $wsf11  "21:  ₁₁"
+  $wsf12  "22:旅  ₁₂"
+}
+{{- end }}
 
 set $term foot
 set $session-lock "swaylock"
@@ -119,6 +138,7 @@ for_window {
 }
 
 # Assign workspaces for non-terminal stuffs
+{{- if eq .chezmoi.hostname "lunarch" }}
 assign {
   [app_id="firefox(developeredition)*"]     workspace $wsf1
   [app_id="telegramdesktop"]                workspace $wsf2
@@ -136,6 +156,27 @@ assign {
   [instance="postman"]                      workspace $wsf6
   [instance="spotify"]                      workspace $wsf6
 }
+{{- end }}
+
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+assign {
+  [app_id="firefox(developeredition)*"]     workspace $wsf1
+  [app_id="telegramdesktop"]                workspace $wsf2
+  [app_id="google-chrome"]                  workspace $wsf3
+  [instance="google-chrome"]                workspace $wsf3
+  [app_id="Slack"]                          workspace $wsf7
+  [instance="slack"]                        workspace $wsf7
+  [app_id="zoom"]                           workspace $wsf8
+  [instance="zoom"]                         workspace $wsf8
+
+  [app_id="org.qutebrowser.qutebrowser"]    workspace $wsf4
+  [app_id="thunderbird"]                    workspace $wsf5
+  [app_id="geary"]                          workspace $wsf5
+  [instance="signal"]                       workspace $wsf6
+  [instance="postman"]                      workspace $wsf6
+  [instance="spotify"]                      workspace $wsf6
+}
+{{- end }}
 
 # ]]]
 
@@ -626,10 +667,3 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # ]]]
-
-{{- if eq .chezmoi.hostname "lunarch" }}
-
-# Workaround until MST is working better for Intel 10710U
-focus output DP-2
-
-{{- end }}
