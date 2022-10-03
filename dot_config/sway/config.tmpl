@@ -30,8 +30,8 @@ set {
 }
 
 set $term foot
-#set $session-lock "swaylock"
-set $session-lock "gtklock --config=$HOME/.config/gtklock/config"
+set $session-lock "swaylock"
+#set $session-lock "gtklock --config=$HOME/.config/gtklock/config"
 
 # Themes
 set $gnome-schema org.gnome.desktop.interface
@@ -278,12 +278,11 @@ workspace {
 
 # [[[ Idle & lock
 
-# gtklock doesn't work very well with swayidle
 exec swayidle -w \
-	timeout 300 'swaylock' \
+	timeout 300 '$session-lock' \
   timeout 330 'swaymsg "output * dpms off"' \
   resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock'
+	before-sleep '$session-lock'
 
 # ]]]
 
