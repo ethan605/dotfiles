@@ -5,6 +5,7 @@ local utils = require("lsp.utils")
 -- map buffer local keybindings when the language server attaches
 local servers = {
   "bashls",
+  "bufls",
   "cssls",
   --"denols",
   "dockerls",
