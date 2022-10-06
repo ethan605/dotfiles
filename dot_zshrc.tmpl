@@ -242,7 +242,7 @@ function nord_dns() {
 
 function creds() {
 {{- if eq .chezmoi.os "linux" }}
-  local cmd="$HOME/Work/creds/venv/bin/creds"
+  local cmd="$HOME/Work/shared/creds/venv/bin/creds"
 {{- else if eq .chezmoi.os "darwin" }}
   local cmd="/usr/local/bin/creds"
 {{- end }}
