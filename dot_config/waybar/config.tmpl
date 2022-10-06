@@ -1,6 +1,6 @@
 // vim:fileencoding=utf-8:syntax=json5
 [
-  {{- if eq .chezmoi.hostname "PF3XSEPR" }}
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
   {
     "output": ["Dell Inc. DELL U2419H CF6CV13"],
     "position": "top",
@@ -11,12 +11,11 @@
       "sway/workspaces"
     ],
     "modules-center": [
-      "sway/window"
+      "clock"
     ],
     "modules-right": [
       "pulseaudio",
       "tray",
-      "clock",
       "custom/arch"
     ],
 
@@ -28,10 +27,6 @@
       "all-outputs": false,
       "disable-scroll": true,
       "format": "{name}"
-    },
-
-    "sway/window": {
-      "max-length": 50
     },
 
     "pulseaudio": {
@@ -67,7 +62,7 @@
       "tooltip": false
     }
   },
-  {{- end }}
+{{- end }}
   {
     {{- if eq .chezmoi.hostname "PF3XSEPR" }}
     "output": ["eDP-1", "Dell Inc. DELL P2421DC B12WS03"],
