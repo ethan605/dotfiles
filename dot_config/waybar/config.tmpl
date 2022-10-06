@@ -77,7 +77,7 @@
       "mpd"
     ],
     "modules-center": [
-      "sway/window"
+      "clock"
     ],
     "modules-right": [
       "custom/vpn",
@@ -90,12 +90,11 @@
       "temperature",
       "pulseaudio",
       {{- if eq .chezmoi.hostname "PF3XSEPR" }}
-      "custom/brightness",
+      "backlight",
       "battery",
       "custom/performance-mode",
       {{- end }}
       "tray",
-      "clock",
       "custom/arch"
     ],
 
@@ -136,10 +135,6 @@
       "on-click-right": "foot -e ncmpcpp",
       "tooltip-format": "MPD (connected)",
       "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-
-    "sway/window": {
-      "max-length": 50
     },
 
     "network": {
@@ -221,10 +216,10 @@
       "on-click": "pavucontrol"
     },
 
-    "custom/brightness": {
-      "interval": 5,
-      "format": "    {}% ",
-      "exec": "brightness-utils get-backlight-percentage"
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["  ", "盛 "]
     },
 
     "battery": {
