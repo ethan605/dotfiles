@@ -1,4 +1,10 @@
+local utils = require("lsp.utils")
+
 require("lspconfig").diagnosticls.setup {
+  capabilities = utils.capabilities,
+  flags = utils.default_flags,
+  on_attach = utils.on_attach,
+
   filetypes = {"javascript", "typescript"},
   init_options = {
     linters = {
