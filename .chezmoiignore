@@ -42,6 +42,7 @@ slack_theme
 .config/solaar
 .config/swappy
 .config/sway
+.config/swayidle
 .config/swaylock
 .config/systemd
 .config/tessen
