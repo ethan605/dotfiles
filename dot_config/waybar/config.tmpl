@@ -11,6 +11,7 @@
       "sway/workspaces"
     ],
     "modules-center": [
+      "idle_inhibitor",
       "clock"
     ],
     "modules-right": [
@@ -27,6 +28,21 @@
       "all-outputs": false,
       "disable-scroll": true,
       "format": "{name}"
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": " ",
+        "deactivated": " "
+      },
+      "tooltip": false
+    },
+
+    "clock": {
+      "interval": 1,
+      "format": "{:%e %b %H:%M}",
+      "tooltip-format": "{:%A %e %B %Y %H:%M:%S}"
     },
 
     "pulseaudio": {
@@ -51,12 +67,6 @@
       "spacing": 10,
     },
 
-    "clock": {
-      "interval": 1,
-      "format": "{:%e %b %H:%M}",
-      "tooltip-format": "{:%A %e %B %Y %H:%M:%S}"
-    },
-
     "custom/arch": {
       "format": " ",
       "tooltip": false
@@ -77,6 +87,7 @@
       "mpd"
     ],
     "modules-center": [
+      "idle_inhibitor",
       "clock"
     ],
     "modules-right": [
@@ -135,6 +146,21 @@
       "on-click-right": "foot -e ncmpcpp",
       "tooltip-format": "MPD (connected)",
       "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": " ",
+        "deactivated": " "
+      },
+      "tooltip": false
+    },
+
+    "clock": {
+      "interval": 1,
+      "format": "{:%e %b %H:%M}",
+      "tooltip-format": "{:%A %e %B %Y %H:%M:%S}"
     },
 
     "network": {
@@ -253,12 +279,6 @@
     "tray": {
       "icon-size": 22,
       "spacing": 10
-    },
-
-    "clock": {
-      "interval": 1,
-      "format": "{:%e %b %H:%M}",
-      "tooltip-format": "{:%A %e %B %Y %H:%M:%S}"
     },
 
     "custom/arch": {
