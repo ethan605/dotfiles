@@ -3,20 +3,20 @@
  * -------------------------------------------------------------------------- */
 
 @keyframes blink-warning {
-  from {
-    color: #eff0eb;
+  50% {
+    color: orange;
   }
   to {
-    color: orange;
+    color: #eff0eb;
   }
 }
 
 @keyframes blink-critical {
-  from {
-    color: #eff0eb;
+  50% {
+    color: #ff5c57;
   }
   to {
-    color: #ff5c57;
+    color: #eff0eb;
   }
 }
 
@@ -31,6 +31,7 @@
 
 /* Reset all styles */
 * {
+  background-color: transparent;
   border-radius: 0;
   border: none;
   margin: 0;
@@ -111,16 +112,8 @@
   font-weight: bold;
 }
 
-#network {
-  /* No styles */
-}
-
 #network.disconnected {
   color: orange;
-}
-
-#cpu {
-  background-color: transparent;
 }
 
 #cpu.warning {
@@ -131,7 +124,7 @@
   color: #ff5c57;
 }
 
-#batery,
+#battery,
 #idle_inhibitor,
 #memory {
   animation-timing-function: linear;
@@ -146,19 +139,11 @@
 #memory.critical {
   color: #ff5c57;
   animation-name: blink-critical;
-  animation-duration: 2s;
-}
-
-#temperature {
-  /* No styles */
+  animation-duration: 1s;
 }
 
 #temperature.critical {
   color: #ff5c57;
-}
-
-#battery {
-  background-color: transparent;
 }
 
 #battery.warning {
@@ -169,14 +154,16 @@
   color: #ff5c57;
 }
 
-#battery.warning.discharging {
-  animation-name: blink-warning;
+#battery.discharging {
   animation-duration: 1s;
 }
 
-#battery.critical.discharging {
+#battery.discharging.warning {
+  animation-name: blink-warning;
+}
+
+#battery.discharging.critical {
   animation-name: blink-critical;
-  animation-duration: 0.5s;
 }
 
 #custom-performance-mode {
@@ -195,13 +182,8 @@
   color: #ff5c57;
 }
 
-#pulseaudio {
-  /* No styles */
-}
-
 #pulseaudio.muted {
   color: orange;
-  /* No styles */
 }
 
 #custom-arch {
