@@ -20,6 +20,15 @@
   }
 }
 
+@keyframes blink-idle-inhibitor {
+  50% {
+    color: #ff5c57;
+  }
+  to {
+    color: #eff0eb;
+  }
+}
+
 /* Reset all styles */
 * {
   border-radius: 0;
@@ -92,6 +101,16 @@
   color: #282a36;
 }
 
+#idle_inhibitor.activated {
+  color: #ff5c57;
+  animation-name: blink-idle-inhibitor;
+  animation-duration: 1s;
+}
+
+#clock {
+  font-weight: bold;
+}
+
 #network {
   /* No styles */
 }
@@ -112,6 +131,8 @@
   color: #ff5c57;
 }
 
+#batery,
+#idle_inhibitor,
 #memory {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -137,9 +158,6 @@
 }
 
 #battery {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
   background-color: transparent;
 }
 
@@ -184,10 +202,6 @@
 #pulseaudio.muted {
   color: orange;
   /* No styles */
-}
-
-#clock {
-  font-weight: bold;
 }
 
 #custom-arch {
