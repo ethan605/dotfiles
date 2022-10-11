@@ -4,6 +4,7 @@ zmodule environment
 zmodule utility
 
 # Official modules
+zmodule archive
 zmodule completion
 zmodule exa
 zmodule fzf

@@ -22,9 +22,9 @@ inode/directory=vifm.desktop;
 x-scheme-handler/file=vifm.desktop;
 
 # Email client
-application/x-xpinstall=org.gnome.Geary.desktop;
-message/rfc822=org.gnome.Geary.desktop;
-x-scheme-handler/mailto=org.gnome.Geary.desktop;
+application/x-xpinstall=google-chrome.desktop;
+message/rfc822=google-chrome.desktop;
+x-scheme-handler/mailto=google-chrome.desktop;
 
 # Image viewer
 image/bmp=imv.desktop;
