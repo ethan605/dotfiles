@@ -156,9 +156,9 @@ fileviewer <text/*>,<application/json>
   \ env -uCOLORTERM bat --number --color always --pager never --theme 'Sublime Snazzy' --wrap never %c
 
 " Archives
-fileviewer *.7z 7z l %c
+fileviewer *.7z 7za l %c
 fileviewer *.ear,*.jar,*.oxt,*.war,*.zip zip -sf %c
-fileviewer *.rar unrar v %c
+fileviewer *.rar unrar lb %c
 fileviewer *.tar tar -tf %c
 fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
 fileviewer *.tar.gz,*.tgz tar -tzf %c
