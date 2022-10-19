@@ -115,6 +115,13 @@ require("packer").startup(function()
   -- Toolings
   use "ap/vim-css-color"
   use "nvie/vim-flake8"
+  use "mfussenegger/nvim-dap"
   use { "fatih/vim-go", run = ":GoUpdateBinaries" }
   use { "prettier/vim-prettier", branch = "release/0.x", run = "npm install" }
+  use {
+    "simrat39/rust-tools.nvim",
+    config = function ()
+      require("plugins.rust-tools")
+    end
+  }
 end)
