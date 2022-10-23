@@ -6,4 +6,7 @@ xkb_symbols "basic" {
 
   # Use left Win as left Alt
   key <LWIN> { [ Alt_L,   Alt_L     ] };
+
+  # Use right AltGr as right Win
+  key <RALT> { [ Super_R, Super_L     ] };
 };
