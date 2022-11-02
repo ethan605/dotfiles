@@ -34,6 +34,7 @@
   background-color: transparent;
   border-radius: 0;
   border: none;
+  color: #eff0eb;
   margin: 0;
   min-height: 0;
   padding: 0;
@@ -41,7 +42,7 @@
 
 /* Tooltips */
 tooltip {
-  background: #282a36;
+  background-color: #282a36;
   border-radius: 3px;
   border: 1px solid #eff0eb;
 }
@@ -52,8 +53,7 @@ tooltip label {
 
 /* The whole bar */
 #waybar {
-  background: #282a36;
-  color: #eff0eb;
+  background-color: #282a36;
   font-family: Cantarell, Haskplex Nerd, sans-serif;
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
   font-size: 16px;
@@ -61,32 +61,38 @@ tooltip label {
   font-size: 14px;
 {{- end }}
 }
+}
 
 /* Workspaces */
 #workspaces button {
-  background: #282a36;
-  color: #eff0eb;
+  background-color: #282a36;
   padding: 0 15px;
 }
 
 #workspaces button:hover {
   background-color: #eff0eb;
-  color: #282a36;
 }
 
 #workspaces button.focused {
   background-color: #5af78e;
-  color: #282a36;
-  font-weight: bold;
 }
 
 #workspaces button.urgent {
   background-color: #ff5c57;
+}
+
+#workspaces button:hover label,
+#workspaces button.focused label {
+  color: #282a36;
+  font-weight: bold;
+}
+
+#workspaces button.urgent label {
   color: #282a36;
 }
 
 /* Window title in the middle */
-#window {
+#window label {
   font-weight: bold;
 }
 
@@ -105,11 +111,14 @@ tooltip label {
 }
 
 #mode {
-  background: #686868;
+  background-color: #686868;
 }
 
 #mpd {
   background-color: #57c7ff;
+}
+
+#mpd label {
   color: #282a36;
 }
 
@@ -117,91 +126,91 @@ tooltip label {
   padding: 0 4px;
 }
 
-#idle_inhibitor.activated {
+#idle_inhibitor.activated label {
   color: #ff5c57;
   animation-name: blink-idle-inhibitor;
   animation-duration: 1s;
 }
 
-#clock {
+#clock label {
   font-weight: bold;
 }
 
-#network.disconnected {
+#network.disconnected label {
   color: orange;
 }
 
-#cpu.warning {
+#cpu.warning label {
   color: orange;
 }
 
-#cpu.critical {
+#cpu.critical label {
   color: #ff5c57;
 }
 
-#battery,
-#idle_inhibitor,
-#memory {
+#battery label,
+#idle_inhibitor label,
+#memory label {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-#memory.warning {
+#memory.warning label {
   color: orange;
 }
 
-#memory.critical {
+#memory.critical label {
   color: #ff5c57;
   animation-name: blink-critical;
   animation-duration: 1s;
 }
 
-#temperature.critical {
+#temperature.critical label {
   color: #ff5c57;
 }
 
-#battery.warning {
+#battery.warning label {
   color: orange;
 }
 
-#battery.critical {
+#battery.critical label {
   color: #ff5c57;
 }
 
-#battery.discharging {
+#battery.discharging label {
   animation-duration: 1s;
 }
 
-#battery.discharging.warning {
+#battery.discharging.warning label {
   animation-name: blink-warning;
 }
 
-#battery.discharging.critical {
+#battery.discharging.critical label {
   animation-name: blink-critical;
 }
 
-#custom-performance-mode {
+#custom-performance-mode label {
   font-weight: bold;
 }
 
-#custom-performance-mode.low-power {
+#custom-performance-mode.low-power label {
   color: #57c7ff;
 }
 
-#custom-performance-mode.balanced {
+#custom-performance-mode.balanced label {
   color: #eff0eb;
 }
 
-#custom-performance-mode.performance {
+#custom-performance-mode.performance label {
   color: #ff5c57;
 }
 
-#pulseaudio.muted {
+#pulseaudio.muted label {
   color: orange;
 }
 
-#custom-arch {
+#custom-arch label {
   color: #1793d1;
   font-size: 20px;
   padding-left: 8px;
