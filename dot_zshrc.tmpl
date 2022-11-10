@@ -19,6 +19,7 @@ export FZF_DEFAULT_OPTS='
 export EDITOR=nvim
 export REACT_EDITOR=nvim
 export GOPATH="$HOME/go"
+export CARGO_HOME="$HOME/.cargo"
 
 {{- if eq .chezmoi.os "linux" }}
 
@@ -65,6 +66,7 @@ export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po
 export JAVA_HOME="$JDK_HOME"
 PATH="$JAVA_HOME:$PATH"
 PATH="$GOPATH/bin:$PATH"
+PATH="$CARGO_HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="./node_modules/.bin:$PATH"
 export PATH
