@@ -125,7 +125,7 @@ for_window {
   [app_id="pavucontrol"]                  floating enable
   [app_id="qalculate-gtk"]                floating enable
   [app_id="solaar"]                       floating enable
-  [app_id="telegramdesktop"]              floating enable
+  [app_id="org.telegram.desktop"]         floating enable
   [app_id="virt-manager"]                 floating enable
   [app_id="zoom"]                         floating enable, inhibit_idle focus
   [instance="fcitx5-config-qt"]           floating enable
@@ -139,7 +139,7 @@ for_window {
 {{- if eq .chezmoi.hostname "lunarch" }}
 assign {
   [app_id="firefox(developeredition)*"]     workspace $wsf1
-  [app_id="telegramdesktop"]                workspace $wsf2
+  [app_id="org.telegram.desktop"]           workspace $wsf2
   [app_id="google-chrome"]                  workspace $wsf3
   [instance="google-chrome"]                workspace $wsf3
   [app_id="Slack"]                          workspace $wsf4
@@ -159,7 +159,7 @@ assign {
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
 assign {
   [app_id="firefox(developeredition)*"]     workspace $wsf1
-  [app_id="telegramdesktop"]                workspace $wsf2
+  [app_id="org.telegram.desktop"]           workspace $wsf2
   [app_id="google-chrome"]                  workspace $wsf3
   [instance="google-chrome"]                workspace $wsf3
   [app_id="Slack"]                          workspace $wsf7
