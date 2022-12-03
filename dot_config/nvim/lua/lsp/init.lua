@@ -9,6 +9,7 @@ local servers = {
   "cssls",
   --"denols",
   "dockerls",
+  "eslint",
   "gopls",
   "graphql",
   "html",
