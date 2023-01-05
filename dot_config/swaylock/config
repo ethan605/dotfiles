@@ -32,8 +32,8 @@ line-wrong-color=#ff5c57
 ring-wrong-color=#ff5c57
 
 # swaylock-effects options
-indicator
-effect-blur=4x4
-clock
-timestr=%k:%M
-datestr=%B %d %Y
+#indicator
+#effect-blur=4x4
+#clock
+#timestr=%k:%M
+#datestr=%B %d %Y
