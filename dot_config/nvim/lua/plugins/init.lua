@@ -29,12 +29,6 @@ require("packer").startup(function()
     end
   }
   use {
-    "folke/twilight.nvim",
-    config = function()
-      require("twilight").setup()
-    end
-  }
-  use {
     "junegunn/fzf.vim",
     requires = {
       "junegunn/fzf",

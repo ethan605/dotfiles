@@ -5,7 +5,7 @@ ignore-empty-password
 image=~/.config/wallpapers/arch-snow-1920x1080-blur.png
 
 # Indicator
-indicator-idle-visible
+#indicator-idle-visible
 indicator-caps-lock
 indicator-radius=100
 
