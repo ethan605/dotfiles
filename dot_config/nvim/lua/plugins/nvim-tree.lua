@@ -13,7 +13,6 @@ require("nvim-tree").setup {
     },
   },
   hijack_cursor = true,
-  ignore_ft_on_setup = { "startify" },
   renderer = {
     highlight_git = true,
     highlight_opened_files = "all",
