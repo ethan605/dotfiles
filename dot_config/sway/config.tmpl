@@ -162,17 +162,17 @@ assign {
   [app_id="org.telegram.desktop"]           workspace $wsf2
   [app_id="google-chrome"]                  workspace $wsf3
   [instance="google-chrome"]                workspace $wsf3
-  [app_id="Slack"]                          workspace $wsf7
-  [instance="slack"]                        workspace $wsf7
-  [app_id="zoom"]                           workspace $wsf8
-  [instance="zoom"]                         workspace $wsf8
+  [app_id="Slack"]                          workspace $wsf10
+  [instance="slack"]                        workspace $wsf10
+  [app_id="zoom"]                           workspace $wsf11
+  [instance="zoom"]                         workspace $wsf11
 
   [app_id="geary"]                          workspace $wsf4
   [app_id="thunderbird"]                    workspace $wsf4
   [app_id="org.qutebrowser.qutebrowser"]    workspace $wsf5
   [instance="postman"]                      workspace $wsf6
   [instance="spotify"]                      workspace $wsf6
-  [instance="signal"]                       workspace $wsf9
+  [instance="signal"]                       workspace $wsf7
 }
 {{- end }}
 
@@ -215,7 +215,7 @@ output * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
 
 {{- if eq .chezmoi.hostname "lunarch" }}
 
-# Dell P2421D - 2560x1444@60Hz
+# Dell P2421DC - 2560x1444@60Hz
 output $dell-qhd {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-left.jpg fill
   position 0 0
@@ -259,7 +259,7 @@ workspace {
 
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
 
-# Dell P2421D - 2560x1444@60Hz
+# Dell P2421DC - 2560x1444@60Hz
 output $dell-qhd {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-left.jpg fill
   position 1080 0
@@ -280,29 +280,29 @@ output $dell-fhd {
 }
 
 workspace {
-  1 output $thinkpad-uhd
-  2 output $thinkpad-uhd
-  3 output $thinkpad-uhd
-  4 output $thinkpad-uhd
-  5 output $thinkpad-uhd
-  6 output $thinkpad-uhd
-  7 output $thinkpad-uhd
-  8 output $thinkpad-uhd
-  9 output $thinkpad-uhd
-  10 output $thinkpad-uhd
+  1 output $dell-qhd
+  2 output $dell-qhd
+  3 output $dell-qhd
+  4 output $dell-qhd
+  5 output $dell-qhd
+  6 output $dell-qhd
+  7 output $dell-qhd
+  8 output $dell-qhd
+  9 output $dell-qhd
+  10 output $dell-qhd
 }
 
 workspace {
-  $wsf1 output $dell-qhd
-  $wsf2 output $dell-qhd
-  $wsf3 output $dell-qhd
-  $wsf4 output $dell-qhd
-  $wsf5 output $dell-qhd
-  $wsf6 output $dell-qhd
+  $wsf1 output $thinkpad-uhd
+  $wsf2 output $thinkpad-uhd
+  $wsf3 output $thinkpad-uhd
+  $wsf4 output $thinkpad-uhd
+  $wsf5 output $thinkpad-uhd
+  $wsf6 output $thinkpad-uhd
+  $wsf7 output $thinkpad-uhd
+  $wsf8 output $thinkpad-uhd
+  $wsf9 output $thinkpad-uhd
 
-  $wsf7 output $dell-fhd
-  $wsf8 output $dell-fhd
-  $wsf9 output $dell-fhd
   $wsf10 output $dell-fhd
   $wsf11 output $dell-fhd
   $wsf12 output $dell-fhd
