@@ -17,8 +17,8 @@ set {
 {{- if eq .chezmoi.hostname "lunarch" }}
 set {
   $wsf1   "11:  ₁"
-  $wsf2   "12:  ₂"
-  $wsf3   "13:  ₃"
+  $wsf2   "12:  ₂"
+  $wsf3   "13:  ₃"
   $wsf4   "14:  ₄"
   $wsf5   "15:  ₅"
   $wsf6   "16:  ₆"
@@ -27,24 +27,24 @@ set {
   $wsf9   "19:  ₉"
   $wsf10  "20:  ₁₀"
   $wsf11  "21:  ₁₁"
-  $wsf12  "22:旅  ₁₂"
+  $wsf12  "22:  ₁₂"
 }
 {{- end }}
 
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
 set {
   $wsf1   "11:  ₁"
-  $wsf2   "12:  ₂"
-  $wsf3   "13:  ₃"
-  $wsf4   "14:  ₄"
+  $wsf2   "12:  ₂"
+  $wsf3   "13:  ₃"
+  $wsf4   "14:  ₄"
   $wsf5   "15:  ₅"
   $wsf6   "16:  ₆"
-  $wsf7   "17:  ₇"
-  $wsf8   "18:  ₈"
+  $wsf7   "17:  ₇"
+  $wsf8   "18:  ₈"
   $wsf9   "19:  ₉"
-  $wsf10  "20:  ₁₀"
-  $wsf11  "21:  ₁₁"
-  $wsf12  "22:旅  ₁₂"
+  $wsf10  "20:  ₁₀"
+  $wsf11  "21:  ₁₁"
+  $wsf12  "22:  ₁₂"
 }
 {{- end }}
 
@@ -139,9 +139,9 @@ for_window {
 {{- if eq .chezmoi.hostname "lunarch" }}
 assign {
   [app_id="firefox(developeredition)*"]     workspace $wsf1
-  [app_id="org.telegram.desktop"]           workspace $wsf2
-  [app_id="google-chrome"]                  workspace $wsf3
-  [instance="google-chrome"]                workspace $wsf3
+  [app_id="google-chrome"]                  workspace $wsf2
+  [instance="google-chrome"]                workspace $wsf2
+  [app_id="org.telegram.desktop"]           workspace $wsf3
   [app_id="Slack"]                          workspace $wsf4
   [instance="slack"]                        workspace $wsf4
   [app_id="zoom"]                           workspace $wsf5
@@ -159,20 +159,20 @@ assign {
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
 assign {
   [app_id="firefox(developeredition)*"]     workspace $wsf1
-  [app_id="org.telegram.desktop"]           workspace $wsf2
-  [app_id="google-chrome"]                  workspace $wsf3
-  [instance="google-chrome"]                workspace $wsf3
+  [app_id="google-chrome"]                  workspace $wsf2
+  [instance="google-chrome"]                workspace $wsf2
+  [app_id="geary"]                          workspace $wsf3
+  [app_id="thunderbird"]                    workspace $wsf3
+  [app_id="org.qutebrowser.qutebrowser"]    workspace $wsf4
+  [instance="postman"]                      workspace $wsf5
+  [instance="spotify"]                      workspace $wsf6
+
   [app_id="Slack"]                          workspace $wsf10
   [instance="slack"]                        workspace $wsf10
   [app_id="zoom"]                           workspace $wsf11
   [instance="zoom"]                         workspace $wsf11
-
-  [app_id="geary"]                          workspace $wsf4
-  [app_id="thunderbird"]                    workspace $wsf4
-  [app_id="org.qutebrowser.qutebrowser"]    workspace $wsf5
-  [instance="postman"]                      workspace $wsf6
-  [instance="spotify"]                      workspace $wsf6
-  [instance="signal"]                       workspace $wsf7
+  [app_id="org.telegram.desktop"]           workspace $wsf12
+  [instance="signal"]                       workspace $wsf12
 }
 {{- end }}
 
