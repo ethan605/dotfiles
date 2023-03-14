@@ -252,18 +252,18 @@ function creds() {
 
   # Pass all arguments to the cmd if the sub command isn't "login"
   if [[ "$sub_command" != "login" ]]; then
-    "$cmd" "$@"
+    IDP=Okta "$cmd" "$@"
     return
   fi
 
-  local options=$("$cmd" aws list 2> /dev/null)
+  local options=$(IDP=Okta "$cmd" aws list 2> /dev/null)
   local header_lines=$(echo "$options" | rg -n "\-{4,}" | cut -d':' -f1)
   local selected=$(echo "$options" | fzf --header-lines="$header_lines" | sed 's/\s\+/ /g')
   [[ -z "$selected" ]] && return 1
 
   local profile=$(echo "$selected" | cut -d' ' -f2)
   local role=$(echo "$selected" | cut -d' ' -f3)
-  "$cmd" aws login -n "$profile" "$role"
+  IDP=Okta "$cmd" aws login -n "$profile" "$role"
 }
 
 {{- end }}
