@@ -3,11 +3,6 @@
   name = Ethan Nguyen
   email = {{ .work.email }}
   signingkey = C086CD9B4DBCBBC0
-[filter "lfs"]
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
 [commit]
   gpgsign = true
 [tag]
@@ -55,6 +50,11 @@
   line-numbers = true
   navigate = true
   syntax-theme = "Sublime Snazzy"
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 
 {{- if eq .chezmoi.os "darwin" }}
 
