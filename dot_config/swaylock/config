@@ -3,6 +3,7 @@ daemonize
 font=Cantarell
 ignore-empty-password
 image=~/.config/wallpapers/arch-snow-1920x1080-blur.png
+image=DP-7:~/.config/wallpapers/arch-snow-1080x607-blur.png
 
 # Indicator
 #indicator-idle-visible
