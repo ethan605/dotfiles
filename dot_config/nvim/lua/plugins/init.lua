@@ -105,6 +105,7 @@ require("packer").startup(function()
   use "darfink/vim-plist"
   use "sheerun/vim-polyglot"
   use "udalov/kotlin-vim"
+  use "tmux-plugins/vim-tmux"
 
   -- Toolings
   use "ap/vim-css-color"
