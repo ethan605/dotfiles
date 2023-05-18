@@ -1,6 +1,6 @@
 # vim:fileencoding=utf-8:filetype=dosini
 [options]
-font = OperatorMonoLig Nerd Font Book 15
+font = OperatorMono Nerd Font Book 15
 scrollback_lines = 10000
 
 [colors]

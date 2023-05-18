@@ -17,7 +17,7 @@ class Colors:
 
 class Fonts:
     sans = "Cantarell"
-    fixed = "OperatorMonoLig Nerd Font"
+    fixed = "OperatorMono Nerd Font"
     medium = 12
     large = 14
     web = 17
