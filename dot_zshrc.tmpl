@@ -167,10 +167,10 @@ function __load-sway() {
     export SDL_VIDEODRIVER=wayland
     export XDG_CURRENT_DESKTOP=sway
     export XDG_SESSION_TYPE=wayland
-    export TERM=termite
+    export TERM=foot
     export MOZ_ENABLE_WAYLAND=1
 
-{{- if eq .chezmoi.hostname "PF3XSEPR"}}
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
     export BROWSER=google-chrome-stable
 {{- else }}
     export BROWSER=firefox
