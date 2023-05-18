@@ -27,7 +27,7 @@
     },
     "state-icons": {
       "paused": " ",
-      "playing": " "
+      "playing": " "
     },
     "on-click": "mpc toggle",
     "on-click-right": "foot -e ncmpcpp",
@@ -62,7 +62,7 @@
 
   "custom/vpn": {
     "interval": 5,
-    "format": "旅 VPN",
+    "format": "󰒄 VPN",
     "exec": "thinkpad-utils vpn-info",
     "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
     "return-type": "json",
@@ -71,7 +71,7 @@
 
   "custom/nordlynx": {
     "interval": 5,
-    "format": "旅 VPN",
+    "format": "󰒄 VPN",
     "exec": "ip route | grep nordlynx"
   },
 
@@ -113,11 +113,11 @@
     "format-muted": "  ",
     "format-icons": {
       "car": " ",
-      "handsfree": " ",
-      "headphones": " ",
-      "headset": " ",
-      "phone": " ",
-      "portable": " ",
+      "handsfree": " ",
+      "headphones": "󰋎 ",
+      "headset": "󰋎 ",
+      "phone": " ",
+      "portable": "󰄞",
       "default": [" ", " "]
     },
     "on-click": "pavucontrol"
@@ -126,7 +126,7 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
-    "format-icons": ["  ", "盛 "]
+    "format-icons": [" ", " "]
   },
 
   "battery": {
