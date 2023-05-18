@@ -270,20 +270,11 @@ function creds() {
 
 {{- if eq .chezmoi.os "linux" }}
 
-function __urlencode() {
-  local length="${#1}"
-
-  for (( i = 0; i < length; i++ )); do
-    local c="${1:$i:1}"
-    case $c in
-      %) printf '%%%02X' "'$c" ;;
-      *) printf "%s" "$c" ;;
-    esac
-  done
-}
-
 function osc7_cwd() {
-  printf '\e]7;file://%s%s\e\\' "$HOSTNAME" "$(__urlencode "$PWD")"
+  setopt localoptions extendedglob
+  input=( ${(s::)PWD} )
+  uri=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
+  print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
 }
 
 {{- else if eq .chezmoi.os "darwin" }}
