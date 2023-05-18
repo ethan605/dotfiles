@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=System;FileTools;FileManager;Utility;ConsoleOnly;
 Comment=Vi[m] like ncurses based file manager
-Exec=foot /usr/bin/zsh -c "vifm --select %F"
+Exec=foot -e vifm --select %F
 GenericName=File Manager
 Icon=vifm
 Name=Vifm
