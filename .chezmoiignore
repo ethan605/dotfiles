@@ -1,7 +1,7 @@
 # vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=[[[,]]]
 LICENSE
 README.md
-slack_theme
+misc
 
 # [[[ Obsolete configs - keep for future reference only
 
