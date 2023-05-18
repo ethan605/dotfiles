@@ -64,24 +64,6 @@
       {{- end }}
       "tray",
       "custom/arch"
-    ],
-
-    "temperature": {
-  {{- if eq .chezmoi.hostname "lunarch" }}
-      "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-  {{- end }}
-      "critical-threshold": 80,
-      "interval": 5,
-      "format": "{icon}  {temperatureC}°C",
-      "format-icons": [
-        "",
-        "",
-        "",
-        "",
-        "" 
-      ],
-      "on-click": "foot /usr/bin/zsh -c 'sensors | less'",
-      "tooltip": true
-    },
+    ]
   }
 ]
