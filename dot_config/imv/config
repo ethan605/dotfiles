@@ -1,5 +1,4 @@
 # vim:filetype=dosini
-
 [options]
 overlay = true
-overlay_font = Operator Mono Lig Book:20
+overlay_font = OperatorMono Nerd Font Book:20
