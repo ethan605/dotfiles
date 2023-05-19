@@ -24,6 +24,7 @@ require("packer").startup(function()
   }
   use {
     "hoob3rt/lualine.nvim",
+    requires = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
       require("plugins.lualine")
     end
