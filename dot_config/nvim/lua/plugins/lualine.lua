@@ -1,8 +1,17 @@
+local custom_powerline = require("lualine.themes.powerline")
+
+-- Snazzy colours
+local custom_colors = {
+  black = "282a36"
+}
+
+custom_powerline.normal.c.bg = custom_colors.black
+
 require("lualine").setup {
   options = {
     component_separators = "",
     section_separators = "",
-    theme = "powerline",
+    theme = custom_powerline,
   },
   sections = {
     lualine_a = {"mode"},
