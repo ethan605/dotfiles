@@ -57,9 +57,9 @@ ${custom.venv}\
 $character"""
 
 [sudo]
+disabled = false
 format = "[sudo]($style) "
 style = "bold red"
-disabled = false
 
 [username]
 format = "[$user]($style) "
@@ -68,8 +68,8 @@ format = "[$user]($style) "
 format = "[@](bright-black) [$hostname]($style) "
 
 [shlvl]
-disabled = true
-symbol = "↕️"
+disabled = false
+symbol = " "
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style)"
@@ -92,9 +92,9 @@ format = "[$all_status$ahead_behind]($style)"
 format = " [$duration]($style)"
 
 [character]
-error_symbol = "[λ](red)"
-success_symbol = "[λ](purple)"
-vicmd_symbol = "[ε](purple)"
+error_symbol = "[λ](bold red)"
+success_symbol = "[λ](bold purple)"
+vicmd_symbol = "[ε](bold purple)"
 
 # Custom
 [custom.proxy]
@@ -114,18 +114,18 @@ when = 'test "$VIRTUAL_ENV" != ""'
 [aws]
 format = ' [$symbol($profile)( \($region\))( \[$duration\])]($style)'
 style = "bold #ff9900"
-symbol = " "
+symbol = "󰸏 "
 
 [docker_context]
 format = " [$symbol$context]($style)"
 style = "bold #0db7ed"
-symbol = " "
+symbol = "󰡨 "
 
 [kubernetes]
 disabled = false
 format = " [$symbol$context]($style)[@](bright-black)[$namespace]($style)"
 style = "bold #326ce5"
-symbol = "⎈"
+symbol = "󱃾 "
 [kubernetes.context_aliases]
 "arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-01" = "tf-dev-01"
 "arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-02" = "tf-dev-02"
@@ -166,12 +166,13 @@ version_format = "$raw"
 [java]
 format = " [$symbol$version]($style)"
 style = "bold #ffa518"
-symbol = " "
+symbol = " "
 version_format = "$raw"
 
 [kotlin]
 format = " [$symbol$version]($style)"
 style = "bold #1aa2d4"
+symbol = " "
 version_format = "$raw"
 
 [lua]
