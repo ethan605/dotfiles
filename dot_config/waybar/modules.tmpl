@@ -26,8 +26,8 @@
       "on": " 1"
     },
     "state-icons": {
-      "paused": " ",
-      "playing": " "
+      "paused": " ",
+      "playing": " "
     },
     "on-click": "mpc toggle",
     "on-click-right": "foot -e ncmpcpp",
@@ -125,8 +125,9 @@
 
   "backlight": {
     "device": "intel_backlight",
+    "interval": 10,
     "format": "{icon} {percent}%",
-    "format-icons": [" ", " "]
+    "format-icons": ["󱩎 ", "󱩏 ", "󱩐 ", "󱩑 ", "󱩒 ", "󱩓 ", "󱩔 ", "󱩕 ", "󱩖 ", "󰛨 "]
   },
 
   "battery": {
@@ -136,10 +137,10 @@
       "critical": 15
     },
     // Connected to AC
-    "format": "  {capacity}% {icon}",
+    "format": "  {capacity}% {icon} ",
     // Not connected to AC
-    "format-discharging": "  {capacity}% {icon}",
-    "format-icons": ["  ", "  ", "  ", "  ", "  "],
+    "format-discharging": "  {capacity}% {icon} ", 
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁿 ", "󰂀", "󰂁", "󰂂", "󰁹"],
     "tooltip": true
   },
 
