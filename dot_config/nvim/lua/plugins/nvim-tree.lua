@@ -7,7 +7,7 @@ require("nvim-tree").setup {
   filters = {
     custom = {
       ".git",
-      ".gitlab",
+      --".gitlab",
       "node_modules",
       "venv",
     },
@@ -18,7 +18,7 @@ require("nvim-tree").setup {
     highlight_opened_files = "all",
     icons = {
       show = {
-        --git = 1,
+        git = true,
         folder = true,
         file = true,
         folder_arrow = true,
