@@ -9,9 +9,9 @@ $hostname\
 $directory\
 $git_branch\
 $git_commit\
-$git_state\
-$git_metrics\
 $git_status\
+$git_metrics\
+$git_state\
 $hg_branch\
 $cmake\
 $conda\
@@ -84,13 +84,19 @@ style = "bright-black"
 symbol = ""
 
 [git_commit]
-format = " [$hash$tag]($style)"
-style = "green"
+format = " [$hash](bold cyan)( [$tag](bold green))"
 tag_disabled = false
 tag_symbol = " "
 
 [git_status]
 format = "[$all_status$ahead_behind]($style)"
+
+[git_metrics]
+disabled = false
+format = "( ([+$added]($added_style))([-$deleted]($deleted_style)))"
+
+[git_state]
+format = ' \([$state $progress_current/$progress_total]($style)\)'
 
 [cmd_duration]
 format = " [$duration]($style)"
