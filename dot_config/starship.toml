@@ -79,12 +79,15 @@ truncation_length = 3
 style = "bold blue"
 
 [git_branch]
-format = " [$branch]($style)"
+format = " [$symbol$branch]($style)"
 style = "bright-black"
+symbol = ""
 
 [git_commit]
-format = "~[$hash]($style)"
-style = "purple"
+format = " [$hash$tag]($style)"
+style = "green"
+tag_disabled = false
+tag_symbol = " "
 
 [git_status]
 format = "[$all_status$ahead_behind]($style)"
