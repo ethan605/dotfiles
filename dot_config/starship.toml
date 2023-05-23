@@ -84,7 +84,7 @@ style = "bright-black"
 symbol = ""
 
 [git_commit]
-format = " [$hash](bold cyan)( [$tag](bold green))"
+format = " [󰜘$hash](cyan)( [$tag](green))"
 tag_disabled = false
 tag_symbol = " "
 
