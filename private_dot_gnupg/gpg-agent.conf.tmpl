@@ -1,9 +1,7 @@
 # vim:fileencoding=utf-8:syntax=config
 {{- if eq .chezmoi.os "linux" }}
 
-pinentry-program /usr/bin/pinentry-curses
-max-cache-ttl 60480000
-default-cache-ttl 60480000
+pinentry-program /usr/bin/pinentry-gnome3
 
 {{- else if eq .chezmoi.os "darwin" }}
 
@@ -14,3 +12,6 @@ default-cache-ttl 60480000
 pinentry-program /usr/local/bin/pinentry-mac
 
 {{- end }}
+
+max-cache-ttl 60480000
+default-cache-ttl 60480000
