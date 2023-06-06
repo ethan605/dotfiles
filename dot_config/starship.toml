@@ -69,7 +69,7 @@ format = "[$user]($style) "
 format = "[@](bright-black) [$hostname]($style) "
 
 [shlvl]
-disabled = false
+disabled = true
 symbol = " "
 
 [directory]
