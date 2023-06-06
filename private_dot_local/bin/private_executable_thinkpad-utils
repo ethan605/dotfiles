@@ -14,6 +14,7 @@ function get_performance_mode() {
   json=$(cat << EOF
   {
     "text": "${mode_hash[$mode]}",
+    "alt": "$mode",
     "class": "$mode",
     "tooltip": "${mode^} mode\n\nFn+l\t-\tLow-power mode\nFn+m\t-\tBalanced mode\nFn+h\t-\tPerformance mode"
   }
