@@ -1,0 +1,4 @@
+dot_config/wallpapers/arch-snow-1920x1080-blur.png filter=lfs diff=lfs merge=lfs -text
+dot_config/wallpapers/arch-snow-1920x1080.png filter=lfs diff=lfs merge=lfs -text
+dot_config/wallpapers/lukasz-szmigiel-unsplash.jpg filter=lfs diff=lfs merge=lfs -text
+dot_config/wallpapers/x1c-g9-3840x2400.png filter=lfs diff=lfs merge=lfs -text
