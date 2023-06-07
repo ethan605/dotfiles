@@ -63,11 +63,11 @@ set $font-size 12
 set $font Cantarell $font-size
 
 # Outputs
-# Dell P2421D - 2560x1444@60Hz
-set $dell-qhd "Dell Inc. DELL P2421DC B12WS03"
+# Dell S2722DZ - 27" - 2560x1444@60Hz
+set $dell-s2722dz "Dell Inc. DELL S2722DZ FL2B8H3"
 
-# Dell U2419H - 1920x1080@60Hz
-set $dell-fhd "Dell Inc. DELL U2419H CF6CV13"
+# Dell P2421D - 24" - 2560x1444@60Hz
+set $dell-p2421dc "Dell Inc. DELL P2421DC B12WS03"
 
 {{- if eq .chezmoi.hostname "PF3XSEPR" }}
 # Thinkpad built-in monitor - 3840x2400@60Hz
@@ -215,44 +215,42 @@ output * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
 
 {{- if eq .chezmoi.hostname "lunarch" }}
 
-# Dell P2421DC - 2560x1444@60Hz
-output $dell-qhd {
+output $dell-s2722dz {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-qhd.jpg fill
   position 0 0
 }
 
-# Dell U2419H - 1920x1080@60Hz
-output $dell-fhd {
+output $dell-p2421dc {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-fhd.jpg fill
   position 2560 0
 }
 
 workspace {
-  1 output $dell-qhd
-  2 output $dell-qhd
-  3 output $dell-qhd
-  4 output $dell-qhd
-  5 output $dell-qhd
-  6 output $dell-qhd
-  7 output $dell-qhd
-  8 output $dell-qhd
-  9 output $dell-qhd
-  10 output $dell-qhd
+  1 output $dell-s2722dz
+  2 output $dell-s2722dz
+  3 output $dell-s2722dz
+  4 output $dell-s2722dz
+  5 output $dell-s2722dz
+  6 output $dell-s2722dz
+  7 output $dell-s2722dz
+  8 output $dell-s2722dz
+  9 output $dell-s2722dz
+  10 output $dell-s2722dz
 }
 
 workspace {
-  $wsf1 output $dell-fhd
-  $wsf2 output $dell-fhd
-  $wsf3 output $dell-fhd
-  $wsf4 output $dell-fhd
-  $wsf5 output $dell-fhd
-  $wsf6 output $dell-fhd
-  $wsf7 output $dell-fhd
-  $wsf8 output $dell-fhd
-  $wsf9 output $dell-fhd
-  $wsf10 output $dell-fhd
-  $wsf11 output $dell-fhd
-  $wsf12 output $dell-fhd
+  $wsf1 output $dell-p2421dc
+  $wsf2 output $dell-p2421dc
+  $wsf3 output $dell-p2421dc
+  $wsf4 output $dell-p2421dc
+  $wsf5 output $dell-p2421dc
+  $wsf6 output $dell-p2421dc
+  $wsf7 output $dell-p2421dc
+  $wsf8 output $dell-p2421dc
+  $wsf9 output $dell-p2421dc
+  $wsf10 output $dell-p2421dc
+  $wsf11 output $dell-p2421dc
+  $wsf12 output $dell-p2421dc
 }
 
 {{- end }}
@@ -266,30 +264,28 @@ output $thinkpad-uhd {
   scale 2
 }
 
-# Dell P2421DC - 2560x1444@60Hz
-output $dell-qhd {
+output $dell-s2722dz {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-qhd.jpg fill
   position 1920 200
 }
 
-# Dell U2419H - 1920x1080@60Hz
-output $dell-fhd {
+output $dell-p2421dc {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-fhd.jpg fill
   transform 270
   position 4480 0
 }
 
 workspace {
-  1 output $dell-qhd
-  2 output $dell-qhd
-  3 output $dell-qhd
-  4 output $dell-qhd
-  5 output $dell-qhd
-  6 output $dell-qhd
-  7 output $dell-qhd
-  8 output $dell-qhd
-  9 output $dell-qhd
-  10 output $dell-qhd
+  1 output $dell-s2722dz
+  2 output $dell-s2722dz
+  3 output $dell-s2722dz
+  4 output $dell-s2722dz
+  5 output $dell-s2722dz
+  6 output $dell-s2722dz
+  7 output $dell-s2722dz
+  8 output $dell-s2722dz
+  9 output $dell-s2722dz
+  10 output $dell-s2722dz
 }
 
 workspace {
@@ -303,9 +299,9 @@ workspace {
   $wsf8 output $thinkpad-uhd
   $wsf9 output $thinkpad-uhd
 
-  $wsf10 output $dell-fhd
-  $wsf11 output $dell-fhd
-  $wsf12 output $dell-fhd
+  $wsf10 output $dell-p2421dc
+  $wsf11 output $dell-p2421dc
+  $wsf12 output $dell-p2421dc
 }
 
 {{- end }}
