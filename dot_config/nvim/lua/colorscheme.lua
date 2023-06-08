@@ -1,23 +1,15 @@
 vim.cmd [[
   filetype plugin on
-  syntax on
-  set termguicolors
   colorscheme snazzy
 ]]
 
--- Line limit column colors
-vim.cmd [[ hi ColorColumn guibg=gray guifg=fg ]]
+vim.opt.termguicolors = true
 
--- Tab line colors for Barbar
---vim.cmd [[
-  --hi TabLine        gui=none              guibg=bg        guifg=white
-  --hi TabLineFill    gui=none              guibg=bg
-  --hi TabLineSel     gui=bold,inverse
-  --hi BufferInactive guifg=gray
---]]
+-- Line limit column colors
+vim.api.nvim_set_hl(0, "ColorColumn", { bg="gray" })
 
 -- Matched parentheses colors
-vim.cmd [[ hi MatchParen gui=bold guibg=none guifg=#ff6ac1 ]]
+vim.api.nvim_set_hl(0, "MatchParen", { bold=true, fg="#ff6ac1" })
 
 -- Show a mark for characters at column 120
 vim.cmd [[ call matchadd("ColorColumn", "\%120v", 120) ]]

@@ -36,6 +36,11 @@ vim.g.mkdp_preview_options = {
   sync_scroll_type = "middle",
 }
 
+-- For nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+
 -- For vim-go
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_fmt_autosave = true

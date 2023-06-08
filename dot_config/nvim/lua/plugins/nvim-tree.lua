@@ -6,13 +6,13 @@ require("nvim-tree").setup {
   },
   filters = {
     custom = {
-      ".git",
-      --".gitlab",
       "node_modules",
       "venv",
     },
   },
-  hijack_cursor = true,
+  view = {
+    centralize_selection = true,
+  },
   renderer = {
     highlight_git = true,
     highlight_opened_files = "all",
