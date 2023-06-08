@@ -233,6 +233,11 @@ function __load-zsh-plugins() {
 #]]]
 
 # [[[ Utils
+function mux() {
+  local workspace=${1:-ω}
+  tmux attach -t "$workspace" || tmux new -s "$workspace"
+}
+
 {{- if eq .chezmoi.hostname "lunarch" }}
 
 function nord_dns() {
