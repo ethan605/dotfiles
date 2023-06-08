@@ -216,17 +216,19 @@ output * bg ~/.config/wallpapers/arch-snow-1920x1080.png fill
 output $dell-s2722dz {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-qhd-horizontal.jpg fill
   mode 2560x1440@75Hz
+  scale 1.25
 }
 
 output $dell-p2421dc {
   bg ~/.config/wallpapers/lukasz-szmigiel-unsplash-qhd-vertical.jpg fill
   mode 2560x1440@60Hz
+  scale 1.25
 }
 
 {{- if eq .chezmoi.hostname "lunarch" }}
 
 output $dell-s2722dz position 0 0
-output $dell-p2421dc position 2560 0
+output $dell-p2421dc position 2048 0
 
 workspace {
   1 output $dell-s2722dz
@@ -270,7 +272,7 @@ output $dell-s2722dz position 1920 200
 
 output $dell-p2421dc {
   transform 270
-  position 4480 0
+  position 3968 0
 }
 
 workspace {
