@@ -15,13 +15,7 @@ Host *
 
 {{- if eq .chezmoi.os "darwin" }}
 
+  IgnoreUnknown UseKeychain
   UseKeychain yes
-
-{{- end }}
-
-{{- if eq .chezmoi.hostname "lunarch" }}
-
-Host {{ .work.git_domain }}
-  ProxyJump vpn@localhost:2222
 
 {{- end }}
