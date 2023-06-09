@@ -48,6 +48,9 @@ export TOOLCHAINS=swift
 # Rewrite $PATH
 PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
 
+# Homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 # Replace macOS utilities with GNU ones
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/diffutils/bin:$PATH"
@@ -56,10 +59,7 @@ PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-
-# Homebrew
-PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
 export JDTLS_HOME="{{ .chezmoi.homeDir }}/.local/opt/jdtls-launcher"
 export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
@@ -186,6 +186,8 @@ function __load-sway() {
 {{- end }}
 
 function __load-zim() {
+  export ZIM_HOME="$HOME/.zim"
+
   # Set history file
   HISTFILE=~/.zsh_history
 
