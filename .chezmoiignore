@@ -82,6 +82,7 @@ misc
 # [[[ MacOS-exclusive files
 {{ if ne .chezmoi.os "darwin" }}
 
+.Brewfile
 .config/karabiner
 .config/kitty
 Library
