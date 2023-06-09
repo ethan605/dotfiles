@@ -5,8 +5,6 @@ misc
 
 # [[[ Obsolete configs - keep for future reference only
 
-.config/karabiner
-.config/kitty
 .config/logiops
 .config/neomutt
 .config/termite
@@ -50,6 +48,7 @@ misc
 .config/wallpapers
 .config/waybar
 .config/wofi
+.config/zathura
 .gtkrc-2.0
 .icons
 .local
@@ -83,6 +82,8 @@ misc
 # [[[ MacOS-exclusive files
 {{ if ne .chezmoi.os "darwin" }}
 
+.config/karabiner
+.config/kitty
 Library
 
 {{ end }}
