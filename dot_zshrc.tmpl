@@ -124,8 +124,8 @@ function __load-key-bindings() {
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-  source /usr/local/opt/fzf/shell/completion.zsh
+  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+  source "$(brew --prefix fzf)/shell/completion.zsh"
 
 {{- end }}
 }
