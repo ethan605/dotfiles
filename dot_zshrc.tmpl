@@ -58,6 +58,9 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
+# Homebrew
+PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 export JDTLS_HOME="{{ .chezmoi.homeDir }}/.local/opt/jdtls-launcher"
 export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
 
