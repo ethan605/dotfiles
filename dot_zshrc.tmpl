@@ -1,7 +1,13 @@
 # vim:fileencoding=utf-8:filetype=zsh:foldenable:foldmethod=marker:foldmarker=[[[,]]]
 # [[[ Global variables
 export LANG=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
+export LC_COLLATE="$LANG"
+export LC_CTYPE="$LANG"
+export LC_MESSAGES="$LANG"
+export LC_MONETARY="$LANG"
+export LC_NUMERIC="$LANG"
+export LC_TIME="$LANG"
+export LC_ALL="$LANG"
 export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --squeeze-blank-lines --tabs=2'
 export MANPAGER='less +Gg'
 export BAT_THEME='Sublime Snazzy'
