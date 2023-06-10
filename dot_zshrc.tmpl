@@ -24,7 +24,6 @@ export FZF_DEFAULT_OPTS='
 '
 export EDITOR=nvim
 export REACT_EDITOR=nvim
-export GOPATH="$HOME/go"
 export CARGO_HOME="$HOME/.cargo"
 
 {{- if eq .chezmoi.os "linux" }}
@@ -66,7 +65,6 @@ PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
 {{- end }}
 
-#PATH="$GOPATH/bin:$PATH"
 #PATH="$CARGO_HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="./node_modules/.bin:$PATH"
