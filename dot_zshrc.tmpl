@@ -88,6 +88,9 @@ function __load-asdf() {
   local java_source_path="$HOME/.asdf/plugins/java/set-java-home.zsh"
   [ -f "$java_source_path" ] && source "$java_source_path"
 
+  local golang_source_path="$HOME/.asdf/plugins/golang/set-env.zsh"
+  [ -f "$golang_source_path" ] && source "$golang_source_path"
+
   export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 }
 
