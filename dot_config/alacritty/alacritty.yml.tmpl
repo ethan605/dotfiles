@@ -49,7 +49,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  # decorations: buttonless
+  decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -71,6 +71,13 @@ window:
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
 
+  # Make `Option` key behave as `Alt` (macOS only):
+  #   - OnlyLeft
+  #   - OnlyRight
+  #   - Both
+  #   - None (default)
+  option_as_alt: OnlyLeft
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -91,20 +98,21 @@ scrolling:
 
 # Font configuration (changes require restart)
 font:
-  # Normal font face
   normal:
     family: OperatorMonoSSm Nerd Font
     style: Light
 
-  # Bold font face
   bold:
     family: OperatorMonoSSm Nerd Font
     style: Regular
 
-  # Italic font face
   italic:
     family: OperatorMonoSSm Nerd Font
     style: Light Italic
+
+  bold_italic:
+    family: OperatorMonoSSm Nerd Font
+    style: Italic
 
   # Point size
   size: 12.0
@@ -122,8 +130,14 @@ font:
     x: 0
     y: 0
 
+  # Use built-in font for box drawing characters.
+  #
+  # If `true`, Alacritty will use a custom built-in font for box drawing
+  # characters (Unicode points 2500 - 259f).
+  builtin_box_drawing: true
+
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 # >>>
 
 # <<< Colors (Snazzy)
