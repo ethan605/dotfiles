@@ -44,9 +44,6 @@ export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
-#export JDTLS_HOME="/usr/share/java/jdtls"
-#export JDK_HOME="/usr/lib/jvm/default-runtime"
-
 {{- else if eq .chezmoi.os "darwin" }}
 
 export TOOLCHAINS=swift
@@ -67,15 +64,10 @@ PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix gnu-tar)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
-#export JDTLS_HOME="{{ .chezmoi.homeDir }}/.local/opt/jdtls-launcher"
-#export JDK_HOME="$HOME/.asdf/installs/java/$(cat $HOME/.tool-versions | grep -Po '(?<=java ).*')"
-
 {{- end }}
 
-#export JAVA_HOME="$JDK_HOME"
-#PATH="$JAVA_HOME:$PATH"
-PATH="$GOPATH/bin:$PATH"
-PATH="$CARGO_HOME/bin:$PATH"
+#PATH="$GOPATH/bin:$PATH"
+#PATH="$CARGO_HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="./node_modules/.bin:$PATH"
 export PATH
@@ -335,7 +327,7 @@ alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
 {{- else if eq .chezmoi.os "darwin" }}
 
 alias brewed='brew update --verbose && brew upgrade --verbose && brew cleanup --prune=all'
-alias load-time='time /usr/local/bin/zsh -ic exit'
+alias load-time='time /opt/homebrew/bin/zsh -ic exit'
 alias policy-off='sudo spctl --master-disable'
 alias policy-on='sudo spctl --master-enable'
 alias xdg-open='open'
