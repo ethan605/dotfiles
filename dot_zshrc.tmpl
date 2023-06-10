@@ -103,8 +103,16 @@ function __load-key-bindings() {
   bindkey -M vicmd 'vv' edit-command-line
 
   bindkey '^w' backward-kill-word
-  bindkey '^h' backward-delete-char
+
+{{- if eq .chezmoi.os "linux" }}
+
   bindkey '^l' forward-word
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+  bindkey '\e[C' forward-word
+
+{{- end }}
 
   # Allow Ctrl-a and Ctrl-e to move to beginning/end of line
   bindkey '^a' beginning-of-line
