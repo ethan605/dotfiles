@@ -106,10 +106,12 @@ function __load-key-bindings() {
 
 {{- if eq .chezmoi.os "linux" }}
 
+  bindkey '^h' backward-word
   bindkey '^l' forward-word
 
 {{- else if eq .chezmoi.os "darwin" }}
 
+  bindkey '\e[D' backward-word
   bindkey '\e[C' forward-word
 
 {{- end }}
