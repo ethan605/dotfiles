@@ -95,8 +95,10 @@ function __load-asdf() {
 
 {{- end }}
 
-  source_path="$HOME/.asdf/plugins/java/set-java-home.zsh"
-  [ -f "$source_path" ] && source "$source_path"
+  local java_source_path="$HOME/.asdf/plugins/java/set-java-home.zsh"
+  [ -f "$java_source_path" ] && source "$java_source_path"
+
+  export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 }
 
 function __load-key-bindings() {
