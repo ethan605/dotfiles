@@ -40,7 +40,7 @@ window:
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
 
-{{- if .chezmoi.os eq "darwin" }}
+{{- if eq .chezmoi.os "darwin" }}
   # Window decorations
   #
   # Values for `decorations`:
