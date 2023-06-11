@@ -6,7 +6,7 @@ local utils = require("lsp.utils")
 local lua_ls_root_path = "/usr/share/lua-language-server/main.lua"
 local lua_ls_binary = "/usr/bin/lua-language-server"
 
-{{- elseif eq .chezmoi.os "darwin" }}
+{{- else if eq .chezmoi.os "darwin" }}
 
 local lua_ls_root_path = "/opt/homebrew/opt/lua-language-server/libexec/main.lua"
 local lua_ls_binary = "/opt/homebrew/opt/lua-language-server"
