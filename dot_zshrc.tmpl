@@ -104,17 +104,11 @@ function __load-key-bindings() {
 
   bindkey '^w' backward-kill-word
 
-{{- if eq .chezmoi.os "linux" }}
-
-  bindkey '^h' backward-word
-  bindkey '^l' forward-word
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-  bindkey '\e[D' backward-word
-  bindkey '\e[C' forward-word
-
-{{- end }}
+  # Jump around words
+  bindkey '^h' backward-word    # vim-like Ctrl+h
+  bindkey '^l' forward-word     # vim-like Ctrl+l
+  bindkey '\e[D' backward-word  # Left arrow
+  bindkey '\e[C' forward-word   # Right arrow
 
   # Allow Ctrl-a and Ctrl-e to move to beginning/end of line
   bindkey '^a' beginning-of-line
