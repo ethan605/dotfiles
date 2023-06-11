@@ -81,7 +81,7 @@ style = "bold blue"
 [git_branch]
 format = " [$symbol$branch]($style)"
 style = "bright-black"
-symbol = ""
+symbol = ""
 
 [git_commit]
 format = " [󰜘$hash](cyan)( [$tag](green))"
