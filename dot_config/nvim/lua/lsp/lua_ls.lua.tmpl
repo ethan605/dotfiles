@@ -1,8 +1,17 @@
 -- vim:fileencoding=utf-8:filetype=lua
 local utils = require("lsp.utils")
 
+{{- if eq .chezmoi.os "linux" }}
+
 local lua_ls_root_path = "/usr/share/lua-language-server/main.lua"
 local lua_ls_binary = "/usr/bin/lua-language-server"
+
+{{- elseif eq .chezmoi.os "darwin" }}
+
+local lua_ls_root_path = "/opt/homebrew/opt/lua-language-server/libexec/main.lua"
+local lua_ls_binary = "/opt/homebrew/opt/lua-language-server"
+
+{{- end }}
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
