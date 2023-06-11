@@ -102,15 +102,18 @@ function __load-key-bindings() {
   zle -N edit-command-line
   bindkey -M vicmd 'vv' edit-command-line
 
+  # Word manipulation
   bindkey '^w' backward-kill-word
+  bindkey '\e[D' backward-word  # left arrow
+  bindkey '\e[C' forward-word   # right arrow
 
-  # Jump around words
-  bindkey '^h' backward-word    # vim-like Ctrl+h
-  bindkey '^l' forward-word     # vim-like Ctrl+l
-  bindkey '\e[D' backward-word  # Left arrow
-  bindkey '\e[C' forward-word   # Right arrow
+  # Vim-like bindings
+  bindkey '^h' backward-word        # left
+  bindkey '^l' forward-word         # right
+  bindkey '^k' up-line-or-search    # up
+  bindkey '^j' down-line-or-search  # down
 
-  # Allow Ctrl-a and Ctrl-e to move to beginning/end of line
+  # Ctrl-a and Ctrl-e to move to beginning/end of line
   bindkey '^a' beginning-of-line
   bindkey '^e' end-of-line
 
