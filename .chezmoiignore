@@ -52,7 +52,13 @@ mac-install
 .config/zathura
 .gtkrc-2.0
 .icons
-.local
+.local/bin/bemenu-utils
+.local/bin/brightness-utils
+.local/bin/mpd-utils
+.local/bin/sway-utils
+.local/bin/thinkpad-utils
+.local/share/applications
+.local/share/emoji.txt
 .mozilla
 .xkb
 

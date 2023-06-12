@@ -21,6 +21,15 @@
             "description": "Use left_control+hjkl40 to navigate (vim-like) except terminals",
             "manipulators": [
               {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org.alacritty",
+                      "^net.kovidgoyal.kitty"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
                 "from": {
                   "key_code": "h",
                   "modifiers": {
@@ -33,18 +42,18 @@
                     "key_code": "left_arrow"
                   }
                 ],
-                "type": "basic",
+                "type": "basic"
+              },
+              {
                 "conditions": [
                   {
-                    "type": "frontmost_application_unless",
                     "bundle_identifiers": [
                       "^org.alacritty",
                       "^net.kovidgoyal.kitty"
-                    ]
+                    ],
+                    "type": "frontmost_application_unless"
                   }
-                ]
-              },
-              {
+                ],
                 "from": {
                   "key_code": "j",
                   "modifiers": {
@@ -57,18 +66,18 @@
                     "key_code": "down_arrow"
                   }
                 ],
-                "type": "basic",
+                "type": "basic"
+              },
+              {
                 "conditions": [
                   {
-                    "type": "frontmost_application_unless",
                     "bundle_identifiers": [
                       "^org.alacritty",
                       "^net.kovidgoyal.kitty"
-                    ]
+                    ],
+                    "type": "frontmost_application_unless"
                   }
-                ]
-              },
-              {
+                ],
                 "from": {
                   "key_code": "k",
                   "modifiers": {
@@ -81,18 +90,18 @@
                     "key_code": "up_arrow"
                   }
                 ],
-                "type": "basic",
+                "type": "basic"
+              },
+              {
                 "conditions": [
                   {
-                    "type": "frontmost_application_unless",
                     "bundle_identifiers": [
                       "^org.alacritty",
                       "^net.kovidgoyal.kitty"
-                    ]
+                    ],
+                    "type": "frontmost_application_unless"
                   }
-                ]
-              },
-              {
+                ],
                 "from": {
                   "key_code": "l",
                   "modifiers": {
@@ -105,16 +114,7 @@
                     "key_code": "right_arrow"
                   }
                 ],
-                "type": "basic",
-                "conditions": [
-                  {
-                    "type": "frontmost_application_unless",
-                    "bundle_identifiers": [
-                      "^org.alacritty",
-                      "^net.kovidgoyal.kitty"
-                    ]
-                  }
-                ]
+                "type": "basic"
               },
               {
                 "from": {
@@ -194,6 +194,115 @@
               ]
             }
           ],
+          "treat_as_built_in_keyboard": false
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": false,
+            "is_pointing_device": true,
+            "product_id": 0,
+            "vendor_id": 0
+          },
+          "ignore": true,
+          "manipulate_caps_lock_led": false,
+          "simple_modifications": [],
+          "treat_as_built_in_keyboard": false
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": true,
+            "product_id": 24672,
+            "vendor_id": 19266
+          },
+          "ignore": true,
+          "manipulate_caps_lock_led": true,
+          "simple_modifications": [],
+          "treat_as_built_in_keyboard": false
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": false,
+            "product_id": 24672,
+            "vendor_id": 19266
+          },
+          "ignore": false,
+          "manipulate_caps_lock_led": true,
+          "simple_modifications": [
+            {
+              "from": {
+                "key_code": "caps_lock"
+              },
+              "to": [
+                {
+                  "key_code": "left_control"
+                }
+              ]
+            }
+          ],
+          "treat_as_built_in_keyboard": false
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": false,
+            "product_id": 35138,
+            "vendor_id": 8765
+          },
+          "ignore": true,
+          "manipulate_caps_lock_led": true,
+          "simple_modifications": [],
+          "treat_as_built_in_keyboard": false
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": false,
+            "product_id": 50475,
+            "vendor_id": 1133
+          },
+          "ignore": true,
+          "manipulate_caps_lock_led": true,
+          "simple_modifications": [],
+          "treat_as_built_in_keyboard": false
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": false,
+            "is_pointing_device": true,
+            "product_id": 50475,
+            "vendor_id": 1133
+          },
+          "ignore": true,
+          "manipulate_caps_lock_led": false,
+          "simple_modifications": [],
+          "treat_as_built_in_keyboard": false
+        },
+        {
+          "disable_built_in_keyboard_if_exists": false,
+          "fn_function_keys": [],
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": false,
+            "product_id": 1031,
+            "vendor_id": 4176
+          },
+          "ignore": true,
+          "manipulate_caps_lock_led": true,
+          "simple_modifications": [],
           "treat_as_built_in_keyboard": false
         }
       ],
