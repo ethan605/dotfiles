@@ -16,12 +16,12 @@ highlight CmdLine       cterm=none          ctermfg=white     ctermbg=none
 highlight ErrorMsg      cterm=none          ctermfg=red       ctermbg=none
 
 highlight Directory     cterm=bold          ctermfg=blue      ctermbg=none
-"highlight Link          cterm=none          ctermfg=216       ctermbg=none
+highlight Link          cterm=none          ctermfg=216       ctermbg=none
 highlight BrokenLink    cterm=none          ctermfg=red       ctermbg=none
 highlight Socket        cterm=bold          ctermfg=green     ctermbg=none
 highlight Device        cterm=bold          ctermfg=red       ctermbg=none
-"highlight Fifo          cterm=bold          ctermfg=150       ctermbg=none
-"highlight Executable    cterm=none          ctermfg=150       ctermbg=none
+highlight Fifo          cterm=bold          ctermfg=150       ctermbg=none
+highlight Executable    cterm=none          ctermfg=150       ctermbg=none
 
 highlight JobLine       cterm=bold,reverse  ctermfg=black     ctermbg=white
 highlight SuggestBox    cterm=bold          ctermfg=white     ctermbg=none
