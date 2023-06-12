@@ -163,11 +163,22 @@ function __load-ssh() {
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-  if [ -z "$(pgrep -af ssh-agent)" ]; then
-    eval $(ssh-agent)
-    DISPLAY=:0 SSH_ASKPASS="$askpass" ssh-add - < "$ssh_id"
-  else
-    DISPLAY=:0 SSH_ASKPASS="$askpass" ssh-add -q - < "$ssh_id"
+  # Heavily inspired by https://github.com/zimfw/ssh
+  ssh-add -l &> /dev/null
+  # Unable to contact the authentication agent
+  if (( ? == 2 )); then
+    # Load stored agent connection info
+    local -r ssh_env=/tmp/.ssh-agent
+    [[ -r ${ssh_env} ]] && source ${ssh_env} > /dev/null
+
+    ssh-add -l &> /dev/null
+    # Stored agent connection info mismatched
+    if (( ? == 2 )); then
+      # Start agent and store agent connection info
+      (umask 066; ssh-agent >! ${ssh_env})
+      source ${ssh_env} > /dev/null
+      DISPLAY=:0 SSH_ASKPASS="$askpass" ssh-add - < "$ssh_id"
+    fi
   fi
 
 {{- end }}
