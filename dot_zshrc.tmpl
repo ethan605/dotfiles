@@ -156,32 +156,7 @@ function __load-perl() {
 function __load-ssh() {
   local askpass="$HOME/.local/bin/ssh-pass"
   local ssh_id="$HOME/.ssh/id_ed25519"
-
-{{- if eq .chezmoi.os "linux" }}
-
   eval $(DISPLAY=:0 SSH_ASKPASS="$askpass" keychain --eval --quiet "$ssh_id")
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-  # Heavily inspired by https://github.com/zimfw/ssh
-  ssh-add -l &> /dev/null
-  # Unable to contact the authentication agent
-  if (( ? == 2 )); then
-    # Load stored agent connection info
-    local -r ssh_env=/tmp/.ssh-agent
-    [[ -r ${ssh_env} ]] && source ${ssh_env} > /dev/null
-
-    ssh-add -l &> /dev/null
-    # Stored agent connection info mismatched
-    if (( ? == 2 )); then
-      # Start agent and store agent connection info
-      (umask 066; ssh-agent >! ${ssh_env})
-      source ${ssh_env} > /dev/null
-      DISPLAY=:0 SSH_ASKPASS="$askpass" ssh-add - < "$ssh_id"
-    fi
-  fi
-
-{{- end }}
 }
 
 {{- if eq .chezmoi.os "linux" }}
