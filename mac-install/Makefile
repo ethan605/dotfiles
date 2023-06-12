@@ -18,7 +18,8 @@ nvim-packer:
 		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 terminfo:
-	/opt/homebrew/Cellar/ncurses/6.4/bin/infocmp -x tmux-256color > /tmp/tmux-256color.src \
+	export PATH="$$(brew --prefix ncurses)/bin:$$PATH" \
+		&& infocmp -x tmux-256color > /tmp/tmux-256color.src \
 		&& /usr/bin/tic -x /tmp/tmux-256color.src
 
 tmux: tmux-tpm
