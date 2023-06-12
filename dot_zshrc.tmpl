@@ -154,15 +154,20 @@ function __load-perl() {
 }
 
 function __load-ssh() {
+  local askpass="$HOME/.local/bin/ssh-pass"
+  local ssh_id="$HOME/.ssh/id_ed25519"
+
 {{- if eq .chezmoi.os "linux" }}
 
-  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" keychain --eval --quiet "$HOME/.ssh/id_ed25519")
+  eval $(DISPLAY=:0 SSH_ASKPASS="$askpass" keychain --eval --quiet "$ssh_id")
 
 {{- else if eq .chezmoi.os "darwin" }}
 
   if [ -z "$(pgrep -af ssh-agent)" ]; then
     eval $(ssh-agent)
-    DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" ssh-add - < "$HOME/.ssh/id_ed25519"
+    DISPLAY=:0 SSH_ASKPASS="$askpass" ssh-add - < "$ssh_id"
+  else
+    DISPLAY=:0 SSH_ASKPASS="$askpass" ssh-add -q - < "$ssh_id"
   fi
 
 {{- end }}
