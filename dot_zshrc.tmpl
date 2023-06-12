@@ -329,7 +329,16 @@ alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw 
 alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
 alias c=chezmoi
 alias d='nvim -d'
+
+{{- if eq .chezmoi.os "linux" }}
+
 alias f=vifm
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+alias f='TERM=xterm-256color vifm'
+
+{{- end }}
 
 alias v=nvim
 alias w='watch --color --differences --errexit --exec'
