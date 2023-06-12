@@ -162,7 +162,7 @@ function __load-ssh() {
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-  if [ -z "$SSH_AGENT_ID" ]; then
+  if [ -z "$(pgrep -af ssh-agent)" ]; then
     eval $(ssh-agent)
     DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" ssh-add - < "$HOME/.ssh/id_ed25519"
   fi
