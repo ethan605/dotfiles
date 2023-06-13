@@ -92,6 +92,7 @@ mac-install
 .Brewfile
 .config/karabiner
 .config/kitty
+.config/yabai
 Library
 
 {{ end }}
