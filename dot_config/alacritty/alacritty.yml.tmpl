@@ -40,8 +40,6 @@ window:
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
 
-{{- if eq .chezmoi.os "darwin" }}
-
   # Window decorations
   #
   # Values for `decorations`:
@@ -51,9 +49,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: buttonless
-
-{{- end }}
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
