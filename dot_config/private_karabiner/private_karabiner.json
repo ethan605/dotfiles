@@ -35,9 +35,6 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "left_control"
-                                        ],
-                                        "optional": [
-                                            "any"
                                         ]
                                     }
                                 },
@@ -166,6 +163,30 @@
                                 "to": [
                                     {
                                         "key_code": "home"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Window manager utilities",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ],
+                                        "optional": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -n -a 'Alacritty.app'"
                                     }
                                 ],
                                 "type": "basic"
