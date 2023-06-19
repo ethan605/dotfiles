@@ -4,11 +4,11 @@ SHELL = /bin/zsh
 all: brew nvim nvim-packer terminfo tmux tmux-tpm zim
 
 brew:
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o /tmp/brew.sh \
+	/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o /tmp/brew.sh \
 		&& /bin/bash /tmp/brew.sh \
-		&& echo 'export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:$PATH"' > ~/.zshrc \
+		&& echo 'export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:$$PATH"' > ~/.zshrc \
 		&& source ~/.zshrc \
-		&& curl https://raw.githubusercontent.com/ethan605/dotfiles/main/dot_Brewfile -o ~/.Brewfile \
+		&& /usr/bin/curl https://raw.githubusercontent.com/ethan605/dotfiles/main/dot_Brewfile -o ~/.Brewfile \
 		&& brew bundle --global
 
 nvim: nvim-packer
@@ -28,4 +28,4 @@ tmux-tpm:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 zim:
-	curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+	/usr/bin/curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
