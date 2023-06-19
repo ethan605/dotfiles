@@ -154,9 +154,8 @@ function __load-perl() {
 }
 
 function __load-ssh() {
-  local askpass="$HOME/.local/bin/ssh-pass"
-  local ssh_id="$HOME/.ssh/id_ed25519"
-  eval $(DISPLAY=:0 SSH_ASKPASS="$askpass" keychain --eval --quiet "$ssh_id")
+  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass" keychain --eval --quiet "$HOME/.ssh/id_ed25519")
+  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-hoachu609" keychain --eval --quiet "$HOME/.ssh/hoachu609_id_ed25519")
 }
 
 {{- if eq .chezmoi.os "linux" }}
