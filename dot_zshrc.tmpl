@@ -250,32 +250,6 @@ function nord_dns() {
   nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
 }
 
-{{- else }}
-
-function creds() {
-{{- if eq .chezmoi.os "linux" }}
-  local cmd="$HOME/Work/shared/creds/venv/bin/creds"
-{{- else if eq .chezmoi.os "darwin" }}
-  local cmd="/usr/local/bin/creds"
-{{- end }}
-  local sub_command=${1-}
-
-  # Pass all arguments to the cmd if the sub command isn't "login"
-  if [[ "$sub_command" != "login" ]]; then
-    "$cmd" "$@"
-    return
-  fi
-
-  local options=$("$cmd" aws list 2> /dev/null)
-  local header_lines=$(echo "$options" | rg -n "\-{4,}" | cut -d':' -f1)
-  local selected=$(echo "$options" | fzf --header-lines="$header_lines" | sed 's/\s\+/ /g')
-  [[ -z "$selected" ]] && return 1
-
-  local profile=$(echo "$selected" | cut -d' ' -f2)
-  local role=$(echo "$selected" | cut -d' ' -f3)
-  "$cmd" aws login -n "$profile" "$role"
-}
-
 {{- end }}
 
 {{- if eq .chezmoi.os "linux" }}
@@ -356,10 +330,6 @@ __load-zsh-plugins
 # Dev tools
 __load-asdf
 __load-perl
-
-{{- if eq .chezmoi.hostname "PF3XSEPR"}}
-source "$HOME/.config/work_envs"
-{{- end }}
 
 __load-ssh
 #]]]
