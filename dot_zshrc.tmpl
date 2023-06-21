@@ -23,6 +23,7 @@ export FZF_DEFAULT_OPTS='
   --reverse
 '
 export EDITOR=nvim
+export VISUAL=nvim
 export REACT_EDITOR=nvim
 export CARGO_HOME="$HOME/.cargo"
 
@@ -156,7 +157,7 @@ function __load-perl() {
 function __load-ssh() {
   eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-thanhnx.605" keychain --eval --quiet "$HOME/.ssh/thanhnx.605_id_ed25519")
   eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-hoachu609" keychain --eval --quiet "$HOME/.ssh/hoachu609_id_ed25519")
-  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-work" keychain --eval --quiet "$HOME/.ssh/work_id_rsa")
+  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-work" keychain --eval --quiet "$HOME/.ssh/id_rsa")
 }
 
 {{- if eq .chezmoi.os "linux" }}
@@ -333,3 +334,15 @@ __load-perl
 
 __load-ssh
 #]]]
+
+{{- if eq .chezmoi.hostname "R2K7TF472W" }}
+
+#[[[ Work
+export SRC_ROOT="$HOME/src/orca"
+source "${SRC_ROOT}/cli/op/shell_rc/bashrc"
+
+[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/google-cloud-sdk/path.zsh.inc"
+[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
+#]]]
+
+{{- end}}
