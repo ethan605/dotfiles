@@ -19,8 +19,12 @@ Host *
 
 {{- end }}
 
-Host github.work
+Host github.personal
   Hostname github.com
   User git
+  IdentityFile ~/.ssh/thanhnx.605_id_ed25519
+  IdentitiesOnly yes
+
+Host github.com
   IdentityFile ~/.ssh/work_id_rsa
   IdentitiesOnly yes
