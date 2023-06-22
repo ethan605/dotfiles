@@ -341,6 +341,31 @@
             }
           ],
           "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": ["control", "shift"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "r",
+              "modifiers": ["command", "shift"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
             "key_code": "s",
             "modifiers": {
               "mandatory": ["control"]
