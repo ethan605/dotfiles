@@ -2,34 +2,54 @@
   "title": "Linux replication",
   "rules": [
     {
-      "description": "Ctrl+t/w as Cmd+t/w",
+      "description": "Ctrl+t/w as Cmd+t/w except terminals",
       "manipulators": [
         {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
           "from": {
             "key_code": "t",
             "modifiers": {
-              "mandatory": ["left_control"]
+              "mandatory": ["control"]
             }
           },
           "to": [
             {
               "key_code": "t",
-              "modifiers": ["left_command"]
+              "modifiers": ["command"]
             }
           ],
           "type": "basic"
         },
         {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
           "from": {
             "key_code": "w",
             "modifiers": {
-              "mandatory": ["left_control"]
+              "mandatory": ["control"]
             }
           },
           "to": [
             {
               "key_code": "w",
-              "modifiers": ["left_command"]
+              "modifiers": ["command"]
             }
           ],
           "type": "basic"
@@ -53,13 +73,13 @@
           "from": {
             "key_code": "c",
             "modifiers": {
-              "mandatory": ["left_control"]
+              "mandatory": ["control"]
             }
           },
           "to": [
             {
               "key_code": "c",
-              "modifiers": ["left_command"]
+              "modifiers": ["command"]
             }
           ],
           "type": "basic"
@@ -78,13 +98,13 @@
           "from": {
             "key_code": "v",
             "modifiers": {
-              "mandatory": ["left_control"]
+              "mandatory": ["control"]
             }
           },
           "to": [
             {
               "key_code": "v",
-              "modifiers": ["left_command"]
+              "modifiers": ["command"]
             }
           ],
           "type": "basic"
@@ -103,13 +123,13 @@
           "from": {
             "key_code": "c",
             "modifiers": {
-              "mandatory": ["left_control", "left_shift"]
+              "mandatory": ["control", "shift"]
             }
           },
           "to": [
             {
               "key_code": "c",
-              "modifiers": ["left_command"]
+              "modifiers": ["command"]
             }
           ],
           "type": "basic"
@@ -128,13 +148,32 @@
           "from": {
             "key_code": "v",
             "modifiers": {
-              "mandatory": ["left_control", "left_shift"]
+              "mandatory": ["control", "shift"]
             }
           },
           "to": [
             {
               "key_code": "v",
-              "modifiers": ["left_command"]
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Ctrl+left_mouse as middle_mouse",
+      "manipulators": [
+        {
+          "from": {
+            "pointing_button": "button1",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "pointing_button": "button3"
             }
           ],
           "type": "basic"
