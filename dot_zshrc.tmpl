@@ -188,6 +188,18 @@ function __load-sway() {
 
 {{- end }}
 
+function __load-work-envs() {
+{{- if eq .chezmoi.hostname "R2K7TF472W" }}
+
+  export SRC_ROOT="$HOME/src/orca"
+  source "${SRC_ROOT}/cli/op/shell_rc/bashrc"
+
+  [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/google-cloud-sdk/path.zsh.inc"
+  [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
+
+{{- end}}
+}
+
 function __load-zim() {
   # Set history file
   HISTFILE=~/.zsh_history
@@ -244,16 +256,12 @@ function mux() {
   tmux attach -t "$workspace" || tmux new -s "$workspace"
 }
 
-{{- if eq .chezmoi.hostname "lunarch" }}
+{{- if eq .chezmoi.os "linux" }}
 
 function nord_dns() {
   device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
   nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
 }
-
-{{- end }}
-
-{{- if eq .chezmoi.os "linux" }}
 
 function osc7_cwd() {
   setopt localoptions extendedglob
@@ -272,7 +280,29 @@ function fix_keyboard() {
 {{- end }}
 #]]]
 
-#[[[ Aliases
+# [[[ Autoloads
+{{- if eq .chezmoi.os "linux" }}
+# Sway goes first
+__load-sway
+{{- end }}
+
+# Work envs
+__load-work-envs
+
+# Base envs
+__load-zim
+__load-key-bindings
+__load-zsh-plugins
+
+# Dev tools
+__load-asdf
+__load-perl
+
+# SSH keys
+__load-ssh
+#]]]
+
+# [[[ Aliases
 # Remap system commands
 alias nano=nvim
 alias rm='rm -i'
@@ -316,33 +346,4 @@ alias f=vifm
 alias f='TERM=xterm-256color vifm'
 
 {{- end }}
-#]]]
-
-# [[[ Autoloads
-{{- if eq .chezmoi.os "linux" }}
-__load-sway
-{{- end }}
-
-# Base envs
-__load-zim
-__load-key-bindings
-__load-zsh-plugins
-
-# Dev tools
-__load-asdf
-__load-perl
-
-__load-ssh
-#]]]
-
-{{- if eq .chezmoi.hostname "R2K7TF472W" }}
-
-#[[[ Work
-export SRC_ROOT="$HOME/src/orca"
-source "${SRC_ROOT}/cli/op/shell_rc/bashrc"
-
-[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/google-cloud-sdk/path.zsh.inc"
-[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
-#]]]
-
-{{- end}}
+# ]]]
