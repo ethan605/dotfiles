@@ -73,6 +73,9 @@ mac-install
 .config/nordvpn
 
 {{ end }}
+
+.ssh/hoachu609_id_ed25519
+.ssh/hoachu609_id_ed25519.pub
 # ]]]
 
 # [[[ Work-related exclusive files
