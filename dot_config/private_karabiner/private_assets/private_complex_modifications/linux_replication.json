@@ -2,161 +2,6 @@
   "title": "Linux replication",
   "rules": [
     {
-      "description": "Ctrl+a/l/r/t/w as Cmd+a/l/r/t/w except terminals",
-      "manipulators": [
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "^org.alacritty",
-                "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
-              ],
-              "type": "frontmost_application_unless"
-            }
-          ],
-          "from": {
-            "key_code": "a",
-            "modifiers": {
-              "mandatory": ["control"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "a",
-              "modifiers": ["command"]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "^org.alacritty",
-                "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
-              ],
-              "type": "frontmost_application_unless"
-            }
-          ],
-          "from": {
-            "key_code": "l",
-            "modifiers": {
-              "mandatory": ["control"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "l",
-              "modifiers": ["command"]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "^org.alacritty",
-                "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
-              ],
-              "type": "frontmost_application_unless"
-            }
-          ],
-          "from": {
-            "key_code": "r",
-            "modifiers": {
-              "mandatory": ["control"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "r",
-              "modifiers": ["command"]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "^org.alacritty",
-                "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
-              ],
-              "type": "frontmost_application_unless"
-            }
-          ],
-          "from": {
-            "key_code": "t",
-            "modifiers": {
-              "mandatory": ["control"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "t",
-              "modifiers": ["command"]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "^org.alacritty",
-                "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
-              ],
-              "type": "frontmost_application_unless"
-            }
-          ],
-          "from": {
-            "key_code": "t",
-            "modifiers": {
-              "mandatory": ["control", "shift"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "t",
-              "modifiers": ["command", "shift"]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "^org.alacritty",
-                "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
-              ],
-              "type": "frontmost_application_unless"
-            }
-          ],
-          "from": {
-            "key_code": "w",
-            "modifiers": {
-              "mandatory": ["control"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "w",
-              "modifiers": ["command"]
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
       "description": "Ctrl+c/v or Ctrl+Shift+c/v as Cmd+c/v",
       "manipulators": [
         {
@@ -275,6 +120,386 @@
             {
               "key_code": "delete_or_backspace",
               "modifiers": ["option"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Ctrl+abfilnorstwxz as Cmd+abfilnorstwxz except terminals",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "a",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "a",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "b",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "i",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "n",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "o",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "r",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "s",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "t",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": ["control", "shift"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "t",
+              "modifiers": ["command", "shift"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "w",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "x",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "z",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "z",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "z",
+            "modifiers": {
+              "mandatory": ["control", "shift"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "z",
+              "modifiers": ["command", "shift"]
             }
           ],
           "type": "basic"
