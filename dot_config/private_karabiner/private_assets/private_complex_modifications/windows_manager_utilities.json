@@ -1,0 +1,73 @@
+{
+  "title": "Windows manager utilities",
+  "rules": [
+    {
+      "description": "Cmd+H/L to move between apps",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab",
+              "modifiers": ["left_command", "left_shift"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Cmd+Enter to open Alacritty",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": {
+              "mandatory": ["left_command"]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -n -a 'Alacritty.app'"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": {
+              "mandatory": ["right_command"]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -n -a 'Alacritty.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
