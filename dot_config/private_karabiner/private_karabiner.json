@@ -21,20 +21,11 @@
                         "description": "Use left_control+hjkl40 to navigate (vim-like) except terminals",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "fn"
                                         ]
                                     }
                                 },
@@ -46,23 +37,11 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "any"
+                                            "fn"
                                         ]
                                     }
                                 },
@@ -74,23 +53,11 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "any"
+                                            "fn"
                                         ]
                                     }
                                 },
@@ -102,23 +69,11 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "any"
+                                            "fn"
                                         ]
                                     }
                                 },
@@ -134,10 +89,7 @@
                                     "key_code": "4",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "any"
+                                            "fn"
                                         ]
                                     }
                                 },
@@ -153,10 +105,7 @@
                                     "key_code": "0",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "any"
+                                            "fn"
                                         ]
                                     }
                                 },
@@ -287,7 +236,7 @@
                             },
                             "to": [
                                 {
-                                    "key_code": "left_control"
+                                    "apple_vendor_top_case_key_code": "keyboard_fn"
                                 }
                             ]
                         }
