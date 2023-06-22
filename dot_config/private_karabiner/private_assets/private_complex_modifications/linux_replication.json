@@ -2,7 +2,7 @@
   "title": "Linux replication",
   "rules": [
     {
-      "description": "Ctrl+a/t/w as Cmd+a/t/w except terminals",
+      "description": "Ctrl+a/l/t/w as Cmd+a/l/t/w except terminals",
       "manipulators": [
         {
           "conditions": [
@@ -24,6 +24,31 @@
           "to": [
             {
               "key_code": "a",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
               "modifiers": ["command"]
             }
           ],
