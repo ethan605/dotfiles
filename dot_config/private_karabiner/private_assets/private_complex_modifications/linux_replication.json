@@ -162,6 +162,26 @@
       ]
     },
     {
+      "description": "Ctrl+Backspace as Option+Backspace",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "delete_or_backspace",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace",
+              "modifiers": ["option"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "Ctrl+left_mouse as middle_mouse",
       "manipulators": [
         {
