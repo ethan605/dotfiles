@@ -2,7 +2,7 @@
   "title": "Linux replication",
   "rules": [
     {
-      "description": "Ctrl+a/l/t/w as Cmd+a/l/t/w except terminals",
+      "description": "Ctrl+a/l/r/t/w as Cmd+a/l/r/t/w except terminals",
       "manipulators": [
         {
           "conditions": [
@@ -66,6 +66,31 @@
             }
           ],
           "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "r",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
             "key_code": "t",
             "modifiers": {
               "mandatory": ["control"]
@@ -75,6 +100,31 @@
             {
               "key_code": "t",
               "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": ["control", "shift"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "t",
+              "modifiers": ["command", "shift"]
             }
           ],
           "type": "basic"
