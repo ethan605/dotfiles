@@ -2,7 +2,7 @@
   "title": "Windows manager utilities",
   "rules": [
     {
-      "description": "Cmd+H/L to move between apps",
+      "description": "Cmd+h/l to move between apps",
       "manipulators": [
         {
           "from": {
@@ -14,7 +14,7 @@
           "to": [
             {
               "key_code": "tab",
-              "modifiers": ["left_command"]
+              "modifiers": ["left_command", "left_shift"]
             }
           ],
           "type": "basic"
@@ -29,7 +29,7 @@
           "to": [
             {
               "key_code": "tab",
-              "modifiers": ["left_command", "left_shift"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"

@@ -2,7 +2,7 @@
   "title": "Vim-like movements",
   "rules": [
     {
-      "description": "Fn+H/J/K/L as arrow keys",
+      "description": "Fn+h/j/k/l as arrow keys",
       "manipulators": [
         {
           "from": {
