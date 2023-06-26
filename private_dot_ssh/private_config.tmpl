@@ -25,6 +25,12 @@ Host github.personal
   IdentityFile ~/.ssh/thanhnx.605_id_ed25519
   IdentitiesOnly yes
 
-Host github.com
+{{- if eq .chezmoi.hostname "R2K7TF472W" }}
+
+Host github.com *_bastion
   IdentityFile ~/.ssh/id_rsa
   IdentitiesOnly yes
+
+Include ~/.ssh/config_bastion
+
+{{- end }}
