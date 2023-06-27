@@ -283,6 +283,28 @@ function fix_keyboard() {
 {{- end }}
 #]]]
 
+# [[[ Autoloads
+{{- if eq .chezmoi.os "linux" }}
+# Sway goes first
+__load-sway
+{{- end }}
+
+# Base envs
+__load-zim
+__load-key-bindings
+__load-zsh-plugins
+
+# Dev tools
+__load-asdf
+__load-perl
+
+# SSH keys
+__load-ssh
+
+# Work envs
+__load-work-envs
+#]]]
+
 # [[[ Aliases
 # Remap system commands
 alias nano=nvim
@@ -329,25 +351,3 @@ alias f='TERM=xterm-256color vifm'
 
 {{- end }}
 # ]]]
-
-# [[[ Autoloads
-{{- if eq .chezmoi.os "linux" }}
-# Sway goes first
-__load-sway
-{{- end }}
-
-# Base envs
-__load-zim
-__load-key-bindings
-__load-zsh-plugins
-
-# Dev tools
-__load-asdf
-__load-perl
-
-# SSH keys
-__load-ssh
-
-# Work envs
-__load-work-envs
-#]]]
