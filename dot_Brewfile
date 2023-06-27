@@ -1,4 +1,5 @@
 tap "amar1729/formulae"
+tap "argoproj/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
@@ -156,6 +157,8 @@ brew "zoxide"
 brew "zsh"
 # Host application for browser extension providing access to your password store
 brew "amar1729/formulae/browserpass"
+# Kubectl Argo Rollouts Plugin.
+brew "argoproj/tap/kubectl-argo-rollouts"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
 # Pass extension to avoid printing the password to the console
