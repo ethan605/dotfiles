@@ -4,98 +4,192 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "simplydanny/pass-extensions"
+# Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Generic library support script
 brew "libtool"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Use AWS IAM credentials to authenticate to Kubernetes
 brew "aws-iam-authenticator"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Light UNIX download accelerator
 brew "axel"
+# Microsoft Azure CLI 2.0
 brew "azure-cli"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Cross-platform make
 brew "cmake"
+# File comparison utilities
 brew "diffutils"
+# Load/unload environment variables based on $PWD
 brew "direnv"
+# Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
+# Modern replacement for 'ls'
 brew "exa"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Multi-format archive and compression library
 brew "libarchive"
+# Compression/decompression library aiming for high speed
 brew "snappy"
+# Collection of GNU find, xargs, and locate
 brew "findutils"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Git extension for versioning large files
 brew "git-lfs"
+# Command-line option parsing utility
 brew "gnu-getopt"
+# C code prettifier
 brew "gnu-indent"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU version of the tar archiving utility
 brew "gnu-tar"
+# GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Terminal based graphical activity monitor inspired by gtop and vtop
 brew "gotop"
+# GNU grep, egrep and fgrep
 brew "grep"
+# Kubernetes package manager
 brew "helm"
+# User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Command-line pager for JSON data
 brew "jless"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# User-friendly front-end to ssh-agent(1)
 brew "keychain"
+# Kubernetes command-line interface
 brew "kubernetes-cli"
+# Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Portable Foreign Function Interface library
 brew "libffi"
+# Implementation of the file(1) command
 brew "libmagic"
+# Apache Kafka C/C++ library
 brew "librdkafka"
+# XML security library
 brew "libxmlsec1"
+# Language Server for the Lua language
 brew "lua-language-server"
+# Utility for directing compilation
 brew "make"
+# NCurses Disk Usage
 brew "ncdu"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Optimized BLAS library
 brew "openblas"
+# OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
+# 7-Zip (high compression file archiver) implementation
 brew "p7zip"
+# Shell command parallelization utility
 brew "parallel"
+# QR Code generation
 brew "qrencode"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Password manager
 brew "pass"
+# Pass extension for managing one-time-password tokens
 brew "pass-otp"
+# Web-based PostgreSQL database browser
 brew "pgweb"
+# Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Object-relational database system
 brew "postgresql@14"
+# OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
+# Alternative to backtracking PCRE-style regular expression engines
 brew "re2"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Terraform version manager inspired by rbenv
 brew "tfenv"
+# Terminal multiplexer
 brew "tmux"
+# Ncurses-based file manager with vi-like keybindings
 brew "vifm"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
+# Command-line streaming torrent client
 brew "webtorrent-cli"
+# Internet file retriever
 brew "wget"
+# Suite of barcodes-reading tools
 brew "zbar"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# UNIX shell (command interpreter)
 brew "zsh"
+# Host application for browser extension providing access to your password store
 brew "amar1729/formulae/browserpass"
+# A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# Pass extension to avoid printing the password to the console
 brew "simplydanny/pass-extensions/pass-tail"
+# Pass extension that provides an easy flow for updating passwords
 brew "simplydanny/pass-extensions/pass-update"
+# GPU-accelerated terminal emulator
 cask "alacritty"
+# Application uninstaller
 cask "appcleaner"
+# Web browser
 cask "firefox"
+# Screenshot software
 cask "flameshot"
 cask "font-cabin"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Keyboard customizer
 cask "karabiner-elements"
+# GPU-based terminal emulator
 cask "kitty"
+# Software for Logitech devices
 cask "logi-options-plus"
+# Vietnamese input system
 cask "openkey"
+# IDE for professional Python development
 cask "pycharm"
+# Instant messaging application focusing on security
 cask "signal"
+# Messaging app with a focus on speed and security
 cask "telegram"
+# Multimedia player
 cask "vlc"
+# Open-source version of the X.Org X Window System
 cask "xquartz"
+# Video communication and virtual meeting platform
 cask "zoom"
