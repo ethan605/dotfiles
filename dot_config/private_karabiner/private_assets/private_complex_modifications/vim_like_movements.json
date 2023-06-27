@@ -63,22 +63,63 @@
       ]
     },
     {
-      "description": "Fn+0/$ as Home/End",
+      "description": "Ctrl+Fn+h/l to jump words except terminals",
       "manipulators": [
         {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
           "from": {
-            "key_code": "4",
+            "key_code": "h",
             "modifiers": {
-              "mandatory": ["fn"]
+              "mandatory": ["control", "fn"]
             }
           },
           "to": [
             {
-              "key_code": "end"
+              "key_code": "left_arrow",
+              "modifiers": ["option"]
             }
           ],
           "type": "basic"
         },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["control", "fn"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["option"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Fn+0/$ to jump begin/end of line",
+      "manipulators": [
         {
           "from": {
             "key_code": "0",
@@ -88,7 +129,23 @@
           },
           "to": [
             {
-              "key_code": "home"
+              "key_code": "left_arrow",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": ["fn"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["command"]
             }
           ],
           "type": "basic"
