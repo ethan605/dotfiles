@@ -254,10 +254,15 @@ live_config_reload: true
 #   - (macOS) /bin/bash --login
 #   - (Linux) user login shell
 #   - (Windows) powershell
-# shell:
-  # program: /bin/bash
-  # args:
-    # - --login
+{{- if eq .chezmoi.os "darwin" }}
+
+shell:
+  program: /usr/bin/login
+  args:
+    - -flp
+    - $USERNAME
+
+{{- end }}
 
 # Startup directory
 #
