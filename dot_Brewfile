@@ -2,6 +2,7 @@ tap "amar1729/formulae"
 tap "argoproj/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "simplydanny/pass-extensions"
@@ -174,6 +175,8 @@ cask "firefox"
 # Screenshot software
 cask "flameshot"
 cask "font-cabin"
+# Web browser
+cask "google-chrome-dev"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Keyboard customizer
