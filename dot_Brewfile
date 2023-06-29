@@ -96,6 +96,8 @@ brew "kubectx"
 brew "libffi"
 # Implementation of the file(1) command
 brew "libmagic"
+# Library for Qalculate! program
+brew "libqalculate"
 # Apache Kafka C/C++ library
 brew "librdkafka"
 # XML security library
