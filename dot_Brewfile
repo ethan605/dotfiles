@@ -102,6 +102,8 @@ brew "libqalculate"
 brew "librdkafka"
 # XML security library
 brew "libxmlsec1"
+# LSP for LanguageTool with support for Latex, Markdown and Others
+brew "ltex-ls"
 # Language Server for the Lua language
 brew "lua-language-server"
 # Utility for directing compilation

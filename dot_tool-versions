@@ -1,6 +1,6 @@
 java openjdk-20.0.1
 python 3.11.4
-nodejs 20.3.1
+nodejs 18.16.0
 ruby 3.2.2
 golang 1.20.5
 rust 1.70.0
