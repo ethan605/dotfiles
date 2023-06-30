@@ -47,7 +47,7 @@ export QT_IM_MODULE=fcitx
 {{- else if eq .chezmoi.os "darwin" }}
 
 export TOOLCHAINS=swift
-export NODE_OPTIONS="--max-old-space-size=4096"
+export NODE_OPTIONS="--max-old-space-size=8192"
 
 # Rewrite $PATH
 PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
