@@ -63,9 +63,6 @@ require("packer").startup(function()
   use {
     "ruifm/gitlinker.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    config = function ()
-      require("plugins.gitlinker")
-    end
   }
 
   -- LSP & TreeSitter
