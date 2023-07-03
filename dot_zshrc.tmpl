@@ -193,6 +193,7 @@ function __load-work-envs() {
 
   # Fix non-POSIX script incompatibility
   alias date='/bin/date'
+  alias optest='opr pytest -o log_cli=true'
 
   export SRC_ROOT="$HOME/src/orca"
   source "${SRC_ROOT}/cli/op/shell_rc/bashrc"
@@ -332,6 +333,7 @@ alias xdg-open='open'
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 alias npm-dump='npm -g list -d0 --parseable | grep -Po "(?<=node_modules/).*$" >| ~/.npm_modules'
+alias tor='webtorrent --keep-seeding download'
 alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
 
 # Shortcuts
