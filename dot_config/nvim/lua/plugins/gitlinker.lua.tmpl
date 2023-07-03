@@ -1,5 +1,0 @@
-require("gitlinker").setup {
-  callbacks = {
-    ["{{ .work.gitlinker_matcher }}"] = require("gitlinker.hosts").get_gitlab_type_url,
-  },
-}
