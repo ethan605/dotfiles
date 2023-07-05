@@ -189,8 +189,6 @@ cask "karabiner-elements"
 cask "kitty"
 # Software for Logitech devices
 cask "logi-options-plus"
-# Vietnamese input system
-cask "openkey"
 # IDE for professional Python development
 cask "pycharm"
 # Instant messaging application focusing on security
