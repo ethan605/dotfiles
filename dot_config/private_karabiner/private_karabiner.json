@@ -387,14 +387,14 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Shift+q as Cmd+q",
+                        "description": "Cmd+Shift+q as Cmd+q",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "q",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control",
+                                            "command",
                                             "shift"
                                         ]
                                     }
