@@ -107,7 +107,27 @@
       ]
     },
     {
-      "description": "Ctrl+abcfilnorstvwxz as Cmd+abcfilnorstvwxz except terminals",
+      "description": "Ctrl+Shift+q as Cmd+q",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "mandatory": ["control", "shift"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "q",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Ctrl+abcfiklnorstvwxz as Cmd+abcfiklnorstvwxz except terminals",
       "manipulators": [
         {
           "conditions": [
@@ -229,6 +249,31 @@
           "to": [
             {
               "key_code": "i",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "k",
               "modifiers": ["command"]
             }
           ],
