@@ -11,7 +11,7 @@ vim.api.nvim_set_keymap("n", "g}", ":BufferLineMoveNext<CR>", default_opts)
 -- Manipulate buffers
 vim.api.nvim_set_keymap("n", "gc", ":bdelete!<CR>", default_opts)
 vim.api.nvim_set_keymap("n", "gq", ":BufferLinePickClose<CR>", default_opts)
-vim.api.nvim_set_keymap("n", "gs", ":BufferLinePick<CR>", default_opts)
+vim.api.nvim_set_keymap("n", "gs", ":Buffers<CR>", default_opts)
 
 -- Move to previous/next tab
 vim.api.nvim_set_keymap("n", "t[", ":tabprevious<CR>", default_opts)
