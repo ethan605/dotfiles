@@ -18,8 +18,10 @@ vim.api.nvim_set_keymap("n", "<C-s>", ":Rg<Space>", { noremap = true })
 -- Leader + Space to hide search highlights
 vim.api.nvim_set_keymap("n", "<Leader><Space>", ":nohlsearch<CR>", default_opts)
 
--- Leader + v to toggle Vista
-vim.api.nvim_set_keymap("n", "<Leader>v", ":Vista!!<CR>", default_opts)
+-- Leader + v to toggle Vista finder
+vim.api.nvim_set_keymap("n", "<Leader>v", ":Vista finder<CR>", default_opts)
+-- Leader + Leader + v to toggle Vista finder
+vim.api.nvim_set_keymap("n", "<Leader><Leader>v", ":Vista!!<CR>", default_opts)
 
 vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", default_opts)
 vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", default_opts)
