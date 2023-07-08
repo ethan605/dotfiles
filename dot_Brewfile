@@ -136,6 +136,8 @@ brew "pinentry-mac"
 brew "postgresql@14"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
+# Tools for and transforming and inspecting PDF files
+brew "qpdf"
 # Alternative to backtracking PCRE-style regular expression engines
 brew "re2"
 # Search tool like grep and The Silver Searcher
@@ -146,6 +148,8 @@ brew "starship"
 brew "tfenv"
 # Terminal multiplexer
 brew "tmux"
+# Maintained ctags implementation
+brew "universal-ctags"
 # Ncurses-based file manager with vi-like keybindings
 brew "vifm"
 # Executes a program periodically, showing output fullscreen
