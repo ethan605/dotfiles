@@ -113,4 +113,24 @@ require("packer").startup(function()
   use "nvie/vim-flake8"
   use { "fatih/vim-go", run = ":GoUpdateBinaries" }
   use { "prettier/vim-prettier", branch = "release/0.x", run = "npm install" }
+
+  -- DAP
+  use {
+    "mfussenegger/nvim-dap",
+    --event = "BufReadPre",
+    --module = { "dap" },
+    wants = {
+      "nvim-dap-python",
+      "nvim-dap-ui",
+      "nvim-dap-virtual-text"
+    },
+    requires = {
+      "mfussenegger/nvim-dap-python",
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text"
+    },
+    config = function()
+      require("plugins.nvim-dap").setup()
+    end
+  }
 end)
