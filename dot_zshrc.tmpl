@@ -195,6 +195,7 @@ function __load-work-envs() {
   alias date='/bin/date'
   alias optest='opr pytest -o log_cli=true'
   alias opdbg='opp -m debugpy --listen 0.0.0.0:5678 --wait-for-client'
+  alias opver='prp -c "from lib.orca.orca_python_image import OrcaPythonVersion; print(OrcaPythonVersion().version)"'
 
   export SRC_ROOT="$HOME/src/orca"
   source "${SRC_ROOT}/cli/op/shell_rc/bashrc"
