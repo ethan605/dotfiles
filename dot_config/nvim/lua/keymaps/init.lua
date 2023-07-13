@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap("n", "<C-m>", ":FzfCommands<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-p>", ":FzfGFiles<CR>", opts)
 
 -- Search globally with RipGrep
-vim.api.nvim_set_keymap("n", "<C-s>", ":Rg<Space>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-s>", ":FzfRg<Space>", { noremap = true })
 
 -- Leader + Space to hide search highlights
 vim.api.nvim_set_keymap("n", "<Leader><Space>", ":nohlsearch<CR>", opts)
