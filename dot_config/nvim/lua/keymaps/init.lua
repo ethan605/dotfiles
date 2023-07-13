@@ -5,12 +5,11 @@ vim.api.nvim_set_keymap("n", "<Leader>", "<Plug>(easymotion-prefix)", { silent =
 
 vim.api.nvim_set_keymap("n", "<C-o>", ":NvimTreeToggle<CR>", default_opts)
 
--- Open files with FZF
-vim.api.nvim_set_keymap("n", "<C-b>", ":Buffers<CR>", default_opts)
-vim.api.nvim_set_keymap("n", "<C-f>", ":Files<CR>", default_opts)
-vim.api.nvim_set_keymap("n", "<C-g>", ":GFiles?<CR>", default_opts)
-vim.api.nvim_set_keymap("n", "<C-m>", ":Commands<CR>", default_opts)
-vim.api.nvim_set_keymap("n", "<C-p>", ":GFiles<CR>", default_opts)
+-- Utilities from fzf.nvim
+vim.api.nvim_set_keymap("n", "<C-f>", ":FzfFiles<CR>", default_opts)
+vim.api.nvim_set_keymap("n", "<C-g>", ":FzfGFiles?<CR>", default_opts)
+vim.api.nvim_set_keymap("n", "<C-m>", ":FzfCommands<CR>", default_opts)
+vim.api.nvim_set_keymap("n", "<C-p>", ":FzfGFiles<CR>", default_opts)
 
 -- Search globally with RipGrep
 vim.api.nvim_set_keymap("n", "<C-s>", ":Rg<Space>", { noremap = true })
