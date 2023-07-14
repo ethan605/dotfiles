@@ -207,5 +207,7 @@ cask "vlc"
 cask "vox"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
+# Messaging and calling application
+cask "zalo"
 # Video communication and virtual meeting platform
 cask "zoom"
