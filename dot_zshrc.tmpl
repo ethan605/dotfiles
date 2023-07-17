@@ -192,13 +192,8 @@ function __load-work-envs() {
 {{- if eq .chezmoi.hostname "R2K7TF472W" }}
 
   # Fix non-POSIX script incompatibility
-  alias date='/bin/date'
-  alias optest='opr pytest -o log_cli=true'
-  alias opdbg='opp -m debugpy --listen 0.0.0.0:5678 --wait-for-client'
-  alias opver='prp -c "from lib.orca.orca_python_image import OrcaPythonVersion; print(OrcaPythonVersion().version)"'
-
   export SRC_ROOT="$HOME/src/orca"
-  source "${SRC_ROOT}/cli/op/shell_rc/bashrc"
+  source "$HOME/src/tools/cli/op/shell_rc/bashrc"
 
   [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/google-cloud-sdk/path.zsh.inc"
   [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
@@ -286,28 +281,6 @@ function fix_keyboard() {
 {{- end }}
 #]]]
 
-# [[[ Autoloads
-{{- if eq .chezmoi.os "linux" }}
-# Sway goes first
-__load-sway
-{{- end }}
-
-# Work envs
-__load-work-envs
-
-# Base envs
-__load-zim
-__load-key-bindings
-__load-zsh-plugins
-
-# Dev tools
-__load-asdf
-__load-perl
-
-# SSH keys
-__load-ssh
-#]]]
-
 # [[[ Aliases
 # Remap system commands
 alias nano=nvim
@@ -355,3 +328,25 @@ alias f='TERM=xterm-256color vifm'
 
 {{- end }}
 # ]]]
+
+# [[[ Autoloads
+{{- if eq .chezmoi.os "linux" }}
+# Sway goes first
+__load-sway
+{{- end }}
+
+# Work envs
+__load-work-envs
+
+# Base envs
+__load-zim
+__load-key-bindings
+__load-zsh-plugins
+
+# Dev tools
+__load-asdf
+__load-perl
+
+# SSH keys
+__load-ssh
+#]]]
