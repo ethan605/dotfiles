@@ -58,7 +58,7 @@ local function configure_exts(dap)
           }
         },
         position = "bottom",
-        size = 50
+        size = 25
       }
     }
   }
