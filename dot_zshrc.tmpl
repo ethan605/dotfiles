@@ -192,7 +192,8 @@ function __load-work-envs() {
 {{- if eq .chezmoi.hostname "R2K7TF472W" }}
 
   export SRC_ROOT="$HOME/src/orca"
-  source "$HOME/src/tools/cli/op/shell_rc/bashrc"
+  export OCLI_ROOT="$HOME/src/tools/cli/op"
+  source "$OCLI_ROOT/shell_rc/bashrc"
 
   [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/google-cloud-sdk/path.zsh.inc"
   [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
