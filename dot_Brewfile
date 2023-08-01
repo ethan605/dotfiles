@@ -16,6 +16,8 @@ brew "libtool"
 brew "openssl@3"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Compression/decompression library aiming for high speed
+brew "snappy"
 # Use AWS IAM credentials to authenticate to Kubernetes
 brew "aws-iam-authenticator"
 # Interpreted, interactive, object-oriented programming language
@@ -46,8 +48,6 @@ brew "exa"
 brew "fd"
 # Multi-format archive and compression library
 brew "libarchive"
-# Compression/decompression library aiming for high speed
-brew "snappy"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
@@ -86,6 +86,10 @@ brew "imagemagick"
 brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Apache Kafka C/C++ library
+brew "librdkafka"
+# Generic command-line non-JVM Apache Kafka producer and consumer
+brew "kcat"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
 # Kubernetes command-line interface
@@ -98,8 +102,6 @@ brew "libffi"
 brew "libmagic"
 # Library for Qalculate! program
 brew "libqalculate"
-# Apache Kafka C/C++ library
-brew "librdkafka"
 # XML security library
 brew "libxmlsec1"
 # LSP for LanguageTool with support for Latex, Markdown and Others
