@@ -40,6 +40,7 @@ vim.opt.updatetime = 300                          -- You will have bad experienc
 vim.opt.writebackup = false                       -- Some LSP servers have issues with backup files
 
 vim.opt.foldenable = true					                -- Enable code folding
+vim.opt.foldlevel = 1
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"   -- Code folding with tree-sitter
 
