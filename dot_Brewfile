@@ -148,8 +148,6 @@ brew "ripgrep"
 brew "shellcheck"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Terraform version manager inspired by rbenv
-brew "tfenv"
 # Terminal multiplexer
 brew "tmux"
 # Maintained ctags implementation
