@@ -12,8 +12,7 @@ require("lspconfig").elixirls.setup {
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-  --cmd = { "/usr/local/Cellar/elixir-ls/0.10.0/bin/elixir-ls" },
-  cmd = { "{{ .chezmoi.homeDir }}/Work/elixir-ls/language_server.sh" },
+  cmd = { "/opt/homebrew/bin/elixir-ls" },
 
 {{- end }}
 }
