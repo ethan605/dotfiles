@@ -18,6 +18,7 @@ local servers = {
   "pyright",
   "rust_analyzer",
   "solargraph",
+  "terraformls",
   "tsserver",
   "vimls",
 }
