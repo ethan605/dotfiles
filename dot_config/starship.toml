@@ -136,17 +136,6 @@ disabled = false
 format = " [$symbol$context]($style)[@](bright-black)[$namespace]($style)"
 style = "bold #326ce5"
 symbol = "󱃾 "
-[kubernetes.context_aliases]
-"arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-01" = "tf-dev-01"
-"arn:aws:eks:eu-west-1:510752977537:cluster/tf-dev-02" = "tf-dev-02"
-"arn:aws:eks:eu-west-1:609445407176:cluster/tf-pre-prod-01" = "tf-pre-prod-01"
-"arn:aws:eks:eu-west-1:609445407176:cluster/tf-pre-prod-02" = "tf-pre-prod-02"
-"arn:aws:eks:eu-west-1:226817515299:cluster/tf-prod-eu-01" = "tf-prod-eu-01"
-"arn:aws:eks:eu-west-1:226817515299:cluster/tf-prod-eu-02" = "tf-prod-eu-02"
-"arn:aws:eks:ca-central-1:226817515299:cluster/tf-prod-ca-01" = "tf-prod-ca-01"
-"arn:aws:eks:ca-central-1:226817515299:cluster/tf-prod-ca-02" = "tf-prod-ca-02"
-"arn:aws:eks:us-east-1:226817515299:cluster/tf-prod-us-01" = "tf-prod-us-01"
-"arn:aws:eks:us-east-1:226817515299:cluster/tf-prod-us-02" = "tf-prod-us-02"
 
 [gcloud]
 format = ' [$symbol$account(@$domain)(\($region\))]($style)'
