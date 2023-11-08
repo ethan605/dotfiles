@@ -122,8 +122,6 @@ require("packer").startup(function()
   -- DAP
   use {
     "mfussenegger/nvim-dap",
-    --event = "BufReadPre",
-    --module = { "dap" },
     wants = {
       "nvim-dap-python",
       "nvim-dap-ui",
