@@ -80,5 +80,12 @@ require("bufferline").setup {
         text_align = "center",
       },
     },
+
+    -- Pinning
+    groups = {
+      items = {
+        require('bufferline.groups').builtin.pinned:with({ icon = "" })
+      }
+    }
   },
 }

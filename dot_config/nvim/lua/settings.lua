@@ -39,8 +39,9 @@ vim.opt.textwidth = 0                             -- Hard-wrap long lines as you
 vim.opt.updatetime = 300                          -- You will have bad experience for diagnostic messages when it's default 4000.
 vim.opt.writebackup = false                       -- Some LSP servers have issues with backup files
 
-vim.opt.foldenable = true					                -- Enable code folding
-vim.opt.foldlevel = 999                           -- Don't fold by default
+vim.opt.foldenable = true                         -- Enable code folding
+vim.opt.foldlevel = 0
+vim.opt.foldlevelstart = 9                        -- Don't fold by default
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"   -- Code folding with tree-sitter
 

@@ -3,7 +3,6 @@ require("packer").startup(function()
   use "wbthomason/packer.nvim"
 
   -- Common plugins
-  use "Yggdroot/indentLine"
   use "airblade/vim-rooter"
   use "alker0/chezmoi.vim"
   use "connorholyday/vim-snazzy"
@@ -16,6 +15,12 @@ require("packer").startup(function()
   use "tpope/vim-surround"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
   use { "mg979/vim-visual-multi", branch = "master" }
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("plugins.indent-blankline")
+    end
+  }
   use {
     "windwp/nvim-autopairs",
     config = function ()

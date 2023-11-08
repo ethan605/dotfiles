@@ -1,39 +1,63 @@
 -- Performance tweaks for large files
-vim.cmd [[
-  autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-  autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-]]
-
--- Disable unnecessary conceals for markdowns
-vim.cmd [[
-  augroup markdown_concealing
-    autocmd!
-    autocmd FileType markdown let g:indentLine_enabled=0
-    autocmd FileType markdown set conceallevel=0
-  augroup END
-]]
+local jsSyntaxSync = vim.api.nvim_create_augroup("JsSyntaxSync", { clear = true })
+vim.api.nvim_create_autocmd(
+  "BufEnter",
+  {
+    pattern = { "*js", "*.jsx", "*.ts", "*.tsx" },
+    command = ":syntax sync fromstart",
+    group = jsSyntaxSync,
+  }
+)
+vim.api.nvim_create_autocmd(
+  "BufLeave",
+  {
+    pattern = { "*js", "*.jsx", "*.ts", "*.tsx" },
+    command = ":syntax sync clear",
+    group = jsSyntaxSync,
+  }
+)
 
 -- Force syntax highlight for specific file types
-vim.cmd [[
-  autocmd BufNewFile,BufRead .prettierrc set syntax=json
-]]
+vim.api.nvim_create_autocmd(
+  { "BufNewFile", "BufRead" },
+  {
+    pattern = ".prettierrc",
+    command = "set syntax=json"
+  }
+)
 
 -- Call Flake8 on write for Python files
-vim.cmd [[
-  autocmd BufWritePost *.py call flake8#Flake8()
-]]
+vim.api.nvim_create_autocmd(
+  "BufWritePost",
+  {
+    pattern = { "*.py" },
+    command = "call flake8#Flake8()"
+  }
+)
 
 -- Autoformat with Prettier on save
-vim.cmd [[
-  autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.json,*.css,*.scss,*.less,*.graphql Prettier
-]]
+vim.api.nvim_create_autocmd(
+  "BufWritePre",
+  {
+    pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.scss", "*.less", "*.graphql" },
+    command = "Prettier"
+  }
+)
 
 -- Use prettier-stylelint for CSS
-vim.cmd [[
-  autocmd FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
-]]
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = { "css", "scss" },
+    command = "let b:prettier_exec_cmd = 'prettier-stylelint'"
+  }
+)
 
 -- Update lightbulb on cursor move
-vim.cmd [[
-  autocmd CursorHold,CursorHoldI * lua require("nvim-lightbulb").update_lightbulb()
-]]
+vim.api.nvim_create_autocmd(
+  { "CursorHold", "CursorHoldI" },
+  {
+    pattern = "*",
+    command = "lua require('nvim-lightbulb').update_lightbulb()"
+  }
+)

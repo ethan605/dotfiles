@@ -3,14 +3,6 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = '$HOME/.asdf/shims/python'
 
--- For barbar
-vim.g.bufferline = {
-  animation = false,
-  clickable = false,
-  closable = false,
-  icon_pinned = "車",
-}
-
 -- For blamer.nvim
 vim.g.blamer_delay = 500
 vim.g.blamer_enabled = true
@@ -19,11 +11,6 @@ vim.g.blamer_template = "<author>, <author-time> • <summary>"
 
 -- For fzf.nvim
 vim.g.fzf_command_prefix = 'Fzf'
-
--- For indentLine
-vim.g.indentLine_char = "·"
-vim.g.indentLine_setConceal = 0
-vim.g.indentLine_enabled = true
 
 -- For markdown-preview
 vim.g.mkdp_preview_options = {
