@@ -27,7 +27,8 @@ vim.opt.showcmd = true                            -- Show (partial) command in s
 vim.opt.showmatch = true                          -- Show matching brackets.
 vim.opt.showmode = true                           -- Show current mode.
 vim.opt.sidescrolloff = 5                         -- Show next 5 columns while side-scrolling.
-vim.opt.signcolumn = "yes"                        -- always show signcolumns
+vim.opt.signcolumn = "yes"                        -- Always show sign columns
+vim.opt.colorcolumn = "120"                       -- Highlight column 120
 vim.opt.smartcase = true                          -- Search with smart case
 vim.opt.softtabstop = 2                           -- Render TABs using this many spaces.
 vim.opt.splitbelow = true                         -- Horizontal split below current.
@@ -48,7 +49,8 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"   -- Code folding with tree-sitt
 vim.opt.clipboard:append("unnamedplus")           -- Use system clipboard over vim's buffers
 vim.opt.formatoptions:append("o")                 -- Continue comment marker in new lines.
 vim.opt.showbreak = "⤷ "
-vim.opt.listchars = {                             -- Hidden characters
+vim.opt.list = false                              -- Hidden characters
+vim.opt.listchars = {
   conceal = "|",
   eol = "¬",
   extends = "…",
