@@ -28,40 +28,40 @@ local function configure()
 end
 
 local function configure_exts(dap)
-  require("nvim-dap-virtual-text").setup {
-    commented = true
-  }
+  require("nvim-dap-virtual-text").setup({
+    commented = true,
+  })
 
   local dapui = require("dapui")
 
-  dapui.setup {
+  dapui.setup({
     layouts = {
       {
         elements = {
           {
             id = "scopes",
-            size = 0.75
+            size = 0.75,
           },
           {
             id = "breakpoints",
-            size = 0.25
-          }
+            size = 0.25,
+          },
         },
         position = "right",
-        size = 75
+        size = 75,
       },
       {
         elements = {
           {
             id = "repl",
-            size = 1
-          }
+            size = 1,
+          },
         },
         position = "bottom",
-        size = 25
-      }
-    }
-  }
+        size = 25,
+      },
+    },
+  })
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
   end
@@ -76,10 +76,10 @@ end
 local function configure_python(dap)
   dap.adapters.remote_python = function(callback)
     callback({
-        type = "server",
-        host = "127.0.0.1",
-        port = 5678
-      })
+      type = "server",
+      host = "127.0.0.1",
+      port = 5678,
+    })
   end
 
   dap.configurations.python = {
@@ -88,13 +88,13 @@ local function configure_python(dap)
       request = "attach",
       name = "Remote attach",
       host = "127.0.0.1",
-      port = 5678
-    }
+      port = 5678,
+    },
   }
 end
 
 function M.setup()
-  local dap = require('dap')
+  local dap = require("dap")
   configure()
   configure_exts(dap)
   configure_python(dap)

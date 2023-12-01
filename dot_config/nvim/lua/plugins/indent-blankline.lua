@@ -1,4 +1,4 @@
-require("ibl").setup {
+require("ibl").setup({
   indent = { char = "·", tab_char = "·" },
   whitespace = { remove_blankline_trail = true },
   scope = {
@@ -7,6 +7,6 @@ require("ibl").setup {
     show_exact_scope = true,
   },
   exclude = {
-    filetypes = { 'startify' }
+    filetypes = { "startify" },
   },
-}
+})

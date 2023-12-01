@@ -6,7 +6,7 @@ local diagnostics_indicator = function(count, level)
   return " " .. icon .. count
 end
 
-require("bufferline").setup {
+require("bufferline").setup({
   highlights = {
     fill = no_bg_style,
     background = no_bg_style,
@@ -54,7 +54,7 @@ require("bufferline").setup {
     duplicate = no_bg_style,
     pick = no_bg_style,
 
-    tab_selected = { bold = true, fg = "cyan" }
+    tab_selected = { bold = true, fg = "cyan" },
   },
   options = {
     -- Diagnostics
@@ -66,7 +66,7 @@ require("bufferline").setup {
     always_show_bufferline = true,
     enforce_regular_tabs = false,
     numbers = "buffer_id",
-    separator_style = {"", ""},
+    separator_style = { "", "" },
     show_buffer_close_icons = false,
     show_close_icon = false,
     show_tab_indicators = true,
@@ -84,8 +84,8 @@ require("bufferline").setup {
     -- Pinning
     groups = {
       items = {
-        require('bufferline.groups').builtin.pinned:with({ icon = "" })
-      }
-    }
+        require("bufferline.groups").builtin.pinned:with({ icon = "" }),
+      },
+    },
   },
-}
+})

@@ -1,4 +1,4 @@
-require("lspsaga").init_lsp_saga {
+require("lspsaga").init_lsp_saga({
   use_saga_diagnostic_sign = true,
   code_action_prompt = {
     enable = true,
@@ -28,4 +28,4 @@ require("lspsaga").init_lsp_saga {
   definition_preview_icon = " ",
   border_style = "round", -- "single", "double", "round", "plus"
   rename_prompt_prefix = "❯ ",
-}
+})

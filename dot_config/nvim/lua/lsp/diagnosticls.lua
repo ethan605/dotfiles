@@ -1,16 +1,16 @@
 local utils = require("lsp.utils")
 
-require("lspconfig").diagnosticls.setup {
+require("lspconfig").diagnosticls.setup({
   capabilities = utils.capabilities,
   flags = utils.default_flags,
   on_attach = utils.on_attach,
 
-  filetypes = {"javascript", "typescript"},
+  filetypes = { "javascript", "typescript" },
   init_options = {
     linters = {
       eslint = {
         command = "./node_modules/.bin/eslint",
-        rootPatterns = {".eslintrc.js", ".eslintrc", ".git"},
+        rootPatterns = { ".eslintrc.js", ".eslintrc", ".git" },
         debounce = 100,
         args = {
           "--stdin",
@@ -31,13 +31,13 @@ require("lspconfig").diagnosticls.setup {
         },
         securities = {
           [2] = "error",
-          [1] = "warning"
+          [1] = "warning",
         },
       },
     },
     filetypes = {
       javascript = "eslint",
       typescript = "eslint",
-    }
-  }
-}
+    },
+  },
+})
