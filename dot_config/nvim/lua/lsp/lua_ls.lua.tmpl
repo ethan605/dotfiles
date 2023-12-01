@@ -17,12 +17,12 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require("lspconfig").lua_ls.setup {
+require("lspconfig").lua_ls.setup({
   capabilities = utils.capabilities,
   flags = utils.default_flags,
   on_attach = utils.on_attach,
 
-  cmd = { lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua" };
+  cmd = { lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua" },
   settings = {
     Lua = {
       runtime = {
@@ -33,7 +33,7 @@ require("lspconfig").lua_ls.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {"vim"},
+        globals = { "vim" },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -45,4 +45,4 @@ require("lspconfig").lua_ls.setup {
       },
     },
   },
-}
+})
