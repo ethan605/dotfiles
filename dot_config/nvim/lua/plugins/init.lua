@@ -106,6 +106,11 @@ require("packer").startup(function()
     end,
   })
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
 
   -- Syntax highlight
   use("darfink/vim-plist")
