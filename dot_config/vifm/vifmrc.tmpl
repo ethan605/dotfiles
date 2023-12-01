@@ -148,8 +148,8 @@ filetype * qlmanage -p %c >> /dev/null 2>&1 &
 fileviewer ../ echo > /dev/null
 
 " Show content tree in the preview window for directories
-fileviewer */ exa --all --color=always --group-directories-first --level=1 --long --no-filesize --no-time --no-user --tree %c
-fileviewer .*/ exa --all --color=always --group-directories-first --level=1 --long --no-filesize --no-time --no-user --tree %c
+fileviewer */ eza --all --color=always --group-directories-first --level=1 --tree %c
+fileviewer .*/ eza --all --color=always --group-directories-first --level=1 --tree %c
 
 " Text files
 fileviewer <text/*>,<application/json>
