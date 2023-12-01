@@ -203,8 +203,6 @@ cask "pycharm"
 cask "signal"
 # Messaging app with a focus on speed and security
 cask "telegram"
-# Web browser focusing on security
-cask "tor-browser"
 # Multimedia player
 cask "vlc"
 # Music player for high resolution (Hi-Res) music through the external sources

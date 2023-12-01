@@ -17,7 +17,7 @@ require("packer").startup(function()
   use { "mg979/vim-visual-multi", branch = "master" }
   use {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
+    config = function ()
       require("plugins.indent-blankline")
     end
   }
@@ -113,7 +113,7 @@ require("packer").startup(function()
   use "udalov/kotlin-vim"
   use "tmux-plugins/vim-tmux"
 
-  -- Toolings
+  -- Language support
   use "ap/vim-css-color"
   use "nvie/vim-flake8"
   use { "fatih/vim-go", run = ":GoUpdateBinaries" }
