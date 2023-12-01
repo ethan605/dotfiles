@@ -1,7 +1,7 @@
 -- vim:fileencoding=utf-8:filetype=lua
 local utils = require("lsp.utils")
 
-require("lspconfig").kotlin_language_server.setup {
+require("lspconfig").kotlin_language_server.setup({
   capabilities = utils.capabilities,
   flags = utils.default_flags,
   on_attach = utils.on_attach,
@@ -15,4 +15,4 @@ require("lspconfig").kotlin_language_server.setup {
   cmd = { "/usr/local/opt/kotlin-language-server/bin/kotlin-language-server" },
 
 {{- end }}
-}
+})
