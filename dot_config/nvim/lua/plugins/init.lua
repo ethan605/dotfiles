@@ -10,7 +10,7 @@ require("packer").startup(function()
   use("editorconfig/editorconfig-vim")
   use("folke/lsp-colors.nvim")
   use("liuchengxu/vista.vim")
-  use("mhinz/vim-startify")
+  --use("mhinz/vim-startify")
   use("preservim/nerdcommenter")
   use("tpope/vim-surround")
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
@@ -54,6 +54,14 @@ require("packer").startup(function()
     config = function()
       require("plugins.bufferline")
     end,
+  })
+  use({
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    config = function()
+      require("plugins.dashboard")
+    end,
+    requires = { "nvim-tree/nvim-web-devicons" },
   })
 
   -- Git

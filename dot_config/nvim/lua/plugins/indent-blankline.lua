@@ -7,6 +7,6 @@ require("ibl").setup({
     show_exact_scope = true,
   },
   exclude = {
-    filetypes = { "startify" },
+    filetypes = { "dashboard", "startify" },
   },
 })
