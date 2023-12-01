@@ -7,6 +7,8 @@ require("dashboard").setup({
   },
   shortcut_type = "letter",
   config = {
+    header = {},
+    week_header = { enable = true },
     shortcut = {
       { desc = "󰓦 Update", group = "DiffAdd", action = "PackerSync", key = "u" },
       { desc = "󰍉 Check", group = "DiffChange", action = "checkhealth", key = "c" },
