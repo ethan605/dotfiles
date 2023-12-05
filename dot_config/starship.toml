@@ -146,6 +146,10 @@ format = " [$symbol($version)]($style)"
 style = "bold #0e67ed"
 symbol = "V "
 
+[cmake]
+format = " [$symbol($version)]($style)"
+style = "bold #e25241"
+
 # Languages support
 [deno]
 format = " [$symbol$version]($style)"
