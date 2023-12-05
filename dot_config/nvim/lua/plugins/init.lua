@@ -35,10 +35,7 @@ require("packer").startup(function()
   })
   use({
     "junegunn/fzf.vim",
-    requires = {
-      "junegunn/fzf",
-      "tpope/vim-fugitive",
-    },
+    requires = { "junegunn/fzf" },
   })
   use({
     "kyazdani42/nvim-tree.lua",
@@ -65,6 +62,7 @@ require("packer").startup(function()
 
   -- Git
   use("APZelos/blamer.nvim")
+  use("tpope/vim-fugitive")
   use({
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
@@ -77,6 +75,13 @@ require("packer").startup(function()
     requires = { "nvim-lua/plenary.nvim" },
     config = function()
       require("gitlinker").setup()
+    end,
+  })
+  use({
+    "NeogitOrg/neogit",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neogit").setup({})
     end,
   })
 
