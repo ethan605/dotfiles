@@ -127,7 +127,7 @@ require("packer").startup(function()
 
   -- Language support
   use("ap/vim-css-color")
-  use("nvie/vim-flake8")
+  use("wesleimp/stylua.nvim")
   use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
   use({ "prettier/vim-prettier", branch = "release/0.x", run = "npm install" })
 
