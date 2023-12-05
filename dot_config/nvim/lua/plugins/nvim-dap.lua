@@ -93,11 +93,34 @@ local function configure_python(dap)
   }
 end
 
+local function configure_cpp(dap)
+  dap.adapters.lldb = {
+    type = "executable",
+    command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
+    name = "lldb",
+  }
+  dap.configurations.cpp = {
+    {
+      name = "Launch",
+      type = "lldb",
+      request = "launch",
+      program = function()
+        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+      end,
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+      args = {},
+    },
+  }
+end
+
 function M.setup()
-  local dap = require("dap")
   configure()
+
+  local dap = require("dap")
   configure_exts(dap)
   configure_python(dap)
+  configure_cpp(dap)
 end
 
 return M
