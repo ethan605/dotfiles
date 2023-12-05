@@ -18,7 +18,7 @@ local autoFormatGroup = vim.api.nvim_create_augroup("AutoFormatGroup", { clear =
 
 -- Use prettier-stylelint for CSS
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "css", "scss" },
+  pattern = { "*.css", "*.scss" },
   command = "let b:prettier_exec_cmd = 'prettier-stylelint'",
   group = autoFormatGroup,
 })
