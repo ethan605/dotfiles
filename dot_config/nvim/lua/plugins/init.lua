@@ -77,13 +77,6 @@ require("packer").startup(function()
       require("gitlinker").setup()
     end,
   })
-  use({
-    "NeogitOrg/neogit",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("neogit").setup({})
-    end,
-  })
 
   -- LSP & TreeSitter
   use("neovim/nvim-lspconfig")
@@ -133,6 +126,7 @@ require("packer").startup(function()
   -- Language support
   use("ap/vim-css-color")
   use("wesleimp/stylua.nvim")
+  use("rhysd/vim-clang-format")
   use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
   use({ "prettier/vim-prettier", branch = "release/0.x", run = "npm install" })
 

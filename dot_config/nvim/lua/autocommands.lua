@@ -37,6 +37,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = autoFormatGroup,
 })
 
+-- Call clang-format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.h", "*.c", "*.cc", "*.cpp" },
+  command = "ClangFormat",
+  group = autoFormatGroup,
+})
+
 -- Force syntax highlight for specific file types
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = ".prettierrc",
