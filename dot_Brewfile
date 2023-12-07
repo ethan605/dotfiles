@@ -36,6 +36,8 @@ brew "bat"
 brew "chezmoi"
 # Cross-platform make
 brew "cmake"
+# Static analysis of C and C++ code
+brew "cppcheck"
 # File comparison utilities
 brew "diffutils"
 # Load/unload environment variables based on $PWD
@@ -166,6 +168,8 @@ brew "watch"
 brew "webtorrent-cli"
 # Internet file retriever
 brew "wget"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Suite of barcodes-reading tools
 brew "zbar"
 # Shell extension to navigate your filesystem faster
