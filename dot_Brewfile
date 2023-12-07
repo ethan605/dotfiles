@@ -106,6 +106,8 @@ brew "libmagic"
 brew "libqalculate"
 # XML security library
 brew "libxmlsec1"
+# Next-gen compiler infrastructure
+brew "llvm"
 # LSP for LanguageTool with support for Latex, Markdown and Others
 brew "ltex-ls"
 # Language Server for the Lua language
