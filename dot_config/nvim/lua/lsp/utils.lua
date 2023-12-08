@@ -18,23 +18,19 @@ local on_attach = function(client, bufnr)
   end
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap("gD", ":lua vim.lsp.buf.declaration()<CR>")
   buf_set_keymap("gd", ":lua vim.lsp.buf.definition()<CR>")
-  buf_set_keymap("gi", ":lua vim.lsp.buf.implementation()<CR>")
+  buf_set_keymap("gD", ":lua vim.lsp.buf.declaration()<CR>")
+  buf_set_keymap("gi", ":lua vim.lsp.buf.type_definition()<CR>")
+  buf_set_keymap("gI", ":lua vim.lsp.buf.implementation()<CR>")
   buf_set_keymap("gr", ":lua vim.lsp.buf.references()<CR>")
+  buf_set_keymap("gN", ":lua vim.lsp.buf.rename()<CR>")
   buf_set_keymap("K", ":lua vim.lsp.buf.hover()<CR>")
   buf_set_keymap("[d", ":lua vim.diagnostic.goto_prev()<CR>")
   buf_set_keymap("]d", ":lua vim.diagnostic.goto_next()<CR>")
   buf_set_keymap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>")
-  buf_set_keymap("<space>D", ":lua vim.lsp.buf.type_definition()<CR>")
   buf_set_keymap("<space>ca", ":lua vim.lsp.buf.code_action()<CR>")
   buf_set_keymap("<space>e", ":lua vim.diagnostic.open_float()<CR>")
   buf_set_keymap("<space>f", ":lua vim.lsp.buf.formatting()<CR>")
-  buf_set_keymap("<space>q", ":lua vim.diagnostic.setloclist()<CR>")
-  buf_set_keymap("<space>rn", ":lua vim.lsp.buf.rename()<CR>")
-  buf_set_keymap("<space>wa", ":lua vim.lsp.buf.add_workspace_folder()<CR>")
-  buf_set_keymap("<space>wl", ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
-  buf_set_keymap("<space>wr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>")
 end
 
 return {
