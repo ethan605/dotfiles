@@ -19,8 +19,8 @@ vim.api.nvim_set_keymap("n", "<Leader><Space>", ":nohlsearch<CR>", opts)
 
 -- Leader + v to toggle Vista finder
 vim.api.nvim_set_keymap("n", "<Leader>v", ":Vista finder<CR>", opts)
--- Leader + Leader + v to toggle Vista finder
-vim.api.nvim_set_keymap("n", "<Leader><Leader>v", ":Vista!!<CR>", opts)
+-- Leader + V to toggle Vista finder
+vim.api.nvim_set_keymap("n", "<Leader>V", ":Vista!!<CR>", opts)
 
 vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
 vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
