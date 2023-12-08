@@ -1,5 +1,19 @@
----@diagnostic disable: undefined-global
-require("packer").startup(function()
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    vim.cmd([[ packadd packer.nvim ]])
+    return true
+  end
+
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Common plugins
@@ -33,10 +47,7 @@ require("packer").startup(function()
       require("plugins.lualine")
     end,
   })
-  use({
-    "junegunn/fzf.vim",
-    requires = { "junegunn/fzf" },
-  })
+  use({ "junegunn/fzf.vim", requires = { "junegunn/fzf" } })
   use({
     "kyazdani42/nvim-tree.lua",
     requires = { "kyazdani42/nvim-web-devicons" },
@@ -85,7 +96,8 @@ require("packer").startup(function()
     "hrsh7th/nvim-compe",
     requires = {
       "hrsh7th/vim-vsnip",
-      { "tamago324/compe-zsh", requires = { "nvim-lua/plenary.nvim" } },
+      "nvim-lua/plenary.nvim",
+      "tamago324/compe-zsh",
       { "tzachar/compe-tabnine", run = "./install.sh" },
     },
     config = function()
@@ -120,15 +132,15 @@ require("packer").startup(function()
   -- Syntax highlight
   use("darfink/vim-plist")
   use("sheerun/vim-polyglot")
-  use("udalov/kotlin-vim")
   use("tmux-plugins/vim-tmux")
+  use("udalov/kotlin-vim")
 
   -- Language support
   use("ap/vim-css-color")
-  use("wesleimp/stylua.nvim")
   use("rhysd/vim-clang-format")
+  use("wesleimp/stylua.nvim")
   use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
-  use({ "prettier/vim-prettier", branch = "release/0.x", run = "npm install" })
+  use({ "prettier/vim-prettier", run = "yarn install" })
 
   -- DAP
   use({
@@ -147,4 +159,8 @@ require("packer").startup(function()
       require("plugins.nvim-dap").setup()
     end,
   })
+
+  if packer_bootstrap then
+    require("packer").sync()
+  end
 end)

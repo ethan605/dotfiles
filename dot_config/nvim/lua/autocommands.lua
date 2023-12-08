@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Call Prettier on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.scss", "*.less", "*.graphql" },
-  command = "Prettier",
+  command = "PrettierAsync",
   group = autoFormatGroup,
 })
 
