@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- Call clang-format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.h", "*.c", "*.cc", "*.cpp" },
+  pattern = { "*.h", "*.hpp", "*.c", "*.cc", "*.cpp" },
   command = "ClangFormat",
   group = autoFormatGroup,
 })
