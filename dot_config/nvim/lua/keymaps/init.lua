@@ -3,6 +3,7 @@ local opts = { noremap = true, silent = true }
 -- Leader as Easymotion prefix
 vim.api.nvim_set_keymap("n", "<Leader>", "<Plug>(easymotion-prefix)", { silent = true })
 
+-- NvimTree
 vim.api.nvim_set_keymap("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
 
 -- Utilities from fzf.nvim
@@ -28,6 +29,9 @@ vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 -- Gitsigns
 vim.api.nvim_set_keymap("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", opts)
 vim.api.nvim_set_keymap("n", "]c", "<cmd>Gitsigns next_hunk<CR>", opts)
+
+-- Misc
+vim.api.nvim_set_keymap("n", "gc", ":close", opts)
 
 -- python.vim
 -- "[[" Jump backwards to begin of current/previous toplevel

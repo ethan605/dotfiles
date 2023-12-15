@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap("n", "g{", ":BufferLineMovePrev<CR>", opts)
 vim.api.nvim_set_keymap("n", "g}", ":BufferLineMoveNext<CR>", opts)
 
 -- Manipulate buffers
-vim.api.nvim_set_keymap("n", "gc", ":bdelete!<CR>", opts)
+vim.api.nvim_set_keymap("n", "gC", ":bdelete!<CR>", opts)
 vim.api.nvim_set_keymap("n", "gq", ":BufferLinePickClose<CR>", opts)
 vim.api.nvim_set_keymap("n", "gs", ":BufferLinePick<CR>", opts)
 vim.api.nvim_set_keymap("n", "gb", ":FzfBuffers<CR>", opts)
