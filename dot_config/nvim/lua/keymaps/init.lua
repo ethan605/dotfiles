@@ -31,7 +31,7 @@ vim.api.nvim_set_keymap("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", opts)
 vim.api.nvim_set_keymap("n", "]c", "<cmd>Gitsigns next_hunk<CR>", opts)
 
 -- Misc
-vim.api.nvim_set_keymap("n", "gc", ":close", opts)
+vim.api.nvim_set_keymap("n", "gc", ":close<CR>", opts)
 
 -- python.vim
 -- "[[" Jump backwards to begin of current/previous toplevel
