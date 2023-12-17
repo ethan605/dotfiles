@@ -215,8 +215,6 @@ cask "telegram"
 cask "vlc"
 # Music player for high resolution (Hi-Res) music through the external sources
 cask "vox"
-# Open-source version of the X.Org X Window System
-cask "xquartz"
 # Messaging and calling application
 cask "zalo"
 # Video communication and virtual meeting platform
