@@ -58,6 +58,8 @@ brew "findutils"
 brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Reports from gcov test coverage program
+brew "gcovr"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -120,6 +122,8 @@ brew "make"
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Small build system for use with gyp or CMake
+brew "ninja"
 # Optimized BLAS library
 brew "openblas"
 # OpenBSD freely-licensed SSH connectivity tools
