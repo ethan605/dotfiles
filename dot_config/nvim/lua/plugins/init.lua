@@ -41,6 +41,12 @@ require("packer").startup(function(use)
     end,
   })
   use({
+    "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("plugins.nvim-web-devicons")
+    end,
+  })
+  use({
     "hoob3rt/lualine.nvim",
     requires = { "nvim-tree/nvim-web-devicons" },
     config = function()
