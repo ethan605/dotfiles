@@ -1,5 +1,6 @@
 tap "amar1729/formulae"
 tap "argoproj/tap"
+tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
@@ -46,8 +47,16 @@ brew "elixir-ls"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Multi-format archive and compression library
+brew "libarchive"
+# Optimized BLAS library
+brew "openblas"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# Firebase command-line tools
+brew "firebase-cli"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
 # Command-line fuzzy finder written in Go
@@ -80,6 +89,8 @@ brew "helm"
 brew "httpie"
 # Command-line pager for JSON data
 brew "jless"
+# Image manipulation library
+brew "jpeg"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Apache Kafka C/C++ library
@@ -92,16 +103,18 @@ brew "keychain"
 brew "kubernetes-cli"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
-# Multi-format archive and compression library
-brew "libarchive"
 # Portable Foreign Function Interface library
 brew "libffi"
 # Implementation of the file(1) command
 brew "libmagic"
 # Library for Qalculate! program
 brew "libqalculate"
+# Library to render SVG files using Cairo
+brew "librsvg"
 # XML security library
 brew "libxmlsec1"
+# Library for database change tracking
+brew "liquibase"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LSP for LanguageTool with support for Latex, Markdown and Others
@@ -116,8 +129,6 @@ brew "ncdu"
 brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Optimized BLAS library
-brew "openblas"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # 7-Zip (high compression file archiver) implementation
@@ -134,6 +145,8 @@ brew "pass-otp"
 brew "pgweb"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Manage compile and link flags for libraries
+brew "pkg-config"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Tools for and transforming and inspecting PDF files
@@ -148,8 +161,8 @@ brew "shellcheck"
 brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
-# Easiest, most secure way to use WireGuard and 2FA
-brew "tailscale"
+# Terraform version manager inspired by rbenv
+brew "tfenv"
 # Terminal multiplexer
 brew "tmux"
 # Maintained ctags implementation
@@ -182,6 +195,8 @@ brew "simplydanny/pass-extensions/pass-tail"
 brew "simplydanny/pass-extensions/pass-update"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line interface for 1Password
+cask "1password-cli"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Uninstaller and cleaning assistant
@@ -195,6 +210,8 @@ cask "flameshot"
 cask "font-cabin"
 # Web browser
 cask "google-chrome"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "google-cloud-sdk"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Keyboard customiser
@@ -205,6 +222,8 @@ cask "logi-options-plus"
 cask "signal"
 # Team communication and collaboration software
 cask "slack"
+# Mesh VPN based on Wireguard
+cask "tailscale"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Multimedia player

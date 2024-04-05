@@ -138,8 +138,9 @@ style = "bold #326ce5"
 symbol = "󱃾 "
 
 [gcloud]
-format = ' [$symbol$account(@$domain)(\($region\))]($style)'
+format = ' [$symbol$account@$domain\($region\)]($style)'
 symbol = " "
+style = "bold #4285f4"
 
 [vagrant]
 format = " [$symbol($version)]($style)"
