@@ -160,7 +160,7 @@ function __load-perl() {
 
 function __load-ssh() {
   eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-thanhnx.605" keychain --eval --quiet "$HOME/.ssh/thanhnx.605_id_ed25519")
-  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-work" keychain --eval --quiet "$HOME/.ssh/id_rsa")
+  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-work" keychain --eval --quiet "$HOME/.ssh/id_ed25519")
 }
 
 {{- if eq .chezmoi.os "linux" }}
