@@ -10,10 +10,6 @@ tap "simplydanny/pass-extensions"
 brew "automake"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Generic library support script
-brew "libtool"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Compression/decompression library aiming for high speed
@@ -50,8 +46,6 @@ brew "elixir-ls"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Multi-format archive and compression library
-brew "libarchive"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
@@ -68,8 +62,6 @@ brew "git"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
-# Command-line option parsing utility
-brew "gnu-getopt"
 # C code prettifier
 brew "gnu-indent"
 # GNU implementation of the famous stream editor
@@ -86,8 +78,6 @@ brew "grep"
 brew "helm"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
@@ -102,6 +92,8 @@ brew "keychain"
 brew "kubernetes-cli"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Multi-format archive and compression library
+brew "libarchive"
 # Portable Foreign Function Interface library
 brew "libffi"
 # Implementation of the file(1) command
@@ -134,8 +126,6 @@ brew "p7zip"
 brew "parallel"
 # QR Code generation
 brew "qrencode"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Password manager
 brew "pass"
 # Pass extension for managing one-time-password tokens
@@ -144,8 +134,6 @@ brew "pass-otp"
 brew "pgweb"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Object-relational database system
-brew "postgresql@14"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Tools for and transforming and inspecting PDF files
@@ -160,6 +148,8 @@ brew "shellcheck"
 brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
 # Terminal multiplexer
 brew "tmux"
 # Maintained ctags implementation
@@ -190,8 +180,12 @@ brew "koekeishiya/formulae/yabai"
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
 brew "simplydanny/pass-extensions/pass-update"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # GPU-accelerated terminal emulator
 cask "alacritty"
+# Uninstaller and cleaning assistant
+cask "app-cleaner"
 # Application uninstaller
 cask "appcleaner"
 # Web browser
@@ -200,26 +194,20 @@ cask "firefox"
 cask "flameshot"
 cask "font-cabin"
 # Web browser
-cask "google-chrome-dev"
+cask "google-chrome"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Keyboard customizer
+# Keyboard customiser
 cask "karabiner-elements"
-# GPU-based terminal emulator
-cask "kitty"
 # Software for Logitech devices
 cask "logi-options-plus"
-# IDE for professional Python development
-cask "pycharm"
 # Instant messaging application focusing on security
 cask "signal"
+# Team communication and collaboration software
+cask "slack"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Multimedia player
 cask "vlc"
 # Music player for high resolution (Hi-Res) music through the external sources
 cask "vox"
-# Messaging and calling application
-cask "zalo"
-# Video communication and virtual meeting platform
-cask "zoom"
