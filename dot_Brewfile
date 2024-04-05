@@ -203,6 +203,8 @@ cask "alacritty"
 cask "app-cleaner"
 # Application uninstaller
 cask "appcleaner"
+# Databases and SQL IDE
+cask "datagrip"
 # Web browser
 cask "firefox"
 # Screenshot software
