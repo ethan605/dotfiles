@@ -7,6 +7,8 @@ mac-install
 # [[[ Obsolete configs - keep for future reference only
 
 .config/alacritty/alacritty.yml
+.config/flake8
+.config/kitty
 .config/logiops
 .config/neomutt
 .config/termite
@@ -92,7 +94,6 @@ mac-install
 
 .Brewfile
 .config/karabiner
-.config/kitty
 .config/yabai
 Library
 

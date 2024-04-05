@@ -43,7 +43,7 @@ TERM = "xterm-256color"
 
 [font]
 builtin_box_drawing = true
-size = 9.0
+size = 14.0
 
 [font.bold]
 family = "OperatorMonoSSm Nerd Font"
@@ -84,9 +84,9 @@ multiplier = 3
 save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
-args = ["-flp", "ethanify"]
-program = "/usr/bin/login"
+#[shell]
+#args = ["-flp", "ethanify"]
+#program = "/usr/bin/login"
 
 [window]
 decorations = "none"
