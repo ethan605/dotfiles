@@ -199,8 +199,6 @@ cask "1password"
 cask "1password-cli"
 # GPU-accelerated terminal emulator
 cask "alacritty"
-# Uninstaller and cleaning assistant
-cask "app-cleaner"
 # Application uninstaller
 cask "appcleaner"
 # Databases and SQL IDE
@@ -214,8 +212,6 @@ cask "font-cabin"
 cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Keyboard customiser
 cask "karabiner-elements"
 # Software for Logitech devices

@@ -37,7 +37,7 @@ require("packer").startup(function(use)
   use({
     "windwp/nvim-autopairs",
     config = function()
-      require("plugins.autopairs")
+      require("nvim-autopairs").setup()
     end,
   })
   use({
@@ -99,15 +99,20 @@ require("packer").startup(function(use)
   use("neovim/nvim-lspconfig")
   use("kosayoda/nvim-lightbulb")
   use({
-    "hrsh7th/nvim-compe",
+    "hrsh7th/nvim-cmp",
     requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/nvim-cmp",
       "hrsh7th/vim-vsnip",
       "nvim-lua/plenary.nvim",
-      "tamago324/compe-zsh",
-      { "tzachar/compe-tabnine", run = "./install.sh" },
+      { "tzachar/cmp-tabnine", run = "./install.sh" },
     },
     config = function()
-      require("plugins.compe")
+      require("plugins.nvim-cmp")
     end,
   })
   use({
@@ -151,6 +156,11 @@ require("packer").startup(function(use)
   -- DAP
   use({
     "mfussenegger/nvim-dap",
+    wants = {
+      "nvim-dap-python",
+      "nvim-dap-ui",
+      "nvim-dap-virtual-text",
+    },
     requires = {
       "mfussenegger/nvim-dap-python",
       "nvim-neotest/nvim-nio",

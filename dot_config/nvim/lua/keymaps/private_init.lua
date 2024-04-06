@@ -44,5 +44,5 @@ vim.api.nvim_set_keymap("n", "gc", ":close<CR>", opts)
 -- "]m" Jump forwards to begin of next method/scope
 
 require("keymaps.bufferline")
-require("keymaps.compe")
+--require("keymaps.compe")
 require("keymaps.nvim-dap")
