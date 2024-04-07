@@ -1,3 +1,4 @@
 # vim:fileencoding=utf-8:filetype=conf
-legacy_version_file = yes
+always_keep_download = yes
 java_macos_integration_enable = yes
+legacy_version_file = yes
