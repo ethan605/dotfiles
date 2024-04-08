@@ -205,6 +205,8 @@ cask "alacritty"
 cask "appcleaner"
 # Databases and SQL IDE
 cask "datagrip"
+# Security audit software
+cask "drata-agent"
 # Web browser
 cask "firefox"
 # Screenshot software
