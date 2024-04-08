@@ -218,6 +218,8 @@ cask "google-chrome"
 cask "google-cloud-sdk"
 # Keyboard customiser
 cask "karabiner-elements"
+# App to manage software development and track bugs
+cask "linear-linear"
 # Software for Logitech devices
 cask "logi-options-plus"
 # Instant messaging application focusing on security
