@@ -112,7 +112,7 @@ command = 'echo $HTTPS_PROXY | sed "s/http\:\/\///gi;s/\/$//gi"'
 format = " [$symbol$output]($style)"
 style = "#ffaf87"
 when = 'test "$HTTPS_PROXY" != ""'
-symbol = "旅"
+symbol = "󰒄 "
 
 [custom.venv]
 command = 'basename "$VIRTUAL_ENV"'
@@ -122,9 +122,9 @@ when = 'test "$VIRTUAL_ENV" != ""'
 
 # Platforms support
 [aws]
-format = ' [$symbol($profile)( \($region\))( \[$duration\])]($style)'
+format = ' [$symbol( $profile)( \($region\))( \[$duration\])]($style)'
 style = "bold #ff9900"
-symbol = "󰸏 "
+symbol = "󰸏"
 
 [docker_context]
 format = " [$symbol$context]($style)"
@@ -138,8 +138,8 @@ style = "bold #326ce5"
 symbol = "󱃾 "
 
 [gcloud]
-format = ' [$symbol$account@$domain\($region\)]($style)'
-symbol = " "
+format = ' [$symbol( $account@$domain)( \($region\))]($style)'
+symbol = ""
 style = "bold #4285f4"
 
 [vagrant]
