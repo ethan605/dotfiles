@@ -12,6 +12,7 @@ mac-install
 .config/logiops
 .config/neomutt
 .config/termite
+.config/yabai
 .local/bin/fix-solaar
 .local/bin/ibus-engines
 .local/bin/virt-utils
@@ -97,7 +98,6 @@ mac-install
 
 .Brewfile
 .config/karabiner
-.config/yabai
 Library
 
 {{ end }}
