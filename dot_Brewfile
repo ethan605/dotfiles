@@ -149,6 +149,8 @@ brew "pgweb"
 brew "pinentry-mac"
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Object-relational database system
+brew "postgresql@15"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Tools for and transforming and inspecting PDF files
@@ -222,6 +224,8 @@ cask "karabiner-elements"
 cask "linear-linear"
 # Software for Logitech devices
 cask "logi-options-plus"
+# Native desktop app for Messenger (formerly Facebook Messenger)
+cask "messenger"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Instant messaging application focusing on security
