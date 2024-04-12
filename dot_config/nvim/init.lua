@@ -8,3 +8,4 @@ require("autocommands")
 
 require("lsp")
 require("treesitter")
+require("filetype")
