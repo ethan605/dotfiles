@@ -133,6 +133,13 @@ require("packer").startup(function(use)
       require("lspkind").init({})
     end,
   })
+  use({
+    "nvimdev/lspsaga.nvim",
+    after = "nvim-lspconfig",
+    config = function()
+      require("plugins.lspsaga")
+    end,
+  })
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({
     "nvim-treesitter/nvim-treesitter-textobjects",
