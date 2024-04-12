@@ -23,12 +23,14 @@ vim.api.nvim_create_autocmd("FileType", {
   group = autoFormatGroup,
 })
 
--- Call Prettier on save
+--[[
+-- Call Prettier on save - can be slow for big sources (> 3k lines)
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.scss", "*.less", "*.graphql" },
   command = "PrettierAsync",
   group = autoFormatGroup,
 })
+]]
 
 -- Call Stylua on save
 vim.api.nvim_create_autocmd("BufWritePre", {

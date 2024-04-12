@@ -39,7 +39,11 @@ vim.g.go_metalinter_autosave = true
 vim.g.go_mod_fmt_autosave = true
 
 -- For vim-prettier
+vim.g["prettier#autoformat"] = 0
+vim.g["prettier#autoformat_require_pragma"] = 0
+vim.g["prettier#exec_cmd_async"] = 1
 vim.g["prettier#exec_cmd_path"] = "~/.asdf/shims/prettier"
+vim.g["prettier#quickfix_enabled"] = 0
 
 -- For vista.vim
 vim.g.vista_sidebar_width = 50
