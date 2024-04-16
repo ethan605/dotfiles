@@ -239,14 +239,15 @@
                         ]
                     },
                     {
-                        "description": "Cmd+Enter to open Alacritty",
+                        "description": "Cmd+Shift+Enter to open Alacritty",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "command",
+                                            "shift"
                                         ]
                                     }
                                 },
