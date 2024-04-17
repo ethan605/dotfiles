@@ -1,3 +1,4 @@
+-- Automatically install Packer for the first time
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -149,7 +150,7 @@ require("packer").startup(function(use)
 
   -- Syntax highlight
   use("darfink/vim-plist")
-  use("sheerun/vim-polyglot")
+  --use("sheerun/vim-polyglot")
   use("tmux-plugins/vim-tmux")
   use("udalov/kotlin-vim")
 
