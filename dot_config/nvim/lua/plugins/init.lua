@@ -98,7 +98,14 @@ require("packer").startup(function(use)
 
   -- LSP & TreeSitter
   use("neovim/nvim-lspconfig")
-  use("kosayoda/nvim-lightbulb")
+  use({
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      require("nvim-lightbulb").setup({
+        autocmd = { enabled = true },
+      })
+    end,
+  })
   use({
     "hrsh7th/nvim-cmp",
     requires = {

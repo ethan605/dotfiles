@@ -45,21 +45,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "ClangFormat",
   group = autoFormatGroup,
 })
-
--- Force syntax highlight for specific file types
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = ".prettierrc",
-  command = "set syntax=json",
-})
-
--- Not sure why Python files always have colorcolumn="120,+1"
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*.py",
-  command = "set colorcolumn=120",
-})
-
--- Update lightbulb on cursor move
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  pattern = "*",
-  command = "lua require('nvim-lightbulb').update_lightbulb()",
-})

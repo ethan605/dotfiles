@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>")
   buf_set_keymap("<space>ca", ":lua vim.lsp.buf.code_action()<CR>")
   buf_set_keymap("<space>e", ":lua vim.diagnostic.open_float()<CR>")
-  buf_set_keymap("<space>f", ":lua vim.lsp.buf.formatting()<CR>")
+  buf_set_keymap("<space>f", ":lua vim.lsp.buf.format()<CR>")
 end
 
 return {
