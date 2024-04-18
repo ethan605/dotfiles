@@ -16,6 +16,7 @@ local servers = {
   "jsonls",
   "ltex",
   "pyright",
+  "ruff_lsp",
   "rust_analyzer",
   "solargraph",
   "terraformls",
