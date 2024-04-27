@@ -5,7 +5,6 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
-tap "koekeishiya/formulae"
 tap "simplydanny/pass-extensions"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
@@ -191,8 +190,6 @@ brew "zsh"
 brew "amar1729/formulae/browserpass"
 # Kubectl Argo Rollouts Plugin.
 brew "argoproj/tap/kubectl-argo-rollouts"
-# A tiling window manager for macOS based on binary space partitioning.
-brew "koekeishiya/formulae/yabai"
 # Pass extension to avoid printing the password to the console
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
