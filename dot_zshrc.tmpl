@@ -14,13 +14,18 @@ export BAT_THEME='Sublime Snazzy'
 export FZF_DEFAULT_OPTS='
   --color=gutter:0,prompt:2,spinner:3
   --color=hl+:5,fg+:7,bg+:0
-  --color=hl:5,pointer:5,marker:2
+  --color=hl:5,pointer:5,marker:2,header:3
   --cycle
   --marker="›"
   --no-height
   --pointer="›"
   --prompt="❯ "
   --reverse
+'
+export FZF_CTRL_R_OPTS='
+  --preview "echo {2..} | bat --language=zsh --color=always"
+  --bind "ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
+  --header "Press CTRL-Y to copy command into clipboard"
 '
 export EDITOR=nvim
 export VISUAL=nvim
