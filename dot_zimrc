@@ -16,4 +16,4 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-syntax-highlighting
 
 zmodule ethan605/fzfsh
-zmodule Aloxaf/fzf-tab
+zmodule Aloxaf/fzf-tab --source fzf-tab.plugin.zsh
