@@ -134,18 +134,6 @@ function __load-key-bindings() {
 
   bindkey -M vicmd 'k' history-substring-search-up
   bindkey -M vicmd 'j' history-substring-search-down
-
-{{- if eq .chezmoi.os "linux" }}
-
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
-  source "$(brew --prefix fzf)/shell/completion.zsh"
-
-{{- end }}
 }
 
 function __load-perl() {
@@ -209,6 +197,38 @@ function __load-work-envs() {
 }
 
 function __load-zim() {
+  __load-zsh-plugins
+
+  if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+    # Update static initialization script if it does not exist or it's outdated, before sourcing it
+    source ${ZIM_HOME}/zimfw.zsh init -q
+  fi
+
+  source ${ZIM_HOME}/init.zsh
+
+  __load-key-bindings
+  __load-zsh-settings
+}
+
+function __load-zsh-plugins() {
+  eval "$(starship init zsh)"
+  eval "$(zoxide init zsh)"
+  eval "$(direnv hook zsh)"
+
+{{- if eq .chezmoi.os "linux" }}
+
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+  source "$(brew --prefix fzf)/shell/completion.zsh"
+
+{{- end }}
+}
+
+function __load-zsh-settings() {
   # Set history file
   HISTFILE=~/.zsh_history
 
@@ -236,12 +256,9 @@ function __load-zim() {
   # If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
   zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
 
-  if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-    # Update static initialization script if it does not exist or it's outdated, before sourcing it
-    source ${ZIM_HOME}/zimfw.zsh init -q
-  fi
-
-  source ${ZIM_HOME}/init.zsh
+  # For fzf-tab
+  zstyle -d ':completion:*' format
+  zstyle ':completion:*:descriptions' format '[%d]'
 
 {{- if eq .chezmoi.os "linux" }}
 
@@ -249,12 +266,6 @@ function __load-zim() {
   add-zsh-hook -Uz chpwd osc7_cwd
 
 {{- end }}
-}
-
-function __load-zsh-plugins() {
-  eval "$(starship init zsh)"
-  eval "$(zoxide init zsh)"
-  eval "$(direnv hook zsh)"
 }
 #]]]
 
@@ -348,8 +359,6 @@ __load-work-envs
 
 # Base envs
 __load-zim
-__load-key-bindings
-__load-zsh-plugins
 
 # Dev tools
 __load-asdf
