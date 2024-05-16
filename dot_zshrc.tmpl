@@ -23,9 +23,9 @@ export FZF_DEFAULT_OPTS='
   --reverse
 '
 export FZF_CTRL_R_OPTS='
-  --preview "echo {2..} | bat --language=zsh --color=always"
-  --bind "ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
-  --header "Press CTRL-Y to copy command into clipboard"
+  --preview="echo {2..} | bat --language=zsh --color=always"
+  --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
+  --header="Press CTRL-Y to copy command into clipboard"
 '
 export EDITOR=nvim
 export VISUAL=nvim
