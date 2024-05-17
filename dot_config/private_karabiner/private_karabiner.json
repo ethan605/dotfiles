@@ -202,7 +202,7 @@
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "left_command"
                                         ]
                                     }
                                 },
@@ -222,7 +222,7 @@
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "left_command"
                                         ]
                                     }
                                 },
@@ -239,21 +239,107 @@
                         ]
                     },
                     {
-                        "description": "Cmd+Shift+Enter to open Alacritty",
+                        "description": "Right Cmd to navigate between apps",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command",
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a Alacritty.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
                                             "shift"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -n -a 'Alacritty.app'"
+                                        "shell_command": "open -n -a Alacritty.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": ["right_command"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Google Chrome.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": ["right_command"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a Firefox.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": ["right_command"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a Slack.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["right_command"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a Messenger.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": ["right_command"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a finder"
                                     }
                                 ],
                                 "type": "basic"
