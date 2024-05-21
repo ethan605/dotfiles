@@ -1,5 +1,5 @@
-local no_bg_style = { bg = "none" }
-local bold_only_style = { bold = true }
+local default_style = { bg = "none", bold = false }
+local selected_style = { bg = "none", bold = true }
 
 local diagnostics_indicator = function(count, level)
   local icon = level:match("error") and " " or " "
@@ -8,53 +8,55 @@ end
 
 require("bufferline").setup({
   highlights = {
-    fill = no_bg_style,
-    background = no_bg_style,
+    fill = default_style,
+    background = default_style,
+    duplicate = default_style,
+    pick = default_style,
 
     -- Default styles
-    diagnostic = no_bg_style,
-    error = no_bg_style,
-    error_diagnostic = no_bg_style,
-    hint = no_bg_style,
-    hint_diagnostic = no_bg_style,
-    info = no_bg_style,
-    info_diagnostic = no_bg_style,
-    modified = no_bg_style,
-    numbers = no_bg_style,
-    warning = no_bg_style,
-    warning_diagnostic = no_bg_style,
+    diagnostic = default_style,
+    error = default_style,
+    error_diagnostic = default_style,
+    hint = default_style,
+    hint_diagnostic = default_style,
+    info = default_style,
+    info_diagnostic = default_style,
+    modified = default_style,
+    numbers = default_style,
+    warning = default_style,
+    warning_diagnostic = default_style,
 
     -- Selected styles
-    buffer_selected = bold_only_style,
-    error_diagnostic_selected = bold_only_style,
-    error_selected = bold_only_style,
-    hint_diagnostic_selected = bold_only_style,
-    hint_selected = bold_only_style,
-    info_diagnostic_selected = bold_only_style,
-    info_selected = bold_only_style,
-    modified_selected = bold_only_style,
-    numbers_selected = bold_only_style,
-    warning_diagnostic_selected = bold_only_style,
-    warning_selected = bold_only_style,
+    buffer_selected = selected_style,
+    modified_selected = selected_style,
+    numbers_selected = selected_style,
+    error_diagnostic_selected = { link = "DiagnosticError" },
+    error_selected = { link = "DiagnosticError" },
+    hint_diagnostic_selected = { link = "DiagnosticHint" },
+    hint_selected = { link = "DiagnosticHint" },
+    info_diagnostic_selected = { link = "DiagnosticOk" },
+    info_selected = { link = "DiagnosticOk" },
+    warning_diagnostic_selected = { link = "DiagnosticWarn" },
+    warning_selected = { link = "DiagnosticWarn" },
 
     -- Visible styles
-    buffer_visible = no_bg_style,
-    diagnostic_visible = no_bg_style,
-    error_diagnostic_visible = no_bg_style,
-    error_visible = no_bg_style,
-    hint_diagnostic_visible = no_bg_style,
-    hint_visible = no_bg_style,
-    info_diagnostic_visible = no_bg_style,
-    info_visible = no_bg_style,
-    modified_visible = no_bg_style,
-    numbers_visible = bold_only_style,
-    warning_diagnostic_visible = no_bg_style,
-    warning_visible = no_bg_style,
+    buffer_visible = default_style,
+    diagnostic_visible = default_style,
+    error_diagnostic_visible = default_style,
+    error_visible = default_style,
+    hint_diagnostic_visible = default_style,
+    hint_visible = default_style,
+    info_diagnostic_visible = default_style,
+    info_visible = default_style,
+    modified_visible = default_style,
+    numbers_visible = selected_style,
+    warning_diagnostic_visible = default_style,
+    warning_visible = default_style,
 
-    duplicate = no_bg_style,
-    pick = no_bg_style,
-
-    tab_selected = { bold = true, fg = "cyan" },
+    tab = default_style,
+    tab_selected = { bg = "NvimDarkGrey1", bold = true, fg = "#9aedfe" },
+    tab_separator = { bg = "#282a36", fg = "#282a36" },
+    tab_separator_selected = { bg = "NvimDarkGrey1", fg = "NvimDarkGrey1" },
   },
   options = {
     -- Diagnostics
