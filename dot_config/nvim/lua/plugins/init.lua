@@ -30,6 +30,12 @@ require("packer").startup(function(use)
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
   use({ "mg979/vim-visual-multi", branch = "master" })
   use({
+    "stevearc/aerial.nvim",
+    config = function()
+      require("aerial").setup()
+    end,
+  })
+  use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("plugins.indent-blankline")

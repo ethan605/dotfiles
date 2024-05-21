@@ -5,7 +5,7 @@ require("dashboard").setup({
     tabline = true,
     winbar = true,
   },
-  shortcut_type = "letter",
+  shortcut_type = "number",
   config = {
     header = {},
     week_header = { enable = true },
