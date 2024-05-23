@@ -5,7 +5,7 @@ require("dashboard").setup({
     tabline = true,
     winbar = true,
   },
-  shortcut_type = "number",
+  shortcut_type = "letter",
   config = {
     header = {},
     week_header = { enable = true },
@@ -14,7 +14,7 @@ require("dashboard").setup({
       { desc = "󰍉 Check", group = "DiffChange", action = "checkhealth", key = "c" },
       { desc = "󰿅 Quit", group = "DiffDelete", action = "qa", key = "q" },
     },
-    packages = { enable = true },
+    packages = { enable = false },
     project = { enable = false },
     mru = { limit = 10, icon = " ", label = "MRU", cwd_only = true },
   },
