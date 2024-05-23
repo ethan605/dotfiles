@@ -19,22 +19,15 @@ require("packer").startup(function(use)
 
   -- Common plugins
   use("airblade/vim-rooter")
-  use("alker0/chezmoi.vim")
   use("connorholyday/vim-snazzy")
   use("easymotion/vim-easymotion")
   use("editorconfig/editorconfig-vim")
   use("folke/lsp-colors.nvim")
   use("liuchengxu/vista.vim")
+  use("mg979/vim-visual-multi")
   use("preservim/nerdcommenter")
   use("tpope/vim-surround")
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
-  use({ "mg979/vim-visual-multi", branch = "master" })
-  use({
-    "stevearc/aerial.nvim",
-    config = function()
-      require("aerial").setup()
-    end,
-  })
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()

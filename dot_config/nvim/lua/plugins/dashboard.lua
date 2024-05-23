@@ -14,7 +14,7 @@ require("dashboard").setup({
       { desc = "󰍉 Check", group = "DiffChange", action = "checkhealth", key = "c" },
       { desc = "󰿅 Quit", group = "DiffDelete", action = "qa", key = "q" },
     },
-    packages = { enable = false },
+    packages = { enable = true },
     project = { enable = false },
     mru = { limit = 10, icon = " ", label = "MRU", cwd_only = true },
   },
