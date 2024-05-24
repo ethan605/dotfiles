@@ -186,16 +186,11 @@ function __load-sway() {
 {{- end }}
 
 function __load-work-envs() {
-{{- if eq .chezmoi.hostname "R2K7TF472W" }}
+{{- if eq .work.email "thanh@encord.com" }}
 
-  export SRC_ROOT="$HOME/src/orca"
-  export CLD_SRC_ROOT="$HOME/src/orca-cloud-platform"
-  export OP_ROOT="$HOME/src/tools/op"
-  #export OP_ROOT="$SRC_ROOT/cli/op"
-  source "$OP_ROOT/shell_rc/bashrc"
-
-  [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/google-cloud-sdk/path.zsh.inc"
-  [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+  alias dcompose='docker compose -f ~/work/cord-backend/scripts/docker-compose.local.yaml'
 
 {{- end}}
 }
@@ -230,13 +225,6 @@ function __load-zsh-plugins() {
   eval "$(starship init zsh)"
   eval "$(zoxide init zsh)"
   eval "$(direnv hook zsh)"
-
-{{- if eq .chezmoi.os "darwin" }}
-
-  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-{{- end }}
 }
 
 function __load-zsh-settings() {
