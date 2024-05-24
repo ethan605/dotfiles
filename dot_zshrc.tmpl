@@ -73,7 +73,6 @@ PATH="$(brew --prefix gnu-tar)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix llvm)/bin:$PATH"
 PATH="$(brew --prefix postgresql@15)/bin:$PATH"
-PATH="$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/:$PATH"
 
 {{- end }}
 
@@ -202,24 +201,7 @@ function __load-work-envs() {
 }
 
 function __load-zim() {
-  __load-zsh-plugins
-
-  if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-    # Update static initialization script if it does not exist or it's outdated, before sourcing it
-    source ${ZIM_HOME}/zimfw.zsh init -q
-  fi
-
-  source ${ZIM_HOME}/init.zsh
-
-  __load-key-bindings
-  __load-zsh-settings
-}
-
-function __load-zsh-plugins() {
-  eval "$(starship init zsh)"
-  eval "$(zoxide init zsh)"
-  eval "$(direnv hook zsh)"
-
+  # Here FZF completion needs to be loaded before ZIM, otherwise it'll override fzf-tab
 {{- if eq .chezmoi.os "linux" }}
 
   source /usr/share/fzf/key-bindings.zsh
@@ -229,6 +211,30 @@ function __load-zsh-plugins() {
 
   source "$(brew --prefix fzf)/shell/key-bindings.zsh"
   source "$(brew --prefix fzf)/shell/completion.zsh"
+
+{{- end }}
+
+  if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+    # Update static initialization script if it does not exist or it's outdated, before sourcing it
+    source ${ZIM_HOME}/zimfw.zsh init -q
+  fi
+
+  source ${ZIM_HOME}/init.zsh
+
+  __load-zsh-plugins
+  __load-key-bindings
+  __load-zsh-settings
+}
+
+function __load-zsh-plugins() {
+  eval "$(starship init zsh)"
+  eval "$(zoxide init zsh)"
+  eval "$(direnv hook zsh)"
+
+{{- if eq .chezmoi.os "darwin" }}
+
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 {{- end }}
 }
