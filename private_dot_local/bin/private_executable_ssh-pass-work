@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-pass show work/github | head -n1
+pass dotfiles/ssh/work
