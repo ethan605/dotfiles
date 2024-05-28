@@ -44,7 +44,12 @@ require("packer").startup(function(use)
 			require("nvim-surround").setup()
 		end,
 	})
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
