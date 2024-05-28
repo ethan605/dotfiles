@@ -46,8 +46,6 @@ brew "eza"
 brew "fd"
 # Multi-format archive and compression library
 brew "libarchive"
-# Optimized BLAS library
-brew "openblas"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
@@ -128,6 +126,8 @@ brew "ncdu"
 brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
+# Optimized BLAS library
+brew "openblas"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # 7-Zip (high compression file archiver) implementation
