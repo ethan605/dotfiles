@@ -6,14 +6,19 @@ vim.api.nvim_set_keymap("n", "<Leader>", "<Plug>(easymotion-prefix)", { silent =
 -- NvimTree
 vim.api.nvim_set_keymap("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
 
--- Utilities from fzf.nvim
-vim.api.nvim_set_keymap("n", "<C-f>", ":FzfFiles<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-g>", ":FzfGFiles?<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-m>", ":FzfCommands<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-p>", ":FzfGFiles<CR>", opts)
-
--- Search globally with RipGrep
-vim.api.nvim_set_keymap("n", "<C-s>", ":FzfRg<Space>", { noremap = true })
+-- Utilities from fzf-lua
+vim.api.nvim_set_keymap("n", "gb", ":FzfLua buffers<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua files<CR>", opts)
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-g>",
+  ":lua require('fzf-lua').git_files({ cmd = 'git ls-files --modified' })<CR>",
+  opts
+)
+vim.api.nvim_set_keymap("n", "<C-m>", ":FzfLua commands<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-p>", ":FzfLua git_files<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-s>", ":FzfLua grep<CR>", opts)
+vim.api.nvim_set_keymap("v", "<C-s>", ":FzfLua grep_visual<CR>", opts)
 
 -- Leader + Space to hide search highlights
 vim.api.nvim_set_keymap("n", "<Leader><Space>", ":nohlsearch<CR>", opts)
@@ -44,5 +49,4 @@ vim.api.nvim_set_keymap("n", "gc", ":close<CR>", opts)
 -- "]m" Jump forwards to begin of next method/scope
 
 require("keymaps.bufferline")
---require("keymaps.compe")
 require("keymaps.nvim-dap")

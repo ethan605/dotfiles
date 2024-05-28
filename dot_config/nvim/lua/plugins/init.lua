@@ -53,7 +53,13 @@ require("packer").startup(function(use)
       require("plugins.lualine")
     end,
   })
-  use({ "junegunn/fzf.vim", requires = { "junegunn/fzf" } })
+  use({
+    "ibhagwan/fzf-lua",
+    requires = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("fzf-lua").setup()
+    end,
+  })
   use({
     "kyazdani42/nvim-tree.lua",
     requires = { "kyazdani42/nvim-web-devicons" },

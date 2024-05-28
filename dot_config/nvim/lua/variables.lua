@@ -9,9 +9,6 @@ vim.g.blamer_enabled = true
 vim.g.blamer_show_in_visual_modes = false
 vim.g.blamer_template = "<author>, <author-time> • <summary>"
 
--- For fzf.nvim
-vim.g.fzf_command_prefix = "Fzf"
-
 -- For markdown-preview
 vim.g.mkdp_preview_options = {
   content_editable = false,
