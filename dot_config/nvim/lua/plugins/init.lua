@@ -23,7 +23,6 @@ require("packer").startup(function(use)
   use("easymotion/vim-easymotion")
   use("editorconfig/editorconfig-vim")
   use("folke/lsp-colors.nvim")
-  use("liuchengxu/vista.vim")
   use("mg979/vim-visual-multi")
   use("preservim/nerdcommenter")
   use("tpope/vim-surround")
@@ -57,7 +56,7 @@ require("packer").startup(function(use)
     "ibhagwan/fzf-lua",
     requires = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("fzf-lua").setup()
+      require("fzf-lua").setup({ "fzf-tmux" })
     end,
   })
   use({

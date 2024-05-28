@@ -24,7 +24,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("[d", ":lua vim.diagnostic.goto_prev()<CR>")
   buf_set_keymap("]d", ":lua vim.diagnostic.goto_next()<CR>")
   buf_set_keymap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>")
-  buf_set_keymap("<space>ca", ":lua vim.lsp.buf.code_action()<CR>")
   buf_set_keymap("<space>e", ":lua vim.diagnostic.open_float()<CR>")
   buf_set_keymap("<space>f", ":lua vim.lsp.buf.format()<CR>")
 
@@ -34,6 +33,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("gi", ":FzfLua lsp_typedefs<CR>")
   buf_set_keymap("gI", ":FzfLua lsp_implementations<CR>")
   buf_set_keymap("gr", ":FzfLua lsp_references<CR>")
+  buf_set_keymap("<space>ca", ":FzfLua lsp_code_actions<CR>")
+  buf_set_keymap("<space>s", ":FzfLua lsp_document_symbols<CR>")
 
   -- Keymaps using default vim.lsp.buf utils
   --buf_set_keymap("gd", ":lua vim.lsp.buf.definition()<CR>")
@@ -45,6 +46,7 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap("<space>gD", ":vsplit | lua vim.lsp.buf.declaration()<CR>")
   --buf_set_keymap("<space>gi", ":vsplit | lua vim.lsp.buf.type_definition()<CR>")
   --buf_set_keymap("<space>gI", ":vsplit | lua vim.lsp.buf.implementation()<CR>")
+  --buf_set_keymap("<space>ca", ":lua vim.lsp.buf.code_action()<CR>")
 end
 
 return {
