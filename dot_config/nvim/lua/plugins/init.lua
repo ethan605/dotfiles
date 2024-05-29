@@ -22,6 +22,7 @@ require("packer").startup(function(use)
   use("connorholyday/vim-snazzy")
   use("darfink/vim-plist")
   use("easymotion/vim-easymotion")
+  use({ "liuchengxu/vista.vim", requires = { "junegunn/fzf" } })
   use("mg979/vim-visual-multi")
   use({ "prettier/vim-prettier", run = "yarn install --frozen-lockfile --production" })
 

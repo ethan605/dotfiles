@@ -1,10 +1,14 @@
 local opts = { noremap = true, silent = true }
 
--- Leader as Easymotion prefix
-vim.api.nvim_set_keymap("n", "<Leader>", "<Plug>(easymotion-prefix)", { silent = true })
+-- <leader> as easymotion prefix
+vim.api.nvim_set_keymap("n", "<leader>", "<Plug>(easymotion-prefix)", { silent = true })
 
--- NvimTree
+-- For nvim-tree
 vim.api.nvim_set_keymap("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
+
+-- For vista.vim
+vim.api.nvim_set_keymap("n", "<leader>v", ":Vista finder<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>V", ":Vista!!<CR>", opts)
 
 -- Utilities from fzf-lua
 vim.api.nvim_set_keymap("n", "gb", ":FzfLua buffers<CR>", opts)
@@ -21,7 +25,7 @@ vim.api.nvim_set_keymap("n", "<C-s>", ":FzfLua grep<CR>", opts)
 vim.api.nvim_set_keymap("v", "<C-s>", ":FzfLua grep_visual<CR>", opts)
 
 -- Leader + Space to hide search highlights
-vim.api.nvim_set_keymap("n", "<Leader><Space>", ":nohlsearch<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader><space>", ":nohlsearch<CR>", opts)
 
 vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
 vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
