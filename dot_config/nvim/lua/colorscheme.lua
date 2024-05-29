@@ -16,8 +16,9 @@ vim.api.nvim_set_hl(0, "ColorColumn", { bg = "NvimDarkGrey4" })
 -- Matched parentheses colors
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = "#ff6ac1" }) -- magenta
 
--- Float panes
+-- Float windows
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3a3a3a" })
+vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = "NvimDarkGrey4" })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ff5c57" }) -- red
