@@ -72,7 +72,12 @@ PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix gnu-tar)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix llvm)/bin:$PATH"
+
+{{- if eq .work.email "thanh@encord.com" }}
+
 PATH="$(brew --prefix postgresql@15)/bin:$PATH"
+
+{{- end }}
 
 {{- end }}
 
