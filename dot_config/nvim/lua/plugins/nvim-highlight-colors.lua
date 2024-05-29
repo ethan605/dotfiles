@@ -1,4 +1,5 @@
 require("nvim-highlight-colors").setup({
-  virtual_symbol_position = "eol",
+  render = "background",
+  virtual_symbol_position = "inline",
   enable_tailwind = true,
 })

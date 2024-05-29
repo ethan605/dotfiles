@@ -17,7 +17,7 @@ vim.api.nvim_set_hl(0, "ColorColumn", { bg = "NvimDarkGrey4" })
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = "#ff6ac1" }) -- magenta
 
 -- Float panes
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NvimDarkGrey3" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3a3a3a" })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#ff5c57" }) -- red
