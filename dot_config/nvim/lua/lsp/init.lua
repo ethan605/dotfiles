@@ -7,6 +7,7 @@ local servers = {
   "bashls",
   "bufls",
   "cssls",
+  "docker_compose_language_service",
   "dockerls",
   "eslint",
   "gopls",
@@ -21,6 +22,7 @@ local servers = {
   "terraformls",
   "tsserver",
   "vimls",
+  "yamlls",
 }
 
 for _, lsp in ipairs(servers) do

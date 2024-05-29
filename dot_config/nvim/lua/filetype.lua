@@ -1,8 +1,6 @@
 vim.filetype.add({
-  filename = {
-    [".env"] = "config",
-  },
   pattern = {
     [".env.*"] = "config",
+    ["docker%-compose.*.yaml"] = "yaml.docker-compose",
   },
 })
