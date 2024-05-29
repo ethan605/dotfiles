@@ -5,25 +5,26 @@ local utils = require("lsp.utils")
 -- map buffer local keybindings when the language server attaches
 local servers = {
   "bashls",
-  "bufls",
-  -- "cssls", -- disabled in favour of tailwindcss
   "docker_compose_language_service",
   "dockerls",
   "eslint",
-  "gopls",
-  "graphql",
   "html",
   "jsonls",
   "ltex",
   "pyright",
-  "ruff_lsp",
-  "rust_analyzer",
-  "solargraph",
   "tailwindcss",
-  "terraformls",
   "tsserver",
-  "vimls",
   "yamlls",
+  -- "bufls", -- disabled due to no active usage
+  -- "cssls", -- disabled in favour of tailwindcss
+  -- "denols", -- disabled due to no active usage
+  -- "gopls", -- disabled due to no active usage
+  -- "graphql", -- disabled due to no active usage
+  -- "ruff_lsp", -- disabled due to external `ruff` command usage
+  -- "rust_analyzer", -- disabled due to no active usage
+  -- "solargraph", -- disabled due to no active usage
+  -- "terraformls", -- disabled due to no active usage
+  -- "vimls", -- disabled due to no active usage
 }
 
 for _, lsp in ipairs(servers) do
@@ -34,9 +35,11 @@ for _, lsp in ipairs(servers) do
   })
 end
 
-require("lsp.clangd")
 require("lsp.diagnosticls")
-require("lsp.elixirls")
 require("lsp.lua_ls")
+
+-- disabled due to no active usage
+-- require("lsp.clangd")
+-- require("lsp.elixirls")
 -- require("lsp.jdtls")
 -- require("lsp.kotlin_language_server")
