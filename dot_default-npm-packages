@@ -1,4 +1,5 @@
 @microsoft/compose-language-service
+@tailwindcss/language-server
 bash-language-server
 corepack
 diagnostic-languageserver

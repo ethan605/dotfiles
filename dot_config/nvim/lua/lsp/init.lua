@@ -6,7 +6,7 @@ local utils = require("lsp.utils")
 local servers = {
   "bashls",
   "bufls",
-  "cssls",
+  -- "cssls", -- disabled in favour of tailwindcss
   "docker_compose_language_service",
   "dockerls",
   "eslint",
@@ -19,6 +19,7 @@ local servers = {
   "ruff_lsp",
   "rust_analyzer",
   "solargraph",
+  "tailwindcss",
   "terraformls",
   "tsserver",
   "vimls",
