@@ -1,6 +1,6 @@
 -- Nvim providers
 vim.g.loaded_perl_provider = 0
-vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
 vim.g.python3_host_prog = "$HOME/.asdf/shims/python"
 
 -- For markdown-preview
