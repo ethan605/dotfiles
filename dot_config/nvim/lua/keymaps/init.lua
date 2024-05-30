@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap("n", "<leader>V", ":Vista!!<CR>", opts)
 
 -- Utilities from fzf-lua
 vim.api.nvim_set_keymap("n", "gb", ":FzfLua buffers<CR>", opts) -- select buffers
-vim.api.nvim_set_keymap("n", "<C-m>", ":FzfLua commands<CR>", opts) -- select commands
+vim.api.nvim_set_keymap("n", "<C-m>", ":FzfLua<CR>", opts) -- select FzfLua commands
 vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua files<CR>", opts) -- browse all files
 vim.api.nvim_set_keymap("n", "<C-g>", ":FzfLua git_status formatter=path.filename_first<CR>", opts) -- browse modified/untracked files
 vim.api.nvim_set_keymap("n", "<C-p>", ":FzfLua git_files formatter=path.filename_first<CR>", opts) -- browse git tracked files
