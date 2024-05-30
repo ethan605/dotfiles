@@ -201,6 +201,8 @@ function __load-work-envs() {
 
   source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+  export PATH="$HOME/work/liquibase-4.27.0:$PATH"
+
   alias dcompose='docker compose -f ~/work/cord-backend/scripts/docker-compose.local.yaml'
   alias pre-commit-fix='SKIP=tests-deps,tests pre-commit run --show-diff-on-failure --color=always --all-files --hook-stage=push'
 
