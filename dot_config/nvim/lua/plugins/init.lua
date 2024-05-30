@@ -80,7 +80,7 @@ require("packer").startup(function(use)
     "ibhagwan/fzf-lua",
     requires = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("fzf-lua").setup({ "fzf-native" })
+      require("plugins.fzf-lua")
     end,
   })
   use({

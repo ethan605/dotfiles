@@ -14,8 +14,8 @@ vim.api.nvim_set_keymap("n", "<leader>V", ":Vista!!<CR>", opts)
 vim.api.nvim_set_keymap("n", "gb", ":FzfLua buffers<CR>", opts) -- select buffers
 vim.api.nvim_set_keymap("n", "<C-m>", ":FzfLua commands<CR>", opts) -- select commands
 vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua files<CR>", opts) -- browse all files
-vim.api.nvim_set_keymap("n", "<C-g>", ":FzfLua git_status<CR>", opts) -- browse modified/untracked files
-vim.api.nvim_set_keymap("n", "<C-p>", ":FzfLua git_files<CR>", opts) -- browse git tracked files
+vim.api.nvim_set_keymap("n", "<C-g>", ":FzfLua git_status formatter=path.filename_first<CR>", opts) -- browse modified/untracked files
+vim.api.nvim_set_keymap("n", "<C-p>", ":FzfLua git_files formatter=path.filename_first<CR>", opts) -- browse git tracked files
 vim.api.nvim_set_keymap("n", "<C-s>", ":FzfLua grep<CR>", opts) -- search with prompt
 vim.api.nvim_set_keymap("v", "<C-s>", ":FzfLua grep_visual<CR>", opts) -- search selected text
 

@@ -145,7 +145,7 @@ style = "bold #4285f4"
 [vagrant]
 format = " [$symbol($version)]($style)"
 style = "bold #0e67ed"
-symbol = "V "
+symbol = " "
 
 [cmake]
 format = " [$symbol($version)]($style)"
