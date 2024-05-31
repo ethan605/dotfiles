@@ -4,17 +4,6 @@ require("nvim-highlight-colors").setup({
   enable_tailwind = true,
 
   custom_colors = {
-    -- Snazzy colors
-    { label = "gray", color = "#686868" },
-    { label = "black", color = "#282a36" },
-    { label = "blue", color = "#57c7ff" },
-    { label = "cyan", color = "#9aedfe" },
-    { label = "green", color = "#5af78e" },
-    { label = "magenta", color = "#ff6ac1" },
-    { label = "red", color = "#ff5c57" },
-    { label = "white", color = "#eff0eb" },
-    { label = "yellow", color = "#f3f99d" },
-
     -- Default Neovim palettes
     -- https://github.com/neovim/neovim/blob/release-0.10/src/nvim/highlight_group.c#L2909-L2939
     { label = "NvimDarkBlue", color = "#004c73" },
