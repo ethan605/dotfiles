@@ -110,8 +110,6 @@ brew "libqalculate"
 brew "librsvg"
 # XML security library
 brew "libxmlsec1"
-# Library for database change tracking
-brew "liquibase"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LSP for LanguageTool with support for Latex, Markdown and Others
