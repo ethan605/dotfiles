@@ -1,8 +1,8 @@
 local cmp = require("cmp")
+local lspkind = require("lspkind")
 
 cmp.setup({
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
     end,
@@ -36,6 +36,15 @@ cmp.setup({
   }, {
     { name = "buffer" },
   }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      preset = "codicons",
+      max_width = 50,
+      ellipsis_char = "...",
+      show_labelDetails = true,
+    }),
+  },
 })
 
 -- Set configuration for specific filetype.

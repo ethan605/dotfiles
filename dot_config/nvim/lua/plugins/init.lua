@@ -147,8 +147,9 @@ require("packer").startup(function(use)
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-vsnip",
       "hrsh7th/nvim-cmp",
-      "hrsh7th/vim-vsnip",
+      "hrsh7th/vim-vsnip", -- for Vim commands
       "nvim-lua/plenary.nvim",
+      "onsails/lspkind-nvim", -- for LSP pictograms
       { "tzachar/cmp-tabnine", run = "./install.sh" },
     },
     config = function()
@@ -168,16 +169,16 @@ require("packer").startup(function(use)
     end,
   })
   use({
-    "onsails/lspkind-nvim",
-    config = function()
-      require("lspkind").init({})
-    end,
-  })
-  use({
     "nvimdev/lspsaga.nvim",
     after = "nvim-lspconfig",
     config = function()
       require("plugins.lspsaga")
+    end,
+  })
+  use({
+    "linrongbin16/lsp-progress.nvim",
+    config = function()
+      require("plugins.lsp-progress")
     end,
   })
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
