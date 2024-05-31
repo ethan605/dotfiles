@@ -28,11 +28,11 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("<space>f", ":lua vim.lsp.buf.format()<CR>")
 
   -- Keymaps using fzf-lua utils
-  buf_set_keymap("gd", ":FzfLua lsp_definitions<CR>")
-  buf_set_keymap("gD", ":FzfLua lsp_declarations<CR>")
-  buf_set_keymap("gi", ":FzfLua lsp_typedefs<CR>")
-  buf_set_keymap("gI", ":FzfLua lsp_implementations<CR>")
-  buf_set_keymap("gr", ":FzfLua lsp_references<CR>")
+  buf_set_keymap("gd", ":FzfLua lsp_definitions formatter=path.filename_first<CR>")
+  buf_set_keymap("gD", ":FzfLua lsp_declarations formatter=path.filename_first<CR>")
+  buf_set_keymap("gi", ":FzfLua lsp_typedefs formatter=path.filename_first<CR>")
+  buf_set_keymap("gI", ":FzfLua lsp_implementations formatter=path.filename_first<CR>")
+  buf_set_keymap("gr", ":FzfLua lsp_references formatter=path.filename_first<CR>")
   buf_set_keymap("<space>ca", ":FzfLua lsp_code_actions<CR>")
   buf_set_keymap("<space>s", ":FzfLua lsp_document_symbols<CR>")
 
