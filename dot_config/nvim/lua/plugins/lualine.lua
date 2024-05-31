@@ -1,13 +1,9 @@
 local custom_powerline = require("lualine.themes.powerline")
 local lualine = require("lualine")
+local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
--- Snazzy colours
-local custom_colors = {
-  black = "282a36",
-}
-
-custom_powerline.normal.c.bg = custom_colors.black
-custom_powerline.inactive.c.bg = custom_colors.black
+custom_powerline.normal.c.bg = snazzy_colors.black
+custom_powerline.inactive.c.bg = snazzy_colors.black
 
 lualine.setup({
   options = {
@@ -15,6 +11,7 @@ lualine.setup({
     icons_enabled = true,
     section_separators = "",
     theme = custom_powerline,
+    disabled_filetypes = { "NvimTree" },
   },
   sections = {
     lualine_a = { "mode" },
@@ -29,7 +26,7 @@ lualine.setup({
         function()
           return require("lsp-progress").progress()
         end,
-        color = { fg = "#9aedfe" },
+        color = { fg = snazzy_colors.cyan },
       },
       "encoding",
       "fileformat",

@@ -64,3 +64,7 @@ vim.api.nvim_set_hl(0, "Removed", { fg = snazzy_colors.red })
 vim.api.nvim_set_hl(0, "RedrawDebugRecompose", { bg = snazzy_colors.red })
 
 vim.api.nvim_set_hl(0, "RedrawDebugClear", { bg = snazzy_colors.yellow })
+
+return {
+  snazzy_colors = snazzy_colors,
+}

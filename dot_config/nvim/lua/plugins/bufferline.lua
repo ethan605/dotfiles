@@ -1,5 +1,6 @@
 local default_style = { bg = "none", bold = false }
 local selected_style = { bg = "none", bold = true }
+local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
 local diagnostics_indicator = function(count, level)
   local icon = level:match("error") and " " or " "
@@ -58,8 +59,8 @@ require("bufferline").setup({
     warning_visible = default_style,
 
     tab = default_style,
-    tab_selected = { bg = "NvimDarkGrey1", bold = true, fg = "#9aedfe" },
-    tab_separator = { bg = "#282a36", fg = "#282a36" },
+    tab_selected = { bg = "NvimDarkGrey1", bold = true, fg = snazzy_colors.blue },
+    tab_separator = { bg = snazzy_colors.black, fg = snazzy_colors.black },
     tab_separator_selected = { bg = "NvimDarkGrey1", fg = "NvimDarkGrey1" },
   },
   options = {
