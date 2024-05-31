@@ -10,7 +10,7 @@ require("dashboard").setup({
     header = {},
     week_header = { enable = true },
     shortcut = {
-      { desc = "󰓦 Update", group = "DiffAdd", action = "PackerSync", key = "u" },
+      { desc = "󰓦 Update", group = "DiffAdd", action = "Lazy update", key = "u" },
       { desc = "󰍉 Check", group = "DiffChange", action = "checkhealth", key = "c" },
       { desc = "󰿅 Quit", group = "DiffDelete", action = "qa", key = "q" },
     },
