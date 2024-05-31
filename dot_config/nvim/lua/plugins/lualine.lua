@@ -25,9 +25,12 @@ lualine.setup({
     },
     lualine_c = { "filename" },
     lualine_x = {
-      function()
-        return require("lsp-progress").progress()
-      end,
+      {
+        function()
+          return require("lsp-progress").progress()
+        end,
+        color = { fg = "#9aedfe" },
+      },
       "encoding",
       "fileformat",
       "filetype",
