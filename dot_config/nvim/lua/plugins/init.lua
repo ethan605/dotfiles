@@ -192,9 +192,10 @@ require("lazy").setup({
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
-  -- DAP
+  -- DAP - disabled due to no active usage
   {
     "mfussenegger/nvim-dap",
+    enabled = false,
     dependencies = {
       "mfussenegger/nvim-dap-python",
       "nvim-dap-python",
