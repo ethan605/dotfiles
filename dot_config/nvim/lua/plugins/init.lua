@@ -73,12 +73,6 @@ require("lazy").setup({
     end,
   },
   {
-    "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("plugins.nvim-web-devicons")
-    end,
-  },
-  {
     "hoob3rt/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -94,14 +88,14 @@ require("lazy").setup({
   },
   {
     "kyazdani42/nvim-tree.lua",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.nvim-tree")
     end,
   },
   {
     "akinsho/bufferline.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.bufferline")
     end,
@@ -182,7 +176,7 @@ require("lazy").setup({
   },
   {
     "nvimdev/lspsaga.nvim",
-    after = "nvim-lspconfig",
+    dependencies = { "nvim-lspconfig" },
     config = function()
       require("plugins.lspsaga")
     end,
