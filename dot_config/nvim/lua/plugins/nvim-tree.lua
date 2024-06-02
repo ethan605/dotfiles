@@ -1,16 +1,9 @@
-local function on_attach(bufnr)
-  local api = require("nvim-tree.api")
-
-  local function opts(desc)
-    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
-  -- default mappings
-  api.config.mappings.default_on_attach(bufnr)
-
-  -- custom mappings
-  vim.keymap.set("n", "}}", ":NvimTreeResize +5<CR>", opts("Widen"))
-  vim.keymap.set("n", "{{", ":NvimTreeResize -5<CR>", opts("Shrink"))
+local function folder_label_renderer(path)
+  path = path:gsub(os.getenv("HOME"), "~", 1) -- substitute $HOME with ~
+  path = path:gsub("/*$", "") -- remove trailing `/` chars
+  local cur_dir = path:match("[^/]*$")
+  path = path:gsub("[^/]*$", "") -- remove cur_dir
+  return path:gsub("([a-zA-Z])[^/]+", "%1") .. cur_dir
 end
 
 require("nvim-tree").setup({
@@ -25,11 +18,7 @@ require("nvim-tree").setup({
       "venv",
     },
   },
-  on_attach = on_attach,
-  view = {
-    centralize_selection = true,
-    width = 50,
-  },
+  hijack_cursor = true,
   renderer = {
     highlight_git = true,
     highlight_opened_files = "all",
@@ -41,10 +30,18 @@ require("nvim-tree").setup({
         folder_arrow = true,
       },
     },
+    root_folder_label = folder_label_renderer,
   },
   update_cwd = true,
   update_focused_file = {
     enable = true,
     update_cwd = true,
+  },
+  view = {
+    centralize_selection = true,
+    width = {
+      min = 30,
+      max = -1,
+    },
   },
 })

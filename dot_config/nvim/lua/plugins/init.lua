@@ -27,7 +27,6 @@ local opts = {
 
 require("lazy").setup({
   -- Vimscript plugins - WIP to replace with Lua alternatives
-  "airblade/vim-rooter",
   "connorholyday/vim-snazzy",
   "darfink/vim-plist",
   "easymotion/vim-easymotion",
@@ -87,7 +86,7 @@ require("lazy").setup({
     end,
   },
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.nvim-tree")

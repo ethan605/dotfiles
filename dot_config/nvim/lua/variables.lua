@@ -31,7 +31,7 @@ vim.g["prettier#quickfix_enabled"] = 0
 
 -- For vista.vim
 vim.g.vista_default_executive = "nvim_lsp"
-vim.g.vista_sidebar_width = 70
+vim.g.vista_sidebar_width = 50
 vim.g.vista_executive_for = {
   zsh = "ctags",
 }
