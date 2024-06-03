@@ -2,6 +2,10 @@ local custom_powerline = require("lualine.themes.powerline")
 local lualine = require("lualine")
 local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
+local function render_lsp_progress()
+  return require("lsp-progress").progress()
+end
+
 custom_powerline.normal.c.bg = snazzy_colors.black
 custom_powerline.inactive.c.bg = snazzy_colors.black
 
@@ -18,14 +22,20 @@ lualine.setup({
     lualine_b = {
       { "branch", icon = "" },
       "diff",
-      "diagnostics",
+      {
+        "diagnostics",
+        diagnostics_color = {
+          error = "DiagnosticError",
+          warn = "DiagnosticWarn",
+          info = "DiagnosticInfo",
+          hint = "DiagnosticHint",
+        },
+      },
     },
     lualine_c = { "filename" },
     lualine_x = {
       {
-        function()
-          return require("lsp-progress").progress()
-        end,
+        render_lsp_progress,
         color = { fg = snazzy_colors.cyan },
       },
       "encoding",
@@ -40,10 +50,17 @@ lualine.setup({
     lualine_b = {
       { "branch", icon = "" },
       "diff",
-      "diagnostics",
+      { "diagnostics", colored = false },
     },
     lualine_c = { "filename" },
-    lualine_x = { "encoding", "fileformat", "filetype" },
+    lualine_x = {
+      {
+        render_lsp_progress,
+      },
+      "encoding",
+      "fileformat",
+      "filetype",
+    },
     lualine_y = { "progress" },
     lualine_z = { "location" },
   },
