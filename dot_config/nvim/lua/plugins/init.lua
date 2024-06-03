@@ -50,9 +50,7 @@ require("lazy").setup({
   },
   {
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup()
-    end,
+    opts = {},
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -68,9 +66,7 @@ require("lazy").setup({
   },
   {
     "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-    end,
+    opts = {},
   },
   {
     "hoob3rt/lualine.nvim",
@@ -134,16 +130,12 @@ require("lazy").setup({
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("gitsigns").setup()
-    end,
+    opts = {},
   },
   {
     "ruifm/gitlinker.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("gitlinker").setup()
-    end,
+    opts = {},
   },
 
   -- LSP & TreeSitter
@@ -180,9 +172,7 @@ require("lazy").setup({
   },
   {
     "ojroques/nvim-lspfuzzy",
-    config = function()
-      require("lspfuzzy").setup({})
-    end,
+    opts = {},
   },
   {
     "nvimdev/lspsaga.nvim",
