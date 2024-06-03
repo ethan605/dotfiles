@@ -3,8 +3,15 @@ local selected_style = { bg = "none", bold = true }
 local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
 local diagnostics_indicator = function(count, level)
-  local icon = level:match("error") and " " or " "
-  return " " .. icon .. count
+  local icon = " "
+
+  if level:match("error") then
+    icon = " "
+  elseif level:match("warning") then
+    icon = " "
+  end
+
+  return icon .. count
 end
 
 require("bufferline").setup({

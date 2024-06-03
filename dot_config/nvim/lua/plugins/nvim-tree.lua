@@ -12,6 +12,9 @@ require("nvim-tree").setup({
       quit_on_open = true,
     },
   },
+  diagnostics = {
+    enable = true,
+  },
   filters = {
     custom = {
       "node_modules",
