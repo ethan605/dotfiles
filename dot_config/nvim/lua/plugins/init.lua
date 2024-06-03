@@ -32,8 +32,10 @@ require("lazy").setup({
   "darfink/vim-plist",
   "easymotion/vim-easymotion",
   "mg979/vim-visual-multi",
-  { "liuchengxu/vista.vim", dependencies = { "junegunn/fzf" } },
-  { "prettier/vim-prettier", build = "git restore . && yarn install --frozen-lockfile --production" },
+  {
+    "liuchengxu/vista.vim",
+    dependencies = { "junegunn/fzf" },
+  },
 
   -- Common plugins
   {
@@ -117,9 +119,6 @@ require("lazy").setup({
     },
   },
 
-  -- Language support
-  "wesleimp/stylua.nvim",
-
   -- Git
   {
     "f-person/git-blame.nvim",
@@ -138,7 +137,7 @@ require("lazy").setup({
     opts = {},
   },
 
-  -- LSP & TreeSitter
+  -- LSP
   "neovim/nvim-lspconfig",
   {
     "kosayoda/nvim-lightbulb",
@@ -155,7 +154,7 @@ require("lazy").setup({
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-vsnip",
       "hrsh7th/nvim-cmp",
-      "hrsh7th/vim-vsnip", -- for Vim commands
+      "hrsh7th/vim-vsnip",    -- for Vim commands
       "nvim-lua/plenary.nvim",
       "onsails/lspkind-nvim", -- for LSP pictograms
       { "tzachar/cmp-tabnine", build = "./install.sh" },
@@ -187,6 +186,14 @@ require("lazy").setup({
       require("plugins.lsp-progress")
     end,
   },
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      require("plugins.none-ls")
+    end,
+  },
+
+  -- TreeSitter
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",

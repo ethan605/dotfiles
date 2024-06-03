@@ -34,6 +34,7 @@ require("fzf-lua").setup({
     status = { formatter = "path.filename_first" },
   },
   lsp = {
+    async_or_timeout = 3000, -- make lsp requests synchronous so they work with none-ls
     finder = { formatter = "path.filename_first" },
   },
 })
