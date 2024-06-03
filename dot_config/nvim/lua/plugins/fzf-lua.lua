@@ -27,6 +27,8 @@ require("fzf-lua").setup({
   grep = { formatter = "path.filename_first" },
   grep_visual = { formatter = "path.filename_first" },
   live_grep = { formatter = "path.filename_first" },
+  loclist = { formatter = "path.filename_first" },
+  quickfix = { formatter = "path.filename_first" },
   git = {
     files = { formatter = "path.filename_first" },
     status = { formatter = "path.filename_first" },

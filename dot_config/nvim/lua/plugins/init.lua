@@ -19,14 +19,15 @@ end
 
 ensure_lazy()
 
-local opts = {
+local lazy_opts = {
   defaults = {
     lazy = false,
   },
 }
 
 require("lazy").setup({
-  -- Vimscript plugins - WIP to replace with Lua alternatives
+  -- Vimscript plugins
+  -- TODO: replace with Lua alternatives
   "connorholyday/vim-snazzy",
   "darfink/vim-plist",
   "easymotion/vim-easymotion",
@@ -107,6 +108,18 @@ require("lazy").setup({
       require("plugins.dashboard")
     end,
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      keywords = {
+        FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "HACK" } },
+        TEST = { icon = "󰙨 ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+        TODO = { icon = " ", color = "info", alt = { "NOTE", "INFO" } },
+        WARN = { icon = " ", color = "warning", alt = { "WARNING", "DANGER", "ALARM" } },
+      },
+    },
+  },
 
   -- Language support
   "wesleimp/stylua.nvim",
@@ -137,11 +150,9 @@ require("lazy").setup({
   "neovim/nvim-lspconfig",
   {
     "kosayoda/nvim-lightbulb",
-    config = function()
-      require("nvim-lightbulb").setup({
-        autocmd = { enabled = true },
-      })
-    end,
+    opts = {
+      autocmd = { enabled = true },
+    },
   },
   {
     "hrsh7th/nvim-cmp",
@@ -209,4 +220,4 @@ require("lazy").setup({
       require("plugins.nvim-dap").setup()
     end,
   },
-}, opts)
+}, lazy_opts)
