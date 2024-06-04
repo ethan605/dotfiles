@@ -138,6 +138,8 @@ brew "qrencode"
 brew "pass"
 # Pass extension for managing one-time-password tokens
 brew "pass-otp"
+# PostgreSQL syntax beautifier
+brew "pgformatter"
 # Web-based PostgreSQL database browser
 brew "pgweb"
 # Pinentry for GPG on Mac
