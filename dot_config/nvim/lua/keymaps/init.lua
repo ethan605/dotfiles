@@ -10,16 +10,16 @@ vim.api.nvim_set_keymap("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>v", ":Vista finder<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>V", ":Vista!!<CR>", opts)
 
--- Utilities from fzf-lua
-vim.api.nvim_set_keymap("n", "gb", ":FzfLua buffers<CR>", opts) -- select buffers
-vim.api.nvim_set_keymap("n", "<C-m>", ":FzfLua<CR>", opts) -- select FzfLua commands
-vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua files<CR>", opts) -- browse all files
-vim.api.nvim_set_keymap("n", "<C-g>", ":FzfLua git_status<CR>", opts) -- browse modified/untracked files
-vim.api.nvim_set_keymap("n", "<C-p>", ":FzfLua git_files<CR>", opts) -- browse git tracked files
-vim.api.nvim_set_keymap("n", "<C-s>", ":FzfLua grep<CR>", opts) -- search with prompt
+-- For fzf-lua
+vim.api.nvim_set_keymap("n", "gb", ":FzfLua buffers<CR>", opts)        -- select buffers
+vim.api.nvim_set_keymap("n", "<C-m>", ":FzfLua<CR>", opts)             -- select FzfLua commands
+vim.api.nvim_set_keymap("n", "<C-f>", ":FzfLua files<CR>", opts)       -- browse all files
+vim.api.nvim_set_keymap("n", "<C-g>", ":FzfLua git_status<CR>", opts)  -- browse modified/untracked files
+vim.api.nvim_set_keymap("n", "<C-p>", ":FzfLua git_files<CR>", opts)   -- browse git tracked files
+vim.api.nvim_set_keymap("n", "<C-s>", ":FzfLua grep<CR>", opts)        -- search with prompt
 vim.api.nvim_set_keymap("v", "<C-s>", ":FzfLua grep_visual<CR>", opts) -- search selected text
 
--- Leader + Space to hide search highlights
+-- Hide search highlights
 vim.api.nvim_set_keymap("n", "<leader><space>", ":nohlsearch<CR>", opts)
 
 vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)

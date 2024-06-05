@@ -13,4 +13,14 @@ none_ls.setup({
       extra_args = { "--config-path", vim.fn.expand("~/.config/.stylua.toml") },
     }),
   },
+  ---@diagnostic disable-next-line: unused-local
+  on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_keymap(
+      bufnr,
+      "n",
+      "<space>f",
+      ":lua vim.lsp.buf.format()<CR>",
+      { noremap = true, silent = true }
+    )
+  end,
 })
