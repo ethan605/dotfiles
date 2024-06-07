@@ -203,13 +203,10 @@ function __load-work-envs() {
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
   export WORK_DIR="$HOME/work"
+  export PATH="$WORK_DIR/.env/bin:$PATH"
 
-  if [[ -d "$WORK_DIR/liquibase-4.27.0" ]]; then
-    export PATH="$WORK_DIR/liquibase-4.27.0:$PATH"
-  fi
-
-  if [[ -f $WORK_DIR/work_env.zsh ]]; then
-    source "$WORK_DIR/work_env.zsh"
+  if [[ -f "$WORK_DIR/.env/.zshrc" ]]; then
+    source "$WORK_DIR/.env/.zshrc"
   fi
 
 {{- end}}
