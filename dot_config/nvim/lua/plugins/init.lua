@@ -56,7 +56,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       signs = true,
-      sign_priority = 10,
+      sign_priority = 11,
       keywords = {
         FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "HACK" } },
         TEST = { icon = "󰙨 ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
@@ -134,7 +134,6 @@ require("lazy").setup({
   },
   {
     "utilyre/barbecue.nvim",
-    -- name = "barbecue",
     dependencies = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons",
