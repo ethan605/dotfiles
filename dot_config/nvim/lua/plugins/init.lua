@@ -39,59 +39,6 @@ require("lazy").setup({
 
   -- Common plugins
   {
-    "brenoprata10/nvim-highlight-colors",
-    config = function()
-      require("plugins.nvim-highlight-colors")
-    end,
-  },
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("plugins.comment")
-    end,
-  },
-  {
-    "kylechui/nvim-surround",
-    opts = {},
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("plugins.indent-blankline")
-    end,
-  },
-  {
-    "windwp/nvim-autopairs",
-    opts = {},
-  },
-  {
-    "hoob3rt/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.lualine")
-    end,
-  },
-  {
-    "ibhagwan/fzf-lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.fzf-lua")
-    end,
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.nvim-tree")
-    end,
-  },
-  {
     "akinsho/bufferline.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -99,11 +46,9 @@ require("lazy").setup({
     end,
   },
   {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    "brenoprata10/nvim-highlight-colors",
     config = function()
-      require("plugins.dashboard")
+      require("plugins.nvim-highlight-colors")
     end,
   },
   {
@@ -119,6 +64,77 @@ require("lazy").setup({
         WARN = { icon = " ", color = "warning", alt = { "WARNING", "DANGER", "ALARM" } },
       },
     },
+  },
+  {
+    "hoob3rt/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("plugins.lualine")
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("plugins.fzf-lua")
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    opts = {},
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("plugins.indent-blankline")
+    end,
+  },
+  {
+    "m4xshen/smartcolumn.nvim",
+    opts = {
+      colorcolumn = "120",
+      disabled_filetypes = {
+        "NvimTree",
+        "checkhealth",
+        "dashboard",
+        "help",
+        "lazy",
+        "lspinfo",
+        "mason",
+        "null-ls-info",
+      },
+    },
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("plugins.comment")
+    end,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("plugins.nvim-tree")
+    end,
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("plugins.dashboard")
+    end,
+  },
+  {
+    "windwp/nvim-autopairs",
+    opts = {},
   },
 
   -- Git

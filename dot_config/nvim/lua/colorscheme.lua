@@ -23,7 +23,7 @@ vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_color
 vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
 
 -- Line limit column colors
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = snazzy_colors.gray })
+-- vim.api.nvim_set_hl(0, "ColorColumn", { bg = snazzy_colors.gray })
 
 -- Matched parentheses colors
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta })
