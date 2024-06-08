@@ -1,5 +1,5 @@
-local default_style = { bg = "none", bold = false }
-local selected_style = { bg = "none", bold = true }
+local default_style = { bg = "none", bold = false, italic = true }
+local selected_style = { bg = "none", bold = true, italic = false }
 local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
 local diagnostics_indicator = function(count, level)
