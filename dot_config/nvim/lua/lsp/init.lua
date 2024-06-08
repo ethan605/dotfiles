@@ -11,8 +11,6 @@ local servers = {
   "html",
   "jsonls",
   "ltex",
-  -- "pyright",
-  "basedpyright",
   "tailwindcss",
   "yamlls",
   -- "bufls", -- disabled due to no active usage
@@ -35,6 +33,7 @@ for _, server in ipairs(servers) do
   })
 end
 
+require("lsp.basedpyright")
 require("lsp.diagnosticls")
 require("lsp.lua_ls")
 require("lsp.tsserver")
