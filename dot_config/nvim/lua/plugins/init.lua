@@ -38,6 +38,7 @@ require("lazy").setup({
   },
 
   -- Common plugins
+  "Bekaboo/dropbar.nvim",
   {
     "akinsho/bufferline.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -131,14 +132,6 @@ require("lazy").setup({
     config = function()
       require("plugins.dashboard")
     end,
-  },
-  {
-    "utilyre/barbecue.nvim",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {},
   },
   {
     "windwp/nvim-autopairs",
