@@ -38,13 +38,24 @@ require("lazy").setup({
   },
 
   -- Common plugins
-  "Bekaboo/dropbar.nvim",
   {
     "akinsho/bufferline.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.bufferline")
     end,
+  },
+  {
+    "Bekaboo/dropbar.nvim",
+    lazy = false,
+    keys = {
+      {
+        "<space>k",
+        function()
+          require("dropbar.api").pick()
+        end,
+      },
+    },
   },
   {
     "brenoprata10/nvim-highlight-colors",
