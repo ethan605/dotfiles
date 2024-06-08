@@ -1,4 +1,4 @@
-local nvim_lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 local utils = require("lsp.utils")
 
 -- Use a loop to conveniently call `setup` on multiple servers and
@@ -11,9 +11,9 @@ local servers = {
   "html",
   "jsonls",
   "ltex",
-  "pyright",
+  -- "pyright",
+  "basedpyright",
   "tailwindcss",
-  "tsserver",
   "yamlls",
   -- "bufls", -- disabled due to no active usage
   -- "cssls", -- disabled in favour of tailwindcss
@@ -27,8 +27,8 @@ local servers = {
   -- "vimls", -- disabled due to no active usage
 }
 
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({
+for _, server in ipairs(servers) do
+  lspconfig[server].setup({
     capabilities = utils.capabilities,
     flags = utils.default_flags,
     on_attach = utils.on_attach,
@@ -37,6 +37,7 @@ end
 
 require("lsp.diagnosticls")
 require("lsp.lua_ls")
+require("lsp.tsserver")
 
 -- disabled due to no active usage
 -- require("lsp.clangd")

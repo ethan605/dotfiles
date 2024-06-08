@@ -31,6 +31,9 @@ vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta }
 -- Float windows
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3a3a3a" })
 
+-- For nvim-foldsign
+vim.api.nvim_set_hl(0, "FoldColumn", { bg = "None", fg = snazzy_colors.gray })
+
 -- For fzf-lua
 vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = snazzy_colors.gray })
 vim.api.nvim_set_hl(0, "FzfLuaBufNr", { fg = snazzy_colors.yellow })

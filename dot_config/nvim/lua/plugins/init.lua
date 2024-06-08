@@ -133,7 +133,21 @@ require("lazy").setup({
     end,
   },
   {
+    "utilyre/barbecue.nvim",
+    -- name = "barbecue",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+  },
+  {
     "windwp/nvim-autopairs",
+    opts = {},
+  },
+  {
+    "yaocccc/nvim-foldsign",
+    event = "CursorHold",
     opts = {},
   },
 

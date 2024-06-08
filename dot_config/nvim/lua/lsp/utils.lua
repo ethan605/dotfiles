@@ -18,6 +18,10 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", key, func, { noremap = true, silent = true })
   end
 
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true)
+  end
+
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("gN", ":lua vim.lsp.buf.rename()<CR>")
   buf_set_keymap("K", ":lua vim.lsp.buf.hover()<CR>")
