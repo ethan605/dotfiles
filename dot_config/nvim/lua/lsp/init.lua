@@ -18,6 +18,7 @@ local servers = {
   -- "denols", -- disabled due to no active usage
   -- "gopls", -- disabled due to no active usage
   -- "graphql", -- disabled due to no active usage
+  -- "pyright", -- disabled in favour of basedpyright
   -- "ruff_lsp", -- disabled due to external `ruff` command usage
   -- "rust_analyzer", -- disabled due to no active usage
   -- "solargraph", -- disabled due to no active usage
