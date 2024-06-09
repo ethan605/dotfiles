@@ -148,12 +148,7 @@ require("lazy").setup({
   },
   require("plugins.lspsaga"),
   require("plugins.lsp-progress"),
-  {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      require("plugins.none-ls")
-    end,
-  },
+  require("plugins.none-ls"),
 
   -- TreeSitter
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
