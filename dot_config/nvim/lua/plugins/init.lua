@@ -97,13 +97,7 @@ require("lazy").setup({
     },
   },
   require("plugins.comment"),
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.nvim-tree")
-    end,
-  },
+  require("plugins.nvim-tree"),
   {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
