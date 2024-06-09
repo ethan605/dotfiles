@@ -56,6 +56,17 @@ require("lazy").setup({
   "ggandor/leap.nvim",
   "neovim/nvim-lspconfig",
   {
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "SmiteshP/nvim-navic",
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
+      lsp = { auto_attach = true },
+    },
+  },
+  {
     "kylechui/nvim-surround",
     opts = {},
   },
