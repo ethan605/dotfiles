@@ -2,6 +2,7 @@ return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    ---@diagnostic disable-next-line: different-requires
     require("fzf-lua").setup({
       "fzf-native",
       winopts = {

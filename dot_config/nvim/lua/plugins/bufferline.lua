@@ -17,8 +17,10 @@ return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    ---@diagnostic disable-next-line: different-requires
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
+    ---@diagnostic disable-next-line: different-requires
     require("bufferline").setup({
       highlights = {
         fill = default_style,

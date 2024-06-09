@@ -4,9 +4,12 @@ return {
   config = function()
     local custom_powerline = require("lualine.themes.powerline")
     local lualine = require("lualine")
+
+    ---@diagnostic disable-next-line: different-requires
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
     local function render_lsp_progress()
+      ---@diagnostic disable-next-line: different-requires
       return require("lsp-progress").progress()
     end
 

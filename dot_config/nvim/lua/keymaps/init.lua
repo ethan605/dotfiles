@@ -24,6 +24,8 @@ vim.api.nvim_set_keymap("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>v", ":Vista finder<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>V", ":Vista!!<CR>", opts)
 
+---@diagnostic disable: different-requires
 require("keymaps.bufferline")
 require("keymaps.fzf-lua")
 require("keymaps.nvim-dap")
+---@diagnostic enable: different-requires

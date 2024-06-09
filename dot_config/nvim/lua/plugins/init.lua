@@ -130,6 +130,7 @@ require("lazy").setup({
     opts = {},
   },
   require("plugins.lspsaga"),
+  ---@diagnostic disable-next-line: different-requires
   require("plugins.lsp-progress"),
   require("plugins.none-ls"),
 

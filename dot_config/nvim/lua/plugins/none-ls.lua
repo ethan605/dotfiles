@@ -16,8 +16,7 @@ return {
           extra_args = { "--config-path", vim.fn.expand("~/.config/.stylua.toml") },
         }),
       },
-      ---@diagnostic disable-next-line: unused-local
-      on_attach = function(client, bufnr)
+      on_attach = function(_, bufnr)
         vim.api.nvim_buf_set_keymap(
           bufnr,
           "n",
