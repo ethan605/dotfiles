@@ -30,7 +30,6 @@ require("lazy").setup({
   -- TODO: replace with Lua alternatives
   "connorholyday/vim-snazzy",
   "darfink/vim-plist",
-  "easymotion/vim-easymotion",
   "mg979/vim-visual-multi",
   {
     "liuchengxu/vista.vim",
@@ -38,55 +37,48 @@ require("lazy").setup({
   },
 
   -- Common plugins
+  "neovim/nvim-lspconfig",
   require("plugins.bufferline"),
-  require("plugins.dropbar"),
+  require("plugins.comment"),
+  require("plugins.dashboard"),
+  require("plugins.fzf-lua"),
+  require("plugins.git-blame"),
+  require("plugins.indent-blankline"),
+  require("plugins.lsp-progress"), ---@diagnostic disable-line: different-requires
+  require("plugins.lspsaga"),
+  require("plugins.lualine"),
+  require("plugins.none-ls"),
+  require("plugins.nvim-cmp"),
+  require("plugins.nvim-dap"),
   require("plugins.nvim-highlight-colors"),
+  require("plugins.nvim-surround"),
+  require("plugins.nvim-tree"),
+  require("plugins.smartcolumn"),
+  require("plugins.todo-comments"),
+
   {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    "SmiteshP/nvim-navic",
+    dependencies = { "neovim/nvim-lspconfig" },
     opts = {
-      signs = true,
-      sign_priority = 11,
-      keywords = {
-        FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "HACK" } },
-        TEST = { icon = "󰙨 ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
-        TODO = { icon = " ", color = "info", alt = { "NOTE", "INFO" } },
-        WARN = { icon = " ", color = "warning", alt = { "WARNING", "DANGER", "ALARM" } },
+      highlight = true,
+      lsp = {
+        auto_attach = true,
+        preference = nil,
       },
     },
   },
-  require("plugins.lualine"),
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require("leap").create_default_mappings()
+    end,
+  },
   {
     "iamcco/markdown-preview.nvim",
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
   },
-  require("plugins.fzf-lua"),
-  {
-    "kylechui/nvim-surround",
-    opts = {},
-  },
-  require("plugins.indent-blankline"),
-  {
-    "m4xshen/smartcolumn.nvim",
-    opts = {
-      colorcolumn = "120",
-      disabled_filetypes = {
-        "NvimTree",
-        "checkhealth",
-        "dashboard",
-        "help",
-        "lazy",
-        "lspinfo",
-        "mason",
-        "null-ls-info",
-      },
-    },
-  },
-  require("plugins.comment"),
-  require("plugins.nvim-tree"),
-  require("plugins.dashboard"),
   {
     "windwp/nvim-autopairs",
     opts = {},
@@ -96,51 +88,21 @@ require("lazy").setup({
     event = "CursorHold",
     opts = {},
   },
-
-  -- Git
-  require("plugins.git-blame"),
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    opts = {
+      sign_priority = 6,
+    },
   },
   {
     "ruifm/gitlinker.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
-
-  -- LSP
-  "neovim/nvim-lspconfig",
-  {
-    "kosayoda/nvim-lightbulb",
-    opts = {
-      autocmd = { enabled = true },
-    },
-  },
-  require("plugins.nvim-cmp"),
-  {
-    "norcalli/snippets.nvim",
-    config = function()
-      require("snippets").use_suggested_mappings()
-    end,
-  },
-  {
-    "ojroques/nvim-lspfuzzy",
-    opts = {},
-  },
-  require("plugins.lspsaga"),
-  ---@diagnostic disable-next-line: different-requires
-  require("plugins.lsp-progress"),
-  require("plugins.none-ls"),
-
-  -- TreeSitter
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
-
-  -- DAP
-  require("plugins.nvim-dap"),
 }, lazy_opts)

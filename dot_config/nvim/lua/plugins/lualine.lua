@@ -39,7 +39,14 @@ return {
             },
           },
         },
-        lualine_c = { "filename" },
+        lualine_c = {
+          "filename",
+          {
+            "navic",
+            color_correction = "dynamic",
+            navic_opts = { highlight = true },
+          },
+        },
         lualine_x = {
           {
             render_lsp_progress,
