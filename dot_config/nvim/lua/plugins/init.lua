@@ -110,12 +110,7 @@ require("lazy").setup({
   },
 
   -- Git
-  {
-    "f-person/git-blame.nvim",
-    config = function()
-      require("plugins.git-blame")
-    end,
-  },
+  require("plugins.git-blame"),
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
