@@ -55,13 +55,7 @@ require("lazy").setup({
       },
     },
   },
-  {
-    "hoob3rt/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.lualine")
-    end,
-  },
+  require("plugins.lualine"),
   {
     "iamcco/markdown-preview.nvim",
     build = function()
