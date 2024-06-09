@@ -22,9 +22,6 @@ vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors
 vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
 
--- Line limit column colors
--- vim.api.nvim_set_hl(0, "ColorColumn", { bg = snazzy_colors.gray })
-
 -- Matched parentheses colors
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta })
 
@@ -32,7 +29,11 @@ vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta }
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3a3a3a" })
 
 -- For nvim-foldsign
-vim.api.nvim_set_hl(0, "FoldColumn", { bg = "None", fg = snazzy_colors.gray })
+vim.api.nvim_set_hl(0, "FoldColumn", { fg = snazzy_colors.gray })
+
+-- For dropbar.nvim
+vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
+vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 
 -- For fzf-lua
 vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = snazzy_colors.gray })

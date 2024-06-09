@@ -16,3 +16,6 @@ vim.api.nvim_set_keymap("n", "gs", ":BufferLinePick<CR>", opts)
 -- Move to previous/next tab
 vim.api.nvim_set_keymap("n", "t[", ":tabprevious<CR>", opts)
 vim.api.nvim_set_keymap("n", "t]", ":tabnext<CR>", opts)
+
+-- Close tab
+vim.api.nvim_set_keymap("n", "gc", ":close<CR>", opts)

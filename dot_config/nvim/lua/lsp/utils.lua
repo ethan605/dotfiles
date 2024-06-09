@@ -31,15 +31,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("<space>e", ":lua vim.diagnostic.open_float()<CR>")
   buf_set_keymap("<space>f", ":lua vim.lsp.buf.format()<CR>")
 
-  -- Keymaps using fzf-lua utils
-  buf_set_keymap("gd", ":FzfLua lsp_definitions formatter=path.filename_first<CR>")
-  buf_set_keymap("gD", ":FzfLua lsp_declarations formatter=path.filename_first<CR>")
-  buf_set_keymap("gi", ":FzfLua lsp_typedefs formatter=path.filename_first<CR>")
-  buf_set_keymap("gI", ":FzfLua lsp_implementations formatter=path.filename_first<CR>")
-  buf_set_keymap("gr", ":FzfLua lsp_references formatter=path.filename_first<CR>")
-  buf_set_keymap("<space>ca", ":FzfLua lsp_code_actions<CR>")
-  buf_set_keymap("<space>s", ":FzfLua lsp_document_symbols<CR>")
-
   -- Keymaps using default vim.lsp.buf utils
   --buf_set_keymap("gd", ":lua vim.lsp.buf.definition()<CR>")
   --buf_set_keymap("gD", ":lua vim.lsp.buf.declaration()<CR>")
@@ -52,6 +43,16 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap("<space>gI", ":vsplit | lua vim.lsp.buf.implementation()<CR>")
   --buf_set_keymap("<space>ca", ":lua vim.lsp.buf.code_action()<CR>")
 end
+
+-- python.vim
+-- "[[" Jump backwards to begin of current/previous toplevel
+-- "[]" Jump backwards to end of previous toplevel
+-- "][" Jump forwards to end of current toplevel
+-- "]]" Jump forwards to begin of next toplevel
+-- "[m" Jump backwards to begin of current/previous method/scope
+-- "[M" Jump backwards to end of previous method/scope
+-- "]M" Jump forwards to end of current/next method/scope
+-- "]m" Jump forwards to begin of next method/scope
 
 return {
   capabilities = capabilities,

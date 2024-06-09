@@ -45,18 +45,7 @@ require("lazy").setup({
       require("plugins.bufferline")
     end,
   },
-  {
-    "Bekaboo/dropbar.nvim",
-    lazy = false,
-    keys = {
-      {
-        "<space>k",
-        function()
-          require("dropbar.api").pick()
-        end,
-      },
-    },
-  },
+  require("plugins.dropbar"),
   {
     "brenoprata10/nvim-highlight-colors",
     config = function()
