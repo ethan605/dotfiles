@@ -98,14 +98,7 @@ require("lazy").setup({
   },
   require("plugins.comment"),
   require("plugins.nvim-tree"),
-  {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.dashboard")
-    end,
-  },
+  require("plugins.dashboard"),
   {
     "windwp/nvim-autopairs",
     opts = {},
