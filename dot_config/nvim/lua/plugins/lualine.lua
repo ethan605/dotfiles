@@ -1,6 +1,20 @@
 return {
   "hoob3rt/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    require("plugins.lsp-progress"), ---@diagnostic disable-line: different-requires
+    {
+      "SmiteshP/nvim-navic",
+      dependencies = { "neovim/nvim-lspconfig" },
+      opts = {
+        highlight = true,
+        lsp = {
+          auto_attach = true,
+          preference = nil,
+        },
+      },
+    },
+  },
   config = function()
     local custom_powerline = require("lualine.themes.powerline")
     local lualine = require("lualine")
@@ -41,7 +55,12 @@ return {
         },
         lualine_c = {
           "filename",
-          "navic",
+          {
+            "navic",
+            fmt = function(text)
+              return string.gsub(text, "%%%*$", "")
+            end,
+          },
         },
         lualine_x = {
           {

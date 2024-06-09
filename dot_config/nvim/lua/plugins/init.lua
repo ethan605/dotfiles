@@ -37,41 +37,27 @@ require("lazy").setup({
   },
 
   -- Common plugins
-  "neovim/nvim-lspconfig",
   require("plugins.bufferline"),
   require("plugins.comment"),
   require("plugins.dashboard"),
   require("plugins.fzf-lua"),
   require("plugins.git-blame"),
   require("plugins.indent-blankline"),
-  require("plugins.lsp-progress"), ---@diagnostic disable-line: different-requires
   require("plugins.lspsaga"),
   require("plugins.lualine"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
   require("plugins.nvim-dap"),
   require("plugins.nvim-highlight-colors"),
-  require("plugins.nvim-surround"),
   require("plugins.nvim-tree"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
 
+  "ggandor/leap.nvim",
+  "neovim/nvim-lspconfig",
   {
-    "SmiteshP/nvim-navic",
-    dependencies = { "neovim/nvim-lspconfig" },
-    opts = {
-      highlight = true,
-      lsp = {
-        auto_attach = true,
-        preference = nil,
-      },
-    },
-  },
-  {
-    "ggandor/leap.nvim",
-    config = function()
-      require("leap").create_default_mappings()
-    end,
+    "kylechui/nvim-surround",
+    opts = {},
   },
   {
     "iamcco/markdown-preview.nvim",
