@@ -147,12 +147,7 @@ require("lazy").setup({
     opts = {},
   },
   require("plugins.lspsaga"),
-  {
-    "linrongbin16/lsp-progress.nvim",
-    config = function()
-      require("plugins.lsp-progress")
-    end,
-  },
+  require("plugins.lsp-progress"),
   {
     "nvimtools/none-ls.nvim",
     config = function()
