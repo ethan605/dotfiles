@@ -6,7 +6,8 @@ vim.cmd([[
 vim.opt.termguicolors = true
 
 local snazzy_colors = {
-  gray = "NvimDarkGrey4",
+  -- gray = "NvimDarkGrey4",
+  gray = "#606580",
   black = "#282a36",
   blue = "#57c7ff",
   cyan = "#9aedfe",
@@ -17,10 +18,14 @@ local snazzy_colors = {
   yellow = "#f3f99d",
 }
 
--- Searches
+-- Built-ins
+vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = snazzy_colors.gray })
+vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
 vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
+vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
+vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 
 -- Matched parentheses colors
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta })
@@ -30,10 +35,6 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3a3a3a" })
 
 -- For nvim-foldsign
 vim.api.nvim_set_hl(0, "FoldColumn", { fg = snazzy_colors.gray })
-
--- For dropbar.nvim
-vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
-vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 
 -- For fzf-lua
 vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = snazzy_colors.gray })
@@ -72,7 +73,15 @@ vim.api.nvim_set_hl(0, "NavicIconsVariable", { link = "Identifier" })
 vim.api.nvim_set_hl(0, "NavicSeparator", { fg = snazzy_colors.gray })
 vim.api.nvim_set_hl(0, "NavicText", { fg = snazzy_colors.white })
 
+-- For leap.nvim
+vim.api.nvim_set_hl(0, "LeapBackdrop", { fg = snazzy_colors.gray })
+vim.api.nvim_set_hl(0, "LeapMatch", { fg = snazzy_colors.white, bold = true, nocombine = true })
+vim.api.nvim_set_hl(0, "LeapLabelPrimary", { fg = snazzy_colors.red, bold = true, nocombine = true })
+vim.api.nvim_set_hl(0, "LeapLabelSecondary", { fg = snazzy_colors.blue, bold = true, nocombine = true })
+
 -- LSP highlights
+vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
+
 vim.api.nvim_set_hl(0, "DiagnosticError", { fg = snazzy_colors.red })
 vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = snazzy_colors.blue })
 vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = snazzy_colors.cyan })
