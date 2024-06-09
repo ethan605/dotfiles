@@ -1,5 +1,3 @@
-local M = {}
-
 local function configure()
   local signs = {
     breakpoint = {
@@ -114,13 +112,25 @@ local function configure_cpp(dap)
   }
 end
 
-function M.setup()
-  configure()
+return {
+  "mfussenegger/nvim-dap",
+  -- disabled due to no active usage
+  enabled = false,
+  dependencies = {
+    "mfussenegger/nvim-dap-python",
+    "nvim-dap-python",
+    "nvim-dap-ui",
+    "nvim-dap-virtual-text",
+    "nvim-neotest/nvim-nio",
+    "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text",
+  },
+  config = function()
+    configure()
 
-  local dap = require("dap")
-  configure_exts(dap)
-  configure_python(dap)
-  configure_cpp(dap)
-end
-
-return M
+    local dap = require("dap")
+    configure_exts(dap)
+    configure_python(dap)
+    configure_cpp(dap)
+  end,
+}

@@ -140,21 +140,6 @@ require("lazy").setup({
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
-  -- DAP - disabled due to no active usage
-  {
-    "mfussenegger/nvim-dap",
-    enabled = false,
-    dependencies = {
-      "mfussenegger/nvim-dap-python",
-      "nvim-dap-python",
-      "nvim-dap-ui",
-      "nvim-dap-virtual-text",
-      "nvim-neotest/nvim-nio",
-      "rcarriga/nvim-dap-ui",
-      "theHamsta/nvim-dap-virtual-text",
-    },
-    config = function()
-      require("plugins.nvim-dap").setup()
-    end,
-  },
+  -- DAP
+  require("plugins.nvim-dap"),
 }, lazy_opts)
