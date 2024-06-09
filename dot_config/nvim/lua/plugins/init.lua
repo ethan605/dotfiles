@@ -146,13 +146,7 @@ require("lazy").setup({
     "ojroques/nvim-lspfuzzy",
     opts = {},
   },
-  {
-    "nvimdev/lspsaga.nvim",
-    dependencies = { "nvim-lspconfig" },
-    config = function()
-      require("plugins.lspsaga")
-    end,
-  },
+  require("plugins.lspsaga"),
   {
     "linrongbin16/lsp-progress.nvim",
     config = function()
