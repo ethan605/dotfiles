@@ -41,11 +41,7 @@ return {
         },
         lualine_c = {
           "filename",
-          {
-            "navic",
-            color_correction = "dynamic",
-            navic_opts = { highlight = true },
-          },
+          "navic",
         },
         lualine_x = {
           {
