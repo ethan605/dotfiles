@@ -46,12 +46,7 @@ require("lazy").setup({
     end,
   },
   require("plugins.dropbar"),
-  {
-    "brenoprata10/nvim-highlight-colors",
-    config = function()
-      require("plugins.nvim-highlight-colors")
-    end,
-  },
+  require("plugins.nvim-highlight-colors"),
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
