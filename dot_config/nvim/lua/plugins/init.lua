@@ -135,24 +135,7 @@ require("lazy").setup({
       autocmd = { enabled = true },
     },
   },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-vsnip",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/vim-vsnip",    -- for Vim commands
-      "nvim-lua/plenary.nvim",
-      "onsails/lspkind-nvim", -- for LSP pictograms
-      { "tzachar/cmp-tabnine", build = "./install.sh" },
-    },
-    config = function()
-      require("plugins.nvim-cmp")
-    end,
-  },
+  require("plugins.nvim-cmp"),
   {
     "norcalli/snippets.nvim",
     config = function()
