@@ -38,13 +38,7 @@ require("lazy").setup({
   },
 
   -- Common plugins
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.bufferline")
-    end,
-  },
+  require("plugins.bufferline"),
   require("plugins.dropbar"),
   require("plugins.nvim-highlight-colors"),
   {
