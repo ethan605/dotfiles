@@ -49,6 +49,7 @@ require("lazy").setup({
   require("plugins.nvim-cmp"),
   require("plugins.nvim-dap"),
   require("plugins.nvim-highlight-colors"),
+  require("plugins.nvim-navbuddy"),
   require("plugins.nvim-tree"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
@@ -56,22 +57,12 @@ require("lazy").setup({
   "ggandor/leap.nvim",
   "neovim/nvim-lspconfig",
   {
-    "SmiteshP/nvim-navbuddy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "SmiteshP/nvim-navic",
-      "neovim/nvim-lspconfig",
-    },
-    opts = {
-      lsp = { auto_attach = true },
-    },
-  },
-  {
     "kylechui/nvim-surround",
     opts = {},
   },
   {
     "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
@@ -82,11 +73,13 @@ require("lazy").setup({
   },
   {
     "yaocccc/nvim-foldsign",
+    enabled = false,
     event = "CursorHold",
     opts = {},
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       sign_priority = 6,
@@ -94,6 +87,7 @@ require("lazy").setup({
   },
   {
     "ruifm/gitlinker.nvim",
+    event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },

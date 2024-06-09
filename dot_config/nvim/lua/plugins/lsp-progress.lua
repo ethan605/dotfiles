@@ -7,7 +7,7 @@ return {
   config = function()
     require("lsp-progress").setup({
       format = function(client_messages)
-        local sign = "  "
+        local sign = " "
 
         if #client_messages > 0 then
           return table.concat(client_messages, " ") .. sign
@@ -25,7 +25,7 @@ return {
           end
 
           if #builder > 3 then
-            return #builder .. sign
+            return "(" .. #builder .. ")" .. sign
           end
 
           if #builder > 0 then

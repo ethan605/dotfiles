@@ -65,7 +65,7 @@ return {
         lualine_x = {
           {
             render_lsp_progress,
-            color = { fg = snazzy_colors.cyan },
+            color = { fg = snazzy_colors.white },
           },
           "encoding",
           "fileformat",
@@ -83,9 +83,7 @@ return {
         },
         lualine_c = { "filename" },
         lualine_x = {
-          {
-            render_lsp_progress,
-          },
+          render_lsp_progress,
           "encoding",
           "fileformat",
           "filetype",
