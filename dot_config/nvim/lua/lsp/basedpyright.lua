@@ -10,6 +10,7 @@ require("lspconfig").basedpyright.setup({
       analysis = {
         autoSearchPaths = true,
         diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "standard",
         useLibraryCodeForTypes = true,
       },
     },
