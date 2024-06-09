@@ -79,12 +79,7 @@ require("lazy").setup({
     "kylechui/nvim-surround",
     opts = {},
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("plugins.indent-blankline")
-    end,
-  },
+  require("plugins.indent-blankline"),
   {
     "m4xshen/smartcolumn.nvim",
     opts = {
@@ -101,12 +96,7 @@ require("lazy").setup({
       },
     },
   },
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("plugins.comment")
-    end,
-  },
+  require("plugins.comment"),
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
