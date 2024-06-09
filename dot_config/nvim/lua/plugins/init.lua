@@ -74,13 +74,7 @@ require("lazy").setup({
       vim.fn["mkdp#util#install"]()
     end,
   },
-  {
-    "ibhagwan/fzf-lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.fzf-lua")
-    end,
-  },
+  require("plugins.fzf-lua"),
   {
     "kylechui/nvim-surround",
     opts = {},
