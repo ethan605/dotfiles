@@ -17,7 +17,6 @@ local servers = {
   -- "denols", -- disabled due to no active usage
   -- "gopls", -- disabled due to no active usage
   -- "graphql", -- disabled due to no active usage
-  -- "pyright", -- disabled in favour of basedpyright
   -- "solargraph", -- disabled due to no active usage
   -- "terraformls", -- disabled due to no active usage
   -- "vimls", -- disabled due to no active usage
