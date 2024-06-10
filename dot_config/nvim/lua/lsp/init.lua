@@ -13,13 +13,11 @@ local servers = {
   "ltex",
   "tailwindcss",
   "yamlls",
-  -- "bufls", -- disabled due to no active usage
   -- "cssls", -- disabled in favour of tailwindcss
   -- "denols", -- disabled due to no active usage
   -- "gopls", -- disabled due to no active usage
   -- "graphql", -- disabled due to no active usage
   -- "pyright", -- disabled in favour of basedpyright
-  -- "ruff_lsp", -- disabled due to external `ruff` command usage
   -- "solargraph", -- disabled due to no active usage
   -- "terraformls", -- disabled due to no active usage
   -- "vimls", -- disabled due to no active usage
