@@ -11,8 +11,10 @@ local servers = {
   "html",
   "jsonls",
   "ltex",
+  "pyright",
   "tailwindcss",
   "yamlls",
+
   -- "cssls", -- disabled in favour of tailwindcss
   -- "denols", -- disabled due to no active usage
   -- "gopls", -- disabled due to no active usage
@@ -30,13 +32,13 @@ for _, server in ipairs(servers) do
   })
 end
 
-require("lsp.basedpyright")
 require("lsp.diagnosticls")
 require("lsp.lua_ls")
 require("lsp.rust_analyzer")
 require("lsp.tsserver")
 
 -- disabled due to no active usage
+-- require("lsp.basedpyright")
 -- require("lsp.clangd")
 -- require("lsp.elixirls")
 -- require("lsp.jdtls")
