@@ -26,7 +26,7 @@ return {
         vim.api.nvim_buf_set_keymap(
           bufnr,
           "n",
-          "<space>f",
+          "<leader>f",
           ":lua vim.lsp.buf.format()<CR>",
           { noremap = true, silent = true }
         )

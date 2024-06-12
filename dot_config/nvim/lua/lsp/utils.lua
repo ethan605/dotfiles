@@ -27,8 +27,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("[d", ":lua vim.diagnostic.goto_prev()<CR>")
   buf_set_keymap("]d", ":lua vim.diagnostic.goto_next()<CR>")
   buf_set_keymap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>")
-  buf_set_keymap("<space>e", ":lua vim.diagnostic.open_float()<CR>")
-  buf_set_keymap("<space>f", ":lua vim.lsp.buf.format()<CR>")
 
   -- Keymaps using default vim.lsp.buf utils
   --buf_set_keymap("gd", ":lua vim.lsp.buf.definition()<CR>")
