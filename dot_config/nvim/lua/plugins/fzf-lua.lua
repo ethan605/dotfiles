@@ -35,12 +35,16 @@ return {
       loclist = { formatter = "path.filename_first" },
       quickfix = { formatter = "path.filename_first" },
       git = {
-        files = { formatter = "path.filename_first" },
+        files = {
+          formatter = "path.filename_first",
+          cwd = vim.fn.getcwd(),
+        },
         status = { formatter = "path.filename_first" },
       },
       lsp = {
         async_or_timeout = 3000, -- make lsp requests synchronous so they work with none-ls
         finder = { formatter = "path.filename_first" },
+        references = { cwd = vim.fn.getcwd() },
       },
     })
   end,
