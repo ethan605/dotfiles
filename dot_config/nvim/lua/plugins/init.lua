@@ -41,7 +41,7 @@ require("lazy").setup({
   require("plugins.comment"),
   require("plugins.dashboard"),
   require("plugins.fzf-lua"),
-  require("plugins.git-blame"),
+  require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
   require("plugins.lspsaga"),
   require("plugins.lualine"),
@@ -76,14 +76,6 @@ require("lazy").setup({
     enabled = false,
     event = "CursorHold",
     opts = {},
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "CursorHold",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      sign_priority = 6,
-    },
   },
   {
     "ruifm/gitlinker.nvim",
