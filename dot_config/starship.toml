@@ -137,6 +137,10 @@ format = " [$symbol$context]($style)[@](bright-black)[$namespace]($style)"
 style = "bold #326ce5"
 symbol = "󱃾 "
 
+[[kubernetes.contexts]]
+context_pattern = "gke_cord-ai-development_.*_.*-app-cluster"
+context_alias = "dev-staging" 
+
 [gcloud]
 format = ' [$symbol( $project@$region)]($style)'
 symbol = ""
