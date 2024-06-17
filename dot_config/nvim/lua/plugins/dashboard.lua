@@ -10,7 +10,7 @@ return {
         tabline = true,
         winbar = true,
       },
-      shortcut_type = "letter",
+      shortcut_type = "number",
       config = {
         header = {},
         week_header = { enable = true },
@@ -21,7 +21,7 @@ return {
         },
         packages = { enable = true },
         project = { enable = false },
-        mru = { limit = 10, icon = " ", label = "MRU", cwd_only = true },
+        mru = { limit = 9, icon = " ", label = "MRU", cwd_only = true },
       },
     })
   end,

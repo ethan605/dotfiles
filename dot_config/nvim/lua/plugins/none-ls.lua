@@ -7,6 +7,7 @@ return {
     none_ls.setup({
       sources = {
         -- diagnostics
+        none_ls.builtins.diagnostics.mypy,
         none_ls.builtins.diagnostics.zsh,
 
         -- formatters
