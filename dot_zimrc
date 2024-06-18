@@ -5,7 +5,7 @@ zmodule utility
 
 # Official modules
 zmodule archive
-zmodule completion
+# zmodule completion # due to conflict with fzf-tab
 zmodule exa
 zmodule fzf
 
