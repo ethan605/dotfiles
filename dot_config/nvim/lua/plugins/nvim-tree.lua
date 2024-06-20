@@ -42,8 +42,8 @@ return {
       update_cwd = true,
       update_focused_file = {
         enable = true,
-        update_cwd = true,
       },
+      sync_root_with_cwd = false,
       view = {
         centralize_selection = true,
         width = {
