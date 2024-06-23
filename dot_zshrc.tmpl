@@ -332,8 +332,7 @@ alias bbundle='brew bundle dump --describe --global --force'
 alias load-time='time /opt/homebrew/bin/zsh -ic exit'
 alias xdg-open='open'
 
-alias alt-tab-export='defaults export com.lwouis.alt-tab-macos $HOME/.config/alt-tab.plist'
-alias alt-tab-import='defaults import com.lwouis.alt-tab-macos $HOME/.config/alt-tab.plist'
+alias alt-tab-export='defaults read com.lwouis.alt-tab-macos | rg -ve "\b(MS|SU).*=" >| ~/.config/alt-tab.reads'
 
 {{- end }}
 
