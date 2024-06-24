@@ -1,6 +1,7 @@
 # vim:fileencoding=utf-8:filetype=toml
 # Common configs
 command_timeout = 1000
+continuation_prompt = "[›](yellow) "
 format = """
 $shlvl\
 $sudo\
