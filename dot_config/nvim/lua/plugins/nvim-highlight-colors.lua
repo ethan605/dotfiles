@@ -7,6 +7,8 @@ return {
       enable_tailwind = true,
 
       custom_colors = {
+        { label = "bright-black",     color = "#686868" },
+
         -- Default Neovim palettes
         -- https://github.com/neovim/neovim/blob/release-0.10/src/nvim/highlight_group.c#L2909-L2939
         { label = "NvimDarkBlue",     color = "#004c73" },

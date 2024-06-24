@@ -14,40 +14,21 @@ $git_metrics\
 $git_state\
 $hg_branch\
 $cmake\
-$conda\
-$crystal\
-$dart\
-$deno\
-$dotnet\
 $elixir\
-$elm\
 $erlang\
 $golang\
 $helm\
 $java\
-$julia\
 $kotlin\
 $lua\
-$nim\
 $nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
 $python\
-$red\
 $ruby\
 $rust\
-$scala\
-$swift\
 $terraform\
-$vlang\
-$zig\
 $aws\
 $gcloud\
 $kubernetes\
-$openstack\
-$vagrant\
 $env_var\
 $cmd_duration\
 ${custom.proxy}\
@@ -66,7 +47,8 @@ symbol = "󰯄 "
 format = "[$user]($style) "
 
 [hostname]
-format = "[@](bright-black) [$hostname]($style) "
+format = "[@]($style) [$hostname]($style) "
+style = "bright-black"
 
 [shlvl]
 disabled = true
@@ -142,14 +124,9 @@ context_pattern = "gke_cord-ai-development_.*_.*-app-cluster"
 context_alias = "dev-staging" 
 
 [gcloud]
-format = ' [$symbol( $project@$region)]($style)'
+format = ' [$symbol( $project[@](bright-black)$region)]($style)'
 symbol = ""
 style = "bold #4285f4"
-
-[vagrant]
-format = " [$symbol($version)]($style)"
-style = "bold #0e67ed"
-symbol = " "
 
 [cmake]
 format = " [$symbol($version)]($style)"
