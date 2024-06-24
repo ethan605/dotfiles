@@ -1,6 +1,7 @@
 vim.filetype.add({
   filename = {
     [".envrc"] = "sh",
+    [".zhistory"] = "zsh",
     ["docker-compose.yml"] = "yaml.docker-compose",
     ["docker-compose.yaml"] = "yaml.docker-compose",
   },
