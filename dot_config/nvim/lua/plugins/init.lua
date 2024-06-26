@@ -72,12 +72,6 @@ require("lazy").setup({
     opts = {},
   },
   {
-    "yaocccc/nvim-foldsign",
-    enabled = false,
-    event = "CursorHold",
-    opts = {},
-  },
-  {
     "ruifm/gitlinker.nvim",
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
