@@ -205,8 +205,6 @@ cask "1password"
 cask "1password-cli"
 # GPU-accelerated terminal emulator
 cask "alacritty"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
 # Allows switching between application windows
