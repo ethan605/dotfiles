@@ -1,6 +1,6 @@
 java openjdk-22
 python 3.11.9
-nodejs 20.11.1
+nodejs 20.15.1
 ruby 3.3.0
 golang 1.20.5
 rust 1.77.1

@@ -25,6 +25,8 @@ brew "axel"
 brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2@1.7"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -41,6 +43,8 @@ brew "direnv"
 brew "duf"
 # Language Server and Debugger for Elixir
 brew "elixir-ls"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -240,7 +244,7 @@ cask "postman"
 cask "signal"
 # Team communication and collaboration software
 cask "slack"
-# Mesh VPN based on Wireguard
+# Mesh VPN based on WireGuard
 cask "tailscale"
 # Messaging app with a focus on speed and security
 cask "telegram"
