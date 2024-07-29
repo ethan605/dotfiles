@@ -6,6 +6,7 @@ return {
     require("fzf-lua").setup({
       "fzf-native",
       winopts = {
+        backdrop = 100,
         height = 0.9,
         width = 0.9,
         preview = {
