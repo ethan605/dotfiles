@@ -236,6 +236,8 @@ cask "logi-options-plus"
 cask "loom"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
+# VPN client for secure internet access and private browsing
+cask "nordvpn"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Collaboration platform for API development
