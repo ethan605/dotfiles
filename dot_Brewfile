@@ -231,7 +231,7 @@ cask "karabiner-elements"
 # App to manage software development and track bugs
 cask "linear-linear"
 # Software for Logitech devices
-cask "logi-options-plus"
+cask "logi-options+"
 # Screen and video recording software
 cask "loom"
 # Native desktop app for Messenger (formerly Facebook Messenger)
