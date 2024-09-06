@@ -35,7 +35,7 @@ end
 require("lsp.diagnosticls")
 require("lsp.lua_ls")
 require("lsp.rust_analyzer")
-require("lsp.tsserver")
+require("lsp.ts_ls")
 
 -- disabled due to no active usage
 -- require("lsp.basedpyright")
