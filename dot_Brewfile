@@ -15,12 +15,12 @@ brew "asdf"
 brew "snappy"
 # Use AWS IAM credentials to authenticate to Kubernetes
 brew "aws-iam-authenticator"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Light UNIX download accelerator
 brew "axel"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
