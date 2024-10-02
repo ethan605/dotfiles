@@ -11,9 +11,6 @@ vim.api.nvim_set_keymap("n", "<leader><space>", ":nohlsearch<CR>", opts)
 vim.keymap.set({ "n", "x", "o" }, "<leader>s", "<Plug>(leap-forward)")
 vim.keymap.set({ "n", "x", "o" }, "<leader>S", "<Plug>(leap-backward)")
 
--- For dropbar.nvim
-vim.api.nvim_set_keymap("n", "<space>k", ":lua require('dropbar.api').pick()<CR>", opts)
-
 -- For gitsigns.nvim
 vim.api.nvim_set_keymap("n", "[c", ":Gitsigns prev_hunk<CR>", opts)
 vim.api.nvim_set_keymap("n", "]c", ":Gitsigns next_hunk<CR>", opts)

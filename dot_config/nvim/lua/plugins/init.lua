@@ -49,7 +49,6 @@ require("lazy").setup({
   require("plugins.nvim-cmp"),
   require("plugins.nvim-dap"),
   require("plugins.nvim-highlight-colors"),
-  require("plugins.nvim-navbuddy"),
   require("plugins.nvim-tree"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
