@@ -12,15 +12,14 @@ export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --squeeze-blank-lines --tabs=2'
 export MANPAGER='less +Gg'
 export BAT_THEME='Sublime Snazzy'
 export FZF_DEFAULT_OPTS='
-  --color=gutter:0,prompt:2,spinner:3
-  --color=hl+:5,fg+:7,bg+:0
-  --color=hl:5,pointer:5,marker:2,header:4
+  --color=fg+:7,bg+:0,hl:5,hl+:5
+  --color=gutter:0,header:4,marker:2,pointer:5,prompt:2,spinner:3
   --cycle
   --marker="›"
-  --no-height
   --pointer="›"
   --prompt="❯ "
   --reverse
+  --no-height
 '
 export FZF_CTRL_R_OPTS='
   --preview="echo {2..} | bat --language=zsh --color=always"
@@ -213,19 +212,6 @@ function __load-work-envs() {
 }
 
 function __load-zim() {
-  # Here FZF completion needs to be loaded before ZIM, otherwise it'll override fzf-tab
-{{- if eq .chezmoi.os "linux" }}
-
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
-  source "$(brew --prefix fzf)/shell/completion.zsh"
-
-{{- end }}
-
   if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
     # Update static initialization script if it does not exist or it's outdated, before sourcing it
     source ${ZIM_HOME}/zimfw.zsh init -q
@@ -284,6 +270,9 @@ function __load-zsh-settings() {
   # For fzf-tab
   zstyle -d ':completion:*' format
   zstyle ':completion:*:descriptions' format '[%d]'
+  zstyle ':fzf-tab:*' fzf-flags \
+    --color=fg+:7,bg+:0,hl:5,hl+:5,gutter:0,header:4,marker:2,pointer:5,prompt:2,spinner:3 \
+    --cycle --marker='›' --pointer='›' --prompt='❯ ' --reverse
 
 {{- if eq .chezmoi.os "linux" }}
 
