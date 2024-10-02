@@ -75,9 +75,8 @@ vim.api.nvim_set_hl(0, "NavicText", { fg = snazzy_colors.white })
 
 -- For leap.nvim
 vim.api.nvim_set_hl(0, "LeapBackdrop", { fg = snazzy_colors.gray })
-vim.api.nvim_set_hl(0, "LeapMatch", { fg = snazzy_colors.white, bold = true, nocombine = true })
-vim.api.nvim_set_hl(0, "LeapLabelPrimary", { fg = snazzy_colors.red, bold = true, nocombine = true })
-vim.api.nvim_set_hl(0, "LeapLabelSecondary", { fg = snazzy_colors.blue, bold = true, nocombine = true })
+vim.api.nvim_set_hl(0, "LeapMatch", { fg = snazzy_colors.yellow, bold = true, nocombine = true })
+vim.api.nvim_set_hl(0, "LeapLabel", { fg = snazzy_colors.magenta, bold = true, nocombine = true })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
