@@ -334,12 +334,10 @@ alias bbundle='brew bundle dump --describe --global --force'
 alias load-time='time /opt/homebrew/bin/zsh -ic exit'
 alias xdg-open='open'
 
-alias alt-tab-export='defaults read com.lwouis.alt-tab-macos | rg -ve "\b(MS|SU).*=" >| ~/.config/alt-tab.reads'
-
 {{- end }}
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias pyenv='source $(poetry env info -p)/bin/activate'
+alias pyenv='{ poetry env info -p >/dev/null 2>&1 && true } && source "$(poetry env info -p)/bin/activate" || source .venv/bin/activate'
 alias tor='webtorrent --keep-seeding download'
 alias vsync='nvim --headless "+Lazy! sync" +qa'
 alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
@@ -349,6 +347,7 @@ alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
 alias c=chezmoi
 alias d='nvim -d'
 alias f=vifm
+alias k=kubecolor
 alias v=nvim
 alias w='watch --color --differences --errexit --exec'
 # ]]]
