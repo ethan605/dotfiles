@@ -101,6 +101,8 @@ brew "librdkafka"
 brew "kcat"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
+# Colorize your kubectl output
+brew "kubecolor"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Tool that can switch between kubectl contexts easily and create aliases
@@ -155,6 +157,8 @@ brew "pinentry-mac"
 brew "pkg-config"
 # Object-relational database system
 brew "postgresql@15"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Tools for and transforming and inspecting PDF files
