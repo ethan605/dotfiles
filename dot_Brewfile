@@ -19,6 +19,8 @@ brew "aws-iam-authenticator"
 brew "awscli"
 # Light UNIX download accelerator
 brew "axel"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -159,8 +161,6 @@ brew "postgresql@15"
 brew "pre-commit"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
 # Alternative to backtracking PCRE-style regular expression engines
