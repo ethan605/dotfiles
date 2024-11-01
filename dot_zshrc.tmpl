@@ -292,7 +292,7 @@ function greek-letters() {
 }
 
 function mux() {
-  local workspace=${1:-α}
+  local workspace=${1:-$(greek-letters)}
   tmux attach -t "$workspace" || tmux new -s "$workspace"
 }
 
