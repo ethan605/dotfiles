@@ -41,9 +41,8 @@ vim.opt.updatetime = 300                 -- You will have bad experience for dia
 vim.opt.writebackup = false              -- Some LSP servers have issues with backup files
 
 vim.opt.foldenable = true                -- Enable code folding
-vim.opt.foldcolumn = "1"
-vim.opt.foldlevel = 0
-vim.opt.foldlevelstart = 9
+vim.opt.foldcolumn = "auto:1"
+vim.opt.foldlevelstart = 99
 
 vim.opt.clipboard:append("unnamedplus") -- Use system clipboard over vim's buffers
 vim.opt.formatoptions:append("o")       -- Continue comment marker in new lines.
