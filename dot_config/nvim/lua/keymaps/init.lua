@@ -18,6 +18,10 @@ vim.api.nvim_set_keymap("n", "]c", ":Gitsigns next_hunk<CR>", opts)
 -- For nvim-tree
 vim.api.nvim_set_keymap("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
 
+-- For nvim-ufo
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
 -- For vista.vim
 vim.api.nvim_set_keymap("n", "<leader>v", ":Vista finder<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>V", ":Vista!!<CR>", opts)

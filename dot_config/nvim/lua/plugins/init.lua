@@ -77,6 +77,11 @@ require("lazy").setup({
     opts = {},
   },
   {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    opts = {},
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
   },
