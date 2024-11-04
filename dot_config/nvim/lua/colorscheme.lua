@@ -8,6 +8,7 @@ vim.opt.termguicolors = true
 local snazzy_colors = {
   -- gray = "NvimDarkGrey4",
   gray = "#606580",
+  dark_gray = "#3a3a3a",
   black = "#282a36",
   blue = "#57c7ff",
   cyan = "#9aedfe",
@@ -31,7 +32,7 @@ vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta })
 
 -- Float windows
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3a3a3a" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = snazzy_colors.dark_gray })
 
 -- For nvim-foldsign
 vim.api.nvim_set_hl(0, "FoldColumn", { fg = snazzy_colors.gray })
@@ -77,6 +78,11 @@ vim.api.nvim_set_hl(0, "NavicText", { fg = snazzy_colors.white })
 vim.api.nvim_set_hl(0, "LeapBackdrop", { fg = snazzy_colors.gray })
 vim.api.nvim_set_hl(0, "LeapMatch", { fg = snazzy_colors.yellow, bold = true, nocombine = true })
 vim.api.nvim_set_hl(0, "LeapLabel", { fg = snazzy_colors.magenta, bold = true, nocombine = true })
+
+-- For nvim-ufo
+vim.api.nvim_set_hl(0, "Folded", { italic = true, bg = snazzy_colors.dark_gray })
+vim.api.nvim_set_hl(0, "UfoFoldedBg", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "UfoFoldedEllipsis", { bold = true, fg = snazzy_colors.yellow })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })

@@ -50,6 +50,7 @@ require("lazy").setup({
   require("plugins.nvim-dap"),
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-tree"),
+  require("plugins.nvim-ufo"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
 
@@ -74,11 +75,6 @@ require("lazy").setup({
     "ruifm/gitlinker.nvim",
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
-  {
-    "kevinhwang91/nvim-ufo",
-    dependencies = { "kevinhwang91/promise-async" },
     opts = {},
   },
   {

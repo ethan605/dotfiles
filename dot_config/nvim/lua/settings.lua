@@ -43,7 +43,7 @@ vim.opt.writebackup = false              -- Some LSP servers have issues with ba
 vim.opt.foldenable = true                -- Enable code folding
 vim.opt.foldcolumn = "1"
 vim.opt.foldlevel = 0
-vim.opt.foldlevelstart = 99
+vim.opt.foldlevelstart = 9
 
 vim.opt.clipboard:append("unnamedplus") -- Use system clipboard over vim's buffers
 vim.opt.formatoptions:append("o")       -- Continue comment marker in new lines.
