@@ -9,48 +9,46 @@ end
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    require("nvim-tree").setup({
-      actions = {
-        open_file = {
-          quit_on_open = true,
+  opts = {
+    actions = {
+      open_file = {
+        quit_on_open = true,
+      },
+    },
+    diagnostics = {
+      enable = true,
+    },
+    filters = {
+      custom = {
+        "node_modules",
+        "venv",
+      },
+    },
+    hijack_cursor = true,
+    renderer = {
+      highlight_git = true,
+      highlight_opened_files = "all",
+      icons = {
+        show = {
+          git = true,
+          folder = true,
+          file = true,
+          folder_arrow = true,
         },
       },
-      diagnostics = {
-        enable = true,
+      root_folder_label = folder_label_renderer,
+    },
+    update_cwd = true,
+    update_focused_file = {
+      enable = true,
+    },
+    sync_root_with_cwd = false,
+    view = {
+      centralize_selection = true,
+      width = {
+        min = 30,
+        max = -1,
       },
-      filters = {
-        custom = {
-          "node_modules",
-          "venv",
-        },
-      },
-      hijack_cursor = true,
-      renderer = {
-        highlight_git = true,
-        highlight_opened_files = "all",
-        icons = {
-          show = {
-            git = true,
-            folder = true,
-            file = true,
-            folder_arrow = true,
-          },
-        },
-        root_folder_label = folder_label_renderer,
-      },
-      update_cwd = true,
-      update_focused_file = {
-        enable = true,
-      },
-      sync_root_with_cwd = false,
-      view = {
-        centralize_selection = true,
-        width = {
-          min = 30,
-          max = -1,
-        },
-      },
-    })
-  end,
+    },
+  },
 }
