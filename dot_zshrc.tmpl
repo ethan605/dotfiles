@@ -30,6 +30,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export REACT_EDITOR=nvim
 export CARGO_HOME="$HOME/.cargo"
+export GOPATH="$HOME/go"
 export CC=clang
 export CXX=clang++
 
@@ -81,6 +82,7 @@ PATH="$(brew --prefix postgresql@15)/bin:$PATH"
 {{- end }}
 
 PATH="$HOME/.local/bin:$PATH"
+#PATH="$GOPATH/bin:$PATH"
 #PATH="$CARGO_HOME/bin:$PATH"
 #PATH="./node_modules/.bin:$PATH"
 export PATH
