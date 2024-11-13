@@ -151,8 +151,8 @@ brew "pgformatter"
 brew "pgweb"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Manage compile and link flags for libraries
-brew "pkg-config"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Object-relational database system
 brew "postgresql@15"
 # Framework for managing multi-language pre-commit hooks
