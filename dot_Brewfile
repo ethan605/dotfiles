@@ -175,6 +175,8 @@ brew "shfmt"
 brew "starship"
 # Opinionated Lua code formatter
 brew "stylua"
+# Terraform Language Server
+brew "terraform-ls"
 # Terraform version manager inspired by rbenv
 brew "tfenv"
 # Simplified and community-driven man pages

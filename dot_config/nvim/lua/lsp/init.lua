@@ -13,6 +13,7 @@ local servers = {
   "ltex",
   "pyright",
   "tailwindcss",
+  "terraformls",
   "yamlls",
 
   -- "cssls", -- disabled in favour of tailwindcss
@@ -20,7 +21,6 @@ local servers = {
   -- "gopls", -- disabled due to no active usage
   -- "graphql", -- disabled due to no active usage
   -- "solargraph", -- disabled due to no active usage
-  -- "terraformls", -- disabled due to no active usage
   -- "vimls", -- disabled due to no active usage
 }
 
