@@ -83,6 +83,8 @@ brew "gotop"
 brew "gpgme"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Like cURL, but for gRPC
+brew "grpcurl"
 # Kubernetes package manager
 brew "helm"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -155,6 +157,8 @@ brew "pinentry-mac"
 brew "pkgconf"
 # Object-relational database system
 brew "postgresql@15"
+# Object-relational database system
+brew "postgresql@16"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
@@ -246,6 +250,8 @@ cask "logi-options+"
 cask "loom"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
 # App to write, plan, collaborate, and get organised
