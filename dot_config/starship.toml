@@ -124,6 +124,14 @@ symbol = "󱃾 "
 context_pattern = "gke_cord-ai-development_.*_.*-app-cluster"
 context_alias = "dev-staging" 
 
+[[kubernetes.contexts]]
+context_pattern = "gke_cord-ai-platform_.*_cord-prod"
+context_alias = "prod-eu" 
+
+[[kubernetes.contexts]]
+context_pattern = "gke_cord-ai-platform_.*_annotate-prod-us"
+context_alias = "prod-us" 
+
 [gcloud]
 format = ' [$symbol( $project[@](bright-black)$region)]($style)'
 symbol = ""
