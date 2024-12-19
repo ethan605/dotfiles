@@ -8,6 +8,7 @@ local servers = {
   "docker_compose_language_service",
   "dockerls",
   "eslint",
+  "gopls", -- disabled due to no active usage
   "html",
   "jsonls",
   "ltex",
@@ -18,7 +19,6 @@ local servers = {
 
   -- "cssls", -- disabled in favour of tailwindcss
   -- "denols", -- disabled due to no active usage
-  -- "gopls", -- disabled due to no active usage
   -- "graphql", -- disabled due to no active usage
   -- "solargraph", -- disabled due to no active usage
   -- "vimls", -- disabled due to no active usage
