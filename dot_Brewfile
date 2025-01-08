@@ -235,6 +235,8 @@ cask "contexts"
 cask "datagrip"
 # Security audit software
 cask "drata-agent"
+# Eclipse IDE for Java developers
+cask "eclipse-java"
 # Web browser
 cask "firefox"
 # Screenshot software
