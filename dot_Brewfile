@@ -23,6 +23,8 @@ brew "axel"
 brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Yet another cross-platform graphical process/system monitor
@@ -107,8 +109,6 @@ brew "kubernetes-cli"
 brew "kubectx"
 # Portable Foreign Function Interface library
 brew "libffi"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
 # C library of Git core methods that is re-entrant and linkable
 brew "libgit2@1.7"
 # Implementation of the file(1) command
