@@ -109,8 +109,6 @@ brew "kubernetes-cli"
 brew "kubectx"
 # Portable Foreign Function Interface library
 brew "libffi"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2@1.7"
 # Implementation of the file(1) command
 brew "libmagic"
 # Library for Qalculate! program
