@@ -1,4 +1,3 @@
---local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -28,9 +27,9 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("gN", ":lua vim.lsp.buf.rename()<CR>")
   buf_set_keymap("K", ":lua vim.lsp.buf.hover()<CR>")
-  buf_set_keymap("[d", ":lua vim.diagnostic.goto_prev()<CR>")
-  buf_set_keymap("]d", ":lua vim.diagnostic.goto_next()<CR>")
-  buf_set_keymap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>")
+  buf_set_keymap("[d", ":lua vim.diagnostic.goto_prev({ float = false })<CR>")
+  buf_set_keymap("]d", ":lua vim.diagnostic.goto_next({ float = false })<CR>")
+  buf_set_keymap("<C-k>", ":lua vim.diagnostic.open_float()<CR>")
 
   -- Keymaps using default vim.lsp.buf utils
   --buf_set_keymap("gd", ":lua vim.lsp.buf.definition()<CR>")

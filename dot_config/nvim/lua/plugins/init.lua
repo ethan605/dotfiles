@@ -43,7 +43,7 @@ require("lazy").setup({
   require("plugins.fzf-lua"),
   require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
-  require("plugins.lspsaga"),
+  -- require("plugins.lspsaga"),
   require("plugins.lualine"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
@@ -61,6 +61,11 @@ require("lazy").setup({
     opts = {},
   },
   {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    event = "LspAttach",
+    opts = {},
+  },
+  {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
     build = function()
@@ -69,9 +74,7 @@ require("lazy").setup({
   },
   {
     "OXY2DEV/markview.nvim",
-    -- lazy = false,
     ft = { "markdown" },
-
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
