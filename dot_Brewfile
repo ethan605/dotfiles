@@ -75,6 +75,8 @@ brew "gnu-indent"
 brew "gnu-sed"
 # GNU version of the tar archiving utility
 brew "gnu-tar"
+# Assuan IPC Library
+brew "libassuan"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Terminal based graphical activity monitor inspired by gtop and vtop
