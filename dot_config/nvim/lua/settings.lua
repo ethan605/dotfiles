@@ -9,7 +9,6 @@ vim.opt.directory = "/tmp"               -- Location for temporary files
 vim.opt.encoding = "UTF-8"               -- Encoding
 vim.opt.errorbells = false               -- No beeps.
 vim.opt.expandtab = true                 -- Insert spaces when TAB is pressed.
-
 vim.opt.hlsearch = true                  -- Highlight searches
 vim.opt.hidden = true                    -- Keep buffer history when switching around
 vim.opt.ignorecase = true                -- Search with smart case
@@ -39,15 +38,20 @@ vim.opt.tabstop = 2                      -- Render TABs using this many spaces.
 vim.opt.textwidth = 0                    -- Hard-wrap long lines as you type them.
 vim.opt.updatetime = 300                 -- You will have bad experience for diagnostic messages when it's default 4000.
 vim.opt.writebackup = false              -- Some LSP servers have issues with backup files
+vim.opt.mouse = ""                       -- Disable mouse support
 
-vim.opt.foldenable = true                -- Enable code folding
+-- Backups
+vim.opt.backupcopy = "yes"
+vim.opt.backupdir = "~/tmp,/tmp"
+vim.opt.backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*"
+
+-- Code folding
+vim.opt.foldenable = true
 vim.opt.foldcolumn = "auto:1"
 vim.opt.foldlevelstart = 99
 
-vim.opt.clipboard:append("unnamedplus") -- Use system clipboard over vim's buffers
-vim.opt.formatoptions:append("o")       -- Continue comment marker in new lines.
-vim.opt.showbreak = "⤷ "
-vim.opt.list = false                    -- Hidden characters
+-- Hidden characters, disable by default, enable by `:set list`
+vim.opt.list = false
 vim.opt.listchars = {
   conceal = "|",
   eol = "¬",
@@ -57,10 +61,9 @@ vim.opt.listchars = {
   tab = "→ ",
   trail = "·",
 }
-vim.opt.runtimepath:append("/usr/local/opt/fzf") -- Add fzf to run time path
-vim.opt.shortmess:append("c")                    -- don't give 'ins-completion-menu' messages.
+vim.opt.showbreak = "⤷ "
 
--- Configure backups
-vim.opt.backupcopy = "yes"
-vim.opt.backupdir = "~/tmp,/tmp"
-vim.opt.backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*"
+vim.opt.clipboard:append("unnamedplus")          -- Use system clipboard over vim's buffers
+vim.opt.formatoptions:append("o")                -- Continue comment marker in new lines.
+vim.opt.runtimepath:append("/usr/local/opt/fzf") -- Add fzf to run time path
+vim.opt.shortmess:append("c")                    -- Don't give 'ins-completion-menu' messages.
