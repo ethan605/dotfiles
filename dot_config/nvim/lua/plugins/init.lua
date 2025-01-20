@@ -14,7 +14,7 @@ local function ensure_lazy()
     })
   end
 
-  vim.opt.rtp:prepend(lazypath)
+  vim.opt.runtimepath:prepend(lazypath)
 end
 
 ensure_lazy()
