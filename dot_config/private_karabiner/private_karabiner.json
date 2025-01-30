@@ -178,15 +178,23 @@
                                     "key_code": "b",
                                     "modifiers": { "mandatory": ["right_command"] }
                                 },
-                                "to": [{ "shell_command": "open -a finder" }],
+                                "to": [{ "shell_command": "open -a Finder.app" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "d",
+                                    "key_code": "l",
                                     "modifiers": { "mandatory": ["right_command"] }
                                 },
-                                "to": [{ "shell_command": "open -a DataGrip.app" }],
+                                "to": [{ "shell_command": "open -a Linear.app" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "shell_command": "open -a Notion.app" }],
                                 "type": "basic"
                             }
                         ]
