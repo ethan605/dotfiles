@@ -1,5 +1,5 @@
 [flags]
-basic = false
+basic = true
 battery = false
 default_widget_type = "proc"
 disable_click = true

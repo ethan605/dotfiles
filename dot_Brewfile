@@ -79,8 +79,6 @@ brew "gnu-tar"
 brew "libassuan"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Terminal based graphical activity monitor inspired by gtop and vtop
-brew "gotop"
 # Library access to GnuPG
 brew "gpgme"
 # GNU grep, egrep and fgrep
