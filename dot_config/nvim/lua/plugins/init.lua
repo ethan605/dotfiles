@@ -43,7 +43,6 @@ require("lazy").setup({
   require("plugins.fzf-lua"),
   require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
-  -- require("plugins.lspsaga"),
   require("plugins.lualine"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
