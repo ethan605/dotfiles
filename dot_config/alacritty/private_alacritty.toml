@@ -82,9 +82,8 @@ multiplier = 3
 save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-#[shell]
-#args = ["-flp", "ethanify"]
-#program = "/usr/bin/login"
+# [terminal]
+# shell = { program = "/opt/homebrew/bin/zsh", args = ["--login"] }
 
 [window]
 decorations = "none"
