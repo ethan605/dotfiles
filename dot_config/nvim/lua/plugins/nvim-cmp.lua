@@ -10,11 +10,16 @@ return {
     "hrsh7th/vim-vsnip",    -- for Vim commands
     "nvim-lua/plenary.nvim",
     "onsails/lspkind-nvim", -- for LSP pictograms
-    { "tzachar/cmp-tabnine", build = "./install.sh" },
+
+    -- TODO: Solve conflicts between vsnip and tabnine
+    -- { "tzachar/cmp-tabnine", build = "./install.sh" },
   },
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
+
+    -- local tabnine = require("cmp_tabnine.config")
+    -- tabnine:setup({})
 
     cmp.setup({
       snippet = {
@@ -45,12 +50,12 @@ return {
           end
         end,
       }),
-      sources = cmp.config.sources({
+      sources = {
         { name = "nvim_lsp" },
-        { name = "vsnip" },
-      }, {
         { name = "buffer" },
-      }),
+        { name = "vsnip" },
+        -- { name = "cmp_tabnine" },
+      },
       formatting = {
         format = lspkind.cmp_format({
           mode = "symbol_text",
