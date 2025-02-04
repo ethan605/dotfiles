@@ -38,7 +38,7 @@ vim.opt.tabstop = 2                      -- Render TABs using this many spaces.
 vim.opt.textwidth = 0                    -- Hard-wrap long lines as you type them.
 vim.opt.updatetime = 300                 -- You will have bad experience for diagnostic messages when it's default 4000.
 vim.opt.writebackup = false              -- Some LSP servers have issues with backup files
-vim.opt.mouse = ""                       -- Disable mouse support
+vim.opt.mouse = "nv"                     -- Mouse enabled for n + v modes only
 
 -- Backups
 vim.opt.backupcopy = "yes"
