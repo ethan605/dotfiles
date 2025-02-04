@@ -338,7 +338,7 @@ alias xdg-open='open'
 {{- end }}
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias kargo='kubectl argo rollouts'
+alias kargo='k argo rollouts'
 alias pyenv='{ poetry env info -p >/dev/null 2>&1 && true } && source "$(poetry env info -p)/bin/activate" || source .venv/bin/activate'
 alias tor='webtorrent --keep-seeding download'
 alias vsync='nvim --headless "+Lazy! sync" +qa'
