@@ -6,17 +6,17 @@ vim.cmd([[
 vim.opt.termguicolors = true
 
 local snazzy_colors = {
-  -- gray = "NvimDarkGrey4",
-  gray = "#606580",
-  dark_gray = "#3a3a3a",
-  black = "#282a36",
-  blue = "#57c7ff",
-  cyan = "#9aedfe",
-  green = "#5af78e",
-  magenta = "#ff6ac1",
-  red = "#ff5c57",
-  white = "#eff0eb",
-  yellow = "#f3f99d",
+	-- gray = "NvimDarkGrey4",
+	gray = "#606580",
+	dark_gray = "#3a3a3a",
+	black = "#282a36",
+	blue = "#57c7ff",
+	cyan = "#9aedfe",
+	green = "#5af78e",
+	magenta = "#ff6ac1",
+	red = "#ff5c57",
+	white = "#eff0eb",
+	yellow = "#f3f99d",
 }
 
 -- Built-ins
@@ -25,7 +25,7 @@ vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
 vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
-vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
+vim.api.nvim_set_hl(0, "WinBar", {}) -- clear
 vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 
 -- Matched parentheses colors
@@ -114,5 +114,5 @@ vim.api.nvim_set_hl(0, "RedrawDebugRecompose", { bg = snazzy_colors.red })
 vim.api.nvim_set_hl(0, "RedrawDebugClear", { bg = snazzy_colors.yellow })
 
 return {
-  snazzy_colors = snazzy_colors,
+	snazzy_colors = snazzy_colors,
 }
