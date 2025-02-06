@@ -82,6 +82,7 @@ PATH="$(brew --prefix postgresql@15)/bin:$PATH"
 {{- end }}
 
 PATH="$HOME/.local/bin:$PATH"
+PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 #PATH="$GOPATH/bin:$PATH"
 #PATH="$CARGO_HOME/bin:$PATH"
 #PATH="./node_modules/.bin:$PATH"
