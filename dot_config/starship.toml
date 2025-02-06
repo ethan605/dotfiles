@@ -201,9 +201,10 @@ symbol = "󱘗 "
 version_format = "$raw"
 
 [terraform]
-format = " [$symbol$workspace]($style)"
+format = " [$symbol$version]($style)"
 style = "bold #844fba"
 symbol = "󱁢 "
+version_format = "$raw"
 
 [vlang]
 format = " [$symbol$version]($style)"

@@ -5,12 +5,10 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "simplydanny/pass-extensions"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Compression/decompression library aiming for high speed
 brew "snappy"
 # Use AWS IAM credentials to authenticate to Kubernetes
@@ -33,6 +31,8 @@ brew "bottom"
 brew "chezmoi"
 # Cross-platform make
 brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Static analysis of C and C++ code
 brew "cppcheck"
 # File comparison utilities
@@ -123,8 +123,6 @@ brew "llvm"
 brew "ltex-ls"
 # Language Server for the Lua language
 brew "lua-language-server"
-# Package manager for the Lua programming language
-brew "luarocks"
 # Utility for directing compilation
 brew "make"
 # NCurses Disk Usage
@@ -183,8 +181,6 @@ brew "starship"
 brew "stylua"
 # Terraform Language Server
 brew "terraform-ls"
-# Terraform version manager inspired by rbenv
-brew "tfenv"
 # Simplified and community-driven man pages
 brew "tldr"
 # Terminal multiplexer
