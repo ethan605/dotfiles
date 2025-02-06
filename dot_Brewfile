@@ -53,8 +53,6 @@ brew "libarchive"
 brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
-# Firebase command-line tools
-brew "firebase-cli"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
 # Command-line fuzzy finder written in Go
