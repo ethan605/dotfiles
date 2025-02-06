@@ -29,8 +29,6 @@ export FZF_CTRL_R_OPTS='
 export EDITOR=nvim
 export VISUAL=nvim
 export REACT_EDITOR=nvim
-export CARGO_HOME="$HOME/.cargo"
-export GOPATH="$HOME/go"
 export CC=clang
 export CXX=clang++
 
@@ -83,8 +81,7 @@ PATH="$(brew --prefix postgresql@15)/bin:$PATH"
 
 PATH="$HOME/.local/bin:$PATH"
 PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-#PATH="$GOPATH/bin:$PATH"
-#PATH="$CARGO_HOME/bin:$PATH"
+#PATH="$(asdf where golang)/bin:$PATH"
 #PATH="./node_modules/.bin:$PATH"
 export PATH
 #]]]
