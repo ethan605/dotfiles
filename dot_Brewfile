@@ -154,11 +154,7 @@ brew "pinentry-mac"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Object-relational database system
-brew "postgresql@15"
-# Object-relational database system
 brew "postgresql@16"
-# Framework for managing multi-language pre-commit hooks
-brew "pre-commit"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Interpreted, interactive, object-oriented programming language
