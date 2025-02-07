@@ -14,3 +14,7 @@ pnpm 9.5.0
 firebase 13.30.0
 pre-commit 4.1.0
 postgres 15.10
+cmake 3.31.5
+shellcheck 0.10.0
+shfmt 3.10.0
+stylua 2.0.2

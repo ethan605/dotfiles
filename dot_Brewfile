@@ -9,16 +9,8 @@ tap "simplydanny/pass-extensions"
 brew "asdf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# Compression/decompression library aiming for high speed
-brew "snappy"
-# Use AWS IAM credentials to authenticate to Kubernetes
-brew "aws-iam-authenticator"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Light UNIX download accelerator
 brew "axel"
-# Microsoft Azure CLI 2.0
-brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # C library of Git core methods that is re-entrant and linkable
@@ -29,8 +21,6 @@ brew "bat"
 brew "bottom"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Cross-platform make
-brew "cmake"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Static analysis of C and C++ code
@@ -49,6 +39,8 @@ brew "eza"
 brew "fd"
 # Multi-format archive and compression library
 brew "libarchive"
+# Compression/decompression library aiming for high speed
+brew "snappy"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
@@ -59,8 +51,6 @@ brew "freetds"
 brew "fzf"
 # Reports from gcov test coverage program
 brew "gcovr"
-# GitHub command-line tool
-brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -93,10 +83,6 @@ brew "jless"
 brew "jpeg"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Apache Kafka C/C++ library
-brew "librdkafka"
-# Generic command-line non-JVM Apache Kafka producer and consumer
-brew "kcat"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
 # Colorize your kubectl output
@@ -147,34 +133,18 @@ brew "pass"
 brew "pass-otp"
 # PostgreSQL syntax beautifier
 brew "pgformatter"
-# Web-based PostgreSQL database browser
-brew "pgweb"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
-# Object-relational database system
-brew "postgresql@16"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
-# Alternative to backtracking PCRE-style regular expression engines
-brew "re2"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-# Autoformat shell script source code
-brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Opinionated Lua code formatter
-brew "stylua"
-# Terraform Language Server
-brew "terraform-ls"
 # Simplified and community-driven man pages
 brew "tldr"
 # Terminal multiplexer
@@ -223,8 +193,6 @@ cask "contexts"
 cask "datagrip"
 # Security audit software
 cask "drata-agent"
-# Eclipse IDE for Java developers
-cask "eclipse-java"
 # Web browser
 cask "firefox"
 # Screenshot software
