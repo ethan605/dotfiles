@@ -2,6 +2,8 @@ tap "amar1729/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "simplydanny/pass-extensions"
+# Download with resuming and segmented downloading
+brew "aria2"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Light UNIX download accelerator
@@ -132,8 +134,6 @@ brew "universal-ctags"
 brew "vifm"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
-# Command-line streaming torrent client
-brew "webtorrent-cli"
 # Internet file retriever
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
