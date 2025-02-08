@@ -1,14 +1,9 @@
 tap "amar1729/formulae"
-tap "argoproj/tap"
-tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "koekeishiya/formulae"
 tap "simplydanny/pass-extensions"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
 # Light UNIX download accelerator
 brew "axel"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -31,8 +26,6 @@ brew "diffutils"
 brew "direnv"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
-# Language Server and Debugger for Elixir
-brew "elixir-ls"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -49,16 +42,12 @@ brew "findutils"
 brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Reports from gcov test coverage program
-brew "gcovr"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
-# C code prettifier
-brew "gnu-indent"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU version of the tar archiving utility
@@ -73,8 +62,6 @@ brew "gpgme"
 brew "grep"
 # Like cURL, but for gRPC
 brew "grpcurl"
-# Kubernetes package manager
-brew "helm"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Command-line pager for JSON data
@@ -85,12 +72,6 @@ brew "jpeg"
 brew "jq"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
-# Colorize your kubectl output
-brew "kubecolor"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
-# Tool that can switch between kubectl contexts easily and create aliases
-brew "kubectx"
 # Portable Foreign Function Interface library
 brew "libffi"
 # Implementation of the file(1) command
@@ -105,10 +86,6 @@ brew "libxmlsec1"
 brew "llvm"
 # LSP for LanguageTool with support for Latex, Markdown and Others
 brew "ltex-ls"
-# Language Server for the Lua language
-brew "lua-language-server"
-# Utility for directing compilation
-brew "make"
 # NCurses Disk Usage
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -171,8 +148,6 @@ brew "zoxide"
 brew "zsh"
 # Host application for browser extension providing access to your password store
 brew "amar1729/formulae/browserpass"
-# Kubectl Argo Rollouts Plugin.
-brew "argoproj/tap/kubectl-argo-rollouts"
 # Pass extension to avoid printing the password to the console
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords

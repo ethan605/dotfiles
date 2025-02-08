@@ -1,7 +1,7 @@
 java openjdk-22
 python 3.11.9
 nodejs 20.18.2
-ruby 3.3.0
+ruby 3.4.1
 golang 1.23.6
 rust 1.84.1
 lua 5.4.7
@@ -18,3 +18,12 @@ cmake 3.31.5
 shellcheck 0.10.0
 shfmt 3.10.0
 stylua 2.0.2
+poetry 1.8.3
+make 4.4.1
+ninja 1.12.1
+lua-language-server 3.13.6
+kubectl 1.30.8
+kubectx 0.9.5
+kubecolor 0.5.0
+argo-rollouts 1.8.0
+helm 3.17.0
