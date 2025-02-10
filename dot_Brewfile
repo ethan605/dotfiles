@@ -177,8 +177,6 @@ cask "font-cabin"
 cask "ghostty"
 # Web browser
 cask "google-chrome"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "google-cloud-sdk"
 # Keyboard customiser
 cask "karabiner-elements"
 # App to manage software development and track bugs
