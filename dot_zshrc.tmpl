@@ -175,9 +175,6 @@ function __load-sway() {
 function __load-work-envs() {
 {{- if eq .work.email "thanh@encord.com" }}
 
-  source "$(asdf where gcloud)/path.zsh.inc"
-  source "$(asdf where gcloud)/completion.zsh.inc"
-
   export WORK_DIR="$HOME/work"
   export PATH="$WORK_DIR/.env/bin:$PATH"
 
@@ -202,7 +199,6 @@ function __load-zim() {
 }
 
 function __load-zsh-plugins() {
-  eval "$(asdf completion zsh)"
   eval "$(direnv hook zsh)"
   eval "$(starship init zsh)"
   eval "$(zoxide init zsh)"
