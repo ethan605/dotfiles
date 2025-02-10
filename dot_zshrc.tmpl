@@ -176,8 +176,8 @@ function __load-sway() {
 function __load-work-envs() {
 {{- if eq .work.email "thanh@encord.com" }}
 
-  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+  source "$(asdf where gcloud)/path.zsh.inc"
+  source "$(asdf where gcloud)/completion.zsh.inc"
 
   export WORK_DIR="$HOME/work"
   export PATH="$WORK_DIR/.env/bin:$PATH"
