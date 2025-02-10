@@ -80,12 +80,6 @@ export PATH
 #]]]
 
 # [[[ Init functions
-function __load-asdf() {
-  eval "$(asdf completion zsh)"
-  source "$(asdf where gcloud)/completion.zsh.inc"
-  export PATH="$(asdf where golang)/bin:$PATH"
-}
-
 function __load-key-bindings() {
   # Set editor default keymap to vi
   bindkey -v
@@ -202,6 +196,10 @@ function __load-zsh-plugins() {
   eval "$(direnv hook zsh)"
   eval "$(starship init zsh)"
   eval "$(zoxide init zsh)"
+
+  # asdf-vm
+  eval "$(asdf completion zsh)"
+  source "$(asdf where gcloud)/completion.zsh.inc"
 }
 
 function __load-zsh-settings() {
@@ -339,7 +337,6 @@ __load-work-envs
 __load-zim
 
 # Dev tools
-__load-asdf
 __load-perl
 
 # SSH keys
