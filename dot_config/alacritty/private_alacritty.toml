@@ -41,30 +41,12 @@ TERM = "xterm-256color" # set to `alacritty` for latest TERM supports
 [font]
 builtin_box_drawing = true
 size = 18.0
-
-[font.bold]
-family = "OperatorMonoSSm Nerd Font"
-style = "Regular"
-
-[font.bold_italic]
-family = "OperatorMonoSSm Nerd Font"
-style = "Italic"
-
-[font.glyph_offset]
-x = 0
-y = 0
-
-[font.italic]
-family = "OperatorMonoSSm Nerd Font"
-style = "Light Italic"
-
-[font.normal]
-family = "OperatorMonoSSm Nerd Font"
-style = "Light"
-
-[font.offset]
-x = 0
-y = 0
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = 0 }
+normal = { family = "OperatorMonoSSm Nerd Font", style = "Light" }
+italic = { family = "OperatorMonoSSm Nerd Font", style = "Light Italic" }
+bold = { family = "OperatorMonoSSm Nerd Font", style = "Regular" }
+bold_italic = { family = "OperatorMonoSSm Nerd Font", style = "Italic" }
 
 [mouse]
 hide_when_typing = false
@@ -89,14 +71,8 @@ dynamic_padding = false
 dynamic_title = true
 option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
-
-[window.dimensions]
-columns = 0
-lines = 0
-
-[window.padding]
-x = 0
-y = 0
+dimensions = { columns = 0, lines = 0 }
+padding = { x = 0, y = 0 }
 
 [general]
 live_config_reload = true
