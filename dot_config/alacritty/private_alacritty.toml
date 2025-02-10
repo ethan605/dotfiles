@@ -1,4 +1,3 @@
-
 [colors]
 draw_bold_text_with_bright_colors = false
 
@@ -68,11 +67,10 @@ x = 0
 y = 0
 
 [mouse]
-hide_when_typing = true
-
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
+hide_when_typing = false
+bindings = [
+  { mouse = "Middle", action = "PasteSelection" }
+]
 
 [scrolling]
 history = 10000
