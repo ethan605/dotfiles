@@ -55,10 +55,8 @@ require("lazy").setup({
 
   "ggandor/leap.nvim",
   "neovim/nvim-lspconfig",
-  {
-    "kylechui/nvim-surround",
-    opts = {},
-  },
+  { "kylechui/nvim-surround", opts = {} },
+  { "windwp/nvim-autopairs",  opts = {} },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = "LspAttach",
@@ -78,15 +76,16 @@ require("lazy").setup({
     },
   },
   {
-    "windwp/nvim-autopairs",
-    opts = {},
-  },
-  {
     "ruifm/gitlinker.nvim",
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
+  --[[ {
+    "nvim-java/nvim-java",
+    opts = {},
+    dependencies = { "mfussenegger/nvim-dap" },
+  }, ]]
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
