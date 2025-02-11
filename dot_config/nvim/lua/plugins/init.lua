@@ -63,6 +63,7 @@ require("lazy").setup({
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = "LspAttach",
     opts = {},
+    enabled = false,
   },
   {
     "iamcco/markdown-preview.nvim",
