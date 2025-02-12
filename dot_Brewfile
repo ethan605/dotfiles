@@ -122,6 +122,8 @@ brew "python@3.11"
 brew "qpdf"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# SQL linter and auto-formatter for Humans
+brew "sqlfluff"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Simplified and community-driven man pages
