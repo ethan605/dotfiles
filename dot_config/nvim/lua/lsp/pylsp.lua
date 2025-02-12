@@ -16,7 +16,7 @@ require("lspconfig").pylsp.setup({
         pyflake = { enabled = false },
         yapf = { enabled = false },
 
-        rope_autoimport = { enabled = true },
+        rope_autoimport = { enabled = false },
         rope_completion = { enabled = false },
       },
     },
