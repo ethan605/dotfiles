@@ -43,6 +43,7 @@ require("lsp.ts_ls")
 -- require("lsp.clangd")
 -- require("lsp.elixirls")
 -- require("lsp.kotlin_language_server")
+-- require("lsp.pylsp")
 
 vim.diagnostic.config({
   virtual_text = false, -- for lsp_lines
