@@ -25,10 +25,6 @@ vim.keymap.set("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
 -- vim.keymap.set("n", "zm", require("ufo").closeFoldsWith, opts)
 vim.keymap.set("n", "zK", require("ufo").peekFoldedLinesUnderCursor, opts)
 
--- For vista.vim
-vim.keymap.set("n", "<leader>v", ":Vista finder<CR>", opts)
-vim.keymap.set("n", "<leader>V", ":Vista!!<CR>", opts)
-
 ---@diagnostic disable: different-requires
 require("keymaps.bufferline")
 require("keymaps.fzf-lua")

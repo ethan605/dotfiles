@@ -26,15 +26,18 @@ local lazy_opts = {
 }
 
 require("lazy").setup({
-  -- Vimscript plugins
-  -- TODO: replace with Lua alternatives
+  -- Vimscript plugins. TODO: replace with Lua alternatives
   "connorholyday/vim-snazzy",
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
-  {
-    "liuchengxu/vista.vim",
-    dependencies = { "junegunn/fzf" },
-  },
+  -- {
+  --   "liuchengxu/vista.vim",
+  --   dependencies = { "junegunn/fzf" },
+  --   keys = {
+  --     { "<leader>v", ":Vista finder<CR>" },
+  --     { "<leader>V", ":Vista!!<CR>" },
+  --   },
+  -- },
 
   -- Common plugins
   require("plugins.bufferline"),
@@ -54,14 +57,10 @@ require("lazy").setup({
   require("plugins.todo-comments"),
 
   "ggandor/leap.nvim",
-  "neovim/nvim-lspconfig",
-  { "kylechui/nvim-surround", opts = {} },
-  { "windwp/nvim-autopairs",  opts = {} },
-  {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    event = "LspAttach",
-    opts = {},
-  },
+  { "kylechui/nvim-surround",                       opts = {} },
+  { "windwp/nvim-autopairs",                        opts = {} },
+  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
+
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
@@ -77,15 +76,14 @@ require("lazy").setup({
   },
   {
     "ruifm/gitlinker.nvim",
+    opts = {},
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
   },
-  --[[ {
-    "nvim-java/nvim-java",
-    opts = {},
-    dependencies = { "mfussenegger/nvim-dap" },
-  }, ]]
+
+  -- LSPs & TreeSitter
+  "neovim/nvim-lspconfig",
+  -- { "nvim-java/nvim-java", opts = {}, dependencies = { "mfussenegger/nvim-dap" } },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
