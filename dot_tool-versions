@@ -27,3 +27,4 @@ stylua 2.0.2
 terraform 1.10.5
 terraform-ls 0.36.4
 tflint 0.55.1
+direnv 2.35.0

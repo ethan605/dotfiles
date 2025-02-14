@@ -24,8 +24,6 @@ brew "coreutils"
 brew "cppcheck"
 # File comparison utilities
 brew "diffutils"
-# Load/unload environment variables based on $PWD
-brew "direnv"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # Modern, maintained replacement for ls
