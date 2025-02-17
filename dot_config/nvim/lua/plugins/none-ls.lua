@@ -9,7 +9,7 @@ return {
         -- diagnostics
         none_ls.builtins.diagnostics.mypy,
         none_ls.builtins.diagnostics.sqlfluff.with({
-          extra_args = { "--dialect", "postgres" },
+          extra_args = { "--config", vim.fn.expand("~/.config/.sqlfluff") },
         }),
         none_ls.builtins.diagnostics.terraform_validate,
         none_ls.builtins.diagnostics.zsh,
@@ -19,7 +19,7 @@ return {
         none_ls.builtins.formatting.prettier,
         none_ls.builtins.formatting.shfmt,
         none_ls.builtins.formatting.sqlfluff.with({
-          extra_args = { "--dialect", "postgres" },
+          extra_args = { "--config", vim.fn.expand("~/.config/.sqlfluff") },
         }),
         none_ls.builtins.formatting.stylua.with({
           extra_args = { "--config-path", vim.fn.expand("~/.config/.stylua.toml") },
