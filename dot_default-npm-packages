@@ -7,7 +7,6 @@ dockerfile-language-server-nodejs
 graphql
 graphql-language-service-server
 neovim
-npm
 prettier
 prettier-stylelint
 pyright
