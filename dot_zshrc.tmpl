@@ -80,6 +80,12 @@ export PATH
 #]]]
 
 # [[[ Init functions
+function __load-asdf() {
+  eval "$(asdf completion zsh)"
+  source "$(asdf where gcloud)/completion.zsh.inc"
+  export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
+}
+
 function __load-key-bindings() {
   # Set editor default keymap to vi
   bindkey -v
@@ -196,10 +202,6 @@ function __load-zsh-plugins() {
   eval "$(direnv hook zsh)"
   eval "$(starship init zsh)"
   eval "$(zoxide init zsh)"
-
-  # asdf-vm
-  eval "$(asdf completion zsh)"
-  source "$(asdf where gcloud)/completion.zsh.inc"
 }
 
 function __load-zsh-settings() {
@@ -335,6 +337,7 @@ __load-work-envs
 
 # Base envs
 __load-zim
+__load-asdf
 
 # Dev tools
 __load-perl
