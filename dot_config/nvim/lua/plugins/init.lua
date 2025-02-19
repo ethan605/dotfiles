@@ -57,6 +57,7 @@ require("lazy").setup({
   require("plugins.todo-comments"),
 
   "ggandor/leap.nvim",
+  "sindrets/diffview.nvim",
   { "kylechui/nvim-surround",                       opts = {} },
   { "windwp/nvim-autopairs",                        opts = {} },
   { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
