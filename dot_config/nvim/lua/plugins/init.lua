@@ -27,7 +27,6 @@ local lazy_opts = {
 
 require("lazy").setup({
   -- Vimscript plugins. TODO: replace with Lua alternatives
-  "connorholyday/vim-snazzy",
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
   -- {
@@ -49,7 +48,6 @@ require("lazy").setup({
   require("plugins.lualine"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
-  require("plugins.nvim-dap"),
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-tree"),
   require("plugins.nvim-ufo"),
@@ -58,10 +56,32 @@ require("lazy").setup({
 
   "ggandor/leap.nvim",
   "sindrets/diffview.nvim",
-  { "kylechui/nvim-surround",                       opts = {} },
-  { "windwp/nvim-autopairs",                        opts = {} },
-  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
-
+  { "hat0uma/csvview.nvim",   opts = {} },
+  { "kylechui/nvim-surround", opts = {} },
+  { "windwp/nvim-autopairs",  opts = {} },
+  {
+    "connorholyday/vim-snazzy",
+    -- "alexwu/nvim-snazzy",
+    -- dependencies = { "rktjmp/lush.nvim" },
+    config = function() vim.cmd.colorscheme("snazzy") end,
+  },
+  {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    opts = {},
+    event = "LspAttach",
+  },
+  {
+    "pwntester/octo.nvim",
+    enabled = false,
+    opts = {
+      picker = "fzf-lua",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "ibhagwan/fzf-lua",
+    },
+  },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
@@ -84,6 +104,7 @@ require("lazy").setup({
 
   -- LSPs & TreeSitter
   "neovim/nvim-lspconfig",
+  -- require("plugins.nvim-dap"),
   -- { "nvim-java/nvim-java", opts = {}, dependencies = { "mfussenegger/nvim-dap" } },
   {
     "nvim-treesitter/nvim-treesitter",

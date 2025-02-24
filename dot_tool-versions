@@ -1,5 +1,6 @@
 argo-rollouts 1.8.0
 cmake 3.31.5
+direnv 2.35.0
 firebase 13.30.0
 gcloud 510.0.0
 golang 1.24.0
@@ -21,10 +22,10 @@ pre-commit 4.1.0
 python 3.11.11
 ruby 3.4.1
 rust 1.84.1
+semver 3.4.0
 shellcheck 0.10.0
 shfmt 3.10.0
 stylua 2.0.2
 terraform 1.10.5
 terraform-ls 0.36.4
 tflint 0.55.1
-direnv 2.35.0
