@@ -71,25 +71,13 @@ require("lazy").setup({
     event = "LspAttach",
   },
   {
-    "pwntester/octo.nvim",
-    enabled = false,
-    opts = {
-      picker = "fzf-lua",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "ibhagwan/fzf-lua",
-    },
-  },
-  {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
     "OXY2DEV/markview.nvim",
-    ft = { "markdown" },
+    ft = { "markdown", "octo" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",

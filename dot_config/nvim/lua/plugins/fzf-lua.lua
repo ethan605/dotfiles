@@ -26,19 +26,9 @@ return {
         ["ctrl-u"] = "preview-page-up",
       },
     },
-    buffers = { formatter = "path.filename_first" },
-    files = { formatter = "path.filename_first" },
-    grep = { formatter = "path.filename_first" },
-    grep_visual = { formatter = "path.filename_first" },
-    live_grep = { formatter = "path.filename_first" },
-    loclist = { formatter = "path.filename_first" },
-    quickfix = { formatter = "path.filename_first" },
-    git = {
-      files = {
-        formatter = "path.filename_first",
-        cwd = vim.fn.getcwd(),
-      },
-      status = { formatter = "path.filename_first" },
+    defaults = {
+      formatter = "path.filename_first",
+      preview_pager = "delta",
     },
     lsp = {
       async_or_timeout = 3000, -- make lsp requests synchronous so they work with none-ls
