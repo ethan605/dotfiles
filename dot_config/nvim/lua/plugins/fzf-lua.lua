@@ -27,6 +27,7 @@ return {
       },
     },
     defaults = {
+      cwd = vim.fn.getcwd(),
       formatter = "path.filename_first",
       preview_pager = "delta",
     },
