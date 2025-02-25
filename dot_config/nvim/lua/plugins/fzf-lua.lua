@@ -27,9 +27,11 @@ return {
       },
     },
     defaults = {
-      cwd = vim.fn.getcwd(),
       formatter = "path.filename_first",
       preview_pager = "delta",
+    },
+    git = {
+      files = { cwd = vim.fn.getcwd() },
     },
     lsp = {
       async_or_timeout = 3000, -- make lsp requests synchronous so they work with none-ls
