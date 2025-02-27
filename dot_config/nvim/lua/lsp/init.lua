@@ -10,6 +10,7 @@ local servers_with_configs = {
   html = {},
   jsonls = {},
   ltex = {},
+  -- postgres_lsp = {}, @TODO: to visit later when it's more mature
   pyright = {},
   tailwindcss = {},
   terraformls = {},
