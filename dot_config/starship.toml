@@ -132,6 +132,10 @@ context_alias = "prod-eu"
 context_pattern = "gke_cord-ai-platform_.*_annotate-prod-us"
 context_alias = "prod-us" 
 
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks:eu-west-2:.*:cluster/private-encord-app-cluster"
+context_alias = "on-prem-test" 
+
 [gcloud]
 format = ' [$symbol( $project[@](bright-black)$region)]($style)'
 symbol = ""
