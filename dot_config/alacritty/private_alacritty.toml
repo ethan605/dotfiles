@@ -36,7 +36,7 @@ print_events = false
 render_timer = false
 
 [env]
-TERM = "xterm-256color" # set to `alacritty` for latest TERM supports
+TERM = "alacritty" # set back to xterm-256color when in trouble
 
 [font]
 builtin_box_drawing = true
