@@ -106,6 +106,11 @@ vim.api.nvim_set_hl(0, "RedrawDebugRecompose", { bg = snazzy_colors.red })
 
 vim.api.nvim_set_hl(0, "RedrawDebugClear", { bg = snazzy_colors.yellow })
 
+-- For basedpyright: semantic highlights
+vim.api.nvim_set_hl(0, "@lsp.mod.builtin.python", { link = "@type.builtin.python" })
+vim.api.nvim_set_hl(0, "@lsp.mod.readonly.python", { link = "@constant.python" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.python", { link = "@constant.python" })
+
 return {
   snazzy_colors = snazzy_colors,
 }

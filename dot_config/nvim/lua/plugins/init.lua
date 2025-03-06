@@ -56,19 +56,16 @@ require("lazy").setup({
 
   "ggandor/leap.nvim",
   "sindrets/diffview.nvim",
-  { "hat0uma/csvview.nvim",   opts = {} },
-  { "kylechui/nvim-surround", opts = {} },
-  { "windwp/nvim-autopairs",  opts = {} },
+  { "hat0uma/csvview.nvim",                         opts = {} },
+  { "kylechui/nvim-surround",                       opts = {} },
+  { "windwp/nvim-autopairs",                        opts = {} },
+  { "ovk/endec.nvim",                               opts = {}, event = "VeryLazy" },
+  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
   {
     "connorholyday/vim-snazzy",
     -- "alexwu/nvim-snazzy",
     -- dependencies = { "rktjmp/lush.nvim" },
     config = function() vim.cmd.colorscheme("snazzy") end,
-  },
-  {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    opts = {},
-    event = "LspAttach",
   },
   {
     "iamcco/markdown-preview.nvim",

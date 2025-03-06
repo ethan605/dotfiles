@@ -1,8 +1,38 @@
 local lspconfig = require("lspconfig")
 local utils = require("lsp.utils")
 
+function current_python_path()
+  local venv_path = nil
+
+  if io.open(".venv", "r") ~= nil then
+    venv_path = ".venv"
+  else
+    local poetry_venv_path = vim.fn.system("poetry env info -p")
+    venv_path = string.gsub(poetry_venv_path, "\n", "")
+  end
+
+  return venv_path .. "/bin/python"
+end
+
 local servers_with_configs = {
   -- Plug-n-Play LSPs
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        disableOrganizeImports = true,
+        analysis = {
+          autoImportCompletions = true,
+          autoSearchPaths = true,
+          diagnosticMode = "openFilesOnly",
+          typeCheckingMode = "standard",
+          useLibraryCodeForTypes = true,
+        },
+      },
+      python = {
+        pythonPath = current_python_path(),
+      },
+    },
+  },
   docker_compose_language_service = {},
   dockerls = {},
   eslint = {},
@@ -10,7 +40,6 @@ local servers_with_configs = {
   html = {},
   jsonls = {},
   -- postgres_lsp = {}, @TODO: to visit later when it's more mature
-  pyright = {},
   tailwindcss = {},
   terraformls = {},
   yamlls = {},
@@ -157,24 +186,10 @@ local servers_with_configs = {
   graphql = {},
   jdtls = {},
   kotlin_language_server = {},
+  pyright = {},
   solargraph = {},
   vimls = {},
 
-  basedpyright = {
-    settings = {
-      basedpyright = {
-        disableOrganizeImports = true,
-        openFilesOnly = true,
-        analysis = {
-          autoImportCompletions = true,
-          autoSearchPaths = true,
-          diagnosticMode = "openFilesOnly",
-          typeCheckingMode = "standard",
-          useLibraryCodeForTypes = true,
-        },
-      },
-    },
-  },
   clangd = {
     cmd = { "/opt/homebrew/opt/llvm/bin/clangd", "--clang-tidy" },
     settings = {
