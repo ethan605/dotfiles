@@ -9,7 +9,6 @@ local servers_with_configs = {
   gopls = {},
   html = {},
   jsonls = {},
-  ltex = {},
   -- postgres_lsp = {}, @TODO: to visit later when it's more mature
   pyright = {},
   tailwindcss = {},
@@ -54,6 +53,13 @@ local servers_with_configs = {
       filetypes = {
         javascript = "eslint",
         typescript = "eslint",
+      },
+    },
+  },
+  ltex = {
+    settings = {
+      ltex = {
+        language = "en-GB",
       },
     },
   },
