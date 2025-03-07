@@ -1,17 +1,17 @@
 local lspconfig = require("lspconfig")
 local utils = require("lsp.utils")
 
-function current_python_path()
-  local venv_path = nil
+local function current_python_path()
+  local python_paths = {}
 
-  if io.open(".venv", "r") ~= nil then
-    venv_path = ".venv"
-  else
-    local poetry_venv_path = vim.fn.system("poetry env info -p")
-    venv_path = string.gsub(poetry_venv_path, "\n", "")
+  for path in string.gmatch(vim.fn.system("where python"), "[^\r\n]+") do
+    table.insert(python_paths, path)
   end
 
-  return venv_path .. "/bin/python"
+  local current_path = python_paths[1]
+  vim.lsp.log.error("[basedpyright] current_python_path = " .. current_path)
+
+  return current_path
 end
 
 local servers_with_configs = {

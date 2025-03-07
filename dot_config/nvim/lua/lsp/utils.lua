@@ -15,7 +15,7 @@ capabilities.textDocument.foldingRange = {
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client)
+local function on_attach(client)
   local function buf_keymap_set(key, func)
     vim.keymap.set("n", key, func, { noremap = true, silent = true, buffer = true })
   end

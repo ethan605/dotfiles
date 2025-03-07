@@ -9,7 +9,6 @@ return {
     "hrsh7th/vim-vsnip",    -- for Vim commands
     "nvim-lua/plenary.nvim",
     "onsails/lspkind-nvim", -- for LSP pictograms
-    -- "hrsh7th/cmp-vsnip",
     {
       "L3MON4D3/LuaSnip",
       version = "v2.*",
@@ -22,16 +21,12 @@ return {
 
     cmp.setup({
       sources = {
-        -- { name = "vsnip" },
         { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "buffer" },
       },
       snippet = {
-        expand = function(args)
-          -- vim.fn["vsnip#anonymous"](args.body)
-          require("luasnip").lsp_expand(args.body)
-        end,
+        expand = function(args) require("luasnip").lsp_expand(args.body) end,
       },
       formatting = {
         format = require("lspkind").cmp_format({
@@ -42,10 +37,10 @@ return {
           show_labelDetails = true,
         }),
       },
-      window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
-      },
+      -- window = {
+      --   completion = cmp.config.window.bordered(),
+      --   documentation = cmp.config.window.bordered(),
+      -- },
       mapping = cmp.mapping.preset.insert({
         -- ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
