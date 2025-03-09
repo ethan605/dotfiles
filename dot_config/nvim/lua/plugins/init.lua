@@ -59,7 +59,6 @@ require("lazy").setup({
   { "hat0uma/csvview.nvim",                         opts = {} },
   { "kylechui/nvim-surround",                       opts = {} },
   { "windwp/nvim-autopairs",                        opts = {} },
-  { "ovk/endec.nvim",                               opts = {}, event = "VeryLazy" },
   { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
   {
     "connorholyday/vim-snazzy",

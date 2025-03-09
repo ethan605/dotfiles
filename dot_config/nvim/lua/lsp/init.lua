@@ -1,6 +1,7 @@
 local lspconfig = require("lspconfig")
 local utils = require("lsp.utils")
 
+-- For basedpyright
 local function current_python_path()
   local python_paths = {}
 
@@ -16,29 +17,13 @@ end
 
 local servers_with_configs = {
   -- Plug-n-Play LSPs
-  basedpyright = {
-    settings = {
-      basedpyright = {
-        disableOrganizeImports = true,
-        analysis = {
-          autoImportCompletions = true,
-          autoSearchPaths = true,
-          diagnosticMode = "openFilesOnly",
-          typeCheckingMode = "standard",
-          useLibraryCodeForTypes = true,
-        },
-      },
-      python = {
-        pythonPath = current_python_path(),
-      },
-    },
-  },
   docker_compose_language_service = {},
   dockerls = {},
   eslint = {},
   gopls = {},
   html = {},
   jsonls = {},
+  -- pyright = {},
   -- postgres_lsp = {}, @TODO: to visit later when it's more mature
   tailwindcss = {},
   terraformls = {},
@@ -179,50 +164,66 @@ local servers_with_configs = {
     },
   },
 
-  --[[ Disabled due to no active usage
-  cssls = {},
-  denols = {},
-  elixirls = {}
-  graphql = {},
-  jdtls = {},
-  kotlin_language_server = {},
-  pyright = {},
-  solargraph = {},
-  vimls = {},
+  -- Disabled due to no active usage
+  -- cssls = {},
+  -- denols = {},
+  -- elixirls = {}
+  -- graphql = {},
+  -- jdtls = {},
+  -- kotlin_language_server = {},
+  -- solargraph = {},
+  -- vimls = {},
 
-  clangd = {
-    cmd = { "/opt/homebrew/opt/llvm/bin/clangd", "--clang-tidy" },
+  basedpyright = {
     settings = {
-      clangd = {
-        InlayHints = {
-          Designators = true,
-          Enabled = true,
-          ParameterNames = true,
-          DeducedTypes = true,
+      basedpyright = {
+        disableOrganizeImports = true,
+        analysis = {
+          autoImportCompletions = true,
+          autoSearchPaths = true,
+          diagnosticMode = "openFilesOnly",
+          typeCheckingMode = "standard",
+          useLibraryCodeForTypes = true,
         },
-        fallbackFlags = { "-std=c++20" },
+      },
+      python = {
+        pythonPath = (function()
+          local python_paths = {}
+
+          for path in string.gmatch(vim.fn.system("where python"), "[^\r\n]+") do
+            table.insert(python_paths, path)
+          end
+
+          local current_path = python_paths[1]
+          vim.lsp.log.error("[basedpyright] current_python_path = " .. current_path)
+
+          return current_path
+        end)(),
       },
     },
   },
-  pylsp = {
-    settings = {
-      pylsp = {
-        configurationSources = {},
-        plugins = {
-          autopep8 = { enabled = false },
-          flake8 = { enabled = false },
-          mccabe = { enabled = false },
-          pycodestyle = { enabled = false },
-          pyflake = { enabled = false },
-          yapf = { enabled = false },
-
-          rope_autoimport = { enabled = false },
-          rope_completion = { enabled = false },
-        },
-      },
-    },
-  },
-  ]]
+  -- clangd = {
+  --   cmd = { "/opt/homebrew/opt/llvm/bin/clangd", "--clang-tidy" },
+  --   settings = {
+  --     clangd = {
+  --       InlayHints = {
+  --         Designators = true,
+  --         Enabled = true,
+  --         ParameterNames = true,
+  --         DeducedTypes = true,
+  --       },
+  --       fallbackFlags = { "-std=c++20" },
+  --     },
+  --   },
+  -- },
+  -- pylyzer = {
+  --   python = {
+  --     checkOnType = false,
+  --     diagnostics = true,
+  --     inlayHints = true,
+  --     smartCompletion = true,
+  --   },
+  -- },
 }
 
 for server, configs in pairs(servers_with_configs) do
