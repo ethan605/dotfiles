@@ -1,20 +1,6 @@
 local lspconfig = require("lspconfig")
 local utils = require("lsp.utils")
 
--- For basedpyright
-local function current_python_path()
-  local python_paths = {}
-
-  for path in string.gmatch(vim.fn.system("where python"), "[^\r\n]+") do
-    table.insert(python_paths, path)
-  end
-
-  local current_path = python_paths[1]
-  vim.lsp.log.error("[basedpyright] current_python_path = " .. current_path)
-
-  return current_path
-end
-
 local servers_with_configs = {
   -- Plug-n-Play LSPs
   docker_compose_language_service = {},
@@ -23,7 +9,7 @@ local servers_with_configs = {
   gopls = {},
   html = {},
   jsonls = {},
-  -- pyright = {},
+  pyright = {},
   -- postgres_lsp = {}, @TODO: to visit later when it's more mature
   tailwindcss = {},
   terraformls = {},
@@ -174,34 +160,34 @@ local servers_with_configs = {
   -- solargraph = {},
   -- vimls = {},
 
-  basedpyright = {
-    settings = {
-      basedpyright = {
-        disableOrganizeImports = true,
-        analysis = {
-          autoImportCompletions = true,
-          autoSearchPaths = true,
-          diagnosticMode = "openFilesOnly",
-          typeCheckingMode = "standard",
-          useLibraryCodeForTypes = true,
-        },
-      },
-      python = {
-        pythonPath = (function()
-          local python_paths = {}
-
-          for path in string.gmatch(vim.fn.system("where python"), "[^\r\n]+") do
-            table.insert(python_paths, path)
-          end
-
-          local current_path = python_paths[1]
-          vim.lsp.log.error("[basedpyright] current_python_path = " .. current_path)
-
-          return current_path
-        end)(),
-      },
-    },
-  },
+  -- basedpyright = {
+  --   settings = {
+  --     basedpyright = {
+  --       disableOrganizeImports = true,
+  --       analysis = {
+  --         autoImportCompletions = true,
+  --         autoSearchPaths = true,
+  --         diagnosticMode = "openFilesOnly",
+  --         typeCheckingMode = "standard",
+  --         useLibraryCodeForTypes = true,
+  --       },
+  --     },
+  --     python = {
+  --       pythonPath = (function()
+  --         local python_paths = {}
+  --
+  --         for path in string.gmatch(vim.fn.system("where python"), "[^\r\n]+") do
+  --           table.insert(python_paths, path)
+  --         end
+  --
+  --         local current_path = python_paths[1]
+  --         vim.lsp.log.error("[basedpyright] current_python_path = " .. current_path)
+  --
+  --         return current_path
+  --       end)(),
+  --     },
+  --   },
+  -- },
   -- clangd = {
   --   cmd = { "/opt/homebrew/opt/llvm/bin/clangd", "--clang-tidy" },
   --   settings = {
