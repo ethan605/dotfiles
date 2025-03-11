@@ -67,6 +67,11 @@ require("lazy").setup({
     config = function() vim.cmd.colorscheme("snazzy") end,
   },
   {
+    "mistweaverco/kulala.nvim",
+    ft = { "http", "rest" },
+    opts = {},
+  },
+  {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,

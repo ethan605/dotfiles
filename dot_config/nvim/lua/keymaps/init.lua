@@ -7,6 +7,10 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 -- Hide search highlights
 vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>", opts)
 
+-- For kulala.nvim
+vim.keymap.set({ "n", "v" }, "<leader>Rb", require("kulala").scratchpad, opts)
+vim.keymap.set({ "n", "v" }, "<leader>Rs", require("kulala").run, opts)
+
 -- For leap.nvim
 vim.keymap.set({ "n", "x", "o" }, "<leader>s", "<Plug>(leap-forward)", opts)
 vim.keymap.set({ "n", "x", "o" }, "<leader>S", "<Plug>(leap-backward)", opts)
