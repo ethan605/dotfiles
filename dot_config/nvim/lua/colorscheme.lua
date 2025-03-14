@@ -114,6 +114,7 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.python", { link = "@const
 -- Semantic highlights - typescript/javascript
 -- vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@constant.tsx" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescriptreact", { link = "@constant.tsx" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.parameter.declaration.typescriptreact", { link = "Identifier" })
 
 return {
   snazzy_colors = snazzy_colors,

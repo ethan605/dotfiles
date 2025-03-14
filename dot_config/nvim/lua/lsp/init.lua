@@ -170,6 +170,12 @@ local servers_with_configs = {
   --         diagnosticMode = "openFilesOnly",
   --         typeCheckingMode = "standard",
   --         useLibraryCodeForTypes = true,
+  --         -- inlayHints = {
+  --         --   callArgumentNames = false,
+  --         --   functionReturnTypes = false,
+  --         --   genericTypes = false,
+  --         --   variableTypes = false,
+  --         -- },
   --       },
   --     },
   --     python = {
