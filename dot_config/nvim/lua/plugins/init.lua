@@ -90,6 +90,11 @@ require("lazy").setup({
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  -- {
+  --   'stevearc/oil.nvim',
+  --   opts = {},
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- },
 
   -- LSPs & TreeSitter
   "neovim/nvim-lspconfig",

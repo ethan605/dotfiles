@@ -32,6 +32,7 @@ return {
     },
     git = {
       files = { cwd = vim.fn.getcwd() },
+      -- status = { cwd = vim.fn.getcwd() },
     },
     lsp = {
       async_or_timeout = 3000, -- make lsp requests synchronous so they work with none-ls
