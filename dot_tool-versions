@@ -6,7 +6,7 @@ firebase 13.30.0
 gcloud 515.0.0
 golang 1.24.0
 helm 3.17.0
-java openjdk-22
+java openjdk-24
 kubecolor 0.5.0
 kubectl 1.30.8
 kubectx 0.9.5

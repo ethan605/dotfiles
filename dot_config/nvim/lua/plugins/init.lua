@@ -60,16 +60,13 @@ require("lazy").setup({
   { "kylechui/nvim-surround",                       opts = {} },
   { "windwp/nvim-autopairs",                        opts = {} },
   { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
+  { "mistweaverco/kulala.nvim",                     opts = {}, ft = { "http", "rest" } },
+  { "refractalize/oil-git-status.nvim",             opts = {}, dependencies = { "stevearc/oil.nvim" } },
   {
     "connorholyday/vim-snazzy",
     -- "alexwu/nvim-snazzy",
     -- dependencies = { "rktjmp/lush.nvim" },
     config = function() vim.cmd.colorscheme("snazzy") end,
-  },
-  {
-    "mistweaverco/kulala.nvim",
-    ft = { "http", "rest" },
-    opts = {},
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -90,16 +87,31 @@ require("lazy").setup({
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  -- {
-  --   'stevearc/oil.nvim',
-  --   opts = {},
-  --   dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- },
+  {
+    "stevearc/oil.nvim",
+    opts = {
+      win_options = {
+        signcolumn = "yes:2",
+      },
+    },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 
   -- LSPs & TreeSitter
   "neovim/nvim-lspconfig",
   -- require("plugins.nvim-dap"),
-  { "nvim-java/nvim-java", opts = {}, dependencies = { "mfussenegger/nvim-dap" } },
+  {
+    "nvim-java/nvim-java",
+    opts = {
+      spring_boot_tools = {
+        enable = false,
+      },
+      jdk = {
+        auto_install = false,
+      },
+    },
+    dependencies = { "mfussenegger/nvim-dap" },
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
