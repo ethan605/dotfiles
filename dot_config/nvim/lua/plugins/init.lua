@@ -61,7 +61,6 @@ require("lazy").setup({
   { "windwp/nvim-autopairs",                        opts = {} },
   { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
   { "mistweaverco/kulala.nvim",                     opts = {}, ft = { "http", "rest" } },
-  { "refractalize/oil-git-status.nvim",             opts = {}, dependencies = { "stevearc/oil.nvim" } },
   {
     "connorholyday/vim-snazzy",
     -- "alexwu/nvim-snazzy",
@@ -94,7 +93,10 @@ require("lazy").setup({
         signcolumn = "yes:2",
       },
     },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "refractalize/oil-git-status.nvim",
+    },
   },
 
   -- LSPs & TreeSitter
