@@ -51,6 +51,7 @@ require("lazy").setup({
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-tree"),
   require("plugins.nvim-ufo"),
+  require("plugins.oil"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
 
@@ -85,18 +86,6 @@ require("lazy").setup({
     opts = {},
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
-    "stevearc/oil.nvim",
-    opts = {
-      win_options = {
-        signcolumn = "yes:2",
-      },
-    },
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "refractalize/oil-git-status.nvim",
-    },
   },
 
   -- LSPs & TreeSitter
