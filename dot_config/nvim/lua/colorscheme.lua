@@ -116,6 +116,10 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.python", { link = "@const
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescriptreact", { link = "@constant.tsx" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.parameter.declaration.typescriptreact", { link = "Identifier" })
 
+-- Semantic highlights - java
+vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "Keyword" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.property.readonly.java", { link = "Constant" })
+
 return {
   snazzy_colors = snazzy_colors,
 }

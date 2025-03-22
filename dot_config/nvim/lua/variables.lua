@@ -1,11 +1,11 @@
 -- Nvim providers
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
-vim.g.python3_host_prog = "$HOME/.asdf/shims/python"
+vim.g.python3_host_prog = vim.fn.expand("~/.asdf/shims/python")
 
--- TODO: Figure out a better way to provide `g:node_host_prog`
+-- TODO: figure out better way to provide `node_host_prog`
 vim.g.loaded_node_provider = 0
--- vim.g.node_host_prog = "$HOME/.asdf/installs/nodejs/$NODE_VERSION/bin/neovim-node-host"
+-- vim.g.node_host_prog = vim.fn.expand("~/.asdf/shims/neovim-node-host")
 
 -- For markdown-preview
 vim.g.mkdp_filetypes = { "markdown" }

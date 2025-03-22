@@ -99,7 +99,7 @@ require("lazy").setup({
   -- LSPs & TreeSitter
   "neovim/nvim-lspconfig",
   -- require("plugins.nvim-dap"),
-  -- { "nvim-java/nvim-java", opts = {}, dependencies = { "mfussenegger/nvim-dap" } },
+  { "nvim-java/nvim-java", opts = {}, dependencies = { "mfussenegger/nvim-dap" } },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
