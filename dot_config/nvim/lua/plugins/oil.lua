@@ -60,6 +60,7 @@ return {
 
     oil.setup({
       default_file_explorer = false,
+      delete_to_trash = true,
       view_options = {
         is_hidden_file = function(name, bufnr)
           local dir = oil.get_current_dir(bufnr)
