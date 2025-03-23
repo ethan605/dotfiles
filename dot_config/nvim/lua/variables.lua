@@ -33,3 +33,6 @@ vim.g.vista_executive_for = {
   zsh = "ctags",
 }
 vim.g["vista#renderer#enable_icon"] = 1
+
+-- For vim-dadbod-ui
+vim.g.db_ui_use_nerd_fonts = 1

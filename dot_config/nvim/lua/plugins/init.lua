@@ -29,31 +29,28 @@ require("lazy").setup({
   -- Vimscript plugins. TODO: replace with Lua alternatives
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
-  -- {
-  --   "liuchengxu/vista.vim",
-  --   dependencies = { "junegunn/fzf" },
-  --   keys = {
-  --     { "<leader>v", ":Vista finder<CR>" },
-  --     { "<leader>V", ":Vista!!<CR>" },
-  --   },
-  -- },
+  -- require("plugins.vista"),
 
   -- Common plugins
   require("plugins.bufferline"),
+  require("plugins.colorscheme"),
   require("plugins.comment"),
   require("plugins.dashboard"),
-  require("plugins.fzf-lua"), ---@diagnostic disable-line: different-requires
+  require("plugins.fzf-lua"),
   require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
   require("plugins.lualine"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
   require("plugins.nvim-highlight-colors"),
+  -- require("plugins.nvim-dap"), TODO: Configure nvim-dap properly
+  require("plugins.nvim-java"),
   require("plugins.nvim-tree"),
   require("plugins.nvim-ufo"),
   require("plugins.oil"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
+  require("plugins.vim-dadbod-ui"),
 
   "ggandor/leap.nvim",
   "sindrets/diffview.nvim",
@@ -62,12 +59,6 @@ require("lazy").setup({
   { "windwp/nvim-autopairs",                        opts = {} },
   { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
   { "mistweaverco/kulala.nvim",                     opts = {}, ft = { "http", "rest" } },
-  {
-    "connorholyday/vim-snazzy",
-    -- "alexwu/nvim-snazzy",
-    -- dependencies = { "rktjmp/lush.nvim" },
-    config = function() vim.cmd.colorscheme("snazzy") end,
-  },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
@@ -90,25 +81,6 @@ require("lazy").setup({
 
   -- LSPs & TreeSitter
   "neovim/nvim-lspconfig",
-  -- require("plugins.nvim-dap"),
-  {
-    "nvim-java/nvim-java",
-    opts = {
-      spring_boot_tools = {
-        enable = false,
-      },
-      jdk = {
-        auto_install = false,
-      },
-    },
-    dependencies = { "mfussenegger/nvim-dap" },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
+  { "nvim-treesitter/nvim-treesitter",             build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 }, lazy_opts)
