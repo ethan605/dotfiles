@@ -270,6 +270,11 @@ function mux() {
   tmux attach -t "$workspace" || tmux new -s "$workspace"
 }
 
+function vo() {
+  local dir=${1:-.}
+  nvim +"cd $dir" +"Oil --preview $dir"
+}
+
 {{- if eq .chezmoi.os "linux" }}
 
 function nord_dns() {
