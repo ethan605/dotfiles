@@ -45,6 +45,8 @@ return {
   },
   config = function()
     local git_status = new_git_status()
+    local showing_detail_view = false
+    local sorting_by_size_asc = true
 
     -- Clear git status cache on refresh
     local refresh = require("oil.actions").refresh
@@ -54,12 +56,13 @@ return {
       orig_refresh(...)
     end
 
-    require("oil").setup({
+    local oil = require("oil")
+
+    oil.setup({
       default_file_explorer = false,
-      columns = { "icon", "permissions", "mtime" },
       view_options = {
         is_hidden_file = function(name, bufnr)
-          local dir = require("oil").get_current_dir(bufnr)
+          local dir = oil.get_current_dir(bufnr)
           local is_dotfile = vim.startswith(name, ".") and name ~= "../"
           -- if no local directory (e.g. for ssh connections), just hide dotfiles
           if not dir then return is_dotfile end
@@ -77,16 +80,41 @@ return {
       },
       keymaps = {
         ["g?"] = { "actions.show_help", mode = "n" },
-        ["<CR>"] = "actions.select",
-        ["go"] = { "actions.select" },
+        ["g]"] = "actions.select",
+        ["g["] = { "actions.parent", mode = "n" },
         ["gp"] = "actions.preview",
         ["gC"] = { "actions.close", mode = "n" },
         ["gr"] = "actions.refresh",
-        ["<BS>"] = { "actions.parent", mode = "n" },
         ["g~"] = { "actions.open_cwd", mode = "n" },
-        ["gS"] = { "actions.change_sort", mode = "n" },
         ["g."] = { "actions.toggle_hidden", mode = "n" },
         ["g\\"] = { "actions.toggle_trash", mode = "n" },
+        ["gd"] = {
+          desc = "Toggle file detail view",
+          callback = function()
+            showing_detail_view = not showing_detail_view
+            if showing_detail_view then
+              oil.set_columns({
+                "icon",
+                { "permissions", highlight = "Keyword" },
+                { "size",        highlight = "Special" },
+                { "mtime",       highlight = "Comment" },
+              })
+            else
+              oil.set_columns({ "icon" })
+            end
+          end,
+        },
+        ["gS"] = {
+          desc = "Toggle sorting by size",
+          callback = function()
+            sorting_by_size_asc = not sorting_by_size_asc
+            if sorting_by_size_asc then
+              oil.set_sort({ { "size", "asc" } })
+            else
+              oil.set_sort({ { "size", "desc" } })
+            end
+          end,
+        },
       },
       use_default_keymaps = false,
     })
