@@ -270,7 +270,7 @@ function mux() {
   tmux attach -t "$workspace" || tmux new -s "$workspace"
 }
 
-function vo() {
+function nvim-oil() {
   local dir=${1:-.}
   nvim +"cd $dir" +"Oil --preview $dir"
 }
@@ -327,6 +327,7 @@ alias c=chezmoi
 alias d='nvim -d'
 alias f=vifm
 alias k=kubecolor
+alias o=nvim-oil
 alias v=nvim
 alias w='watch --color --differences --errexit --exec'
 # ]]]
