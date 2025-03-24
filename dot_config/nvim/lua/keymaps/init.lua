@@ -29,6 +29,10 @@ vim.keymap.set("n", "<C-o>", ":NvimTreeToggle<CR>", opts)
 -- vim.keymap.set("n", "zm", require("ufo").closeFoldsWith, opts)
 vim.keymap.set("n", "zK", require("ufo").peekFoldedLinesUnderCursor, opts)
 
+-- For vim-dadbod-ui
+vim.keymap.set({ "v" }, "<leader>e", "<Plug>(DBUI_ExecuteQuery)", opts)
+vim.keymap.set({ "n" }, "<leader>w", "<Plug>(DBUI_SaveQuery)", opts)
+
 ---@diagnostic disable: different-requires
 require("keymaps.bufferline")
 require("keymaps.fzf-lua")

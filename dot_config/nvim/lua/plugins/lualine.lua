@@ -36,7 +36,7 @@ return {
         icons_enabled = true,
         section_separators = "",
         theme = custom_powerline,
-        disabled_filetypes = { "NvimTree" },
+        disabled_filetypes = { "NvimTree", "dbui" },
       },
       extensions = { "oil" },
       sections = {

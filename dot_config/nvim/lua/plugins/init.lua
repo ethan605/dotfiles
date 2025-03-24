@@ -36,7 +36,7 @@ require("lazy").setup({
   require("plugins.colorscheme"),
   require("plugins.comment"),
   require("plugins.dashboard"),
-  require("plugins.fzf-lua"),
+  require("plugins.fzf-lua"), ---@diagnostic disable-line: different-requires
   require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
   require("plugins.lualine"),
