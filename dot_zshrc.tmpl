@@ -176,7 +176,10 @@ function __load-work-envs() {
 {{- if eq .work.email "thanh@encord.com" }}
 
   export WORK_DIR="$HOME/work"
-  export PATH="$WORK_DIR/.env/bin:$PATH"
+
+  if [[ -d "$WORK_DIR/.env/bin" ]]; then
+    export PATH="$WORK_DIR/.env/bin:$PATH"
+  fi
 
   if [[ -f "$WORK_DIR/.env/.zshrc" ]]; then
     source "$WORK_DIR/.env/.zshrc"
