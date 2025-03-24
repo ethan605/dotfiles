@@ -1,6 +1,9 @@
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = { "nvimtools/none-ls-extras.nvim" },
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim",
+    "gbprod/none-ls-shellcheck.nvim",
+  },
   config = function()
     local none_ls = require("null-ls")
 
@@ -15,7 +18,6 @@ return {
         none_ls.builtins.diagnostics.zsh,
 
         -- formatters
-        -- none_ls.builtins.formatting.pg_format,
         none_ls.builtins.formatting.prettier,
         none_ls.builtins.formatting.shfmt,
         none_ls.builtins.formatting.sqlfluff.with({
@@ -27,10 +29,13 @@ return {
         none_ls.builtins.formatting.terraform_fmt,
 
         -- from none-ls-extras
-        require("none-ls.diagnostics.ruff"),
         require("none-ls.formatting.ruff"),
         require("none-ls.formatting.ruff_format"),
         require("none-ls.formatting.rustfmt"),
+
+        -- from none-ls-shellcheck
+        require("none-ls-shellcheck.code_actions"),
+        require("none-ls-shellcheck.diagnostics"),
       },
       on_attach = function()
         vim.keymap.set({ "n", "v" }, "<leader>f", vim.lsp.buf.format, { noremap = true, silent = true, buffer = true })
