@@ -11,6 +11,7 @@ local servers_with_configs = {
   jdtls = {},
   jsonls = {},
   ruff = {},
+  sqls = {},
   tailwindcss = {},
   terraformls = {},
   yamlls = {},
