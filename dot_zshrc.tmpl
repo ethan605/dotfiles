@@ -275,7 +275,7 @@ function mux() {
 
 function nvim-oil() {
   local dir=${1:-.}
-  nvim +"cd $dir" +"Oil --preview $dir"
+  nvim +"cd $dir" +"Oil --preview"
 }
 
 {{- if eq .chezmoi.os "linux" }}
