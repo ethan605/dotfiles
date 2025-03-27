@@ -58,4 +58,5 @@ return {
     debounce_text_changes = 150,
   },
   on_attach = on_attach,
+  root_dir = vim.fn.getcwd(),
 }

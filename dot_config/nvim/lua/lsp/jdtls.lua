@@ -1,3 +1,6 @@
+-- To debug
+-- require("lspconfig").jdtls.setup({})
+
 return {
   cmd = {
     vim.fn.expand("~/.asdf/shims/java"),
@@ -23,5 +26,4 @@ return {
     vim.fn.expand("~/.cache/nvim/jdtls/workspaces/_Users_encord_Downloads_encord_be_challenge"),
   },
   filetypes = { "java" },
-  root_dir = vim.fn.getcwd(),
 }
