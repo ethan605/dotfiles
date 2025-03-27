@@ -2,10 +2,7 @@
 -- local utils = require("lsp.common_configs")
 
 local legacy_servers_with_configs = {
-  eslint = {},
-  gopls = {},
   html = {},
-  jdtls = {},
   jsonls = {},
   tailwindcss = {},
   terraformls = {},
@@ -25,13 +22,15 @@ local legacy_servers_with_configs = {
 vim.diagnostic.config(require("lsp.diagnostic_configs"))
 vim.lsp.config("*", require("lsp.common_configs"))
 
-vim.lsp.config.basedpyright = require("lsp.basedpyright")
+-- vim.lsp.config.basedpyright = require("lsp.basedpyright")
 vim.lsp.config.bash_ls = require("lsp.bash_ls")
 vim.lsp.config.clangd = require("lsp.clangd")
 vim.lsp.config.diagnostic_ls = require("lsp.diagnostic_ls")
 vim.lsp.config.docker_compose_ls = require("lsp.docker_compose_ls")
 vim.lsp.config.docker_ls = require("lsp.docker_ls")
 vim.lsp.config.eslint = require("lsp.eslint")
+vim.lsp.config.gopls = require("lsp.gopls")
+vim.lsp.config.jdtls = require("lsp.jdtls")
 vim.lsp.config.ltex = require("lsp.ltex")
 vim.lsp.config.lua_ls = require("lsp.lua_ls")
 vim.lsp.config.pyright = require("lsp.pyright")
@@ -49,6 +48,8 @@ vim.lsp.enable({
   "docker_compose_ls",
   "docker_ls",
   "eslint",
+  "gopls",
+  "jdtls",
   "ltex",
   "lua_ls",
   "pyright",
