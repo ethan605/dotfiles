@@ -79,7 +79,7 @@ require("lazy").setup({
   },
 
   -- LSPs & TreeSitter
-  "neovim/nvim-lspconfig",
+  -- "neovim/nvim-lspconfig",
   { "nvim-treesitter/nvim-treesitter",             build = ":TSUpdate" },
   { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 }, lazy_opts)
