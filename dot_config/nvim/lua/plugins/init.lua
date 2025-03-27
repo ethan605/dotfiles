@@ -54,11 +54,10 @@ require("lazy").setup({
 
   "ggandor/leap.nvim",
   "sindrets/diffview.nvim",
-  { "hat0uma/csvview.nvim",                         opts = {} },
-  { "kylechui/nvim-surround",                       opts = {} },
-  { "windwp/nvim-autopairs",                        opts = {} },
-  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", opts = {}, event = "LspAttach" },
-  { "mistweaverco/kulala.nvim",                     opts = {}, ft = { "http", "rest" } },
+  { "hat0uma/csvview.nvim",     opts = {} },
+  { "kylechui/nvim-surround",   opts = {} },
+  { "windwp/nvim-autopairs",    opts = {} },
+  { "mistweaverco/kulala.nvim", opts = {}, ft = { "http", "rest" } },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },

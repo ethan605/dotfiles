@@ -1,6 +1,3 @@
-local default_style = { bg = "none", bold = false, italic = true }
-local selected_style = { bg = "none", bold = true, italic = false }
-
 local function diagnostics_indicator(count, level)
   local icon = " "
 
@@ -19,6 +16,12 @@ return {
   config = function()
     ---@diagnostic disable-next-line: different-requires
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
+    local default_style = { bg = snazzy_colors.black, bold = false, italic = true }
+    local selected_style = { bg = snazzy_colors.black, bold = true, italic = false }
+    local error_style = { bg = snazzy_colors.black, fg = snazzy_colors.red }
+    local hint_style = { bg = snazzy_colors.black, fg = snazzy_colors.blue }
+    local info_style = { bg = snazzy_colors.black, fg = snazzy_colors.green }
+    local warn_style = { bg = snazzy_colors.black, fg = snazzy_colors.yellow }
 
     ---@diagnostic disable-next-line: different-requires
     require("bufferline").setup({
@@ -30,49 +33,50 @@ return {
 
         -- Default styles
         diagnostic = default_style,
-        modified = default_style,
-        numbers = default_style,
-        pick = { link = "DiagnosticOk" },
         error = default_style,
         error_diagnostic = default_style,
         hint = default_style,
         hint_diagnostic = default_style,
         info = default_style,
         info_diagnostic = default_style,
+        modified = default_style,
+        numbers = default_style,
+        pick = info_style,
         warning = default_style,
         warning_diagnostic = default_style,
 
         -- Selected styles
         buffer_selected = selected_style,
         diagnostic_selected = selected_style,
+        error_diagnostic_selected = error_style,
+        error_selected = error_style,
+        hint_diagnostic_selected = hint_style,
+        hint_selected = hint_style,
+        info_diagnostic_selected = info_style,
+        info_selected = info_style,
         modified_selected = selected_style,
         numbers_selected = selected_style,
-        pick_selected = { link = "DiagnosticError" },
-        error_diagnostic_selected = { link = "DiagnosticError" },
-        error_selected = { link = "DiagnosticError" },
-        hint_diagnostic_selected = { link = "DiagnosticHint" },
-        hint_selected = { link = "DiagnosticHint" },
-        info_diagnostic_selected = { link = "DiagnosticOk" },
-        info_selected = { link = "DiagnosticOk" },
-        warning_diagnostic_selected = { link = "DiagnosticWarn" },
-        warning_selected = { link = "DiagnosticWarn" },
+        pick_selected = error_style,
+        warning_diagnostic_selected = warn_style,
+        warning_selected = warn_style,
 
         -- Visible styles
         buffer_visible = default_style,
         diagnostic_visible = default_style,
-        modified_visible = default_style,
-        numbers_visible = selected_style,
-        pick_visible = selected_style,
         error_diagnostic_visible = default_style,
         error_visible = default_style,
         hint_diagnostic_visible = default_style,
         hint_visible = default_style,
         info_diagnostic_visible = default_style,
         info_visible = default_style,
+        modified_visible = default_style,
+        numbers_visible = selected_style,
+        pick_visible = hint_style,
         warning_diagnostic_visible = default_style,
         warning_visible = default_style,
 
-        tab = default_style,
+        -- Tab styles
+        tab = { bg = snazzy_colors.black, bold = false, italic = false },
         tab_selected = { bg = "NvimDarkGrey1", bold = true, fg = snazzy_colors.blue },
         tab_separator = { bg = snazzy_colors.black, fg = snazzy_colors.black },
         tab_separator_selected = { bg = "NvimDarkGrey1", fg = "NvimDarkGrey1" },
