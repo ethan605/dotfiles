@@ -134,7 +134,11 @@ context_alias = "prod-us"
 
 [[kubernetes.contexts]]
 context_pattern = "arn:aws:eks:eu-west-2:.*:cluster/private-encord-app-cluster"
-context_alias = "on-prem-test" 
+context_alias = "vpc-aws" 
+
+[[kubernetes.contexts]]
+context_pattern = "gke_encord-on-prem-deployment_.*_encord-app-cluster"
+context_alias = "vpc-gcp" 
 
 [gcloud]
 format = ' [$symbol( $project[@](bright-black)$region)]($style)'
