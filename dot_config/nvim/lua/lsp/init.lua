@@ -5,8 +5,6 @@
 -- graphql
 -- kotlin_language_server
 -- postgres_lsp @TODO: to visit later when it's more mature
--- solargraph
--- vimls
 
 vim.diagnostic.config(require("lsp.diagnostic_configs"))
 vim.lsp.config("*", require("lsp.common_configs"))
@@ -26,10 +24,12 @@ vim.lsp.config.lua_ls = require("lsp.lua_ls")
 vim.lsp.config.pyright = require("lsp.pyright")
 vim.lsp.config.ruff = require("lsp.ruff")
 vim.lsp.config.rust_analyzer = require("lsp.rust_analyzer")
+vim.lsp.config.solargraph = require("lsp.solargraph")
 vim.lsp.config.sqls = require("lsp.sqls")
 vim.lsp.config.tailwindcss = require("lsp.tailwindcss")
 vim.lsp.config.terraform_ls = require("lsp.terraform_ls")
 vim.lsp.config.ts_ls = require("lsp.ts_ls")
+vim.lsp.config.vim_ls = require("lsp.vim_ls")
 vim.lsp.config.yaml_ls = require("lsp.yaml_ls")
 
 vim.lsp.enable({
@@ -48,9 +48,11 @@ vim.lsp.enable({
   "pyright",
   "ruff",
   "rust_analyzer",
+  "solargraph",
   "sqls",
   "tailwindcss",
   "terraform_ls",
   "ts_ls",
+  "vim_ls",
   "yaml_ls",
 })
