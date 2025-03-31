@@ -17,6 +17,7 @@ vim.lsp.config.docker_compose_ls = require("lsp.docker_compose_ls")
 vim.lsp.config.docker_ls = require("lsp.docker_ls")
 vim.lsp.config.eslint = require("lsp.eslint")
 vim.lsp.config.gopls = require("lsp.gopls")
+vim.lsp.config.harper_ls = require("lsp.harper_ls")
 vim.lsp.config.html_ls = require("lsp.html_ls")
 vim.lsp.config.json_ls = require("lsp.json_ls")
 vim.lsp.config.ltex = require("lsp.ltex")
@@ -41,6 +42,7 @@ vim.lsp.enable({
   "docker_ls",
   "eslint",
   "gopls",
+  "harper_ls",
   "html_ls",
   "json_ls",
   "ltex",
