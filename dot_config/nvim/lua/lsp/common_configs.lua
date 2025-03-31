@@ -1,3 +1,4 @@
+---@class lsp.ClientCapabilities
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -13,33 +14,18 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local function on_attach(client)
-  local function buf_keymap_set(key, func)
-    vim.keymap.set("n", key, func, { noremap = true, silent = true, buffer = true })
-  end
-
+---Use an on_attach function to only map the following keys
+---after the language server attaches to the current buffer
+---@param client vim.lsp.Client
+---@param bufnr integer
+local function on_attach(client, bufnr)
   if client.server_capabilities.inlayHintProvider then vim.lsp.inlay_hint.enable(true) end
 
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_keymap_set("gN", vim.lsp.buf.rename)
-  buf_keymap_set("K", vim.lsp.buf.hover)
-  buf_keymap_set("[d", function() vim.diagnostic.jump({ count = -1, float = false }) end)
-  buf_keymap_set("]d", function() vim.diagnostic.jump({ count = 1, float = false }) end)
-  buf_keymap_set("<C-k>", vim.diagnostic.open_float)
-
-  -- Keymaps using default vim.lsp.buf utils, replaced by fzf-lua
-  -- buf_keymap_set("gd", vim.lsp.buf.definition)
-  -- buf_keymap_set("gD", vim.lsp.buf.declaration)
-  -- buf_keymap_set("gi", vim.lsp.buf.type_definition)
-  -- buf_keymap_set("gI", vim.lsp.buf.implementation)
-  -- buf_keymap_set("gr", vim.lsp.buf.references)
-  -- buf_keymap_set("<space>gd", ":vsplit | lua vim.lsp.buf.definition()<CR>")
-  -- buf_keymap_set("<space>gD", ":vsplit | lua vim.lsp.buf.declaration()<CR>")
-  -- buf_keymap_set("<space>gi", ":vsplit | lua vim.lsp.buf.type_definition()<CR>")
-  -- buf_keymap_set("<space>gI", ":vsplit | lua vim.lsp.buf.implementation()<CR>")
-  -- buf_keymap_set("<space>ca", vim.lsp.buf.code_action)
+  -- local opts = { noremap = true, silent = true, buffer = true }
+  -- vim.keymap.set("n", "<C-i>", function()
+  --   local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+  --   vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+  -- end, opts)
 end
 
 -- python.vim
@@ -52,11 +38,9 @@ end
 -- "]M" Jump forwards to end of current/next method/scope
 -- "]m" Jump forwards to begin of next method/scope
 
+---@class vim.lsp.Config
 return {
   capabilities = capabilities,
-  default_flags = {
-    debounce_text_changes = 150,
-  },
   on_attach = on_attach,
   root_dir = vim.fn.getcwd(),
 }

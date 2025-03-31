@@ -16,12 +16,15 @@ return {
   config = function()
     ---@diagnostic disable-next-line: different-requires
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
-    local default_style = { bg = snazzy_colors.black, bold = false, italic = true }
-    local selected_style = { bg = snazzy_colors.black, bold = true, italic = false }
-    local error_style = { bg = snazzy_colors.black, fg = snazzy_colors.red }
-    local hint_style = { bg = snazzy_colors.black, fg = snazzy_colors.blue }
-    local info_style = { bg = snazzy_colors.black, fg = snazzy_colors.green }
-    local warn_style = { bg = snazzy_colors.black, fg = snazzy_colors.yellow }
+
+    local clear_bg = { bg = snazzy_colors.black }
+
+    local default_style = vim.tbl_extend("keep", clear_bg, { bold = false, italic = true })
+    local selected_style = vim.tbl_extend("keep", clear_bg, { bold = true, italic = false })
+    local error_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.red })
+    local hint_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.blue })
+    local info_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.green })
+    local warn_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.yellow })
 
     ---@diagnostic disable-next-line: different-requires
     require("bufferline").setup({

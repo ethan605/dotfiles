@@ -1,3 +1,4 @@
+---@class vim.lsp.Config
 return {
   cmd = { "vscode-eslint-language-server", "--stdio" },
   filetypes = {

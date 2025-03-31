@@ -1,3 +1,4 @@
+---@return string
 local function get_current_python_path()
   local python_paths = {}
 
@@ -11,6 +12,7 @@ local function get_current_python_path()
   return current_path
 end
 
+---@class vim.lsp.Config
 return {
   cmd = { "basedpyright-langserver", "--stdio" },
   filetypes = { "python" },
