@@ -28,8 +28,8 @@ return {
   },
   settings = {
     ["harper-ls"] = {
-      userDictPath = vim.fn.expand("~/.config/harper-ls/user-dict.txt"),
-      fileDictPath = vim.fn.expand("~/.config/harper-ls/file-dicts"),
+      userDictPath = vim.fn.expand("~/.config/harper-ls/dictionary.txt"),
+      fileDictPath = vim.fn.expand("~/.config/harper-ls/file-dictionaries"),
       dialect = "British",
     },
   },
