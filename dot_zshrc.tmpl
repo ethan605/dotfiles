@@ -32,17 +32,18 @@ export REACT_EDITOR=nvim
 export CC=clang
 export CXX=clang++
 
-{{- if eq .chezmoi.os "linux" }}
-
-export TERMINFO=/usr/share/terminfo
-export GPG_TTY=$(tty)
-
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+
+{{- if eq .chezmoi.os "linux" }}
+
 export XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share
 export XDG_CONFIG_DIRS=/etc/xdg
+
+export TERMINFO=/usr/share/terminfo
+export GPG_TTY=$(tty)
 
 # Input method
 export GTK_IM_MODULE=fcitx
