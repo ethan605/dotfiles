@@ -2,6 +2,7 @@
 return {
   cmd = { "vscode-html-language-server", "--stdio" },
   filetypes = { "html", "templ" },
+  root_markers = { "package.json" },
   init_options = {
     configurationSection = { "html", "css", "javascript" },
     embeddedLanguages = {

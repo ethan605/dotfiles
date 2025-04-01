@@ -1,8 +1,6 @@
 ---@class lsp.ClientCapabilities
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- For jsonls
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     "documentation",
@@ -43,4 +41,5 @@ end
 return {
   capabilities = capabilities,
   on_attach = on_attach,
+  root_markers = { ".git" },
 }

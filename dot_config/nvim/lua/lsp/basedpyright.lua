@@ -16,6 +16,7 @@ end
 return {
   cmd = { "basedpyright-langserver", "--stdio" },
   filetypes = { "python" },
+  root_markers = { "pyproject.toml", "requirements.txt", ".venv" },
   settings = {
     basedpyright = {
       disableOrganizeImports = true,

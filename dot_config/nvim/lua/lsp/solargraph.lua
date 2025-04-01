@@ -2,6 +2,7 @@
 return {
   cmd = { "solargraph", "stdio" },
   filetypes = { "ruby" },
+  root_markers = { "Gemfile" },
   init_options = {
     formatting = true,
   },

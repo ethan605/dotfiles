@@ -10,7 +10,11 @@ return {
     "typescript.tsx",
   },
   init_options = { hostInfo = "neovim" },
-  root_markers = { "package.json" },
+  root_markers = {
+    "tsconfig.json",
+    "jsconfig.json",
+    "package.json",
+  },
   settings = {
     typescript = {
       inlayHints = {

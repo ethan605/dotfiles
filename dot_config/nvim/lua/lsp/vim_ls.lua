@@ -27,4 +27,10 @@ return {
     },
     vimruntime = "",
   },
+  root_markers = {
+    "runtime",
+    "nvim",
+    "autoload",
+    "plugin",
+  },
 }

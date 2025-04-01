@@ -5,4 +5,13 @@ return {
   init_options = {
     provideFormatter = true,
   },
+  capabilities = {
+    textDocument = {
+      completion = {
+        completionItem = {
+          snippetSupport = true,
+        },
+      },
+    },
+  },
 }

@@ -9,6 +9,11 @@ return {
     "typescriptreact",
     "typescript.tsx",
   },
+  root_markers = {
+    "tsconfig.json",
+    "jsconfig.json",
+    "package.json",
+  },
   init_options = {
     linters = {
       eslint = {
