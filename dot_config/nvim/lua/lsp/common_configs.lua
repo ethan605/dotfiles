@@ -1,6 +1,7 @@
 ---@class lsp.ClientCapabilities
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+-- For jsonls
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -29,10 +30,10 @@ local function on_attach(client, bufnr)
 end
 
 -- python.vim
--- "[[" Jump backwards to begin of current/previous toplevel
--- "[]" Jump backwards to end of previous toplevel
--- "][" Jump forwards to end of current toplevel
--- "]]" Jump forwards to begin of next toplevel
+-- "[[" Jump backwards to begin of current/previous top-level
+-- "[]" Jump backwards to end of previous top-level
+-- "][" Jump forwards to end of current top-level
+-- "]]" Jump forwards to begin of next top-level
 -- "[m" Jump backwards to begin of current/previous method/scope
 -- "[M" Jump backwards to end of previous method/scope
 -- "]M" Jump forwards to end of current/next method/scope
@@ -42,5 +43,4 @@ end
 return {
   capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = vim.fn.getcwd(),
 }

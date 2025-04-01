@@ -22,6 +22,7 @@ vim.lsp.config.html_ls = require("lsp.html_ls")
 vim.lsp.config.json_ls = require("lsp.json_ls")
 vim.lsp.config.ltex = require("lsp.ltex")
 vim.lsp.config.lua_ls = require("lsp.lua_ls")
+vim.lsp.config.nginx_ls = require("lsp.nginx_ls")
 vim.lsp.config.pyright = require("lsp.pyright")
 vim.lsp.config.ruff = require("lsp.ruff")
 vim.lsp.config.rust_analyzer = require("lsp.rust_analyzer")
@@ -47,6 +48,7 @@ vim.lsp.enable({
   "json_ls",
   "ltex",
   "lua_ls",
+  "nginx_ls",
   "pyright",
   "ruff",
   "rust_analyzer",

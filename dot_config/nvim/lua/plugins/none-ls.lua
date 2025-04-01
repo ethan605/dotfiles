@@ -18,6 +18,7 @@ return {
         none_ls.builtins.diagnostics.zsh,
 
         -- formatters
+        none_ls.builtins.formatting.nginx_beautifier,
         none_ls.builtins.formatting.prettier,
         none_ls.builtins.formatting.shfmt,
         none_ls.builtins.formatting.sqlfluff.with({
