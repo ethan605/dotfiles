@@ -10,7 +10,7 @@ vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>", opts)
 
 -- LSP. See `:help vim.lsp.*` for documentation on any of the below functions
 vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, buf_opts)
--- vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
+vim.keymap.set("n", "gN", vim.lsp.buf.rename, opts)
 -- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 -- vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = false }) end, opts)
 -- vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = false }) end, opts)
