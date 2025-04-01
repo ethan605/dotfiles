@@ -1,5 +1,9 @@
 basedpyright
+mypy
+nginx-language-server
+pdbpp
 pip
-poetry
 pynvim
+rich
 ruff
+sqlglot[rs]
