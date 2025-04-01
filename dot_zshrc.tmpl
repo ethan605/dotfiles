@@ -75,7 +75,6 @@ PATH="$(brew --prefix llvm)/bin:$PATH"
 
 PATH="$HOME/.local/bin:$PATH"
 PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-#PATH="./node_modules/.bin:$PATH"
 export PATH
 #]]]
 
@@ -119,18 +118,6 @@ function __load-key-bindings() {
 
   bindkey -M vicmd 'k' history-substring-search-up
   bindkey -M vicmd 'j' history-substring-search-down
-}
-
-function __load-perl() {
-{{- if eq .chezmoi.os "linux" }}
-
-  export PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
-  export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
-  export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
-  export PERL_MB_OPT="--install_base \"$HOME/perl5\""
-  export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
-
-{{- end }}
 }
 
 function __load-ssh() {
@@ -295,6 +282,23 @@ function osc7_cwd() {
 {{- end }}
 #]]]
 
+# [[[ Autoloads
+{{- if eq .chezmoi.os "linux" }}
+# Sway goes first
+__load-sway
+{{- end }}
+
+# Work envs
+__load-work-envs
+
+# Base envs
+__load-zim
+__load-asdf
+
+# SSH keys
+__load-ssh
+#]]]
+
 # [[[ Aliases
 # Remap system commands
 alias nano=nvim
@@ -336,23 +340,3 @@ alias o=nvim-oil
 alias v=nvim
 alias w='watch --color --differences --errexit --exec'
 # ]]]
-
-# [[[ Autoloads
-{{- if eq .chezmoi.os "linux" }}
-# Sway goes first
-__load-sway
-{{- end }}
-
-# Work envs
-__load-work-envs
-
-# Base envs
-__load-zim
-__load-asdf
-
-# Dev tools
-__load-perl
-
-# SSH keys
-__load-ssh
-#]]]
