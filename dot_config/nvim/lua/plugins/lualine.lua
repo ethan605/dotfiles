@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "hoob3rt/lualine.nvim",
   dependencies = {
@@ -20,11 +21,6 @@ return {
     local lualine = require("lualine")
 
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
-
-    local function render_lsp_progress()
-      ---@diagnostic disable-next-line: different-requires
-      return require("lsp-progress").progress()
-    end
 
     custom_powerline.normal.c.bg = snazzy_colors.black
     custom_powerline.inactive.c.bg = snazzy_colors.black
@@ -62,7 +58,7 @@ return {
         },
         lualine_x = {
           {
-            render_lsp_progress,
+            require("lsp-progress").progress,
             color = { fg = snazzy_colors.white },
           },
           "encoding",
@@ -81,7 +77,7 @@ return {
         },
         lualine_c = { "filename" },
         lualine_x = {
-          render_lsp_progress,
+          require("lsp-progress").progress,
           "encoding",
           "fileformat",
           "filetype",

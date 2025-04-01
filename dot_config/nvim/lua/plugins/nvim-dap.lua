@@ -104,6 +104,7 @@ local function configure_cpp(dap)
   }
 end
 
+---@type LazySpec
 return {
   "mfussenegger/nvim-dap",
   dependencies = {

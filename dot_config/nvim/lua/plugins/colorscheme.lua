@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "connorholyday/vim-snazzy",
   -- TODO: Revise this

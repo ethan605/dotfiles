@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
@@ -17,9 +18,10 @@ return {
     },
   },
   config = function()
-    local cmp = require("cmp")
+    local nvim_cmp = require("cmp")
 
-    cmp.setup({
+    ---@type cmp.ConfigSchema
+    local opts = {
       sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
@@ -30,6 +32,8 @@ return {
         expand = function(args) require("luasnip").lsp_expand(args.body) end,
       },
       formatting = {
+        expandable_indicator = true,
+        fields = { "abbr", "kind", "menu" },
         format = require("lspkind").cmp_format({
           mode = "symbol_text",
           preset = "codicons",
@@ -38,39 +42,41 @@ return {
           show_labelDetails = true,
         }),
       },
-      mapping = cmp.mapping.preset.insert({
+      mapping = nvim_cmp.mapping.preset.insert({
         -- ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"] = nvim_cmp.mapping.abort(),
+        ["<CR>"] = nvim_cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
+          if nvim_cmp.visible() then
+            nvim_cmp.select_next_item()
           else
             fallback()
           end
         end,
         ["<S-Tab>"] = function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
+          if nvim_cmp.visible() then
+            nvim_cmp.select_prev_item()
           else
             fallback()
           end
         end,
       }),
-    })
+    }
+
+    nvim_cmp.setup(opts)
 
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline({ "/", "?" }, {
-      mapping = cmp.mapping.preset.cmdline(),
+    nvim_cmp.setup.cmdline({ "/", "?" }, {
+      mapping = nvim_cmp.mapping.preset.cmdline(),
       sources = {
         { name = "buffer" },
       },
     })
 
     -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
+    nvim_cmp.setup.cmdline(":", {
+      mapping = nvim_cmp.mapping.preset.cmdline(),
+      sources = nvim_cmp.config.sources({
         { name = "path" },
       }, {
         { name = "cmdline" },

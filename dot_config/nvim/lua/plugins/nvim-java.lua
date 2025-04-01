@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "nvim-java/nvim-java",
   dependencies = {
@@ -5,15 +6,17 @@ return {
     "mfussenegger/nvim-dap",
   },
   config = function()
-    require("java").setup({
+    ---type java.Config
+    local opts = {
       spring_boot_tools = {
         enable = false,
       },
       jdk = {
         auto_install = false,
       },
-    })
+    }
 
+    require("java").setup(opts)
     require("lspconfig").jdtls.setup({})
   end,
 }
