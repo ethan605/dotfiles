@@ -37,6 +37,7 @@ local function new_git_status()
   })
 end
 
+---@type LazySpec
 return {
   "stevearc/oil.nvim",
   dependencies = {
@@ -59,16 +60,17 @@ return {
 
     local oil = require("oil")
 
-    oil.setup({
+    ---type oil.Config
+    local opts = {
       default_file_explorer = false,
       delete_to_trash = true,
       view_options = {
         is_hidden_file = function(name, bufnr)
           local dir = oil.get_current_dir(bufnr)
           local is_dotfile = vim.startswith(name, ".") and name ~= "../"
-          -- if no local directory (e.g. for ssh connections), just hide dotfiles
+          -- If no local directory (e.g. for ssh connections), just hide dotfiles
           if not dir then return is_dotfile end
-          -- dotfiles are considered hidden unless tracked
+          -- Dotfiles are considered hidden unless tracked
           if is_dotfile then
             return not git_status[dir].tracked[name]
           else
@@ -119,6 +121,8 @@ return {
         },
       },
       use_default_keymaps = false,
-    })
+    }
+
+    oil.setup(opts)
   end,
 }

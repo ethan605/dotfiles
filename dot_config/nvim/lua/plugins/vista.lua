@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "liuchengxu/vista.vim",
   dependencies = { "junegunn/fzf" },
