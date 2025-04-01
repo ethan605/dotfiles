@@ -19,13 +19,15 @@ end
 
 ensure_lazy()
 
-local lazy_opts = {
+---@type LazyConfig
+local opts = {
   defaults = {
     lazy = false,
   },
 }
 
-require("lazy").setup({
+---@type LazyPluginSpec
+local plugins = {
   -- Vimscript plugins. TODO: replace with Lua alternatives
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
@@ -36,7 +38,7 @@ require("lazy").setup({
   require("plugins.colorscheme"),
   require("plugins.comment"),
   require("plugins.dashboard"),
-  require("plugins.fzf-lua"), ---@diagnostic disable-line: different-requires
+  require("plugins.fzf-lua"),
   require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
   require("plugins.lualine"),
@@ -82,4 +84,6 @@ require("lazy").setup({
   -- "neovim/nvim-lspconfig",
   { "nvim-treesitter/nvim-treesitter",             build = ":TSUpdate" },
   { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = { "nvim-treesitter/nvim-treesitter" } },
-}, lazy_opts)
+}
+
+require("lazy").setup(plugins, opts)

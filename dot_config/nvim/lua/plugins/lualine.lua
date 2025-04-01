@@ -2,7 +2,7 @@ return {
   "hoob3rt/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    require("plugins.lsp-progress"), ---@diagnostic disable-line: different-requires
+    require("plugins.lsp-progress"),
     {
       "SmiteshP/nvim-navic",
       dependencies = { "neovim/nvim-lspconfig" },
@@ -19,7 +19,6 @@ return {
     local custom_powerline = require("lualine.themes.powerline")
     local lualine = require("lualine")
 
-    ---@diagnostic disable-next-line: different-requires
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
     local function render_lsp_progress()
@@ -97,7 +96,7 @@ return {
     vim.api.nvim_create_autocmd("User", {
       group = "lualine_augroup",
       pattern = "LspProgressStatusUpdated",
-      callback = lualine.refresh,
+      callback = function() require("lualine").refresh() end,
     })
   end,
 }
