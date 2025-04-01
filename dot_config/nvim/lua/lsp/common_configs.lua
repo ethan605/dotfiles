@@ -1,4 +1,4 @@
----@class lsp.ClientCapabilities
+---@type lsp.ClientCapabilities
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -37,7 +37,7 @@ end
 -- "]M" Jump forwards to end of current/next method/scope
 -- "]m" Jump forwards to begin of next method/scope
 
----@class vim.lsp.Config
+---@type vim.lsp.Config
 return {
   capabilities = capabilities,
   on_attach = on_attach,

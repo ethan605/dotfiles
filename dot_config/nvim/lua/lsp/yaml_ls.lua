@@ -1,4 +1,4 @@
----@class vim.lsp.Config
+---@type vim.lsp.Config
 return {
   cmd = { "yaml-language-server", "--stdio" },
   filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },

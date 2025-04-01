@@ -1,8 +1,12 @@
----@class vim.lsp.Config
+---@type vim.lsp.Config
 return {
   cmd = { "pyright-langserver", "--stdio" },
   filetypes = { "python" },
-  root_markers = { "pyproject.toml", "requirements.txt", ".venv" },
+  root_markers = {
+    "pyproject.toml",
+    "requirements.txt",
+    ".venv",
+  },
   settings = {
     pyright = {
       -- Using Ruff's import organizer

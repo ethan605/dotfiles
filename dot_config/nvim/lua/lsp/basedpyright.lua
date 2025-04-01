@@ -12,11 +12,15 @@ local function get_current_python_path()
   return current_path
 end
 
----@class vim.lsp.Config
+---@type vim.lsp.Config
 return {
   cmd = { "basedpyright-langserver", "--stdio" },
   filetypes = { "python" },
-  root_markers = { "pyproject.toml", "requirements.txt", ".venv" },
+  root_markers = {
+    "pyproject.toml",
+    "requirements.txt",
+    ".venv",
+  },
   settings = {
     basedpyright = {
       disableOrganizeImports = true,
