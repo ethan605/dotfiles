@@ -62,6 +62,8 @@ brew "gpgme"
 brew "grep"
 # Like cURL, but for gRPC
 brew "grpcurl"
+# Grammar Checker for Developers
+brew "harper"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Command-line pager for JSON data
