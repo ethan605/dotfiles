@@ -8,6 +8,9 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 -- Hide search highlights
 vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>", opts)
 
+-- Escape TERMINAL mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
+
 -- LSP. See `:help vim.lsp.*` for documentation on any of the below functions
 vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, buf_opts)
 vim.keymap.set("n", "gN", vim.lsp.buf.rename, opts)

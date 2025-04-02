@@ -11,6 +11,7 @@ nginxbeautifier
 prettier
 prettier-stylelint
 pyright
+ts-node
 typescript
 typescript-language-server
 vim-language-server
