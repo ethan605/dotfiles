@@ -11,6 +11,6 @@ vim.filetype.add({
     ["docker%-compose.*.yaml"] = "yaml.docker-compose",
   },
   extension = {
-    ["http"] = "http",
+    http = "http",
   },
 })
