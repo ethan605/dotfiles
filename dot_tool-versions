@@ -3,7 +3,7 @@ awscli 2.25.6
 cmake 3.31.5
 direnv 2.35.0
 firebase 13.30.0
-gcloud 516.0.0
+gcloud 517.0.0
 golang 1.24.0
 helm 3.17.0
 java openjdk-24
