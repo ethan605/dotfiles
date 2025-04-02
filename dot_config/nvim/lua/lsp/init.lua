@@ -4,7 +4,6 @@
 -- elixirls
 -- graphql
 -- kotlin_language_server
--- postgres_lsp @TODO: to visit later when it's more mature
 
 vim.diagnostic.config(require("lsp.diagnostic_configs"))
 vim.lsp.config("*", require("lsp.common_configs"))
@@ -23,6 +22,7 @@ vim.lsp.config.json_ls = require("lsp.json_ls")
 vim.lsp.config.ltex = require("lsp.ltex")
 vim.lsp.config.lua_ls = require("lsp.lua_ls")
 vim.lsp.config.nginx_ls = require("lsp.nginx_ls")
+-- vim.lsp.config.postgres_lsp = require("lsp.postgres_lsp") -- @TODO: to visit later when it's more mature
 vim.lsp.config.pyright = require("lsp.pyright")
 vim.lsp.config.ruff = require("lsp.ruff")
 vim.lsp.config.rust_analyzer = require("lsp.rust_analyzer")
@@ -49,6 +49,7 @@ vim.lsp.enable({
   "ltex",
   "lua_ls",
   "nginx_ls",
+  -- "postgres_lsp",
   "pyright",
   "ruff",
   "rust_analyzer",
