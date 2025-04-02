@@ -79,11 +79,11 @@ local plugins = {
     event = "CursorHold",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-
-  -- LSPs & TreeSitter
-  -- "neovim/nvim-lspconfig",
-  { "nvim-treesitter/nvim-treesitter",             build = ":TSUpdate" },
-  { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = { "nvim-treesitter/nvim-treesitter" } },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+  },
 }
 
 require("lazy").setup(plugins, opts)

@@ -20,11 +20,11 @@ capabilities.textDocument.foldingRange = {
 local function on_attach(client, bufnr)
   if client.server_capabilities.inlayHintProvider then vim.lsp.inlay_hint.enable(true) end
 
-  -- local opts = { noremap = true, silent = true, buffer = true }
-  -- vim.keymap.set("n", "<C-i>", function()
-  --   local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
-  --   vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
-  -- end, opts)
+  local keymap_opts = { noremap = true, silent = true, buffer = true }
+  vim.keymap.set("n", "<leader>ih", function()
+    local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+    vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+  end, keymap_opts)
 end
 
 -- python.vim
