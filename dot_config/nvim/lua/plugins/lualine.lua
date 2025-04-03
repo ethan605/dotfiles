@@ -17,11 +17,10 @@ return {
     },
   },
   config = function()
-    local custom_powerline = require("lualine.themes.powerline")
     local lualine = require("lualine")
-
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
+    local custom_powerline = require("lualine.themes.powerline")
     custom_powerline.normal.c.bg = snazzy_colors.black
     custom_powerline.inactive.c.bg = snazzy_colors.black
 

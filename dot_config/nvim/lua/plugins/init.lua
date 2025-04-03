@@ -59,8 +59,8 @@ local plugins = {
   "sindrets/diffview.nvim",
   { "hat0uma/csvview.nvim",     opts = {} },
   { "kylechui/nvim-surround",   opts = {} },
-  { "windwp/nvim-autopairs",    opts = {} },
   { "mistweaverco/kulala.nvim", opts = {}, ft = { "http", "rest" } },
+  { "windwp/nvim-autopairs",    opts = {} },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
