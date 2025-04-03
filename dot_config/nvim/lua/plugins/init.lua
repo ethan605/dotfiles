@@ -41,6 +41,7 @@ local plugins = {
   require("plugins.fzf-lua"),
   require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
+  require("plugins.leap"),
   require("plugins.lualine"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
@@ -55,7 +56,6 @@ local plugins = {
   require("plugins.todo-comments"),
   require("plugins.vim-dadbod-ui"),
 
-  "ggandor/leap.nvim",
   "sindrets/diffview.nvim",
   { "hat0uma/csvview.nvim",     opts = {} },
   { "kylechui/nvim-surround",   opts = {} },

@@ -32,10 +32,6 @@ vim.keymap.set("n", "gN", vim.lsp.buf.rename, opts)
 vim.keymap.set({ "n", "v" }, "<leader>Rb", require("kulala").scratchpad, opts)
 vim.keymap.set({ "n", "v" }, "<leader>Rs", require("kulala").run, opts)
 
--- For leap.nvim
-vim.keymap.set({ "n", "x", "o" }, "<leader>s", "<Plug>(leap-forward)", opts)
-vim.keymap.set({ "n", "x", "o" }, "<leader>S", "<Plug>(leap-backward)", opts)
-
 -- For gitsigns.nvim
 vim.keymap.set("n", "[c", ":Gitsigns prev_hunk<CR>", opts)
 vim.keymap.set("n", "]c", ":Gitsigns next_hunk<CR>", opts)
