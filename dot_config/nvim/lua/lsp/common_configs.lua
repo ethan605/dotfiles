@@ -1,5 +1,6 @@
 ---@type lsp.ClientCapabilities
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local keymap_opts = { noremap = true, silent = true, buffer = true }
 
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -50,6 +51,23 @@ end, { desc = "Toggling a LSP by name", nargs = 1 })
 -- "[M" Jump backwards to end of previous method/scope
 -- "]M" Jump forwards to end of current/next method/scope
 -- "]m" Jump forwards to begin of next method/scope
+
+-- LSP. See `:help vim.lsp.*` for documentation on any of the below functions
+vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, keymap_opts)
+vim.keymap.set("n", "gN", vim.lsp.buf.rename, keymap_opts)
+-- vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
+-- vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = false }) end, keymap_opts)
+-- vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = false }) end, keymap_opts)
+-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
+-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keymap_opts)
+-- vim.keymap.set("n", "gi", vim.lsp.buf.type_definition, keymap_opts)
+-- vim.keymap.set("n", "gI", vim.lsp.buf.implementation, keymap_opts)
+-- vim.keymap.set("n", "gr", vim.lsp.buf.references, keymap_opts)
+-- vim.keymap.set("n", "<space>gd", ":vsplit | lua vim.lsp.buf.definition()<CR>", keymap_opts)
+-- vim.keymap.set("n", "<space>gD", ":vsplit | lua vim.lsp.buf.declaration()<CR>", keymap_opts)
+-- vim.keymap.set("n", "<space>gi", ":vsplit | lua vim.lsp.buf.type_definition()<CR>", keymap_opts)
+-- vim.keymap.set("n", "<space>gI", ":vsplit | lua vim.lsp.buf.implementation()<CR>", keymap_opts)
+-- vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, keymap_opts)
 
 ---@type vim.lsp.Config
 return {
