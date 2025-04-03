@@ -61,16 +61,3 @@ vim.lsp.enable({
   -- "harper_ls", -- on demand
   -- "postgres_lsp", -- not mature enough
 })
-
-vim.api.nvim_create_user_command("LspToggle", function(args)
-  local name = args.args
-  if vim.lsp.config[name] == nil then return end
-
-  local lsp_client = vim.lsp.get_clients({ name = name })[1]
-
-  if lsp_client == nil then
-    vim.lsp.start(vim.lsp.config[name])
-  else
-    vim.lsp.stop_client(lsp_client.id, true)
-  end
-end, { desc = "Toggling a LSP by name", nargs = 1 })

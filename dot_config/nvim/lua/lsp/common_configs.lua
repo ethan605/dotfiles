@@ -18,14 +18,28 @@ capabilities.textDocument.foldingRange = {
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 local function on_attach(client, bufnr)
-  if client.server_capabilities.inlayHintProvider then vim.lsp.inlay_hint.enable(true) end
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true)
 
-  local keymap_opts = { noremap = true, silent = true, buffer = true }
-  vim.keymap.set("n", "<leader>ih", function()
-    local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
-    vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
-  end, keymap_opts)
+    vim.api.nvim_create_user_command("LspInlayHint", function()
+      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+      vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+    end, { desc = "Toggling inlay_hint feature" })
+  end
 end
+
+vim.api.nvim_create_user_command("LspToggle", function(args)
+  local name = args.args
+  if vim.lsp.config[name] == nil then return end
+
+  local lsp_client = vim.lsp.get_clients({ name = name })[1]
+
+  if lsp_client == nil then
+    vim.lsp.start(vim.lsp.config[name])
+  else
+    vim.lsp.stop_client(lsp_client.id, true)
+  end
+end, { desc = "Toggling a LSP by name", nargs = 1 })
 
 -- python.vim
 -- "[[" Jump backwards to begin of current/previous top-level
