@@ -324,20 +324,26 @@ alias xdg-open='open'
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 alias kargo='k argo rollouts'
-alias lk='ll --total-size --sort=size --reverse'
-alias lr='ll --tree --level=2'
 alias pyenv='{ poetry env info -p >/dev/null 2>&1 && true } && source "$(poetry env info -p)/bin/activate" || source .venv/bin/activate'
 alias tor='webtorrent --keep-seeding download'
-alias vsync='nvim --headless "+Lazy! sync" +qa'
 alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
+
+# Eza
+alias lk='ll --total-size --sort=size --reverse'
+alias lr='ll --tree --level=2'
+
+# Neovim
+alias d='nvim -d'
+alias v=nvim
+alias voil=nvim-oil
+alias vrepl='nvim +Repl'
+alias vsql='nvim +DBUI'
+alias vsync='nvim --headless "+Lazy! sync" +qa'
 
 # Shortcuts
 alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
 alias c=chezmoi
-alias d='nvim -d'
 alias f=vifm
 alias k=kubecolor
-alias o=nvim-oil
-alias v=nvim
 alias w='watch --color --differences --errexit --exec'
 # ]]]
