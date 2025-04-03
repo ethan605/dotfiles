@@ -54,6 +54,6 @@ vim.lsp.enable({
   -- "postgres_lsp", -- not mature enough
 })
 
-vim.lsp.diagnostic.config({
+vim.diagnostic.config({
   virtual_lines = { current_line = true },
 })
