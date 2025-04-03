@@ -54,6 +54,6 @@ vim.keymap.set("n", "zk", require("ufo").peekFoldedLinesUnderCursor, opts)
 vim.keymap.set({ "v" }, "<leader>e", "<Plug>(DBUI_ExecuteQuery)", opts)
 vim.keymap.set({ "n" }, "<leader>w", "<Plug>(DBUI_SaveQuery)", opts)
 
-require("keymaps.bufferline")
+-- require("keymaps.bufferline")
 require("keymaps.fzf-lua")
 -- require("keymaps.nvim-dap")
