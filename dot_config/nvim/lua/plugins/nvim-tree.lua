@@ -53,7 +53,6 @@ return {
       },
     },
   },
-  lazy = false,
   keys = {
     { "<C-o>", ":NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
   },

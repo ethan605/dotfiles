@@ -6,6 +6,10 @@ return {
   ---type Gitsigns.Config
   opts = {
     sign_priority = 6,
+    signcolumn = true, -- :Gitsigns toggle_signs
+    numhl = true,      -- :Gitsigns toggle_numhl
+    linehl = false,    -- :Gitsigns toggle_linehl
+    word_diff = false, -- :Gitsigns toggle_word_diff
     current_line_blame = true,
     current_line_blame_opts = {
       virt_text = true,
@@ -16,7 +20,6 @@ return {
     },
     current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> • <summary>",
   },
-  lazy = false,
   keys = {
     { "[c", ":Gitsigns prev_hunk<CR>", desc = "Jump to previous hunk" },
     { "]c", ":Gitsigns next_hunk<CR>", desc = "Jump to next hunk" },

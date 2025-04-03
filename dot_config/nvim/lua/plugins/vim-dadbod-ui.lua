@@ -8,10 +8,7 @@ return {
   cmd = {
     "DBUI",
     "DBUIToggle",
-    "DBUIAddConnection",
-    "DBUIFindBuffer",
   },
-  lazy = false,
   keys = {
     { "<leader>e", "<Plug>(DBUI_ExecuteQuery)", mode = "v", desc = "Execute selected query" },
     { "<leader>w", "<Plug>(DBUI_SaveQuery)",    mode = "n", desc = "Save current query" },
