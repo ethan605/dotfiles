@@ -1,12 +1,4 @@
--- Disabled due to no active usage
--- cssls
--- denols
--- elixirls
--- graphql
--- kotlin_language_server
-
-vim.diagnostic.config(require("lsp.diagnostic_configs"))
-vim.lsp.config("*", require("lsp.common_configs"))
+vim.lsp.config("*", require("lsp.common"))
 
 vim.lsp.config.bash_ls = require("lsp.bash_ls")
 vim.lsp.config.clangd = require("lsp.clangd")
@@ -18,7 +10,7 @@ vim.lsp.config.gopls = require("lsp.gopls")
 vim.lsp.config.harper_ls = require("lsp.harper_ls")
 vim.lsp.config.html_ls = require("lsp.html_ls")
 vim.lsp.config.json_ls = require("lsp.json_ls")
-vim.lsp.config.ltex = require("lsp.ltex")
+vim.lsp.config.ltex_ls = require("lsp.ltex_ls")
 vim.lsp.config.lua_ls = require("lsp.lua_ls")
 vim.lsp.config.nginx_ls = require("lsp.nginx_ls")
 vim.lsp.config.pyright = require("lsp.pyright")
@@ -44,7 +36,7 @@ vim.lsp.enable({
   "gopls",
   "html_ls",
   "json_ls",
-  "ltex",
+  "ltex_ls",
   "lua_ls",
   "nginx_ls",
   "pyright",
@@ -60,4 +52,8 @@ vim.lsp.enable({
   -- "basedpyright", -- performance issues
   -- "harper_ls", -- on demand
   -- "postgres_lsp", -- not mature enough
+})
+
+vim.lsp.diagnostic.config({
+  virtual_lines = { current_line = true },
 })
