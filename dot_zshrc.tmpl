@@ -262,8 +262,37 @@ function mux() {
 }
 
 function nvim-oil() {
-  local dir=${1:-.}
-  nvim +"cd $dir" +"Oil --preview"
+  local dir1=${1:-.}
+
+  if [ -f "$dir1" ]; then
+    echo "Expecting dir paths only, got file path '$dir1'"
+    return 1
+  fi
+
+  if [ ! -d "$dir1" ]; then
+    echo "Directory '$dir1' does not exist"
+    return 1
+  fi
+
+  local num_args=$#
+
+  if (( num_args > 1 )); then
+    if [ -f "$2" ]; then
+      echo "Expecting dir paths only, got file path '$2'"
+      return 1
+    fi
+
+    if [ ! -d "$2" ]; then
+      echo "Directory '$2' does not exist"
+      return 1
+    fi
+
+    # Opening side-by-side
+    nvim +"Oil $1" +"vsplit | Oil $2"
+  else
+    # Opening with preview
+    nvim +"cd $dir1" +"Oil --preview"
+  fi
 }
 
 {{- if eq .chezmoi.os "linux" }}
