@@ -1,16 +1,33 @@
 ---@type LazySpec
 return {
   "pappasam/nvim-repl",
-  opts = {
-    filetype_commands = {
-      python = { cmd = { "ipython", "--no-autoindent" }, filetype = "python" },
-    },
-    open_window_default = "vertical split new",
-  },
+  config = function()
+    require("repl").setup()
+
+    vim.g.repl = {
+      filetype_commands = {
+        bash = { cmd = "bash", filetype = "bash" },
+        javascript = { cmd = "node", filetype = "javascript" },
+        python = {
+          cmd =
+          "ipython --TerminalInteractiveShell.editing_mode=emacs --quiet --no-autoindent -i -c \"%config InteractiveShell.ast_node_interactivity='last_expr_or_assign'\"",
+          repl_type = "ipython",
+          filetype = "python",
+        },
+        sh = { cmd = "sh", filetype = "sh" },
+        typescript = { cmd = 'ts-node -O \'{"module": "commonjs"}\'', filetype = "typescript" },
+        vim = { cmd = "nvim --clean -ERM", filetype = "vim" },
+        zsh = { cmd = "zsh", filetype = "zsh" },
+      },
+      default = { cmd = "zsh", filetype = "zsh" },
+      open_window_default = "vertical split new",
+    }
+  end,
   lazy = false,
   keys = {
     { "<Leader>rc", "<Plug>(ReplSendCell)",   mode = "n", desc = "Send Repl Cell" },
     { "<Leader>rc", "<Plug>(ReplSendVisual)", mode = "x", desc = "Send Repl Visual Selection" },
     { "<Leader>rl", "<Plug>(ReplSendLine)",   mode = "n", desc = "Send Repl Line" },
+    { "<Leader>rx", ":ReplClear<CR>",         mode = "n", desc = "Clear Repl Buffer" },
   },
 }
