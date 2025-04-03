@@ -4,22 +4,30 @@ return {
   config = function()
     require("repl").setup()
 
+    local python = {
+      cmd = table.concat({
+        "ipython",
+        "--TerminalInteractiveShell.editing_mode=emacs",
+        "--quiet",
+        "--no-autoindent",
+        "-i",
+        "-c",
+        "\"%config InteractiveShell.ast_node_interactivity='last_expr_or_assign'\"",
+      }, " "),
+      repl_type = "ipython",
+      filetype = "python",
+    }
+
     vim.g.repl = {
       filetype_commands = {
         bash = { cmd = "bash", filetype = "bash" },
         javascript = { cmd = "node", filetype = "javascript" },
-        python = {
-          cmd =
-          "ipython --TerminalInteractiveShell.editing_mode=emacs --quiet --no-autoindent -i -c \"%config InteractiveShell.ast_node_interactivity='last_expr_or_assign'\"",
-          repl_type = "ipython",
-          filetype = "python",
-        },
+        python = python,
         sh = { cmd = "sh", filetype = "sh" },
         typescript = { cmd = 'ts-node -O \'{"module": "commonjs"}\'', filetype = "typescript" },
         vim = { cmd = "nvim --clean -ERM", filetype = "vim" },
-        zsh = { cmd = "zsh", filetype = "zsh" },
       },
-      default = { cmd = "zsh", filetype = "zsh" },
+      default = python,
       open_window_default = "vertical split new",
     }
   end,
