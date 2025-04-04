@@ -61,6 +61,10 @@ return {
           end
         end,
       }),
+      window = {
+        completion = nvim_cmp.config.window.bordered(),
+        documentation = nvim_cmp.config.window.bordered(),
+      },
     }
 
     nvim_cmp.setup(opts)
