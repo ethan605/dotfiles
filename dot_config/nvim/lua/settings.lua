@@ -37,7 +37,7 @@ vim.opt.swapfile = false                 -- Disable swap files
 vim.opt.tabstop = 2                      -- Render TABs using this many spaces.
 vim.opt.termguicolors = true             -- Use Term GUI colors
 vim.opt.textwidth = 0                    -- Hard-wrap long lines as you type them.
-vim.opt.winborder = "solid"              -- Double padding win borders.
+vim.opt.winborder = "rounded"            -- Default win borders.
 vim.opt.updatetime = 300                 -- You will have bad experience for diagnostic messages when it's default 4000.
 
 -- Backups
