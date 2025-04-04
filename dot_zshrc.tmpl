@@ -249,6 +249,29 @@ function __load-zsh-settings() {
 #]]]
 
 # [[[ Utils
+function asdf-check() {
+  local name current_version latest_version
+
+  while read -r line; do
+    name=$(echo "$line" | awk '{ print $1 }')
+    current_version=$(echo "$line" | awk '{ print $2 }')
+
+    # shellcheck disable=2206
+    version_comps=(${current_version//./ }) 
+    latest_version=$(asdf latest "$name" "${version_comps[0]}" 2>/dev/null)
+
+    if [[ "$latest_version" =~ "No compatible versions" ]]; then
+      continue
+    fi
+
+    if [[ "$latest_version" == "$current_version" ]]; then
+      continue
+    fi
+
+    echo "$name $current_version -> $latest_version"
+  done < "$HOME/.tool-versions"
+}
+
 function greek-letters() {
   print -P "alpha: %F{red}α%f,beta: %F{red}β%f,gamma: %F{red}γ%f,delta: %F{red}δ%f,epsilon: %F{red}ε%f,theta: %F{red}θ%f,lambda: %F{red}λ%f,mu: %F{red}μ%f,pi: %F{red}π%f,sigma: %F{red}σ%f,phi: %F{red}φ%f,omega: %F{red}ω%f" \
     | tr ',' '\n' \
