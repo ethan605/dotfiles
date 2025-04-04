@@ -6,13 +6,38 @@ return {
     "mfussenegger/nvim-dap",
   },
   config = function()
-    ---type java.Config
+    ---@type java.Config
     local opts = {
-      spring_boot_tools = {
-        enable = false,
+      root_markers = {
+        "settings.gradle",
+        "settings.gradle.kts",
+        "pom.xml",
+        "build.gradle",
+        "mvnw",
+        "gradlew",
+        "build.gradle",
+        "build.gradle.kts",
+        ".git",
       },
-      jdk = {
-        auto_install = false,
+      java_debug_adapter = { enable = true },
+      java_test = { enable = true },
+      jdk = { auto_install = false },
+      jdtls = { auto_install = true },
+      lombok = { enable = false },
+      spring_boot_tools = { enable = false },
+
+      notifications = {
+        dap = true,
+      },
+      verification = {
+        invalid_order = true,
+        duplicate_setup_calls = true,
+        invalid_mason_registry = false,
+      },
+      mason = {
+        registries = {
+          "github:nvim-java/mason-registry",
+        },
       },
     }
 

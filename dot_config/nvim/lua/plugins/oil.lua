@@ -120,6 +120,9 @@ return {
           end,
         },
       },
+      keymaps_help = {
+        border = "solid",
+      },
       use_default_keymaps = false,
     }
 
