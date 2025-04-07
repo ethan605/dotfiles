@@ -62,8 +62,8 @@ return {
         end,
       }),
       window = {
-        completion = nvim_cmp.config.window.bordered(),
-        documentation = nvim_cmp.config.window.bordered(),
+        completion = nvim_cmp.config.window.bordered({ scrollbar = false }),
+        documentation = nvim_cmp.config.window.bordered({ scrollbar = false }),
       },
     }
 
