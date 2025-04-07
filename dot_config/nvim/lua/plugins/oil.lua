@@ -40,11 +40,7 @@ end
 ---@type LazySpec
 return {
   "stevearc/oil.nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "refractalize/oil-git-status.nvim",
-    "JezerM/oil-lsp-diagnostics.nvim",
-  },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local git_status = new_git_status()
     local showing_detail_view = false

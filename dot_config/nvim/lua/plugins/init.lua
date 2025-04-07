@@ -57,10 +57,11 @@ local plugins = {
   require("plugins.vim-dadbod-ui"),
 
   "sindrets/diffview.nvim",
-  { "hat0uma/csvview.nvim",     opts = {} },
-  { "kylechui/nvim-surround",   opts = {} },
-  { "mistweaverco/kulala.nvim", opts = {}, ft = { "http", "rest" } },
-  { "windwp/nvim-autopairs",    opts = {} },
+  { "hat0uma/csvview.nvim",             opts = {} },
+  { "kylechui/nvim-surround",           opts = {} },
+  { "mistweaverco/kulala.nvim",         opts = {}, ft = { "http", "rest" } },
+  { "refractalize/oil-git-status.nvim", opts = {}, dependencies = { "stevearc/oil.nvim" } },
+  { "windwp/nvim-autopairs",            opts = {} },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
