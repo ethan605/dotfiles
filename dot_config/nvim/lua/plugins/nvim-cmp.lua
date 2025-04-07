@@ -19,6 +19,10 @@ return {
   },
   config = function()
     local nvim_cmp = require("cmp")
+    local window_style = nvim_cmp.config.window.bordered({
+      winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:PmenuSel,Search:None",
+      scrollbar = false,
+    })
 
     ---@type cmp.ConfigSchema
     local opts = {
@@ -62,8 +66,8 @@ return {
         end,
       }),
       window = {
-        completion = nvim_cmp.config.window.bordered({ scrollbar = false }),
-        documentation = nvim_cmp.config.window.bordered({ scrollbar = false }),
+        completion = window_style,
+        documentation = window_style,
       },
     }
 

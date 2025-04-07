@@ -18,6 +18,7 @@ vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
 vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
+vim.api.nvim_set_hl(0, "PmenuSel", { fg = snazzy_colors.green })
 vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
 vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 
