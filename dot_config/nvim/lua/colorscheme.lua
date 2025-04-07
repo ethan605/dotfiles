@@ -14,21 +14,18 @@ local snazzy_colors = {
 
 -- Built-ins
 vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = snazzy_colors.gray })
-vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
-vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = snazzy_colors.white })
 vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
+vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
+vim.api.nvim_set_hl(0, "NormalFloat", {}) -- clear
 vim.api.nvim_set_hl(0, "PmenuSel", { fg = snazzy_colors.green })
+vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
 vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 
 -- Matched parentheses colors
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta })
-
--- Float windows
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = snazzy_colors.dark_gray })
-vim.api.nvim_set_hl(0, "NormalFloat", {})
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = snazzy_colors.white })
 
 -- For nvim-foldsign
 vim.api.nvim_set_hl(0, "FoldColumn", { fg = snazzy_colors.gray })
@@ -79,6 +76,11 @@ vim.api.nvim_set_hl(0, "LeapLabel", { fg = snazzy_colors.magenta, bold = true, n
 vim.api.nvim_set_hl(0, "Folded", { italic = true, bg = snazzy_colors.dark_gray })
 vim.api.nvim_set_hl(0, "UfoFoldedBg", { bg = snazzy_colors.dark_gray })
 vim.api.nvim_set_hl(0, "UfoFoldedEllipsis", { bold = true, fg = snazzy_colors.yellow })
+
+-- For vim-dadbod-ui
+vim.api.nvim_set_hl(0, "NotificationError", { link = "DiagnosticError" })
+vim.api.nvim_set_hl(0, "NotificationInfo", { link = "DiagnosticOk" })
+vim.api.nvim_set_hl(0, "NotificationWarning", { link = "DiagnosticWarn" })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
