@@ -250,15 +250,15 @@ function __load-zsh-settings() {
 
 # [[[ Utils
 function asdf-check() {
-  local name current_version latest_version
+  local name current_version major_version latest_version
 
   while read -r line; do
     name=$(echo "$line" | awk '{ print $1 }')
     current_version=$(echo "$line" | awk '{ print $2 }')
+    major_version=$(echo "$current_version" | cut -d. -f1)
 
     # shellcheck disable=2206
-    version_comps=(${current_version//./ }) 
-    latest_version=$(asdf latest "$name" "${version_comps[0]}" 2>/dev/null)
+    latest_version=$(asdf latest "$name" "$major_version" 2>/dev/null)
 
     if [[ "$latest_version" =~ "No compatible versions" ]]; then
       continue
@@ -274,9 +274,15 @@ function asdf-check() {
 
 function asdf-up() {
   local name="$1"
+  local version="$2"
+
+  if [[ "$version" == "" ]]; then
+    echo "Expecting a specific version"
+    return 1
+  fi
 
   if asdf where "$name" &>/dev/null; then
-    asdf install "$name" latest && asdf set --home "$name" latest
+    asdf install "$name" "$version" && asdf set --home "$name" "$version"
   else
     return 1
   fi
