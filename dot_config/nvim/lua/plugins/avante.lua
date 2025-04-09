@@ -7,6 +7,20 @@ return {
   opts = {
     provider = "gemini",
     gemini_api_key = vim.env.GEMINI_API_KEY,
+    hints = { enabled = false },
+    file_selector = { provider = "fzf" },
+    windows = {
+      position = "right",
+      wrap = true,
+      width = 40,
+      input = {
+        height = 5,
+        prompt_hl_group = "Comment",
+      },
+      sidebar_header = { enabled = false },
+      edit = { start_insert = false },
+      ask = { start_insert = false },
+    },
   },
   build = "make",
   dependencies = {
