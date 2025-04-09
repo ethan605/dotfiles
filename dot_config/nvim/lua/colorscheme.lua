@@ -103,7 +103,7 @@ vim.api.nvim_set_hl(0, "Added", { fg = snazzy_colors.green })
 vim.api.nvim_set_hl(0, "RedrawDebugComposed", { bg = snazzy_colors.green })
 
 vim.api.nvim_set_hl(0, "Question", { fg = snazzy_colors.cyan })
-vim.api.nvim_set_hl(0, "QuickFixLine", { bg = snazzy_colors.cyan })
+vim.api.nvim_set_hl(0, "QuickFixLine", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
 vim.api.nvim_set_hl(0, "Changed", { bg = snazzy_colors.cyan })
 
 vim.api.nvim_set_hl(0, "Removed", { fg = snazzy_colors.red })
