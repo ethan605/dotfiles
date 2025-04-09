@@ -34,6 +34,7 @@ local plugins = {
   -- require("plugins.vista"),
 
   -- Common plugins
+  require("plugins.avante"),
   require("plugins.bufferline"),
   require("plugins.colorscheme"),
   require("plugins.comment"),
@@ -43,9 +44,9 @@ local plugins = {
   require("plugins.indent-blankline"),
   require("plugins.leap"),
   require("plugins.lualine"),
+  require("plugins.markview"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
-  -- require("plugins.nvim-dap"), TODO: Configure nvim-dap properly
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-java"),
   require("plugins.nvim-repl"),
@@ -55,6 +56,7 @@ local plugins = {
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
   require("plugins.vim-dadbod-ui"),
+  -- require("plugins.nvim-dap"), TODO: Configure nvim-dap properly
 
   "sindrets/diffview.nvim",
   { "hat0uma/csvview.nvim",             opts = {} },
@@ -66,14 +68,6 @@ local plugins = {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
-  },
-  {
-    "OXY2DEV/markview.nvim",
-    ft = { "markdown", "octo" },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
   },
   {
     "ruifm/gitlinker.nvim",

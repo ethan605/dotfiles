@@ -24,6 +24,15 @@ return {
     custom_powerline.normal.c.bg = snazzy_colors.black
     custom_powerline.inactive.c.bg = snazzy_colors.black
 
+    local avante_extension = {
+      sections = {
+        lualine_a = { "mode" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+      filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
+    }
+
     lualine.setup({
       options = {
         component_separators = "",
@@ -32,7 +41,7 @@ return {
         theme = custom_powerline,
         disabled_filetypes = { "NvimTree", "dbui" },
       },
-      extensions = { "oil" },
+      extensions = { "oil", avante_extension },
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
