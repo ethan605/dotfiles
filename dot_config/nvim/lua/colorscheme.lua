@@ -21,7 +21,7 @@ vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
 vim.api.nvim_set_hl(0, "NormalFloat", {}) -- clear
 vim.api.nvim_set_hl(0, "PmenuSel", { fg = snazzy_colors.green })
 vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
-vim.api.nvim_set_hl(0, "WinBar", {}) -- clear
+vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
 vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
 
 -- Matched parentheses colors

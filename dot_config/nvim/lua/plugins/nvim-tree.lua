@@ -1,9 +1,9 @@
 ---@return string
 local function folder_label_renderer(path)
   path = path:gsub(os.getenv("HOME"), "~", 1) -- substitute $HOME with ~
-  path = path:gsub("/*$", "") -- remove trailing `/` chars
+  path = path:gsub("/*$", "")                 -- remove trailing `/` chars
   local cur_dir = path:match("[^/]*$")
-  path = path:gsub("[^/]*$", "") -- remove cur_dir
+  path = path:gsub("[^/]*$", "")              -- remove cur_dir
   return path:gsub("([a-zA-Z])[^/]+", "%1") .. cur_dir
 end
 

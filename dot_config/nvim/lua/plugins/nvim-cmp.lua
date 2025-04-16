@@ -7,7 +7,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "hrsh7th/nvim-cmp",
-    "hrsh7th/vim-vsnip", -- for Vim commands
+    "hrsh7th/vim-vsnip",    -- for Vim commands
     "nvim-lua/plenary.nvim",
     "onsails/lspkind-nvim", -- for LSP pictograms
     {

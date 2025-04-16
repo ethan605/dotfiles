@@ -96,8 +96,8 @@ return {
               oil.set_columns({
                 "icon",
                 { "permissions", highlight = "Keyword" },
-                { "size", highlight = "Special" },
-                { "mtime", highlight = "Comment" },
+                { "size",        highlight = "Special" },
+                { "mtime",       highlight = "Comment" },
               })
             else
               oil.set_columns({ "icon" })

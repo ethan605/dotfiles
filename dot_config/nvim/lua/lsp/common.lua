@@ -26,6 +26,12 @@ local function on_attach(client, bufnr)
       vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
     end, { desc = "Toggling inlay_hint feature" })
   end
+
+  if client:supports_method("textDocument/formatting", bufnr) then
+    vim.keymap.set("n", "<leader>f", function()
+      vim.lsp.buf.format({ bufnr = bufnr })
+    end)
+  end
 end
 
 vim.api.nvim_create_user_command("LspToggle", function(args)

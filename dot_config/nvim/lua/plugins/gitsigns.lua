@@ -7,8 +7,8 @@ return {
   opts = {
     sign_priority = 6,
     signcolumn = true, -- :Gitsigns toggle_signs
-    numhl = true, -- :Gitsigns toggle_numhl
-    linehl = false, -- :Gitsigns toggle_linehl
+    numhl = true,      -- :Gitsigns toggle_numhl
+    linehl = false,    -- :Gitsigns toggle_linehl
     word_diff = false, -- :Gitsigns toggle_word_diff
     current_line_blame = true,
     current_line_blame_opts = {

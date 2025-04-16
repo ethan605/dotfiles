@@ -25,9 +25,9 @@ return {
         none_ls.builtins.formatting.sqlfluff.with({
           extra_args = { "--config", vim.fn.expand("~/.config/.sqlfluff") },
         }),
-        none_ls.builtins.formatting.stylua.with({
-          extra_args = { "--config-path", vim.fn.expand("~/.config/.stylua.toml") },
-        }),
+        -- none_ls.builtins.formatting.stylua.with({
+        --   extra_args = { "--config-path", vim.fn.expand("~/.config/.stylua.toml") },
+        -- }),
         none_ls.builtins.formatting.terraform_fmt,
 
         -- from none-ls-extras
