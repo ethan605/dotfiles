@@ -16,6 +16,9 @@ return {
       diagnostics = {
         globals = { "vim" },
       },
+      format = {
+        enable = false, -- prefer stylua formatter
+      },
       hint = {
         enable = true,
       },
