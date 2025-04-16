@@ -59,11 +59,11 @@ local plugins = {
   -- require("plugins.nvim-dap"), TODO: Configure nvim-dap properly
 
   "sindrets/diffview.nvim",
-  { "hat0uma/csvview.nvim",             opts = {} },
-  { "kylechui/nvim-surround",           opts = {} },
-  { "mistweaverco/kulala.nvim",         opts = {}, ft = { "http", "rest" } },
+  { "hat0uma/csvview.nvim", opts = {} },
+  { "kylechui/nvim-surround", opts = {} },
+  { "mistweaverco/kulala.nvim", opts = {}, ft = { "http", "rest" } },
   { "refractalize/oil-git-status.nvim", opts = {}, dependencies = { "stevearc/oil.nvim" } },
-  { "windwp/nvim-autopairs",            opts = {} },
+  { "windwp/nvim-autopairs", opts = {} },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
