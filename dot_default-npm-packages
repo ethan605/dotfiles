@@ -2,7 +2,6 @@
 @tailwindcss/language-server
 bash-language-server
 corepack
-diagnostic-languageserver
 dockerfile-language-server-nodejs
 graphql
 graphql-language-service-server
