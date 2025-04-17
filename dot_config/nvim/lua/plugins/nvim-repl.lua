@@ -1,9 +1,10 @@
 ---@type LazySpec
 return {
   "pappasam/nvim-repl",
-  config = function()
-    require("repl").setup()
-
+  lazy = false,
+  opts = {},
+  init = function()
+    ---@type ReplCmd
     local python = {
       cmd = table.concat({
         "ipython",
@@ -18,6 +19,7 @@ return {
       filetype = "python",
     }
 
+    ---@type ReplGlobalConfig
     vim.g.repl = {
       filetype_commands = {
         bash = { cmd = "bash", filetype = "bash" },
@@ -31,7 +33,6 @@ return {
       open_window_default = "vertical split new",
     }
   end,
-  lazy = false,
   keys = {
     { "<Leader>rc", "<Plug>(ReplSendCell)",   mode = "n", desc = "Send Repl Cell" },
     { "<Leader>rc", "<Plug>(ReplSendVisual)", mode = "x", desc = "Send Repl Visual Selection" },
