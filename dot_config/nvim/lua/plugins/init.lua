@@ -28,10 +28,8 @@ local opts = {
 
 ---@type LazyPluginSpec
 local plugins = {
-  -- Vimscript plugins. TODO: replace with Lua alternatives
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
-  -- require("plugins.vista"),
 
   -- Common plugins
   require("plugins.avante"),
@@ -40,6 +38,7 @@ local plugins = {
   require("plugins.comment"),
   require("plugins.dashboard"),
   require("plugins.fzf-lua"),
+  require("plugins.gitlinker"),
   require("plugins.gitsigns"),
   require("plugins.indent-blankline"),
   require("plugins.leap"),
@@ -58,6 +57,7 @@ local plugins = {
   require("plugins.todo-comments"),
   require("plugins.vim-dadbod-ui"),
   -- require("plugins.nvim-dap"), TODO: Configure nvim-dap properly
+  -- require("plugins.vista"), TODO: Remove when LSP covers ctags completely
 
   "sindrets/diffview.nvim",
   { "hat0uma/csvview.nvim",             opts = {} },
@@ -69,15 +69,6 @@ local plugins = {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
-  },
-  {
-    "linrongbin16/gitlinker.nvim",
-    cmd = "GitLink",
-    opts = {},
-    keys = {
-      { "<leader>gy", "<cmd>GitLink<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
-      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
-    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
