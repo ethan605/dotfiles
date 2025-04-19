@@ -85,6 +85,7 @@ return {
         ["gp"] = "actions.preview",
         ["gC"] = { "actions.close", mode = "n" },
         ["gr"] = "actions.refresh",
+        ["gy"] = "actions.yank_entry",
         ["g~"] = { "actions.open_cwd", mode = "n" },
         ["g."] = { "actions.toggle_hidden", mode = "n" },
         ["g\\"] = { "actions.toggle_trash", mode = "n" },

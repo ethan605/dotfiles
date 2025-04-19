@@ -65,6 +65,17 @@ vim.opt.listchars = {
 }
 vim.opt.showbreak = "⤷ "
 
+-- Diff
+vim.opt.diffopt = {
+  "internal",
+  "filler",
+  "closeoff",
+  "context:12",
+  "algorithm:histogram",
+  "linematch:200",
+  "indent-heuristic",
+}
+
 vim.opt.clipboard:append("unnamedplus")          -- Use system clipboard over vim's buffers
 vim.opt.formatoptions:append("o")                -- Continue comment marker in new lines.
 vim.opt.runtimepath:append("/usr/local/opt/fzf") -- Add fzf to run time path
