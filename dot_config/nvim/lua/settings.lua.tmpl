@@ -1,3 +1,4 @@
+-- vim:fileencoding=utf-8:filetype=lua
 vim.opt.autoread = true                  -- Auto reload file from outside changes
 vim.opt.autowrite = true                 -- Auto reload file from outside changes
 vim.opt.background = "dark"              -- For dark themes
@@ -78,5 +79,10 @@ vim.opt.diffopt = {
 
 vim.opt.clipboard:append("unnamedplus")          -- Use system clipboard over vim's buffers
 vim.opt.formatoptions:append("o")                -- Continue comment marker in new lines.
-vim.opt.runtimepath:append("/usr/local/opt/fzf") -- Add fzf to run time path
 vim.opt.shortmess:append("c")                    -- Don't give 'ins-completion-menu' messages.
+
+{{- if eq .chezmoi.os "linux" }}
+vim.opt.runtimepath:append("/usr/local/opt/fzf") -- Add fzf to run time path
+{{- else }}
+vim.opt.runtimepath:append("/opt/homebrew/bin/fzf") -- Add fzf to run time path
+{{- end }}
