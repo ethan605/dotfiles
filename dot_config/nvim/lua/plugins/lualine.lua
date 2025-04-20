@@ -16,7 +16,7 @@ return {
       },
     },
   },
-  config = function()
+  opts = function()
     local lualine = require("lualine")
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
@@ -100,7 +100,7 @@ return {
     vim.api.nvim_create_autocmd("User", {
       group = "lualine_augroup",
       pattern = "LspProgressStatusUpdated",
-      callback = function() require("lualine").refresh() end,
+      callback = function() lualine.refresh() end,
     })
   end,
 }

@@ -26,9 +26,9 @@ end
 return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
+  opts = function()
     ---@type bufferline.UserConfig
-    local opts = {
+    return {
       highlights = {
         fill = default_style,
         background = default_style,
@@ -118,8 +118,6 @@ return {
         },
       },
     }
-
-    require("bufferline").setup(opts)
   end,
   lazy = false,
   keys = {

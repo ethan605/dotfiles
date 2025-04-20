@@ -5,10 +5,10 @@ return {
     "nvimtools/none-ls-extras.nvim",
     "gbprod/none-ls-shellcheck.nvim",
   },
-  config = function()
+  opts = function()
     local none_ls = require("null-ls")
 
-    none_ls.setup({
+    return {
       sources = {
         -- diagnostics
         none_ls.builtins.diagnostics.mypy,
@@ -46,6 +46,6 @@ return {
           })
         end, { noremap = true, silent = true, buffer = true })
       end,
-    })
+    }
   end,
 }
