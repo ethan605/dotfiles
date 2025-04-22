@@ -71,6 +71,13 @@ local plugins = {
     build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
+    "kosayoda/nvim-lightbulb",
+    ---@type nvim-lightbulb.Config
+    opts = {
+      autocmd = { enabled = true },
+    },
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
