@@ -124,4 +124,29 @@ return {
     configure_python(dap)
     configure_cpp(dap)
   end,
+  keys = function()
+    local dap = require("dap")
+    local widgets = require("dap.ui.widgets")
+
+    return {
+      { "<F5>",       ":DapContinue<CR>" },
+      { "<F10>",      ":DapStepOver<CR>" },
+      { "<F11>",      ":DapStepInto<CR>" },
+      { "<F12>",      ":DapStepOut<CR>" },
+      { "<leader>db", ":DapToggleBreakpoint<CR>" },
+      { "<leader>dr", ":DapToggleRepl<CR>" },
+      {
+        "<leader>dl",
+        function()
+          dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+        end,
+      },
+
+      -- UI Widgets
+      { "<leader>dh", widgets.hover,                                        mode = { "n", "v" } },
+      { "<leader>dp", widgets.preview,                                      mode = { "n", "v" } },
+      { "<leader>df", function() widgets.centered_float(widgets.frames) end },
+      { "<leader>ds", function() widgets.centered_float(widgets.scopes) end },
+    }
+  end,
 }
