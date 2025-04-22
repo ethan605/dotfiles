@@ -37,6 +37,3 @@ vim.keymap.set({ "n", "v" }, "<leader>Rs", require("kulala").run, opts)
 -- vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds, opts)
 -- vim.keymap.set("n", "zm", require("ufo").closeFoldsWith, opts)
 vim.keymap.set("n", "zk", require("ufo").peekFoldedLinesUnderCursor, opts)
-
-require("keymaps.fzf-lua")
--- require("keymaps.nvim-dap")

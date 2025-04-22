@@ -33,7 +33,6 @@ return {
     },
     git = {
       files = { cwd = vim.fn.getcwd() },
-      -- status = { cwd = vim.fn.getcwd() },
     },
     lsp = {
       async_or_timeout = 3000, -- make lsp requests synchronous so they work with none-ls
@@ -41,4 +40,29 @@ return {
       references = { cwd = vim.fn.getcwd() },
     },
   },
+  keys = function()
+    local fzf_buffers = require("fzf-lua.providers.buffers")
+    local fzf_diagnostic = require("fzf-lua.providers.diagnostic")
+    local fzf_files = require("fzf-lua.providers.files")
+    local fzf_git = require("fzf-lua.providers.git")
+    local fzf_grep = require("fzf-lua.providers.grep")
+    local fzf_lsp = require("fzf-lua.providers.lsp")
+
+    local lsp_opts = { formatter = "path.filename_first" }
+
+    return {
+      { "gD",       fzf_diagnostic.diagnostics,                   desc = "Browse diagnostics" },
+      { "gb",       fzf_buffers.buffers,                          desc = "Browse buffers" },
+      { "<C-f>",    fzf_files.files,                              desc = "Browse all files" },
+      { "<C-g>",    fzf_git.status,                               desc = "Browse modified/untracked files" },
+      { "<C-p>",    fzf_git.files,                                desc = "Browse git tracked files" },
+      { "<C-s>",    fzf_grep.grep,                                desc = "Search with prompt",             mode = "n" },
+      { "<C-s>",    fzf_grep.grep_visual,                         desc = "Search selected text",           mode = "v" },
+      { "<space>s", fzf_lsp.document_symbols,                     desc = "Browse document symbols" },
+      { "gra",      fzf_lsp.code_actions,                         desc = "Browse code actions" },
+      { "gd",       function() fzf_lsp.definitions(lsp_opts) end, desc = "Go to definition" },
+      { "gi",       function() fzf_lsp.typedefs(lsp_opts) end,    desc = "Go to implementation" },
+      { "gr",       function() fzf_lsp.references(lsp_opts) end,  desc = "Go to references" },
+    }
+  end,
 }
