@@ -5,10 +5,17 @@ return {
   version = false,
   ---type avante.Config
   opts = {
+    ---@type avante.ProviderName
     provider = "gemini",
     gemini_api_key = vim.env.GEMINI_API_KEY,
+    ---@type AvanteHintsConfig
     hints = { enabled = false },
     file_selector = { provider = "fzf" },
+    mappings = {
+      cancel = {
+        normal = { "<C-c>" },
+      },
+    },
     windows = {
       position = "right",
       wrap = true,

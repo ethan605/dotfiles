@@ -22,14 +22,14 @@ local function on_attach(client, bufnr)
     vim.lsp.inlay_hint.enable(true)
 
     vim.api.nvim_create_user_command("LspInlayHint", function()
-      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
-      vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+      local enabled = vim.lsp.inlay_hint.is_enabled()
+      vim.lsp.inlay_hint.enable(not enabled)
     end, { desc = "Toggling inlay_hint feature" })
   end
 
   if client:supports_method("textDocument/formatting", bufnr) then
     vim.keymap.set("n", "<leader>f", function()
-      vim.lsp.buf.format({ bufnr = bufnr })
+      vim.lsp.buf.format()
     end)
   end
 end
