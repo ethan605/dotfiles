@@ -30,3 +30,4 @@ stylua 2.1.0
 terraform 1.11.4
 terraform-ls 0.36.4
 tflint 0.56.0
+uv 0.6.16
