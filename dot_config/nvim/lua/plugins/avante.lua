@@ -10,7 +10,13 @@ return {
     gemini_api_key = vim.env.GEMINI_API_KEY,
     ---@type AvanteHintsConfig
     hints = { enabled = false },
-    file_selector = { provider = "fzf" },
+    selector = {
+      ---@type avante.SelectorProvider
+      provider = "fzf_lua",
+      provider_opts = {
+        prompt = "Avante> ",
+      },
+    },
     mappings = {
       cancel = {
         normal = { "<C-c>" },
