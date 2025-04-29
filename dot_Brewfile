@@ -181,6 +181,8 @@ cask "font-cabin"
 cask "ghostty"
 # Web browser
 cask "google-chrome"
+# Grammarly for desktop
+cask "grammarly-desktop"
 # Keyboard customiser
 cask "karabiner-elements"
 # App to manage software development and track bugs
