@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "lewis6991/gitsigns.nvim",
+  lazy = false,
   event = "CursorHold",
   dependencies = { "nvim-lua/plenary.nvim" },
   ---type Gitsigns.Config
