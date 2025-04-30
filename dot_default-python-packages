@@ -1,4 +1,5 @@
 basedpyright
+ipython
 mypy
 nginx-language-server
 pdbpp
