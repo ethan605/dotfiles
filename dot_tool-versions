@@ -1,8 +1,8 @@
 argo-rollouts 1.8.2
-awscli 2.27.4
+awscli 2.27.5
 cmake 4.0.1
 direnv 2.35.0
-firebase 14.2.1
+firebase 14.2.2
 gcloud 517.0.0
 golang 1.24.2
 helm 3.17.3
@@ -30,4 +30,4 @@ stylua 2.1.0
 terraform 1.11.4
 terraform-ls 0.36.4
 tflint 0.56.0
-uv 0.7.0
+uv 0.7.2
