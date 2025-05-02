@@ -46,6 +46,7 @@ local plugins = {
   require("plugins.markview"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
+  require("plugins.nvim-coverage"),
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-java"),
   require("plugins.nvim-repl"),
