@@ -1,5 +1,5 @@
 argo-rollouts 1.8.2
-awscli 2.27.5
+awscli 2.27.7
 cmake 4.0.1
 direnv 2.35.0
 firebase 14.2.2
@@ -29,5 +29,5 @@ shfmt 3.11.0
 stylua 2.1.0
 terraform 1.11.4
 terraform-ls 0.36.4
-tflint 0.56.0
+tflint 0.57.0
 uv 0.7.2
