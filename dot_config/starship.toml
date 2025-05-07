@@ -120,38 +120,6 @@ format = " [$symbol$context]($style)[@](bright-black)[$namespace]($style)"
 style = "bold #326ce5"
 symbol = "󱃾 "
 
-[[kubernetes.contexts]]
-context_pattern = "gke_cord-ai-development_.*_.*-app-cluster"
-context_alias = "dev-staging" 
-
-[[kubernetes.contexts]]
-context_pattern = "gke_cord-ai-development_.*_kubeflow-dev"
-context_alias = "kubeflow-dev" 
-
-[[kubernetes.contexts]]
-context_pattern = "gke_cord-ai-platform_.*_cord-prod"
-context_alias = "prod-eu" 
-
-[[kubernetes.contexts]]
-context_pattern = "gke_cord-ai-platform_.*_kubeflow-prod-v2"
-context_alias = "kubeflow-prod-eu" 
-
-[[kubernetes.contexts]]
-context_pattern = "gke_cord-ai-platform_.*_annotate-prod-us"
-context_alias = "prod-us" 
-
-[[kubernetes.contexts]]
-context_pattern = "gke_cord-ai-platform_.*_kubeflow-prod-us"
-context_alias = "kubeflow-prod-us" 
-
-[[kubernetes.contexts]]
-context_pattern = "arn:aws:eks:eu-west-2:.*:cluster/private-encord-app-cluster"
-context_alias = "vpc-aws" 
-
-[[kubernetes.contexts]]
-context_pattern = "gke_encord-on-prem-deployment_.*_encord-app-cluster"
-context_alias = "vpc-gcp" 
-
 [gcloud]
 format = ' [$symbol( $project[@](bright-black)$region)]($style)'
 symbol = ""
