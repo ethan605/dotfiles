@@ -1,5 +1,5 @@
 argo-rollouts 1.8.2
-awscli 2.27.10
+awscli 2.27.11
 cmake 4.0.2
 direnv 2.35.0
 firebase 14.3.0
@@ -18,7 +18,7 @@ ninja 1.12.1
 nodejs 20.19.1
 pnpm 9.5.0
 poetry 1.8.5
-postgres 15.12
+postgres 15.13
 pre-commit 4.2.0
 python 3.11.12
 ruby 3.4.2
