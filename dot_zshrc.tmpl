@@ -257,7 +257,12 @@ function asdf-check() {
     current_version=$(echo "$line" | awk '{ print $2 }')
     major_version=$(echo "$current_version" | cut -d. -f1)
 
-    # shellcheck disable=2206
+    if [[ "$name" == gcloud || "$name" == kubectl ]]; then
+      major_version=""
+    elif [[ "$name" == python ]]; then
+      major_version="$(semver get major "$current_version").$(semver get minor "$current_version")"
+    fi
+
     latest_version=$(asdf latest "$name" "$major_version" 2>/dev/null)
 
     if [[ "$latest_version" =~ "No compatible versions" ]]; then
