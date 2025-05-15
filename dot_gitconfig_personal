@@ -1,0 +1,9 @@
+# vim:syntax=gitconfig
+[user]
+  name = Thanh Nguyen
+  email = xtnguyen605@gmail.com
+  signingkey = 998F2602445500A2
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
