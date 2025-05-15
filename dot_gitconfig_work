@@ -2,7 +2,7 @@
 [user]
   name = Thanh Nguyen
   email = thanh@encord.com
-  signingkey = C086CD9B4DBCBBC0
+  signingkey = 4257A979F4E0A2A0
 [commit]
   gpgsign = true
 [tag]
