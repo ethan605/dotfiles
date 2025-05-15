@@ -12,6 +12,7 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.
 Host *
   AddKeysToAgent yes
   IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_ed25519
 
 {{- if eq .chezmoi.os "darwin" }}
 
@@ -23,17 +24,9 @@ Host *
 Host github.personal
   Hostname github.com
   User git
-  IdentityFile ~/.ssh/thanhnx.605_id_ed25519
+  IdentityFile ~/.ssh/personal_id_ed25519
 
 Host gist.github.personal
   Hostname gist.github.com
   User git
-  IdentityFile ~/.ssh/thanhnx.605_id_ed25519
-
-{{- if eq .chezmoi.hostname "R2K7TF472W" }}
-
-Host github.com *_bastion
-  IdentityFile ~/.ssh/id_rsa
-Include ~/.ssh/config_bastion
-
-{{- end }}
+  IdentityFile ~/.ssh/personal_id_ed25519
