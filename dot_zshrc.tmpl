@@ -128,8 +128,17 @@ function __load-ssh() {
 
 {{- end }}
 
-  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-work" keychain --eval --quiet "$HOME/.ssh/id_ed25519")
-  eval $(DISPLAY=:0 SSH_ASKPASS="$HOME/.local/bin/ssh-pass-personal" keychain --eval --quiet "$HOME/.ssh/personal_id_ed25519")
+  unset SSH_AGENT_PID
+
+  if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    export SSH_AUTH_SOCK
+  fi
+
+  GPG_TTY=$(tty)
+  export GPG_TTY
+
+  gpg-connect-agent updatestartuptty /bye >/dev/null
 }
 
 {{- if eq .chezmoi.os "linux" }}
