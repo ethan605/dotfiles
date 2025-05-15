@@ -12,7 +12,6 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.
 Host *
   AddKeysToAgent yes
   IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_ed25519
 
 {{- if eq .chezmoi.os "darwin" }}
 
