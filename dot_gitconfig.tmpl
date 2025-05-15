@@ -1,10 +1,9 @@
 # vim:syntax=gitconfig
-[user]
-  name = Thanh Nguyen
-  email = {{ .work.email }}
-  signingkey = 998F2602445500A2
-[commit]
-  gpgsign = true
+[includeIf "hasconfig:remote.*.url:git@github.personal*/**"]
+  path = .gitconfig_personal
+[includeIf "hasconfig:remote.*.url:git@github.com:encord-team*/**"]
+  path = .gitconfig_work
+
 [tag]
   gpgsign = true
 [core]
