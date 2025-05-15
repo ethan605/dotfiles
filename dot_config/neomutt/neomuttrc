@@ -79,7 +79,7 @@ auto_view text/html
 # }}}
 
 # {{{ 7. GPG/PGP 
-set pgp_sign_as = C086CD9B4DBCBBC0
+set pgp_sign_as = 998F2602445500A2
 set crypt_use_gpgme = yes
 set crypt_autosign = no
 set crypt_verify_sig = yes
