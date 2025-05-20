@@ -1,11 +1,11 @@
 argo-rollouts 1.8.2
-awscli 2.27.17
+awscli 2.27.18
 cmake 4.0.2
 direnv 2.35.0
 firebase 14.4.0
 gcloud 522.0.0
 golang 1.24.3
-helm 3.17.3
+helm 3.18.0
 java openjdk-24
 kubecolor 0.5.1
 kubectl 1.33.1
@@ -30,4 +30,4 @@ stylua 2.1.0
 terraform 1.12.0
 terraform-ls 0.36.4
 tflint 0.57.0
-uv 0.7.5
+uv 0.7.6
