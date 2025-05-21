@@ -168,8 +168,6 @@ cask "appcleaner"
 cask "claude"
 # Allows switching between application windows
 cask "contexts"
-# Databases and SQL IDE
-cask "datagrip"
 # Security audit software
 cask "drata-agent"
 # Web browser
@@ -183,8 +181,6 @@ cask "ghostty"
 cask "google-chrome"
 # Grammarly for desktop
 cask "grammarly-desktop"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # Keyboard customiser
 cask "karabiner-elements"
 # App to manage software development and track bugs
@@ -207,8 +203,6 @@ cask "orbstack"
 cask "pearcleaner"
 # Collaboration platform for API development
 cask "postman"
-# IDE for professional Python development
-cask "pycharm"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software
