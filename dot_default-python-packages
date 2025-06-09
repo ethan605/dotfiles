@@ -1,4 +1,5 @@
 basedpyright
+cpplint
 ipython
 mypy
 nginx-language-server
