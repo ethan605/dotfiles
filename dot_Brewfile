@@ -2,6 +2,8 @@ tap "amar1729/formulae"
 tap "simplydanny/pass-extensions"
 # Download with resuming and segmented downloading
 brew "aria2"
+# Distributed revision control system
+brew "git"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Light UNIX download accelerator
@@ -42,8 +44,6 @@ brew "findutils"
 brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Distributed revision control system
-brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Git extension for versioning large files
