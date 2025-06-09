@@ -23,13 +23,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = autoFormatGroup,
 })
 
--- Call clang-format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.h", "*.hpp", "*.c", "*.cc", "*.cpp" },
-  command = "ClangFormat",
-  group = autoFormatGroup,
-})
-
 -- Open help window in a vertical split to the right.
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = vim.api.nvim_create_augroup("help_window_right", {}),

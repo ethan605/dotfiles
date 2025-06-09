@@ -20,7 +20,7 @@ pnpm 9.5.0
 poetry 1.8.5
 postgres 15.13
 pre-commit 4.2.0
-python 3.11.12
+python 3.11.13
 ruby 3.4.4
 rust 1.87.0
 semver 3.4.0
