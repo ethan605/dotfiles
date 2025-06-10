@@ -202,6 +202,7 @@ function __load-zsh-plugins() {
   eval "$(direnv hook zsh)"
   eval "$(starship init zsh)"
   eval "$(zoxide init zsh)"
+  source <(helm completion zsh)
 }
 
 function __load-zsh-settings() {
