@@ -84,6 +84,9 @@ function __load-asdf() {
   eval "$(asdf completion zsh)"
   source "$(asdf where gcloud)/completion.zsh.inc"
   export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
+
+  # ASDF-dependent components
+  source <(helm completion zsh)
 }
 
 function __load-key-bindings() {
@@ -202,7 +205,6 @@ function __load-zsh-plugins() {
   eval "$(direnv hook zsh)"
   eval "$(starship init zsh)"
   eval "$(zoxide init zsh)"
-  source <(helm completion zsh)
 }
 
 function __load-zsh-settings() {
