@@ -191,6 +191,8 @@ cask "logi-options+"
 cask "loom"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
+# Multi-platform web browser
+cask "microsoft-edge"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # VPN client for secure internet access and private browsing
