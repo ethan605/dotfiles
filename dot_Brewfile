@@ -168,8 +168,6 @@ cask "appcleaner"
 cask "claude"
 # Allows switching between application windows
 cask "contexts"
-# Security audit software
-cask "drata-agent"
 # Web browser
 cask "firefox"
 # Screenshot software
