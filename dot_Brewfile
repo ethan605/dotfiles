@@ -181,6 +181,8 @@ cask "google-chrome"
 cask "grammarly-desktop"
 # Keyboard customiser
 cask "karabiner-elements"
+# End-to-end encryption software
+cask "keybase"
 # App to manage software development and track bugs
 cask "linear-linear"
 # Software for Logitech devices

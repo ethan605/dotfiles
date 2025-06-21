@@ -2,6 +2,7 @@
 always_keep_download = no
 concurrency = auto
 disable_plugin_short_name_repository = no
+java_macos_integration_enable=yes
 legacy_version_file = no
 plugin_repository_last_check_duration = 60
 use_release_candidates = no
