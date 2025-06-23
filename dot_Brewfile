@@ -210,7 +210,7 @@ cask "signal"
 # Team communication and collaboration software
 cask "slack"
 # Mesh VPN based on WireGuard
-cask "tailscale"
+cask "tailscale-app"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Multimedia player
