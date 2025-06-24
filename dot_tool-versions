@@ -1,5 +1,5 @@
 argo-rollouts 1.8.3
-awscli 2.27.40
+awscli 2.27.41
 cmake 4.0.3
 direnv 2.35.0
 firebase 14.8.0
@@ -15,7 +15,7 @@ lua-language-server 3.14.0
 make 4.4.1
 maven 3.9.9
 ninja 1.13.0
-nodejs 20.19.2
+nodejs 20.19.3
 pnpm 9.5.0
 poetry 1.8.5
 postgres 15.13
@@ -30,4 +30,4 @@ stylua 2.1.0
 terraform 1.12.2
 terraform-ls 0.36.5
 tflint 0.58.0
-uv 0.7.13
+uv 0.7.14
