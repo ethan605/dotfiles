@@ -96,8 +96,6 @@ brew "ncdu"
 brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # Optimized BLAS library
 brew "openblas"
 # OpenBSD freely-licensed SSH connectivity tools
