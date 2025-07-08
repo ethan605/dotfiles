@@ -138,6 +138,8 @@ brew "vifm"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Suite of barcodes-reading tools
