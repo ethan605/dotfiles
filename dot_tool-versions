@@ -4,8 +4,8 @@ cmake 4.0.3
 direnv 2.35.0
 firebase 14.9.0
 gcloud 529.0.0
-golang 1.24.4
-helm 3.18.3
+golang 1.24.5
+helm 3.18.4
 java openjdk-21.0.2
 kubecolor 0.5.1
 kubectl 1.33.2

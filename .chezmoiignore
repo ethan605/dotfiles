@@ -1,10 +1,10 @@
-# vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+# vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=<<<,>>>
 LICENSE
 README.md
 misc
 mac-install
 
-# [[[ Obsolete configs - keep for future reference only
+# <<< Obsolete configs - keep for future reference only
 
 .config/alacritty/alacritty.yml
 .config/flake8
@@ -22,14 +22,14 @@ mac-install
 # Karabiner for UK keyboard layout
 .config/karabiner/karabiner_uk.json
 
-# ]]]
+# >>>
 
-# [[[ For experiments only
+# <<< For experiments only
 .config/i3
 .xinitrc
-# ]]]
+# >>>
 
-# [[[ Linux-exclusive files
+# <<< Linux-exclusive files
 {{- if ne .chezmoi.os "linux" }}
 
 .config/autostart
@@ -69,9 +69,9 @@ mac-install
 .xkb
 
 {{- end }}
-# ]]]
+# >>>
 
-# [[[ Personal exclusive files
+# <<< Personal exclusive files
 {{ if ne .chezmoi.hostname "lunarch" }}
 
 .config/chrome-dev-flags.conf
@@ -79,9 +79,9 @@ mac-install
 .config/nordvpn
 
 {{ end }}
-# ]]]
+# >>>
 
-# [[[ Work-related exclusive files
+# <<< Work-related exclusive files
 {{ if ne .chezmoi.hostname "PF3XSEPR" }}
 
 .config/sway/keymaps/thinkpad.xkb
@@ -90,9 +90,9 @@ mac-install
 .local/bin/thinkpad-utils
 
 {{ end }}
-# ]]]
+# >>>
 
-# [[[ MacOS-exclusive files
+# <<< MacOS-exclusive files
 {{ if ne .chezmoi.os "darwin" }}
 
 .Brewfile
@@ -102,4 +102,4 @@ mac-install
 Library
 
 {{ end }}
-# ]]]
+# >>>
