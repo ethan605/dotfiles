@@ -45,6 +45,7 @@ return {
         vim.keymap.set({ "n", "v" }, "<leader>f", function()
           vim.lsp.buf.format({
             filter = function(client) return client.name == "null-ls" end,
+            timeout_ms = 5000,
           })
         end, { noremap = true, silent = true, buffer = true })
       end,
