@@ -29,5 +29,5 @@ shfmt 3.12.0
 stylua 2.1.0
 terraform 1.12.2
 terraform-ls 0.36.5
-tflint 0.58.0
+tflint 0.58.1
 uv 0.7.20
