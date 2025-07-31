@@ -81,6 +81,13 @@ local plugins = {
     build = ":TSUpdate",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   },
+
+  {
+    "A7Lavinraj/fyler.nvim",
+    dependencies = { "echasnovski/mini.icons" },
+    branch = "stable",
+    opts = {},
+  },
 }
 
 require("lazy").setup(plugins, opts)
