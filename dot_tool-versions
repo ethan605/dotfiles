@@ -1,10 +1,10 @@
 argo-rollouts 1.8.3
-awscli 2.28.3
+awscli 2.28.4
 cmake 4.1.0
 direnv 2.37.1
-firebase 14.11.2
+firebase 14.12.0
 gcloud 533.0.0
-golang 1.24.5
+golang 1.24.6
 helm 3.18.4
 java openjdk-21.0.2
 kubecolor 0.5.1
