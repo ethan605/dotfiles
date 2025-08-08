@@ -66,7 +66,7 @@ return {
 
       {
         "gE",
-        function() fzf_diagnostic.diagnostics({ severity_only = 1 }) end,
+        function() fzf_diagnostic.diagnostics({ severity_only = true }) end,
         desc = "Browse diagnostics",
       },
     }

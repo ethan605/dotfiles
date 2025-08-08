@@ -53,3 +53,18 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.wo.foldcolumn = "0"
   end,
 })
+
+vim.api.nvim_create_user_command(
+  "TodoFzf",
+  function(args)
+    local todoFzf = require("todo-comments.fzf")
+    local keyword = args.args
+
+    if string.len(keyword) == 0 then
+      todoFzf.todo()
+    else
+      todoFzf.todo({ keywords = { keyword } })
+    end
+  end,
+  { desc = "Browse Todo comments by keyword", nargs = "?" }
+)
