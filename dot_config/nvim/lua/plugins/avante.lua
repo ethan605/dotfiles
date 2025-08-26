@@ -3,19 +3,23 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   version = false,
-  ---type avante.Config
+  ---@type avante.Config
   opts = {
     ---@type avante.ProviderName
-    provider = "gemini",
-    gemini_api_key = vim.env.GEMINI_API_KEY,
-    ---@type AvanteHintsConfig
-    hints = { enabled = false },
+    provider = "claude",
+    mode = "agentic",
     selector = {
       ---@type avante.SelectorProvider
       provider = "fzf_lua",
       provider_opts = {
         prompt = "Avante> ",
       },
+    },
+    dual_boost = { enabled = false },
+    selection = { enabled = false },
+    web_search_engine = {
+      provider = "google",
+      proxy = nil,
     },
     mappings = {
       cancel = {
@@ -27,7 +31,7 @@ return {
       wrap = true,
       width = 40,
       input = {
-        height = 5,
+        height = 10,
         prompt_hl_group = "Comment",
       },
       sidebar_header = { enabled = false },

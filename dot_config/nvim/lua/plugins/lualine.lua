@@ -62,6 +62,10 @@ return {
           {
             "navic",
             fmt = function(text) return string.gsub(text, "%%%*$", "") end,
+            color_correction = "dynamic",
+            navic_opts = {
+              click = true, -- Enable clicking on breadcrumbs
+            },
           },
         },
         lualine_x = {

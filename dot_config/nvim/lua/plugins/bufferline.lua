@@ -112,6 +112,9 @@ return {
 
         -- Pinning
         groups = {
+          options = {
+            toggle_hidden_on_enter = true,
+          },
           items = {
             require("bufferline.groups").builtin.pinned:with({ icon = "" }),
           },
