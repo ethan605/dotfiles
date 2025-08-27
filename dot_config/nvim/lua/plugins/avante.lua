@@ -29,7 +29,7 @@ return {
     selection = { enabled = false },
     behaviour = {
       auto_apply_diff_after_generation = false,
-      auto_set_highlight_group = true,
+      auto_set_highlight_group = false,
       auto_set_keymaps = true,
       auto_suggestions = false,
       support_paste_from_clipboard = false,
