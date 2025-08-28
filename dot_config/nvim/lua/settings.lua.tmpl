@@ -82,9 +82,9 @@ if vim.fn.has("nvim-0.12") == 1 then
   vim.opt.diffopt.append("inline:simple")
 end
 
-vim.opt.clipboard:append("unnamedplus")          -- Use system clipboard over vim's buffers
-vim.opt.formatoptions:append("o")                -- Continue comment marker in new lines.
-vim.opt.shortmess:append("c")                    -- Don't give 'ins-completion-menu' messages.
+vim.opt.clipboard:append("unnamedplus") -- Use system clipboard over vim's buffers
+vim.opt.formatoptions:append("o")       -- Continue comment marker in new lines.
+vim.opt.shortmess:append("c")           -- Don't give 'ins-completion-menu' messages.
 
 -- Add fzf to run time path, OS-dependent
 {{- if eq .chezmoi.os "linux" }}
