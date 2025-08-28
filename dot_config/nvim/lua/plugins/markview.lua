@@ -3,7 +3,7 @@ local supported_filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avan
 return {
   "OXY2DEV/markview.nvim",
   ft = supported_filetypes,
-  ---@type mkv.config
+  ---@type markview.config
   opts = {
     preview = {
       filetypes = supported_filetypes,

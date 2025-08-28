@@ -12,16 +12,39 @@ return {
         confirm_simple = false,
         default_explorer = true,
         git_status = true,
-        width = 0.25,
-        height = 1,
-        kind = "split:leftmost",
-        border = "single",
+        indentscope = {
+          enabled = true,
+          group = "FylerIndentMarker",
+          marker = "│",
+        },
+        win = {
+          border = "single",
+          kind_presets = {
+            split_left_most = {
+              width = "0.2rel",
+              height = "1rel",
+            },
+          },
+          kind = "split_left_most",
+          buf_opts = {},
+          win_opts = {},
+        },
       },
       confirm = {
-        width = 0.5,
-        height = 0.4,
-        kind = "split:below",
-        border = "single",
+        win = {
+          border = "single",
+          kind_presets = {
+            float = {
+              height = "0.3rel",
+              width = "0.4rel",
+              top = "0.3rel",
+              left = "0.3rel",
+            },
+          },
+          kind = "float",
+          buf_opts = {},
+          win_opts = {},
+        },
       },
     },
   },
