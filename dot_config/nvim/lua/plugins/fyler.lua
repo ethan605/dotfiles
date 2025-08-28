@@ -20,12 +20,9 @@ return {
         win = {
           border = "single",
           kind_presets = {
-            split_left_most = {
-              width = "0.2rel",
-              height = "1rel",
-            },
+            replace = {},
           },
-          kind = "split_left_most",
+          kind = "replace",
           buf_opts = {},
           win_opts = {},
         },
