@@ -55,10 +55,6 @@ local plugins = {
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
   require("plugins.vim-dadbod-ui"),
-  -- require("plugins.kulala"),
-  -- require("plugins.nvim-dap"), TODO: Configure nvim-dap properly
-  -- require("plugins.oil"), # TODO: considering yazi without image preview
-  -- require("plugins.vista"), TODO: Remove when LSP covers ctags completely
 
   "sindrets/diffview.nvim",
   { "hat0uma/csvview.nvim",   opts = {} },
