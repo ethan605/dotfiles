@@ -75,7 +75,12 @@ vim.opt.diffopt = {
   "algorithm:histogram",
   "linematch:200",
   "indent-heuristic",
+  "linematch:40",
 }
+
+if vim.fn.has("nvim-0.12") == 1 then
+  vim.opt.diffopt.append("inline:simple")
+end
 
 vim.opt.clipboard:append("unnamedplus")          -- Use system clipboard over vim's buffers
 vim.opt.formatoptions:append("o")                -- Continue comment marker in new lines.
