@@ -41,7 +41,7 @@ return {
         theme = custom_powerline,
         disabled_filetypes = { "NvimTree", "dbui" },
       },
-      extensions = { "oil", avante_extension },
+      extensions = { avante_extension },
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
