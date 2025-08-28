@@ -37,6 +37,7 @@ local plugins = {
   require("plugins.colorscheme"),
   require("plugins.comment"),
   require("plugins.dashboard"),
+  require("plugins.fyler"),
   require("plugins.fzf-lua"),
   require("plugins.gitlinker"),
   require("plugins.gitsigns"),
@@ -77,13 +78,6 @@ local plugins = {
     build = ":TSUpdate",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   },
-
-  -- {
-  --   "A7Lavinraj/fyler.nvim",
-  --   dependencies = { "echasnovski/mini.icons" },
-  --   branch = "stable",
-  --   opts = {},
-  -- },
 }
 
 require("lazy").setup(plugins, opts)
