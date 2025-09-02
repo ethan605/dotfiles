@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Escape/left_ctrl dual function",
+                        "description": "Escape/Left-Ctrl dual function",
                         "manipulators": [
                             {
                                 "from": {
@@ -106,6 +106,101 @@
                         ]
                     },
                     {
+                        "description": "Shift+Fn+h/l to select words except terminals",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org.alacritty",
+                                            "^net.kovidgoyal.kitty",
+                                            "^com.googlecode.iterm2"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["shift", "fn"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["shift", "option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org.alacritty",
+                                            "^net.kovidgoyal.kitty",
+                                            "^com.googlecode.iterm2"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["shift", "fn"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["shift", "option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Backspace/Arrows to delete words",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "delete_or_backspace",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "left_arrow",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_arrow",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Fn+0/$ to jump begin/end of line",
                         "manipulators": [
                             {
@@ -132,84 +227,6 @@
                                         "modifiers": ["command"]
                                     }
                                 ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Right Cmd to navigate between apps",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "return_or_enter",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a Alacritty.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "return_or_enter",
-                                    "modifiers": { "mandatory": ["right_command", "shift"] }
-                                },
-                                "to": [{ "shell_command": "open -n -a Alacritty.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "b",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a Finder.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Google Chrome.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a Firefox.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a Linear.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a Messenger.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a Notion.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": { "mandatory": ["right_command"] }
-                                },
-                                "to": [{ "shell_command": "open -a Slack.app" }],
                                 "type": "basic"
                             }
                         ]
@@ -259,50 +276,6 @@
                                     {
                                         "key_code": "v",
                                         "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl+Backspace/Arrows as Option+Backspace/Arrows",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "delete_or_backspace",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "left_arrow",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_arrow",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -770,14 +743,22 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+left_mouse as middle_mouse",
+                        "description": "Right Cmd to navigate between apps",
                         "manipulators": [
                             {
                                 "from": {
-                                    "modifiers": { "mandatory": ["control"] },
-                                    "pointing_button": "button1"
+                                    "key_code": "return_or_enter",
+                                    "modifiers": { "mandatory": ["right_command"] }
                                 },
-                                "to": [{ "pointing_button": "button3" }],
+                                "to": [{ "shell_command": "open -a Alacritty.app" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": { "mandatory": ["right_command", "shift"] }
+                                },
+                                "to": [{ "shell_command": "open -n -a Alacritty.app" }],
                                 "type": "basic"
                             }
                         ]
