@@ -138,6 +138,7 @@
                     },
                     {
                         "description": "Right Cmd to navigate between apps",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
