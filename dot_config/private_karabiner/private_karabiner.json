@@ -106,7 +106,7 @@
                         ]
                     },
                     {
-                        "description": "Shift+Fn+h/l to select words except terminals",
+                        "description": "Shift+Fn+h/j/k/l to select words except terminals",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -126,6 +126,52 @@
                                 "to": [
                                     {
                                         "key_code": "left_arrow",
+                                        "modifiers": ["shift", "option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org.alacritty",
+                                            "^net.kovidgoyal.kitty",
+                                            "^com.googlecode.iterm2"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": ["shift", "fn"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": ["shift", "option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org.alacritty",
+                                            "^net.kovidgoyal.kitty",
+                                            "^com.googlecode.iterm2"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["shift", "fn"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "up_arrow",
                                         "modifiers": ["shift", "option"]
                                     }
                                 ],
