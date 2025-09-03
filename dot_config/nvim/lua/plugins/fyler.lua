@@ -4,8 +4,8 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   branch = "main",
   opts = function()
-    local algos = require("fyler.views.explorer.algos")
-    local store = require("fyler.views.explorer.store")
+    -- local algos = require("fyler.views.explorer.algos")
+    -- local store = require("fyler.views.explorer.store")
 
     ---@type FylerConfig
     return {
@@ -15,16 +15,16 @@ return {
         explorer = {
           ["q"] = "CloseView",
           ["<CR>"] = "Select",
-          ["l"] = function(view)
-            local itemid = algos.match_itemid(vim.api.nvim_get_current_line())
-            if not itemid then return end
-
-            local entry = store.get_entry(itemid)
-            if not entry:is_dir() then return end
-
-            view.root:find(itemid):toggle()
-            vim.api.nvim_exec_autocmds("User", { pattern = "RefreshView" })
-          end,
+          -- ["l"] = function(view)
+          --   local itemid = algos.match_itemid(vim.api.nvim_get_current_line())
+          --   if not itemid then return end
+          --
+          --   local entry = store.get_entry(itemid)
+          --   if not entry:is_dir() then return end
+          --
+          --   view.root:find(itemid):toggle()
+          --   vim.api.nvim_exec_autocmds("User", { pattern = "RefreshView" })
+          -- end,
           ["^"] = "GotoParent",
           ["."] = "GotoCwd",
         },
