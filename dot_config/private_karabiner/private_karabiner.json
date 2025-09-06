@@ -4,12 +4,18 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Escape/LCtrl dual function",
+                        "description": "Esc/LCtrl & Tab/Fn dual functions",
                         "manipulators": [
                             {
                                 "from": { "key_code": "left_control" },
                                 "to": [{ "key_code": "left_control" }],
                                 "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "tab" },
+                                "to": [{ "key_code": "fn" }],
+                                "to_if_alone": [{ "key_code": "tab" }],
                                 "type": "basic"
                             }
                         ]
@@ -614,36 +620,36 @@
                         ]
                     },
                     {
-                        "description": "LAlt+esdf as mouse functions",
+                        "description": "Fn+qwes as mouse functions",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "e",
-                                    "modifiers": { "mandatory": "left_option" }
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": "fn" }
                                 },
                                 "to": [{ "mouse_key": { "vertical_wheel": -32 } }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "d",
-                                    "modifiers": { "mandatory": "left_option" }
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": "fn" }
                                 },
                                 "to": [{ "mouse_key": { "vertical_wheel": 32 } }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": ["left_option"] }
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": ["fn"] }
                                 },
                                 "to": [{ "pointing_button": "button1" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "s",
-                                    "modifiers": { "mandatory": ["left_option"] }
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["fn"] }
                                 },
                                 "to": [{ "pointing_button": "button2" }],
                                 "type": "basic"
