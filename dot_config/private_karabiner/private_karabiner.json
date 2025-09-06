@@ -614,8 +614,24 @@
                         ]
                     },
                     {
-                        "description": "LAlt+fg as mouse buttons",
+                        "description": "LAlt+esdf as mouse functions",
                         "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": "left_option" }
+                                },
+                                "to": [{ "mouse_key": { "vertical_wheel": -32 } }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": "left_option" }
+                                },
+                                "to": [{ "mouse_key": { "vertical_wheel": 32 } }],
+                                "type": "basic"
+                            },
                             {
                                 "from": {
                                     "key_code": "f",
@@ -626,7 +642,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "g",
+                                    "key_code": "s",
                                     "modifiers": { "mandatory": ["left_option"] }
                                 },
                                 "to": [{ "pointing_button": "button2" }],

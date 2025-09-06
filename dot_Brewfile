@@ -1,4 +1,5 @@
 tap "amar1729/formulae"
+tap "dimentium/autoraise"
 tap "simplydanny/pass-extensions"
 # Download with resuming and segmented downloading
 brew "aria2"
@@ -152,6 +153,8 @@ brew "zoxide"
 brew "zsh"
 # Host application for browser extension providing access to your password store
 brew "amar1729/formulae/browserpass"
+# Focus-follows-mouse for MacOS
+brew "dimentium/autoraise/autoraise"
 # Pass extension to avoid printing the password to the console
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
