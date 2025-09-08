@@ -21,7 +21,7 @@
                         ]
                     },
                     {
-                        "description": "RCmd+hjkl as arrow keys",
+                        "description": "RCmd+h/j/k/l as arrow keys",
                         "manipulators": [
                             {
                                 "from": {
@@ -109,7 +109,7 @@
                             {
                                 "from": {
                                     "key_code": "w",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
                                     {
@@ -173,7 +173,7 @@
                         ]
                     },
                     {
-                        "description": "Cmd+Shift+q as Cmd+q",
+                        "description": "Cmd+Shift+q/w as Cmd+q/w",
                         "manipulators": [
                             {
                                 "from": {
@@ -183,6 +183,19 @@
                                 "to": [
                                     {
                                         "key_code": "q",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["control", "shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "w",
                                         "modifiers": ["command"]
                                     }
                                 ],
@@ -611,6 +624,7 @@
                     },
                     {
                         "description": "Fn+qwes as mouse functions",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
