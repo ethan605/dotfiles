@@ -91,12 +91,25 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Backspace to delete words",
+                        "description": "Ctrl+Backspace & Ctrl+W to delete words",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "delete_or_backspace",
                                     "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [
                                     {
@@ -520,29 +533,6 @@
                                 "to": [
                                     {
                                         "key_code": "v",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "w",
                                         "modifiers": ["command"]
                                     }
                                 ],
