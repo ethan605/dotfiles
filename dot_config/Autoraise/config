@@ -1,5 +1,5 @@
 # vim:fileencoding=utf-8:filetype=dosini
-pollMillis=50
+pollMillis=500
 delay=1
 focusDelay=0
 warpX=0.5
