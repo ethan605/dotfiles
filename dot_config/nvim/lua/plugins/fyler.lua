@@ -3,9 +3,14 @@ return {
   "A7Lavinraj/fyler.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   branch = "main",
-  ---@type FylerConfig
+  ---type FylerConfig
   opts = {
     icon_provider = "nvim_web_devicons",
+    -- icon = {
+    --   directory_collapsed = nil,
+    --   directory_empty = nil,
+    --   directory_expanded = nil,
+    -- },
     hooks = {},
     mappings = {
       ["q"] = "CloseView",
@@ -16,36 +21,48 @@ return {
     close_on_select = true,
     confirm_simple = false,
     default_explorer = true,
-    git_status = true,
+    git_status = {
+      enabled = false,
+      -- symbols = {
+      --   Untracked = "●",
+      --   Added = "✚",
+      --   Modified = "●",
+      --   Deleted = "✖",
+      --   Renamed = "➜",
+      --   Copied = "C",
+      --   Conflict = "‼",
+      --   Ignored = "○",
+      -- },
+    },
     indentscope = {
       enabled = true,
-      group = "FylerIndentMarker",
-      marker = "│",
+      -- group = "FylerIndentMarker",
+      -- marker = "│",
     },
     track_current_buffer = true,
     win = {
-      border = "single",
       kind_presets = {
         replace = {},
       },
       kind = "replace",
-      buf_opts = {
-        filetype = "fyler",
-        syntax = "fyler",
-        buflisted = false,
-        buftype = "acwrite",
-        expandtab = true,
-        shiftwidth = 2,
-      },
-      win_opts = {
-        concealcursor = "nvic",
-        conceallevel = 3,
-        cursorline = true,
-        number = true,
-        relativenumber = true,
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,FloatTitle:FloatTitle",
-        wrap = false,
-      },
+      -- border = "single",
+      -- buf_opts = {
+      --   filetype = "fyler",
+      --   syntax = "fyler",
+      --   buflisted = false,
+      --   buftype = "acwrite",
+      --   expandtab = true,
+      --   shiftwidth = 2,
+      -- },
+      -- win_opts = {
+      --   concealcursor = "nvic",
+      --   conceallevel = 3,
+      --   cursorline = true,
+      --   number = true,
+      --   relativenumber = true,
+      --   winhighlight = "Normal:Normal,FloatBorder:FloatBorder,FloatTitle:FloatTitle",
+      --   wrap = false,
+      -- },
     },
   },
 }
