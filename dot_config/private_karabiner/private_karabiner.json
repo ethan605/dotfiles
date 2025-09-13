@@ -123,7 +123,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Backspace & Ctrl+W to delete words outside terminals",
+                        "description": "Ctrl+Backspace & Ctrl+w to delete words outside terminals",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -587,16 +587,6 @@
                         "description": "Ctrl+Shift+c/v/w as Cmd+c/v/w",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": { "mandatory": ["control", "shift"] }
@@ -610,16 +600,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": { "mandatory": ["control", "shift"] }
