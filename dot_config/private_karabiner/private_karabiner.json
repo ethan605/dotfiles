@@ -584,7 +584,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Shift+c/v as Cmd+c/v inside terminals",
+                        "description": "Ctrl+Shift+c/v/w as Cmd+c/v/w",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -631,12 +631,7 @@
                                     }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl+Shift+w as Cmd+w",
-                        "manipulators": [
+                            },
                             {
                                 "from": {
                                     "key_code": "w",
@@ -762,63 +757,6 @@
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
                                 "to": [{ "key_code": "volume_increment" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl+Shift+q as Cmd+q",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "q",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "q",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Fn+qwes as mouse functions",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": { "mandatory": "fn" }
-                                },
-                                "to": [{ "mouse_key": { "vertical_wheel": -32 } }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": { "mandatory": "fn" }
-                                },
-                                "to": [{ "mouse_key": { "vertical_wheel": 32 } }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": { "mandatory": ["fn"] }
-                                },
-                                "to": [{ "pointing_button": "button1" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "q",
-                                    "modifiers": { "mandatory": ["fn"] }
-                                },
-                                "to": [{ "pointing_button": "button2" }],
                                 "type": "basic"
                             }
                         ]
