@@ -38,14 +38,14 @@
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
-                                        "mandatory": ["left_control", "right_command"],
+                                        "mandatory": ["right_command", "left_control"],
                                         "optional": ["any"]
                                     }
                                 },
                                 "to": [
                                     {
                                         "key_code": "down_arrow",
-                                        "modifiers": ["command"]
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
@@ -65,14 +65,14 @@
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
-                                        "mandatory": ["left_control", "right_command"],
+                                        "mandatory": ["right_command", "left_control"],
                                         "optional": ["any"]
                                     }
                                 },
                                 "to": [
                                     {
                                         "key_code": "up_arrow",
-                                        "modifiers": ["command"]
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
@@ -746,7 +746,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "hyphen",
+                                    "key_code": "0",
                                     "modifiers": {
                                         "mandatory": ["right_command"],
                                         "optional": ["any"]
@@ -756,13 +756,8 @@
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "hyphen" },
-                                "to_if_alone": [{ "key_code": "vk_none" }],
-                                "type": "basic"
-                            },
-                            {
                                 "from": {
-                                    "key_code": "equal_sign",
+                                    "key_code": "delete_or_backspace",
                                     "modifiers": {
                                         "mandatory": ["right_command"],
                                         "optional": ["any"]
@@ -772,13 +767,8 @@
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "equal_sign" },
-                                "to_if_alone": [{ "key_code": "vk_none" }],
-                                "type": "basic"
-                            },
-                            {
                                 "from": {
-                                    "key_code": "open_bracket",
+                                    "key_code": "p",
                                     "modifiers": {
                                         "mandatory": ["right_command"],
                                         "optional": ["any"]
@@ -788,24 +778,14 @@
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "open_bracket" },
-                                "to_if_alone": [{ "key_code": "vk_none" }],
-                                "type": "basic"
-                            },
-                            {
                                 "from": {
-                                    "key_code": "close_bracket",
+                                    "key_code": "backslash",
                                     "modifiers": {
                                         "mandatory": ["right_command"],
                                         "optional": ["any"]
                                     }
                                 },
                                 "to": [{ "key_code": "close_bracket" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": { "key_code": "close_bracket" },
-                                "to_if_alone": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             }
                         ]
@@ -817,8 +797,36 @@
                     "identifiers": { "is_keyboard": true },
                     "simple_modifications": [
                         {
+                            "from": { "key_code": "backslash" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
                             "from": { "key_code": "caps_lock" },
                             "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "close_bracket" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "delete_or_backspace" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "equal_sign" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "hyphen" },
+                            "to": [{ "key_code": "delete_or_backspace" }]
+                        },
+                        {
+                            "from": { "key_code": "open_bracket" },
+                            "to": [{ "key_code": "backslash" }]
+                        },
+                        {
+                            "from": { "key_code": "right_shift" },
+                            "to": [{ "key_code": "right_option" }]
                         }
                     ]
                 },
@@ -831,8 +839,36 @@
                     },
                     "simple_modifications": [
                         {
+                            "from": { "key_code": "backslash" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
                             "from": { "key_code": "caps_lock" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
+                            "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "close_bracket" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "delete_or_backspace" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "equal_sign" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "key_code": "hyphen" },
+                            "to": [{ "key_code": "delete_or_backspace" }]
+                        },
+                        {
+                            "from": { "key_code": "open_bracket" },
+                            "to": [{ "key_code": "backslash" }]
+                        },
+                        {
+                            "from": { "key_code": "right_shift" },
+                            "to": [{ "key_code": "right_option" }]
                         }
                     ]
                 },
