@@ -664,7 +664,7 @@
                                     "key_code": "3",
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
-                                "to": [{ "key_code": "vk_none" }],
+                                "to": [{ "key_code": "mission_control" }],
                                 "type": "basic"
                             },
                             {
