@@ -688,7 +688,7 @@
                                     "key_code": "6",
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
-                                "to": [{ "key_code": "vk_none" }],
+                                "to": [{ "key_code": "rewind" }],
                                 "type": "basic"
                             },
                             {
@@ -696,7 +696,7 @@
                                     "key_code": "7",
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
-                                "to": [{ "key_code": "rewind" }],
+                                "to": [{ "key_code": "play_or_pause" }],
                                 "type": "basic"
                             },
                             {
@@ -704,7 +704,7 @@
                                     "key_code": "8",
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
-                                "to": [{ "key_code": "play_or_pause" }],
+                                "to": [{ "key_code": "fastforward" }],
                                 "type": "basic"
                             },
                             {
@@ -712,7 +712,7 @@
                                     "key_code": "9",
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
-                                "to": [{ "key_code": "fastforward" }],
+                                "to": [{ "key_code": "mute" }],
                                 "type": "basic"
                             },
                             {
@@ -720,20 +720,12 @@
                                     "key_code": "0",
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
-                                "to": [{ "key_code": "mute" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "hyphen",
-                                    "modifiers": { "mandatory": ["fn"] }
-                                },
                                 "to": [{ "key_code": "volume_decrement" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "equal_sign",
+                                    "key_code": "delete_or_backspace",
                                     "modifiers": { "mandatory": ["fn"] }
                                 },
                                 "to": [{ "key_code": "volume_increment" }],
@@ -818,6 +810,14 @@
                                     "modifiers": { "mandatory": ["right_command"] }
                                 },
                                 "to": [{ "key_code": "q" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "w" }],
                                 "type": "basic"
                             }
                         ]
