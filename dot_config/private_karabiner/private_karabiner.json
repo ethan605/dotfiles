@@ -819,6 +819,14 @@
                                 },
                                 "to": [{ "key_code": "w" }],
                                 "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "x",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "x" }],
+                                "type": "basic"
                             }
                         ]
                     }
