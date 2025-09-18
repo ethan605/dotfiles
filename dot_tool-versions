@@ -1,8 +1,8 @@
 argo-rollouts 1.8.3
-awscli 2.30.3
+awscli 2.30.4
 cmake 4.1.1
 direnv 2.37.1
-firebase 14.16.0
+firebase 14.17.0
 gcloud 539.0.0
 golang 1.25.1
 helm 3.19.0
@@ -21,13 +21,13 @@ poetry 1.8.5
 postgres 15.14
 pre-commit 4.3.0
 python 3.11.13
-ruby 3.4.5
+ruby 3.4.6
 rust 1.89.0
 semver 3.4.0
 shellcheck 0.11.0
 shfmt 3.12.0
 stylua 2.2.0
-terraform 1.13.2
+terraform 1.13.3
 terraform-ls 0.37.0
 tflint 0.59.1
-uv 0.8.17
+uv 0.8.18
