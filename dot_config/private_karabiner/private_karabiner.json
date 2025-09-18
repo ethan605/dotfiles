@@ -706,7 +706,7 @@
                         "manipulators": [
                             {
                                 "from": { "key_code": "delete_or_backspace" },
-                                "to_if_alone": [{ "key_code": "vk_none" }],
+                                "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
                             {
@@ -747,8 +747,11 @@
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "close_bracket" },
-                                "to_if_alone": [{ "key_code": "backslash" }],
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": { "optional": ["shift"] }
+                                },
+                                "to": [{ "key_code": "backslash" }],
                                 "type": "basic"
                             },
                             {
