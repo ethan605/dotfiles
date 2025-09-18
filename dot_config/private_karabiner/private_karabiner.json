@@ -730,19 +730,9 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Shift+c/v/w as Cmd+c/v/w inside terminals",
+                        "description": "Ctrl+Shift+c/v/w as Cmd+c/v/w",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": { "mandatory": ["control", "shift"] }
@@ -756,16 +746,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": { "mandatory": ["control", "shift"] }
@@ -779,16 +759,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": { "mandatory": ["control", "shift"] }
