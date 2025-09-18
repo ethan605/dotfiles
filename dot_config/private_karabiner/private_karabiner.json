@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Avoid accidental Cmd+q/w",
+                        "description": "Linux - Avoid accidental Cmd+q/w",
                         "manipulators": [
                             {
                                 "from": {
@@ -44,7 +44,7 @@
                         ]
                     },
                     {
-                        "description": "RCmd+Enter to navigate terminal",
+                        "description": "Linux - RCmd+Enter to navigate terminal",
                         "manipulators": [
                             {
                                 "from": {
@@ -65,58 +65,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Backspace & Ctrl+w to delete words outside terminals",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "delete_or_backspace",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org.alacritty",
-                                            "^net.kovidgoyal.kitty",
-                                            "^com.googlecode.iterm2"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl+abcefgiklmnopqrstvxyz as Cmd+abcefgiklmnopqrstvxyz outside terminals",
+                        "description": "Linux - Ctrl+abcefgiklmnopqrstvxyz as Cmd+abcefgiklmnopqrstvxyz outside terminals",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -661,7 +610,58 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+d/u to scroll page outside terminals",
+                        "description": "Linux - Ctrl+Backspace & Ctrl+w to delete words outside terminals",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org.alacritty",
+                                            "^net.kovidgoyal.kitty",
+                                            "^com.googlecode.iterm2"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "delete_or_backspace",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org.alacritty",
+                                            "^net.kovidgoyal.kitty",
+                                            "^com.googlecode.iterm2"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Linux - Ctrl+d/u to scroll page outside terminals",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -712,7 +712,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Shift+c/v/w as Cmd+c/v/w",
+                        "description": "Linux - Ctrl+Shift+c/v/w as Cmd+c/v/w",
                         "manipulators": [
                             {
                                 "from": {
@@ -756,7 +756,7 @@
                         ]
                     },
                     {
-                        "description": "Esc/LCtrl & Tab/Fn dual functions",
+                        "description": "Voyager - Esc/LCtrl & Tab/Fn dual functions",
                         "manipulators": [
                             {
                                 "from": { "key_code": "left_control" },
@@ -773,7 +773,7 @@
                         ]
                     },
                     {
-                        "description": "RCmd+h/j/k/l as arrow keys",
+                        "description": "Voyager - RCmd+h/j/k/l as arrow keys",
                         "manipulators": [
                             {
                                 "from": {
@@ -822,7 +822,7 @@
                         ]
                     },
                     {
-                        "description": "Fn+number row for media functions",
+                        "description": "Voyager - Fn+number row for media functions",
                         "manipulators": [
                             {
                                 "from": {
@@ -928,7 +928,7 @@
                         ]
                     },
                     {
-                        "description": "Voyager replication",
+                        "description": "Voyager - Top right cluster",
                         "manipulators": [
                             {
                                 "from": { "key_code": "delete_or_backspace" },
@@ -1022,7 +1022,12 @@
                                 },
                                 "to": [{ "key_code": "open_bracket" }],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Voyager - RCmd+alpha as alpha",
+                        "manipulators": [
                             {
                                 "from": {
                                     "key_code": "a",
@@ -1102,6 +1107,14 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "h" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "i",
                                     "modifiers": {
                                         "mandatory": ["right_command"],
@@ -1109,6 +1122,30 @@
                                     }
                                 },
                                 "to": [{ "key_code": "i" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "j" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "k" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "l" }],
                                 "type": "basic"
                             },
                             {
