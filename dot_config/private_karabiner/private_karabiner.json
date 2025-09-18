@@ -994,11 +994,6 @@
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "equal_sign" },
-                                "to_if_alone": [{ "key_code": "delete_or_backspace" }],
-                                "type": "basic"
-                            },
-                            {
                                 "from": {
                                     "key_code": "equal_sign",
                                     "modifiers": {
@@ -1007,6 +1002,27 @@
                                     }
                                 },
                                 "to": [{ "key_code": "equal_sign" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "equal_sign",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "equal_sign",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "delete_or_backspace" }],
                                 "type": "basic"
                             },
                             {
