@@ -6,12 +6,14 @@
       "manipulators": [
         {
           "from": { "key_code": "left_control" },
+          "parameters": { "basic.to_if_alone_timeout_milliseconds": 200 },
           "to": [{ "key_code": "left_control" }],
           "to_if_alone": [{ "key_code": "escape" }],
           "type": "basic"
         },
         {
           "from": { "key_code": "tab" },
+          "parameters": { "basic.to_if_alone_timeout_milliseconds": 200 },
           "to": [{ "key_code": "fn" }],
           "to_if_alone": [{ "key_code": "tab" }],
           "type": "basic"
