@@ -222,5 +222,3 @@ cask "vlc"
 cask "vox"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-# Video communication and virtual meeting platform
-cask "zoom"
