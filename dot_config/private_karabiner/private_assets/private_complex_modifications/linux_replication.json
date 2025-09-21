@@ -21,8 +21,7 @@
           "from": {
             "key_code": "q",
             "modifiers": {
-              "mandatory": ["command"],
-              "optional": ["any"]
+              "mandatory": ["command"]
             }
           },
           "to": [{ "key_code": "vk_none" }],
@@ -32,8 +31,7 @@
           "from": {
             "key_code": "w",
             "modifiers": {
-              "mandatory": ["command"],
-              "optional": ["any"]
+              "mandatory": ["command"]
             }
           },
           "to": [{ "key_code": "vk_none" }],
@@ -392,32 +390,6 @@
           "to": [
             {
               "key_code": "p",
-              "modifiers": ["command"]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "^org.alacritty",
-                "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
-              ],
-              "type": "frontmost_application_unless"
-            }
-          ],
-          "from": {
-            "key_code": "q",
-            "modifiers": {
-              "mandatory": ["control"],
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "q",
               "modifiers": ["command"]
             }
           ],
