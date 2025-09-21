@@ -759,7 +759,7 @@
         {
           "from": {
             "key_code": "open_bracket",
-            "modifiers": { "mandatory": ["right_command", "control", "shift"] }
+            "modifiers": { "mandatory": ["control", "shift"] }
           },
           "to": [
             {
@@ -772,7 +772,7 @@
         {
           "from": {
             "key_code": "close_bracket",
-            "modifiers": { "mandatory": ["right_command", "control", "shift"] }
+            "modifiers": { "mandatory": ["control", "shift"] }
           },
           "to": [
             {

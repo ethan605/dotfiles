@@ -761,7 +761,7 @@
                             {
                                 "from": {
                                     "key_code": "open_bracket",
-                                    "modifiers": { "mandatory": ["right_command", "control", "shift"] }
+                                    "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [
                                     {
@@ -774,7 +774,7 @@
                             {
                                 "from": {
                                     "key_code": "close_bracket",
-                                    "modifiers": { "mandatory": ["right_command", "control", "shift"] }
+                                    "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [
                                     {
@@ -790,7 +790,6 @@
             },
             "devices": [
                 {
-                    "disable_built_in_keyboard_if_exists": true,
                     "identifiers": {
                         "is_keyboard": true,
                         "product_id": 24672,
@@ -821,7 +820,6 @@
                 },
                 {
                     "identifiers": { "is_keyboard": true },
-                    "ignore": true,
                     "simple_modifications": [
                         {
                             "from": { "key_code": "caps_lock" },
