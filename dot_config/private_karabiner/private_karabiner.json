@@ -9,19 +9,6 @@
                             {
                                 "from": {
                                     "key_code": "q",
-                                    "modifiers": { "mandatory": ["command", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "q",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "q",
                                     "modifiers": { "mandatory": ["command"] }
                                 },
                                 "to": [{ "key_code": "vk_none" }],
@@ -680,8 +667,21 @@
                         ]
                     },
                     {
-                        "description": "Linux - Ctrl+Shift+c/v/w as Cmd+c/v/w",
+                        "description": "Linux - Ctrl+Shift+c/v/q/w as Cmd+c/v/q/w",
                         "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["command", "shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "from": {
                                     "key_code": "c",
