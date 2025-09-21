@@ -106,7 +106,7 @@
             "key_code": "3",
             "modifiers": { "mandatory": ["fn"] }
           },
-          "to": [{ "apple_vendor_keyboard_key_code": "mission_control" }],
+          "to": [{ "key_code": "vk_none" }],
           "type": "basic"
         },
         {
@@ -114,7 +114,7 @@
             "key_code": "4",
             "modifiers": { "mandatory": ["fn"] }
           },
-          "to": [{ "apple_vendor_keyboard_key_code": "spotlight" }],
+          "to": [{ "key_code": "vk_none" }],
           "type": "basic"
         },
         {
