@@ -1835,6 +1835,11 @@
                                 },
                                 "to": [{ "key_code": "open_bracket" }],
                                 "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "return_or_enter" },
+                                "to": [{ "key_code": "vk_none" }],
+                                "type": "basic"
                             }
                         ]
                     },
