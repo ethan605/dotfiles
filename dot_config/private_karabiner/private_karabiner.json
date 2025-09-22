@@ -760,19 +760,6 @@
                 {
                     "identifiers": {
                         "is_keyboard": true,
-                        "product_id": 24672,
-                        "vendor_id": 19266
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "vk_none" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
                         "product_id": 35138,
                         "vendor_id": 8765
                     },
