@@ -184,11 +184,16 @@
           "type": "basic"
         },
         {
+          "from": { "key_code": "equal_sign" },
+          "to": [{ "key_code": "vk_none" }],
+          "type": "basic"
+        },
+        {
           "from": {
-            "key_code": "equal_sign",
+            "key_code": "hyphen",
             "modifiers": {
               "mandatory": ["right_command"],
-              "optional": ["any"]
+              "optional": ["shift"]
             }
           },
           "to": [{ "key_code": "equal_sign" }],
@@ -196,7 +201,7 @@
         },
         {
           "from": {
-            "key_code": "equal_sign",
+            "key_code": "hyphen",
             "modifiers": { "mandatory": ["left_control"] }
           },
           "to": [
@@ -209,23 +214,18 @@
         },
         {
           "from": {
-            "key_code": "equal_sign",
-            "modifiers": { "optional": ["any"] }
+            "key_code": "hyphen",
+            "modifiers": { "optional": ["left_option"] }
           },
           "to": [{ "key_code": "delete_or_backspace" }],
           "type": "basic"
         },
         {
-          "from": { "key_code": "hyphen" },
-          "to_if_alone": [{ "key_code": "vk_none" }],
-          "type": "basic"
-        },
-        {
           "from": {
-            "key_code": "hyphen",
+            "key_code": "0",
             "modifiers": {
               "mandatory": ["right_command"],
-              "optional": ["any"]
+              "optional": ["shift"]
             }
           },
           "to": [{ "key_code": "hyphen" }],
@@ -237,8 +237,13 @@
           "type": "basic"
         },
         {
+          "from": { "key_code": "close_bracket" },
+          "to_if_alone": [{ "key_code": "vk_none" }],
+          "type": "basic"
+        },
+        {
           "from": {
-            "key_code": "close_bracket",
+            "key_code": "open_bracket",
             "modifiers": { "optional": ["shift"] }
           },
           "to": [{ "key_code": "backslash" }],
@@ -246,7 +251,7 @@
         },
         {
           "from": {
-            "key_code": "close_bracket",
+            "key_code": "open_bracket",
             "modifiers": {
               "mandatory": ["right_command"],
               "optional": ["any"]
@@ -256,13 +261,8 @@
           "type": "basic"
         },
         {
-          "from": { "key_code": "open_bracket" },
-          "to_if_alone": [{ "key_code": "vk_none" }],
-          "type": "basic"
-        },
-        {
           "from": {
-            "key_code": "open_bracket",
+            "key_code": "p",
             "modifiers": {
               "mandatory": ["right_command"],
               "optional": ["any"]
