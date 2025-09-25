@@ -1743,12 +1743,18 @@
                         "description": "Voyager - Top right cluster",
                         "manipulators": [
                             {
-                                "from": { "key_code": "delete_or_backspace" },
+                                "from": {
+                                    "key_code": "delete_or_backspace",
+                                    "modifiers": { "optional": ["any"] }
+                                },
                                 "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "equal_sign" },
+                                "from": {
+                                    "key_code": "equal_sign",
+                                    "modifiers": { "optional": ["any"] }
+                                },
                                 "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
@@ -1796,12 +1802,18 @@
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "backslash" },
+                                "from": {
+                                    "key_code": "backslash",
+                                    "modifiers": { "optional": ["any"] }
+                                },
                                 "to_if_alone": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
                             {
-                                "from": { "key_code": "close_bracket" },
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": { "optional": ["any"] }
+                                },
                                 "to_if_alone": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
