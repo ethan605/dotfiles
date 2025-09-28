@@ -1,0 +1,5 @@
+{
+  "keyMappings": "map g[ previousTab\nmap g] nextTab\nunmap x\nunmap X\nmap gC removeTab",
+  "settingsVersion": "2.3",
+  "exclusionRules": []
+}
