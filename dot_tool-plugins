@@ -34,8 +34,6 @@ ninja		git@github.com:asdf-community/asdf-ninja.git
 
 nodejs		git@github.com:asdf-vm/asdf-nodejs.git
 
-pnpm		git@github.com:jonathanmorley/asdf-pnpm.git
-
 poetry		git@github.com:asdf-community/asdf-poetry.git
 
 postgres		git@github.com:smashedtoatoms/asdf-postgres.git
