@@ -16,7 +16,7 @@ make 4.4.1
 maven 3.9.11
 ninja 1.13.1
 nodejs 22.17.1
-pnpm 10.12.1
+pnpm 10.16.0
 poetry 1.8.5
 postgres 15.14
 pre-commit 4.3.0
