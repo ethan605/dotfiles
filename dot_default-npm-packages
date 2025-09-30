@@ -1,3 +1,4 @@
+@aikidosec/safe-chain
 @microsoft/compose-language-service
 @tailwindcss/language-server
 bash-language-server
