@@ -2,7 +2,7 @@
 return {
   "A7Lavinraj/fyler.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  branch = "main",
+  branch = "stable",
   ---type FylerConfig
   opts = {
     icon_provider = "nvim_web_devicons",
