@@ -2170,7 +2170,7 @@
                     "to": [{ "key_code": "vk_none" }]
                 }
             ],
-            "name": "Macager",
+            "name": "Minimal52",
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
