@@ -215,6 +215,8 @@ cask "orbstack"
 cask "pearcleaner"
 # Collaboration platform for API development
 cask "postman"
+# Toolbox companion for QMK Firmware
+cask "qmk-toolbox"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software
