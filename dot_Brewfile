@@ -193,6 +193,8 @@ cask "homerow"
 cask "karabiner-elements"
 # End-to-end encryption software
 cask "keybase"
+# ZSA keyboard firmware flasher
+cask "keymapp"
 # App to manage software development and track bugs
 cask "linear-linear"
 # Software for Logitech devices
