@@ -2,14 +2,20 @@
   "title": "Linux replication",
   "rules": [
     {
-      "description": "Linux - Avoid accidental Cmd+q/w",
+      "description": "Linux - Avoid accidental Cmd+h/q/w",
       "manipulators": [
         {
           "from": {
+            "key_code": "h",
+            "modifiers": { "mandatory": ["command"] }
+          },
+          "to": [{ "key_code": "vk_none" }],
+          "type": "basic"
+        },
+        {
+          "from": {
             "key_code": "q",
-            "modifiers": {
-              "mandatory": ["command"]
-            }
+            "modifiers": { "mandatory": ["command"] }
           },
           "to": [{ "key_code": "vk_none" }],
           "type": "basic"
@@ -17,9 +23,7 @@
         {
           "from": {
             "key_code": "w",
-            "modifiers": {
-              "mandatory": ["command"]
-            }
+            "modifiers": { "mandatory": ["command"] }
           },
           "to": [{ "key_code": "vk_none" }],
           "type": "basic"
