@@ -193,8 +193,6 @@ cask "homerow"
 cask "karabiner-elements"
 # End-to-end encryption software
 cask "keybase"
-# ZSA keyboard firmware flasher
-cask "keymapp"
 # App to manage software development and track bugs
 cask "linear-linear"
 # Software for Logitech devices
@@ -217,8 +215,6 @@ cask "orbstack"
 cask "pearcleaner"
 # Collaboration platform for API development
 cask "postman"
-# Toolbox companion for QMK Firmware
-cask "qmk-toolbox"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software
