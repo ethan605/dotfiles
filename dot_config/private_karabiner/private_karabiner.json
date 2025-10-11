@@ -34,12 +34,12 @@
                         ]
                     },
                     {
-                        "description": "Linux - RCmd+RShift to navigate apps",
+                        "description": "Linux - RCmd+RAlt to navigate apps",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "return_or_enter",
-                                    "modifiers": { "mandatory": ["right_command"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b org.alacritty" }],
                                 "type": "basic"
@@ -47,7 +47,7 @@
                             {
                                 "from": {
                                     "key_code": "c",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b com.google.Chrome" }],
                                 "type": "basic"
@@ -55,7 +55,7 @@
                             {
                                 "from": {
                                     "key_code": "f",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b org.mozilla.firefox" }],
                                 "type": "basic"
@@ -63,7 +63,7 @@
                             {
                                 "from": {
                                     "key_code": "l",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b com.linear" }],
                                 "type": "basic"
@@ -71,7 +71,7 @@
                             {
                                 "from": {
                                     "key_code": "m",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b com.facebook.archon.developerID" }],
                                 "type": "basic"
@@ -79,7 +79,7 @@
                             {
                                 "from": {
                                     "key_code": "n",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b notion.id" }],
                                 "type": "basic"
@@ -87,7 +87,7 @@
                             {
                                 "from": {
                                     "key_code": "s",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b com.tinyspeck.slackmacgap" }],
                                 "type": "basic"
@@ -95,7 +95,7 @@
                             {
                                 "from": {
                                     "key_code": "t",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b ru.keepcoder.Telegram" }],
                                 "type": "basic"
@@ -103,7 +103,7 @@
                             {
                                 "from": {
                                     "key_code": "w",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -b net.whatsapp.WhatsApp" }],
                                 "type": "basic"
