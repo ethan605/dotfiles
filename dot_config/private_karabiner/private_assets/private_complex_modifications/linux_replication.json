@@ -62,6 +62,16 @@
         },
         {
           "from": {
+            "key_code": "m",
+            "modifiers": { "mandatory": ["right_command", "right_shift"] }
+          },
+          "to": [
+            { "shell_command": "open -b com.facebook.archon.developerID" }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
             "key_code": "s",
             "modifiers": { "mandatory": ["right_command", "right_shift"] }
           },

@@ -65,6 +65,14 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "m",
+                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -b com.facebook.archon.developerID" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "s",
                                     "modifiers": { "mandatory": ["right_command", "right_shift"] }
                                 },
@@ -845,8 +853,16 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Linux - Avoid accidental Cmd+q/w",
+                        "description": "Linux - Avoid accidental Cmd+h/q/w",
                         "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "to": [{ "key_code": "vk_none" }],
+                                "type": "basic"
+                            },
                             {
                                 "from": {
                                     "key_code": "q",
@@ -870,8 +886,11 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "return_or_enter",
-                                    "modifiers": { "mandatory": ["right_command"] }
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "mandatory": ["right_command"],
+                                        "optional": ["right_shift"]
+                                    }
                                 },
                                 "to": [{ "shell_command": "open -b org.alacritty" }],
                                 "type": "basic"
@@ -894,14 +913,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -b com.linear" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "m",
                                     "modifiers": { "mandatory": ["right_command", "right_shift"] }
                                 },
@@ -910,34 +921,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "n",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -b notion.id" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "s",
                                     "modifiers": { "mandatory": ["right_command", "right_shift"] }
                                 },
                                 "to": [{ "shell_command": "open -b com.tinyspeck.slackmacgap" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "t",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -b ru.keepcoder.Telegram" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -b net.whatsapp.WhatsApp" }],
                                 "type": "basic"
                             }
                         ]
