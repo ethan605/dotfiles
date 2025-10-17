@@ -8,7 +8,7 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>", opts)
 
 -- Escape TERMINAL mode
-vim.keymap.set("t", "<S-Esc>", "<C-\\><C-n>", opts)
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", opts)
 
 -- LSP. See `:help vim.lsp.*` for documentation on any of the below functions
 vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts)
