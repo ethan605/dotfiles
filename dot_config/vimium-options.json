@@ -12,6 +12,10 @@
     {
       "passKeys": "",
       "pattern": "https?://www.usevia.app/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://configure.zsa.io/train/*"
     }
   ]
 }
