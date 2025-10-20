@@ -46,10 +46,12 @@
         },
         {
           "from": {
-            "key_code": "b",
+            "key_code": "grave_accent_and_tilde",
             "modifiers": { "mandatory": ["right_command", "right_shift"] }
           },
-          "to": [{ "shell_command": "open -b com.apple.finder" }],
+          "to": [
+            { "key_code": "spacebar", "modifiers": ["command", "control"] }
+          ],
           "type": "basic"
         },
         {
@@ -66,16 +68,6 @@
             "modifiers": { "mandatory": ["right_command", "right_shift"] }
           },
           "to": [{ "shell_command": "open -b org.mozilla.firefox" }],
-          "type": "basic"
-        },
-        {
-          "from": {
-            "key_code": "m",
-            "modifiers": { "mandatory": ["right_command", "right_shift"] }
-          },
-          "to": [
-            { "shell_command": "open -b com.facebook.archon.developerID" }
-          ],
           "type": "basic"
         },
         {
