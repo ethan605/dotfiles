@@ -616,6 +616,34 @@
       ]
     },
     {
+      "description": "Linux - Ctrl+Enter as Cmd+Enter outside terminals",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^org.alacritty",
+                "^net.kovidgoyal.kitty",
+                "^com.googlecode.iterm2"
+              ],
+              "type": "frontmost_application_unless"
+            }
+          ],
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": { "mandatory": ["control"] }
+          },
+          "to": [
+            {
+              "key_code": "return_or_enter",
+              "modifiers": ["command"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "Linux - Ctrl+Backspace & Ctrl+w to delete words outside terminals",
       "manipulators": [
         {
