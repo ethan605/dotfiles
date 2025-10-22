@@ -27,6 +27,8 @@ $python\
 $ruby\
 $rust\
 $terraform\
+$vagrant\
+$vlang\
 $aws\
 $gcloud\
 $kubernetes\
@@ -122,14 +124,14 @@ symbol = "󱃾 "
 
 [gcloud]
 format = ' [$symbol( $project[@](bright-black)$region)]($style)'
-symbol = ""
+symbol = "󱇶"
 style = "bold #4285f4"
 
+# Languages support
 [cmake]
 format = " [$symbol($version)]($style)"
 style = "bold #e25241"
 
-# Languages support
 [deno]
 format = " [$symbol$version]($style)"
 version_format = "$raw"
@@ -167,7 +169,7 @@ version_format = "$raw"
 [nodejs]
 format = " [$symbol$version]($style)"
 style = "bold #3c873a"
-symbol = "󰎙 "
+symbol = " "
 version_format = "$raw"
 
 [python]
@@ -193,6 +195,11 @@ format = " [$symbol$version]($style)"
 style = "bold #844fba"
 symbol = "󱁢 "
 version_format = "$raw"
+
+[vagrant]
+format = " [$symbol$version]($style)"
+style = "bold #1868f2"
+symbol = " "
 
 [vlang]
 format = " [$symbol$version]($style)"
