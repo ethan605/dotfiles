@@ -62,17 +62,15 @@ local plugins = {
   { "kylechui/nvim-surround", opts = {} },
   { "windwp/nvim-autopairs",  opts = {} },
   {
-    "iamcco/markdown-preview.nvim",
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    "brianhuster/live-preview.nvim",
+    dependencies = { "ibhagwan/fzf-lua" },
+  }, {
+  "kosayoda/nvim-lightbulb",
+  ---@type nvim-lightbulb.Config
+  opts = {
+    autocmd = { enabled = true },
   },
-  {
-    "kosayoda/nvim-lightbulb",
-    ---@type nvim-lightbulb.Config
-    opts = {
-      autocmd = { enabled = true },
-    },
-  },
+},
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
