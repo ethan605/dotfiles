@@ -49,14 +49,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "mandatory": ["right_command", "right_shift"] }
-                                },
-                                "to": [{ "shell_command": "/Applications/flameshot.app/Contents/MacOS/flameshot gui" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "l",
                                     "modifiers": { "mandatory": ["right_command", "right_shift"] }
                                 },
@@ -897,6 +889,14 @@
                         "is_keyboard": true,
                         "product_id": 24672,
                         "vendor_id": 19266
+                    }
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 6519,
+                        "vendor_id": 12951
                     }
                 }
             ],
