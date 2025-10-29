@@ -1,9 +1,9 @@
 argo-rollouts 1.8.3
-awscli 2.31.23
+awscli 2.31.24
 cmake 4.1.2
 direnv 2.37.1
 firebase 14.22.0
-gcloud 544.0.0
+gcloud 545.0.0
 golang 1.25.3
 helm 3.19.0
 java openjdk-21.0.2
