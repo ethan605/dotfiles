@@ -36,7 +36,7 @@ return {
   keys = {
     { "<Leader>rc", "<Plug>(ReplSendCell)",   mode = "n", desc = "Send Repl Cell" },
     { "<Leader>rc", "<Plug>(ReplSendVisual)", mode = "x", desc = "Send Repl Visual Selection" },
-    { "<Leader>rl", "<Plug>(ReplSendLine)",   mode = "n", desc = "Send Repl Line" },
+    { "<Leader>rn", ":ReplNewCell<CR>",       mode = "n", desc = "New Repl Cell" },
     { "<Leader>rx", ":ReplClear<CR>",         mode = "n", desc = "Clear Repl Buffer" },
   },
 }
