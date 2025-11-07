@@ -1,5 +1,5 @@
 argo-rollouts 1.8.3
-awscli 2.31.30
+awscli 2.31.31
 cmake 4.1.2
 direnv 2.37.1
 firebase 14.24.0
