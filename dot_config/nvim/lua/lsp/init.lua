@@ -13,6 +13,7 @@ vim.lsp.config.ltex = require("lsp.ltex")
 vim.lsp.config.luals = require("lsp.luals")
 vim.lsp.config.nginx = require("lsp.nginx")
 vim.lsp.config.pyrefly = require("lsp.pyrefly")
+vim.lsp.config.pyright = require("lsp.pyright")
 vim.lsp.config.ruff = require("lsp.ruff")
 vim.lsp.config.rust_analyzer = require("lsp.rust_analyzer")
 vim.lsp.config.solargraph = require("lsp.solargraph")
@@ -24,7 +25,6 @@ vim.lsp.config.vimls = require("lsp.vimls")
 vim.lsp.config.yamlls = require("lsp.yamlls")
 
 -- vim.lsp.config.postgres_lsp = require("lsp.postgres_lsp") -- @TODO: to visit later when it's more mature
--- vim.lsp.config.pyright = require("lsp.pyright")
 
 vim.lsp.enable({
   "bashls",
@@ -39,6 +39,7 @@ vim.lsp.enable({
   "luals",
   "nginx",
   "pyrefly",
+  -- "pyright",
   "ruff",
   "rust_analyzer",
   "solargraph",
@@ -50,7 +51,6 @@ vim.lsp.enable({
   "yamlls",
   -- "harper", -- on demand
   -- "postgres_lsp", -- not mature enough
-  -- "pyright", -- trying out pyrefly
 })
 
 vim.diagnostic.config({

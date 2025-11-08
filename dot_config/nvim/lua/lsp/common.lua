@@ -19,11 +19,10 @@ capabilities.textDocument.foldingRange = {
 ---@param bufnr integer
 local function on_attach(client, bufnr)
   if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint.enable(true)
-
     vim.api.nvim_create_user_command(
-      "LspInlayHint", function()
-        local enabled = vim.lsp.inlay_hint.is_enabled()
+      "LspInlayHint",
+      function()
+        local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
         vim.lsp.inlay_hint.enable(not enabled)
       end,
       { desc = "Toggling inlay_hint feature" }
@@ -31,9 +30,7 @@ local function on_attach(client, bufnr)
   end
 
   if client:supports_method("textDocument/formatting", bufnr) then
-    vim.keymap.set("n", "<leader>f", function()
-      vim.lsp.buf.format()
-    end)
+    vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
   end
 end
 

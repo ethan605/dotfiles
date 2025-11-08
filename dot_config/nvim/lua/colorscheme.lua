@@ -113,7 +113,11 @@ vim.api.nvim_set_hl(0, "RedrawDebugClear", { bg = snazzy_colors.yellow })
 
 -- Semantic highlights - python
 vim.api.nvim_set_hl(0, "@lsp.mod.builtin.python", { link = "@type.builtin.python" })
+-- vim.api.nvim_set_hl(0, "@lsp.mod.defaultLibrary.python", { link = "Special" })
 vim.api.nvim_set_hl(0, "@lsp.mod.readonly.python", { link = "@constant.python" })
+vim.api.nvim_set_hl(0, "@lsp.type.variable.python", { link = "@variable" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.python", { link = "Special" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.namespace.defaultLibrary.python", { link = "Structure" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.python", { link = "@constant.python" })
 
 -- Semantic highlights - typescript/javascript
