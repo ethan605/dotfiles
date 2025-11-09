@@ -1,6 +1,15 @@
 ---@type LazySpec
 return {
   "yetone/avante.nvim",
+  build = "make",
+  dependencies = {
+    "hrsh7th/nvim-cmp",
+    "ibhagwan/fzf-lua",
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "nvim-treesitter/nvim-treesitter",
+  },
   event = "VeryLazy",
   version = false,
   ---@type avante.Config
@@ -9,8 +18,8 @@ return {
     mode = "agentic",
     ---@type avante.ProviderName
     provider = "claude",
-    ---type avante.ProviderName
-    -- auto_suggestions_provider = "claude",
+    ---@type avante.ProviderName
+    auto_suggestions_provider = "claude",
     selector = {
       ---@type avante.SelectorProvider
       provider = "fzf_lua",
@@ -56,14 +65,5 @@ return {
       edit = { start_insert = true },
       ask = { start_insert = false },
     },
-  },
-  build = "make",
-  dependencies = {
-    "hrsh7th/nvim-cmp",
-    "ibhagwan/fzf-lua",
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "nvim-treesitter/nvim-treesitter",
   },
 }

@@ -2,7 +2,7 @@
 return {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  ---type TodoOptions
+  ---@type TodoOptions
   opts = {
     signs = true,
     sign_priority = 11,

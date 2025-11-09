@@ -4,7 +4,8 @@ return {
   lazy = false,
   event = "CursorHold",
   dependencies = { "nvim-lua/plenary.nvim" },
-  ---type Gitsigns.Config
+  ---@diagnostic disable: missing-fields
+  ---@type Gitsigns.Config
   opts = {
     sign_priority = 6,
     signcolumn = true, -- :Gitsigns toggle_signs
@@ -21,6 +22,7 @@ return {
     },
     current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> • <summary>",
   },
+  ---@diagnostic enable: missing-fields
   keys = {
     { "[c", ":Gitsigns prev_hunk<CR>", desc = "Jump to previous hunk" },
     { "]c", ":Gitsigns next_hunk<CR>", desc = "Jump to next hunk" },

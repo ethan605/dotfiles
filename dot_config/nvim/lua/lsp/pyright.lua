@@ -4,8 +4,11 @@ return {
   filetypes = { "python" },
   root_markers = {
     "pyproject.toml",
-    "requirements.txt",
     ".venv",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    "Pipfile",
   },
   settings = {
     pyright = {
@@ -13,75 +16,20 @@ return {
       disableOrganizeImports = true,
     },
   },
+  ---@diagnostic disable-next-line: unused-local
+  on_attach = function(client, bufnr)
+    -- Disable capabilities that conflict with pyrefly
+    client.server_capabilities.codeActionProvider = nil
+    client.server_capabilities.completionProvider = nil
+    client.server_capabilities.declarationProvider = nil
+    client.server_capabilities.definitionProvider = nil
+    client.server_capabilities.documentHighlightProvider = nil
+    client.server_capabilities.documentSymbolProvider = nil
+    client.server_capabilities.executeCommandProvider = nil
+    client.server_capabilities.hoverProvider = nil
+    client.server_capabilities.referencesProvider = nil
+    client.server_capabilities.typeDefinitionProvider = nil
+    client.server_capabilities.workspace = nil
+    client.server_capabilities.workspaceSymbolProvider = nil
+  end,
 }
-
---[[
---server_capabilities:
-
-{
-  callHierarchyProvider = true,
-  codeActionProvider = {
-    codeActionKinds = { "quickfix", "source.organizeImports" },
-    workDoneProgress = true
-  },
-  completionProvider = {
-    completionItem = {
-      labelDetailsSupport = true
-    },
-    resolveProvider = true,
-    triggerCharacters = { ".", "[", '"', "'" },
-    workDoneProgress = true
-  },
-  declarationProvider = {
-    workDoneProgress = true
-  },
-  definitionProvider = {
-    workDoneProgress = true
-  },
-  documentHighlightProvider = {
-    workDoneProgress = true
-  },
-  documentSymbolProvider = {
-    workDoneProgress = true
-  },
-  executeCommandProvider = {
-    commands = {},
-    workDoneProgress = true
-  },
-  hoverProvider = {
-    workDoneProgress = true
-  },
-  referencesProvider = {
-    workDoneProgress = true
-  },
-  renameProvider = {
-    prepareProvider = true,
-    workDoneProgress = true
-  },
-  signatureHelpProvider = {
-    triggerCharacters = { "(", ",", ")" },
-    workDoneProgress = true
-  },
-  textDocumentSync = {
-    change = 2,
-    openClose = true,
-    save = {
-      includeText = false
-    },
-    willSave = false,
-    willSaveWaitUntil = false
-  },
-  typeDefinitionProvider = {
-    workDoneProgress = true
-  },
-  workspace = {
-    workspaceFolders = {
-      changeNotifications = true,
-      supported = true
-    }
-  },
-  workspaceSymbolProvider = {
-    workDoneProgress = true
-  }
-}
---]]

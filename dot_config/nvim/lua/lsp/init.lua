@@ -39,7 +39,7 @@ vim.lsp.enable({
   "luals",
   "nginx",
   "pyrefly",
-  -- "pyright",
+  "pyright",
   "ruff",
   "rust_analyzer",
   "solargraph",

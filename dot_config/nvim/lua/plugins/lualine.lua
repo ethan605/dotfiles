@@ -11,7 +11,10 @@ return {
         highlight = true,
         lsp = {
           auto_attach = true,
-          preference = nil,
+          preference = {
+            -- python LSP
+            "pyrefly", "pyright",
+          },
         },
       },
     },

@@ -58,14 +58,15 @@ return {
       { "<C-s>",    fzf_grep.grep,                                desc = "Search with prompt",             mode = "n" },
       { "<C-s>",    fzf_grep.grep_visual,                         desc = "Search selected text",           mode = "v" },
       { "<space>s", fzf_lsp.document_symbols,                     desc = "Browse document symbols" },
+      { "<space>S", fzf_lsp.live_workspace_symbols,               desc = "Search workspace symbols" },
       { "gra",      fzf_lsp.code_actions,                         desc = "Browse code actions" },
 
       { "gd",       function() fzf_lsp.definitions(lsp_opts) end, desc = "Go to definition" },
-      { "gi",       function() fzf_lsp.typedefs(lsp_opts) end,    desc = "Go to implementation" },
       { "gr",       function() fzf_lsp.references(lsp_opts) end,  desc = "Go to references" },
 
       {
         "gE",
+        ---@diagnostic disable-next-line: missing-fields
         function() fzf_diagnostic.diagnostics({ severity_only = true }) end,
         desc = "Browse diagnostics",
       },

@@ -1,7 +1,8 @@
 ---@type LazySpec
 return {
   "numToStr/Comment.nvim",
-  ---type CommentConfig
+  ---@diagnostic disable: missing-fields
+  ---@type CommentConfig
   opts = {
     toggler = {
       line = "<leader>c<space>",
@@ -15,4 +16,5 @@ return {
       extra = false,
     },
   },
+  ---@diagnostic enable: missing-fields
 }
