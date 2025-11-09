@@ -13,7 +13,9 @@ return {
   },
   ---@diagnostic disable-next-line: unused-local
   on_attach = function(client, bufnr)
-    -- Use renameProvider from pyright instead
+    -- Use capabilities from pyright instead
+    client.server_capabilities.referencesProvider = nil
     client.server_capabilities.renameProvider = nil
+    client.server_capabilities.signatureHelpProvider = nil
   end,
 }

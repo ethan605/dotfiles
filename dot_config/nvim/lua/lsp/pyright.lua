@@ -27,9 +27,9 @@ return {
     client.server_capabilities.documentSymbolProvider = nil
     client.server_capabilities.executeCommandProvider = nil
     client.server_capabilities.hoverProvider = nil
-    client.server_capabilities.referencesProvider = nil
     client.server_capabilities.typeDefinitionProvider = nil
     client.server_capabilities.workspace = nil
     client.server_capabilities.workspaceSymbolProvider = nil
+    client.server_capabilities.textDocumentSync = nil
   end,
 }
