@@ -48,6 +48,7 @@ local plugins = {
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
   require("plugins.nvim-coverage"),
+  require("plugins.nvim-dbee"),
   require("plugins.nvim-highlight-colors"),
   -- require("plugins.nvim-java"),
   require("plugins.nvim-repl"),
@@ -64,13 +65,14 @@ local plugins = {
   {
     "brianhuster/live-preview.nvim",
     dependencies = { "ibhagwan/fzf-lua" },
-  }, {
-  "kosayoda/nvim-lightbulb",
-  ---@type nvim-lightbulb.Config
-  opts = {
-    autocmd = { enabled = true },
   },
-},
+  {
+    "kosayoda/nvim-lightbulb",
+    ---@type nvim-lightbulb.Config
+    opts = {
+      autocmd = { enabled = true },
+    },
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
