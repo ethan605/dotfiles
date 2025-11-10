@@ -122,9 +122,10 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.namespace.defaultLibrary.python", { link = 
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.python", { link = "@constant.python" })
 
 -- Semantic highlights - typescript/javascript
--- vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@constant.tsx" })
-vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescriptreact", { link = "@constant.tsx" })
+vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@constant.typescript" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.parameter.declaration.typescriptreact", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescript", { link = "@constant.typescript" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescriptreact", { link = "@constant.typescript" })
 
 -- Semantic highlights - java
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "Keyword" })
