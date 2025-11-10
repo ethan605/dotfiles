@@ -9,7 +9,8 @@ return {
     ---@type Config
     local cfg = {
       sources = {
-        require("dbee.sources").EnvSource:new("DBEE_CONNECTIONS"),
+        require("dbee.sources").EnvSource:new("DBEE_POSTGRES_CONNECTIONS"),
+        require("dbee.sources").EnvSource:new("DBEE_CLICKHOUSE_CONNECTIONS"),
       },
       editor = {
         directory = vim.fn.expand("~/work/scratch-pad/sql"),
