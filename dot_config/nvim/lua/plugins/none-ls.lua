@@ -42,7 +42,7 @@ return {
         require("none-ls-shellcheck.diagnostics"),
       },
       on_attach = function()
-        vim.keymap.set({ "n", "v" }, "<leader>f", function()
+        vim.keymap.set({ "n", "v" }, "<Leader>f", function()
           vim.lsp.buf.format({
             filter = function(client) return client.name == "null-ls" end,
             timeout_ms = 5000,

@@ -10,7 +10,7 @@ return {
     "DBUIToggle",
   },
   keys = {
-    { "<leader>e", "<Plug>(DBUI_ExecuteQuery)", mode = "v", desc = "Execute selected query" },
-    { "<leader>w", "<Plug>(DBUI_SaveQuery)",    mode = "n", desc = "Save current query" },
+    { "<Leader>e", "<Plug>(DBUI_ExecuteQuery)", mode = "v", desc = "Execute selected query" },
+    { "<Leader>w", "<Plug>(DBUI_SaveQuery)",    mode = "n", desc = "Save current query" },
   },
 }

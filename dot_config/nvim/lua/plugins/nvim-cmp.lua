@@ -47,7 +47,6 @@ return {
         }),
       },
       mapping = nvim_cmp.mapping.preset.insert({
-        -- ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = nvim_cmp.mapping.abort(),
         ["<CR>"] = nvim_cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = function(fallback)

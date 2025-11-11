@@ -54,6 +54,7 @@ local plugins = {
   require("plugins.nvim-repl"),
   require("plugins.nvim-tree"),
   require("plugins.nvim-ufo"),
+  require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
   require("plugins.vim-dadbod-ui"),

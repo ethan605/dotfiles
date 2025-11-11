@@ -5,12 +5,12 @@ return {
   ---@type CommentConfig
   opts = {
     toggler = {
-      line = "<leader>c<space>",
-      block = "<leader>cm",
+      line = "<Leader>c<Space>",
+      block = "<Leader>cm",
     },
     opleader = {
-      line = "<leader>c<space>",
-      block = "<leader>cm",
+      line = "<Leader>c<Space>",
+      block = "<Leader>cm",
     },
     mappings = {
       extra = false,
