@@ -5,7 +5,7 @@ vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Hide search highlights
-vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>", opts)
+vim.keymap.set("n", "<Leader><Space>", ":nohlsearch<CR>", opts)
 
 -- Escape TERMINAL mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", opts)

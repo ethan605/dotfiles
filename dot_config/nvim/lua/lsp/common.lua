@@ -30,7 +30,7 @@ local function on_attach(client, bufnr)
   end
 
   if client:supports_method("textDocument/formatting", bufnr) then
-    vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
+    vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end)
   end
 end
 
