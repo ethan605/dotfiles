@@ -33,8 +33,10 @@ local plugins = {
   "mg979/vim-visual-multi",
   "sindrets/diffview.nvim",
 
-  { "kylechui/nvim-surround", config = true },
-  { "windwp/nvim-autopairs",  config = true, event = "InsertEnter" },
+  { "fei6409/log-highlight.nvim", config = true },
+  { "kylechui/nvim-surround",     config = true },
+  { "windwp/nvim-autopairs",      config = true, event = "InsertEnter" },
+
   {
     "brianhuster/live-preview.nvim",
     dependencies = { "ibhagwan/fzf-lua" },
