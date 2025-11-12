@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "linrongbin16/gitlinker.nvim",
-  opts = {},
+  config = true,
   cmd = "GitLink",
   keys = {
     { "<Leader>gy", ":GitLink<CR>",  mode = { "n", "v" }, desc = "Yank git link" },

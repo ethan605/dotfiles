@@ -2,7 +2,7 @@
 return {
   "pappasam/nvim-repl",
   lazy = false,
-  opts = {},
+  config = true,
   init = function()
     ---@type ReplCmd
     local python = {
