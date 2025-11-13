@@ -9,20 +9,18 @@ return {
     "nvim-neotest/nvim-nio",
     "nvim-treesitter/nvim-treesitter",
   },
-  config = function()
+  opts = function()
     ---@type neotest.Config
     ---@diagnostic disable-next-line: missing-fields
-    local cfg = {
+    return {
       adapters = {
         require("neotest-python"),
         require("neotest-vitest"),
       },
-      output = {
+      status = {
         enabled = true,
-        open_on_run = true,
-      },
-      run = {
-        enabled = true,
+        virtual_text = true,
+        signs = true,
       },
       ---@diagnostic disable-next-line: missing-fields
       summary = {
@@ -43,13 +41,7 @@ return {
           help = "?",
         },
       },
-      status = {
-        enabled = true,
-        virtual_text = true,
-        signs = true,
-      },
     }
-    require("neotest").setup(cfg)
   end,
   keys = function()
     local neotest = require("neotest")
