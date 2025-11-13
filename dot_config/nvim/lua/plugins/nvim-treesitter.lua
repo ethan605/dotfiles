@@ -7,7 +7,10 @@ return {
     require("nvim-treesitter.configs").setup({
       auto_install = true,
       ensure_installed = "all",
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        disable = { "csv", "tsv" },
+      },
       ignore_install = { "ipkg" },
       modules = {},
       sync_install = false,

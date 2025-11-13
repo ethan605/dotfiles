@@ -6,6 +6,7 @@ return {
   },
   build = function() require("dbee").install() end,
   config = function()
+    ---@module "dbee"
     ---@type Config
     local cfg = {
       sources = {
