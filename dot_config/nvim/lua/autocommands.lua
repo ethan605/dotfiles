@@ -54,6 +54,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Auto CSV/TSV view
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = { "csv", "tsv" },
+  command = "CsvViewEnable",
+})
+
 vim.api.nvim_create_user_command(
   "TodoFzf",
   function(args)
