@@ -131,6 +131,9 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescriptreact", { link 
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "Keyword" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.property.readonly.java", { link = "Constant" })
 
+-- Semantic highlights - lua
+vim.api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.lua", { link = "Special" })
+
 return {
   snazzy_colors = snazzy_colors,
 }
