@@ -42,10 +42,11 @@ local plugins = {
     dependencies = { "ibhagwan/fzf-lua" },
   },
 
-  -- Common plugins
+  -- Plugins with more complex configs
   require("plugins.bufferline"),
   require("plugins.colorscheme"),
   require("plugins.comment"),
+  require("plugins.csvview"),
   require("plugins.dashboard"),
   require("plugins.fyler"),
   require("plugins.fzf-lua"),
@@ -68,12 +69,11 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
-  require("plugins.vim-dadbod-ui"),
-  require("plugins.csvview"),
 
   -- Temp. disabled
   -- require("plugins.avante"),
   -- require("plugins.nvim-java"),
+  -- require("plugins.vim-dadbod-ui"),
 }
 
 require("lazy").setup(plugins, opts)
