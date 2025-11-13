@@ -56,6 +56,7 @@ local plugins = {
   require("plugins.leap"),
   require("plugins.lualine"),
   require("plugins.markview"),
+  require("plugins.neotest"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),
   require("plugins.nvim-coverage"),
