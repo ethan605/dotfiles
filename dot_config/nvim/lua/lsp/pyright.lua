@@ -17,7 +17,7 @@ return {
     },
   },
   ---@diagnostic disable-next-line: unused-local
-  on_attach = function(client, bufnr)
+  --[[ on_attach = function(client, bufnr)
     -- Disable capabilities that conflict with pyrefly
     client.server_capabilities.codeActionProvider = nil
     client.server_capabilities.completionProvider = nil
@@ -31,5 +31,5 @@ return {
     client.server_capabilities.workspace = nil
     client.server_capabilities.workspaceSymbolProvider = nil
     client.server_capabilities.textDocumentSync = nil
-  end,
+  end, ]]
 }
