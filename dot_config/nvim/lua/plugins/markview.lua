@@ -1,4 +1,13 @@
-local supported_filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" }
+local supported_filetypes = {
+  "Avante",
+  "markdown",
+  "norg",
+  "org",
+  "rmd",
+  "typst",
+  "vimwiki",
+}
+
 ---@type LazySpec
 return {
   "OXY2DEV/markview.nvim",
@@ -7,7 +16,8 @@ return {
   opts = {
     preview = {
       filetypes = supported_filetypes,
-      ignore_buftypes = {},
+      icon_provider = "internal",
+      ignore_buftypes = { "nofile" },
       max_buf_lines = 9999,
     },
   },
