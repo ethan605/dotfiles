@@ -126,6 +126,8 @@ brew "python@3.11"
 brew "qpdf"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Automate your tmux workflow
+brew "smug"
 # SQL linter and auto-formatter for Humans
 brew "sqlfluff"
 # Cross-shell prompt for astronauts
@@ -134,6 +136,8 @@ brew "starship"
 brew "tlrc"
 # Terminal multiplexer
 brew "tmux"
+# Tmux session manager. Built on libtmux
+brew "tmuxp"
 # Maintained ctags implementation
 brew "universal-ctags"
 # Ncurses-based file manager with vi-like keybindings
