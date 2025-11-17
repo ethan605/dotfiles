@@ -136,8 +136,6 @@ brew "starship"
 brew "tlrc"
 # Terminal multiplexer
 brew "tmux"
-# Tmux session manager. Built on libtmux
-brew "tmuxp"
 # Maintained ctags implementation
 brew "universal-ctags"
 # Ncurses-based file manager with vi-like keybindings
