@@ -1,0 +1,37 @@
+session: γ
+root: ""
+windows:
+  - name: be
+    layout: even-horizontal
+    root: ~/work/cord-backend/projects/api-server
+    commands:
+      - gsw master &&
+        gfl &&
+        uv pip install --upgrade pip ipython pdbpp rich pyrefly &&
+        uv sync --inexact
+    panes:
+      - commands:
+          - cd ~/work/cord-backend/local-dev &&
+            docker compose --profile=base down -t0 &&
+            docker compose --profile=api_server --profile=internal_tools build &&
+            docker system prune --volumes --force
+
+  - name: fe
+    root: ~/work/cord-frontend/apps/encord-fe
+    layout: even-horizontal
+    commands:
+      - gsw master &&
+        gfl &&
+        pnpm i
+
+  - name: system
+    root: ~/.config/nvim
+    layout: even-horizontal
+    commands:
+      - bupdate &&
+        bbundle &&
+        zim
+    panes:
+      - commands:
+          - asdf-plugins &&
+            asdf-check

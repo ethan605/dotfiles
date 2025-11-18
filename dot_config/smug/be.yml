@@ -1,0 +1,21 @@
+session: β
+root: ~/work
+windows:
+  - name: api-server-v
+    root: cord-backend/projects/api-server
+    layout: main-vertical
+    commands:
+      - source .venv/bin/activate &&
+        nvim
+
+  - name: api-server
+    root: cord-backend/projects/api-server
+    layout: main-vertical
+    commands:
+      - source .venv/bin/activate
+
+  - name: local-dev
+    root: cord-backend/local-dev
+
+  - name: sql
+    root: scratch-pad/sql
