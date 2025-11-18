@@ -16,6 +16,8 @@ windows:
 
   - name: local-dev
     root: cord-backend/local-dev
+    commands:
+      - docker compose --profile=base run --rm liquibase_db_migration
 
   - name: sql
     root: scratch-pad/sql
