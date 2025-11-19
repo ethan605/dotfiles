@@ -5,8 +5,8 @@ windows:
     layout: even-horizontal
     root: ~/work/cord-backend/projects/api-server
     commands:
-      - gsw master &&
-        gfl &&
+      - git switch master &&
+        git fetch --prune && git pull origin master &&
         uv pip install --upgrade pip ipython pdbpp rich pyrefly &&
         uv sync --inexact
     panes:
@@ -20,8 +20,8 @@ windows:
     root: ~/work/cord-frontend/apps/encord-fe
     layout: even-horizontal
     commands:
-      - gsw master &&
-        gfl &&
+      - git switch master &&
+        git fetch --prune && git pull origin master &&
         pnpm i
 
   - name: system
