@@ -43,6 +43,7 @@ local plugins = {
 
   -- Plugins with more complex configs
   require("plugins.bufferline"),
+  require("plugins.codesnap"),
   require("plugins.colorscheme"),
   require("plugins.comment"),
   require("plugins.csvview"),
