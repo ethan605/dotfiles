@@ -50,7 +50,7 @@ return {
       { "<Leader>ta", function() neotest.run.run(vim.fn.expand("%")) end,   mode = { "n" }, desc = "Run all tests" },
       { "<Leader>tr", function() neotest.run.run() end,                     mode = { "n" }, desc = "Run nearest test" },
       { "<Leader>to", function() neotest.output.open({ enter = true }) end, mode = { "n" }, desc = "View test runner output" },
-      { "<Leader>ts", function() neotest.summary.open() end,                mode = { "n" }, desc = "View tests summary" },
+      { "<Leader>ts", function() neotest.summary.toggle() end,              mode = { "n" }, desc = "Toggle tests summary" },
     }
   end,
 }
