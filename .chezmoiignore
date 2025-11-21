@@ -8,9 +8,6 @@ mac-install
 
 .config/flake8
 .config/kitty
-.config/logiops
-.config/neomutt
-.config/termite
 .local/bin/ibus-engines
 .local/bin/virt-utils
 .local/share/applications/slack.desktop
