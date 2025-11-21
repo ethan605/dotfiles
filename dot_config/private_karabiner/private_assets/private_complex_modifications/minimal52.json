@@ -5,18 +5,36 @@
       "description": "Minimal52 - Esc/LCtrl, Tab/Fn, and LCmd/Enter dual functions",
       "manipulators": [
         {
+          "conditions": [
+            {
+              "identifiers": [{ "is_built_in_keyboard": true }],
+              "type": "device_if"
+            }
+          ],
           "from": { "key_code": "left_control" },
           "to": [{ "key_code": "left_control" }],
           "to_if_alone": [{ "key_code": "escape" }],
           "type": "basic"
         },
         {
+          "conditions": [
+            {
+              "identifiers": [{ "is_built_in_keyboard": true }],
+              "type": "device_if"
+            }
+          ],
           "from": { "key_code": "tab" },
           "to": [{ "key_code": "fn" }],
           "to_if_alone": [{ "key_code": "tab" }],
           "type": "basic"
         },
         {
+          "conditions": [
+            {
+              "identifiers": [{ "is_built_in_keyboard": true }],
+              "type": "device_if"
+            }
+          ],
           "from": { "key_code": "left_command" },
           "to": [{ "key_code": "left_command" }],
           "to_if_alone": [{ "key_code": "return_or_enter" }],
@@ -28,6 +46,12 @@
       "description": "Minimal52 - RCmd+h/j/k/l as arrow keys",
       "manipulators": [
         {
+          "conditions": [
+            {
+              "identifiers": [{ "is_built_in_keyboard": true }],
+              "type": "device_if"
+            }
+          ],
           "from": {
             "key_code": "h",
             "modifiers": {
@@ -39,6 +63,12 @@
           "type": "basic"
         },
         {
+          "conditions": [
+            {
+              "identifiers": [{ "is_built_in_keyboard": true }],
+              "type": "device_if"
+            }
+          ],
           "from": {
             "key_code": "j",
             "modifiers": {
@@ -50,6 +80,12 @@
           "type": "basic"
         },
         {
+          "conditions": [
+            {
+              "identifiers": [{ "is_built_in_keyboard": true }],
+              "type": "device_if"
+            }
+          ],
           "from": {
             "key_code": "k",
             "modifiers": {
@@ -61,6 +97,12 @@
           "type": "basic"
         },
         {
+          "conditions": [
+            {
+              "identifiers": [{ "is_built_in_keyboard": true }],
+              "type": "device_if"
+            }
+          ],
           "from": {
             "key_code": "l",
             "modifiers": {
