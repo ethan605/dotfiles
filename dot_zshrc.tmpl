@@ -126,8 +126,8 @@ function __load-key-bindings() {
   # Bind up and down keys
   zmodload -F zsh/terminfo +p:terminfo
   if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
-    bindkey ${terminfo[kcuu1]} history-substring-search-up
-    bindkey ${terminfo[kcud1]} history-substring-search-down
+    bindkey "${terminfo[kcuu1]}" history-substring-search-up
+    bindkey "${terminfo[kcud1]}" history-substring-search-down
   fi
 
   bindkey -M vicmd 'k' history-substring-search-up
@@ -192,6 +192,7 @@ function __load-work-envs() {
   fi
 
   if [[ -f "$WORK_DIR/.env/.zshrc" ]]; then
+    # shellcheck disable=SC1091
     source "$WORK_DIR/.env/.zshrc"
   fi
 
