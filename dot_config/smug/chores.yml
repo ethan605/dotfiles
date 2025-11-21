@@ -26,12 +26,13 @@ windows:
 
   - name: system
     root: ~/.config/nvim
+    env:
+      MISE_VEROBSE: 1
     layout: even-horizontal
     commands:
-      - bupdate &&
-        bbundle &&
+      - bupdate;
+        bbundle;
         zim
     panes:
       - commands:
-          - asdf-plugins &&
-            asdf-check
+        - MISE_VEROBSE=1 mise upgrade --bump --interactive
