@@ -857,6 +857,7 @@
                     },
                     {
                         "description": "Dual function keys",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
