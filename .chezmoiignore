@@ -18,9 +18,7 @@ mac-install
 .local/share/applications/slack.desktop
 .local/share/applications/google-chrome-ua.desktop
 .mbsyncrc
-
-# Karabiner for UK keyboard layout
-.config/karabiner/karabiner_uk.json
+.tool-versions
 
 # >>>
 
