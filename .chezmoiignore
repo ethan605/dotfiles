@@ -8,9 +8,6 @@ mac-install
 
 .config/kitty
 .local/bin/ibus-engines
-.local/bin/virt-utils
-.local/share/applications/slack.desktop
-.local/share/applications/google-chrome-ua.desktop
 
 # asdf-vm
 .asdfrc

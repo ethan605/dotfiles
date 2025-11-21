@@ -94,6 +94,8 @@ brew "liquibase"
 brew "llvm"
 # LSP for LanguageTool with support for Latex, Markdown and Others
 brew "ltex-ls"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # NCurses Disk Usage
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -231,3 +233,5 @@ cask "vlc"
 cask "vox"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+go "cmd/go"
+go "cmd/gofmt"
