@@ -291,59 +291,59 @@ function __load-fzf-tab() {
 #]]]
 
 # [[[ Utils
-function asdf-check() {
-  local name current_version major_version latest_version
-
-  while read -r line; do
-    name=$(echo "$line" | awk '{ print $1 }')
-    current_version=$(echo "$line" | awk '{ print $2 }')
-    major_version=$(echo "$current_version" | cut -d. -f1)
-
-    if [[ "$name" == gcloud || "$name" == kubectl ]]; then
-      major_version=""
-    elif [[ "$name" == python ]]; then
-      major_version="$(semver get major "$current_version").$(semver get minor "$current_version")"
-    fi
-
-    latest_version=$(asdf latest "$name" "$major_version" 2>/dev/null)
-
-    if [[ "$latest_version" =~ "No compatible versions" ]]; then
-      # No versions found
-      continue
-    fi
-
-    if [[ "$latest_version" == "$current_version" ]]; then
-      # Up-to-date
-      continue
-    fi
-
-    echo "$name $current_version -> $latest_version"
-  done < "$HOME/.tool-versions"
-}
-
-function asdf-up() {
-  local name="$1"
-  local version="$2"
-
-  if [[ "$version" == "" ]]; then
-    echo "Expecting a specific version"
-    return 1
-  fi
-
-  if asdf where "$name" &>/dev/null; then
-    asdf install "$name" "$version" && asdf set --home "$name" "$version"
-  else
-    return 1
-  fi
-}
-
-function asdf-clean() {
-  local name="$1"
-
-  asdf list "$name" |
-    rg -v '\*' |
-    xargs -I% asdf uninstall "$name" %
-}
+# function asdf-check() {
+#   local name current_version major_version latest_version
+#
+#   while read -r line; do
+#     name=$(echo "$line" | awk '{ print $1 }')
+#     current_version=$(echo "$line" | awk '{ print $2 }')
+#     major_version=$(echo "$current_version" | cut -d. -f1)
+#
+#     if [[ "$name" == gcloud || "$name" == kubectl ]]; then
+#       major_version=""
+#     elif [[ "$name" == python ]]; then
+#       major_version="$(semver get major "$current_version").$(semver get minor "$current_version")"
+#     fi
+#
+#     latest_version=$(asdf latest "$name" "$major_version" 2>/dev/null)
+#
+#     if [[ "$latest_version" =~ "No compatible versions" ]]; then
+#       # No versions found
+#       continue
+#     fi
+#
+#     if [[ "$latest_version" == "$current_version" ]]; then
+#       # Up-to-date
+#       continue
+#     fi
+#
+#     echo "$name $current_version -> $latest_version"
+#   done < "$HOME/.tool-versions"
+# }
+#
+# function asdf-up() {
+#   local name="$1"
+#   local version="$2"
+#
+#   if [[ "$version" == "" ]]; then
+#     echo "Expecting a specific version"
+#     return 1
+#   fi
+#
+#   if asdf where "$name" &>/dev/null; then
+#     asdf install "$name" "$version" && asdf set --home "$name" "$version"
+#   else
+#     return 1
+#   fi
+# }
+#
+# function asdf-clean() {
+#   local name="$1"
+#
+#   asdf list "$name" |
+#     rg -v '\*' |
+#     xargs -I% asdf uninstall "$name" %
+# }
 
 function greek-letters() {
   print -P "alpha: %F{red}α%f,beta: %F{red}β%f,gamma: %F{red}γ%f,delta: %F{red}δ%f,epsilon: %F{red}ε%f,theta: %F{red}θ%f,lambda: %F{red}λ%f,mu: %F{red}μ%f,pi: %F{red}π%f,sigma: %F{red}σ%f,phi: %F{red}φ%f,omega: %F{red}ω%f" \
