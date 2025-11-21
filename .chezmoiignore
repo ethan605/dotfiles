@@ -6,13 +6,11 @@ mac-install
 
 # <<< Obsolete configs - keep for future reference only
 
-.config/flake8
 .config/kitty
 .local/bin/ibus-engines
 .local/bin/virt-utils
 .local/share/applications/slack.desktop
 .local/share/applications/google-chrome-ua.desktop
-.mbsyncrc
 
 # asdf-vm
 .asdfrc
