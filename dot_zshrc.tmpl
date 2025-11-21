@@ -76,19 +76,27 @@ PATH="$(brew --prefix llvm)/bin:$PATH"
 {{- end }}
 
 PATH="$HOME/.local/bin:$PATH"
-PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH
 #]]]
 
 # [[[ Init functions
 function __load-asdf() {
   eval "$(asdf completion zsh)"
-  source "$(asdf where gcloud)/completion.zsh.inc"
   export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-  # ASDF-dependent components
-  source <(helm completion zsh)
+  # asdf-dependent components
+  # shellcheck disable=SC1091
+  source "$(asdf where gcloud)/completion.zsh.inc"
   source "$HOME/.asdf/plugins/java/set-java-home.zsh"
+}
+
+function __load-mise() {
+  eval "$(mise activate zsh)"
+
+  # mise-dependent components
+  # shellcheck disable=SC1091
+  source "$(mise where gcloud)/completion.zsh.inc"
 }
 
 function __load-key-bindings() {
@@ -193,18 +201,22 @@ function __load-work-envs() {
 function __load-zim() {
   if [[ ! "${ZIM_HOME}/init.zsh" -nt "${ZDOTDIR:-${HOME}}/.zimrc" ]]; then
     # Update static initialization script if it does not exist or it's outdated, before sourcing it
+    # shellcheck disable=SC1091
     source "${ZIM_HOME}/zimfw.zsh" init -q
   fi
 
+  # shellcheck disable=SC1091
   source "${ZIM_HOME}/init.zsh"
 
   __load-zsh-plugins
   __load-key-bindings
   __load-zsh-settings
+  __load-fzf-tab
 }
 
 function __load-zsh-plugins() {
   eval "$(direnv hook zsh)"
+  eval "$(helm completion zsh)"
   eval "$(starship init zsh)"
   eval "$(zoxide init zsh)"
 }
@@ -259,6 +271,24 @@ function __load-zsh-settings() {
   add-zsh-hook -Uz chpwd osc7_cwd
 
 {{- end }}
+}
+
+function __load-fzf-tab() {
+  zstyle -d ':completion:*' format
+  zstyle ':completion:*:git-checkout:*' sort false
+  zstyle ':completion:*:descriptions' format '[%d]'
+  # shellcheck disable=SC2086,SC2296
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  zstyle ':completion:*' menu no
+
+  zstyle ':fzf-tab:*' prefix ''
+  FZF_TAB_GROUP_COLORS=(
+      $'\033[32m' $'\033[33m' $'\033[36m' $'\033[37m' $'\033[31m' $'\033[35m'
+  )
+  # shellcheck disable=SC2086,SC2128
+  zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
+  zstyle ':fzf-tab:*' switch-group '[' ']'
+  zstyle ':fzf-tab:*' use-fzf-default-opts yes
 }
 #]]]
 
@@ -390,8 +420,9 @@ __load-sway
 __load-work-envs
 
 # Base envs
+# __load-asdf
+__load-mise
 __load-zim
-__load-asdf
 
 # SSH keys
 __load-ssh
