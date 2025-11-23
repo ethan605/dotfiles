@@ -32,10 +32,6 @@ brew "cppcheck"
 brew "diffutils"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
-# Modern, maintained replacement for ls
-brew "eza"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # Multi-format archive and compression library
 brew "libarchive"
 # Compression/decompression library aiming for high speed
@@ -48,10 +44,6 @@ brew "findutils"
 brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
-# Git extension for versioning large files
-brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU version of the tar archiving utility
@@ -70,12 +62,8 @@ brew "grpcurl"
 brew "harper"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
-# Command-line pager for JSON data
-brew "jless"
 # Image manipulation library
 brew "jpeg"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
 # Portable Foreign Function Interface library
@@ -88,8 +76,6 @@ brew "libqalculate"
 brew "librsvg"
 # XML security library
 brew "libxmlsec1"
-# Library for database change tracking
-brew "liquibase"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LSP for LanguageTool with support for Latex, Markdown and Others
@@ -126,10 +112,6 @@ brew "qpdf"
 brew "smug"
 # SQL linter and auto-formatter for Humans
 brew "sqlfluff"
-# Official tldr client written in Rust
-brew "tlrc"
-# Terminal multiplexer
-brew "tmux"
 # Maintained ctags implementation
 brew "universal-ctags"
 # Ncurses-based file manager with vi-like keybindings
@@ -138,8 +120,6 @@ brew "vifm"
 brew "watch"
 # Internet file retriever
 brew "wget"
-# Process YAML, JSON, XML, CSV and properties documents from the CLI
-brew "yq"
 # Suite of barcodes-reading tools
 brew "zbar"
 # UNIX shell (command interpreter)
@@ -170,7 +150,6 @@ cask "contexts"
 cask "firefox"
 # Screenshot software with built-in annotation tools
 cask "flameshot"
-cask "font-cabin"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
