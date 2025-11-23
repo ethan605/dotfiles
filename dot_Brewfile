@@ -14,14 +14,6 @@ brew "asdf"
 brew "axel"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# Bash scripts that integrate bat with various command-line tools
-brew "bat-extras"
-# Yet another cross-platform graphical process/system monitor
-brew "bottom"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # GNU File, Shell, and Text utilities
@@ -32,18 +24,8 @@ brew "cppcheck"
 brew "diffutils"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
-# Multi-format archive and compression library
-brew "libarchive"
-# Compression/decompression library aiming for high speed
-brew "snappy"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
-# Libraries to talk to Microsoft SQL Server and Sybase databases
-brew "freetds"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU version of the tar archiving utility
@@ -56,18 +38,18 @@ brew "gnupg"
 brew "gpgme"
 # GNU grep, egrep and fgrep
 brew "grep"
-# Like cURL, but for gRPC
-brew "grpcurl"
-# Grammar Checker for Developers
-brew "harper"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Image manipulation library
 brew "jpeg"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
+# Multi-format archive and compression library
+brew "libarchive"
 # Portable Foreign Function Interface library
 brew "libffi"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
 # Implementation of the file(1) command
 brew "libmagic"
 # Library for Qalculate! program
@@ -110,6 +92,8 @@ brew "python@3.11"
 brew "qpdf"
 # Automate your tmux workflow
 brew "smug"
+# Compression/decompression library aiming for high speed
+brew "snappy"
 # SQL linter and auto-formatter for Humans
 brew "sqlfluff"
 # Maintained ctags implementation
