@@ -100,8 +100,6 @@ brew "mise"
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Small build system for use with gyp or CMake
-brew "ninja"
 # Optimized BLAS library
 brew "openblas"
 # OpenBSD freely-licensed SSH connectivity tools
@@ -116,8 +114,6 @@ brew "qrencode"
 brew "pass"
 # Pass extension for managing one-time-password tokens
 brew "pass-otp"
-# PostgreSQL syntax beautifier
-brew "pgformatter"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
@@ -126,14 +122,10 @@ brew "proctools"
 brew "python@3.11"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Automate your tmux workflow
 brew "smug"
 # SQL linter and auto-formatter for Humans
 brew "sqlfluff"
-# Cross-shell prompt for astronauts
-brew "starship"
 # Official tldr client written in Rust
 brew "tlrc"
 # Terminal multiplexer
@@ -146,16 +138,10 @@ brew "vifm"
 brew "watch"
 # Internet file retriever
 brew "wget"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Suite of barcodes-reading tools
 brew "zbar"
-# Pluggable terminal workspace, with terminal multiplexer as the base feature
-brew "zellij"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Host application for browser extension providing access to your password store
