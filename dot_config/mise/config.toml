@@ -1,6 +1,11 @@
+[settings]
+experimental = true
+lockfile = true
+
 [tools]
 argo-rollouts = "1.8.3"
-awscli = "2.32.2"
+awscli = "2.32.3"
+clickhouse = "25.10.2.65-stable"
 cmake = "4.2.0"
 direnv = "2.37.1"
 firebase = "14.26.0"
@@ -17,7 +22,7 @@ make = "4.4.1"
 ninja = "1.13.2"
 node = "22.17.1"
 postgres = "15.15"
-pre-commit = "4.4.0"
+pre-commit = "4.5.0"
 python = "3.11.13"
 ruby = "3.4.7"
 rust = "1.91.1"
