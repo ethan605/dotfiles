@@ -13,7 +13,8 @@ return {
           auto_attach = true,
           preference = {
             -- python LSP
-            "pyrefly", "pyright",
+            "pyrefly",
+            "pyright",
           },
         },
       },
@@ -42,7 +43,7 @@ return {
         icons_enabled = true,
         section_separators = "",
         theme = custom_powerline,
-        disabled_filetypes = { "NvimTree", "dbui" },
+        disabled_filetypes = { "NvimTree", "dbee", "dbui" },
       },
       extensions = { avante_extension },
       sections = {
@@ -64,10 +65,9 @@ return {
           "filename",
           {
             "navic",
-            fmt = function(text) return string.gsub(text, "%%%*$", "") end,
             color_correction = "dynamic",
             navic_opts = {
-              click = true, -- Enable clicking on breadcrumbs
+              click = true,
             },
           },
         },
