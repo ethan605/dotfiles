@@ -11,6 +11,7 @@ mac-install
 
 # asdf-vm
 .asdfrc
+.default-golang-pkgs
 .tool-plugins
 .tool-versions
 
@@ -83,9 +84,7 @@ mac-install
 {{ if ne .chezmoi.os "darwin" }}
 
 .Brewfile
-.config/alt-tab.plist
 .config/karabiner
-.config/yabai
 Library
 
 {{ end }}
