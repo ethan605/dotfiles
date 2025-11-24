@@ -20,8 +20,6 @@ brew "coreutils"
 brew "cppcheck"
 # File comparison utilities
 brew "diffutils"
-# Disk Usage/Free Utility - a better 'df' alternative
-brew "duf"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # GNU implementation of the famous stream editor
