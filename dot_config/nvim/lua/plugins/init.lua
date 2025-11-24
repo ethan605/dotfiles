@@ -31,6 +31,7 @@ local plugins = {
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
   "sindrets/diffview.nvim",
+  "yochem/jq-playground.nvim",
 
   { "fei6409/log-highlight.nvim", config = true },
   { "kylechui/nvim-surround",     config = true },
