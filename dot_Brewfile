@@ -14,8 +14,6 @@ brew "asdf"
 brew "axel"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Manage your dotfiles across multiple diverse machines, securely
-brew "chezmoi"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Static analysis of C and C++ code
@@ -68,8 +66,6 @@ brew "mise"
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Optimized BLAS library
-brew "openblas"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # 7-Zip (high compression file archiver) implementation
@@ -88,8 +84,6 @@ brew "pinentry-mac"
 brew "proctools"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
-# Tools for and transforming and inspecting PDF files
-brew "qpdf"
 # Automate your tmux workflow
 brew "smug"
 # Compression/decompression library aiming for high speed
@@ -180,5 +174,3 @@ cask "vlc"
 cask "vox"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-go "cmd/go"
-go "cmd/gofmt"
