@@ -35,4 +35,4 @@ windows:
         zim
     panes:
       - commands:
-        - MISE_VERBOSE=1 mise upgrade --bump --interactive
+        - mise upgrade --bump --interactive --verbose

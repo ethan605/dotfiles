@@ -172,3 +172,5 @@ cask "vlc"
 cask "vox"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+go "cmd/go"
+go "cmd/gofmt"
