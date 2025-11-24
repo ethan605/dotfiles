@@ -1,5 +1,6 @@
 local function stringify(name, msg) return msg and string.format("%s %s", name, msg) or name end
 
+---@type LazyPluginSpec
 return {
   "linrongbin16/lsp-progress.nvim",
   opts = {

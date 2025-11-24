@@ -4,27 +4,14 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     require("plugins.lsp-progress"),
-    {
-      "SmiteshP/nvim-navic",
-      dependencies = { "neovim/nvim-lspconfig" },
-      opts = {
-        highlight = true,
-        lsp = {
-          auto_attach = true,
-          preference = {
-            -- python LSP
-            "pyrefly",
-            "pyright",
-          },
-        },
-      },
-    },
+    require("plugins.nvim-navic"),
   },
   opts = function()
     local lualine = require("lualine")
+    local navic = require("nvim-navic")
+    local custom_powerline = require("lualine.themes.powerline")
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
-    local custom_powerline = require("lualine.themes.powerline")
     custom_powerline.normal.c.bg = snazzy_colors.black
     custom_powerline.inactive.c.bg = snazzy_colors.black
 
@@ -64,11 +51,8 @@ return {
         lualine_c = {
           "filename",
           {
-            "navic",
-            color_correction = "dynamic",
-            navic_opts = {
-              click = true,
-            },
+            function() return navic.get_location() end,
+            cond = function() return navic.is_available() end,
           },
         },
         lualine_x = {
