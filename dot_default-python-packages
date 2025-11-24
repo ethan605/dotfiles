@@ -6,6 +6,7 @@ nginx-language-server
 pdbpp
 pip
 pynvim
+pyrefly
 rich
 ruff
 sqlglot[rs]

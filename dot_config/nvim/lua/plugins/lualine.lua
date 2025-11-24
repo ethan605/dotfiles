@@ -8,7 +8,7 @@ return {
   },
   opts = function()
     local lualine = require("lualine")
-    local navic = require("nvim-navic")
+    local lsp_progress = require("lsp-progress")
     local custom_powerline = require("lualine.themes.powerline")
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
@@ -51,13 +51,13 @@ return {
         lualine_c = {
           "filename",
           {
-            function() return navic.get_location() end,
-            cond = function() return navic.is_available() end,
+            "navic",
+            color_correction = "dynamic",
           },
         },
         lualine_x = {
           {
-            require("lsp-progress").progress,
+            lsp_progress.progress,
             color = { fg = snazzy_colors.white },
           },
           "encoding",
@@ -76,7 +76,7 @@ return {
         },
         lualine_c = { "filename" },
         lualine_x = {
-          require("lsp-progress").progress,
+          lsp_progress.progress,
           "encoding",
           "fileformat",
           "filetype",

@@ -32,7 +32,9 @@ return {
         none_ls.builtins.formatting.terraform_fmt,
 
         -- from none-ls-extras
-        require("none-ls.diagnostics.cpplint"),
+        require("none-ls.diagnostics.cpplint").with({
+          filetypes = { "cpp" },
+        }),
         require("none-ls.formatting.ruff"),
         require("none-ls.formatting.ruff_format"),
         require("none-ls.formatting.rustfmt"),
