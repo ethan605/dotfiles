@@ -1,7 +1,7 @@
 session: β
 root: ~/work
 windows:
-  - name: api-server-v
+  - name: v-api-server
     root: cord-backend/projects/api-server
     layout: main-vertical
     commands:
