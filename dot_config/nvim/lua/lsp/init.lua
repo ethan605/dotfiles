@@ -17,6 +17,7 @@ vim.lsp.config.ruff = require("lsp.ruff")
 vim.lsp.config.rust_analyzer = require("lsp.rust_analyzer")
 vim.lsp.config.solargraph = require("lsp.solargraph")
 vim.lsp.config.sqls = require("lsp.sqls")
+vim.lsp.config.sqruff = require("lsp.sqruff")
 vim.lsp.config.tailwindcss = require("lsp.tailwindcss")
 vim.lsp.config.terraformls = require("lsp.terraformls")
 vim.lsp.config.tsls = require("lsp.tsls")
@@ -52,6 +53,7 @@ vim.lsp.enable({
   -- "harper", -- on demand
   -- "postgres_lsp", -- not mature enough
   -- "pyrefly", -- not stable enough
+  -- "sqruff", -- need fine tunes
 })
 
 vim.diagnostic.config({
