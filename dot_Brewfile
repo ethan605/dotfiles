@@ -44,6 +44,8 @@ brew "keychain"
 brew "libarchive"
 # C library of Git core methods that is re-entrant and linkable
 brew "libgit2"
+# Implementation of the file(1) command
+brew "libmagic"
 # XML security library
 brew "libxmlsec1"
 # Next-gen compiler infrastructure
