@@ -35,4 +35,5 @@ windows:
         zim
     panes:
       - commands:
-        - mise upgrade --bump --interactive --verbose
+        - mise plugins update &&
+          mise upgrade --bump --interactive --verbose
