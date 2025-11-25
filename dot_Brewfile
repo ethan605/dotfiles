@@ -42,16 +42,8 @@ brew "jpeg"
 brew "keychain"
 # Multi-format archive and compression library
 brew "libarchive"
-# Portable Foreign Function Interface library
-brew "libffi"
 # C library of Git core methods that is re-entrant and linkable
 brew "libgit2"
-# Implementation of the file(1) command
-brew "libmagic"
-# Library for Qalculate! program
-brew "libqalculate"
-# Library to render SVG files using Cairo
-brew "librsvg"
 # XML security library
 brew "libxmlsec1"
 # Next-gen compiler infrastructure
@@ -88,6 +80,8 @@ brew "smug"
 brew "snappy"
 # SQL linter and auto-formatter for Humans
 brew "sqlfluff"
+# Fast SQL formatter/linter
+brew "sqruff"
 # Maintained ctags implementation
 brew "universal-ctags"
 # Ncurses-based file manager with vi-like keybindings
@@ -172,5 +166,3 @@ cask "vlc"
 cask "vox"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-go "cmd/go"
-go "cmd/gofmt"
