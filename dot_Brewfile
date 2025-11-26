@@ -142,8 +142,6 @@ cask "logi-options+"
 cask "loom"
 # Multi-platform web browser
 cask "microsoft-edge"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
 # App to write, plan, collaborate, and get organised
