@@ -4,8 +4,6 @@ windows:
   - name: v-encord-fe
     root: ~/work/cord-frontend/apps/encord-fe
     layout: main-vertical
-    commands:
-      - nvim
 
   - name: encord-fe
     root: ~/work/cord-frontend/apps/encord-fe
