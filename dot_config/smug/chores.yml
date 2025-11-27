@@ -22,7 +22,10 @@ windows:
     commands:
       - git switch master &&
         git fetch --prune && git pull origin master &&
-        pnpm i
+        pnpm install
+    panes:
+      - commands:
+        - nvim --headless "+Lazy! sync" +qa
 
   - name: system
     root: ~/.config/nvim
@@ -36,4 +39,4 @@ windows:
     panes:
       - commands:
         - mise plugins update &&
-          mise upgrade --bump --interactive --verbose
+          mise upgrade --bump --interactive
