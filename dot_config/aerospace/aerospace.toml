@@ -35,8 +35,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   cmd-up = 'focus up'
   cmd-right = 'focus right'
 
+  cmd-ctrl-f = 'fullscreen'
   cmd-ctrl-leftSquareBracket = 'workspace prev'
   cmd-ctrl-rightSquareBracket = 'workspace next'
+  cmd-shift-space = 'layout floating'
 
   cmd-1 = 'workspace 1'
   cmd-2 = 'workspace 2'
@@ -57,8 +59,6 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   cmd-shift-7 = 'move-node-to-workspace 7'
   cmd-shift-8 = 'move-node-to-workspace 8'
   cmd-shift-9 = 'move-node-to-workspace 9'
-
-  cmd-shift-space = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
   1 = ['DELL S2722DZ', 'built-in']
@@ -105,4 +105,8 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 
 [[on-window-detected]]
   if.app-id = 'net.whatsapp.WhatsApp'
+  run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+  if.app-id = 'com.coppertino.Vox'
   run = ['layout floating', 'move-node-to-workspace 4']
