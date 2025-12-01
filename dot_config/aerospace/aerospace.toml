@@ -1,0 +1,84 @@
+config-version = 2
+
+persistent-workspaces = ['1', '2', '3', '4', '6', '7', '8']
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+default-root-container-layout = 'tiles'
+
+after-startup-command = ['exec-and-forget sketchybar']
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = ['move-mouse monitor-lazy-center']
+
+[key-mapping]
+  preset = 'qwerty'
+
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
+#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
+# - Arrows.         left, down, up, right
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+[mode.main.binding]
+  cmd-left = 'focus left'
+  cmd-down = 'focus down'
+  cmd-up = 'focus up'
+  cmd-right = 'focus right'
+
+  cmd-ctrl-leftSquareBracket = 'workspace prev'
+  cmd-ctrl-rightSquareBracket = 'workspace next'
+
+  cmd-1 = 'workspace 1'
+  cmd-2 = 'workspace 2'
+  cmd-3 = 'workspace 3'
+  cmd-4 = 'workspace 4'
+  cmd-5 = 'workspace 5'
+  cmd-6 = 'workspace 6'
+  cmd-7 = 'workspace 7'
+  cmd-8 = 'workspace 8'
+  cmd-9 = 'workspace 9'
+
+  cmd-shift-1 = 'move-node-to-workspace 1'
+  cmd-shift-2 = 'move-node-to-workspace 2'
+  cmd-shift-3 = 'move-node-to-workspace 3'
+  cmd-shift-4 = 'move-node-to-workspace 4'
+  cmd-shift-5 = 'move-node-to-workspace 5'
+  cmd-shift-6 = 'move-node-to-workspace 6'
+  cmd-shift-7 = 'move-node-to-workspace 7'
+  cmd-shift-8 = 'move-node-to-workspace 8'
+  cmd-shift-9 = 'move-node-to-workspace 9'
+
+  cmd-shift-space = 'layout floating'
+
+[workspace-to-monitor-force-assignment]
+  1 = ['DELL S2722DZ', 'built-in']
+  2 = 'built-in'
+  3 = 'built-in'
+  4 = 'built-in'
+  5 = 'built-in'
+  6 = ['DELL P2421DC', 'built-in']
+  7 = ['DELL P2421DC', 'built-in']
+  8 = ['DELL P2421DC', 'built-in']
+  9 = ['DELL P2421DC', 'built-in']
+
+[[on-window-detected]]
+  if.app-id = 'org.pqrs.Karabiner-EventViewer'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'ru.keepcoder.Telegram'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'net.whatsapp.WhatsApp'
+  run = 'layout floating'
