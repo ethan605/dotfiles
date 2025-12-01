@@ -102,8 +102,6 @@ brew "zsh"
 brew "amar1729/formulae/browserpass"
 # Focus-follows-mouse for MacOS
 brew "dimentium/autoraise/autoraise"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 # Quantum Mechanical Keyboard (QMK) Firmware
