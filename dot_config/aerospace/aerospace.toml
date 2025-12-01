@@ -72,13 +72,37 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   9 = ['DELL P2421DC', 'built-in']
 
 [[on-window-detected]]
+  if.app-id = 'org.alacritty'
+  run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+  if.app-id = 'com.google.Chrome'
+  run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+  if.app-id = 'org.mozilla.firefox'
+  run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+  if.app-id = 'com.tinyspeck.slackmacgap'
+  run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+  if.app-id = 'notion.id'
+  run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+  if.app-id = 'com.linear'
+  run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
   if.app-id = 'org.pqrs.Karabiner-EventViewer'
-  run = 'layout floating'
+  run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
   if.app-id = 'ru.keepcoder.Telegram'
-  run = 'layout floating'
+  run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
   if.app-id = 'net.whatsapp.WhatsApp'
-  run = 'layout floating'
+  run = ['layout floating', 'move-node-to-workspace 4']

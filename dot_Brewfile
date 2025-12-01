@@ -1,5 +1,7 @@
 tap "amar1729/formulae"
 tap "dimentium/autoraise"
+tap "felixkratz/formulae"
+tap "nikitabobko/tap"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
@@ -100,6 +102,10 @@ brew "zsh"
 brew "amar1729/formulae/browserpass"
 # Focus-follows-mouse for MacOS
 brew "dimentium/autoraise/autoraise"
+# A window border system for macOS
+brew "felixkratz/formulae/borders"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar"
 # Quantum Mechanical Keyboard (QMK) Firmware
 brew "qmk/qmk/qmk"
 # Pass extension to avoid printing the password to the console
@@ -110,6 +116,8 @@ brew "simplydanny/pass-extensions/pass-update"
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Application uninstaller
