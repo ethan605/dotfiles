@@ -35,11 +35,6 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   cmd-up = 'focus up'
   cmd-right = 'focus right'
 
-  cmd-ctrl-f = 'fullscreen'
-  cmd-ctrl-leftSquareBracket = 'workspace prev'
-  cmd-ctrl-rightSquareBracket = 'workspace next'
-  cmd-shift-space = 'layout floating'
-
   cmd-1 = 'workspace 1'
   cmd-2 = 'workspace 2'
   cmd-3 = 'workspace 3'
@@ -59,6 +54,19 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   cmd-shift-7 = 'move-node-to-workspace 7'
   cmd-shift-8 = 'move-node-to-workspace 8'
   cmd-shift-9 = 'move-node-to-workspace 9'
+
+  cmd-ctrl-leftSquareBracket = 'workspace prev'
+  cmd-ctrl-rightSquareBracket = 'workspace next'
+
+  cmd-alt-space = 'layout floating tiling'
+  cmd-alt-r = 'mode resize'
+
+[mode.resize.binding]
+  enter = 'mode main'
+  esc = 'mode main'
+
+  h = 'resize smart -50'
+  l = 'resize smart +50'
 
 [workspace-to-monitor-force-assignment]
   1 = ['DELL S2722DZ', 'built-in']
@@ -94,6 +102,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 [[on-window-detected]]
   if.app-id = 'com.linear'
   run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+  if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
+  run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
   if.app-id = 'org.pqrs.Karabiner-EventViewer'
