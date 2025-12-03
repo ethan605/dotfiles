@@ -1,6 +1,6 @@
 config-version = 2
 
-persistent-workspaces = ['1', '2', '3', '4', '6', '7', '8', '9']
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
@@ -73,7 +73,7 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   2 = 'built-in'
   3 = 'built-in'
   4 = 'built-in'
-  5 = 'built-in'
+  5 = ['DELL S2722DZ', 'DELL S2722QC', 'built-in']
   6 = ['DELL P2421DC', 'built-in']
   7 = ['DELL P2421DC', 'built-in']
   8 = ['DELL P2421DC', 'built-in']
