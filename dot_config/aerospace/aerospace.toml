@@ -69,7 +69,7 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   l = 'resize smart +50'
 
 [workspace-to-monitor-force-assignment]
-  1 = ['DELL S2722DZ', 'built-in']
+  1 = ['DELL S2722DZ', 'DELL S2722QC', 'built-in']
   2 = 'built-in'
   3 = 'built-in'
   4 = 'built-in'
