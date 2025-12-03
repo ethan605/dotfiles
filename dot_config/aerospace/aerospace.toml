@@ -79,6 +79,17 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   8 = ['DELL P2421DC', 'built-in']
   9 = ['DELL P2421DC', 'built-in']
 
+# Windows that always float. These conditions need to preceed others
+[[on-window-detected]]
+  if.app-id = 'com.apple.finder'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.google.Chrome'
+  if.window-title-regex-substring = 'DevTools'
+  run = 'layout floating'
+
+# Windows that have a dedicated workspace
 [[on-window-detected]]
   if.app-id = 'org.alacritty'
   run = 'move-node-to-workspace 1'
@@ -102,10 +113,6 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 [[on-window-detected]]
   if.app-id = 'com.linear'
   run = 'move-node-to-workspace 8'
-
-[[on-window-detected]]
-  if.app-id = 'com.apple.finder'
-  run = 'layout floating'
 
 [[on-window-detected]]
   if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
