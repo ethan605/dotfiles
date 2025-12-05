@@ -1,12 +1,18 @@
 -- Nvim providers
-vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
 vim.g.loaded_ruby_provider = 0
-vim.g.python3_host_prog = vim.fn.expand("~/.asdf/shims/python")
+vim.g.loaded_python3_provider = 0
 
--- TODO: figure out better way to provide `node_host_prog`
--- vim.g.node_host_prog = vim.fn.expand("~/.asdf/shims/neovim-node-host")
+-- vim.g.node_host_prog = vim.fn.expand("~/.local/share/mise/shims/neovim-node-host")
+-- vim.g.ruby_host_prog = vim.fn.expand("~/.local/share/mise/shims/neovim-ruby-host")
+-- vim.g.python3_host_prog = vim.fn.expand("~/.local/share/mise/shims/python")
 
+-- For nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+--[[ Deprecated
 -- For markdown-preview
 vim.g.mkdp_filetypes = { "markdown" }
 vim.g.mkdp_preview_options = {
@@ -21,10 +27,6 @@ vim.g.mkdp_preview_options = {
   },
   sync_scroll_type = "middle",
 }
-
--- For nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 -- For vista.vim
 vim.g.vista_default_executive = "nvim_lsp"
@@ -44,3 +46,4 @@ vim.g.db_ui_execute_on_save = 0
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_save_location = vim.fn.expand("~/work/scratch-pad/sql")
 vim.g.db_ui_winwidth = 50
+--]]

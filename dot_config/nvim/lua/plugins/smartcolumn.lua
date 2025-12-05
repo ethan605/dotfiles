@@ -14,6 +14,7 @@ return {
       "null-ls-info",
       "dbui",
       "dbout",
+      "dbee",
     },
   },
 }

@@ -73,8 +73,10 @@ local plugins = {
   require("plugins.todo-comments"),
 
   -- Temp. disabled
-  -- require("plugins.avante"),
   -- require("plugins.nvim-java"),
+
+  -- TODO: remove deprecated plugins
+  -- require("plugins.avante"),
   -- require("plugins.vim-dadbod-ui"),
 }
 
