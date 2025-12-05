@@ -8,10 +8,6 @@ tap "qmk/qmk"
 tap "simplydanny/pass-extensions"
 # Download with resuming and segmented downloading
 brew "aria2"
-# Distributed revision control system
-brew "git"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Light UNIX download accelerator
 brew "axel"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -24,6 +20,8 @@ brew "cppcheck"
 brew "diffutils"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# Distributed revision control system
+brew "git"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU version of the tar archiving utility
