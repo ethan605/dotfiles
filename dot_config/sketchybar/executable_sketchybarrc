@@ -2,10 +2,14 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+COLOR_BLACK=0xff282a36
+COLOR_BLUE=0xff57c7ff
+COLOR_WHITE=0xffeff0eb
+
 sketchybar -m --bar \
 	position=top \
 	height=40 \
-	color=0xff282a36 \
+	color="$COLOR_BLACK" \
 	display=main \
 	topmost=off
 
@@ -13,13 +17,13 @@ default=(
 	padding_left=5
 	padding_right=5
 
-	icon.font="SamsungSans Nerd Font:Regular:16.0"
-	icon.color=0xffeff0eb
+	icon.font="SamsungSans Nerd Font:Regular:17.0"
+	icon.color="$COLOR_WHITE"
 	icon.padding_left=8
 	icon.padding_right=8
 
-	label.color=0xffeff0eb
-	label.font="SamsungSans Nerd Font:Regular:16.0"
+	label.font="SamsungSans Nerd Font:Regular:17.0"
+	label.color="$COLOR_WHITE"
 	label.padding_left=0
 	label.padding_right=8
 )
@@ -36,11 +40,9 @@ for sid in $(aerospace list-workspaces --all); do
 		--add item space."$sid" left \
 		--subscribe space."$sid" aerospace_workspace_change \
 		--set space."$sid" \
-		background.color=0xff57c7ff \
+		background.color="$COLOR_BLUE" \
 		background.corner_radius=0 \
 		background.height=40 \
-    background.padding_left=8 \
-    background.padding_right=8 \
 		icon="$sid" \
 		label="${WORKSPACE_LABELS[$sid]}" \
 		script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
@@ -61,15 +63,15 @@ sketchybar \
 	--set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
 	--subscribe battery system_woke power_source_change
 
-# BRACKET_STYLE=(
-#   background.color=0xccff5c57
-#   background.corner_radius=0
-#   background.height=40
-# )
-# sketchybar \
-# 	--add bracket left_spaces space.2 space.3 space.4 \
-# 	--set left_spaces "${BRACKET_STYLE[@]}" \
-# 	--add bracket right_spaces space.6 space.7 space.8 \
-# 	--set right_spaces "${BRACKET_STYLE[@]}"
+BRACKET_STYLE=(
+	background.color=0xff686868
+	background.corner_radius=0
+	background.height=40
+)
+sketchybar \
+	--add bracket left_spaces space.2 space.3 space.4 \
+	--set left_spaces "${BRACKET_STYLE[@]}" \
+	--add bracket right_spaces space.6 space.7 space.8 \
+	--set right_spaces "${BRACKET_STYLE[@]}"
 
 sketchybar --update
