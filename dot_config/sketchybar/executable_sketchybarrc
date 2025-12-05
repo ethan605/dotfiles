@@ -38,6 +38,9 @@ for sid in $(aerospace list-workspaces --all); do
 		--set space."$sid" \
 		background.color=0xff57c7ff \
 		background.corner_radius=0 \
+		background.height=40 \
+    background.padding_left=8 \
+    background.padding_right=8 \
 		icon="$sid" \
 		label="${WORKSPACE_LABELS[$sid]}" \
 		script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
@@ -46,12 +49,27 @@ done
 
 sketchybar \
 	--add item clock right \
-	--set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
+	--set clock update_freq=10 icon='' script="$PLUGIN_DIR/clock.sh"
+
+sketchybar \
 	--add item volume right \
 	--set volume script="$PLUGIN_DIR/volume.sh" \
-	--subscribe volume volume_change \
+	--subscribe volume volume_change
+
+sketchybar \
 	--add item battery right \
 	--set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
 	--subscribe battery system_woke power_source_change
+
+# BRACKET_STYLE=(
+#   background.color=0xccff5c57
+#   background.corner_radius=0
+#   background.height=40
+# )
+# sketchybar \
+# 	--add bracket left_spaces space.2 space.3 space.4 \
+# 	--set left_spaces "${BRACKET_STYLE[@]}" \
+# 	--add bracket right_spaces space.6 space.7 space.8 \
+# 	--set right_spaces "${BRACKET_STYLE[@]}"
 
 sketchybar --update
