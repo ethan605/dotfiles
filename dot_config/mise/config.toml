@@ -16,7 +16,7 @@ terraform = "1.14.1"
 
 # Then tools
 argo-rollouts = "1.8.3"
-awscli = { version = "2.32.10", symlink_bins = "true" }
+awscli = { version = "2.32.11", symlink_bins = "true" }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bottom = "0.11.4"
@@ -57,7 +57,7 @@ tflint = "0.60.0"
 tlrc = "1.12.0"
 tmux = "3.6"
 tree-sitter = "0.25.10"
-uv = "0.9.15"
+uv = "0.9.16"
 yq = "4.49.2"
 zoxide = "0.9.8"
 claude = { version = "2.0.55", bin = "claude", platforms = """
