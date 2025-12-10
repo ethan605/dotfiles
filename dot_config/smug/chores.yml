@@ -25,7 +25,8 @@ windows:
         pnpm install
     panes:
       - commands:
-        - nvim --headless "+Lazy! sync" +qa
+        - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
+          nvim --headless "+Lazy! sync" +qa
 
   - name: system
     root: ~/.config/nvim
