@@ -28,7 +28,7 @@ brew "gnu-sed"
 brew "gnu-tar"
 # Assuan IPC Library
 brew "libassuan"
-# GNU Pretty Good Privacy (PGP) package
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Library access to GnuPG
 brew "gpgme"
