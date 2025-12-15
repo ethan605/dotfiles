@@ -1,0 +1,17 @@
+# vim:filetype=dosini
+allow_images=true
+allow_markup=true
+always_parse_args=true
+display_generic=true
+dynamic_lines=true
+image_size=20
+insensitive=true
+layer=overlay
+line_wrap=word
+lines=15
+print_command=true
+prompt=
+show=drun
+show_all=true
+term=foot
+width=20%

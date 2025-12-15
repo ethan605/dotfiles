@@ -1,0 +1,97 @@
+---@type LazySpec
+return {
+  "hoob3rt/lualine.nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    require("plugins.lsp-progress"),
+    require("plugins.nvim-navic"),
+  },
+  opts = function()
+    local lualine = require("lualine")
+    local lsp_progress = require("lsp-progress")
+    local custom_powerline = require("lualine.themes.powerline")
+    local snazzy_colors = require("lua.colorscheme").snazzy_colors
+
+    custom_powerline.normal.c.bg = snazzy_colors.black
+    custom_powerline.inactive.c.bg = snazzy_colors.black
+
+    local avante_extension = {
+      sections = {
+        lualine_a = { "mode" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+      filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
+    }
+
+    lualine.setup({
+      options = {
+        component_separators = "",
+        icons_enabled = true,
+        section_separators = "",
+        theme = custom_powerline,
+        disabled_filetypes = { "NvimTree", "dbee", "dbui" },
+      },
+      extensions = { avante_extension },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = {
+          { "branch", icon = "" },
+          "diff",
+          {
+            "diagnostics",
+            diagnostics_color = {
+              error = "DiagnosticError",
+              warn = "DiagnosticWarn",
+              info = "DiagnosticInfo",
+              hint = "DiagnosticHint",
+            },
+          },
+        },
+        lualine_c = {
+          "filename",
+          {
+            "navic",
+            color_correction = "dynamic",
+          },
+        },
+        lualine_x = {
+          {
+            lsp_progress.progress,
+            color = { fg = snazzy_colors.white },
+          },
+          "encoding",
+          "fileformat",
+          "filetype",
+        },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+      inactive_sections = {
+        lualine_a = { "mode" },
+        lualine_b = {
+          { "branch", icon = "" },
+          "diff",
+          { "diagnostics", colored = false },
+        },
+        lualine_c = { "filename" },
+        lualine_x = {
+          lsp_progress.progress,
+          "encoding",
+          "fileformat",
+          "filetype",
+        },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+    })
+
+    -- For lsp-progress
+    vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+    vim.api.nvim_create_autocmd("User", {
+      group = "lualine_augroup",
+      pattern = "LspProgressStatusUpdated",
+      callback = function() lualine.refresh() end,
+    })
+  end,
+}

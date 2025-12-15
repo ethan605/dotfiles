@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+WHITELIST_ENGINES=( xkb:us::eng Bamboo )
+declare -A ENGINES_MAPPING=( [xkb:us::eng]=En [Bamboo]=Vi )
+
+function switch_next_engine() {
+  local current_engine=$(ibus engine)
+  local engines_num=${#WHITELIST_ENGINES[@]}
+
+  for engine_index in "${!WHITELIST_ENGINES[@]}"; do
+    if [[ "$current_engine" = "${WHITELIST_ENGINES[$engine_index]}" ]]; then
+      local next_engine_index=$((($engine_index + 1) % $engines_num))
+      local next_engine_name=${WHITELIST_ENGINES[next_engine_index]}
+      ibus engine "$next_engine_name"
+      break
+    fi
+  done
+}
+
+function waybar_output() {
+  local engine_name=$(ibus engine)
+  local engine_alt=${ENGINES_MAPPING["$engine_name"]}
+
+  declare -A result_hash=(
+    [alt]="$engine_alt"
+    [class]="$engine_alt"
+    [tooltip]="$engine_name"
+  )
+
+  local output=$(
+    for key in "${!result_hash[@]}"; do
+      echo "$key" 
+      echo "${result_hash[$key]}"
+    done
+  )
+
+  echo "$output" | jq \
+    --unbuffered \
+    --null-input \
+    --raw-input \
+    --compact-output \
+    'reduce inputs as $i ({}; . + { ($i): (input|(tonumber? // .)) })'
+}
+
+function main() {
+  local sub_command=${1-}
+
+  case "$sub_command" in
+    next-engine) switch_next_engine ;;
+    waybar-output) waybar_output ;;
+    *) ;;
+  esac
+}
+
+main "$@"

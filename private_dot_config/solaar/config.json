@@ -1,0 +1,68 @@
+{
+  "4082:92DCEA13": {
+    "_absent": [
+      "hi-res-scroll",
+      "lowres-smooth-scroll",
+      "onboard_profiles",
+      "report_rate",
+      "pointer_speed",
+      "speed-change",
+      "backlight",
+      "backlight-timed",
+      "fn-swap",
+      "persistent-remappable-keys",
+      "disable-keyboard-keys",
+      "divert-crown",
+      "crown-smooth",
+      "divert-gkeys",
+      "m-key-leds",
+      "mr-key-led",
+      "multiplatform",
+      "gesture2-gestures",
+      "gesture2-divert",
+      "gesture2-params"
+    ],
+    "_modelId": "B02340820000",
+    "_name": "MX Master 3 Wireless Mouse",
+    "_sensitive": {
+      "change-host": false,
+      "divert-keys": false,
+      "dpi": false,
+      "hires-smooth-invert": false,
+      "hires-smooth-resolution": false,
+      "mouse-gestures": false,
+      "reprogrammable-keys": false,
+      "smart-shift": false,
+      "thumb-scroll-invert": false,
+      "thumb-scroll-mode": false
+    },
+    "_serial": "92DCEA13",
+    "_unitId": "92DCEA13",
+    "divert-keys": {
+      "195": 0,
+      "196": 0,
+      "215": 0,
+      "82": 0,
+      "83": 0,
+      "86": 0
+    },
+    "dpi": "1200",
+    "dpi-sliding": 0,
+    "hires-smooth-invert": false,
+    "hires-smooth-resolution": true,
+    "mouse-gestures": 0,
+    "reprogrammable-keys": {
+      "195": 195,
+      "196": 82,
+      "80": 80,
+      "81": 81,
+      "82": 196,
+      "83": 83,
+      "86": 86
+    },
+    "smart-shift": 0,
+    "thumb-scroll-invert": false,
+    "thumb-scroll-mode": true
+  },
+  "_version": "1.1.2"
+}

@@ -1,0 +1,13 @@
+-- vim:fileencoding=utf-8:filetype=lua
+package.path = "{{ .chezmoi.homeDir }}/.config/nvim/?.lua;" .. package.path
+
+require("plugins")
+
+require("settings")
+require("variables")
+require("colorscheme")
+require("keymaps")
+require("autocommands")
+
+require("lsp")
+require("filetype")

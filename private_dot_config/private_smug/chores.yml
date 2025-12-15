@@ -1,0 +1,43 @@
+session: γ
+root: ""
+windows:
+  - name: be
+    layout: even-horizontal
+    root: ~/work/cord-backend/projects/api-server
+    commands:
+      - git switch master &&
+        git fetch --prune && git pull origin master &&
+        uv pip install --upgrade pip ipython pdbpp rich ruff &&
+        uv sync --inexact
+    panes:
+      - commands:
+          - cd ~/work/cord-backend/local-dev &&
+            docker compose --profile=base down -t0 &&
+            docker compose --profile=api_server --profile=internal_tools build &&
+            docker system prune --volumes --force
+
+  - name: fe
+    root: ~/work/cord-frontend/apps/encord-fe
+    layout: even-horizontal
+    commands:
+      - git switch master &&
+        git fetch --prune && git pull origin master &&
+        pnpm install
+    panes:
+      - commands:
+        - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
+          nvim --headless "+Lazy! sync" +qa
+
+  - name: system
+    root: ~/.config/nvim
+    env:
+      MISE_VEROBSE: 1
+    layout: even-horizontal
+    commands:
+      - bupdate;
+        bbundle;
+        zim
+    panes:
+      - commands:
+        - mise plugins update &&
+          mise upgrade --bump --interactive

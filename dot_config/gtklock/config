@@ -1,5 +1,0 @@
-# vim:filetype=toml
-[main]
-background=/home/ethanify/.config/wallpapers/arch-snow-1920x1080-blur.png
-style=/home/ethanify/.config/gtklock/style.css
-start-hidden=true

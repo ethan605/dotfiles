@@ -1,0 +1,315 @@
+" vim:fileencoding=utf-8:filetype=vim:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+
+" [[[ 1. General config
+" Use Neovim as default editor
+set vicmd=nvim
+
+" This makes vifm perform file operations on its own instead of relying on
+" standard utilities like `cp`.  While using `cp` and alike is a more universal
+" solution, it's also much slower when processing large amounts of files and
+" doesn't support progress measuring.
+set syscalls
+
+" Open with preview window
+view
+
+" Trash Directory
+set trash
+
+" This is how many directories to store in the directory history.
+set history=1000
+
+" Automatically resolve symbolic links on l or Enter.
+set nofollowlinks
+
+" Natural sort of (version) numbers within text.
+set sortnumbers
+
+" Maximum number of changes that can be undone.
+set undolevels=100
+
+" If you would like to run an executable file when you
+" press return on the file name set this.
+set norunexec
+
+" Format for displaying time in file list. For example:
+" TIME_STAMP_FORMAT=%m/%d-%H:%M
+" See man date or man strftime for details.
+set timefmt=%Y/%m/%d\ %H:%M
+
+" Show list of matches on tab completion in command-line mode
+set wildmenu
+
+" Display completions in a form of popup with descriptions of the matches
+set wildstyle=popup
+
+" Display suggestions in normal, visual and view modes for keys, marks and
+" registers (at most 5 files).  In other view, when available.
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+
+" Ignore case in search patterns unless it contains at least one uppercase letter
+set ignorecase
+set smartcase
+
+" Don't highlight search results automatically
+set nohlsearch
+
+" Use increment searching (search while typing)
+set incsearch
+
+" Try to leave some space from cursor to upper/lower border in lists
+set scrolloff=4
+
+" Status line with:
+"   - file title
+"   - file attributes
+"   - file size (human-readable)
+"   - modification date
+set statusline=" %t%= %A %10s %20d "
+
+" Color scheme
+colorscheme minimal
+
+" Don't do too many requests to slow file systems
+if !has('win')
+  set slowfs=curlftpfs
+endif
+
+" Things that should be stored in vifminfo
+set vifminfo=dhistory,chistory,state,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
+" Dont show delete confirmation
+" set confirm-=delete
+
+" Display hidden files
+set dotfiles
+
+" ------------------------------------------------------------------------------
+
+" :com[mand][!] command_name action
+" The following macros can be used in a command
+" %a is replaced with the user arguments.
+" %c the current file under the cursor.
+" %C the current file under the cursor in the other directory.
+" %f the current selected file, or files.
+" %F the current selected file, or files in the other directory.
+" %b same as %f %F.
+" %d the current directory name.
+" %D the other window directory name.
+" %m run the command in a menu window
+
+command! df df -h %m 2> /dev/null
+command! diff vim -d %f %F
+command! zip zip -r %f.zip %f
+command! run !! ./%f
+command! make !!make %a
+command! mkcd :mkdir %a | cd %a
+command! vgrep vim "+grep %a"
+command! reload :write | restart
+
+" Empty the ruler. By default, it shows the number of directories+files.
+" set rulerformat=
+" ]]]
+
+" [[[ 2. File preview & file opening
+
+" Text based files
+filetype <text/*>,<application/json> nvim %c
+
+" Audio files
+filetype <audio/*>,<application/x-font-gdos>
+"  \*.ac3,*.ape,*.flac,*.m4a,*.mp3,*.og[agx],*.opus,*.spx,*.wav,*.wma
+  \ mpv %c %i &
+
+" Video files
+filetype <video/*>
+"  \*.3gp,*.as[fx],*.avi,*.dat,*.divx,*.fl[icv],
+"  \*.m2v,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.mts,
+"  \*.ogv,*.qt,*.r[am],*.ts,*.vob,*.webm,*.wmv,
+  \ mpv --fullscreen %c %i &
+filetype *.y4m
+  \ mpv --fullscreen %c %i &
+
+filetype *.zip
+  \ unzip %c
+
+" All other files
+{{- if eq .chezmoi.os "linux" }}
+
+filetype * xdg-open %c &
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+filetype * qlmanage -p %c >> /dev/null 2>&1 &
+
+{{- end }}
+
+" Dont show preview on ../
+fileviewer ../ echo > /dev/null
+
+" Show content tree in the preview window for directories
+fileviewer */ eza --all --color=always --group-directories-first --level=1 --tree %c
+fileviewer .*/ eza --all --color=always --group-directories-first --level=1 --tree %c
+
+" Text files
+fileviewer <text/*>,<application/json>
+  \ env -uCOLORTERM bat --number --color always --pager never --theme 'Sublime Snazzy' --wrap never %c
+
+" Archives
+fileviewer *.7z 7za l %c
+fileviewer *.ear,*.jar,*.oxt,*.war,*.zip zip -sf %c
+fileviewer *.rar unrar lb %c
+fileviewer *.tar tar -tf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar.gz,*.tgz tar -tzf %c
+fileviewer *.tar.txz,*.txz xz --list --verbose %c
+fileviewer *.tlz lzip --list --verbose %c
+
+" All other files
+fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
+" ]]]
+
+" [[[ 3. Key mappings 
+
+" Go to the file that is right before "../" for going to the top most file
+nnoremap gg ggj
+
+" Display sorting dialog
+nnoremap S :sort<cr>
+
+" Toggle visibility of preview window
+nnoremap <space> :view<cr>
+vnoremap <space> :view<cr>gv
+
+{{- if eq .chezmoi.os "linux" }}
+
+" Yank current directory path into the clipboard
+nnoremap yd :!echo -n %d | wl-copy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+
+" Yank current file path into the clipboard
+nnoremap yf :!echo -n %c:p | wl-copy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+" Yank current directory path into the clipboard
+nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+
+" Yank current file path into the clipboard
+nnoremap yf :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
+{{- end }}
+
+" Mappings for faster renaming
+nnoremap I cw<c-a>
+nnoremap cc cw<c-u>
+nnoremap A cw
+
+" ]]]
+
+" [[[ 4. Icons
+
+" file types
+set classify='  :dir:/,  :exe:,  :reg:,  :link:'
+
+" various file names
+set classify+='  ::../::,  ::copying::,  ::*.epub,,*.fb2,,*.djvu,,*.prc::,  ::*.pdf::'
+
+" archives
+set classify+='  ::*.7z,,*.ace,,*.arj,,*.bz2,,*.cpio,,*.deb,,*.dz,,*.gz,,*.jar,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.rz,,*.tar,,*.taz,,*.tb2,,*.tbz,,*.tbz2,,*.tgz,,*.tlz,,*.trz,,*.txz,,*.tz,,*.tz2,,*.xz,,*.z,,*.zip,,*.zoo::'
+
+" images
+set classify+='  ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.ppm,,*.svg,,*.svgz,,*.tga,,*.tif,,*.tiff,,*.xbm,,*.xcf,,*.xpm,,*.xspf,,*.xwd,,Screenshots/,,Pictures/::'
+
+" audios
+set classify+='  ::*.aac,,*.ac3,,*.anx,,*.asf,,*.au,,*.axa,,*.flac,,*.m2a,,*.m4a,,*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.ra,,*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,Music/::'
+
+" videos
+set classify+='  ::*.avi,,*.axv,,*.divx,,*.flv,,*.m2v,,*.m4[pv],,*.m[ko]v,,*.mp[4g],,*.mp4v,,*.mpeg,,*.nuv,,*.ogv,,*.p[bg]m,,*.qt,,*.vob,,*.wmv,,*.xvid,,*.mka,,Movies/::'
+
+" office files
+set classify+='  ::*.doc,,*.docx::,  ::*.pptx,,*.ppt::,  ::*.xls,,*.xls[mx]::'
+
+" Adobe files
+set classify+='  ::*.ai::,  ::*.psb,,*.psd::'
+
+" dev files
+set classify+=' 1 ::exact-match-case-sensitive-1.txt::'
+set classify+=' 2 ::exact-match-case-sensitive-2::'
+set classify+='λ  ::*.ml,,*.mli::'
+set classify+='  ::*.styl::'
+set classify+='  ::*.s[ac]ss::'
+set classify+='  ::*.py,,*.pyc,,*.pyo,,*.pyd::'
+set classify+='  ::procfile::'
+set classify+='  ::*.php::'
+set classify+='  ::*.md,,*.mdx,,*.markdown,,*.rmd::'
+set classify+='  ::license,,keychain::'
+set classify+='  ::*.js,,*.mjs,,.nvmrc::'
+set classify+='  ::*.mustache,,*.hbs::'
+set classify+='  ::gulpfile.coffee,,gulpfile.[jlt]s,,gulpfile.[jlt]s/::'
+set classify+='  ::gruntfile.coffee,,gruntfile.[jlt]s::'
+set classify+='  ::*.rss::'
+set classify+='  ::*.coffee::'
+set classify+='  ::*.twig::'
+set classify+='  ::*.c,,*.c[cp],,*.c++,,*.cpp,,*.cxx,,*.m::'
+set classify+='  ::*.hs,,*.lhs::'
+set classify+='  ::*.lua::'
+set classify+='  ::favicon.ico::'
+set classify+='  ::*.jl::'
+set classify+='  ::*.go,,go/::'
+set classify+='  ::*.ts,,types/::'
+set classify+='  ::*.vim,,.*vimrc,,.gvimrc,,_vimrc,,_gvimrc::'
+set classify+='  ::*.elm::'
+set classify+='  ::*.ex,,*.eex,,*.exs,,*.leex,,mix.lock::'
+set classify+='  ::*.d::'
+set classify+='  ::.eslint*::'
+set classify+='  ::*.yml,,*.yaml::'
+set classify+='  ::*.conf,,*.toml,,Cargo.lock::'
+set classify+='  ::*.db,,*.dump,,*.sql,,*.mysql::'
+set classify+='  ::dropbox/::'
+set classify+='  ::*.sln,,*.suo,,.vscode/::'
+set classify+='  ::package*.json,,node_modules/,,.npm*,,yarn.lock,,.yarn*::'
+set classify+='  ::*.diff::'
+set classify+='  ::*.htm,,*.html,,*.slim,,*.ejs::'
+set classify+='  ::*.scala::'
+set classify+='  ::*.xul::'
+set classify+='  ::*.css::'
+set classify+='  ::/.*jquery.*.js$/::'
+set classify+='  ::/.*backbone.*.js$/::'
+set classify+='  ::*.swift,,*.xcplayground::'
+set classify+='  ::*.clj,,*.cljc::'
+set classify+='  ::*.pl,,*.pm,,*.t::'
+set classify+='  ::*.cljs,,*.edn::'
+set classify+='  ::/.*require.*.js$/::'
+set classify+='  ::/.*mootools.*.js$/::'
+set classify+='  ::*.rb,,Rakefile,,.rvmrc,,*.gemspec,,.Brewfile::'
+set classify+='  ::*.awk,,*.bash,,*.[ckz]sh,,*.fish,,*.ps1,,*.sh,,*.bat,,.bash*,,.zsh*,,.zim*,,makefile,,cmakelists.txt::'
+set classify+='  ::*.dart::'
+set classify+='  ::*.bson::'
+set classify+='  ::*.f#,,*.fs,,*.fsi,,*.fsscript,,*.fsx::'
+set classify+='  ::*.rlib,,*.rs::'
+set classify+='  ::*.erl,,*.hrl::'
+set classify+='  ::/.*materialize.*.(css|js)$/::'
+set classify+='  ::.tmux*::'
+set classify+='  ::*.less::'
+set classify+='  ::*.vue::'
+set classify+='  ::/.*angular.*.js$/::'
+set classify+='  ::*.java::'
+set classify+='  ::*.h,,*.hh,,*.hpp,,*.hxx::'
+set classify+='  ::dockerfile,,docker-compose.yml::'
+set classify+='  ::.gitlab-ci.yml::'
+set classify+='  ::.github/::'
+set classify+='  ::/Vagrantfile$/::'
+set classify+='  ::jenkinsfile::'
+set classify+='  ::*.ini,,.env,,.env.*::'
+set classify+='  ::*.pp::'
+set classify+='󰌛  ::*.cs::'
+set classify+='󰗀  ::*.xml::'
+set classify+='󰜈  ::*.[jt]sx::'
+set classify+='󰣀  ::.ssh/::'
+set classify+='󰨥  ::.babel*::'
+set classify+='󱃾  ::.kube/::'
+
+" To avoid unexpected overrides
+set classify+='  ::*.json,,.*.json,,*.jsonp,,.*.jsonp,,*.tsbuildinfo::'
+set classify+='  ::.git*,,.git/,,*.git/::'
+" ]]]

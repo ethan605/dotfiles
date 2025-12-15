@@ -1,0 +1,208 @@
+# vim:fileencoding=utf-8:filetype=toml
+# Common configs
+command_timeout = 1000
+continuation_prompt = "[›](yellow) "
+format = """
+$shlvl\
+$sudo\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_status\
+$git_metrics\
+$git_state\
+$hg_branch\
+$cmake\
+$elixir\
+$erlang\
+$golang\
+$helm\
+$java\
+$kotlin\
+$lua\
+$nodejs\
+$python\
+$ruby\
+$rust\
+$terraform\
+$vagrant\
+$vlang\
+$aws\
+$gcloud\
+$kubernetes\
+$env_var\
+$cmd_duration\
+${custom.proxy}\
+$line_break\
+$jobs\
+${custom.venv}\
+$character"""
+
+[sudo]
+disabled = false
+format = "[$symbol]($style)"
+style = "bold red"
+symbol = "󰯄 "
+
+[username]
+format = "[$user]($style) "
+
+[hostname]
+format = "[@]($style) [$hostname]($style) "
+style = "bright-black"
+
+[shlvl]
+disabled = true
+symbol = " "
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+fish_style_pwd_dir_length = 1
+truncation_length = 3
+style = "bold blue"
+
+[git_branch]
+format = " [$symbol$branch]($style)"
+style = "bright-black"
+symbol = ""
+
+[git_commit]
+format = " [󰜘$hash](cyan)( [$tag](green))"
+tag_disabled = false
+tag_symbol = " "
+
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+
+[git_metrics]
+disabled = false
+format = "( ([+$added]($added_style))([-$deleted]($deleted_style)))"
+
+[git_state]
+format = ' \([$state $progress_current/$progress_total]($style)\)'
+
+[cmd_duration]
+format = " [$duration]($style)"
+
+[character]
+error_symbol = "[λ](bold red)"
+success_symbol = "[λ](bold purple)"
+vicmd_symbol = "[ε](bold purple)"
+
+# Custom
+[custom.proxy]
+command = 'echo $HTTPS_PROXY | sed "s/http\:\/\///gi;s/\/$//gi"'
+format = " [$symbol$output]($style)"
+style = "#ffaf87"
+when = 'test "$HTTPS_PROXY" != ""'
+symbol = "󰒄 "
+
+[custom.venv]
+command = 'basename "$VIRTUAL_ENV"'
+format = "[$output]($style) "
+style = "bright-black"
+when = 'test "$VIRTUAL_ENV" != ""'
+
+# Platforms support
+[aws]
+format = ' [$symbol( $profile)( \($region\))( \[$duration\])]($style)'
+style = "bold #ff9900"
+symbol = "󰸏"
+
+[docker_context]
+format = " [$symbol$context]($style)"
+style = "bold #0db7ed"
+symbol = "󰡨 "
+
+[kubernetes]
+disabled = false
+format = " [$symbol$context]($style)[@](bright-black)[$namespace]($style)"
+style = "bold #326ce5"
+symbol = "󱃾 "
+
+[gcloud]
+format = ' [$symbol( $project[@](bright-black)$region)]($style)'
+symbol = "󱇶"
+style = "bold #4285f4"
+
+# Languages support
+[cmake]
+format = " [$symbol($version)]($style)"
+style = "bold #e25241"
+
+[deno]
+format = " [$symbol$version]($style)"
+version_format = "$raw"
+
+[elixir]
+format = ' [$symbol$version \(OTP $otp_version\)]($style)'
+style = "bold #6e4a7e"
+symbol = " "
+version_format = "$raw"
+
+[golang]
+format = " [$symbol$version]($style)"
+style = "bold #29beb0"
+symbol = " "
+version_format = "$raw"
+
+[java]
+format = " [$symbol$version]($style)"
+style = "bold #ffa518"
+symbol = " "
+version_format = "$raw"
+
+[kotlin]
+format = " [$symbol$version]($style)"
+style = "bold #1aa2d4"
+symbol = " "
+version_format = "$raw"
+
+[lua]
+format = " [$symbol$version]($style)"
+style = "bold #29beb0"
+symbol = " "
+version_format = "$raw"
+
+[nodejs]
+format = " [$symbol$version]($style)"
+style = "bold #3c873a"
+symbol = " "
+version_format = "$raw"
+
+[python]
+format = " [$symbol$version]($style)"
+style = "bold #ffd43b"
+symbol = " "
+version_format = "$raw"
+
+[ruby]
+format = " [$symbol$version]($style)"
+style = "bold #d51f06"
+symbol = " "
+version_format = "$raw"
+
+[rust]
+format = " [$symbol$version]($style)"
+style = "bold #b7410e"
+symbol = "󱘗 "
+version_format = "$raw"
+
+[terraform]
+format = " [$symbol$version]($style)"
+style = "bold #844fba"
+symbol = "󱁢 "
+version_format = "$raw"
+
+[vagrant]
+format = " [$symbol$version]($style)"
+style = "bold #1868f2"
+symbol = " "
+
+[vlang]
+format = " [$symbol$version]($style)"
+style = "bold #5d87bf"
+symbol = " "
+version_format = "$raw"

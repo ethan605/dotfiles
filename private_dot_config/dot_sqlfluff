@@ -1,0 +1,15 @@
+# vim:filetype=toml
+[sqlfluff]
+dialect = postgres
+max_line_length = 120
+templater = placeholder
+# templater = python
+
+[sqlfluff:templater:placeholder]
+param_style = pyformat
+# param_style = colon
+limit = 10
+offset = 10
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper

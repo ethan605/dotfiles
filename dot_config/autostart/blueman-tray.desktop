@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Blueman Tray
-Icon=blueman
-Exec=blueman-tray
-Terminal=false
-Type=Application
-StartupNotify=false
-Categories=GTK;GNOME;Settings;HardwareSettings;

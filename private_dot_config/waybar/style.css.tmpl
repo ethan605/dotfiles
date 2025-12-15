@@ -1,0 +1,211 @@
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+  50% {
+    color: orange;
+  }
+  to {
+    color: #eff0eb;
+  }
+}
+
+@keyframes blink-critical {
+  50% {
+    color: #ff5c57;
+  }
+  to {
+    color: #eff0eb;
+  }
+}
+
+@keyframes blink-idle-inhibitor {
+  50% {
+    color: #ff5c57;
+  }
+  to {
+    color: #eff0eb;
+  }
+}
+
+/* Reset all styles */
+* {
+  background-color: #282a36;
+  border-radius: 0;
+  border: none;
+  color: #eff0eb;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+/* Tooltips */
+tooltip {
+  border-radius: 3px;
+  border: 1px solid #eff0eb;
+  color: #eff0eb;
+}
+
+/* The whole bar */
+#waybar {
+  font-family: Cantarell, 'OperatorMonoSSm Nerd Font', sans-serif;
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+  font-size: 16px;
+{{- else }}
+  font-size: 14px;
+{{- end }}
+}
+
+/* Workspaces */
+#workspaces button {
+  padding: 0 15px;
+}
+
+#workspaces button:hover {
+  background-color: #eff0eb;
+}
+
+#workspaces button.focused {
+  background-color: #5af78e;
+}
+
+#workspaces button.urgent {
+  background-color: #ff5c57;
+}
+
+#workspaces button label {
+  background-color: transparent;
+}
+
+#workspaces button:hover label,
+#workspaces button.focused label {
+  color: #282a36;
+}
+
+#workspaces button.urgent label {
+  color: #282a36;
+}
+
+/* Window title in the middle */
+#window {
+  font-weight: bold;
+}
+
+/* All modules */
+#mode,
+#mpd,
+#network,
+#custom-vpn,
+#custom-nordlynx,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#tray {
+  padding: 0 8px;
+}
+
+#mode {
+  background-color: #686868;
+}
+
+#mpd {
+  background-color: #57c7ff;
+  color: #282a36;
+}
+
+#idle_inhibitor {
+  padding: 0 4px;
+}
+
+#idle_inhibitor.activated {
+  color: #ff5c57;
+  animation-name: blink-idle-inhibitor;
+  animation-duration: 1s;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#network.disconnected {
+  color: orange;
+}
+
+#cpu.warning {
+  color: orange;
+}
+
+#cpu.critical {
+  color: #ff5c57;
+}
+
+#battery,
+#idle_inhibitor,
+#memory {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#memory.warning {
+  color: orange;
+}
+
+#memory.critical {
+  color: #ff5c57;
+  animation-name: blink-critical;
+  animation-duration: 1s;
+}
+
+#temperature.critical {
+  color: #ff5c57;
+}
+
+#battery.warning {
+  color: orange;
+}
+
+#battery.critical {
+  color: #ff5c57;
+}
+
+#battery.discharging {
+  animation-duration: 1s;
+}
+
+#battery.discharging.warning {
+  animation-name: blink-warning;
+}
+
+#battery.discharging.critical {
+  animation-name: blink-critical;
+}
+
+#custom-performance-mode {
+  font-weight: bold;
+}
+
+#custom-performance-mode.low-power {
+  color: #57c7ff;
+}
+
+#custom-performance-mode.balanced {
+  color: #eff0eb;
+}
+
+#custom-performance-mode.performance {
+  color: #ff5c57;
+}
+
+#pulseaudio.muted {
+  color: orange;
+}
+
+#custom-arch {
+  color: #1793d1;
+  font-size: 20px;
+  padding-left: 8px;
+  padding-right: 5px;
+}

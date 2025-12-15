@@ -1,0 +1,69 @@
+// vim:fileencoding=utf-8:syntax=json5
+[
+{{- if eq .chezmoi.hostname "PF3XSEPR" }}
+  {
+    // Vertical layout
+    "output": ["Dell Inc. DELL P2421DC B12WS03"],
+    "position": "top",
+    "layer": "bottom",
+    "height": 30,
+    "include": [
+      "~/.config/waybar/modules"
+    ],
+
+    "modules-left": [
+      "sway/workspaces",
+      "sway/mode"
+    ],
+    "modules-center": [
+      "idle_inhibitor",
+      "clock"
+    ],
+    "modules-right": [
+      "pulseaudio",
+      "tray",
+      "custom/arch"
+    ],
+  },
+{{- end }}
+  {
+    {{- if eq .chezmoi.hostname "PF3XSEPR" }}
+    // Default layout - horizontal
+    "output": "!Dell Inc. DELL P2421DC B12WS03",
+    {{- end }}
+    "position": "top",
+    "layer": "bottom",
+    "height": 30,
+    "include": [
+      "~/.config/waybar/modules"
+    ],
+
+    "modules-left": [
+      "sway/workspaces",
+      "sway/mode",
+      "mpd"
+    ],
+    "modules-center": [
+      "idle_inhibitor",
+      "clock"
+    ],
+    "modules-right": [
+      "custom/vpn",
+      {{- if eq .chezmoi.hostname "lunarch" }}
+      "custom/nordlynx",
+      {{- end }}
+      "network",
+      "cpu",
+      "memory",
+      "temperature",
+      "pulseaudio",
+      {{- if eq .chezmoi.hostname "PF3XSEPR" }}
+      "backlight",
+      "battery",
+      "custom/performance-mode",
+      {{- end }}
+      "tray",
+      "custom/arch"
+    ]
+  }
+]

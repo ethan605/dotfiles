@@ -1,0 +1,21 @@
+# vim:fileencoding=utf-8:filetype=dosini
+theme = Snazzy
+palette = 0=#282a36
+cursor-style = block
+
+font-family = "OperatorMonoSSm Nerd Font"
+font-style-italic = "Italic"
+font-size = 18
+# font-style = "Light"
+# font-style-bold = "Regular"
+# font-style-italic = "Light Italic"
+# font-style-bold-italic = "Italic"
+
+term = "xterm-256color" 
+
+window-decoration = false
+window-width = 9999
+window-height = 9999
+fullscreen = false
+
+keybind = super+w=unbind
