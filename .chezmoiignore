@@ -6,6 +6,8 @@ mac-install
 
 # <<< Obsolete configs - keep for future reference only
 
+.config/Autoraise
+.config/harper-ls
 .config/kitty
 .local/bin/ibus-engines
 

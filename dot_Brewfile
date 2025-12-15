@@ -98,8 +98,6 @@ brew "zbar"
 brew "zsh"
 # Host application for browser extension providing access to your password store
 brew "amar1729/formulae/browserpass"
-# Focus-follows-mouse for MacOS
-brew "dimentium/autoraise/autoraise"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 # Quantum Mechanical Keyboard (QMK) Firmware
