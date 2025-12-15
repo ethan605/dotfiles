@@ -108,8 +108,6 @@ brew "qmk/qmk/qmk"
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
 brew "simplydanny/pass-extensions/pass-update"
-# Password manager that keeps all passwords secure behind one password
-cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -148,8 +146,6 @@ cask "loom"
 cask "microsoft-edge"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
-# App to write, plan, collaborate, and get organised
-cask "notion"
 # Replacement for Docker Desktop
 cask "orbstack"
 # Utility to uninstall apps and remove leftover files from old/uninstalled apps
