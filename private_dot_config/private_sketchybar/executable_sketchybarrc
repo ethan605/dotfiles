@@ -20,11 +20,11 @@ default=(
 	icon.font="SamsungSans Nerd Font:Regular:17.0"
 	icon.color="$COLOR_WHITE"
 	icon.padding_left=8
-	icon.padding_right=8
+	icon.padding_right=0
 
 	label.font="SamsungSans Nerd Font:Regular:17.0"
 	label.color="$COLOR_WHITE"
-	label.padding_left=0
+	label.padding_left=8
 	label.padding_right=8
 )
 sketchybar --default "${default[@]}"
@@ -32,8 +32,8 @@ sketchybar --default "${default[@]}"
 sketchybar --add event aerospace_workspace_change
 
 WORKSPACE_LABELS=(
-	[1]=" " [2]=" " [3]=" " [4]=" " [5]=" "
-	[6]=" " [7]=" " [8]=" " [9]=" " [0]=""
+	[1]=" ₁" [2]=" ₂" [3]=" ₃" [4]=" ₄" [5]=" ₅"
+	[6]=" ₆" [7]=" ₇" [8]=" ₈" [9]=" ₉" [0]=""
 )
 for sid in $(aerospace list-workspaces --all); do
 	sketchybar \
@@ -44,6 +44,7 @@ for sid in $(aerospace list-workspaces --all); do
 		background.corner_radius=0 \
 		background.height=40 \
 		icon="$sid" \
+    icon.drawing=off \
 		label="${WORKSPACE_LABELS[$sid]}" \
 		script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
 		click_script="aerospace workspace $sid"
@@ -63,15 +64,15 @@ sketchybar \
 	--set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
 	--subscribe battery system_woke power_source_change
 
-BRACKET_STYLE=(
-	background.color=0xff686868
-	background.corner_radius=0
-	background.height=40
-)
-sketchybar \
-	--add bracket left_spaces space.2 space.3 space.4 \
-	--set left_spaces "${BRACKET_STYLE[@]}" \
-	--add bracket right_spaces space.6 space.7 space.8 \
-	--set right_spaces "${BRACKET_STYLE[@]}"
+# BRACKET_STYLE=(
+# 	background.color=0xff686868
+# 	background.corner_radius=0
+# 	background.height=40
+# )
+# sketchybar \
+# 	--add bracket left_spaces space.2 space.3 space.4 \
+# 	--set left_spaces "${BRACKET_STYLE[@]}" \
+# 	--add bracket right_spaces space.6 space.7 space.8 \
+# 	--set right_spaces "${BRACKET_STYLE[@]}"
 
 sketchybar --update
