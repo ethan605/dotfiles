@@ -19,6 +19,10 @@
     },
     {
       "passKeys": "",
+      "pattern": "https?://app.excalidraw.com/*"
+    },
+    {
+      "passKeys": "",
       "pattern": "https?://whimsical.com/*"
     }
   ]
