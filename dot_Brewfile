@@ -12,6 +12,8 @@ brew "aria2"
 brew "axel"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Statistics utility to count lines of code
+brew "cloc"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Static analysis of C and C++ code
