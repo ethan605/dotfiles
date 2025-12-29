@@ -1,6 +1,6 @@
 lowercaseKeywords: false
 connections:
-  - alias: local
+  - alias: postgres
     driver: postgresql
     proto: tcp
     user: postgres
@@ -10,3 +10,11 @@ connections:
     dbName: postgres
     params:
       sslmode: disable
+  - alias: clickhouse
+    driver: clickhouse
+    proto: tcp
+    user: default
+    passwd: default
+    host: localhost
+    port: 9000
+    dbName: encord_analytics

@@ -9,7 +9,11 @@ return {
     local none_ls = require("null-ls")
 
     local sqlfluff_config = {
-      extra_args = { "--config", vim.fn.expand("~/.config/.sqlfluff") },
+      extra_args = {
+        "--config",
+        vim.fn.expand("~/.config/.sqlfluff.postgres"),
+        -- vim.fn.expand("~/.config/.sqlfluff.clickhouse"),
+      },
     }
 
     return {
