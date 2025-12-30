@@ -7,4 +7,7 @@ return {
     "ruff.toml",
     ".ruff.toml",
   },
+  settings = {
+    ["ruff.nativeServer"] = "auto",
+  },
 }
