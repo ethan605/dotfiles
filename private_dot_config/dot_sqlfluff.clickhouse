@@ -39,8 +39,7 @@ capitalisation_policy = upper
 capitalisation_policy = lower
 
 [sqlfluff:rules:capitalisation.functions]
-extended_capitalisation_policy = pascal
-ignore_words = toYYYYMM, toString
+extended_capitalisation_policy = camel
 
 [sqlfluff:rules:capitalisation.types]
 extended_capitalisation_policy = pascal
