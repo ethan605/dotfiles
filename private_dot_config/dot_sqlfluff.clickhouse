@@ -1,4 +1,6 @@
 # vim:filetype=toml
+# For default configs, see: https://docs.sqlfluff.com/en/stable/configuration/default_configuration.html#defaultconfig
+
 # General configs
 [sqlfluff]
 dialect = clickhouse
@@ -13,23 +15,8 @@ param_style = percent
 [sqlfluff:layout:type:data_type]
 spacing_within = touch:inline
 
-[sqlfluff:layout:type:comma]
-line_position = trailing
-
-[sqlfluff:layout:type:where_clause]
-keyword_line_position = alone
-
 [sqlfluff:layout:type:join_on_condition]
-keyword_line_position = trailing
-
-[sqlfluff:layout:type:orderby_clause]
-keyword_line_position = alone
-
-[sqlfluff:layout:type:groupby_clause]
-keyword_line_position = alone
-
-[sqlfluff:layout:type:having_clause]
-keyword_line_position = alone
+keyword_line_position = leading
 
 # Rule configs
 [sqlfluff:rules:capitalisation.keywords]
@@ -40,6 +27,7 @@ capitalisation_policy = lower
 
 [sqlfluff:rules:capitalisation.functions]
 extended_capitalisation_policy = camel
+ignore_words = MergeTree, ReplacingMergeTree
 
 [sqlfluff:rules:capitalisation.types]
 extended_capitalisation_policy = pascal
