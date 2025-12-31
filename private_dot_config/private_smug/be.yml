@@ -16,10 +16,16 @@ windows:
   - name: local-dev
     root: cord-backend/local-dev
     commands:
-      - docker compose --profile=base run --rm liquibase_db_migration
+      - docker compose --profile=base up -d liquibase_db_migration liquibase_analytics_migration
 
-  - name: sql
+  - name: postgres
     root: scratch-pad/sql
     layout: main-vertical
     commands:
-      - __prepare_postgres_urls
+      - __dbee_postgres
+
+  - name: clickhouse
+    root: scratch-pad/sql
+    layout: main-vertical
+    commands:
+      - __dbee_clickhouse
