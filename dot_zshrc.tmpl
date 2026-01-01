@@ -172,8 +172,6 @@ function __load-sway() {
 {{- end }}
 
 function __load-work-envs() {
-{{- if eq .work.email "thanh@encord.com" }}
-
   export WORK_DIR="$HOME/work"
 
   if [[ -d "$WORK_DIR/.env/bin" ]]; then
@@ -184,8 +182,6 @@ function __load-work-envs() {
     # shellcheck disable=SC1091
     source "$WORK_DIR/.env/.zshrc"
   fi
-
-{{- end}}
 }
 
 function __load-zim() {
