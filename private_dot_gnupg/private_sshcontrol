@@ -1,7 +1,0 @@
-# List of allowed ssh keys.
-# To generate, run:
-#   gpg --export-ssh-key <key-id>! > id_ed25519.pub
-# Remember the `!` so the key grips are excluded.
-
-A08AC24D57A795D0C3124043C861C08B3A269822
-C7C48EC6C2DC1316562FA623F41CC6218223FE52
