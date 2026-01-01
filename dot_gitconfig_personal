@@ -1,4 +1,4 @@
 # vim:syntax=gitconfig
 [user]
   email = xtnguyen605@gmail.com
-  signingkey = 003265286468198BA8AA202D998F2602445500A2
+  signingkey = 22C3C7D640F1786810C7DD7C7DF52657018E5BD2
