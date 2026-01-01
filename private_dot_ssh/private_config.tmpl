@@ -1,3 +1,4 @@
+# vim:filetype=sshconfig
 # Recommended by Mozilla Infosec: https://infosec.mozilla.org/guidelines/openssh
 # Ensure KnownHosts are unreadable if leaked - it is otherwise easier to know which hosts your keys have access to.
 HashKnownHosts yes
@@ -20,12 +21,12 @@ Host *
 
 {{- end }}
 
-Host github.personal
+Host github.work
   Hostname github.com
   User git
-  IdentityFile ~/.ssh/personal_id_ed25519
+  IdentityFile ~/.ssh/work_id_ed25519
 
-Host gist.github.personal
+Host gist.github.work
   Hostname gist.github.com
   User git
-  IdentityFile ~/.ssh/personal_id_ed25519
+  IdentityFile ~/.ssh/work_id_ed25519
