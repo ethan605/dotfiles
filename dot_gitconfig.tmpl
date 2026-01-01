@@ -1,13 +1,18 @@
 # vim:syntax=gitconfig
 [user]
   name = Thanh Nguyen
-  email = xtnguyen605@gmail.com
 
-[includeIf "hasconfig:remote.*.url:git@github.*/**"]
+[includeIf "hasconfig:remote.*.url:git@github.com:*/*"]
   path = .gitconfig_personal
-[includeIf "hasconfig:remote.*.url:git@github.com:encord-team*/**"]
+[includeIf "hasconfig:remote.*.url:git@gist.github.com:*"]
+  path = .gitconfig_personal
+[includeIf "hasconfig:remote.*.url:git@github.work:*/*"]
+  path = .gitconfig_work
+[includeIf "hasconfig:remote.*.url:git@gist.github.work:*"]
   path = .gitconfig_work
 
+[commit]
+  gpgsign = true
 [tag]
   gpgsign = true
 [core]
