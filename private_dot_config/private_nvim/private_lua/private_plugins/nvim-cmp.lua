@@ -21,6 +21,7 @@ return {
     local nvim_cmp = require("cmp")
     local window_style = nvim_cmp.config.window.bordered({
       border = "rounded",
+      winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:PmenuSel,Search:None",
       scrollbar = true,
     })
 
