@@ -20,8 +20,8 @@ return {
   config = function()
     local nvim_cmp = require("cmp")
     local window_style = nvim_cmp.config.window.bordered({
-      winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:PmenuSel,Search:None",
-      scrollbar = false,
+      border = "rounded",
+      scrollbar = true,
     })
 
     ---@type cmp.ConfigSchema

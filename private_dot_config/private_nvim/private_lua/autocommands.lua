@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("BufLeave", {
 -- Auto format
 local autoFormatGroup = vim.api.nvim_create_augroup("AutoFormatGroup", { clear = true })
 
--- Call Stylua on save - using none-ls
+-- Call Stylua on save - using lua-language-server
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.lua", "*.luau" },
   command = "lua vim.lsp.buf.format()",
@@ -60,17 +60,13 @@ vim.api.nvim_create_autocmd("Filetype", {
   command = "CsvViewEnable",
 })
 
-vim.api.nvim_create_user_command(
-  "TodoFzf",
-  function(args)
-    local todoFzf = require("todo-comments.fzf")
-    local keyword = args.args
+vim.api.nvim_create_user_command("TodoFzf", function(args)
+  local todoFzf = require("todo-comments.fzf")
+  local keyword = args.args
 
-    if string.len(keyword) == 0 then
-      todoFzf.todo()
-    else
-      todoFzf.todo({ keywords = { keyword } })
-    end
-  end,
-  { desc = "Browse Todo comments by keyword", nargs = "?" }
-)
+  if string.len(keyword) == 0 then
+    todoFzf.todo()
+  else
+    todoFzf.todo({ keywords = { keyword } })
+  end
+end, { desc = "Browse Todo comments by keyword", nargs = "?" })

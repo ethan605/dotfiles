@@ -2,3 +2,7 @@
 [user]
   email = xtnguyen605@gmail.com
   signingkey = 1BA6C5C897381F1628E1E0AF57F2FDD038EB1C58
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
