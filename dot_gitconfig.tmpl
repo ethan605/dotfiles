@@ -1,6 +1,7 @@
 # vim:syntax=gitconfig
 [user]
   name = Thanh Nguyen
+  email = hello@ethanify.me
 
 [includeIf "hasconfig:remote.*.url:git@github.com:*/*"]
   path = .gitconfig_personal
@@ -11,10 +12,6 @@
 [includeIf "hasconfig:remote.*.url:git@gist.github.work:*"]
   path = .gitconfig_work
 
-[commit]
-  gpgsign = true
-[tag]
-  gpgsign = true
 [core]
   excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
   autocrlf = false
