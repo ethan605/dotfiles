@@ -133,7 +133,7 @@ function __load-ssh() {
 
   unset SSH_AGENT_PID
 
-  if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  if [[ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]]; then
     SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
     export SSH_AUTH_SOCK
   fi
@@ -287,40 +287,6 @@ function greek-letters() {
 function mux() {
   local workspace=${1:-$(greek-letters)}
   tmux attach -t "$workspace" || tmux new -s "$workspace"
-}
-
-function nvim-oil() {
-  local dir1=${1:-.}
-
-  if [ -f "$dir1" ]; then
-    echo "Expecting dir paths only, got file path '$dir1'"
-    return 1
-  fi
-
-  if [ ! -d "$dir1" ]; then
-    echo "Directory '$dir1' does not exist"
-    return 1
-  fi
-
-  local num_args=$#
-
-  if (( num_args > 1 )); then
-    if [ -f "$2" ]; then
-      echo "Expecting dir paths only, got file path '$2'"
-      return 1
-    fi
-
-    if [ ! -d "$2" ]; then
-      echo "Directory '$2' does not exist"
-      return 1
-    fi
-
-    # Opening side-by-side
-    nvim +"Oil $1" +"vsplit | Oil $2"
-  else
-    # Opening with preview
-    nvim +"cd $dir1" +"Oil --preview"
-  fi
 }
 
 {{- if eq .chezmoi.os "linux" }}
