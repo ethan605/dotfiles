@@ -1,0 +1,3 @@
+!import rich
+
+alias pp rich.pretty.pprint(%1)
