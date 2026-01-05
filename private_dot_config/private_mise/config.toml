@@ -20,7 +20,7 @@ awscli = { version = "2.32.25", symlink_bins = "true" }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bottom = "0.12.3"
-chezmoi = "2.68.1"
+chezmoi = "2.69.0"
 clickhouse = "25.11.5.8-stable"
 cmake = "4.2.1"
 delta = "0.18.2"
