@@ -69,15 +69,15 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   l = 'resize smart +50'
 
 [workspace-to-monitor-force-assignment]
-  1 = ['DELL S2722DZ', 'secondary', 'built-in']
+  1 = ['DELL S2722DZ', 'DELL S2722DC', 'secondary', 'built-in']
   2 = 'built-in'
   3 = 'built-in'
   4 = 'built-in'
-  5 = ['DELL S2722DZ', 'secondary', 'built-in']
-  6 = ['DELL P2421DC', 'built-in']
-  7 = ['DELL P2421DC', 'built-in']
-  8 = ['DELL P2421DC', 'built-in']
-  9 = ['DELL P2421DC', 'built-in']
+  5 = ['DELL S2722DZ', 'DELL S2722DC', 'secondary', 'built-in']
+  6 = ['DELL P2421DC', 'DELL S2722QC', 'built-in']
+  7 = ['DELL P2421DC', 'DELL S2722QC', 'built-in']
+  8 = ['DELL P2421DC', 'DELL S2722QC', 'built-in']
+  9 = ['DELL P2421DC', 'DELL S2722QC', 'built-in']
 
 # Windows that always float. These conditions need to preceed others
 [[on-window-detected]]
