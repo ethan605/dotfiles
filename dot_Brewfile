@@ -32,8 +32,6 @@ brew "gnu-tar"
 brew "libassuan"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Library access to GnuPG
-brew "gpgme"
 # GNU grep, egrep and fgrep
 brew "grep"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -141,8 +139,6 @@ cask "loom"
 cask "nordvpn"
 # Replacement for Docker Desktop
 cask "orbstack"
-# Collaboration platform for API development
-cask "postman"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software
