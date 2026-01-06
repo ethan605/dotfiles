@@ -36,14 +36,10 @@ brew "gnupg"
 brew "grep"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
-# Image manipulation library
-brew "jpeg"
 # User-friendly front-end to ssh-agent(1)
 brew "keychain"
 # Multi-format archive and compression library
 brew "libarchive"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
 # Implementation of the file(1) command
 brew "libmagic"
 # XML security library
