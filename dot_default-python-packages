@@ -7,6 +7,7 @@ pdbpp
 pip
 pynvim
 pyrefly
+pytest-language-server
 rich
 ruff
 sqlglot[rs]
