@@ -13,6 +13,7 @@ vim.lsp.config.ltex = require("lsp.ltex")
 vim.lsp.config.luals = require("lsp.luals")
 vim.lsp.config.nginx = require("lsp.nginx")
 vim.lsp.config.pyright = require("lsp.pyright")
+vim.lsp.config.pytest_lsp = require("pytest_lsp")
 vim.lsp.config.ruff = require("lsp.ruff")
 vim.lsp.config.rust_analyzer = require("lsp.rust_analyzer")
 vim.lsp.config.solargraph = require("lsp.solargraph")
@@ -40,6 +41,7 @@ vim.lsp.enable({
   "luals",
   "nginx",
   "pyright",
+  "pytest_lsp",
   "ruff",
   "rust_analyzer",
   "solargraph",
