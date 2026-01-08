@@ -42,7 +42,7 @@ vim.lsp.enable({
   "nginx",
   "pyright",
   "pytest_lsp",
-  "ruff",
+  -- "ruff",
   "rust_analyzer",
   "solargraph",
   "sqls",
