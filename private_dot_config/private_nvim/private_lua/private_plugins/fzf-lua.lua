@@ -5,11 +5,11 @@ return {
   opts = {
     "fzf-native",
     ---@type fzf-lua.config.Winopts
-    ---@diagnostic disable-next-line: missing-fields
     winopts = {
       backdrop = 100,
       height = 0.9,
       width = 0.9,
+      ---@diagnostic disable-next-line: missing-fields
       preview = {
         border = "noborder",
         default = "bat",
@@ -33,7 +33,6 @@ return {
     },
 
     ---@type fzf-lua.config.Defaults
-    ---@diagnostic disable-next-line: missing-fields
     defaults = {
       formatter = "path.filename_first",
       preview_pager = "delta",
@@ -51,7 +50,6 @@ return {
     lsp = {
       async_or_timeout = 3000, -- make lsp requests synchronous so they work with none-ls
       jump1 = false,
-      -- references = { cwd = vim.fn.getcwd() },
     },
   },
   keys = function()
@@ -77,8 +75,11 @@ return {
 
       {
         "gE",
-        ---@diagnostic disable-next-line: missing-fields
-        function() fzf_diagnostic.diagnostics({ severity_only = true }) end,
+        function()
+          fzf_diagnostic.diagnostics({
+            severity_only = vim.diagnostic.severity.ERROR,
+          })
+        end,
         desc = "Browse diagnostics",
       },
     }

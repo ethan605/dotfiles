@@ -7,7 +7,11 @@ return {
     "ruff.toml",
     ".ruff.toml",
   },
-  settings = {
-    ["ruff.nativeServer"] = "auto",
+  init_options = {
+    settings = {
+      logFile = "~/.local/state/nvim/ruff.log",
+      logLevel = "debug",
+      ["ruff.nativeServer"] = "on",
+    },
   },
 }
