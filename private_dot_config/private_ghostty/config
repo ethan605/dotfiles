@@ -3,7 +3,7 @@ theme = Snazzy
 palette = 0=#282a36
 cursor-style = block
 
-font-family = "Maple Mono NF"
+font-family = "OperatorMonoSSm Nerd Font"
 font-size = 18
 font-style = "Light"
 font-style-bold = "Regular"
