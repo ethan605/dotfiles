@@ -40,19 +40,19 @@ for sid in $(aerospace list-workspaces --all); do
 		--add item space."$sid" left \
 		--subscribe space."$sid" aerospace_workspace_change \
 		--set space."$sid" \
-		background.color="$COLOR_BLUE" \
-		background.corner_radius=0 \
-		background.height=40 \
-		icon="$sid" \
+    background.color="$COLOR_BLUE" \
+    background.corner_radius=0 \
+    background.height=40 \
+    icon="$sid" \
     icon.drawing=off \
-		label="${WORKSPACE_LABELS[$sid]}" \
-		script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
-		click_script="aerospace workspace $sid"
+    label="${WORKSPACE_LABELS[$sid]}" \
+    script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
+    click_script="aerospace workspace $sid"
 done
 
 sketchybar \
 	--add item clock right \
-	--set clock update_freq=10 icon='' script="$PLUGIN_DIR/clock.sh"
+	--set clock update_freq=10 icon="" script="$PLUGIN_DIR/clock.sh"
 
 sketchybar \
 	--add item volume right \
