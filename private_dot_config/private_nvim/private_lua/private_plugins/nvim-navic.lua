@@ -1,7 +1,6 @@
 ---@type LazyPluginSpec
 return {
   "SmiteshP/nvim-navic",
-  dependencies = { "neovim/nvim-lspconfig" },
   ---@module "nvim-navic"
   ---@type Options
   opts = {
@@ -12,8 +11,9 @@ return {
       auto_attach = true,
       preference = {
         -- python LSP
-        "pyrefly",
+        -- "pyrefly",
         "pyright",
+        "ruff",
       },
     },
   },
