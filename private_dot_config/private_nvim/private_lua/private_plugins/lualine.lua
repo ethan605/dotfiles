@@ -1,25 +1,47 @@
+---More compact location module
+---@return string
+local function compact_progress()
+  local cur = vim.fn.line(".")
+  local total = vim.fn.line("$")
+  if cur == 1 then
+    return "top"
+  elseif cur == total then
+    return "bot"
+  else
+    return string.format("%d%%%%", math.floor(cur / total * 100))
+  end
+end
+
+---More compact location module
+---@return string
+local function compact_location()
+  local line = vim.fn.line(".")
+  local col = vim.fn.charcol(".")
+  return string.format("%d:%d", line, col)
+end
+
 ---@type LazySpec
 return {
   "hoob3rt/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    require("plugins.lsp-progress"),
     require("plugins.nvim-navic"),
   },
   opts = function()
     local lualine = require("lualine")
-    local lsp_progress = require("lsp-progress")
-    local custom_powerline = require("lualine.themes.powerline")
     local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
+    local custom_powerline = require("lualine.themes.powerline")
     custom_powerline.normal.c.bg = snazzy_colors.black
     custom_powerline.inactive.c.bg = snazzy_colors.black
+
+    local git_branch = { "branch", icon = "" }
 
     local avante_extension = {
       sections = {
         lualine_a = { "mode" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
+        lualine_y = { compact_progress },
+        lualine_z = { compact_location },
       },
       filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
     }
@@ -36,7 +58,7 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
-          { "branch", icon = "" },
+          git_branch,
           "diff",
           {
             "diagnostics",
@@ -57,41 +79,34 @@ return {
         },
         lualine_x = {
           {
-            lsp_progress.progress,
-            color = { fg = snazzy_colors.white },
+            "lsp_status",
+            symbols = {
+              separator = ", ",
+            },
+            icon = " ",
+            ignore_lsp = { "null-ls" },
+            show_name = true,
           },
           "encoding",
-          "fileformat",
           "filetype",
         },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
+        lualine_y = { compact_progress },
+        lualine_z = { compact_location },
       },
       inactive_sections = {
         lualine_a = { "mode" },
         lualine_b = {
-          { "branch", icon = "" },
-          "diff",
-          { "diagnostics", colored = false },
+          git_branch,
+          { "diff", colored = false },
         },
         lualine_c = { "filename" },
         lualine_x = {
-          lsp_progress.progress,
           "encoding",
-          "fileformat",
-          "filetype",
+          { "filetype", colored = false },
         },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
+        lualine_y = { compact_progress },
+        lualine_z = { compact_location },
       },
-    })
-
-    -- For lsp-progress
-    vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-    vim.api.nvim_create_autocmd("User", {
-      group = "lualine_augroup",
-      pattern = "LspProgressStatusUpdated",
-      callback = function() lualine.refresh() end,
     })
   end,
 }
