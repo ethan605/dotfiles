@@ -6,8 +6,9 @@ windows:
     root: ~/work/cord-backend/projects/api-server
     commands:
       - git switch master &&
-        git fetch --prune && git pull origin master &&
-        uv pip install --upgrade $(cat ~/.default-python-packages) &&
+        git fetch --prune &&
+        git pull origin master;
+        uv pip install --upgrade $(cat ~/.default-python-packages);
         uv sync --inexact
     panes:
       - commands:
@@ -21,7 +22,8 @@ windows:
     layout: even-horizontal
     commands:
       - git switch master &&
-        git fetch --prune && git pull origin master &&
+        git fetch --prune &&
+        git pull origin master;
         pnpm install
     panes:
       - commands:
