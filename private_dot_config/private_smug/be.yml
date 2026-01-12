@@ -22,10 +22,10 @@ windows:
     root: scratch-pad/sql
     layout: main-vertical
     commands:
-      - __load-dbee-postgres
+      - __load-db-postgres
 
   - name: clickhouse
     root: scratch-pad/sql
     layout: main-vertical
     commands:
-      - __load-dbee-clickhouse
+      - __load-db-clickhouse
