@@ -2,5 +2,6 @@
 corepack
 graphql
 neovim
+nginxbeautifier
 ts-node
 typescript
