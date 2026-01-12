@@ -86,29 +86,53 @@ export PATH
 #]]]
 
 # [[[ Init functions
-function __load-dbee-clickhouse() {
+function __load-db-clickhouse() {
   export SQL_TARGET=clickhouse
 
-  local url_local="clickhouse://default:default@localhost:9000/analytics"
+  local port=9440
+  local suffix=":$port/encord_analytics"
+  local uri_local="clickhouse://default:default@localhost${suffix/9440/9000}" uri_dev uri_stg uri_eu_ro uri_us_ro
 
-  # To be overriden by ~/work/.env/.zshrc
+  uri_dev="clickhouse://$(__op-clickhouse-dev-get username):$(__op-clickhouse-dev-get password --reveal)@$(__op-clickhouse-dev-get 'server url')$suffix"
+  uri_stg="clickhouse://$(__op-clickhouse-stg-get username):$(__op-clickhouse-stg-get password --reveal)@$(__op-clickhouse-stg-get 'server url')$suffix"
+  uri_eu_ro="clickhouse://$(__op-clickhouse-eu-ro-get username):$(__op-clickhouse-eu-ro-get password --reveal)@$(__op-clickhouse-eu-ro-get 'server url')$suffix"
+  uri_us_ro="clickhouse://$(__op-clickhouse-us-ro-get username):$(__op-clickhouse-us-ro-get password --reveal)@$(__op-clickhouse-us-ro-get 'server url')$suffix"
+
+  # For nvim-dbee
   export DBEE_CONNECTIONS='[
-    { "type": "clickhouse", "name": "clickhouse-local", "url": "'$url_local'" },
+    { "type": "clickhouse", "name": "5-clickhouse-local", "url": "'$uri_local'" },
+    { "type": "clickhouse", "name": "4-clickhouse-dev", "url": "'$uri_dev'?secure=true" },
+    { "type": "clickhouse", "name": "3-clickhouse-stg", "url": "'$uri_stg'?secure=true" },
+    { "type": "clickhouse", "name": "2-clickhouse-prd-us-ro", "url": "'$uri_us_ro'?secure=true" },
+    { "type": "clickhouse", "name": "1-clickhouse-prd-eu-ro", "url": "'$uri_eu_ro'?secure=true" }
   ]'
+
+  export SQLS_CONNECTION_URI="$uri_local"
 }
 
-function __load-dbee-postgres() {
+function __load-db-postgres() {
   export SQL_TARGET=postgres
 
-  local port=5432
-  local suffix=":$port/postgres"
+  local suffix=":5432/postgres"
+  local uri_local="postgres://postgres:postgres@localhost$suffix" uri_dev uri_stg uri_prd_eu_ro uri_prd_us_ro
 
-  local url_local="postgres://postgres:postgres@localhost$suffix"
+  uri_dev="postgres://$(__op-dev-get username):$(__op-dev-get password --reveal)@$(__op-dev-get 'DEV IP')$suffix"
+  uri_stg="postgres://$(__op-dev-get username):$(__op-dev-get password --reveal)@$(__op-dev-get 'STAGING IP')$suffix"
+  uri_prd_eu_ro="postgres://$(__op-prd-eu-ro-get username):$(__op-prd-eu-ro-get password --reveal)@$(__op-prd-eu-ro-get ip)$suffix"
+  uri_prd_us_ro="postgres://$(__op-prd-us-ro-get username):$(__op-prd-us-ro-get password --reveal)@$(__op-prd-us-ro-get server)$suffix"
 
-  # To be overriden by ~/work/.env/.zshrc
+  # Escaping all '%' characters
+  uri_prd_eu_ro=${uri_prd_eu_ro//\%/\%25}
+
   export DBEE_CONNECTIONS='[
-    { "type": "postgres", "name": "postgres-local", "url": "'$url_local'?sslmode=disable" },
+    { "type": "postgres", "name": "5-postgres-local", "url": "'$uri_local'?sslmode=disable" },
+    { "type": "postgres", "name": "4-postgres-dev", "url": "'$uri_dev'?sslmode=require" },
+    { "type": "postgres", "name": "3-postgres-stg", "url": "'$uri_stg'?sslmode=require" },
+    { "type": "postgres", "name": "2-postgres-prd-us-ro", "url": "'$uri_prd_us_ro'?sslmode=require" },
+    { "type": "postgres", "name": "1-postgres-prd-eu-ro", "url": "'$uri_prd_eu_ro'?sslmode=require" }
   ]'
+
+  export SQLS_CONNECTION_URI="$uri_local"
 }
 
 function __load-key-bindings() {
