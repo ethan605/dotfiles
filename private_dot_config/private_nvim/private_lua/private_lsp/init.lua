@@ -42,6 +42,7 @@ vim.lsp.enable({
   "nginx",
   "pyright",
   "pytest_lsp",
+  "ruff",
   "rust_analyzer",
   "solargraph",
   "sqls",
@@ -54,7 +55,6 @@ vim.lsp.enable({
   -- "harper", -- on demand
   -- "postgres_lsp", -- not mature enough
   -- "pyrefly", -- not stable enough
-  -- "ruff",
   -- "sqruff", -- need fine tunes
 })
 
