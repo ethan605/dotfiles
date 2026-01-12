@@ -63,6 +63,7 @@ local plugins = {
   require("plugins.nvim-coverage"),
   require("plugins.nvim-dbee"),
   require("plugins.nvim-highlight-colors"),
+  require("plugins.nvim-java"),
   require("plugins.nvim-lightbulb"),
   require("plugins.nvim-repl"),
   require("plugins.nvim-tree"),
@@ -71,9 +72,6 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
-
-  -- Temp. disabled
-  -- require("plugins.nvim-java"),
 }
 
 require("lazy").setup(plugins, opts)
