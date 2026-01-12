@@ -2,7 +2,7 @@
 vim.opt.autoread = true                  -- Auto reload file from outside changes
 vim.opt.autowrite = true                 -- Auto reload file from outside changes
 vim.opt.background = "dark"              -- For dark themes
-vim.opt.cmdheight = 2                    -- Better display for messages
+vim.opt.cmdheight = 1                    -- Single line command section
 vim.opt.colorcolumn = "120"              -- Highlight column 120, to be overriden by smartcolumn.nvim
 vim.opt.completeopt = "menuone,noselect" -- For nvim-compe
 vim.opt.conceallevel = 0                 -- Disable markdown conceal
@@ -38,8 +38,8 @@ vim.opt.swapfile = false                 -- Disable swap files
 vim.opt.tabstop = 2                      -- Render TABs using this many spaces.
 vim.opt.termguicolors = true             -- Use Term GUI colors
 vim.opt.textwidth = 0                    -- Hard-wrap long lines as you type them.
-vim.opt.winborder = "rounded"            -- Default win borders.
 vim.opt.updatetime = 300                 -- You will have bad experience for diagnostic messages when it's default 4000.
+vim.opt.winborder = "rounded"            -- Default win borders.
 
 -- Backups
 vim.opt.backup = false -- Some LSP servers have issues with backup files
