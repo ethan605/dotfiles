@@ -1,13 +1,10 @@
-basedpyright
-cpplint
 ipdb
 ipython
 mypy
-nginx-language-server
+mypy_extensions
 pdbpp
 pip
 pynvim
-pyrefly
 pytest-language-server
 rich
 ruff

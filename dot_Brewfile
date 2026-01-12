@@ -1,5 +1,4 @@
 tap "amar1729/formulae"
-tap "dimentium/autoraise"
 tap "felixkratz/formulae"
 tap "nikitabobko/tap"
 tap "osx-cross/arm"
@@ -70,14 +69,8 @@ brew "pass-otp"
 brew "pinentry-mac"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Automate your tmux workflow
 brew "smug"
-# SQL linter and auto-formatter for Humans
-brew "sqlfluff"
-# Maintained ctags implementation
-brew "universal-ctags"
 # Ncurses-based file manager with vi-like keybindings
 brew "vifm"
 # Executes a program periodically, showing output fullscreen
