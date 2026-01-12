@@ -30,7 +30,6 @@ return {
       sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
-        { name = "vim-dadbod-completion" },
         { name = "buffer" },
       },
       snippet = {

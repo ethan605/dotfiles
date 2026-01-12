@@ -1,5 +1,4 @@
 local supported_filetypes = {
-  "Avante",
   "markdown",
   "norg",
   "org",

@@ -36,15 +36,7 @@ return {
     custom_powerline.inactive.c.bg = snazzy_colors.black
 
     local git_branch = { "branch", icon = "" }
-
-    local avante_extension = {
-      sections = {
-        lualine_a = { "mode" },
-        lualine_y = { compact_progress },
-        lualine_z = { compact_location },
-      },
-      filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
-    }
+    local encoding = { "encoding", show_bomb = true }
 
     lualine.setup({
       options = {
@@ -54,7 +46,6 @@ return {
         theme = custom_powerline,
         disabled_filetypes = { "NvimTree", "dbee", "dbui" },
       },
-      extensions = { avante_extension },
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
@@ -80,14 +71,12 @@ return {
         lualine_x = {
           {
             "lsp_status",
-            symbols = {
-              separator = ", ",
-            },
             icon = " ",
             ignore_lsp = { "null-ls" },
             show_name = true,
           },
-          "encoding",
+          encoding,
+          "fileformat",
           "filetype",
         },
         lualine_y = { compact_progress },
@@ -101,7 +90,8 @@ return {
         },
         lualine_c = { "filename" },
         lualine_x = {
-          "encoding",
+          encoding,
+          "fileformat",
           { "filetype", colored = false },
         },
         lualine_y = { compact_progress },

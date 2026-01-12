@@ -74,10 +74,6 @@ local plugins = {
 
   -- Temp. disabled
   -- require("plugins.nvim-java"),
-
-  -- TODO: remove deprecated plugins
-  -- require("plugins.avante"),
-  -- require("plugins.vim-dadbod-ui"),
 }
 
 require("lazy").setup(plugins, opts)

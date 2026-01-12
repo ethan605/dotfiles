@@ -77,11 +77,6 @@ vim.api.nvim_set_hl(0, "Folded", { italic = true, bg = snazzy_colors.dark_gray }
 vim.api.nvim_set_hl(0, "UfoFoldedBg", { bg = snazzy_colors.dark_gray })
 vim.api.nvim_set_hl(0, "UfoFoldedEllipsis", { bold = true, fg = snazzy_colors.yellow })
 
--- For vim-dadbod-ui
-vim.api.nvim_set_hl(0, "NotificationError", { link = "DiagnosticError" })
-vim.api.nvim_set_hl(0, "NotificationInfo", { link = "DiagnosticOk" })
-vim.api.nvim_set_hl(0, "NotificationWarning", { link = "DiagnosticWarn" })
-
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
 
