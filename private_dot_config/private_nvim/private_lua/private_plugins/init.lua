@@ -72,6 +72,25 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
+
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
+      },
+    },
+  },
+  {
+    "zapling/mason-lock.nvim",
+    opts = {
+      lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json",
+    },
+  },
 }
 
 require("lazy").setup(plugins, opts)

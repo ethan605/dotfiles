@@ -6,10 +6,9 @@ vim.lsp.config.docker_compose = require("lsp.docker_compose")
 vim.lsp.config.dockerls = require("lsp.dockerls")
 vim.lsp.config.eslint = require("lsp.eslint")
 vim.lsp.config.gopls = require("lsp.gopls")
-vim.lsp.config.harper = require("lsp.harper")
 vim.lsp.config.html = require("lsp.html")
 vim.lsp.config.jsonls = require("lsp.jsonls")
-vim.lsp.config.ltex = require("lsp.ltex")
+vim.lsp.config.ltex_plus = require("lsp.ltex_plus")
 vim.lsp.config.luals = require("lsp.luals")
 vim.lsp.config.nginx = require("lsp.nginx")
 vim.lsp.config.pyright = require("lsp.pyright")
@@ -24,6 +23,7 @@ vim.lsp.config.tsls = require("lsp.tsls")
 vim.lsp.config.vimls = require("lsp.vimls")
 vim.lsp.config.yamlls = require("lsp.yamlls")
 
+-- vim.lsp.config.harper = require("lsp.harper")
 -- vim.lsp.config.postgres_lsp = require("lsp.postgres_lsp") -- @TODO: revisit later when it's more mature
 -- vim.lsp.config.pyrefly = require("lsp.pyrefly") -- @TODO: revisit later when it's more stable
 -- vim.lsp.config.sqruff = require("lsp.sqruff") -- @TODO revisit later
@@ -37,12 +37,11 @@ vim.lsp.enable({
   "gopls",
   "html",
   "jsonls",
-  "ltex",
+  "ltex_plus",
   "luals",
   "nginx",
   "pyright",
   "pytest_lsp",
-  -- "ruff",
   "rust_analyzer",
   "solargraph",
   "sqls",
@@ -55,6 +54,7 @@ vim.lsp.enable({
   -- "harper", -- on demand
   -- "postgres_lsp", -- not mature enough
   -- "pyrefly", -- not stable enough
+  -- "ruff",
   -- "sqruff", -- need fine tunes
 })
 
