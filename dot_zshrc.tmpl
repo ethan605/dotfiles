@@ -8,9 +8,23 @@ export LC_MONETARY="$LANG"
 export LC_NUMERIC="$LANG"
 export LC_TIME="$LANG"
 export LC_ALL="$LANG"
+
+export CC=clang
+export CXX=clang++
+export TOOLCHAINS=swift
+
+export EDITOR=nvim
+export REACT_EDITOR=nvim
+export VISUAL=nvim
+
+export BAT_THEME='Sublime Snazzy'
 export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --squeeze-blank-lines --tabs=2'
 export MANPAGER='less +Gg'
-export BAT_THEME='Sublime Snazzy'
+
+export COMPOSE_BAKE=true
+export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
+export NODE_OPTIONS="--max-old-space-size=8192"
+
 export FZF_DEFAULT_OPTS='
   --bind=ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-page-up,ctrl-d:preview-page-down
   --color=fg+:7,bg+:0,hl:5,hl+:5
@@ -27,12 +41,6 @@ export FZF_CTRL_R_OPTS='
   --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
   --header="Press CTRL-Y to copy command into clipboard"
 '
-export EDITOR=nvim
-export VISUAL=nvim
-export REACT_EDITOR=nvim
-export CC=clang
-export CXX=clang++
-export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -53,9 +61,6 @@ export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 
 {{- else if eq .chezmoi.os "darwin" }}
-
-export TOOLCHAINS=swift
-export NODE_OPTIONS="--max-old-space-size=8192"
 
 # Rewrite $PATH
 PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
