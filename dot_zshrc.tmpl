@@ -86,12 +86,29 @@ export PATH
 #]]]
 
 # [[[ Init functions
-function __load-mise() {
-  eval "$(mise activate zsh)"
+function __load-dbee-clickhouse() {
+  export SQL_TARGET=clickhouse
 
-  # mise-dependent components
-  # shellcheck disable=SC1091
-  source "$(mise where gcloud)/completion.zsh.inc"
+  local url_local="clickhouse://default:default@localhost:9000/analytics"
+
+  # To be overriden by ~/work/.env/.zshrc
+  export DBEE_CONNECTIONS='[
+    { "type": "clickhouse", "name": "clickhouse-local", "url": "'$url_local'" },
+  ]'
+}
+
+function __load-dbee-postgres() {
+  export SQL_TARGET=postgres
+
+  local port=5432
+  local suffix=":$port/postgres"
+
+  local url_local="postgres://postgres:postgres@localhost$suffix"
+
+  # To be overriden by ~/work/.env/.zshrc
+  export DBEE_CONNECTIONS='[
+    { "type": "postgres", "name": "postgres-local", "url": "'$url_local'?sslmode=disable" },
+  ]'
 }
 
 function __load-key-bindings() {
@@ -127,6 +144,14 @@ function __load-key-bindings() {
 
   bindkey -M vicmd 'k' history-substring-search-up
   bindkey -M vicmd 'j' history-substring-search-down
+}
+
+function __load-mise() {
+  eval "$(mise activate zsh)"
+
+  # mise-dependent components
+  # shellcheck disable=SC1091
+  source "$(mise where gcloud)/completion.zsh.inc"
 }
 
 function __load-ssh() {
