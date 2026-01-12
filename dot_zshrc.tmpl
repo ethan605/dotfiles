@@ -346,9 +346,8 @@ alias xdg-open='open'
 {{- end }}
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias karabiner='/Library/Application\ Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli'
+alias dcompose='docker compose --profile'
 alias kargo='kubecolor argo rollouts'
-alias tor='webtorrent --keep-seeding download'
 alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
 
 # Eza
@@ -361,6 +360,11 @@ alias dbee='nvim +Dbee'
 alias repl='nvim +Repl'
 alias vsync='nvim --headless "+Lazy! sync" +qa'
 alias vrestore!='nvim --headless "+Lazy! restore" +qa'
+
+# Python
+alias pre-commit-fix='pre-commit run --color=always --all-files --hook-stage=pre-push'
+alias ptest='uv run pytest -n auto -W ignore::DeprecationWarning -W ignore::UserWarning --log-cli-level=INFO'
+alias itest='ptest -vvn0 --pdb --pdbcls=IPython.terminal.debugger:Pdb'
 
 # Shortcuts
 alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
