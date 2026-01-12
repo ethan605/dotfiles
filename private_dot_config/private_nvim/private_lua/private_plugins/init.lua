@@ -35,11 +35,19 @@ local plugins = {
 
   { "fei6409/log-highlight.nvim", config = true },
   { "kylechui/nvim-surround",     config = true },
+  { "mason-org/mason.nvim",       config = true },
   { "windwp/nvim-autopairs",      config = true, event = "InsertEnter" },
 
   {
     "brianhuster/live-preview.nvim",
     dependencies = { "ibhagwan/fzf-lua" },
+  },
+  {
+    "zapling/mason-lock.nvim",
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {
+      lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json",
+    },
   },
 
   -- Plugins with more complex configs
@@ -72,25 +80,6 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
-
-  {
-    "mason-org/mason.nvim",
-    opts = {
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
-        },
-      },
-    },
-  },
-  {
-    "zapling/mason-lock.nvim",
-    opts = {
-      lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json",
-    },
-  },
 }
 
 require("lazy").setup(plugins, opts)

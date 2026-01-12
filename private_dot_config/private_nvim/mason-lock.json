@@ -14,7 +14,7 @@
   "prettier": "3.7.4",
   "pyright": "1.1.408",
   "ruff": "0.14.11",
-  "rust-analyzer": "2026-01-05",
+  "rust-analyzer": "2026-01-12",
   "solargraph": "0.58.1",
   "sqlfluff": "3.5.0",
   "sqls": "v0.2.45",
