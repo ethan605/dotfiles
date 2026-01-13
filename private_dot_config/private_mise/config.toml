@@ -16,7 +16,7 @@ terraform = "1.14.3"
 
 # Then tools
 argo-rollouts = "1.8.3"
-awscli = { version = "2.32.32", symlink_bins = "true" }
+awscli = { version = "2.32.33", symlink_bins = "true" }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bottom = "0.12.3"
