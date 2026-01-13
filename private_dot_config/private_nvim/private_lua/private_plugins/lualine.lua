@@ -1,24 +1,46 @@
----More compact location module
----@return string
-local function compact_progress()
-  local cur = vim.fn.line(".")
-  local total = vim.fn.line("$")
-  if cur == 1 then
-    return "top"
-  elseif cur == total then
-    return "bot"
-  else
-    return string.format("%d%%%%", math.floor(cur / total * 100))
-  end
-end
+local custom_modules = {
+  branch = { "branch", icon = "" },
+  encoding = { "encoding", show_bomb = true },
+  filename = {
+    "filename",
+    file_status = true,
+    newfile_status = true,
+    symbols = {
+      modified = "",
+      readonly = "󰌾",
+      unnamed = "󰛄",
+      newfile = "󰝒",
+    },
+  },
+  lsp_status = {
+    "lsp_status",
+    icon = " ",
+    ignore_lsp = { "null-ls" },
+    show_name = true,
+  },
 
----More compact location module
----@return string
-local function compact_location()
-  local line = vim.fn.line(".")
-  local col = vim.fn.charcol(".")
-  return string.format("%d:%d", line, col)
-end
+  ---More compact location
+  ---@return string
+  location = function()
+    local line = vim.fn.line(".")
+    local col = vim.fn.charcol(".")
+    return string.format("%d:%d", line, col)
+  end,
+
+  ---More compact progress
+  ---@return string
+  progress = function()
+    local cur = vim.fn.line(".")
+    local total = vim.fn.line("$")
+    if cur == 1 then
+      return "top"
+    elseif cur == total then
+      return "bot"
+    else
+      return string.format("%d%%%%", math.floor(cur / total * 100))
+    end
+  end,
+}
 
 ---@type LazySpec
 return {
@@ -35,21 +57,18 @@ return {
     custom_powerline.normal.c.bg = snazzy_colors.black
     custom_powerline.inactive.c.bg = snazzy_colors.black
 
-    local git_branch = { "branch", icon = "" }
-    local encoding = { "encoding", show_bomb = true }
-
     lualine.setup({
       options = {
         component_separators = "",
+        disabled_filetypes = { "NvimTree", "dbee" },
         icons_enabled = true,
         section_separators = "",
         theme = custom_powerline,
-        disabled_filetypes = { "NvimTree", "dbee", "dbui" },
       },
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
-          git_branch,
+          custom_modules.branch,
           "diff",
           {
             "diagnostics",
@@ -62,40 +81,35 @@ return {
           },
         },
         lualine_c = {
-          "filename",
+          custom_modules.filename,
           {
             "navic",
             color_correction = "dynamic",
           },
         },
         lualine_x = {
-          {
-            "lsp_status",
-            icon = " ",
-            ignore_lsp = { "null-ls" },
-            show_name = true,
-          },
-          encoding,
+          custom_modules.lsp_status,
+          custom_modules.encoding,
           "fileformat",
           "filetype",
         },
-        lualine_y = { compact_progress },
-        lualine_z = { compact_location },
+        lualine_y = { custom_modules.progress },
+        lualine_z = { custom_modules.location },
       },
       inactive_sections = {
         lualine_a = { "mode" },
         lualine_b = {
-          git_branch,
+          custom_modules.branch,
           { "diff", colored = false },
         },
-        lualine_c = { "filename" },
+        lualine_c = { custom_modules.filename },
         lualine_x = {
-          encoding,
+          custom_modules.encoding,
           "fileformat",
           { "filetype", colored = false },
         },
-        lualine_y = { compact_progress },
-        lualine_z = { compact_location },
+        lualine_y = { custom_modules.progress },
+        lualine_z = { custom_modules.location },
       },
     })
   end,
