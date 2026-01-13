@@ -1,0 +1,10 @@
+lowercaseKeywords: false
+connections:
+  - alias: local
+    driver: clickhouse
+    proto: tcp
+    user: default
+    passwd: default
+    host: localhost
+    port: 9000
+    dbName: encord_analytics
