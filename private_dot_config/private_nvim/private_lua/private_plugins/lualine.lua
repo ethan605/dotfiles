@@ -55,7 +55,11 @@ return {
 
     local custom_powerline = require("lualine.themes.powerline")
     custom_powerline.normal.c.bg = snazzy_colors.black
+    custom_powerline.normal.c.fg = snazzy_colors.white
     custom_powerline.inactive.c.bg = snazzy_colors.black
+    custom_powerline.inactive.c.fg = snazzy_colors.white
+    custom_powerline.replace.c = custom_powerline.normal.c
+    custom_powerline.visual.c = custom_powerline.normal.c
 
     lualine.setup({
       options = {

@@ -4,14 +4,12 @@ return {
   ---@module "nvim-navic"
   ---@type Options
   opts = {
-    click = true,
+    click = false,
     highlight = true,
     safe_output = true,
     lsp = {
       auto_attach = true,
       preference = {
-        -- python LSP
-        -- "pyrefly",
         "pyright",
         "ruff",
       },
