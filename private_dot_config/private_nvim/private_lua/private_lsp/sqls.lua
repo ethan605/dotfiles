@@ -3,7 +3,6 @@ local function get_config_path()
   return vim.fn.expand("~/.config/sqls/config." .. target .. ".yml")
 end
 
-
 ---@type vim.lsp.Config
 return {
   cmd = { "sqls", "--config", get_config_path() },
