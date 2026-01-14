@@ -12,7 +12,7 @@ return {
       show_exact_scope = true,
     },
     exclude = {
-      filetypes = { "dashboard", "startify" },
+      filetypes = { "dashboard", "NvimTree" },
     },
   },
 }
