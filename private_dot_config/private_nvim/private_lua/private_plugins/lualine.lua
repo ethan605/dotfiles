@@ -3,6 +3,9 @@ local custom_modules = {
   encoding = { "encoding", show_bomb = true },
   filename = {
     "filename",
+    cond = function()
+      return vim.o.buftype ~= "terminal"
+    end,
     file_status = true,
     newfile_status = true,
     symbols = {
@@ -64,7 +67,8 @@ return {
     lualine.setup({
       options = {
         component_separators = "",
-        disabled_filetypes = { "NvimTree", "dbee" },
+        disabled_filetypes = { "dbee", "NvimTree" },
+        -- globalstatus = true,
         icons_enabled = true,
         section_separators = "",
         theme = custom_powerline,
