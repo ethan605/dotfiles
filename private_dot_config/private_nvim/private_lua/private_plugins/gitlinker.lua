@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "linrongbin16/gitlinker.nvim",
   config = true,

@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "kosayoda/nvim-lightbulb",
   ---@type nvim-lightbulb.Config

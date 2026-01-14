@@ -1,10 +1,10 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "A7Lavinraj/fyler.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   branch = "stable",
-  ---@diagnostic disable: missing-fields
   ---@type FylerConfig
+  ---@diagnostic disable-next-line: missing-fields
   opts = {
     icon_provider = "nvim_web_devicons",
     hooks = {},
@@ -31,5 +31,4 @@ return {
       kind = "replace",
     },
   },
-  ---@diagnostic enable: missing-fields
 }

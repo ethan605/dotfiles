@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "hat0uma/csvview.nvim",
   ---@type CsvView.Options

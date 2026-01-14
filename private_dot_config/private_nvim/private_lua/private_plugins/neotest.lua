@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "nvim-neotest/neotest",
   dependencies = {

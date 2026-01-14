@@ -7,7 +7,7 @@ local supported_filetypes = {
   "vimwiki",
 }
 
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "OXY2DEV/markview.nvim",
   ft = supported_filetypes,

@@ -23,6 +23,10 @@ local opts = {
   defaults = {
     lazy = false,
   },
+  ui = {
+    backdrop = 100,
+    border = "rounded",
+  },
 }
 
 ---@type LazyPluginSpec
@@ -35,19 +39,11 @@ local plugins = {
 
   { "fei6409/log-highlight.nvim", config = true },
   { "kylechui/nvim-surround",     config = true },
-  { "mason-org/mason.nvim",       config = true },
   { "windwp/nvim-autopairs",      config = true, event = "InsertEnter" },
 
   {
     "brianhuster/live-preview.nvim",
     dependencies = { "ibhagwan/fzf-lua" },
-  },
-  {
-    "zapling/mason-lock.nvim",
-    dependencies = { "mason-org/mason.nvim" },
-    opts = {
-      lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json",
-    },
   },
 
   -- Plugins with more complex configs
@@ -65,6 +61,7 @@ local plugins = {
   require("plugins.leap"),
   require("plugins.lualine"),
   require("plugins.markview"),
+  require("plugins.mason"),
   require("plugins.neotest"),
   require("plugins.none-ls"),
   require("plugins.nvim-cmp"),

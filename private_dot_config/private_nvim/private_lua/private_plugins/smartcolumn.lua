@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "m4xshen/smartcolumn.nvim",
   opts = {

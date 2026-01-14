@@ -7,7 +7,7 @@ local function folder_label_renderer(path)
   return path:gsub("([a-zA-Z])[^/]+", "%1") .. cur_dir
 end
 
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },

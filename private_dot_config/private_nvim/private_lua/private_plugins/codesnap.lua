@@ -1,6 +1,6 @@
 local snazzy_colors = require("lua.colorscheme").snazzy_colors
 
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "mistricky/codesnap.nvim",
   tag = "v2.0.0-beta.17",

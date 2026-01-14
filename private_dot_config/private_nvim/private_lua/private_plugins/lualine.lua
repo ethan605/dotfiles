@@ -45,7 +45,50 @@ local custom_modules = {
   end,
 }
 
----@type LazySpec
+local function custom_theme_powerline()
+  local colors = require("lua.colorscheme").snazzy_colors
+  local custom_powerline = require("lualine.themes.powerline")
+
+  custom_powerline.normal.c.bg = colors.black
+  custom_powerline.normal.c.fg = colors.white
+  custom_powerline.inactive.c.bg = colors.black
+  custom_powerline.inactive.c.fg = colors.white
+  custom_powerline.replace.c = custom_powerline.normal.c
+  custom_powerline.visual.c = custom_powerline.normal.c
+
+  return custom_powerline
+end
+
+local function custom_theme_snazzy()
+  local colors = require("lua.colorscheme").snazzy_colors
+
+  local section_c = { fg = colors.white, bg = colors.black }
+  local theme_normal = {
+    a = { fg = colors.black, bg = colors.green, gui = "bold" },
+    b = { fg = colors.black, bg = colors.cyan },
+    c = section_c,
+  }
+  local theme_insert = {
+    a = { fg = colors.white, bg = colors.alt_blue, gui = "bold" },
+    b = { fg = colors.black, bg = colors.blue },
+    c = section_c,
+  }
+
+  return {
+    normal = theme_normal,
+    insert = theme_insert,
+    terminal = theme_insert,
+    visual = { a = { fg = colors.black, bg = colors.alt_yellow, gui = "bold" } },
+    replace = { a = { fg = colors.black, bg = colors.red, gui = "bold" } },
+    inactive = {
+      a = { fg = colors.gray, bg = colors.black, gui = "bold" },
+      b = { fg = colors.gray, bg = colors.black },
+      c = { fg = colors.gray, bg = colors.black },
+    },
+  }
+end
+
+---@type LazyPluginSpec
 return {
   "hoob3rt/lualine.nvim",
   dependencies = {
@@ -53,25 +96,16 @@ return {
     require("plugins.nvim-navic"),
   },
   opts = function()
-    local lualine = require("lualine")
-    local snazzy_colors = require("lua.colorscheme").snazzy_colors
+    local theme = os.getenv("LUALINE_THEME") == "snazzy" and custom_theme_snazzy() or custom_theme_powerline()
 
-    local custom_powerline = require("lualine.themes.powerline")
-    custom_powerline.normal.c.bg = snazzy_colors.black
-    custom_powerline.normal.c.fg = snazzy_colors.white
-    custom_powerline.inactive.c.bg = snazzy_colors.black
-    custom_powerline.inactive.c.fg = snazzy_colors.white
-    custom_powerline.replace.c = custom_powerline.normal.c
-    custom_powerline.visual.c = custom_powerline.normal.c
-
-    lualine.setup({
+    return {
       options = {
         component_separators = "",
-        disabled_filetypes = { "dbee", "NvimTree" },
-        -- globalstatus = true,
+        -- disabled_filetypes = { "dbee" },
+        globalstatus = true,
         icons_enabled = true,
         section_separators = "",
-        theme = custom_powerline,
+        theme = theme,
       },
       sections = {
         lualine_a = { "mode" },
@@ -119,6 +153,13 @@ return {
         lualine_y = { custom_modules.progress },
         lualine_z = { custom_modules.location },
       },
-    })
+      extensions = {
+        "fzf",
+        "lazy",
+        "mason",
+        "nvim-dap-ui",
+        "nvim-tree",
+      },
+    }
   end,
 }

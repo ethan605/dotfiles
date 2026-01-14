@@ -1,14 +1,3 @@
-local snazzy_colors = require("lua.colorscheme").snazzy_colors
-
----@type bufferline.HLGroup
-local clear_bg = { bg = snazzy_colors.black }
-local default_style = vim.tbl_extend("keep", clear_bg, { bold = false, italic = true })
-local selected_style = vim.tbl_extend("keep", clear_bg, { bold = true, italic = false })
-local error_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.red })
-local hint_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.blue })
-local info_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.green })
-local warn_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.yellow })
-
 ---@return string
 local function diagnostics_indicator(count, level)
   local icon = " "
@@ -22,11 +11,22 @@ local function diagnostics_indicator(count, level)
   return icon .. count
 end
 
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = function()
+    local snazzy_colors = require("lua.colorscheme").snazzy_colors
+
+    ---@type bufferline.HLGroup
+    local clear_bg = { bg = snazzy_colors.black }
+    local default_style = vim.tbl_extend("keep", clear_bg, { bold = false, italic = true })
+    local selected_style = vim.tbl_extend("keep", clear_bg, { bold = true, italic = false })
+    local error_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.red })
+    local hint_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.blue })
+    local info_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.green })
+    local warn_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.yellow })
+
     ---@type bufferline.UserConfig
     return {
       highlights = {

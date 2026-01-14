@@ -1,4 +1,15 @@
----@type LazySpec
+local function get_sqlfluff_config()
+  local target = os.getenv("SQL_TARGET") or "postgres"
+
+  return {
+    extra_args = {
+      "--config",
+      vim.fn.expand("~/.config/.sqlfluff." .. target),
+    },
+  }
+end
+
+---@type LazyPluginSpec
 return {
   "nvimtools/none-ls.nvim",
   dependencies = {
@@ -7,15 +18,7 @@ return {
   },
   opts = function()
     local none_ls = require("null-ls")
-
-    local target = os.getenv("SQL_TARGET") or "postgres"
-
-    local sqlfluff_config = {
-      extra_args = {
-        "--config",
-        vim.fn.expand("~/.config/.sqlfluff." .. target),
-      },
-    }
+    local sqlfluff_config = get_sqlfluff_config()
 
     return {
       sources = {
@@ -38,9 +41,7 @@ return {
         -- }),
 
         -- from none-ls-extras
-        require("none-ls.diagnostics.cpplint").with({
-          filetypes = { "cpp" },
-        }),
+        require("none-ls.diagnostics.cpplint").with({ filetypes = { "cpp" } }),
         require("none-ls.formatting.ruff"),
         require("none-ls.formatting.ruff_format"),
         require("none-ls.formatting.rustfmt"),

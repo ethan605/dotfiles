@@ -1,9 +1,9 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "nvim-java/nvim-java",
   config = function()
     ---@type java.Config
-    ---@diagnostic disable: missing-fields
+    ---@diagnostic disable-next-line: missing-fields
     local opts = {
       checks = {
         nvim_version = true,

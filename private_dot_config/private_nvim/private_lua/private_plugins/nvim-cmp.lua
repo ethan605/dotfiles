@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {

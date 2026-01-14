@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "brenoprata10/nvim-highlight-colors",
   opts = {

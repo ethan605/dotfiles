@@ -1,4 +1,4 @@
----@type LazySpec
+---@type LazyPluginSpec
 return {
   "pappasam/nvim-repl",
   lazy = false,
