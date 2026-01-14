@@ -106,8 +106,6 @@ function __load-db-clickhouse() {
     { "type": "clickhouse", "name": "2-clickhouse-prd-us-ro", "url": "'$uri_us_ro'?secure=true" },
     { "type": "clickhouse", "name": "1-clickhouse-prd-eu-ro", "url": "'$uri_eu_ro'?secure=true" }
   ]'
-
-  export SQLS_CONNECTION_URI="$uri_local"
 }
 
 function __load-db-postgres() {
@@ -131,8 +129,6 @@ function __load-db-postgres() {
     { "type": "postgres", "name": "2-postgres-prd-us-ro", "url": "'$uri_prd_us_ro'?sslmode=require" },
     { "type": "postgres", "name": "1-postgres-prd-eu-ro", "url": "'$uri_prd_eu_ro'?sslmode=require" }
   ]'
-
-  export SQLS_CONNECTION_URI="$uri_local"
 }
 
 function __load-key-bindings() {
