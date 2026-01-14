@@ -1,22 +1,15 @@
 local snazzy_colors = {
   -- gray = "NvimDarkGrey4",
-  gray       = "#606580",
-  dark_gray  = "#3a3a3a",
-  black      = "#282a36",
-  blue       = "#57c7ff",
-  cyan       = "#9aedfe",
-  green      = "#5af78e",
-  magenta    = "#ff6ac1",
-  red        = "#ff5c57",
-  white      = "#eff0eb",
-  yellow     = "#f3f99d",
-
-  -- Adopted from lualine.themes.powerline
-  alt_blue   = "#005f87",
-  alt_cyan   = "#87dfff",
-  alt_green  = "#afdf00",
-  alt_red    = "#df0000",
-  alt_yellow = "#ff8700",
+  gray      = "#606580",
+  dark_gray = "#3a3a3a",
+  black     = "#282a36",
+  blue      = "#57c7ff",
+  cyan      = "#9aedfe",
+  green     = "#5af78e",
+  magenta   = "#ff6ac1",
+  red       = "#ff5c57",
+  white     = "#eff0eb",
+  yellow    = "#f3f99d",
 }
 
 -- Built-ins
