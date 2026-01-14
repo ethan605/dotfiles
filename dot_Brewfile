@@ -47,8 +47,6 @@ brew "libxmlsec1"
 brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
-# LSP for LanguageTool with support for Latex, Markdown and Others
-brew "ltex-ls"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # NCurses Disk Usage
