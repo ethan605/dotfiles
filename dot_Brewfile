@@ -43,6 +43,8 @@ brew "libarchive"
 brew "libmagic"
 # XML security library
 brew "libxmlsec1"
+# YAML Parser
+brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LSP for LanguageTool with support for Latex, Markdown and Others
