@@ -12,11 +12,10 @@ return {
 
       jdk = { auto_install = false },
       jdtls = { auto_install = true },
+      java_debug_adapter = { enable = false },
+      java_test = { enable = false },
       lombok = { enable = false },
       spring_boot_tools = { enable = false },
-
-      java_debug_adapter = { enable = true },
-      java_test = { enable = true },
     }
 
     require("java").setup(opts)
