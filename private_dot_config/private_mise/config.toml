@@ -16,7 +16,7 @@ terraform = "1.14.3"
 
 # Then tools
 argo-rollouts = "1.8.3"
-awscli = { version = "2.32.33", symlink_bins = "true" }
+awscli = { version = "2.32.34", symlink_bins = "true" }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bottom = "0.12.3"
@@ -30,11 +30,11 @@ duf = "0.9.1"
 eza = "0.23.4"
 fd = "10.3.0"
 ffmpeg = "8.0.1"
-firebase = "15.2.1"
+firebase = "15.3.0"
 fzf = "0.67.0"
 gcloud = "552.0.0"
 git-lfs = "3.7.1"
-helm = "4.0.4"
+helm = "4.0.5"
 jless = "0.9.0"
 jq = "1.8.1"
 kubecolor = "0.5.3"
