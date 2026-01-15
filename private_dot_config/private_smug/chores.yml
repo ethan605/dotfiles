@@ -8,7 +8,7 @@ windows:
       - git switch master &&
         git fetch --prune &&
         git pull origin master;
-        uv pip install --upgrade $(cat ~/.default-python-packages);
+        uv pip install --upgrade $(cat ~/.default-python-packages) &&
         uv sync --inexact
     panes:
       - commands:
