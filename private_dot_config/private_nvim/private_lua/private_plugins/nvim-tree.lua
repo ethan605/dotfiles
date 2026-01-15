@@ -12,22 +12,22 @@ return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
-    actions = {
+    actions             = {
       open_file = {
         quit_on_open = true,
       },
     },
-    diagnostics = {
+    diagnostics         = {
       enable = true,
     },
-    filters = {
+    filters             = {
       custom = {
         "node_modules",
         "venv",
       },
     },
-    hijack_cursor = true,
-    renderer = {
+    hijack_cursor       = true,
+    renderer            = {
       highlight_git = true,
       highlight_opened_files = "all",
       icons = {
@@ -40,12 +40,12 @@ return {
       },
       root_folder_label = folder_label_renderer,
     },
-    update_cwd = true,
+    update_cwd          = true,
     update_focused_file = {
       enable = true,
     },
-    sync_root_with_cwd = false,
-    view = {
+    sync_root_with_cwd  = false,
+    view                = {
       centralize_selection = true,
       width = {
         min = 30,

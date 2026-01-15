@@ -32,6 +32,7 @@ local opts = {
 ---@type LazyPluginSpec
 local plugins = {
   -- Plugins with minimal configs
+  "OXY2DEV/helpview.nvim",
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
   "sindrets/diffview.nvim",

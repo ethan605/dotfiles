@@ -9,5 +9,5 @@ vim.g.loaded_python3_provider = 0
 -- vim.g.python3_host_prog = vim.fn.expand("~/.local/share/mise/shims/python")
 
 -- For nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
