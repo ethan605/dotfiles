@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "LSPTool",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "WebSearch",
+      "WebFetch(domain:developers.notion.com)",
+      "mcp__notion__notion-search",
+      "mcp__notion__notion-fetch",
+      "mcp__linear__get_issue",
+      "Bash(uv run mypy:*)",
+      "Bash(uv run ruff check:*)",
+      "Bash(uv run pytest:*)",
+      "Bash(find:*)",
+      "Bash(python3 -m pytest:*)",
+      "Bash(pyright-langserver:*)",
+      "Bash(pyright:*)",
+      "Bash(cat:*)",
+      "Bash(xargs ls:*)",
+      "Bash(jq:*)"
+    ]
+  },
+  "model": "Opus",
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true
+}
