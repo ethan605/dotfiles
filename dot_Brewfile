@@ -31,6 +31,8 @@ brew "gnu-tar"
 brew "libassuan"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Library access to GnuPG
+brew "gpgme"
 # GNU grep, egrep and fgrep
 brew "grep"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -102,13 +104,11 @@ brew "simplydanny/pass-extensions/pass-update"
 # Command-line interface for 1Password
 cask "1password-cli"
 # AeroSpace is an i3-like tiling window manager for macOS
-cask "aerospace"
+cask "nikitabobko/tap/aerospace"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Application uninstaller
 cask "appcleaner"
-# Anthropic's official Claude AI desktop app
-cask "claude"
 # Allows switching between application windows
 cask "contexts"
 # Web browser
