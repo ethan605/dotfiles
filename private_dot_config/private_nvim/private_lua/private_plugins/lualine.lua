@@ -68,7 +68,7 @@ return {
     return {
       options = {
         component_separators = "",
-        disabled_filetypes = { "dbee" },
+        disabled_filetypes = { "dbee", "DiffviewFiles" },
         globalstatus = false, -- enabling allows terminal-based extensions (fzf, lazy, mason) to work, but pretty funky
         icons_enabled = true,
         section_separators = "",

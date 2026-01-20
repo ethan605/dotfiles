@@ -15,6 +15,13 @@ return {
       -- Using Ruff's import organizer
       disableOrganizeImports = true,
     },
+    python = {
+      analysis = {
+        diagnosticSeverityOverrides = {
+          reportIncompatibleVariableOverride = "warning",
+        },
+      },
+    },
   },
   ---@diagnostic disable-next-line: unused-local
   --[[ on_attach = function(client, bufnr)
