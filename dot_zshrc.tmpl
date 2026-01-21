@@ -86,6 +86,11 @@ export PATH
 #]]]
 
 # [[[ Init functions
+function __load-claude-code() {
+  export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+  export ENABLE_LSP_TOOL=1
+}
+
 function __load-db-clickhouse() {
   export SQL_TARGET=clickhouse
 
