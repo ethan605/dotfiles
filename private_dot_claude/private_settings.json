@@ -18,7 +18,8 @@
       "Bash(pyright:*)",
       "Bash(cat:*)",
       "Bash(xargs ls:*)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "Bash(gh api:*)"
     ]
   },
   "model": "Opus",
