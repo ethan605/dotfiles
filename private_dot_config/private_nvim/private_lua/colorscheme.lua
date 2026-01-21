@@ -121,6 +121,7 @@ vim.api.nvim_set_hl(0, "@lsp.mod.readonly.typescriptreact", { link = "@constant.
 vim.api.nvim_set_hl(0, "@lsp.typemod.parameter.declaration.typescriptreact", { link = "Identifier" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescript", { link = "@constant.typescript" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescriptreact", { link = "@constant.typescript" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.typescript", { link = "@type.builtin.typescript" })
 
 -- Semantic highlights - java
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "Keyword" })
