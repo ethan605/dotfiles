@@ -16,7 +16,7 @@ terraform = "1.14.3"
 
 # Then tools
 argo-rollouts = "1.8.3"
-awscli = { version = "2.33.3", symlink_bins = "true" }
+awscli = { version = "2.33.4", symlink_bins = "true" }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bottom = "0.12.3"
@@ -32,10 +32,10 @@ fd = "10.3.0"
 ffmpeg = "8.0.1"
 firebase = "15.3.1"
 fzf = "0.67.0"
-gcloud = "552.0.0"
-gh = "2.85.0"
+gcloud = "553.0.0"
+gh = "2.86.0"
 git-lfs = "3.7.1"
-helm = "4.0.5"
+helm = "4.1.0"
 jless = "0.9.0"
 jq = "1.8.1"
 kubecolor = "0.5.3"
@@ -56,7 +56,7 @@ tree-sitter = "0.26.3"
 uv = "0.9.26"
 yq = "4.50.1"
 zoxide = "0.9.8"
-claude = { version = "2.1.14", bin = "claude", platforms = """
+claude = { version = "2.1.15", bin = "claude", platforms = """
 [linux-arm64]
 url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/{{ version }}/linux-arm64/claude"
 
