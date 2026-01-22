@@ -1,0 +1,37 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-opus-4-5",
+  "theme": "system",
+  "autoupdate": true,
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
+  },
+  "mcp": {
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "oauth": {},
+      "enabled": true
+    },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": {},
+      "enabled": true
+    },
+    "postgresql": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@bytebase/dbhub",
+        "--transport",
+        "stdio",
+        "--dsn",
+        "{env:POSTGRES_CONNECTION_STRING}"
+      ],
+      "enabled": true
+    }
+  }
+}
