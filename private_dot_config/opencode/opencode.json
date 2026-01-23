@@ -19,32 +19,61 @@
     "diff_style": "auto"
   },
   "permission": {
-    "lsp": "allow",
+    "*": "ask",
+
     "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "lsp": "allow",
+    "question": "allow",
     "read": "allow",
     "task": "allow",
+    "todoread": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+
     "bash": {
       "*": "ask",
 
-      "grep": "allow",
+      "cat": "allow",
+      "echo": "allow",
       "head": "allow",
       "tail": "allow",
 
-      "git status*": "allow",
+      "git branch*": "allow",
       "git diff*": "allow",
       "git log*": "allow",
-      "git branch*": "allow",
-      "git show*": "allow",
       "git remote*": "allow",
+      "git show*": "allow",
+      "git status*": "allow",
 
+      "gh api *": "allow",
       "gh pr list*": "allow",
       "gh pr view*": "allow",
       "gh repo view*": "allow",
-      "gh api *": "allow",
 
-      "uv run ruff *": "allow",
       "uv run mypy *": "allow",
-      "uv run pytest *": "allow"
+      "uv run pytest *": "allow",
+      "uv run ruff *": "allow",
+
+      "pnpm *": "allow",
+      "npm *": "allow"
+    }
+  },
+  "agent": {
+    "plan": {
+      "permission": {
+        "edit": "deny",
+        "todowrite": "deny",
+        "write": "deny"
+      }
+    },
+    "build": {
+      "permission": {
+        "edit": "allow",
+        "todowrite": "allow",
+        "write": "allow"
+      }
     }
   },
   "lsp": {
