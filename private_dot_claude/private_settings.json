@@ -28,7 +28,9 @@
       "WebSearch",
       "mcp__linear__get_issue",
       "mcp__notion__notion-fetch",
-      "mcp__notion__notion-search"
+      "mcp__notion__notion-search",
+      "mcp__postgres__search_objects",
+      "mcp__postgres__execute_sql"
     ]
   }
 }
