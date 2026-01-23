@@ -37,8 +37,13 @@
 
       "cat": "allow",
       "echo": "allow",
+      "find": "allow",
       "head": "allow",
+      "ls": "allow",
+      "node": "allow",
+      "sort": "allow",
       "tail": "allow",
+      "xargs": "allow",
 
       "git branch*": "allow",
       "git diff*": "allow",
@@ -57,7 +62,16 @@
       "uv run ruff *": "allow",
 
       "pnpm *": "allow",
-      "npm *": "allow"
+      "npm *": "allow",
+
+      "notion_notion-*": "allow",
+      "notion_notion-create-pages": "deny",
+      "notion_notion-update-page": "deny",
+      "notion_notion-move-pages": "deny",
+      "notion_notion-duplicate-page": "deny",
+      "notion_notion-create-database": "deny",
+      "notion_notion-update-database": "deny",
+      "notion_notion-create-comment": "deny"
     }
   },
   "agent": {
@@ -65,14 +79,48 @@
       "permission": {
         "edit": "deny",
         "todowrite": "deny",
-        "write": "deny"
+        "write": "deny",
+
+        "external_directory": {
+          "*": "ask",
+          "~/.config/opencode": "allow"
+        },
+        "read": {
+          "*": "ask",
+          "~/.config/opencode/opencode.json": "allow"
+        }
       }
     },
     "build": {
       "permission": {
-        "edit": "allow",
         "todowrite": "allow",
-        "write": "allow"
+
+        "edit": {
+          "*": "ask",
+          "~/.config/opencode/opencode.json": "allow"
+        },
+        "external_directory": {
+          "*": "ask",
+          "~/.config/opencode": "allow"
+        },
+        "write": {
+          "*": "ask",
+          "~/.config/opencode/opencode.json": "allow"
+        },
+
+        "notion_notion-create-pages": "allow",
+        "notion_notion-update-page": "allow",
+        "notion_notion-move-pages": "allow",
+        "notion_notion-duplicate-page": "allow",
+        "notion_notion-create-database": "allow",
+        "notion_notion-update-database": "allow",
+        "notion_notion-create-comment": "allow",
+
+        "bash": {
+          "git add*": "allow",
+          "git commit*": "allow",
+          "git push*": "allow"
+        }
       }
     }
   },
