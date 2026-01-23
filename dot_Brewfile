@@ -95,8 +95,6 @@ brew "osx-cross/arm/arm-none-eabi-gcc@8"
 brew "osx-cross/avr/avr-binutils"
 # GNU compiler collection for AVR 8-bit and 32-bit Microcontrollers
 brew "osx-cross/avr/avr-gcc@8"
-# Quantum Mechanical Keyboard (QMK) Firmware
-brew "qmk/qmk/qmk"
 # Pass extension to avoid printing the password to the console
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
