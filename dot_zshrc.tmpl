@@ -336,7 +336,8 @@ function oc() {
 
   # For postgresql MCP
   export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
-  opencode .
+
+  opencode "$@"
 }
 
 function greek-letters() {
