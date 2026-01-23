@@ -75,6 +75,12 @@
     }
   },
   "agent": {
+    "general": {
+      "model": "anthropic/claude-sonnet-4-20250514"
+    },
+    "explore": {
+      "model": "anthropic/claude-haiku-4-5"
+    },
     "plan": {
       "permission": {
         "edit": "deny",
