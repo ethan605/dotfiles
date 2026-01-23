@@ -331,11 +331,13 @@ function oc() {
   ANTHROPIC_API_KEY="$(pass work/anthropic-api-key)"
   export ANTHROPIC_API_KEY
 
-  export OPENCODE_DISABLE_LSP_DOWNLOAD=true
-  export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
-
   # For postgresql MCP
   export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
+
+  # For LSP servers
+  export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+  export OPENCODE_DISABLE_LSP_DOWNLOAD=true
+  export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 
   opencode "$@"
 }
