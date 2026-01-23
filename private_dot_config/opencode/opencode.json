@@ -3,9 +3,34 @@
   "model": "anthropic/claude-opus-4-5",
   "theme": "system",
   "autoupdate": true,
+  "lsp": {
+    "pyright": {
+      "disabled": false,
+      "command": ["pyright-langserver", "--stdio"],
+      "extensions": [".py", ".pyi"]
+    },
+    "typescript": {
+      "disabled": false,
+      "command": ["typescript-language-server", "--stdio"],
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".mjs",
+        ".cjs",
+        ".mts",
+        ".cts"
+      ]
+    }
+  },
   "permission": {
+    "lsp": "allow",
     "edit": "ask",
     "bash": "ask"
+  },
+  "keybinds": {
+    "leader": "\\"
   },
   "mcp": {
     "notion": {
