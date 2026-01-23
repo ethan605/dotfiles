@@ -1,8 +1,52 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "enabled_providers": ["anthropic", "google-vertex"],
   "model": "anthropic/claude-opus-4-5",
   "theme": "system",
   "autoupdate": true,
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+  "keybinds": {
+    "leader": "\\"
+  },
+  "tui": {
+    "scroll_speed": 3,
+    "scroll_acceleration": {
+      "enabled": true
+    },
+    "diff_style": "auto"
+  },
+  "permission": {
+    "lsp": "allow",
+    "edit": "allow",
+    "read": "allow",
+    "task": "allow",
+    "bash": {
+      "*": "ask",
+
+      "grep": "allow",
+      "head": "allow",
+      "tail": "allow",
+
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git branch*": "allow",
+      "git show*": "allow",
+      "git remote*": "allow",
+
+      "gh pr list*": "allow",
+      "gh pr view*": "allow",
+      "gh repo view*": "allow",
+      "gh api *": "allow",
+
+      "uv run ruff *": "allow",
+      "uv run mypy *": "allow",
+      "uv run pytest *": "allow"
+    }
+  },
   "lsp": {
     "pyright": {
       "disabled": false,
@@ -23,14 +67,6 @@
         ".cts"
       ]
     }
-  },
-  "permission": {
-    "lsp": "allow",
-    "edit": "ask",
-    "bash": "ask"
-  },
-  "keybinds": {
-    "leader": "\\"
   },
   "mcp": {
     "notion": {
