@@ -18,14 +18,14 @@ windows:
     commands:
       - docker compose --profile=base up -d liquibase_db_migration liquibase_analytics_migration
 
-  - name: postgres
-    root: scratch-pad/sql
-    layout: main-vertical
-    commands:
-      - __load-db-postgres
-
-  - name: clickhouse
-    root: scratch-pad/sql
-    layout: main-vertical
-    commands:
-      - __load-db-clickhouse
+  # - name: postgres
+  #   root: scratch-pad/sql
+  #   layout: main-vertical
+  #   commands:
+  #     - __load-db-postgres
+  #
+  # - name: clickhouse
+  #   root: scratch-pad/sql
+  #   layout: main-vertical
+  #   commands:
+  #     - __load-db-clickhouse
