@@ -51,6 +51,7 @@
       "git remote*": "allow",
       "git show*": "allow",
       "git status*": "allow",
+      "git worktree list*": "allow",
 
       "gh api *": "allow",
       "gh pr list*": "allow",
@@ -94,6 +95,14 @@
         "read": {
           "*": "ask",
           "~/.config/opencode/opencode.json": "allow"
+        },
+
+        "bash": {
+          "git add*": "deny",
+          "git commit*": "deny",
+          "git push*": "deny",
+          "git worktree add*": "deny",
+          "git worktree remove*": "deny"
         }
       }
     },
@@ -125,7 +134,9 @@
         "bash": {
           "git add*": "allow",
           "git commit*": "allow",
-          "git push*": "allow"
+          "git push*": "allow",
+          "git worktree add*": "deny",
+          "git worktree remove*": "deny"
         }
       }
     }
