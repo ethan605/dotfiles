@@ -6,6 +6,7 @@ mac-install
 
 # <<< Obsolete configs - keep for future reference only
 
+.claude/settings.json
 .config/Autoraise
 .config/harper-ls
 .config/kitty

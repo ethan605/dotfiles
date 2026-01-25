@@ -78,12 +78,15 @@
   },
   "agent": {
     "general": {
+      "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-20250514"
     },
     "explore": {
+      "mode": "subagent",
       "model": "anthropic/claude-haiku-4-5"
     },
     "reviewer": {
+      "mode": "subagent",
       "model": "google-vertex/gemini-3-pro-preview",
       "system_prompt": "You are a Senior Software Engineer. Read and strictly follow the instructions in ~/.gemini/GEMINI.md for your persona and review standards."
     },
