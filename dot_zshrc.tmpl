@@ -328,9 +328,6 @@ function __load-fzf-tab() {
 
 # [[[ Utils
 function oc() {
-  ANTHROPIC_API_KEY="$(pass work/anthropic-api-key)"
-  export ANTHROPIC_API_KEY
-
   # For postgresql MCP
   export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
 
@@ -338,6 +335,11 @@ function oc() {
   export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
   export OPENCODE_DISABLE_LSP_DOWNLOAD=true
   export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
+
+  # For Gemini
+  GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
+  export GOOGLE_VERTEX_PROJECT
+  export GOOGLE_VERTEX_LOCATION=global
 
   opencode "$@"
 }
