@@ -82,6 +82,9 @@
     "explore": {
       "model": "anthropic/claude-haiku-4-5"
     },
+    "reviewer": {
+      "model": "google-vertex/gemini-3-pro-preview"
+    },
     "plan": {
       "permission": {
         "edit": "deny",

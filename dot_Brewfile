@@ -11,6 +11,8 @@ brew "aria2"
 brew "axel"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Compiler infrastructure and toolchain library for WebAssembly
+brew "binaryen"
 # Statistics utility to count lines of code
 brew "cloc"
 # GNU File, Shell, and Text utilities
@@ -99,8 +101,6 @@ brew "osx-cross/avr/avr-gcc@8"
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
 brew "simplydanny/pass-extensions/pass-update"
-# Command-line interface for 1Password
-cask "1password-cli"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace"
 # GPU-accelerated terminal emulator

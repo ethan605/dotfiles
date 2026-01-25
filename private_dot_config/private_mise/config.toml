@@ -15,6 +15,7 @@ rust = "1.93.0"
 terraform = "1.14.3"
 
 # Then tools
+1password = "2.32.0"
 argo-rollouts = "1.8.3"
 awscli = { version = "2.33.6", symlink_bins = "true" }
 bat = "0.26.1"
