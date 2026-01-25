@@ -27,6 +27,7 @@
     "lsp": "allow",
     "question": "allow",
     "read": "allow",
+    "skill": "allow",
     "task": "allow",
     "todoread": "allow",
     "webfetch": "allow",
@@ -83,7 +84,8 @@
       "model": "anthropic/claude-haiku-4-5"
     },
     "reviewer": {
-      "model": "google-vertex/gemini-3-pro-preview"
+      "model": "google-vertex/gemini-3-pro-preview",
+      "system_prompt": "You are a Senior Software Engineer. Read and strictly follow the instructions in ~/.gemini/GEMINI.md for your persona and review standards."
     },
     "plan": {
       "permission": {
