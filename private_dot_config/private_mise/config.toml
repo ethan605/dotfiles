@@ -17,7 +17,7 @@ terraform = "1.14.3"
 # Then tools
 1password = "2.32.0"
 argo-rollouts = "1.8.3"
-awscli = { version = "2.33.6", symlink_bins = "true" }
+awscli = { version = "2.33.7", symlink_bins = "true" }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bottom = "0.12.3"
@@ -55,6 +55,6 @@ starship = "1.24.2"
 tlrc = "1.12.0"
 tmux = "3.6"
 tree-sitter = "0.26.3"
-uv = "0.9.26"
+uv = "0.9.27"
 yq = "4.50.1"
 zoxide = "0.9.8"
