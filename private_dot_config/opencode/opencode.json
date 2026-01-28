@@ -1,6 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "enabled_providers": ["anthropic", "google-vertex"],
+  "provider": {
+    "google-vertex": {
+      "models": {
+        "gemini-3-pro-preview": {
+          "options": {
+            "thinking_level": "high"
+          }
+        }
+      }
+    }
+  },
   "model": "anthropic/claude-opus-4-5",
   "theme": "system",
   "autoupdate": true,
