@@ -46,12 +46,6 @@ local plugins = {
     "brianhuster/live-preview.nvim",
     dependencies = { "ibhagwan/fzf-lua" },
   },
-  {
-    "esmuellert/codediff.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    cmd = "CodeDiff",
-    config = true,
-  },
 
   -- Plugins with more complex configs
   require("plugins.bufferline"),
