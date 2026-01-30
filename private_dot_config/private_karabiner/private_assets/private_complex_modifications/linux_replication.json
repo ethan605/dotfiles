@@ -39,7 +39,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -65,7 +65,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -91,7 +91,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -117,7 +117,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -143,7 +143,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -169,7 +169,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -195,7 +195,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -221,7 +221,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -244,7 +244,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -267,7 +267,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -293,7 +293,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -319,7 +319,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -345,7 +345,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -371,7 +371,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -397,7 +397,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -423,7 +423,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -449,7 +449,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -475,7 +475,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -501,7 +501,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -527,7 +527,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -558,7 +558,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -586,7 +586,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -609,7 +609,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -637,7 +637,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }
@@ -660,7 +660,7 @@
               "bundle_identifiers": [
                 "^org.alacritty",
                 "^net.kovidgoyal.kitty",
-                "^com.googlecode.iterm2"
+                "^com.mitchellh.ghostty"
               ],
               "type": "frontmost_application_unless"
             }

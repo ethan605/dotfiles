@@ -1,7 +1,30 @@
 # vim:fileencoding=utf-8:filetype=dosini
-theme = Snazzy
-palette = 0=#282a36
 cursor-style = block
+shell-integration-features = no-cursor
+
+palette = 0=#282a36
+palette = 1=#ff5c57
+palette = 2=#5af78e
+palette = 3=#f3f99d
+palette = 4=#57c7ff
+palette = 5=#ff6ac1
+palette = 6=#9aedfe
+palette = 7=#eff0eb
+palette = 8=#686868
+palette = 9=#ff5c57
+palette = 10=#5af78e
+palette = 11=#f3f99d
+palette = 12=#57c7ff
+palette = 13=#ff6ac1
+palette = 14=#9aedfe
+palette = 15=#eff0eb
+
+background = #282a36
+foreground = #eff0eb
+cursor-color = #eff0eb
+cursor-text = #282a36
+# selection-background = #626880
+# selection-foreground = #c6d0f5
 
 font-family = "OperatorMonoSSm Nerd Font"
 font-size = 18
@@ -10,11 +33,10 @@ font-style-bold = "Regular"
 font-style-italic = "Light Italic"
 font-style-bold-italic = "Italic"
 
-term = "xterm-256color" 
+# term = "xterm-256color" 
+term = "xterm-ghostty" 
 
 window-decoration = false
 window-width = 9999
 window-height = 9999
 fullscreen = false
-
-keybind = super+w=unbind
