@@ -337,6 +337,9 @@ function oc() {
   export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 
   # For Gemini
+  GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
+  export GOOGLE_VERTEX_PROJECT
+  export GOOGLE_VERTEX_LOCATION=global
   export VERTEX_LOCATION=global
 
   opencode "$@"
