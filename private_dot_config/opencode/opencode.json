@@ -47,16 +47,6 @@
     "bash": {
       "*": "ask",
 
-      "cat": "allow",
-      "echo": "allow",
-      "find": "allow",
-      "head": "allow",
-      "ls": "allow",
-      "node": "allow",
-      "sort": "allow",
-      "tail": "allow",
-      "xargs": "allow",
-
       "git branch*": "allow",
       "git diff*": "allow",
       "git log*": "allow",
@@ -99,86 +89,7 @@
     "reviewer": {
       "mode": "subagent",
       "model": "google-vertex/gemini-3-pro-preview",
-      "system_prompt": "You are a Senior Software Engineer. Read and strictly follow the instructions in ~/.gemini/GEMINI.md for your persona and review standards."
-    },
-    "plan": {
-      "permission": {
-        "edit": "deny",
-        "todowrite": "deny",
-        "write": "deny",
-
-        "external_directory": {
-          "*": "ask",
-          "~/.config/opencode": "allow"
-        },
-        "read": {
-          "*": "ask",
-          "~/.config/opencode/opencode.json": "allow"
-        },
-
-        "bash": {
-          "git add*": "deny",
-          "git commit*": "deny",
-          "git push*": "deny",
-          "git worktree add*": "deny",
-          "git worktree remove*": "deny"
-        }
-      }
-    },
-    "build": {
-      "permission": {
-        "todowrite": "allow",
-
-        "edit": {
-          "*": "ask",
-          "~/.config/opencode/opencode.json": "allow"
-        },
-        "external_directory": {
-          "*": "ask",
-          "~/.config/opencode": "allow"
-        },
-        "write": {
-          "*": "ask",
-          "~/.config/opencode/opencode.json": "allow"
-        },
-
-        "notion_notion-create-pages": "allow",
-        "notion_notion-update-page": "allow",
-        "notion_notion-move-pages": "allow",
-        "notion_notion-duplicate-page": "allow",
-        "notion_notion-create-database": "allow",
-        "notion_notion-update-database": "allow",
-        "notion_notion-create-comment": "allow",
-
-        "bash": {
-          "git add*": "allow",
-          "git commit*": "allow",
-          "git push*": "allow",
-          "git worktree add*": "deny",
-          "git worktree remove*": "deny"
-        }
-      }
-    }
-  },
-  "lsp": {
-    "pyright": {
-      "disabled": false,
-      "command": ["pyright-langserver", "--stdio"],
-      "extensions": [".py", ".pyi"]
-    },
-    "typescript": {
-      "disabled": false,
-      "command": ["typescript-language-server", "--stdio"],
-      "extensions": [
-        ".ts",
-        ".tsx",
-        ".js",
-        ".jsx",
-        ".mjs",
-        ".cjs",
-        ".mts",
-        ".cts"
-      ]
+      "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/GEMINI.md for your persona and review standards."
     }
   },
   "mcp": {
