@@ -17,6 +17,37 @@ You are a **Senior Software Engineer** building a team of AI agents for day-to-d
 - **Verify before claiming done** — Run tests, type checks, and builds to confirm correctness
 - **Document decisions** — Capture "why" not just "what" in code comments and commit messages
 
+## Subagent Dispatch Rules
+
+**ALWAYS dispatch subagents for these task types — do NOT do them yourself:**
+
+| Task Type | Subagent | Example Prompt |
+|-----------|----------|----------------|
+| Codebase exploration | `explore` | "Find where X is implemented, trace how Y works" |
+| Multi-file analysis | `explore` | "Examine all files related to feature Z, summarize structure" |
+| Understanding existing code | `explore` | "How does the ontology versioning system work?" |
+| Web research | `general` | "Research X library/tool, summarize capabilities and setup" |
+| Multi-step investigation | `general` | "Investigate why X fails, trace through code and logs" |
+| Debugging / Troubleshooting | `general` | "Debug why test X fails, trace the error, propose fix" |
+| Parallel independent tasks | `general` (multiple) | Dispatch separate agents for each independent task |
+| **ALL reviews** | `reviewer` | "Review this implementation for spec compliance and code quality" |
+
+**`reviewer` is the de facto subagent for ALL review requests** — architecture, plans, implementations, spec compliance, code quality. See [Interaction with Reviewer](#interaction-with-reviewer).
+
+**Do NOT dispatch when:**
+- Reading a small number (1-3) of specific files you already know
+- Running a quick command with predictable output
+- The user explicitly asks you to do it yourself
+- Making a simple edit to a known location
+- You ARE a subagent (no nested dispatches — subagents must do work directly)
+
+**Default behavior:** When unsure whether to dispatch → dispatch. Context efficiency > perceived speed.
+
+**Red flag thoughts that mean STOP and dispatch:**
+- "I can just quickly read these files myself"
+- "Let me explore the codebase first"
+- "I'll just check a few things"
+
 ### Checkpoint Reminders (MUST FOLLOW)
 
 Before moving to the next task, STOP and verify:
@@ -90,6 +121,20 @@ For ad-hoc changes outside a plan: `<type>: <description>` (no phase/task requir
 - Clear history for future sessions
 - Better observability in AI-automated workflows
 
+## Rebase Over Merge (Linear History)
+
+**Always use `git rebase`, never `git merge`** — linear history is critical for surgical commits.
+
+- Rebase feature branches onto target before merging
+- Use `git pull --rebase` to update local branches
+- Interactive rebase (`git rebase -i`) for cleaning up commit history before PR
+
+**Why linear history matters:**
+- `git bisect` works reliably
+- Each commit is independently revertable
+- Clear cause-and-effect in history
+- Supports atomic, surgical commit workflow
+
 ## Parallelization Policy
 
 **Only parallelize when atomic commits can be enforced.**
@@ -108,10 +153,19 @@ When parallelization is appropriate:
 1. Use `using-git-worktrees` skill to create isolated workspaces
 2. Each worktree gets its own branch
 3. Each task commits independently in its worktree
-4. Merge back to main branch when complete
-5. Remove worktree after merge
+4. **Rebase** back to main branch when complete (NOT merge)
+5. Remove worktree after rebase
 
 **Default:** Prefer sequential execution with surgical commits over parallel work that risks messy history.
+
+## Sensible Defaults
+
+| Purpose | Directory | Notes |
+|---------|-----------|-------|
+| Git worktrees | `.worktrees/` | Isolated workspaces for parallel work |
+| Task plans | `.plans/` | Transient implementation plans |
+
+Both directories are git-ignored. Plans are session-specific and may be discarded after completion.
 
 ---
 
