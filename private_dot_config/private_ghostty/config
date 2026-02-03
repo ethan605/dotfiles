@@ -21,19 +21,20 @@ palette = 15=#eff0eb
 
 background = #282a36
 foreground = #eff0eb
-cursor-color = cell-foreground
-cursor-text = cell-background
+# cursor-color = cell-foreground
+# cursor-text = cell-background
 # selection-background = #626880
 # selection-foreground = #c6d0f5
 
 font-family = "OperatorMonoSSm Nerd Font"
-font-size = 18
+font-size = 17
 font-style = "Light"
 font-style-bold = "Regular"
 font-style-italic = "Light Italic"
 font-style-bold-italic = "Italic"
+font-thicken = true
+adjust-underline-thickness = -75%
 
-# term = "xterm-256color" 
 term = "xterm-ghostty" 
 
 window-decoration = false
