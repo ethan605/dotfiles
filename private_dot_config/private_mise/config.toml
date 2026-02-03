@@ -17,7 +17,7 @@ terraform = "1.14.4"
 # Then tools
 1password = "2.32.0"
 argo-rollouts = "1.8.3"
-awscli = { version = "2.33.12", symlink_bins = "true" }
+awscli = { version = "2.33.13", symlink_bins = "true" }
 bat = "0.26.1"
 bat-extras = "2024.08.24"
 bottom = "0.12.3"
@@ -47,7 +47,7 @@ kubens = "0.9.5"
 liquibase = "4.33.0"
 make = "4.4.1"
 ninja = "1.13.2"
-opencode = "1.1.48"
+opencode = "1.1.49"
 postgres = "15.15"
 pre-commit = "4.5.1"
 ripgrep = "15.1.0"
