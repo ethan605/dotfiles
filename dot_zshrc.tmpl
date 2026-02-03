@@ -224,15 +224,18 @@ function __load-sway() {
 
 function __load-work-envs() {
   export WORK_DIR="$HOME/work"
+  export WORK_HOME="$WORK_DIR/.home"
 
-  if [[ -d "$WORK_DIR/.env/bin" ]]; then
-    export PATH="$WORK_DIR/.env/bin:$PATH"
+  if [[ -d "$WORK_HOME/bin" ]]; then
+    export PATH="$WORK_HOME/bin:$PATH"
   fi
 
-  if [[ -f "$WORK_DIR/.env/.zshrc" ]]; then
+  if [[ -f "$WORK_HOME/.zshrc" ]]; then
     # shellcheck disable=SC1091
-    source "$WORK_DIR/.env/.zshrc"
+    source "$WORK_HOME/.zshrc"
   fi
+
+  alias wpass='PASSWORD_STORE_DIR="$WORK_HOME/.password-store" pass'
 }
 
 function __load-zim() {
