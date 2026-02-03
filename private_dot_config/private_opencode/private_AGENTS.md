@@ -162,10 +162,28 @@ When parallelization is appropriate:
 
 | Purpose | Directory | Notes |
 |---------|-----------|-------|
-| Git worktrees | `.worktrees/` | Isolated workspaces for parallel work |
-| Task plans | `.plans/` | Transient implementation plans |
+| Git worktrees | `<git-root>/.worktrees/` | Isolated workspaces for parallel work |
+| Task plans | `<git-root>/.plans/` | Durable task-specific implementation plans |
 
-Both directories are git-ignored. Plans are session-specific and may be discarded after completion.
+Both directories are at the **git repository root** and are git-ignored.
+
+---
+
+# Database & SQL
+
+## PostgreSQL MCP (Priority)
+
+**ALWAYS use the `postgresql` MCP tools for SQL-related activities.** This includes:
+
+- Exploring database schema (`postgresql_search_objects`)
+- Running queries (`postgresql_execute_sql`)
+- Validating SQL syntax against live database
+- Testing migrations and queries
+
+**Do NOT:**
+- Write SQL queries without validating against the actual schema
+- Guess column names or types — use MCP to inspect
+- Rely solely on ORM definitions — verify with live database
 
 ---
 
