@@ -41,6 +41,7 @@
     "skill": "allow",
     "task": "allow",
     "todoread": "allow",
+    "todowrite": "allow",
     "webfetch": "allow",
     "websearch": "allow",
 

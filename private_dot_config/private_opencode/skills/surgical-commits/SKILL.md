@@ -1,3 +1,8 @@
+---
+name: surgical-commits
+description: Create consistent, atomic commits - one task per commit, commit immediately after task completion
+---
+
 # Surgical Commits Skill
 
 ## Triggers
