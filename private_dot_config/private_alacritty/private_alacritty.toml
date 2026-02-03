@@ -1,3 +1,7 @@
+[general]
+live_config_reload = true
+working_directory = "None"
+
 [colors]
 draw_bold_text_with_bright_colors = false
 
@@ -43,16 +47,25 @@ builtin_box_drawing = true
 size = 18.0
 offset = { x = 0, y = 0 }
 glyph_offset = { x = 0, y = 0 }
-normal = { family = "OperatorMonoSSm Nerd Font", style = "Light" }
-italic = { family = "OperatorMonoSSm Nerd Font", style = "Light Italic" }
-bold = { family = "OperatorMonoSSm Nerd Font", style = "Regular" }
-bold_italic = { family = "OperatorMonoSSm Nerd Font", style = "Italic" }
+
+[font.normal]
+family = "OperatorMonoSSm Nerd Font"
+style = "Light"
+
+[font.italic]
+family = "OperatorMonoSSm Nerd Font"
+style = "Light Italic" 
+
+[font.bold]
+family = "OperatorMonoSSm Nerd Font"
+style = "Regular" 
+
+[font.bold_italic]
+family = "OperatorMonoSSm Nerd Font"
+style = "Italic" 
 
 [mouse]
-hide_when_typing = false
-bindings = [
-  { mouse = "Middle", action = "PasteSelection" }
-]
+hide_when_typing = true
 
 [scrolling]
 history = 10000
@@ -61,9 +74,6 @@ multiplier = 3
 [selection]
 save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
-
-# [terminal]
-# shell = { program = "/opt/homebrew/bin/zsh", args = ["--login"] }
 
 [window]
 decorations = "none"
@@ -74,6 +84,5 @@ startup_mode = "Maximized"
 dimensions = { columns = 0, lines = 0 }
 padding = { x = 0, y = 0 }
 
-[general]
-live_config_reload = true
-working_directory = "None"
+# [terminal]
+# shell = { program = "/opt/homebrew/bin/zsh", args = ["--login"] }
