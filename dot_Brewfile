@@ -1,9 +1,6 @@
 tap "amar1729/formulae"
 tap "felixkratz/formulae"
 tap "nikitabobko/tap"
-tap "osx-cross/arm"
-tap "osx-cross/avr"
-tap "qmk/qmk"
 tap "simplydanny/pass-extensions"
 # Download with resuming and segmented downloading
 brew "aria2"
@@ -13,8 +10,6 @@ brew "axel"
 brew "bash"
 # Compiler infrastructure and toolchain library for WebAssembly
 brew "binaryen"
-# Statistics utility to count lines of code
-brew "cloc"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Static analysis of C and C++ code
@@ -89,14 +84,6 @@ brew "zsh"
 brew "amar1729/formulae/browserpass"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
-# GNU Tools for ARM Embedded Processors - Binutils
-brew "osx-cross/arm/arm-none-eabi-binutils"
-# GNU Tools for ARM Embedded Processors - GCC
-brew "osx-cross/arm/arm-none-eabi-gcc@8"
-# GNU Binutils for the AVR target
-brew "osx-cross/avr/avr-binutils"
-# GNU compiler collection for AVR 8-bit and 32-bit Microcontrollers
-brew "osx-cross/avr/avr-gcc@8"
 # Pass extension to avoid printing the password to the console
 brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
