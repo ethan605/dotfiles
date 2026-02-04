@@ -102,32 +102,16 @@ cask "firefox"
 cask "flameshot"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Web browser
-cask "google-chrome"
-# Grammarly for desktop
-cask "grammarly-desktop"
 # Keyboard shortcuts for every button on your screen
 cask "homerow"
 # Keyboard customiser
 cask "karabiner-elements"
 # End-to-end encryption software
 cask "keybase"
-# App to manage software development and track bugs
-cask "linear-linear"
 # Software for Logitech devices
 cask "logi-options+"
-# Screen and video recording software
-cask "loom"
 # VPN client for secure internet access and private browsing
 cask "nordvpn"
-# Replacement for Docker Desktop
-cask "orbstack"
-# Instant messaging application focusing on security
-cask "signal"
-# Team communication and collaboration software
-cask "slack"
-# Mesh VPN based on WireGuard
-cask "tailscale-app"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Multimedia player
