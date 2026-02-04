@@ -1,4 +1,3 @@
-tap "amar1729/formulae"
 tap "felixkratz/formulae"
 tap "nikitabobko/tap"
 tap "simplydanny/pass-extensions"
@@ -80,8 +79,6 @@ brew "wget"
 brew "zbar"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Host application for browser extension providing access to your password store
-brew "amar1729/formulae/browserpass"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
 # Pass extension to avoid printing the password to the console
