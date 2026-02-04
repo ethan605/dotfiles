@@ -14,7 +14,7 @@ ruby = "4.0.1"
 rust = "1.93.0"
 terraform = "1.14.4"
 
-# Then tools
+# Then official tools
 1password = "2.32.0"
 argo-rollouts = "1.8.3"
 awscli = { version = "2.33.13", symlink_bins = "true" }
@@ -59,3 +59,11 @@ tree-sitter = "0.26.5"
 uv = "0.9.28"
 yq = "4.52.2"
 zoxide = "0.9.9"
+
+# Finally vendored tools
+[tools."github:xjasonlyu/tun2socks"]
+version = "2.6.0"
+version_prefix = "v"
+rename_exe = "tun2socks"
+linux-x64 = { asset_pattern = "tun2socks-linux-amd64.zip", checksum = "sha256:2c4d9891ca898ecb2b582d158612d44c66793008328852b3465b77828c867e77" }
+macos-arm64 = { asset_pattern = "tun2socks-darwin-arm64.zip", checksum = "sha256:4cf19ab928e36ced549c52be78d1d2dd0bb52f6cd77f6475e25bfa1c7c3327c1" }
