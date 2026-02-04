@@ -226,10 +226,6 @@ function __load-work-envs() {
   export WORK_DIR="$HOME/work"
   export WORK_HOME="$WORK_DIR/.home"
 
-  if [[ -d "$WORK_HOME/bin" ]]; then
-    export PATH="$WORK_HOME/bin:$PATH"
-  fi
-
   if [[ -f "$WORK_HOME/.zshrc" ]]; then
     # shellcheck disable=SC1091
     source "$WORK_HOME/.zshrc"
