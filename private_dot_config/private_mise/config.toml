@@ -60,13 +60,6 @@ uv = "0.9.29"
 yq = "4.52.2"
 zoxide = "0.9.9"
 
-# Finally vendored tools
-[tools."github:browserpass/browserpass-native"]
-version = "3.1.2"
-rename_exe = "browserpass"
-macos-arm64 = { asset_pattern = "browserpass-darwin-arm64-*.tar.gz", checksum = "sha256:e191d5dd97f6b58b0e8016ec226979d84eb86f3d73e8ef08f7376596f8852060" }
-linux-x64 = { asset_pattern = "browserpass-linux64-*.tar.gz", checksum = "sha256:0a2dfba131deb71553a49dd94c16a7b848935e9a055ecfc26b6d6fe5c8189e2a" }
-
 [tools."github:xjasonlyu/tun2socks"]
 version = "2.6.0"
 version_prefix = "v"
