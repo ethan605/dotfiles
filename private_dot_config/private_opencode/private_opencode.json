@@ -29,8 +29,10 @@
     "session_child_cycle_reverse": "<leader>h",
     "messages_line_up": "ctrl+y",
     "messages_line_down": "ctrl+e",
-    "messages_half_page_up": "ctrl+u",
-    "messages_half_page_down": "ctrl+d"
+    "messages_page_up": "ctrl+u",
+    "messages_page_down": "ctrl+d",
+    "messages_first": "ctrl+g",
+    "messages_last": "ctrl+alt+g"
   },
   "tui": {
     "scroll_speed": 3,
@@ -91,7 +93,7 @@
   "agent": {
     "general": {
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-20250514",
+      "model": "anthropic/claude-sonnet-4-5",
       "system_prompt": "You are an Implementation Engineer. Read and strictly follow the instructions in ~/.config/opencode/GENERAL.md for your role and quality standards."
     },
     "explore": {
