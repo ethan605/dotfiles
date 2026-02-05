@@ -1,3 +1,4 @@
+# vim:filetype=nix
 {
   description = "My nix-darwin system configuration";
 
@@ -17,7 +18,7 @@
 
   outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, ... }:
     let
-      username = "encord";
+      username = "{{ .chezmoi.username }}";
       system = "aarch64-darwin";
       hostname = "macintosh";
     in
