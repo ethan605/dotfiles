@@ -24,7 +24,7 @@
     "app_exit": "none",
     "messages_toggle_conceal": "none",
     "session_list": "none",
-    "session_parent": "<leader>k",
+    "session_parent": "<leader>u",
     "session_child_cycle": "<leader>l",
     "session_child_cycle_reverse": "<leader>h",
     "messages_line_up": "ctrl+y",
