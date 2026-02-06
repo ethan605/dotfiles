@@ -1,0 +1,41 @@
+# vim:filetype=zsh
+# zsh loading sequence:
+#   - /etc/zshenv     & ~/.zshenv
+#   - /etc/zprofile   & ~/.zprofile     <- this file
+#   - /etc/zshrc      & ~/.zshrc
+#   - /etc/zlogin     & ~/.zlogin
+#   - /etc/zlogout    & ~/.zlogout
+#
+# This file contains only environment terraform
+
+export LANG=en_GB.UTF-8
+export LC_COLLATE="$LANG"
+export LC_CTYPE="$LANG"
+export LC_MESSAGES="$LANG"
+export LC_MONETARY="$LANG"
+export LC_NUMERIC="$LANG"
+export LC_TIME="$LANG"
+export LC_ALL="$LANG"
+
+export EDITOR=nvim
+export REACT_EDITOR=nvim
+export VISUAL=nvim
+
+export BAT_THEME='Sublime Snazzy'
+export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --squeeze-blank-lines --tabs=2'
+export MANPAGER='less +Gg'
+
+export CC=clang
+export COMPOSE_BAKE=true
+export CXX=clang++
+export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
+export NODE_OPTIONS="--max-old-space-size=8192"
+export TOOLCHAINS=swift
+
+export ZIM_HOME="${ZDOTDIR:-$HOME}/.zim"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [[ -f $HOME/.orbstack/shell/init.zsh ]]; then
+  source "$HOME/.orbstack/shell/init.zsh"
+fi
