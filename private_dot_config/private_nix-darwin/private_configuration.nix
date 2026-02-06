@@ -40,7 +40,7 @@
       "logi-options+"
       "nikitabobko/tap/aerospace"
       "nordvpn"
-      "telegram-desktop"
+      "telegram"
       "vlc"
       "vox"
       "whatsapp"
