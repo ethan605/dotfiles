@@ -1,1 +1,30 @@
 # vim:filetype=zsh
+{{- if eq .chezmoi.os "linux" }}
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  export _JAVA_AWT_WM_NONREPARENTING=1
+  # export QT_QPA_PLATFORM=wayland-egl
+  # export QT_QPA_PLATFORMTHEME=qt5ct
+  # export QT_WAYLAND_FORCE_DPI=physical
+  # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+  export QT_QPA_PLATFORM=wayland
+  export SDL_VIDEODRIVER=wayland
+  export XDG_CURRENT_DESKTOP=sway
+  export XDG_SESSION_TYPE=wayland
+  export TERM=foot
+  export MOZ_ENABLE_WAYLAND=1
+
+{{- if eq .chezmoi.hostname "WORKMACHINE" }}
+  export BROWSER=google-chrome-stable
+{{- else }}
+  export BROWSER=firefox
+{{- end }}
+
+  exec sway -d 2> $HOME/.logs/sway.log
+fi
+
+{{- else }}
+
+# Linux-only
+
+{{- end }}

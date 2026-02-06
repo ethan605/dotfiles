@@ -129,34 +129,6 @@ function __load-ssh() {
   gpg-connect-agent updatestartuptty /bye >/dev/null
 }
 
-{{- if eq .chezmoi.os "linux" }}
-
-function __load-sway() {
-  if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    export _JAVA_AWT_WM_NONREPARENTING=1
-    # export QT_QPA_PLATFORM=wayland-egl
-    # export QT_QPA_PLATFORMTHEME=qt5ct
-    # export QT_WAYLAND_FORCE_DPI=physical
-    # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-    export QT_QPA_PLATFORM=wayland
-    export SDL_VIDEODRIVER=wayland
-    export XDG_CURRENT_DESKTOP=sway
-    export XDG_SESSION_TYPE=wayland
-    export TERM=foot
-    export MOZ_ENABLE_WAYLAND=1
-
-{{- if eq .chezmoi.hostname "PF3XSEPR" }}
-    export BROWSER=google-chrome-stable
-{{- else }}
-    export BROWSER=firefox
-{{- end }}
-
-    exec sway -d 2> $HOME/.logs/sway.log
-  fi
-}
-
-{{- end }}
-
 function __load-zim() {
   if [[ ! "${ZIM_HOME}/init.zsh" -nt "${ZDOTDIR:-${HOME}}/.zimrc" ]]; then
     # Update static initialization script if it does not exist or it's outdated, before sourcing it
