@@ -35,7 +35,6 @@ local plugins = {
   "OXY2DEV/helpview.nvim",
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
-  "sindrets/diffview.nvim",
   "yochem/jq-playground.nvim",
 
   { "fei6409/log-highlight.nvim", config = true },
@@ -54,6 +53,7 @@ local plugins = {
   require("plugins.comment"),
   require("plugins.csvview"),
   require("plugins.dashboard"),
+  require("plugins.diffview"),
   require("plugins.fyler"),
   require("plugins.fzf-lua"),
   require("plugins.gitlinker"),
