@@ -20,47 +20,6 @@ done
 
 unset conf
 
-{{- if eq .chezmoi.os "linux" }}
-
-export XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share
-export XDG_CONFIG_DIRS=/etc/xdg
-
-export TERMINFO=/usr/share/terminfo
-export GPG_TTY=$(tty)
-
-# Input method
-export GTK_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export QT_IM_MODULE=fcitx
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-# Rewrite $PATH
-PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
-
-# Homebrew
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-
-# Replace macOS utilities with GNU ones
-PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-PATH="$(brew --prefix diffutils)/bin:$PATH"
-PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
-PATH="$(brew --prefix gnu-getopt)/bin:$PATH"
-PATH="$(brew --prefix gnu-indent)/libexec/gnubin:$PATH"
-PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
-PATH="$(brew --prefix gnu-tar)/libexec/gnubin:$PATH"
-PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
-PATH="$(brew --prefix llvm)/bin:$PATH"
-
-# Nix
-PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
-
-{{- end }}
-
-PATH="$HOME/.local/bin:$PATH"
-export PATH
-#]]]
-
 # [[[ Init functions
 function __load-db-clickhouse() {
   export SQL_TARGET=clickhouse
