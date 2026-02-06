@@ -16,9 +16,14 @@ let
     binaryen
     cppcheck
     git
+    git-lfs
+    jless
+    jq
     llvm
     neovim
     openssh
+    openssl
+    yq
   ];
 
   gpg = with pkgs; [
@@ -29,8 +34,12 @@ let
   ];
 
   tools = with pkgs; [
+    _1password-cli
     aria2
     axel
+    chezmoi
+    curlie
+    delta
     direnv
     eza
     fd
@@ -42,8 +51,10 @@ let
     p7zip
     parallel
     qrencode
+    ripgrep
     smug
     starship
+    tmux
     vifm
     watch
     wget

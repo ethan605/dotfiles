@@ -45,6 +45,10 @@
     ];
   };
 
+  environment.shells = [
+    pkgs.zsh
+  ];
+
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
