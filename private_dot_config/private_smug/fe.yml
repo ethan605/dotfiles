@@ -1,14 +1,14 @@
-session: φ
+session: encord-fe
 root: ""
 windows:
-  - name: v-encord-fe
+  - name: editor
     root: ~/work/cord-frontend/apps/encord-fe
     layout: main-vertical
 
-  - name: encord-fe
+  - name: cli
     root: ~/work/cord-frontend/apps/encord-fe
     layout: main-vertical
 
-  - name: nvim
+  - name: config
     root: ~/.config/nvim
     layout: main-vertical

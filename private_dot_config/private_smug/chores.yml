@@ -1,4 +1,4 @@
-session: γ
+session: chores
 root: ""
 windows:
   - name: be
@@ -7,7 +7,7 @@ windows:
     commands:
       - git switch master &&
         git fetch --prune &&
-        git pull origin master;
+        git pull origin master &&
         uv pip install --upgrade $(cat ~/.default-python-packages) &&
         uv sync --inexact
     panes:
@@ -23,7 +23,7 @@ windows:
     commands:
       - git switch master &&
         git fetch --prune &&
-        git pull origin master;
+        git pull origin master &&
         pnpm install
     panes:
       - commands:

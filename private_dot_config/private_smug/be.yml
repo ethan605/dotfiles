@@ -1,31 +1,31 @@
-session: β
+session: api-server
 root: ~/work
 windows:
-  - name: v-api-server
+  - name: editor
     root: cord-backend/projects/api-server
     layout: main-vertical
     commands:
       - source .venv/bin/activate
 
-  - name: api-server
+  - name: cli
     root: cord-backend/projects/api-server
     layout: main-vertical
     commands:
       - source .venv/bin/activate
 
-  - name: local-dev
+  - name: docker
     root: cord-backend/local-dev
     commands:
       - docker compose --profile=base up -d liquibase_db_migration liquibase_analytics_migration
 
-  # - name: postgres
-  #   root: scratch-pad/sql
-  #   layout: main-vertical
-  #   commands:
-  #     - __load-db-postgres
-  #
+  - name: postgres
+    root: scratch-pad/sql
+    layout: main-vertical
+    commands:
+      - prep-db-postgres
+
   # - name: clickhouse
   #   root: scratch-pad/sql
   #   layout: main-vertical
   #   commands:
-  #     - __load-db-clickhouse
+  #     - prep-db-clickhouse
