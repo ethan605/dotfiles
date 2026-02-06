@@ -102,7 +102,7 @@ function __load-key-bindings() {
 }
 
 function __load-mise() {
-  eval "$(mise activate zsh)"
+  eval "$(mise activate zsh --shims)"
 
   # mise-dependent components
   # shellcheck disable=SC1091
@@ -156,18 +156,6 @@ function __load-sway() {
 }
 
 {{- end }}
-
-function __load-work-envs() {
-  export WORK_DIR="$HOME/work"
-  export WORK_HOME="$WORK_DIR/.home"
-
-  if [[ -f "$WORK_HOME/.zshrc" ]]; then
-    # shellcheck disable=SC1091
-    source "$WORK_HOME/.zshrc"
-  fi
-
-  alias wpass='PASSWORD_STORE_DIR="$WORK_HOME/.password-store" pass'
-}
 
 function __load-zim() {
   if [[ ! "${ZIM_HOME}/init.zsh" -nt "${ZDOTDIR:-${HOME}}/.zimrc" ]]; then
@@ -265,9 +253,6 @@ function __load-fzf-tab() {
 # Sway goes first
 __load-sway
 {{- end }}
-
-# Work envs
-__load-work-envs
 
 # Base envs
 __load-mise
