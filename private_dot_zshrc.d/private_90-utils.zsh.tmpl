@@ -1,3 +1,4 @@
+# vim:filetype=zsh
 function oc() {
   # For postgresql MCP
   export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
@@ -27,3 +28,19 @@ function mux() {
   local workspace=${1:-$(greek-letters)}
   tmux attach -t "$workspace" || tmux new -s "$workspace"
 }
+
+{{- if eq .chezmoi.os "linux" }}
+
+function nord_dns() {
+  device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
+  nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
+}
+
+function osc7_cwd() {
+  setopt localoptions extendedglob
+  input=( ${(s::)PWD} )
+  uri=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
+  print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
+}
+
+{{- end }}
