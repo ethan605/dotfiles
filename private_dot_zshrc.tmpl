@@ -247,17 +247,3 @@ function __load-fzf-tab() {
   zstyle ':fzf-tab:*' use-fzf-default-opts yes
 }
 #]]]
-
-# [[[ Autoloads
-{{- if eq .chezmoi.os "linux" }}
-# Sway goes first
-__load-sway
-{{- end }}
-
-# Base envs
-# __load-mise
-# __load-zim
-
-# SSH keys
-# __load-ssh
-#]]]
