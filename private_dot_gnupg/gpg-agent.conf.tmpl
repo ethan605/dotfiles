@@ -5,13 +5,9 @@ pinentry-program /usr/bin/pinentry-gnome3
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-pinentry-program /opt/homebrew/bin/pinentry-mac
+pinentry-program /etc/profiles/per-user/{{ .chezmoi.username }}/bin/pinentry-mac
 
 {{- end }}
-
-## Alternatively something native to the terminal
-## pinentry-program /opt/homebrew/bin/pinentry-curses
-## pinentry-program /opt/homebrew/bin/pinentry-tty
 
 enable-ssh-support
 max-cache-ttl 3600
