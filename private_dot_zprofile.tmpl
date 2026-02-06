@@ -32,10 +32,50 @@ export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
 export NODE_OPTIONS="--max-old-space-size=8192"
 export TOOLCHAINS=swift
 
+export FZF_DEFAULT_OPTS='
+  --bind=ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-page-up,ctrl-d:preview-page-down
+  --color=fg+:7,bg+:0,hl:5,hl+:5
+  --color=gutter:0,header:4,marker:2,pointer:5,prompt:2,spinner:3
+  --cycle
+  --marker="›"
+  --pointer="›"
+  --prompt="❯ "
+  --reverse
+  --no-height
+'
+export FZF_CTRL_R_OPTS='
+  --preview="echo {2..} | bat --language=zsh --color=always"
+  --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
+  --header="Press CTRL-Y to copy command into clipboard"
+'
+
+# XDG base directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# For zimfw
 export ZIM_HOME="${ZDOTDIR:-$HOME}/.zim"
 
+# For homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# For orbstack
 if [[ -f $HOME/.orbstack/shell/init.zsh ]]; then
   source "$HOME/.orbstack/shell/init.zsh"
 fi
+
+{{- if eq .chezmoi.os "linux" }}
+
+export XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share
+export XDG_CONFIG_DIRS=/etc/xdg
+
+export TERMINFO=/usr/share/terminfo
+# export GPG_TTY=$(tty)
+
+# Input method
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+
+{{- end }}
