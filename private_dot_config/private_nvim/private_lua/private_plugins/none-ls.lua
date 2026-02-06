@@ -47,10 +47,9 @@ return {
         require("none-ls.formatting.ruff_format"),
         require("none-ls.formatting.rustfmt"),
 
-        -- FIXME: shellcheck has a serious memory leak
         -- from none-ls-shellcheck
-        -- require("none-ls-shellcheck.code_actions"),
-        -- require("none-ls-shellcheck.diagnostics"),
+        require("none-ls-shellcheck.code_actions"),
+        require("none-ls-shellcheck.diagnostics"),
       },
       on_attach = function()
         vim.keymap.set({ "n", "v" }, "<Leader>f", function()
