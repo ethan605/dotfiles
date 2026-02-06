@@ -12,12 +12,6 @@ mac-install
 .config/kitty
 .local/bin/ibus-engines
 
-# asdf-vm
-.asdfrc
-.default-golang-pkgs
-.tool-plugins
-.tool-versions
-
 # >>>
 
 # <<< Linux-exclusive files
