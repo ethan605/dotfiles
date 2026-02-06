@@ -1,4 +1,25 @@
-# vim:fileencoding=utf-8:filetype=zsh:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+# vim:filetype=zsh:foldenable:foldmethod=marker:foldmarker=[[[,]]]
+# zsh loading sequence:
+#   - /etc/zshenv     & ~/.zshenv
+#   - /etc/zprofile   & ~/.zprofile
+#   - /etc/zshrc      & ~/.zshrc      <- this file
+#   - /etc/zlogin     & ~/.zlogin
+#   - /etc/zlogout    & ~/.zlogout
+#
+# This file sources contents in `~/.zshrc.d/` sequentially in lexicographic order
+
+# Exit early if non-interactive (defensive guard)
+if [[ ! -o interactive ]]; then
+  return
+fi
+
+for conf in "$HOME/.zshrc.d/"*.zsh(N); do
+  source "$conf"
+  echo "=== sourced $conf ==="
+done
+
+unset conf
+
 {{- if eq .chezmoi.os "linux" }}
 
 export XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share
