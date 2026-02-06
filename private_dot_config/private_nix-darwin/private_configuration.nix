@@ -27,10 +27,13 @@
 
     casks = [
       "contexts"
+      "ghostty"
       "homerow"
       "logi-options-plus"
       "nordvpn"
+      "vlc"
       "vox"
+      "whatsapp-for-mac"
     ];
   };
 
@@ -52,7 +55,7 @@
   };
 
   # Touch ID for sudo
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Define user
   users.users.${username} = {
@@ -60,5 +63,6 @@
     home = "/Users/${username}";
   };
 
+  system.primaryUser = "${username}";
   system.stateVersion = 5;
 }

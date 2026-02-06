@@ -50,13 +50,10 @@ let
     appcleaner
     firefox
     flameshot
-    ghostty
     karabiner-elements
     keybase
     sketchybar
     telegram-desktop
-    vlc
-    whatsapp-for-mac
   ];
 
 in
