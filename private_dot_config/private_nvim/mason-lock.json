@@ -15,7 +15,6 @@
   "pyright": "1.1.408",
   "ruff": "0.15.0",
   "rust-analyzer": "2026-02-02",
-  "shellcheck": "v0.11.0",
   "shfmt": "v3.12.0",
   "solargraph": "0.58.2",
   "sqlfluff": "4.0.0",
