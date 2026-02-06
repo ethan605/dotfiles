@@ -1,3 +1,4 @@
+# vim:filetype=toml
 [general]
 live_config_reload = true
 working_directory = "None"
@@ -39,10 +40,12 @@ persistent_logging = false
 print_events = false
 render_timer = false
 
+{{- if eq .chezmoi.os "darwin" }}
 [env]
-TERMINFO="/etc/profiles/per-user/encord/share/terminfo"
+TERMINFO="/etc/profiles/per-user/{{ .chezmoi.username }}/share/terminfo"
 TERM = "alacritty"
 # TERM = "xterm-256color"
+{{- end }}
 
 [font]
 builtin_box_drawing = true
