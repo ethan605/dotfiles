@@ -11,6 +11,7 @@ mac-install
 .config/harper-ls
 .config/kitty
 .local/bin/ibus-engines
+.zshrc.d/00-path.zsh
 
 # >>>
 
