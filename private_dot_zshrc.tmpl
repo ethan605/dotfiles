@@ -14,6 +14,7 @@ if [[ ! -o interactive ]]; then
 fi
 
 # (N) means null glob
+# shellcheck disable=SC1036,SC1058,SC1072,SC1073
 for conf in "$HOME/.zshrc.d/"*.zsh(N); do
   source "$conf"
 done
