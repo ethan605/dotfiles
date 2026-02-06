@@ -46,6 +46,7 @@ let
     fzf
     httpie
     keychain
+    less
     mise
     ncdu
     p7zip
