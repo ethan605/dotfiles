@@ -40,7 +40,9 @@ print_events = false
 render_timer = false
 
 [env]
-TERM = "alacritty" # set back to xterm-256color when in trouble
+TERMINFO="/etc/profiles/per-user/encord/share/terminfo"
+TERM = "alacritty"
+# TERM = "xterm-256color"
 
 [font]
 builtin_box_drawing = true
@@ -85,4 +87,4 @@ dimensions = { columns = 0, lines = 0 }
 padding = { x = 0, y = 0 }
 
 # [terminal]
-# shell = { program = "/opt/homebrew/bin/zsh", args = ["--login"] }
+# shell = { program = "/bin/bash", args = ["--login"] }
