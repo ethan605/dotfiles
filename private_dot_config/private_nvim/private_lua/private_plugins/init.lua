@@ -79,7 +79,7 @@ local plugins = {
   require("plugins.todo-comments"),
 
   -- Temp. disabled plugins
-  -- require("plugins.codesnap"),  -- FIXME: needs libpcre2-8.0.dylib
+  -- require("plugins.codesnap"), -- FIXME: needs libpcre2-8.0.dylib
 }
 
 require("lazy").setup(plugins, opts)
