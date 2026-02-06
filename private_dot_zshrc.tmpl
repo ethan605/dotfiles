@@ -13,9 +13,9 @@ if [[ ! -o interactive ]]; then
   return
 fi
 
-for conf in "$HOME/.zshrc.d/*.zsh"(N); do
+# (N) means null glob
+for conf in "$HOME/.zshrc.d/"*.zsh(N); do
   source "$conf"
-  echo "=== sourced $conf ==="
 done
 
 unset conf
