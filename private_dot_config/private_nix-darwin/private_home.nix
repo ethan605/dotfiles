@@ -9,7 +9,6 @@ let
     gnugrep
     gnused
     gnutar
-    wget
     zsh
   ];
 
@@ -32,28 +31,36 @@ let
   tools = with pkgs; [
     aria2
     axel
+    direnv
+    eza
+    fd
+    fzf
     httpie
     keychain
+    mise
     ncdu
     p7zip
     parallel
     qrencode
     smug
+    starship
     vifm
     watch
+    wget
     zbar
+    zoxide
   ];
 
   gui = with pkgs; [
-    aerospace
+    # aerospace
     alacritty
-    appcleaner
-    firefox
-    flameshot
-    karabiner-elements
-    keybase
-    sketchybar
-    telegram-desktop
+    # appcleaner
+    # firefox
+    # flameshot
+    # karabiner-elements
+    # keybase
+    # sketchybar
+    # telegram-desktop
   ];
 
 in

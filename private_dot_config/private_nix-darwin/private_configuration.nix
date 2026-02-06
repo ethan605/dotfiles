@@ -19,21 +19,36 @@
       upgrade = true;
     };
 
+    taps = [
+      # "nikitabobko/tap"
+      # "felixkratz/formulae"
+    ];
+
     casks = [
+      # "alacritty"
+      "appcleaner"
       "contexts"
+      # "felixkratz/formulae/sketchybar"
+      "firefox"
+      "flameshot"
       "ghostty"
       "homerow"
+      "karabiner-elements"
+      "keybase"
       "logi-options-plus"
+      # "nikitabobko/tap/aerospace"
       "nordvpn"
+      "telegram-desktop"
       "vlc"
       "vox"
-      "whatsapp-for-mac"
+      "whatsapp"
     ];
   };
 
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
+    shell = pkgs.zsh;
   };
 
   system = {
