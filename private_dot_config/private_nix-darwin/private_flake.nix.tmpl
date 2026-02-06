@@ -21,11 +21,12 @@
       username = "{{ .chezmoi.username }}";
       system = "aarch64-darwin";
       hostname = "macintosh";
+      machineId = "Q77QGJJXMR";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
         inherit system;
-        specialArgs = { inherit username hostname; };
+        specialArgs = { inherit username hostname machineId; };
         modules = [
           ./configuration.nix
           home-manager.darwinModules.home-manager
