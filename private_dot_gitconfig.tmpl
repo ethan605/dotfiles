@@ -27,8 +27,6 @@
   textconv = gpg --no-tty --decrypt --quiet
 [blame "gpg"]
   textconv = gpg --no-tty --decrypt --quiet
-[url "git@github.com:"]
-  insteadOf = https://github.com/
 [color]
   ui = true
 [color "diff-highlight"]
@@ -62,6 +60,8 @@
   clean = git-lfs clean -- %f
 [init]
   defaultBranch = main
+# [url "git@github.com:"]
+#   insteadOf = https://github.com/
 
 {{- if eq .chezmoi.os "darwin" }}
 
