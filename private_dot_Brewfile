@@ -84,8 +84,6 @@ brew "zsh"
 brew "amar1729/formulae/browserpass"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
-# Pass extension to avoid printing the password to the console
-brew "simplydanny/pass-extensions/pass-tail"
 # Pass extension that provides an easy flow for updating passwords
 brew "simplydanny/pass-extensions/pass-update"
 # AeroSpace is an i3-like tiling window manager for macOS
