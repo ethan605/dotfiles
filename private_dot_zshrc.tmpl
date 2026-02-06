@@ -281,51 +281,51 @@ function __load-fzf-tab() {
 #]]]
 
 # [[[ Utils
-function oc() {
-  # For postgresql MCP
-  export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
-
-  # For LSP servers
-  export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-  export OPENCODE_DISABLE_LSP_DOWNLOAD=true
-  export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
-
-  # For Gemini
-  GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
-  export GOOGLE_VERTEX_PROJECT
-  export GOOGLE_VERTEX_LOCATION=global
-  export VERTEX_LOCATION=global
-
-  opencode "$@"
-}
-
-function greek-letters() {
-  print -P "alpha: %F{red}α%f,beta: %F{red}β%f,gamma: %F{red}γ%f,delta: %F{red}δ%f,epsilon: %F{red}ε%f,theta: %F{red}θ%f,lambda: %F{red}λ%f,mu: %F{red}μ%f,pi: %F{red}π%f,sigma: %F{red}σ%f,phi: %F{red}φ%f,omega: %F{red}ω%f" \
-    | tr ',' '\n' \
-    | fzf --ansi \
-    | awk '{ print $2 }'
-}
-
-function mux() {
-  local workspace=${1:-$(greek-letters)}
-  tmux attach -t "$workspace" || tmux new -s "$workspace"
-}
-
-{{- if eq .chezmoi.os "linux" }}
-
-function nord_dns() {
-  device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
-  nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
-}
-
-function osc7_cwd() {
-  setopt localoptions extendedglob
-  input=( ${(s::)PWD} )
-  uri=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
-  print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
-}
-
-{{- end }}
+# function oc() {
+#   # For postgresql MCP
+#   export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
+#
+#   # For LSP servers
+#   export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+#   export OPENCODE_DISABLE_LSP_DOWNLOAD=true
+#   export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
+#
+#   # For Gemini
+#   GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
+#   export GOOGLE_VERTEX_PROJECT
+#   export GOOGLE_VERTEX_LOCATION=global
+#   export VERTEX_LOCATION=global
+#
+#   opencode "$@"
+# }
+#
+# function greek-letters() {
+#   print -P "alpha: %F{red}α%f,beta: %F{red}β%f,gamma: %F{red}γ%f,delta: %F{red}δ%f,epsilon: %F{red}ε%f,theta: %F{red}θ%f,lambda: %F{red}λ%f,mu: %F{red}μ%f,pi: %F{red}π%f,sigma: %F{red}σ%f,phi: %F{red}φ%f,omega: %F{red}ω%f" \
+#     | tr ',' '\n' \
+#     | fzf --ansi \
+#     | awk '{ print $2 }'
+# }
+#
+# function mux() {
+#   local workspace=${1:-$(greek-letters)}
+#   tmux attach -t "$workspace" || tmux new -s "$workspace"
+# }
+#
+# {{- if eq .chezmoi.os "linux" }}
+#
+# function nord_dns() {
+#   device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
+#   nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
+# }
+#
+# function osc7_cwd() {
+#   setopt localoptions extendedglob
+#   input=( ${(s::)PWD} )
+#   uri=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
+#   print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
+# }
+#
+# {{- end }}
 #]]]
 
 # [[[ Autoloads
