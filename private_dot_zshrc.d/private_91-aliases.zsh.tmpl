@@ -1,13 +1,24 @@
+# vim:filetype=zsh
 # Remap system commands
 alias nano=nvim
 alias rm='rm -i'
 alias vi=nvim
 alias vim=nvim
 
+{{- if eq .chezmoi.os "linux" }}
+
+alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
+alias load-time='time /usr/bin/zsh -ic exit'
+alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
+
+{{- else if eq .chezmoi.os "darwin" }}
+
 alias bupdate='brew update --verbose && brew upgrade --verbose && brew cleanup --prune=all && brew doctor'
 alias bbundle='brew bundle dump --describe --global --force'
 alias load-time='time /opt/homebrew/bin/zsh -ic exit'
 alias xdg-open='open'
+
+{{- end }}
 
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
 alias dcompose='docker compose --profile'
