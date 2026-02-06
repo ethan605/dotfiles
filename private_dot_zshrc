@@ -1,0 +1,22 @@
+# vim:filetype=zsh
+# zsh loading sequence:
+#   - /etc/zshenv     & ~/.zshenv
+#   - /etc/zprofile   & ~/.zprofile
+#   - /etc/zshrc      & ~/.zshrc      <- this file
+#   - /etc/zlogin     & ~/.zlogin
+#   - /etc/zlogout    & ~/.zlogout
+#
+# This file sources contents in ~/.zshrc.d/ sequentially in lexicographic order
+
+# Exit early if non-interactive (defensive guard)
+if [[ ! -o interactive ]]; then
+  return
+fi
+
+# (N) means null glob
+# shellcheck disable=SC1036,SC1058,SC1072,SC1073
+for conf in "$HOME/.zshrc.d/"*.zsh(N); do
+  source "$conf"
+done
+
+unset conf
