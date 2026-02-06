@@ -63,17 +63,8 @@ let
   ];
 
   gui = with pkgs; [
-    # aerospace
     alacritty
-    # appcleaner
-    # firefox
-    # flameshot
-    # karabiner-elements
-    # keybase
-    # sketchybar
-    # telegram-desktop
   ];
-
 in
 {
   home.stateVersion = "25.11";

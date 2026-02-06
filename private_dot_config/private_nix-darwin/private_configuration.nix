@@ -20,23 +20,25 @@
     };
 
     taps = [
-      # "nikitabobko/tap"
-      # "felixkratz/formulae"
+      "nikitabobko/tap"
+      "felixkratz/formulae"
+    ];
+
+    brews = [
+      "felixkratz/formulae/sketchybar"
     ];
 
     casks = [
-      # "alacritty"
       "appcleaner"
       "contexts"
-      # "felixkratz/formulae/sketchybar"
       "firefox"
       "flameshot"
       "ghostty"
       "homerow"
       "karabiner-elements"
       "keybase"
-      "logi-options-plus"
-      # "nikitabobko/tap/aerospace"
+      "logi-options+"
+      "nikitabobko/tap/aerospace"
       "nordvpn"
       "telegram-desktop"
       "vlc"
