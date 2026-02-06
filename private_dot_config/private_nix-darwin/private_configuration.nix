@@ -1,19 +1,13 @@
-{ pkgs, username, hostname, ... }:
+{ pkgs, username, hostname, machineId, ... }:
 
 {
   # Nix settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  # Set hostname
-  networking.hostName = hostname;
-
-  # Enable zsh (REQUIRED for nix-darwin to manage shell environment)
+  networking.hostName = "${hostname}-${machineId}";
   programs.zsh.enable = true;
-
-  # Fonts
-  fonts.packages = [
-  ];
+  fonts.packages = [ ];
 
   # Homebrew (managed declaratively by nix-darwin)
   # Only for packages NOT available in nixpkgs
@@ -37,32 +31,32 @@
     ];
   };
 
-  # macOS defaults
-  system.defaults = {
-    NSGlobalDomain = {
-      AppleShowAllExtensions = true;
-      InitialKeyRepeat = 15;
-      KeyRepeat = 2;
-    };
-    dock = {
-      autohide = true;
-      show-recents = false;
-    };
-    finder = {
-      AppleShowAllFiles = true;
-      ShowPathbar = true;
-    };
-  };
-
-  # Touch ID for sudo
-  security.pam.services.sudo_local.touchIdAuth = true;
-
-  # Define user
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
   };
 
-  system.primaryUser = "${username}";
-  system.stateVersion = 5;
+  system = {
+    stateVersion = 5;
+    primaryUser = username;
+
+    defaults = {
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
+      };
+      dock = {
+        autohide = true;
+        show-recents = false;
+      };
+      finder = {
+        AppleShowAllFiles = true;
+        ShowPathbar = true;
+      };
+    };
+  };
+
+  # Touch ID for sudo
+  security.pam.services.sudo_local.touchIdAuth = true;
 }
