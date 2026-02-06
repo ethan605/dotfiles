@@ -1,0 +1,22 @@
+# Rewrite $PATH
+PATH="/usr/local/bin:/usr/local/sbin:$(getconf PATH)"
+
+# Homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# Replace macOS utilities with GNU ones
+PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix diffutils)/bin:$PATH"
+PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix gnu-getopt)/bin:$PATH"
+PATH="$(brew --prefix gnu-indent)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix gnu-tar)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix llvm)/bin:$PATH"
+
+# Nix
+PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
+
+PATH="$HOME/.local/bin:$PATH"
+export PATH
