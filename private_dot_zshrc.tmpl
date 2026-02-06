@@ -347,51 +347,51 @@ __load-ssh
 
 # [[[ Aliases
 # Remap system commands
-alias nano=nvim
-alias rm='rm -i'
-alias vi=nvim
-alias vim=nvim
-
-{{- if eq .chezmoi.os "linux" }}
-
-alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
-alias load-time='time /usr/bin/zsh -ic exit'
-alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
-
-{{- else if eq .chezmoi.os "darwin" }}
-
-alias bupdate='brew update --verbose && brew upgrade --verbose && brew cleanup --prune=all && brew doctor'
-alias bbundle='brew bundle dump --describe --global --force'
-alias load-time='time /opt/homebrew/bin/zsh -ic exit'
-alias xdg-open='open'
-
-{{- end }}
-
-alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias dcompose='docker compose --profile'
-alias kargo='kubecolor argo rollouts'
-alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
-
-# Eza
-alias lk='ll --total-size --sort=size --reverse'
-alias lr='ls --git --tree --level=2'
-
-# Neovim
-alias v=nvim
-alias dbee='nvim +Dbee'
-alias repl='nvim +Repl'
-alias vsync='nvim --headless "+Lazy! sync" +MasonUpdate +qa'
-alias vrestore!='nvim --headless "+Lazy! restore" +qa'
-
-# Python
-alias pre-commit-fix='pre-commit run --color=always --all-files --hook-stage=pre-push'
-alias ptest='uv run pytest -n auto -W ignore::DeprecationWarning -W ignore::UserWarning --log-cli-level=INFO'
-alias itest='ptest -vvn0 --pdb --pdbcls=IPython.terminal.debugger:Pdb'
-
-# Shortcuts
-alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
-alias c=chezmoi
-alias f=vifm
-alias k=kubecolor
-alias w='watch --color --differences --errexit --exec'
+# alias nano=nvim
+# alias rm='rm -i'
+# alias vi=nvim
+# alias vim=nvim
+#
+# {{- if eq .chezmoi.os "linux" }}
+#
+# alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
+# alias load-time='time /usr/bin/zsh -ic exit'
+# alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
+#
+# {{- else if eq .chezmoi.os "darwin" }}
+#
+# alias bupdate='brew update --verbose && brew upgrade --verbose && brew cleanup --prune=all && brew doctor'
+# alias bbundle='brew bundle dump --describe --global --force'
+# alias load-time='time /opt/homebrew/bin/zsh -ic exit'
+# alias xdg-open='open'
+#
+# {{- end }}
+#
+# alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
+# alias dcompose='docker compose --profile'
+# alias kargo='kubecolor argo rollouts'
+# alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
+#
+# # Eza
+# alias lk='ll --total-size --sort=size --reverse'
+# alias lr='ls --git --tree --level=2'
+#
+# # Neovim
+# alias v=nvim
+# alias dbee='nvim +Dbee'
+# alias repl='nvim +Repl'
+# alias vsync='nvim --headless "+Lazy! sync" +MasonUpdate +qa'
+# alias vrestore!='nvim --headless "+Lazy! restore" +qa'
+#
+# # Python
+# alias pre-commit-fix='pre-commit run --color=always --all-files --hook-stage=pre-push'
+# alias ptest='uv run pytest -n auto -W ignore::DeprecationWarning -W ignore::UserWarning --log-cli-level=INFO'
+# alias itest='ptest -vvn0 --pdb --pdbcls=IPython.terminal.debugger:Pdb'
+#
+# # Shortcuts
+# alias a='axel --alternate --num-connections=8 --output $HOME/Downloads/'
+# alias c=chezmoi
+# alias f=vifm
+# alias k=kubecolor
+# alias w='watch --color --differences --errexit --exec'
 # ]]]
