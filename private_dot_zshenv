@@ -1,2 +1,9 @@
 # vim:filetype=zsh
-: ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
+# zsh loading sequence:
+#   - /etc/zshenv     & ~/.zshenv     <- this file
+#   - /etc/zprofile   & ~/.zprofile
+#   - /etc/zshrc      & ~/.zshrc
+#   - /etc/zlogin     & ~/.zlogin
+#   - /etc/zlogout    & ~/.zlogout
+#
+# This file is kept empty and managed to avoid accidental pollutions from installed tools

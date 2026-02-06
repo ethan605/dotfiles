@@ -1,2 +1,9 @@
 # vim:filetype=zsh
-source ${ZIM_HOME}/login_init.zsh -q &!
+# zsh loading sequence:
+#   - /etc/zshenv     & ~/.zshenv
+#   - /etc/zprofile   & ~/.zprofile
+#   - /etc/zshrc      & ~/.zshrc
+#   - /etc/zlogin     & ~/.zlogin     <- this file
+#   - /etc/zlogout    & ~/.zlogout
+#
+# This file is kept empty and managed to avoid accidental pollutions from installed tools
