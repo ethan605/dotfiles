@@ -10,9 +10,7 @@ let
     gnugrep
     gnused
     gnutar
-    less
-    man
-    man-db
+    mise
     neovim
     zsh
   ];
@@ -30,6 +28,14 @@ let
     yq
   ];
 
+  docs = with pkgs; [
+    bat
+    bat-extras.core
+    less
+    man
+    man-db
+  ];
+
   gpg = with pkgs; [
     gnupg # gpg and gpg-agent
     gpgme
@@ -41,15 +47,14 @@ let
     _1password-cli
     aria2
     axel
-    curlie
     delta
     direnv
+    dotenvx
     eza
     fd
     fzf
     httpie
     keychain
-    mise
     ncdu
     p7zip
     parallel
@@ -57,6 +62,7 @@ let
     ripgrep
     smug
     starship
+    tlrc
     tmux
     vifm
     watch
@@ -72,7 +78,7 @@ in
 {
   home.stateVersion = "25.11";
 
-  home.packages = base ++ devel ++ gpg ++ tools ++ gui;
+  home.packages = base ++ devel ++ docs ++ gpg ++ tools ++ gui;
 
   # Password store with extensions (properly wrapped)
   programs.password-store = {

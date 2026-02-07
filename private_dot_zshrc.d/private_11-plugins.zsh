@@ -3,9 +3,6 @@
 # Mise and mise-related
 eval "$(mise activate zsh)"
 
-# TODO: clean-up when all system packages are migrated away from mise
-export PATH="/etc/profiles/per-user/$USER/bin:$PATH"
-
 # Zimfw
 if [[ ! "${ZIM_HOME}/init.zsh" -nt "${ZDOTDIR:-$HOME}/.zimrc" ]]; then
   # Update static initialization script if it does not exist or it's outdated, before sourcing it
