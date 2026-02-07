@@ -18,6 +18,8 @@ let
   devel = with pkgs; [
     binaryen
     cppcheck
+    dotenvx
+    ffmpeg
     git
     git-lfs
     jless
@@ -49,7 +51,7 @@ let
     axel
     delta
     direnv
-    dotenvx
+    duf
     eza
     fd
     fzf
