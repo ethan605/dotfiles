@@ -3,12 +3,15 @@
 let
   base = with pkgs; [
     bash
+    chezmoi
     coreutils
     diffutils
     findutils
     gnugrep
     gnused
     gnutar
+    less
+    neovim
     zsh
   ];
 
@@ -20,7 +23,6 @@ let
     jless
     jq
     llvm
-    neovim
     openssh
     openssl
     yq
@@ -37,7 +39,6 @@ let
     _1password-cli
     aria2
     axel
-    chezmoi
     curlie
     delta
     direnv
@@ -46,7 +47,6 @@ let
     fzf
     httpie
     keychain
-    less
     mise
     ncdu
     p7zip
