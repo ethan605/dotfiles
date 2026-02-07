@@ -11,6 +11,8 @@ let
     gnused
     gnutar
     less
+    man
+    man-db
     neovim
     zsh
   ];
@@ -29,10 +31,10 @@ let
   ];
 
   gpg = with pkgs; [
-    gnupg # Provides gpg and gpg-agent
+    gnupg # gpg and gpg-agent
     gpgme
     libassuan
-    pinentry_mac # Stable symlink at ~/.nix-profile/bin/pinentry-mac
+    pinentry_mac
   ];
 
   tools = with pkgs; [
