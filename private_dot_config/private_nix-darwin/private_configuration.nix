@@ -92,7 +92,6 @@ let
 in
 {
   networking.hostName = "${hostname}-${machineId}";
-  programs.zsh.enable = true;
   fonts.packages = [ ];
 
   # Homebrew for GUI apps
@@ -154,13 +153,12 @@ in
     reattach = true;
   };
 
-  services = {
-    sketchybar.enable = true;
-  };
-
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
     shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
+  services.sketchybar.enable = true;
 }
