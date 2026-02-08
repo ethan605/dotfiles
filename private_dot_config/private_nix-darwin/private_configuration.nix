@@ -128,8 +128,6 @@ in
   };
 
   system = {
-    darwinRelease = "26.05";
-    nixpkgsRelease = "26.05";
     stateVersion = 5;
 
     primaryUser = username;
