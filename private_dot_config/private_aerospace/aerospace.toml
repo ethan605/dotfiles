@@ -6,7 +6,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 default-root-container-layout = 'tiles'
 
-# after-startup-command = ['exec-and-forget /run/current-system/sw/bin/sketchybar']
+after-startup-command = ['exec-and-forget /run/current-system/sw/bin/sketchybar --reload']
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',

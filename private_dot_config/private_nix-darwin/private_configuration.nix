@@ -85,7 +85,8 @@ let
   gui = with pkgs; [
     aerospace
     alacritty
-    sketchybar
+    flameshot
+    # karabiner-elements
   ];
 in
 {
@@ -102,26 +103,16 @@ in
       upgrade = true;
     };
 
-    taps = [
-      # "nikitabobko/tap"
-      # "felixkratz/formulae"
-    ];
-
-    brews = [
-      # "felixkratz/formulae/sketchybar"
-    ];
-
     casks = [
       "appcleaner"
       "contexts"
       "firefox"
-      "flameshot"
+      # "flameshot"
       "ghostty"
       "homerow"
       "karabiner-elements"
       "keybase"
       "logi-options+"
-      # "nikitabobko/tap/aerospace"
       "nordvpn"
       "telegram"
       "vlc"
@@ -165,6 +156,8 @@ in
     touchIdAuth = true;
     reattach = true;
   };
+
+  services.sketchybar.enable = true;
 
   users.users.${username} = {
     name = username;
