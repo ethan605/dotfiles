@@ -14,14 +14,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager = {
-      # url = "github:nix-community/home-manager";
-      url = "https://flakehub.com/f/nix-community/home-manager/0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # home-manager = {
+    #   # url = "github:nix-community/home-manager";
+    #   url = "https://flakehub.com/f/nix-community/home-manager/0";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, ... }:
+  # outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, home-manager, ... }:
+  outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, ... }:
     let
       username = "{{ .chezmoi.username }}";
       system = "aarch64-darwin";
@@ -33,9 +34,9 @@
         inherit system;
         specialArgs = { inherit username hostname machineId; };
         modules = [
-          inputs.determinate.darwinModules.default
+          determinate.darwinModules.default
           ./configuration.nix
-          home-manager.darwinModules.home-manager
+          # home-manager.darwinModules.home-manager
           {
             determinateNix.enable = true;
 
@@ -48,11 +49,11 @@
 
             nixpkgs.config.allowUnfree = true;
 
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${username} = import ./home.nix;
-            };
+            # home-manager = {
+            #   useGlobalPkgs = true;
+            #   useUserPackages = true;
+            #   users.${username} = import ./home.nix;
+            # };
           }
         ];
       };
