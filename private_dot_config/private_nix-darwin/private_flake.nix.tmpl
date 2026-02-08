@@ -37,11 +37,22 @@
           ./configuration.nix
           home-manager.darwinModules.home-manager
           {
-            nix.enable = false;
             determinateNix.enable = true;
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./home.nix;
+
+            nix = {
+              enable = false;
+              settings = {
+                experimental-features = [ "nix-command" "flakes" ];
+              };
+            };
+
+            nixpkgs.config.allowUnfree = true;
+
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${username} = import ./home.nix;
+            };
           }
         ];
       };
