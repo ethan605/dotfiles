@@ -1,0 +1,91 @@
+# vim:filetype=toml
+[general]
+live_config_reload = true
+working_directory = "None"
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.normal]
+black   = "0x282a36" # 0
+red     = "0xff5c57" # 1
+green   = "0x5af78e" # 2
+yellow  = "0xf3f99d" # 3
+blue    = "0x57c7ff" # 4
+magenta = "0xff6ac1" # 5
+cyan    = "0x9aedfe" # 6
+white   = "0xeff0eb" # 7
+
+[colors.bright]
+black   = "0x686868" # 8
+red     = "0xff5c57" # 9
+green   = "0x5af78e" # 10
+yellow  = "0xf3f99d" # 11
+blue    = "0x57c7ff" # 12
+magenta = "0xff6ac1" # 13
+cyan    = "0x9aedfe" # 14
+white   = "0xeff0eb" # 15
+
+[colors.primary]
+background = "0x282a36"
+foreground = "0xeff0eb"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[env]
+TERMINFO="/run/current-system/sw/share/terminfo"
+TERM = "alacritty"
+# TERM = "xterm-256color"
+
+[font]
+builtin_box_drawing = true
+size = 18.0
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = 0 }
+
+[font.normal]
+family = "OperatorMonoSSm Nerd Font"
+style = "Light"
+
+[font.italic]
+family = "OperatorMonoSSm Nerd Font"
+style = "Light Italic" 
+
+[font.bold]
+family = "OperatorMonoSSm Nerd Font"
+style = "Regular" 
+
+[font.bold_italic]
+family = "OperatorMonoSSm Nerd Font"
+style = "Italic" 
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "none"
+dynamic_padding = false
+dynamic_title = true
+option_as_alt = "OnlyLeft"
+startup_mode = "Maximized"
+dimensions = { columns = 0, lines = 0 }
+padding = { x = 0, y = 0 }
+
+# [terminal]
+# shell = { program = "/bin/bash", args = ["--login"] }
