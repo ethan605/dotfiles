@@ -43,6 +43,16 @@ let
     gpgme
     libassuan
     pinentry_mac
+
+    # UNIX Password Store
+    browserpass
+    (
+      pass.withExtensions (exts: [
+        exts.pass-audit
+        exts.pass-otp
+        exts.pass-update
+      ])
+    )
   ];
 
   tools = with pkgs; [
@@ -74,7 +84,7 @@ let
   ];
 
   gui = with pkgs; [
-    # alacritty
+    alacritty
   ];
 in
 {
