@@ -1,16 +1,88 @@
 { pkgs, username, hostname, machineId, ... }:
 
-{
-  # Nix settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
+let
+  base = with pkgs; [
+    bash
+    chezmoi
+    coreutils
+    diffutils
+    findutils
+    gnugrep
+    gnused
+    gnutar
+    mise
+    neovim
+    zsh
+  ];
 
+  devel = with pkgs; [
+    binaryen
+    cppcheck
+    dotenvx
+    ffmpeg
+    git
+    git-lfs
+    jless
+    jq
+    llvm
+    openssh
+    openssl
+    yq
+  ];
+
+  docs = with pkgs; [
+    bat
+    bat-extras.core
+    less
+    man
+    man-db
+  ];
+
+  gpg = with pkgs; [
+    gnupg # gpg and gpg-agent
+    gpgme
+    libassuan
+    pinentry_mac
+  ];
+
+  tools = with pkgs; [
+    _1password-cli
+    aria2
+    axel
+    delta
+    direnv
+    duf
+    eza
+    fd
+    fzf
+    httpie
+    keychain
+    ncdu
+    p7zip
+    parallel
+    qrencode
+    ripgrep
+    smug
+    starship
+    tlrc
+    tmux
+    vifm
+    watch
+    wget
+    zbar
+    zoxide
+  ];
+
+  gui = with pkgs; [
+    # alacritty
+  ];
+in
+{
   networking.hostName = "${hostname}-${machineId}";
   programs.zsh.enable = true;
   fonts.packages = [ ];
 
-  # Homebrew (managed declaratively by nix-darwin)
-  # Only for packages NOT available in nixpkgs
+  # Homebrew for GUI apps
   homebrew = {
     enable = true;
     onActivation = {
@@ -47,18 +119,19 @@
     ];
   };
 
-  environment.shells = [
-    pkgs.zsh
-  ];
+  environment = {
+    systemPackages = base ++ devel ++ docs ++ gpg ++ tools ++ gui;
 
-  users.users.${username} = {
-    name = username;
-    home = "/Users/${username}";
-    shell = pkgs.zsh;
+    shells = [
+      pkgs.zsh
+    ];
   };
 
   system = {
+    darwinRelease = "26.05";
+    nixpkgsRelease = "26.05";
     stateVersion = 5;
+
     primaryUser = username;
 
     defaults = {
@@ -82,5 +155,11 @@
   security.pam.services.sudo_local = {
     touchIdAuth = true;
     reattach = true;
+  };
+
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
+    shell = pkgs.zsh;
   };
 }
