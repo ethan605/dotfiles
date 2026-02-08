@@ -5,7 +5,8 @@ pinentry-program /usr/bin/pinentry-gnome3
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-pinentry-program /etc/profiles/per-user/{{ .chezmoi.username }}/bin/pinentry-mac
+# Managed by nix-darwin
+pinentry-program /run/current-system/sw/bin/pinentry-mac
 
 {{- end }}
 
