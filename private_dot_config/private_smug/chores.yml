@@ -36,9 +36,9 @@ windows:
       MISE_VEROBSE: 1
     layout: even-horizontal
     commands:
-      - bupdate;
-        bbundle;
-        zim
+      # - bupdate;
+      #   bbundle;
+      - zim
     panes:
       - commands:
         - mise plugins update &&
