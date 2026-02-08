@@ -85,8 +85,9 @@ let
   gui = with pkgs; [
     aerospace
     alacritty
+    appcleaner
     flameshot
-    # karabiner-elements
+    ghostty-bin
   ];
 in
 {
@@ -104,14 +105,10 @@ in
     };
 
     casks = [
-      "appcleaner"
       "contexts"
       "firefox"
-      # "flameshot"
-      "ghostty"
       "homerow"
       "karabiner-elements"
-      "keybase"
       "logi-options+"
       "nordvpn"
       "telegram"
