@@ -18,7 +18,6 @@ let
   devel = with pkgs; [
     binaryen
     cppcheck
-    dotenvx
     ffmpeg
     git
     git-lfs
@@ -84,7 +83,9 @@ let
   ];
 
   gui = with pkgs; [
+    aerospace
     alacritty
+    sketchybar
   ];
 in
 {
@@ -102,12 +103,12 @@ in
     };
 
     taps = [
-      "nikitabobko/tap"
-      "felixkratz/formulae"
+      # "nikitabobko/tap"
+      # "felixkratz/formulae"
     ];
 
     brews = [
-      "felixkratz/formulae/sketchybar"
+      # "felixkratz/formulae/sketchybar"
     ];
 
     casks = [
@@ -120,7 +121,7 @@ in
       "karabiner-elements"
       "keybase"
       "logi-options+"
-      "nikitabobko/tap/aerospace"
+      # "nikitabobko/tap/aerospace"
       "nordvpn"
       "telegram"
       "vlc"
