@@ -154,7 +154,9 @@ in
     reattach = true;
   };
 
-  services.sketchybar.enable = true;
+  services = {
+    sketchybar.enable = true;
+  };
 
   users.users.${username} = {
     name = username;
