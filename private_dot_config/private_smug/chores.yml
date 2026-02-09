@@ -27,19 +27,19 @@ windows:
         pnpm install
     panes:
       - commands:
-        - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
-          nvim --headless "+Lazy! sync" +MasonUpdate +qa
+          - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
+            nvim --headless "+Lazy! sync" +MasonUpdate +qa
 
   - name: system
-    root: ~/.config/nvim
+    root: ~/.config
     env:
       MISE_VEROBSE: 1
     layout: even-horizontal
     commands:
-      # - bupdate;
-      #   bbundle;
-      - zim
+      - nix flake update --flake ./nix-darwin &&
+        sudo darwin-rebuild switch --flake ./nix-darwin
     panes:
       - commands:
-        - mise plugins update &&
-          mise upgrade --bump --interactive
+          - zim &&
+            mise plugins update &&
+            mise upgrade --bump --interactive
