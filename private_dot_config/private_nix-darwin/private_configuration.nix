@@ -16,6 +16,7 @@ let
   ];
 
   devel = with pkgs; [
+    argo-rollouts
     binaryen
     cppcheck
     ffmpeg
@@ -23,9 +24,14 @@ let
     git-lfs
     jless
     jq
+    kubecolor
+    kubectl
+    kubectx
     llvm
     openssh
     openssl
+    postgresql_15
+    uv
     yq
   ];
 
