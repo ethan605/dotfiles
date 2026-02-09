@@ -27,7 +27,7 @@ let
     kubecolor
     kubectl
     kubectx
-    # llvm
+    llvm
     openssh
     openssl
     orbstack
