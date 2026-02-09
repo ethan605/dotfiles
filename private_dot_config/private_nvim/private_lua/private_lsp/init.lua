@@ -11,6 +11,7 @@ vim.lsp.config.jsonls = require("lsp.jsonls")
 vim.lsp.config.ltex_plus = require("lsp.ltex_plus")
 vim.lsp.config.luals = require("lsp.luals")
 vim.lsp.config.nginx = require("lsp.nginx")
+vim.lsp.config.nil_ls = require("lsp.nil_ls")
 vim.lsp.config.pyright = require("lsp.pyright")
 vim.lsp.config.pytest_lsp = require("lsp.pytest_lsp")
 vim.lsp.config.ruff = require("lsp.ruff")
@@ -40,6 +41,7 @@ vim.lsp.enable({
   "ltex_plus",
   "luals",
   "nginx",
+  "nil_ls",
   "pyright",
   "pytest_lsp",
   "ruff",
