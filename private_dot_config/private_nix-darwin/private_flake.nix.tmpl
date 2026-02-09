@@ -24,15 +24,14 @@
   # outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, home-manager, ... }:
   outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, ... }:
     let
-      username = "{{ .chezmoi.username }}";
       system = "aarch64-darwin";
-      hostname = "macintosh";
-      machineId = "Q77QGJJXMR";
+      username = "{{ .chezmoi.username }}";
+      hostname = "{{ .chezmoi.hostname }}";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
         inherit system;
-        specialArgs = { inherit username hostname machineId; };
+        specialArgs = { inherit username hostname; };
         modules = [
           determinate.darwinModules.default
           ./configuration.nix
