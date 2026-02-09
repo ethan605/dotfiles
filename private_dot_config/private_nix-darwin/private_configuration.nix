@@ -125,9 +125,14 @@ in
     ];
   };
 
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
+    shell = pkgs.zsh;
+  };
+
   system = {
     stateVersion = 5;
-
     primaryUser = username;
 
     defaults = {
@@ -145,18 +150,17 @@ in
         ShowPathbar = true;
       };
     };
+
+    activationScripts.postActivation.text = ''
+      chsh -s /run/current-system/sw/bin/zsh ${username};
+      ln -sf ${pkgs.browserpass}/lib/mozilla/native-messaging-hosts/com.github.browserpass.native.json '/Users/${username}/Library/Application Support/Mozilla/NativeMessagingHosts/com.github.browserpass.native.json';
+    '';
   };
 
   # Touch ID for sudo
   security.pam.services.sudo_local = {
     touchIdAuth = true;
     reattach = true;
-  };
-
-  users.users.${username} = {
-    name = username;
-    home = "/Users/${username}";
-    shell = pkgs.zsh;
   };
 
   programs.zsh.enable = true;
