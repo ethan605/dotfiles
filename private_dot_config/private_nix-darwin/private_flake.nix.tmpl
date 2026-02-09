@@ -26,7 +26,7 @@
     let
       system = "aarch64-darwin";
       username = "{{ .chezmoi.username }}";
-      hostname = "macintosh-{{ .chezmoi.machine_id }}";
+      hostname = "macintosh-{{ .machine_id }}";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
