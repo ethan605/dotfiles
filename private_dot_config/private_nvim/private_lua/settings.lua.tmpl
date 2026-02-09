@@ -90,5 +90,5 @@ vim.opt.shortmess:append("c")           -- Don't give 'ins-completion-menu' mess
 {{- if eq .chezmoi.os "linux" }}
 vim.opt.runtimepath:append("/usr/local/opt/fzf")
 {{- else }}
-vim.opt.runtimepath:append("/opt/homebrew/bin/fzf")
+vim.opt.runtimepath:append("/run/current-system/sw/bin/fzf")
 {{- end }}
