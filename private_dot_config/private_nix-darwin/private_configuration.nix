@@ -1,4 +1,4 @@
-{ pkgs, username, hostname, machineId, ... }:
+{ pkgs, username, hostname, ... }:
 
 let
   base = with pkgs; [
@@ -91,7 +91,7 @@ let
   ];
 in
 {
-  networking.hostName = "${hostname}-${machineId}";
+  networking.hostName = hostname;
   fonts.packages = [ ];
 
   # Homebrew for GUI apps
