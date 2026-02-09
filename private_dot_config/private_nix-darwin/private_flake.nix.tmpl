@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
     # home-manager = {
     #   url = "github:nix-community/home-manager";
     #   # url = "https://flakehub.com/f/nix-community/home-manager/0";
@@ -21,8 +23,8 @@
     # };
   };
 
-  # outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, home-manager, ... }:
-  outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, ... }:
+  # outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, nix-homebrew, home-manager, ... }:
+  outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, nix-homebrew, ... }:
     let
       system = "aarch64-darwin";
       username = "{{ .chezmoi.username }}";
@@ -34,19 +36,18 @@
         specialArgs = { inherit username hostname; };
         modules = [
           determinate.darwinModules.default
+          nix-homebrew.darwinModules.nix-homebrew
           ./configuration.nix
           # home-manager.darwinModules.home-manager
           {
             determinateNix.enable = true;
-
-            nix = {
-              enable = false;
-              settings = {
-                experimental-features = [ "nix-command" "flakes" ];
-              };
-            };
-
+            nix.enable = true;
             nixpkgs.config.allowUnfree = true;
+
+            nix-homebrew = {
+              enable = true;
+              user = username;
+            };
 
             # home-manager = {
             #   useGlobalPkgs = true;
