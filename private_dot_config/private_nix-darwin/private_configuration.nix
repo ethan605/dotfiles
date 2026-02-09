@@ -30,6 +30,7 @@ let
     llvm
     openssh
     openssl
+    orbstack
     postgresql_15
     uv
     yq
