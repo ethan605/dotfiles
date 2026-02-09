@@ -4,9 +4,11 @@
   home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
-    alacritty
+    browserpass
   ];
 
-  # Let home-manager manage itself
-  programs.home-manager.enable = true;
+  programs = {
+    browserpass.enable = true;
+    home-manager.enable = true;
+  };
 }

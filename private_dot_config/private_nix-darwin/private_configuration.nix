@@ -104,9 +104,10 @@ in
   # Homebrew for GUI apps
   homebrew = {
     enable = true;
+
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall"; # Use "zap" after first successful run
+      cleanup = "zap";
       upgrade = true;
     };
 
