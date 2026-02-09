@@ -1,4 +1,7 @@
+{{- $hostname := promptString "hostname" -}}
 {{- $work_email := promptString "work_email" -}}
+
+hostname = "{{ $hostname }}"
 encryption = "gpg"
 [gpg]
   recipient = "1BA6C5C897381F1628E1E0AF57F2FDD038EB1C58"
