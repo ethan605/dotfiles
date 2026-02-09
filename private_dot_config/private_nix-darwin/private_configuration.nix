@@ -111,6 +111,10 @@ in
       upgrade = true;
     };
 
+    brews = [
+      "libmagic" # for python-magic
+    ];
+
     casks = [
       "contexts"
       "firefox"
