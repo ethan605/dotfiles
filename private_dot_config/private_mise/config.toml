@@ -13,6 +13,8 @@ python = "3.12.12"
 ruby = "4.0.1"
 rust = "1.93.0"
 terraform = "1.14.4"
+
+# Then tools
 awscli = { version = "2.33.16", symlink_bins = "true" }
 clickhouse = "25.12.5.44-stable"
 cmake = "4.2.3"
