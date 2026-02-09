@@ -23,8 +23,8 @@
     # };
   };
 
-  # outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, nix-homebrew, home-manager, ... }:
-  outputs = inputs@{ self, determinate, nixpkgs, nix-darwin, nix-homebrew, ... }:
+  # outputs = { determinate, nix-darwin, nix-homebrew, home-manager, ... }:
+  outputs = { determinate, nix-darwin, nix-homebrew, ... }:
     let
       system = "aarch64-darwin";
       username = "{{ .chezmoi.username }}";
