@@ -1,5 +1,6 @@
 {
   "bash-language-server": "5.6.0",
+  "clangd": "21.1.8",
   "cpplint": "2.0.2",
   "docker-compose-language-service": "0.4.0",
   "dockerfile-language-server": "0.15.0",
