@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "/usr/bin/clangd", "--clang-tidy" },
+  cmd = { "clangd", "--clang-tidy" },
   filetypes = {
     "c",
     "cpp",
