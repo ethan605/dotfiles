@@ -65,6 +65,7 @@ let
     _1password-cli
     aria2
     axel
+    bottom
     delta
     direnv
     duf
