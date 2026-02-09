@@ -88,4 +88,4 @@ dimensions = { columns = 0, lines = 0 }
 padding = { x = 0, y = 0 }
 
 # [terminal]
-# shell = { program = "/bin/bash", args = ["--login"] }
+# shell = { program = "/bin/zsh", args = ["--login"] }
