@@ -1,7 +1,6 @@
-{{- $machineId := promptString "machineId" -}}
+{{- $machine_id := promptString "machine_id" -}}
 {{- $work_email := promptString "work_email" -}}
 
-machineId = "{{ $machineId }}"
 encryption = "gpg"
 [gpg]
   recipient = "1BA6C5C897381F1628E1E0AF57F2FDD038EB1C58"
@@ -11,5 +10,6 @@ encryption = "gpg"
 [git]
   autoCommit = true
   autoPush = true
-[data.work]
-  email = "{{ $work_email }}"
+[data]
+  machine_id = "{{ $machine_id }}"
+  work_email = "{{ $work_email }}"
