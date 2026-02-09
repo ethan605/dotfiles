@@ -46,7 +46,7 @@ let
 
   gpg = with pkgs; [
     gnupg # gpg and gpg-agent
-    gpgme
+    gpgme.dev
     libassuan
     pinentry_mac
 
