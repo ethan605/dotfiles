@@ -1,8 +1,8 @@
 # vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=<<<,>>>
 LICENSE
 README.md
+macos-scripts
 misc
-mac-install
 
 # <<< Obsolete configs - keep for future reference only
 
