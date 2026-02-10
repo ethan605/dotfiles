@@ -46,6 +46,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${username} = import ./home.nix;
+              backupFileExtension = "bak.home-manager";
             };
           }
         ];
