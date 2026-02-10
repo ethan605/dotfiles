@@ -1,5 +1,8 @@
 { pkgs, lib, ... }:
 
+let
+  firefox-personal = "personal";
+in
 {
   programs = {
     home-manager.enable = true;
@@ -11,7 +14,7 @@
         browserpass
       ];
 
-      profiles.personal = {
+      profiles.${firefox-personal} = {
         id = 0;
         name = "Personal";
         search = {
@@ -53,7 +56,7 @@
     firefox-user-chrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       run ln -sf \
         "$HOME/personal/minimal-functional-fox" \
-        "$HOME/Library/Application Support/Firefox/Profiles/personal/chrome";
+        "$HOME/Library/Application Support/Firefox/Profiles/${firefox-personal}/chrome";
     '';
   };
 
