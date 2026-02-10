@@ -27,7 +27,6 @@ let
     kubecolor
     kubectl
     kubectx
-    # llvm
     openssh
     openssl
     orbstack
@@ -50,9 +49,8 @@ let
     libassuan
     pinentry_mac
 
-    # UNIX Password Store
-    browserpass
     (
+      # UNIX Password Store
       pass.withExtensions (exts: [
         exts.pass-audit
         exts.pass-otp
@@ -118,7 +116,7 @@ in
 
     casks = [
       "contexts"
-      "firefox"
+      # "firefox"
       "homerow"
       "karabiner-elements"
       "logi-options+"
@@ -166,7 +164,6 @@ in
 
     activationScripts.postActivation.text = ''
       chsh -s /run/current-system/sw/bin/zsh ${username};
-      ln -sf ${pkgs.browserpass}/lib/mozilla/native-messaging-hosts/com.github.browserpass.native.json '/Users/${username}/Library/Application Support/Mozilla/NativeMessagingHosts/com.github.browserpass.native.json';
     '';
   };
 

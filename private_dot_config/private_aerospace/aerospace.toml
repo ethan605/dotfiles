@@ -85,6 +85,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'layout floating'
 
 [[on-window-detected]]
+  if.app-id = 'net.freemacsoft.AppCleaner'
+  run = 'layout floating'
+
+[[on-window-detected]]
   if.app-id = 'com.google.Chrome'
   if.window-title-regex-substring = 'DevTools'
   run = 'layout floating'

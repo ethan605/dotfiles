@@ -10,5 +10,9 @@
   programs = {
     browserpass.enable = true;
     home-manager.enable = true;
+
+    firefox = {
+      enable = true;
+    };
   };
 }
