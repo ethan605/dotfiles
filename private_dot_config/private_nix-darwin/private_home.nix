@@ -15,7 +15,6 @@
 
       profiles.personal = {
         settings = {
-          "browser.startup.homepage" = "about:blank";
           "browser.search.region" = "GB";
           "browser.search.isUS" = false;
           "distribution.searchplugins.defaultLocale" = "en-GB";
