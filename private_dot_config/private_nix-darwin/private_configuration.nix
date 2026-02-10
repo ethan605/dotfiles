@@ -98,7 +98,10 @@ let
 in
 {
   networking.hostName = hostname;
-  fonts.packages = [ ];
+
+  fonts.packages = with pkgs; [
+    source-sans
+  ];
 
   # Homebrew for GUI apps
   homebrew = {
@@ -116,11 +119,9 @@ in
 
     casks = [
       "contexts"
-      # "firefox"
       "homerow"
       "karabiner-elements"
       "logi-options+"
-      "nordvpn"
       "telegram"
       "vlc"
       "vox"

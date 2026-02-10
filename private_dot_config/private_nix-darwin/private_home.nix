@@ -35,6 +35,13 @@
           "browser.startup.homepage_override.extensionControlled" = true;
           "browser.toolbars.bookmarks.visibility" = "never";
 
+          "font.default.x-western" = "sans-serif";
+          "font.name.monospace.x-western" = "OperatorMonoSSm Nerd Font";
+          "font.name.sans-serif.x-western" = "Source Sans 3";
+          "font.name.serif.x-western" = "Source Sans 3";
+          "font.size.monospace.x-western" = 14;
+          "font.size.variable.x-western" = 18;
+
           "distribution.searchplugins.defaultLocale" = "en-GB";
           "general.useragent.locale" = "en-GB";
           "geo.enabled" = false;
