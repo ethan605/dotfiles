@@ -95,12 +95,15 @@ let
     flameshot
     ghostty-bin
   ];
+
+  # operator-mono-ssm-nerd = pkgs.callPackage ./operator-mono-ssm-nerd.nix { inherit pkgs username; };
 in
 {
   networking.hostName = hostname;
 
-  fonts.packages = with pkgs; [
-    source-sans
+  fonts.packages = [
+    pkgs.source-sans
+    # operator-mono-ssm-nerd
   ];
 
   # Homebrew for GUI apps
