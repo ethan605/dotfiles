@@ -1,8 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  home.stateVersion = "25.11";
-
   programs = {
     home-manager.enable = true;
 
@@ -50,4 +48,14 @@
       };
     };
   };
+
+  home.activation = {
+    firefox-user-chrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      run ln -sf \
+        "$HOME/personal/minimal-functional-fox" \
+        "$HOME/Library/Application Support/Firefox/Profiles/personal/chrome";
+    '';
+  };
+
+  home.stateVersion = "25.11";
 }
