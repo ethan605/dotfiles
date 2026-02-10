@@ -44,7 +44,7 @@
                                     "key_code": "f",
                                     "modifiers": { "mandatory": ["right_command", "right_shift"] }
                                 },
-                                "to": [{ "shell_command": "open -b org.mozilla.firefox" }],
+                                "to": [{ "shell_command": "open -b org.nixos.firefox" }],
                                 "type": "basic"
                             },
                             {

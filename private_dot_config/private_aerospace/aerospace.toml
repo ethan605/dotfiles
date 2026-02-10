@@ -69,15 +69,15 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   l = 'resize smart +50'
 
 [workspace-to-monitor-force-assignment]
-  1 = ['DELL S2722DZ', 'secondary', '1', 'built-in']
+  1 = ['DELL S2722DZ', 'secondary', 1, 'built-in']
   2 = 'built-in'
   3 = 'built-in'
   4 = 'built-in'
-  5 = ['DELL S2722DZ', 'secondary', '1', 'built-in']
-  6 = ['DELL P2421DC', '3', 'built-in']
-  7 = ['DELL P2421DC', '3', 'built-in']
-  8 = ['DELL P2421DC', '3', 'built-in']
-  9 = ['DELL P2421DC', '3', 'built-in']
+  5 = ['DELL S2722DZ', 'secondary', 1, 'built-in']
+  6 = ['DELL P2421DC', 3, 'built-in']
+  7 = ['DELL P2421DC', 3, 'built-in']
+  8 = ['DELL P2421DC', 3, 'built-in']
+  9 = ['DELL P2421DC', 3, 'built-in']
 
 # Windows that always float. These conditions need to preceed others
 [[on-window-detected]]
@@ -99,7 +99,8 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-  if.app-id = 'org.mozilla.firefox'
+  # if.app-id = 'org.mozilla.firefox'
+  if.app-id = 'org.nixos.firefox' # nix-managed Firefox
   run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
