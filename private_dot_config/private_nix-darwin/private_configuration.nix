@@ -153,12 +153,38 @@ in
         KeyRepeat = 2;
       };
       dock = {
+        persistent-apps = [
+          "/Applications/Nix Apps/Alacritty.app"
+          { spacer = { small = true; }; }
+          "/Applications/Google Chrome.app"
+          "/Users/${username}/Applications/Home Manager Apps/Firefox.app"
+          { spacer = { small = true; }; }
+          "/Applications/Slack.app"
+          "/Applications/Notion.app"
+          "/Applications/Linear.app"
+          { spacer = { small = true; }; }
+          "/Applications/Telegram.app"
+          "/Applications/Whatsapp.app"
+        ];
         autohide = true;
+        autohide-delay = 0.01;
+        autohide-time-modifier = 0.01;
+        dashboard-in-overlay = false;
+        magnification = false;
+        mineffect = "scale";
         show-recents = false;
       };
       finder = {
         AppleShowAllFiles = true;
         ShowPathbar = true;
+      };
+      trackpad = {
+        Clicking = true;
+        DragLock = true;
+        Dragging = true;
+        TrackpadRightClick = true;
+        TrackpadThreeFingerDrag = true;
+        TrackpadThreeFingerTapGesture = 0;
       };
     };
 
