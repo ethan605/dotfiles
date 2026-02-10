@@ -4,41 +4,34 @@
 
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
-      # url = "https://flakehub.com/f/nix-darwin/nix-darwin/0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   # url = "https://flakehub.com/f/nix-community/home-manager/0";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  # outputs = { determinate, nix-darwin, nix-homebrew, home-manager, ... }:
-  outputs = { determinate, nix-darwin, nix-homebrew, ... }:
+  outputs = { determinate, nix-darwin, nix-homebrew, home-manager, ... }:
     let
-      system = "aarch64-darwin";
       username = "{{ .chezmoi.username }}";
       hostname = "macintosh-{{ .machine_id }}";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        inherit system;
         specialArgs = { inherit username hostname; };
+        system = "aarch64-darwin";
         modules = [
           determinate.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
+          home-manager.darwinModules.home-manager
           ./configuration.nix
-          # home-manager.darwinModules.home-manager
           {
             determinateNix.enable = true;
             nix.enable = true;
@@ -49,11 +42,11 @@
               user = username;
             };
 
-            # home-manager = {
-            #   useGlobalPkgs = true;
-            #   useUserPackages = true;
-            #   users.${username} = import ./home.nix;
-            # };
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${username} = import ./home.nix;
+            };
           }
         ];
       };
