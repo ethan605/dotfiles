@@ -14,15 +14,31 @@
       ];
 
       profiles.personal = {
+        id = 0;
+        name = "Personal";
+        search = {
+          force = true;
+          default = "google";
+          privateDefault = "google";
+        };
         settings = {
-          "browser.startup.homepage" = "about:blank";
+          "browser.bookmarks.addedImportButton" = false;
+          "browser.bookmarks.showMobileBookmarks" = false;
           "browser.newtab.extensionControlled" = true;
-          "browser.startup.homepage_override.extensionControlled" = true;
-          "browser.search.region" = "GB";
+          "browser.search.countryCode" = "GB";
+          "browser.search.geoSpecificDefaults" = false;
+          "browser.search.geoip.url" = "";
           "browser.search.isUS" = false;
+          "browser.search.region" = "GB";
+          "browser.search.suggest.enabled" = false;
+          "browser.startup.homepage" = "about:blank";
+          "browser.startup.homepage_override.extensionControlled" = true;
+          "browser.toolbars.bookmarks.visibility" = "never";
+
           "distribution.searchplugins.defaultLocale" = "en-GB";
           "general.useragent.locale" = "en-GB";
-          "browser.bookmarks.showMobileBookmarks" = true;
+          "geo.enabled" = false;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
       };
     };
