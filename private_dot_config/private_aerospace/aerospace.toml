@@ -79,13 +79,18 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   8 = ['DELL P2421DC', 3, 'built-in']
   9 = ['DELL P2421DC', 3, 'built-in']
 
-# Windows that always float. These conditions need to preceed others
+### Windows that always float. These conditions need to preceed others ###
+
 [[on-window-detected]]
   if.app-id = 'com.apple.finder'
   run = 'layout floating'
 
 [[on-window-detected]]
   if.app-id = 'com.apple.FontBook'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.1password.1password'
   run = 'layout floating'
 
 [[on-window-detected]]
@@ -97,7 +102,8 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   if.window-title-regex-substring = 'DevTools'
   run = 'layout floating'
 
-# Windows that have a dedicated workspace
+### Windows that have a dedicated workspace ###
+
 [[on-window-detected]]
   if.app-id = 'org.alacritty'
   run = 'move-node-to-workspace 1'
@@ -107,7 +113,7 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-  # if.app-id = 'org.mozilla.firefox'
+  # if.app-id = 'org.mozilla.firefox' # the original Firefox
   if.app-id = 'org.nixos.firefox' # nix-managed Firefox
   run = 'move-node-to-workspace 3'
 
