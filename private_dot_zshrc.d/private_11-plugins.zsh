@@ -1,8 +1,5 @@
 # vim:filetype=zsh
 
-# Mise and mise-related
-eval "$(mise activate zsh)"
-
 # Zimfw
 if [[ ! "${ZIM_HOME}/init.zsh" -nt "${ZDOTDIR:-$HOME}/.zimrc" ]]; then
   # Update static initialization script if it does not exist or it's outdated, before sourcing it
@@ -12,6 +9,9 @@ fi
 
 # shellcheck disable=SC1091
 source "${ZIM_HOME}/init.zsh"
+
+# Mise and mise-related
+eval "$(mise activate zsh)"
 
 # shellcheck disable=SC1091
 source "$(mise where gcloud)/completion.zsh.inc"
