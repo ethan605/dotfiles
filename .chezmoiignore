@@ -1,7 +1,6 @@
 # vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=<<<,>>>
 LICENSE
 README.md
-macos-scripts
 misc
 
 # <<< Obsolete configs - keep for future reference only
@@ -10,6 +9,7 @@ misc
 .config/Autoraise
 .config/harper-ls
 .config/kitty
+.config/nix-darwin/animations.sh
 .local/bin/ibus-engines
 .zshrc.d/00-path.zsh
 
@@ -83,6 +83,8 @@ misc
 
 .Brewfile
 .config/karabiner
+.config/nix-darwin
+.local/bin/get-serial-number
 Library
 
 {{ end }}
