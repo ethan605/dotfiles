@@ -30,9 +30,12 @@ let
     openssh
     openssl
     orbstack
-    postgresql_15
     uv
     yq
+
+    # PostgreSQL and utils
+    postgresql_15
+    postgresql_15.pg_config
   ];
 
   docs = with pkgs; [
