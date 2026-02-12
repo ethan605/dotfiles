@@ -38,8 +38,10 @@ in
 
           "font.default.x-western" = "sans-serif";
           "font.name.monospace.x-western" = "OperatorMonoSSm Nerd Font";
-          "font.name.sans-serif.x-western" = "Source Sans 3";
-          "font.name.serif.x-western" = "Source Sans 3";
+          # "font.name.sans-serif.x-western" = "Source Sans 3";
+          # "font.name.serif.x-western" = "Source Sans 3";
+          "font.name.sans-serif.x-western" = "SamsungSans Nerd Font";
+          "font.name.serif.x-western" = "SamsungSans Nerd Font";
           "font.size.monospace.x-western" = 14;
           "font.size.variable.x-western" = 18;
 

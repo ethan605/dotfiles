@@ -96,14 +96,14 @@ let
     ghostty-bin
   ];
 
-  # operator-mono-ssm-nerd = pkgs.callPackage ./operator-mono-ssm-nerd.nix { inherit pkgs username; };
+  self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
 in
 {
   networking.hostName = hostname;
 
   fonts.packages = [
     pkgs.source-sans
-    # operator-mono-ssm-nerd
+    self-host-fonts
   ];
 
   # Homebrew for GUI apps
@@ -184,7 +184,7 @@ in
       };
       trackpad = {
         Clicking = true;
-        DragLock = true;
+        DragLock = false;
         Dragging = true;
         TrackpadRightClick = true;
         TrackpadThreeFingerDrag = true;
