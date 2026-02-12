@@ -13,10 +13,10 @@ node = "22.17.1"
 python = "3.12.12"
 ruby = "4.0.1"
 rust = "1.93.0"
-terraform = "1.14.4"
+terraform = "1.14.5"
 
 # Then tools
-awscli = { version = "2.33.18", symlink_bins = "true" }
+awscli = { version = "2.33.20", symlink_bins = "true" }
 clickhouse = "25.12.5.44-stable"
 cmake = "4.2.3"
 dotenvx = "1.52.0"
@@ -27,7 +27,7 @@ helm = "4.1.1"
 liquibase = "4.33.0"
 make = "4.4.1"
 ninja = "1.13.2"
-opencode = "1.1.56"
+opencode = "1.1.60"
 pre-commit = "4.5.1"
 tree-sitter = "0.26.5"
 
