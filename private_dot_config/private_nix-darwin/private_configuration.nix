@@ -155,12 +155,16 @@ in
 
     defaults = {
       NSGlobalDomain = {
+        AppleFontSmoothing = 2;
         AppleShowAllExtensions = true;
         InitialKeyRepeat = 15;
         KeyRepeat = 2;
         NSAutomaticWindowAnimationsEnabled = false;
         NSScrollAnimationEnabled = false;
         NSWindowResizeTime = 0.0;
+        _HIHideMenuBar = true;
+
+        "com.apple.swipescrolldirection" = true; # natural scroll
       };
       dock = {
         persistent-apps = [
@@ -184,12 +188,16 @@ in
         expose-animation-duration = 0.0;
         magnification = false;
         mineffect = "scale";
+        minimize-to-application = true;
+        mouse-over-hilite-stack = true;
+        showhidden = true;
         show-recents = false;
       };
       finder = {
         AppleShowAllFiles = true;
         ShowPathbar = true;
       };
+      spaces.spans-displays = true;
       trackpad = {
         Clicking = true;
         DragLock = false;
