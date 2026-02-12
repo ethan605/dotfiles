@@ -78,7 +78,11 @@ vim.api.nvim_set_hl(0, "UfoFoldedBg", { bg = snazzy_colors.dark_gray })
 vim.api.nvim_set_hl(0, "UfoFoldedEllipsis", { bold = true, fg = snazzy_colors.yellow })
 
 -- For diffview.nvim
+vim.api.nvim_set_hl(0, "DiffviewStatusCopied", { link = "DiffAdd" })
 vim.api.nvim_set_hl(0, "DiffviewStatusModified", { link = "DiffChange" })
+vim.api.nvim_set_hl(0, "DiffviewStatusRenamed", { link = "DiffChange" })
+vim.api.nvim_set_hl(0, "DiffviewStatusTypeChange", { link = "DiffChange" })
+vim.api.nvim_set_hl(0, "DiffviewStatusUnmerged", { link = "DiffDelete" })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
