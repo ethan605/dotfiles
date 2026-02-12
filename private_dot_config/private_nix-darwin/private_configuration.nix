@@ -166,6 +166,7 @@ in
 
         "com.apple.swipescrolldirection" = true; # natural scroll
       };
+      controlcenter.BatteryShowPercentage = true;
       dock = {
         persistent-apps = [
           "/Applications/Nix Apps/Alacritty.app"
@@ -196,6 +197,14 @@ in
       finder = {
         AppleShowAllFiles = true;
         ShowPathbar = true;
+      };
+      hitoolbox.AppleFnUsageType = "Do Nothing";
+      menuExtraClock = {
+        IsAnalog = false;
+        Show24Hour = true;
+        ShowDate = 1; # always
+        ShowDayOfWeek = true;
+        ShowSeconds = false;
       };
       spaces.spans-displays = true;
       trackpad = {
