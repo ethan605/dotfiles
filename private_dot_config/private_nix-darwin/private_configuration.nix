@@ -158,6 +158,9 @@ in
         AppleShowAllExtensions = true;
         InitialKeyRepeat = 15;
         KeyRepeat = 2;
+        NSAutomaticWindowAnimationsEnabled = false;
+        NSScrollAnimationEnabled = false;
+        NSWindowResizeTime = 0.0;
       };
       dock = {
         persistent-apps = [
@@ -173,10 +176,12 @@ in
           "/Applications/Telegram.app"
           "/Applications/Whatsapp.app"
         ];
+
         autohide = true;
-        autohide-delay = 0.01;
-        autohide-time-modifier = 0.01;
+        autohide-delay = 0.0;
+        autohide-time-modifier = 0.0;
         dashboard-in-overlay = false;
+        expose-animation-duration = 0.0;
         magnification = false;
         mineffect = "scale";
         show-recents = false;
