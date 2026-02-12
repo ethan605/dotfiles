@@ -109,6 +109,9 @@ in
     self-host-fonts
   ];
 
+  programs.zsh.enable = true;
+  services.sketchybar.enable = true;
+
   # Homebrew for GUI apps
   homebrew = {
     enable = true;
@@ -126,7 +129,7 @@ in
     casks = [
       "contexts"
       "homerow"
-      "karabiner-elements"
+      "karabiner-elements" # TODO: check https://github.com/nix-darwin/nix-darwin/pull/1679
       "logi-options+"
       "telegram"
       "vlc"
@@ -137,10 +140,7 @@ in
 
   environment = {
     systemPackages = base ++ devel ++ docs ++ gpg ++ tools ++ gui;
-
-    shells = [
-      pkgs.zsh
-    ];
+    shells = [ pkgs.zsh ];
   };
 
   users.users.${username} = {
@@ -207,6 +207,7 @@ in
         ShowSeconds = false;
       };
       spaces.spans-displays = true;
+      time.timeZone = "Europe/London";
       trackpad = {
         Clicking = true;
         DragLock = false;
@@ -227,7 +228,4 @@ in
     touchIdAuth = true;
     reattach = true;
   };
-
-  programs.zsh.enable = true;
-  services.sketchybar.enable = true;
 }
