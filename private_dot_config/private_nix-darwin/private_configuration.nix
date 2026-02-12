@@ -103,6 +103,7 @@ let
 in
 {
   networking.hostName = hostname;
+  time.timeZone = "Europe/London";
 
   fonts.packages = [
     pkgs.source-sans
@@ -207,7 +208,6 @@ in
         ShowSeconds = false;
       };
       spaces.spans-displays = true;
-      time.timeZone = "Europe/London";
       trackpad = {
         Clicking = true;
         DragLock = false;
