@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   firefox-personal = "personal";
@@ -55,16 +55,11 @@ in
     };
   };
 
-  home.activation =
-    let
-      user-chrome-path = "$HOME/Library/Application Support/Firefox/Profiles/${firefox-personal}/chrome";
-    in
-    {
-      firefox-user-chrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run /bin/rm -rf "${user-chrome-path}";
-        run /bin/ln -sf "${minimal-functional-fox}" "${user-chrome-path}";
-      '';
-    };
+  home.file.firefox-user-chrome = {
+    enable = true;
+    target = "$HOME/Library/Application Support/Firefox/Profiles/${firefox-personal}/chrome";
+    source = "${minimal-functional-fox}";
+  };
 
   home.stateVersion = "25.11";
 }
