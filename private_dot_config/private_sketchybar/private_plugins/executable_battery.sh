@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-PERCENTAGE="$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)"
+# Caveat: BSD grep needs `-E` while GNU grep needs `-P`
+PERCENTAGE="$(pmset -g batt | grep -Po "\d+%" | cut -d% -f1)"
 CHARGING="$(pmset -g batt | grep 'AC Power')"
 
 if [[ -z "$PERCENTAGE" ]]; then
