@@ -2,6 +2,7 @@
 
 let
   firefox-personal = "personal";
+  minimal-functional-fox = pkgs.callPackage ./minimal-functional-fox.nix { inherit pkgs; };
 in
 {
   programs = {
@@ -54,13 +55,16 @@ in
     };
   };
 
-  home.activation = {
-    firefox-user-chrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      run ln -sf \
-        "$HOME/personal/minimal-functional-fox" \
-        "$HOME/Library/Application Support/Firefox/Profiles/${firefox-personal}/chrome";
-    '';
-  };
+  home.activation =
+    let
+      user-chrome-path = "$HOME/Library/Application Support/Firefox/Profiles/${firefox-personal}/chrome";
+    in
+    {
+      firefox-user-chrome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run /bin/rm -rf "${user-chrome-path}";
+        run /bin/ln -sf "${minimal-functional-fox}" "${user-chrome-path}";
+      '';
+    };
 
   home.stateVersion = "25.11";
 }
