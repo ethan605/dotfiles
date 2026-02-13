@@ -28,7 +28,8 @@ windows:
     panes:
       - commands:
           - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
-            nvim --headless "+Lazy! sync" +MasonUpdate +qa
+            nvim --headless "+Lazy! sync" +MasonUpdate +qa &&
+            nvim +Mason
 
   - name: system
     root: ~/.config

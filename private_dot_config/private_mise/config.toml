@@ -16,11 +16,11 @@ rust = "1.93.0"
 terraform = "1.14.5"
 
 # Then tools
-awscli = { version = "2.33.20", symlink_bins = "true" }
+awscli = { version = "2.33.21", symlink_bins = "true" }
 clickhouse = "25.12.5.44-stable"
 cmake = "4.2.3"
 dotenvx = "1.52.0"
-firebase = "15.5.1"
+firebase = "15.6.0"
 gcloud = "556.0.0"
 gh = "2.86.0"
 graphite = "1.7.18"
@@ -28,7 +28,7 @@ helm = "4.1.1"
 liquibase = "4.33.0"
 make = "4.4.1"
 ninja = "1.13.2"
-opencode = "1.1.60"
+opencode = "1.1.65"
 pre-commit = "4.5.1"
 tree-sitter = "0.26.5"
 
