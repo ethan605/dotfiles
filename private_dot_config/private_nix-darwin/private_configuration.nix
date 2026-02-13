@@ -78,6 +78,7 @@ let
     ncdu
     p7zip
     parallel
+    pipes-rs
     qrencode
     ripgrep
     smug
