@@ -37,6 +37,7 @@ $cmd_duration\
 ${custom.proxy}\
 $line_break\
 $jobs\
+$nix_shell\
 ${custom.venv}\
 $character"""
 
@@ -85,6 +86,10 @@ format = ' \([$state $progress_current/$progress_total]($style)\)'
 
 [cmd_duration]
 format = " [$duration]($style)"
+
+[nix_shell]
+format = '[$state $name]($style) '
+style = "bright-black"
 
 [character]
 error_symbol = "[λ](bold red)"
