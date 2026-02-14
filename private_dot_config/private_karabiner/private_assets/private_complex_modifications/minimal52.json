@@ -2,7 +2,7 @@
   "title": "Minimal52 for built-in Mac keyboard",
   "rules": [
     {
-      "description": "Minimal52 - Esc/LCtrl, Tab/Fn, and LCmd/Enter dual functions",
+      "description": "Minimal52 - Esc/LCtrl, LCmd/Enter, and RCmd/Backspace dual functions",
       "manipulators": [
         {
           "conditions": [
@@ -23,9 +23,9 @@
               "type": "device_if"
             }
           ],
-          "from": { "key_code": "tab" },
-          "to": [{ "key_code": "fn" }],
-          "to_if_alone": [{ "key_code": "tab" }],
+          "from": { "key_code": "left_command" },
+          "to": [{ "key_code": "left_command" }],
+          "to_if_alone": [{ "key_code": "return_or_enter" }],
           "type": "basic"
         },
         {
@@ -35,9 +35,9 @@
               "type": "device_if"
             }
           ],
-          "from": { "key_code": "left_command" },
-          "to": [{ "key_code": "left_command" }],
-          "to_if_alone": [{ "key_code": "return_or_enter" }],
+          "from": { "key_code": "right_command" },
+          "to": [{ "key_code": "right_command" }],
+          "to_if_alone": [{ "key_code": "delete_or_backspace" }],
           "type": "basic"
         }
       ]
