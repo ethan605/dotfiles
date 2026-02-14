@@ -14,7 +14,7 @@ alias ncmpcpp='ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings'
 
 alias bupdate='brew update --verbose && brew upgrade --verbose && brew cleanup --prune=all && brew doctor'
 alias bbundle='brew bundle dump --describe --global --force'
-alias xdg-open='open'
+alias nsh='nix-shell --command=zsh'
 
 {{- end }}
 
@@ -32,9 +32,10 @@ alias lr='ls --git --tree --level=2'
 # Neovim
 alias v=nvim
 alias dbee='nvim +Dbee'
+alias mason='nvim +Mason'
 alias repl='nvim +Repl'
-alias vsync='nvim --headless "+Lazy! sync" +MasonUpdate +qa'
 alias vrestore!='nvim --headless "+Lazy! restore" +qa'
+alias vsync='nvim --headless "+Lazy! sync" +MasonUpdate +qa'
 
 # Python
 alias pre-commit-fix='pre-commit run --color=always --all-files --hook-stage=pre-push'
