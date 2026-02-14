@@ -12,30 +12,8 @@ let
     gnutar
     mise
     neovim
+    zoxide
     zsh
-  ];
-
-  devel = with pkgs; [
-    argo-rollouts
-    binaryen
-    cppcheck
-    ffmpeg
-    git
-    git-lfs
-    jless
-    jq
-    kubecolor
-    kubectl
-    kubectx
-    openssh
-    openssl
-    orbstack
-    uv
-    yq
-
-    # PostgreSQL and utils
-    postgresql_15
-    postgresql_15.pg_config
   ];
 
   docs = with pkgs; [
@@ -44,7 +22,35 @@ let
     less
     man
     man-db
+    tlrc
   ];
+
+  cloud-native = with pkgs; [
+    argo-rollouts
+    kubecolor
+    kubectl
+    kubectx
+    orbstack
+  ];
+
+  svc = with pkgs; [
+    delta
+    git
+    git-lfs
+  ];
+
+  devel = with pkgs; [
+    binaryen
+    cppcheck
+    ffmpeg
+    openssh
+    openssl
+    uv
+
+    # PostgreSQL and utils
+    postgresql_15
+    postgresql_15.pg_config
+  ] ++ docs ++ cloud-native ++ svc;
 
   gpg = with pkgs; [
     gnupg # gpg and gpg-agent
@@ -62,34 +68,37 @@ let
     )
   ];
 
-  tools = with pkgs; [
+  cli = with pkgs; [
     _1password-cli
     aria2
     axel
-    bottom
-    delta
     direnv
-    duf
     eza
     fd
     fzf
     httpie
-    keychain
-    ncdu
+    jq
     p7zip
     parallel
-    pipes-rs
     qrencode
     ripgrep
     smug
     starship
-    tlrc
-    tmux
-    vifm
     watch
     wget
+    yq
     zbar
-    zoxide
+  ];
+
+  tui = with pkgs; [
+    bottom
+    duf
+    gdu
+    jless
+    ncdu
+    pipes-rs
+    tmux
+    vifm
   ];
 
   gui = with pkgs; [
@@ -141,7 +150,7 @@ in
   };
 
   environment = {
-    systemPackages = base ++ devel ++ docs ++ gpg ++ tools ++ gui;
+    systemPackages = base ++ devel ++ gpg ++ cli ++ tui ++ gui;
     shells = [ pkgs.zsh ];
   };
 
