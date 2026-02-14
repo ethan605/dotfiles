@@ -31,8 +31,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_STYLES[comment]='fg=8' # bright black
 
 typeset -A ZSH_HIGHLIGHT_PATTERNS
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=red,bold,bg=yellow')
-ZSH_HIGHLIGHT_PATTERNS+=('sudo' 'fg=red,bold,bg=yellow')
+ZSH_HIGHLIGHT_PATTERNS+=('sudo rm' 'fg=red,bold,bg=yellow')
 
 # Set a custom path for the completion dump file.
 # If none is provided, the default ${ZDOTDIR:-$HOME}/.zcompdump is used.
