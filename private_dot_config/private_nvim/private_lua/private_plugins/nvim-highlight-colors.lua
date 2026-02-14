@@ -7,6 +7,14 @@ return {
     enable_tailwind = true,
 
     custom_colors = {
+      { label = "black",            color = "#282a36" },
+      { label = "red",              color = "#ff5c57" },
+      { label = "green",            color = "#5af78e" },
+      { label = "yellow",           color = "#f3f99d" },
+      { label = "blue",             color = "#57c7ff" },
+      { label = "magenta",          color = "#ff6ac1" },
+      { label = "cyan",             color = "#9aedfe" },
+      { label = "white",            color = "#eff0eb" },
       { label = "bright-black",     color = "#686868" },
 
       -- Default Neovim palettes
