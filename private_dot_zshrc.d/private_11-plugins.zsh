@@ -11,13 +11,13 @@ fi
 source "${ZIM_HOME}/init.zsh"
 
 # System plugins
-eval "$(direnv hook zsh)"
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+source <(direnv hook zsh)
+source <(starship init zsh)
+source <(zoxide init zsh)
 
 # Mise plugins
-eval "$(mise activate zsh)"
-eval "$(gt completion)"
-eval "$(helm completion zsh)"
+source <(mise activate zsh)
+source <(gt completion)
+source <(helm completion zsh)
 # shellcheck disable=SC1091
 source "$(mise where gcloud)/completion.zsh.inc"
