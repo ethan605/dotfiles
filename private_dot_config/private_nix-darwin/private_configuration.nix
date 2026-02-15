@@ -108,6 +108,7 @@ let
     appcleaner
     flameshot
     ghostty-bin
+    vlc-bin
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
@@ -144,7 +145,6 @@ in
       "karabiner-elements" # TODO: check https://github.com/nix-darwin/nix-darwin/pull/1679
       "logi-options+"
       "telegram"
-      "vlc"
       "vox"
       "whatsapp"
     ];
