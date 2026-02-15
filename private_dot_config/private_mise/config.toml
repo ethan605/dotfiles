@@ -12,11 +12,11 @@ luajit = "2.1.ROLLING"
 node = "22.17.1"
 python = "3.12.12"
 ruby = "4.0.1"
-rust = "1.93.0"
+rust = "1.93.1"
 terraform = "1.14.5"
 
 # Then tools
-awscli = { version = "2.33.21", symlink_bins = "true" }
+awscli = { version = "2.33.22", symlink_bins = "true" }
 clickhouse = "25.12.5.44-stable"
 cmake = "4.2.3"
 dotenvx = "1.52.0"
@@ -28,13 +28,13 @@ helm = "4.1.1"
 liquibase = "4.33.0"
 make = "4.4.1"
 ninja = "1.13.2"
-opencode = "1.1.65"
+opencode = "1.2.4"
 pre-commit = "4.5.1"
 tree-sitter = "0.26.5"
 
 # And custom tools
 [tools."github:xjasonlyu/tun2socks"]
-version = "2.6.0"
+version = "2.6.0" # check for latest version at https://github.com/xjasonlyu/tun2socks/releases/latest
 version_prefix = "v"
 rename_exe = "tun2socks"
 linux-x64 = { asset_pattern = "tun2socks-linux-amd64.zip", checksum = "sha256:2c4d9891ca898ecb2b582d158612d44c66793008328852b3465b77828c867e77" }
