@@ -21,9 +21,13 @@ export EDITOR=nvim
 export REACT_EDITOR=nvim
 export VISUAL=nvim
 
-export BAT_THEME='Sublime Snazzy'
+# export BAT_THEME='Sublime Snazzy'
+export BAT_THEME=ansi
 export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --use-color --squeeze-blank-lines --tabs=2'
 export MANPAGER='nvim +Man!'
+
+LS_COLORS="$(vivid generate molokai)"
+export LS_COLORS
 
 export CC=clang
 export CXX=clang
