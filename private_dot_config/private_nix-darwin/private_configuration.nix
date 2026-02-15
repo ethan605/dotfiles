@@ -23,6 +23,7 @@ let
     man
     man-db
     tlrc
+    vivid
   ];
 
   cloud-native = with pkgs; [
