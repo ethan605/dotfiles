@@ -41,7 +41,7 @@ let
   ];
 
   devel = with pkgs; [
-    binaryen
+    # binaryen
     cppcheck
     ffmpeg
     openssh
@@ -71,7 +71,6 @@ let
 
   cli = with pkgs; [
     _1password-cli
-    aria2
     axel
     direnv
     eza
@@ -83,7 +82,6 @@ let
     parallel
     qrencode
     ripgrep
-    smug
     starship
     watch
     wget
@@ -92,12 +90,13 @@ let
   ];
 
   tui = with pkgs; [
+    aria2
     bottom
     duf
     gdu
     jless
-    ncdu
     pipes-rs
+    smug
     tmux
     vifm
   ];
