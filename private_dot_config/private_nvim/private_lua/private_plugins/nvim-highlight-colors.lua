@@ -41,7 +41,7 @@ return {
 
     custom_colors = {
       { label = "black",            color = "#282a36" },
-      { label = "red",              color = "#ff5c57" },
+      -- { label = "red",              color = "#ff5c57" },
       { label = "green",            color = "#5af78e" },
       { label = "yellow",           color = "#f3f99d" },
       { label = "blue",             color = "#57c7ff" },
