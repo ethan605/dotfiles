@@ -10,5 +10,5 @@ windows:
     layout: main-vertical
 
   - name: config
-    root: ~/.config/nvim
+    root: ~/.config
     layout: main-vertical

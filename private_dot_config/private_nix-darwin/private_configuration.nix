@@ -116,11 +116,7 @@ in
   networking.hostName = hostname;
   time.timeZone = "Europe/London";
 
-  fonts.packages = [
-    pkgs.source-sans
-    self-host-fonts
-  ];
-
+  fonts.packages = [ self-host-fonts ];
   programs.zsh.enable = true;
   services.sketchybar.enable = true;
 
