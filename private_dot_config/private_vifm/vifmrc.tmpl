@@ -98,13 +98,7 @@ set dotfiles
 " %D the other window directory name.
 " %m run the command in a menu window
 
-command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
-command! zip zip -r %f.zip %f
-command! run !! ./%f
-command! make !!make %a
-command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
+command! diff nvim -d %f %F
 command! reload :write | restart
 
 " Empty the ruler. By default, it shows the number of directories+files.
@@ -113,33 +107,26 @@ command! reload :write | restart
 
 " [[[ 2. File preview & file opening
 
-" Text based files
+" Common files
 filetype <text/*>,<application/json> nvim %c
+filetype *.zip open -R %c
 
-" Audio files
-filetype <audio/*>,<application/x-font-gdos>
-"  \*.ac3,*.ape,*.flac,*.m4a,*.mp3,*.og[agx],*.opus,*.spx,*.wav,*.wma
-  \ mpv %c %i &
-
-" Video files
-filetype <video/*>
-"  \*.3gp,*.as[fx],*.avi,*.dat,*.divx,*.fl[icv],
-"  \*.m2v,*.m4v,*.mkv,*.mov,*.mp4,*.mpeg,*.mpg,*.mts,
-"  \*.ogv,*.qt,*.r[am],*.ts,*.vob,*.webm,*.wmv,
-  \ mpv --fullscreen %c %i &
-filetype *.y4m
-  \ mpv --fullscreen %c %i &
-
-filetype *.zip
-  \ unzip %c
-
-" All other files
 {{- if eq .chezmoi.os "linux" }}
 
+" Media files
+filetype <audio/*> mpv %c %i &
+filetype <video/*> mpv --fullscreen %c %i &
+
+" All other files
 filetype * xdg-open %c &
 
 {{- else if eq .chezmoi.os "darwin" }}
 
+" Media files
+filetype <audio/*> vlc %c %i &
+filetype <video/*> vlc --fullscreen %c %i &
+
+" All other files
 filetype * qlmanage -p %c >> /dev/null 2>&1 &
 
 {{- end }}
@@ -148,12 +135,12 @@ filetype * qlmanage -p %c >> /dev/null 2>&1 &
 fileviewer ../ echo > /dev/null
 
 " Show content tree in the preview window for directories
-fileviewer */ eza --all --color=always --group-directories-first --level=1 --tree %c
-fileviewer .*/ eza --all --color=always --group-directories-first --level=1 --tree %c
+fileviewer */ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
+fileviewer .*/ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
 
 " Text files
 fileviewer <text/*>,<application/json>
-  \ env -uCOLORTERM bat --number --color always --pager never --theme 'Sublime Snazzy' --wrap never %c
+  \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
 
 " Archives
 fileviewer *.7z 7za l %c
