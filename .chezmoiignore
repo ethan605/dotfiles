@@ -5,6 +5,7 @@ misc
 
 # <<< Obsolete configs - keep for future reference only
 
+.Brewfile
 .claude/settings.json
 .config/Autoraise
 .config/harper-ls
@@ -81,7 +82,6 @@ misc
 # <<< MacOS-exclusive files
 {{ if ne .chezmoi.os "darwin" }}
 
-.Brewfile
 .config/karabiner
 .config/nix-darwin
 .local/bin/get-serial-number
