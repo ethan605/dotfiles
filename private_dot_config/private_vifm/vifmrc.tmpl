@@ -107,13 +107,9 @@ command! reload :write | restart
 
 " [[[ 2. File preview & file opening
 
-" Common files
+filetype <audio/*>,<video/*> mpv %c %i
 filetype <text/*>,<application/json> nvim %c
 filetype *.zip open -R %c
-
-" Media files
-filetype <audio/*> mpv %c %i &
-filetype <video/*> mpv --fullscreen %c %i &
 
 {{- if eq .chezmoi.os "linux" }}
 
