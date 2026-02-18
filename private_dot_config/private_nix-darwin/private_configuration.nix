@@ -12,6 +12,7 @@ let
     gnutar
     mise
     neovim
+    starship
     zoxide
     zsh
   ];
@@ -77,15 +78,19 @@ let
     fzf
     httpie
     jq
-    p7zip
     parallel
     qrencode
     ripgrep
-    starship
     watch
     wget
     yq
     zbar
+
+    # Archives
+    lzip
+    p7zip
+    xz
+    zip
   ];
 
   tui = with pkgs; [
