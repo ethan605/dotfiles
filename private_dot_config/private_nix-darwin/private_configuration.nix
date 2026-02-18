@@ -43,6 +43,7 @@ let
   devel = with pkgs; [
     cppcheck
     ffmpeg
+    hyperfine
     openssh
     openssl
     uv
