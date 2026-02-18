@@ -111,20 +111,16 @@ command! reload :write | restart
 filetype <text/*>,<application/json> nvim %c
 filetype *.zip open -R %c
 
-{{- if eq .chezmoi.os "linux" }}
-
 " Media files
 filetype <audio/*> mpv %c %i &
 filetype <video/*> mpv --fullscreen %c %i &
+
+{{- if eq .chezmoi.os "linux" }}
 
 " All other files
 filetype * xdg-open %c &
 
 {{- else if eq .chezmoi.os "darwin" }}
-
-" Media files
-filetype <audio/*> vlc %c %i &
-filetype <video/*> vlc --fullscreen %c %i &
 
 " All other files
 filetype * qlmanage -p %c >> /dev/null 2>&1 &
