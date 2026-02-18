@@ -41,7 +41,6 @@ let
   ];
 
   devel = with pkgs; [
-    # binaryen
     cppcheck
     ffmpeg
     openssh
@@ -62,7 +61,6 @@ let
     (
       # UNIX Password Store
       pass.withExtensions (exts: [
-        exts.pass-audit
         exts.pass-otp
         exts.pass-update
       ])
