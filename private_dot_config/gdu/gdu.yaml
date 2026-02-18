@@ -1,0 +1,50 @@
+style:
+  footer:
+    text-color: white
+    background-color: black
+    number-color: green
+  selected-row:
+    text-color: black
+    background-color: blue
+  result-row:
+    number-color: yellow
+    directory-color: blue
+  header:
+    text-color: black
+    background-color: blue
+    hidden: true
+  progress-modal:
+    current-item-path-max-len: 0
+  use-old-size-bar: false
+sorting:
+  by: size
+  order: desc
+log-file: /dev/null
+top: 0
+depth: 0
+sequential-scanning: false
+show-apparent-size: false
+show-relative-size: false
+show-annexed-size: false
+show-item-count: true
+show-mtime: false
+no-color: false
+mouse: true
+non-interactive: false
+no-progress: false
+no-unicode: false
+no-cross: true
+no-hidden: false
+no-delete: true
+no-spawn-shell: true
+follow-symlinks: false
+profiling: false
+read-from-storage: false
+summarize: false
+use-si-prefix: true
+no-prefix: false
+show-in-kib: false
+reverse-sort: false
+change-cwd: false
+delete-in-background: false
+delete-in-parallel: false
