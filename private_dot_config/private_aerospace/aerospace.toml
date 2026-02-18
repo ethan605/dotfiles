@@ -94,6 +94,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'layout floating'
 
 [[on-window-detected]]
+  if.app-id = 'io.mpv'
+  run = 'layout floating'
+
+[[on-window-detected]]
   if.app-id = 'net.freemacsoft.AppCleaner'
   run = 'layout floating'
 

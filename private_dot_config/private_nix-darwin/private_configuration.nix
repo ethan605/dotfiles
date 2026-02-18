@@ -111,7 +111,7 @@ let
     appcleaner
     flameshot
     ghostty-bin
-    vlc-bin
+    mpv-unwrapped
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
