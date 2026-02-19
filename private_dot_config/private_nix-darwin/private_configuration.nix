@@ -150,10 +150,6 @@ in
       upgrade = true;
     };
 
-    brews = [
-      "libmagic" # for python-magic
-    ];
-
     casks = [
       "contexts"
       "homerow"
@@ -245,6 +241,7 @@ in
 
     activationScripts.postActivation.text = ''
       chsh -s /run/current-system/sw/bin/zsh ${username};
+      ln -sf ${pkgs.file}/lib/libmagic.1.dylib /opt/homebrew/lib/libmagic.dylib; # for python-magic in uv
     '';
   };
 
