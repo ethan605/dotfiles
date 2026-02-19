@@ -10,6 +10,7 @@ misc
 .config/Autoraise
 .config/harper-ls
 .config/kitty
+.config/ncmpcpp
 .config/nix-darwin/animations.sh
 .local/bin/ibus-engines
 .zshrc.d/00-path.zsh
@@ -29,7 +30,6 @@ misc
 .config/imv
 .config/mako
 .config/mimeapps.list
-.config/ncmpcpp
 .config/qutebrowser
 .config/solaar
 .config/swappy
