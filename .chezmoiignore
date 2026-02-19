@@ -29,7 +29,6 @@ misc
 .config/imv
 .config/mako
 .config/mimeapps.list
-.config/mpd
 .config/ncmpcpp
 .config/qutebrowser
 .config/solaar
