@@ -2,17 +2,24 @@
 
 let
   base = with pkgs; [
+    axel
     bash
     chezmoi
     coreutils
     diffutils
+    direnv
+    eza
+    fd
     findutils
+    fzf
     gnugrep
     gnused
     gnutar
     mise
     neovim
+    ripgrep
     starship
+    wget
     zoxide
     zsh
   ];
@@ -44,15 +51,29 @@ let
   devel = with pkgs; [
     cppcheck
     ffmpeg
+    httpie
     hyperfine
+    jq
     openssh
     openssl
+    parallel
+    qrencode
     uv
+    watch
+    yq
+    zbar
 
     # PostgreSQL and utils
     postgresql_15
     postgresql_15.pg_config
   ] ++ docs ++ cloud-native ++ svc;
+
+  archives = with pkgs; [
+    lzip
+    p7zip
+    xz
+    zip
+  ];
 
   gpg = with pkgs; [
     gnupg # gpg and gpg-agent
@@ -69,30 +90,15 @@ let
     )
   ];
 
+  media = with pkgs; [
+    iina
+    mpc
+    mpd
+  ];
+
   cli = with pkgs; [
     _1password-cli
-    axel
-    direnv
-    eza
-    fd
-    fzf
-    httpie
-    jq
-    mpd
-    parallel
-    qrencode
-    ripgrep
-    watch
-    wget
-    yq
-    zbar
-
-    # Archives
-    lzip
-    p7zip
-    xz
-    zip
-  ];
+  ] ++ archives ++ gpg ++ media;
 
   tui = with pkgs; [
     aria2
@@ -111,7 +117,6 @@ let
     alacritty
     flameshot
     ghostty-bin
-    iina
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
@@ -150,7 +155,7 @@ in
   };
 
   environment = {
-    systemPackages = base ++ devel ++ gpg ++ cli ++ tui ++ gui;
+    systemPackages = base ++ devel ++ cli ++ tui ++ gui;
     shells = [ pkgs.zsh ];
   };
 
