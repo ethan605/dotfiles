@@ -130,6 +130,16 @@ in
   programs.zsh.enable = true;
   services.sketchybar.enable = true;
 
+  launchd.user.agents.mpd = {
+    serviceConfig.ProgramArguments = [
+      "${pkgs.mpd}/bin/mpd"
+      "--no-daemon"
+      "${home-dir}/.config/mpd/mpd.conf"
+    ];
+    serviceConfig.KeepAlive = true;
+    serviceConfig.RunAtLoad = true;
+  };
+
   # Homebrew for GUI apps
   homebrew = {
     enable = true;
