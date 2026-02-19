@@ -2,19 +2,17 @@
 
 if mpc status '%state%' >/dev/null 2>&1; then
 	song=$(mpc current -f '%title%')
-	status=$(mpc status '%state%')
 	pos=$(mpc status '%currenttime%/%totaltime%')
-	output="$song  •  $pos"
+	label="$song  •  $pos"
 
-	case "$status" in
+	case "$(mpc status '%state%')" in
 	playing) icon="󰝚" ;;
 	paused) icon="" ;;
-	*) output="" icon="󰝛" ;;
+	*) label="" icon="󰝛" ;;
 	esac
-
 else
-	output=""
+	label=""
   icon="󰝛"
 fi
 
-sketchybar --set "$NAME" icon="${icon}" label="${output}"
+sketchybar --set "$NAME" icon="${icon}" label="${label}"
