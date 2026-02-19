@@ -17,4 +17,4 @@ else
   icon="󰝛"
 fi
 
-sketchybar -m --set mpd icon="${icon}" --set mpd label="${output}"
+sketchybar --set "$NAME" icon="${icon}" label="${output}"
