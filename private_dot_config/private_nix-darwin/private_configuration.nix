@@ -78,6 +78,7 @@ let
     fzf
     httpie
     jq
+    mpd
     parallel
     qrencode
     ripgrep
@@ -108,10 +109,9 @@ let
   gui = with pkgs; [
     aerospace
     alacritty
-    appcleaner
     flameshot
     ghostty-bin
-    mpv-unwrapped
+    iina
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
