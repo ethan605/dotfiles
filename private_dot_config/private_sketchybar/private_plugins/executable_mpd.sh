@@ -8,11 +8,15 @@ if mpc status '%state%' >/dev/null 2>&1; then
 	case "$(mpc status '%state%')" in
 	playing) icon="󰝚" ;;
 	paused) icon="" ;;
-	*) label="" icon="󰝛" ;;
+
+	*)
+		label=""
+		icon="󰝛"
+		;;
 	esac
 else
 	label=""
-  icon="󰝛"
+	icon="󰝛"
 fi
 
-sketchybar --set "$NAME" icon="${icon}" label="${label}"
+sketchybar --set "$NAME" icon="$icon" label="$label"
