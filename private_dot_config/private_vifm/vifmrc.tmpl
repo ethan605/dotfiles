@@ -107,19 +107,25 @@ command! reload :write | restart
 
 " [[[ 2. File preview & file opening
 
-filetype <audio/*>,<video/*> mpv %c %i
+" Common files
 filetype <text/*>,<application/json> nvim %c
 filetype *.zip open -R %c
 
 {{- if eq .chezmoi.os "linux" }}
 
+" Media files
+filetype <audio/*>,<video/*> mpv %c %i
+
 " All other files
-filetype * xdg-open %c &
+filetype * xdg-open %c %i
 
 {{- else if eq .chezmoi.os "darwin" }}
 
+" Media files
+filetype <audio/*>,<video/*> iina %c
+
 " All other files
-filetype * qlmanage -p %c >> /dev/null 2>&1 &
+filetype * open -R %c
 
 {{- end }}
 
