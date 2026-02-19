@@ -160,7 +160,6 @@ in
       "karabiner-elements" # TODO: check https://github.com/nix-darwin/nix-darwin/pull/1679
       "logi-options+"
       "telegram"
-      "vox"
       "whatsapp"
     ];
   };

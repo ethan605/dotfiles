@@ -889,6 +889,26 @@
                         ]
                     },
                     {
+                        "description": "Linux - Media keys to control mpc/mpd",
+                        "manipulators": [
+                            {
+                                "from": { "consumer_key_code": "scan_previous_track" },
+                                "to": [{ "shell_command": "/run/current-system/sw/bin/mpc prev" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "consumer_key_code": "play_or_pause" },
+                                "to": [{ "shell_command": "/run/current-system/sw/bin/mpc toggle" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "consumer_key_code": "scan_next_track" },
+                                "to": [{ "shell_command": "/run/current-system/sw/bin/mpc next" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Minimal52 - Esc/LCtrl, LCmd/Enter, and RCmd/Backspace dual functions",
                         "manipulators": [
                             {
