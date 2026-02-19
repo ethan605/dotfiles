@@ -54,8 +54,6 @@ let
     httpie
     hyperfine
     jq
-    openssh
-    openssl
     parallel
     qrencode
     uv
@@ -120,6 +118,9 @@ let
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
+
+  home-dir = "/Users/${username}";
+  dock-spacer = { spacer = { small = true; }; };
 in
 {
   networking.hostName = hostname;
@@ -161,7 +162,7 @@ in
 
   users.users.${username} = {
     name = username;
-    home = "/Users/${username}";
+    home = home-dir;
     shell = pkgs.zsh;
   };
 
@@ -186,14 +187,14 @@ in
       dock = {
         persistent-apps = [
           "/Applications/Nix Apps/Alacritty.app"
-          { spacer = { small = true; }; }
+          dock-spacer
           "/Applications/Google Chrome.app"
-          "/Users/${username}/Applications/Home Manager Apps/Firefox.app"
-          { spacer = { small = true; }; }
+          "${home-dir}/Applications/Home Manager Apps/Firefox.app"
+          dock-spacer
           "/Applications/Slack.app"
           "/Applications/Notion.app"
           "/Applications/Linear.app"
-          { spacer = { small = true; }; }
+          dock-spacer
           "/Applications/Telegram.app"
           "/Applications/Whatsapp.app"
         ];
