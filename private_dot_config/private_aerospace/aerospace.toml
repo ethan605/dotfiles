@@ -94,10 +94,6 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'layout floating'
 
 [[on-window-detected]]
-  if.app-id = 'com.colliderli.iina'
-  run = 'layout floating'
-
-[[on-window-detected]]
   if.app-id = 'com.google.Chrome'
   if.window-title-regex-substring = 'DevTools'
   run = 'layout floating'
@@ -150,5 +146,13 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
-  if.app-id = 'com.coppertino.Vox'
+  if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
   run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+  if.app-id = 'com.bitcavehq.Airflow'
+  run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+  if.app-id = 'com.colliderli.iina'
+  run = ['layout floating', 'move-node-to-workspace 9']
