@@ -10,3 +10,5 @@ echo "Hostname: $hostname"
 sudo scutil --set LocalHostName "$hostname"
 
 /nix/var/nix/profiles/default/bin/nix build ".#darwinConfigurations.$hostname.system"
+
+sudo ./result/sw/bin/darwin-rebuild switch --flake .
