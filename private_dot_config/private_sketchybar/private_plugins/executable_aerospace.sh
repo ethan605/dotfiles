@@ -6,4 +6,8 @@ else
   HIGHLIGHT_STATUS=off
 fi
 
-sketchybar --set "$NAME" icon.highlight="$HIGHLIGHT_STATUS" label.highlight="$HIGHLIGHT_STATUS" background.drawing="$HIGHLIGHT_STATUS"
+sketchybar \
+  --set "$NAME" \
+  icon.highlight="$HIGHLIGHT_STATUS" \
+  label.highlight="$HIGHLIGHT_STATUS" \
+  background.drawing="$HIGHLIGHT_STATUS"
