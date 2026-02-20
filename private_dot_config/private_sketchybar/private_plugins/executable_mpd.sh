@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 
 if mpc status '%state%' >/dev/null 2>&1; then
-	song=$(mpc current -f '%title%')
-	pos=$(mpc status '%currenttime%/%totaltime%')
-	label="$song  •  $pos"
+	SONG=$(mpc current -f '%title%')
+	POSITION=$(mpc status '%currenttime%/%totaltime%')
+	LABEL="$SONG  •  $POSITION"
 
 	case "$(mpc status '%state%')" in
-	playing) icon="󰝚" ;;
-	paused) icon="" ;;
+	playing) ICON="󰝚" ;;
+	paused) ICON="" ;;
 
 	*)
-		label=""
-		icon="󰝛"
+		LABEL=""
+		ICON="󰝛"
 		;;
 	esac
 else
-	label=""
-	icon="󰝛"
+	LABEL=""
+	ICON="󰝛"
 fi
 
-sketchybar --set "$NAME" icon="$icon" label="$label"
+sketchybar --set "$NAME" icon="$ICON" label="$LABEL"
