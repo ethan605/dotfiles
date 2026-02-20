@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Caveat: BSD grep needs `-E` while GNU grep needs `-P`
-PERCENTAGE="$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)"
+PERCENTAGE="$(pmset -g batt | grep -Po "\d+%" | cut -d% -f1)"
 
 if [[ -z "$PERCENTAGE" ]]; then
 	ICON=''
