@@ -5,7 +5,7 @@
 
 machine_id=$(system_profiler SPHardwareDataType | awk -F': ' '/Serial Number/ { print $2 }')
 hostname="macintosh-$machine_id"
-echo "Hostname: $hostname"
+echo "hostname: $hostname"
 
 sudo scutil --set LocalHostName "$hostname"
 
