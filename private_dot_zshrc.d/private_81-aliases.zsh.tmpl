@@ -23,6 +23,7 @@ alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698
 alias dcompose='docker compose --profile'
 alias kargo='kubecolor argo rollouts'
 alias load-time='time $SHELL -ic exit'
+alias pipes='pipes-rs --fps=60 --kinds=heavy,light,knobby,curved --pipe-num=$(($(od -vAn -N1 -tu1 < /dev/urandom) % 10))'
 alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
 
 # Eza
