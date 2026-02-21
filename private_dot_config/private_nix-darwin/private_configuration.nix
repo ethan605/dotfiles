@@ -235,7 +235,6 @@ in
         Dragging = true;
         TrackpadRightClick = true;
         TrackpadThreeFingerDrag = true;
-        TrackpadThreeFingerTapGesture = 0;
       };
     };
 
