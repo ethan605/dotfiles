@@ -115,6 +115,7 @@ let
     alacritty
     flameshot
     ghostty-bin
+    # karabiner-elements
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
@@ -130,21 +131,7 @@ in
   programs.zsh.enable = true;
   services.sketchybar.enable = true;
 
-  launchd.user.agents = {
-    # aerospace = {
-    #   serviceConfig = {
-    #     ProgramArguments = [
-    #       "${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
-    #       "--config-path"
-    #       "${home-dir}/.config/aerospace/aerospace.toml"
-    #     ];
-    #     KeepAlive = true;
-    #     RunAtLoad = true;
-    #     StandardOutPath = "/tmp/aerospace.log";
-    #     StandardErrorPath = "/tmp/aerospace.err.log";
-    #   };
-    # };
-
+  launchd.agents = {
     mpd = {
       serviceConfig = {
         ProgramArguments = [
