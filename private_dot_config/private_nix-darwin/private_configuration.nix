@@ -130,14 +130,32 @@ in
   programs.zsh.enable = true;
   services.sketchybar.enable = true;
 
-  launchd.user.agents.mpd = {
-    serviceConfig.ProgramArguments = [
-      "${pkgs.mpd}/bin/mpd"
-      "--no-daemon"
-      "${home-dir}/.config/mpd/mpd.conf"
-    ];
-    serviceConfig.KeepAlive = true;
-    serviceConfig.RunAtLoad = true;
+  launchd.user.agents = {
+    # aerospace = {
+    #   serviceConfig = {
+    #     ProgramArguments = [
+    #       "${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
+    #       "--config-path"
+    #       "${home-dir}/.config/aerospace/aerospace.toml"
+    #     ];
+    #     KeepAlive = true;
+    #     RunAtLoad = true;
+    #     StandardOutPath = "/tmp/aerospace.log";
+    #     StandardErrorPath = "/tmp/aerospace.err.log";
+    #   };
+    # };
+
+    mpd = {
+      serviceConfig = {
+        ProgramArguments = [
+          "${pkgs.mpd}/bin/mpd"
+          "--no-daemon"
+          "${home-dir}/.config/mpd/mpd.conf"
+        ];
+        KeepAlive = true;
+        RunAtLoad = true;
+      };
+    };
   };
 
   # Homebrew for GUI apps
