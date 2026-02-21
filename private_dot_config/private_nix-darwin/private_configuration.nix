@@ -130,7 +130,7 @@ in
   programs.zsh.enable = true;
   services.sketchybar.enable = true;
 
-  launchd.agents = {
+  launchd.user.agents = {
     mpd = {
       serviceConfig = {
         ProgramArguments = [
@@ -217,6 +217,7 @@ in
         mineffect = "scale";
         minimize-to-application = true;
         mouse-over-hilite-stack = true;
+        orientation = "left";
         showhidden = true;
         show-recents = false;
       };
