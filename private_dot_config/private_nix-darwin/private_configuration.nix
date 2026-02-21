@@ -115,7 +115,6 @@ let
     alacritty
     flameshot
     ghostty-bin
-    # karabiner-elements
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
@@ -158,7 +157,7 @@ in
     casks = [
       "contexts"
       "homerow"
-      "karabiner-elements" # TODO: check https://github.com/nix-darwin/nix-darwin/pull/1679
+      "karabiner-elements" # can't use services.karabiner-elements
       "logi-options+"
       "telegram"
       "whatsapp"
