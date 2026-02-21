@@ -139,7 +139,7 @@ in
           "bobko.aerospace"
         ];
         RunAtLoad = true;
-        KeepAlive = true;
+        KeepAlive = false;
       };
     };
 
