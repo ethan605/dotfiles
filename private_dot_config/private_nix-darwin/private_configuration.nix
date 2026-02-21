@@ -131,6 +131,18 @@ in
   services.sketchybar.enable = true;
 
   launchd.user.agents = {
+    aerospace = {
+      serviceConfig = {
+        ProgramArguments = [
+          "/usr/bin/open"
+          "-b"
+          "bobko.aerospace"
+        ];
+        RunAtLoad = true;
+        KeepAlive = true;
+      };
+    };
+
     mpd = {
       serviceConfig = {
         ProgramArguments = [
