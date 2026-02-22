@@ -71,7 +71,6 @@ misc
 {{ if ne .chezmoi.hostname "PF3XSEPR" }}
 
 .config/sway/keymaps/thinkpad.xkb
-.config/work_envs
 .local/bin/brightness-utils
 .local/bin/thinkpad-utils
 
@@ -83,7 +82,6 @@ misc
 
 .config/karabiner
 .config/nix-darwin
-.local/bin/get-serial-number
 Library
 
 {{ end }}
