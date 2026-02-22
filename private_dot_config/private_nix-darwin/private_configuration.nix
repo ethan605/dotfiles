@@ -250,7 +250,7 @@ in
       trackpad = {
         Clicking = true;
         DragLock = false;
-        Dragging = true;
+        Dragging = false;
         TrackpadRightClick = true;
         TrackpadThreeFingerDrag = true;
       };
