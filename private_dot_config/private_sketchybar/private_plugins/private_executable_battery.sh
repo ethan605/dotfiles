@@ -9,9 +9,9 @@ COLOR_YELLOW=0xfff3f99d
 COLOR_BLUE=0xff57c7ff
 
 if [[ -z "$PERCENTAGE" ]]; then
-	ICON='󱉞'
+	ICON=''
 	COLOR=''
-	LABEL=''
+	LABEL='󱉞'
 else
 	CHARGING="$(pmset -g batt | grep 'AC Power')"
 
