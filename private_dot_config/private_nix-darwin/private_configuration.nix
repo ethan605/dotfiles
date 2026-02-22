@@ -155,6 +155,14 @@ in
         RunAtLoad = true;
       };
     };
+
+    mpd_idle = {
+      serviceConfig = {
+        Program = "${home-dir}/.config/sketchybar/plugins/mpd_idle.sh";
+        KeepAlive = true;
+        RunAtLoad = true;
+      };
+    };
   };
 
   # Homebrew for GUI apps
