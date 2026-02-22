@@ -7,11 +7,8 @@ misc
 
 .Brewfile
 .claude/settings.json
-.config/Autoraise
-.config/harper-ls
 .config/kitty
 .config/ncmpcpp
-.config/nix-darwin/animations.sh
 .local/bin/ibus-engines
 .zshrc.d/00-path.zsh
 
@@ -21,6 +18,8 @@ misc
 {{- if ne .chezmoi.os "linux" }}
 
 .config/autostart
+.config/chrome-dev-flags.conf
+.config/chrome-flags.conf
 .config/fcitx5
 .config/fontconfig
 .config/foot
@@ -30,6 +29,7 @@ misc
 .config/imv
 .config/mako
 .config/mimeapps.list
+.config/nordvpn
 .config/qutebrowser
 .config/solaar
 .config/swappy
@@ -55,16 +55,6 @@ misc
 .xkb
 
 {{- end }}
-# >>>
-
-# <<< Personal exclusive files
-{{ if ne .chezmoi.hostname "lunarch" }}
-
-.config/chrome-dev-flags.conf
-.config/chrome-flags.conf
-.config/nordvpn
-
-{{ end }}
 # >>>
 
 # <<< Work-related exclusive files
