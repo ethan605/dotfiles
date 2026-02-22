@@ -156,12 +156,18 @@ in
       };
     };
 
-    mpd_idle = {
+    mpd-idle = {
       serviceConfig = {
-        Program = "${home-dir}/.config/sketchybar/plugins/mpd_idle.sh";
         KeepAlive = true;
         RunAtLoad = true;
       };
+
+      script = ''
+        while true; do
+          ${pkgs.mpc}/bin/mpc idle
+          ${pkgs.sketchybar}/bin/sketchybar --trigger mpd_idle
+        done
+      '';
     };
   };
 
