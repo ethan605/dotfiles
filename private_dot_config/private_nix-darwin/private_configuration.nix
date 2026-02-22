@@ -92,6 +92,7 @@ let
     iina
     mpc
     mpd
+    switchaudio-osx
   ];
 
   cli = with pkgs; [
