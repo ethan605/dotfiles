@@ -234,6 +234,7 @@ in
         show-recents = false;
       };
       finder = {
+        _FXEnableColumnAutoSizing = true;
         AppleShowAllFiles = true;
         ShowPathbar = true;
       };
