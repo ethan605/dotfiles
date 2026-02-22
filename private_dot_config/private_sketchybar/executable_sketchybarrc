@@ -17,12 +17,12 @@ default=(
 	padding_left=5
 	padding_right=5
 
-	icon.font="SamsungSans Nerd Font:Regular:17.0"
+	icon.font='SamsungSans Nerd Font:Regular:17.0'
 	icon.color="$COLOR_WHITE"
 	icon.padding_left=8
 	icon.padding_right=0
 
-	label.font="SamsungSans Nerd Font:Regular:17.0"
+	label.font='SamsungSans Nerd Font:Regular:17.0'
 	label.color="$COLOR_WHITE"
 	label.padding_left=8
 	label.padding_right=8
@@ -40,14 +40,14 @@ for sid in $(/run/current-system/sw/bin/aerospace list-workspaces --all); do
 		--add item space."$sid" left \
 		--subscribe space."$sid" aerospace_workspace_change \
 		--set space."$sid" \
-    background.color="$COLOR_BLUE" \
-    background.corner_radius=0 \
-    background.height=40 \
-    icon="$sid" \
-    icon.drawing=off \
-    label="${WORKSPACE_LABELS[$sid]}" \
-    script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
-    click_script="/run/current-system/sw/bin/aerospace workspace $sid"
+		background.color="$COLOR_BLUE" \
+		background.corner_radius=0 \
+		background.height=40 \
+		icon="$sid" \
+		icon.drawing=off \
+		label="${WORKSPACE_LABELS[$sid]}" \
+		script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
+		click_script="/run/current-system/sw/bin/aerospace workspace $sid"
 done
 
 sketchybar \
@@ -65,20 +65,9 @@ sketchybar \
 	--subscribe battery system_woke power_source_change
 
 sketchybar \
-  --add item mpd right \
-  --set mpd update_freq=2 \
-  --set mpd script="$PLUGIN_DIR/mpd.sh" \
-  --set mpd click_script="mpc toggle"
-
-# BRACKET_STYLE=(
-# 	background.color=0xff686868
-# 	background.corner_radius=0
-# 	background.height=40
-# )
-# sketchybar \
-# 	--add bracket left_spaces space.2 space.3 space.4 \
-# 	--set left_spaces "${BRACKET_STYLE[@]}" \
-# 	--add bracket right_spaces space.6 space.7 space.8 \
-# 	--set right_spaces "${BRACKET_STYLE[@]}"
+	--add item mpd right \
+	--set mpd update_freq=2 \
+	--set mpd script="$PLUGIN_DIR/mpd.sh" \
+	--set mpd click_script="mpc toggle"
 
 sketchybar --update
