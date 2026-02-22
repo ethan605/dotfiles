@@ -6,6 +6,7 @@ PERCENTAGE="$(pmset -g batt | grep -Po "\d+%" 2>/dev/null | cut -d% -f1)"
 COLOR_RED=0xffff5c57
 COLOR_GREEN=0xff5af78e
 COLOR_YELLOW=0xfff3f99d
+COLOR_BLUE=0xff57c7ff
 
 if [[ -z "$PERCENTAGE" ]]; then
 	ICON='󱉞'
@@ -32,9 +33,9 @@ else
 		COLOR="$COLOR_GREEN"
 	else
 		case "$PERCENTAGE" in
-		9[8-9] | 100) ICON='󰁹' COLOR="$COLOR_GREEN" ;;
-		9[0-7]) ICON='󰂂' COLOR="$COLOR_GREEN" ;;
-		8[0-9]) ICON='󰂁' COLOR="$COLOR_GREEN" ;;
+		9[8-9] | 100) ICON='󰁹' COLOR="$COLOR_BLUE" ;;
+		9[0-7]) ICON='󰂂' COLOR="$COLOR_BLUE" ;;
+		8[0-9]) ICON='󰂁' COLOR="$COLOR_BLUE" ;;
 		7[0-9]) ICON='󰂀' COLOR="$COLOR_YELLOW" ;;
 		6[0-9]) ICON='󰂀' COLOR="$COLOR_YELLOW" ;;
 		5[0-9]) ICON='󰁿' COLOR="$COLOR_YELLOW" ;;
