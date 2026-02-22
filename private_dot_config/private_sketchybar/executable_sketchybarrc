@@ -66,8 +66,9 @@ sketchybar \
 
 sketchybar \
 	--add item mpd right \
-	--set mpd update_freq=2 \
 	--set mpd script="$PLUGIN_DIR/mpd.sh" \
-	--set mpd click_script="mpc toggle"
+	--set mpd click_script="mpc toggle" \
+	--add event mpd_idle \
+	--subscribe mpd mpd_idle
 
 sketchybar --update

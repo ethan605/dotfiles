@@ -5,11 +5,10 @@
 
 if [[ "$SENDER" = "volume_change" ]]; then
 	case "$INFO" in
-	[6-9][0-9] | 100) ICON='󰕾' ;;
-	[3-5][0-9]) ICON='󰖀' ;;
-	[1-9] | [1-2][0-9]) ICON='󰕿' ;;
-	*) ICON='󰖁' ;;
+	[5-9][0-9] | 100) ICON='' LABEL="$INFO%" ;;
+	[1-9] | [1-4][0-9]) ICON='' LABEL="$INFO%" ;;
+	*) ICON='' LABEL='' ;;
 	esac
 
-	sketchybar --set "$NAME" icon="$ICON" label="$INFO%"
+	sketchybar --set "$NAME" icon="$ICON" label="$LABEL"
 fi

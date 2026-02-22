@@ -6,8 +6,22 @@ COLOR_YELLOW=0xfff3f99d
 
 if mpc status '%state%' >/dev/null 2>&1; then
 	SONG="$(mpc current -f '%title%')"
-	POSITION="$(mpc status '%currenttime%/%totaltime%')"
-	LABEL="$SONG  •  $POSITION"
+	POS="$(mpc status '%songpos%/%length%')"
+  EXTRA=''
+
+  if [[ $(mpc status '%random%') == 'on' ]]; then
+    EXTRA+=''
+  fi
+
+  if [[ $(mpc status '%repeat%') == 'on' ]]; then
+    EXTRA+=''
+  fi
+
+  if [[ -z "$EXTRA" ]]; then
+    LABEL=" $POS  •  $SONG"
+  else
+    LABEL=" $POS  •  $SONG  •  $EXTRA"
+  fi
 
 	case "$(mpc status '%state%')" in
 	playing) ICON='󰝚' COLOR="$COLOR_BLUE" ;;
