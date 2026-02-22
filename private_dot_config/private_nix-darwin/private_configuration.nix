@@ -193,6 +193,7 @@ in
 
     defaults = {
       NSGlobalDomain = {
+        "com.apple.swipescrolldirection" = true; # natural scroll
         AppleFontSmoothing = 2;
         AppleShowAllExtensions = true;
         InitialKeyRepeat = 15;
@@ -201,8 +202,6 @@ in
         NSScrollAnimationEnabled = false;
         NSWindowResizeTime = 0.0;
         _HIHideMenuBar = true;
-
-        "com.apple.swipescrolldirection" = true; # natural scroll
       };
       controlcenter.BatteryShowPercentage = true;
       dock = {
@@ -234,9 +233,12 @@ in
         show-recents = false;
       };
       finder = {
-        _FXEnableColumnAutoSizing = true;
         AppleShowAllFiles = true;
+        ShowExternalHardDrivesOnDesktop = false;
+        ShowMountedServersOnDesktop = false;
         ShowPathbar = true;
+        ShowRemovableMediaOnDesktop = false;
+        _FXEnableColumnAutoSizing = true;
       };
       hitoolbox.AppleFnUsageType = "Do Nothing";
       menuExtraClock = {
