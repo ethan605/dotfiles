@@ -124,52 +124,15 @@ let
   dock-spacer = { spacer = { small = true; }; };
 in
 {
+  imports = [
+    (import ./modules/services.nix { inherit pkgs home-dir; })
+  ];
+
   networking.hostName = hostname;
   time.timeZone = "Europe/London";
 
   fonts.packages = [ self-host-fonts ];
   programs.zsh.enable = true;
-  services.sketchybar.enable = true;
-
-  launchd.user.agents = {
-    aerospace = {
-      serviceConfig = {
-        ProgramArguments = [
-          "/usr/bin/open"
-          "-b"
-          "bobko.aerospace"
-        ];
-        RunAtLoad = true;
-        KeepAlive = false;
-      };
-    };
-
-    mpd = {
-      serviceConfig = {
-        ProgramArguments = [
-          "${pkgs.mpd}/bin/mpd"
-          "--no-daemon"
-          "${home-dir}/.config/mpd/mpd.conf"
-        ];
-        KeepAlive = true;
-        RunAtLoad = true;
-      };
-    };
-
-    mpd-idle = {
-      serviceConfig = {
-        KeepAlive = true;
-        RunAtLoad = true;
-      };
-
-      script = ''
-        while true; do
-          ${pkgs.mpc}/bin/mpc idle
-          ${pkgs.sketchybar}/bin/sketchybar --trigger mpd_idle
-        done
-      '';
-    };
-  };
 
   # Homebrew for GUI apps
   homebrew = {

@@ -27,7 +27,7 @@ if mpc status '%state%' >/dev/null 2>&1; then
 
 	case "$(mpc status '%state%')" in
 	playing) ICON='󰝚' ICON_COLOR="$COLOR_BLUE" ;;
-	paused) ICON='' ICON_COLOR="$COLOR_YELLOW" ;;
+	paused) ICON='󰏤' ICON_COLOR="$COLOR_YELLOW" ;;
 
 	*)
 		ICON=''
