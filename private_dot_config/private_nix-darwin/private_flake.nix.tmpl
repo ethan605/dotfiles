@@ -22,33 +22,17 @@
     let
       username = "{{ .chezmoi.username }}";
       hostname = "macintosh-{{ .machine_id }}";
+      home-dir = "/Users/${username}";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit username hostname; };
+        specialArgs = { inherit hostname username home-dir; };
         system = "aarch64-darwin";
         modules = [
           determinate.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
           ./configuration.nix
-          {
-            determinateNix.enable = true;
-            nix.enable = false;
-            nixpkgs.config.allowUnfree = true;
-
-            nix-homebrew = {
-              enable = true;
-              user = username;
-            };
-
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${username} = import ./home.nix;
-              backupFileExtension = "bak.home-manager";
-            };
-          }
         ];
       };
     };
