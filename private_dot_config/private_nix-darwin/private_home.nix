@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 let
+  minimal-functional-fox = pkgs.callPackage ./modules/packages/minimal-functional-fox.nix { inherit pkgs; };
   firefox-personal = "personal";
-  minimal-functional-fox = pkgs.callPackage ./minimal-functional-fox.nix { inherit pkgs; };
 in
 {
   programs = {

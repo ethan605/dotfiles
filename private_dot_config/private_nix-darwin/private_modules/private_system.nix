@@ -1,0 +1,98 @@
+{ pkgs, username, hostname, home-dir, ... }:
+
+let
+  dock-spacer = { spacer = { small = true; }; };
+in
+{
+  networking.hostName = hostname;
+  time.timeZone = "Europe/London";
+
+  users.users.${username} = {
+    name = username;
+    home = home-dir;
+    shell = pkgs.zsh;
+  };
+
+  system = {
+    stateVersion = 5;
+    primaryUser = username;
+
+    defaults = {
+      NSGlobalDomain = {
+        "com.apple.swipescrolldirection" = true; # natural scroll
+        AppleFontSmoothing = 2;
+        AppleShowAllExtensions = true;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
+        NSAutomaticWindowAnimationsEnabled = false;
+        NSScrollAnimationEnabled = false;
+        NSWindowResizeTime = 0.0;
+        _HIHideMenuBar = true;
+      };
+      controlcenter.BatteryShowPercentage = true;
+      dock = {
+        persistent-apps = [
+          "/Applications/Nix Apps/Alacritty.app"
+          dock-spacer
+          "/Applications/Google Chrome.app"
+          "${home-dir}/Applications/Home Manager Apps/Firefox.app"
+          dock-spacer
+          "/Applications/Slack.app"
+          "/Applications/Notion.app"
+          "/Applications/Linear.app"
+          dock-spacer
+          "/Applications/Telegram.app"
+          "/Applications/Whatsapp.app"
+        ];
+
+        autohide = true;
+        autohide-delay = 0.0;
+        autohide-time-modifier = 0.0;
+        dashboard-in-overlay = false;
+        expose-animation-duration = 0.0;
+        magnification = false;
+        mineffect = "scale";
+        minimize-to-application = true;
+        mouse-over-hilite-stack = true;
+        orientation = "left";
+        showhidden = true;
+        show-recents = false;
+      };
+      finder = {
+        AppleShowAllFiles = true;
+        ShowExternalHardDrivesOnDesktop = false;
+        ShowMountedServersOnDesktop = false;
+        ShowPathbar = true;
+        ShowRemovableMediaOnDesktop = false;
+        _FXEnableColumnAutoSizing = true;
+      };
+      hitoolbox.AppleFnUsageType = "Do Nothing";
+      menuExtraClock = {
+        IsAnalog = false;
+        Show24Hour = true;
+        ShowDate = 1; # always
+        ShowDayOfWeek = true;
+        ShowSeconds = false;
+      };
+      spaces.spans-displays = true;
+      trackpad = {
+        Clicking = true;
+        DragLock = false;
+        Dragging = false;
+        TrackpadRightClick = true;
+        TrackpadThreeFingerDrag = true;
+      };
+    };
+
+    activationScripts.postActivation.text = ''
+      chsh -s /run/current-system/sw/bin/zsh ${username};
+      ln -sf ${pkgs.file}/lib/libmagic.1.dylib /opt/homebrew/lib/libmagic.dylib; # for python-magic in uv
+    '';
+  };
+
+  # Touch ID for sudo
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    reattach = true;
+  };
+}

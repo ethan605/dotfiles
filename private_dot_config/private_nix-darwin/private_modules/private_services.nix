@@ -37,8 +37,8 @@
       script = ''
         while true; do
           ${pkgs.mpc}/bin/mpc idle
-            ${pkgs.sketchybar}/bin/sketchybar --trigger mpd_idle
-            done
+          ${pkgs.sketchybar}/bin/sketchybar --trigger mpd_idle
+        done
       '';
     };
   };
