@@ -121,7 +121,10 @@ let
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
 in
 {
-  fonts.packages = [ self-host-fonts ];
+  fonts.packages = [
+    pkgs.lilex
+    self-host-fonts
+  ];
   programs.zsh.enable = true;
 
   # Homebrew for GUI apps
@@ -145,7 +148,8 @@ in
   };
 
   environment = {
-    systemPackages = base ++ devel ++ cli ++ tui ++ gui;
+    enableAllTerminfo = true;
     shells = [ pkgs.zsh ];
+    systemPackages = base ++ devel ++ cli ++ tui ++ gui;
   };
 }

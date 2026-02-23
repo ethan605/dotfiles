@@ -41,7 +41,7 @@ print_events = false
 render_timer = false
 
 [env]
-TERMINFO="/run/current-system/sw/share/terminfo"
+# TERMINFO="/run/current-system/sw/share/terminfo"
 TERM = "alacritty"
 # TERM = "xterm-256color"
 
