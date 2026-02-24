@@ -25,7 +25,6 @@ in
         InitialKeyRepeat = 15;
         KeyRepeat = 2;
         NSAutomaticWindowAnimationsEnabled = false;
-        NSScrollAnimationEnabled = false;
         NSWindowResizeTime = 0.0;
         _HIHideMenuBar = true;
       };
@@ -59,12 +58,15 @@ in
         show-recents = false;
       };
       finder = {
+        AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
+        FXPreferredViewStyle = "clmv";
         ShowExternalHardDrivesOnDesktop = false;
         ShowMountedServersOnDesktop = false;
         ShowPathbar = true;
         ShowRemovableMediaOnDesktop = false;
         _FXEnableColumnAutoSizing = true;
+        _FXSortFoldersFirst = true;
       };
       hitoolbox.AppleFnUsageType = "Do Nothing";
       menuExtraClock = {
