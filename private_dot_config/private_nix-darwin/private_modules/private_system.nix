@@ -78,11 +78,16 @@ in
       };
       spaces.spans-displays = true;
       trackpad = {
+        ActuateDetents = true;
+        ActuationStrength = 0;
         Clicking = true;
         DragLock = false;
         Dragging = false;
+        TrackpadMomentumScroll = true;
         TrackpadRightClick = true;
+        TrackpadRotate = true;
         TrackpadThreeFingerDrag = true;
+        TrackpadTwoFingerFromRightEdgeSwipeGesture = 3;
       };
     };
 
