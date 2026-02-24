@@ -140,6 +140,7 @@ in
       "homerow"
       "karabiner-elements" # can't use services.karabiner-elements
       "logi-options+"
+      "megasync"
       "telegram"
       "whatsapp"
     ];
