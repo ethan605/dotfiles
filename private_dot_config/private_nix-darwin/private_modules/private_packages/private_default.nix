@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
+with pkgs;
 let
-  base = with pkgs; [
+  base = [
     axel
     bash
     chezmoi
@@ -24,7 +25,7 @@ let
     zsh
   ];
 
-  docs = with pkgs; [
+  docs = [
     bat
     bat-extras.core
     less
@@ -34,7 +35,7 @@ let
     vivid
   ];
 
-  cloud-native = with pkgs; [
+  cloud-native = [
     argo-rollouts
     kubecolor
     kubectl
@@ -42,13 +43,13 @@ let
     orbstack
   ];
 
-  svc = with pkgs; [
+  svc = [
     delta
     git
     git-lfs
   ];
 
-  devel = with pkgs; [
+  devel = [
     cppcheck
     ffmpeg
     httpie
@@ -66,14 +67,14 @@ let
     postgresql_15.pg_config
   ] ++ docs ++ cloud-native ++ svc;
 
-  archives = with pkgs; [
+  archives = [
     lzip
     p7zip
     xz
     zip
   ];
 
-  gpg = with pkgs; [
+  gpg = [
     gnupg # gpg and gpg-agent
     gpgme.dev
     libassuan
@@ -88,18 +89,18 @@ let
     )
   ];
 
-  media = with pkgs; [
+  media = [
     iina
     mpc
     mpd
     switchaudio-osx
   ];
 
-  cli = with pkgs; [
+  cli = [
     _1password-cli
   ] ++ archives ++ gpg ++ media;
 
-  tui = with pkgs; [
+  tui = [
     aria2
     bottom
     duf
@@ -111,7 +112,7 @@ let
     vifm
   ];
 
-  gui = with pkgs; [
+  gui = [
     aerospace
     alacritty
     flameshot

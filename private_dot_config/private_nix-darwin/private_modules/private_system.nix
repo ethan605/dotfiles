@@ -1,8 +1,5 @@
 { pkgs, username, hostname, home-dir, ... }:
 
-let
-  dock-spacer = { spacer = { small = true; }; };
-in
 {
   networking.hostName = hostname;
   time.timeZone = "Europe/London";
@@ -30,19 +27,23 @@ in
       };
       controlcenter.BatteryShowPercentage = true;
       dock = {
-        persistent-apps = [
-          "/Applications/Nix Apps/Alacritty.app"
-          dock-spacer
-          "/Applications/Google Chrome.app"
-          "${home-dir}/Applications/Home Manager Apps/Firefox.app"
-          dock-spacer
-          "/Applications/Slack.app"
-          "/Applications/Notion.app"
-          "/Applications/Linear.app"
-          dock-spacer
-          "/Applications/Telegram.app"
-          "/Applications/Whatsapp.app"
-        ];
+        persistent-apps =
+          let
+            dock-spacer = { spacer = { small = true; }; };
+          in
+          [
+            "/Applications/Nix Apps/Alacritty.app"
+            dock-spacer
+            "/Applications/Google Chrome.app"
+            "${home-dir}/Applications/Home Manager Apps/Firefox.app"
+            dock-spacer
+            "/Applications/Slack.app"
+            "/Applications/Notion.app"
+            "/Applications/Linear.app"
+            dock-spacer
+            "/Applications/Telegram.app"
+            "/Applications/Whatsapp.app"
+          ];
 
         autohide = true;
         autohide-delay = 0.0;
