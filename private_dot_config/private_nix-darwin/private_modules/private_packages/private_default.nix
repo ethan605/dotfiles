@@ -135,10 +135,6 @@ in
       upgrade = true;
     };
 
-    brews = [
-      "mpd"
-    ];
-
     casks = [
       "contexts"
       "homerow"

@@ -19,13 +19,12 @@
     mpd = {
       serviceConfig = {
         ProgramArguments = [
-          # "${pkgs.mpd}/bin/mpd"
-          # "/opt/homebrew/Cellar/mpd/0.24.8_1/bin/mpd"
-          "/opt/homebrew/bin/mpd"
+          "${pkgs.mpd}/bin/mpd"
           "--no-daemon"
           "--verbose"
           "${home-dir}/.config/mpd/mpd.conf"
         ];
+        ProcessType = "Interactive";
         RunAtLoad = true;
         KeepAlive = true;
         StandardErrorPath = "/tmp/mpd.stderr.log";
@@ -35,6 +34,7 @@
 
     mpd-idle = {
       serviceConfig = {
+        ProcessType = "Background";
         RunAtLoad = true;
         KeepAlive = true;
       };
