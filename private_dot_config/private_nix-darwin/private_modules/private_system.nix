@@ -80,15 +80,32 @@
       spaces.spans-displays = true;
       trackpad = {
         ActuateDetents = true;
-        ActuationStrength = 0;
         Clicking = true;
         DragLock = false;
         Dragging = false;
+        FirstClickThreshold = 0;
+        ForceSuppressed = false;
+        SecondClickThreshold = 0;
+        TrackpadCornerSecondaryClick = 0;
+        TrackpadFourFingerHorizSwipeGesture = 0;
+        TrackpadFourFingerPinchGesture = 0;
+        TrackpadFourFingerVertSwipeGesture = 2;
         TrackpadMomentumScroll = true;
+        TrackpadPinch = true;
         TrackpadRightClick = true;
         TrackpadRotate = true;
         TrackpadThreeFingerDrag = true;
+        TrackpadThreeFingerHorizSwipeGesture = 0;
+        TrackpadThreeFingerTapGesture = 2;
+        TrackpadThreeFingerVertSwipeGesture = 0;
+        TrackpadTwoFingerDoubleTapGesture = true;
         TrackpadTwoFingerFromRightEdgeSwipeGesture = 3;
+
+        # Unsupported trackpad prefs
+        # defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 0;
+        # defaults write com.apple.AppleMultitouchTrackpad TrackpadHorizScroll -bool true;
+        # defaults write com.apple.AppleMultitouchTrackpad TrackpadScroll -bool true;
+        # defaults write com.apple.AppleMultitouchTrackpad UserPreferences -bool true;
       };
     };
 
