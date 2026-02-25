@@ -6,21 +6,21 @@
 COLOR_RED=0xffff5c57
 COLOR_WHITE=0xffeff0eb
 
-AUDIO_OUTPUT="$(SwitchAudioSource -c -fjson -toutput | jq -r '.uid' | tr '[:upper:]' '[:lower:]')"
+AUDIO_SOURCE="$(SwitchAudioSource -c -fjson -toutput | jq -r '.uid' | tr '[:upper:]' '[:lower:]')"
 
-if [[ $AUDIO_OUTPUT == 'builtinspeakerdevice' ]]; then
-	OUTPUT_ICON='󰓃'
+if [[ $AUDIO_SOURCE == 'builtinspeakerdevice' ]]; then
+	AUDIO='󰓃'
 else
-	OUTPUT_ICON='󰋋'
+	AUDIO='󰋋'
 fi
 
 if [[ "$SENDER" = "volume_change" ]]; then
 	COLOR="$COLOR_WHITE"
 
 	case "$INFO" in
-	[5-9][0-9] | 100) ICON='' LABEL="$INFO% $OUTPUT_ICON" ;;
-	[1-9] | [1-4][0-9]) ICON='' LABEL="$INFO% $OUTPUT_ICON" ;;
-	*) ICON='' LABEL="$OUTPUT_ICON" COLOR="$COLOR_RED" ;;
+	[5-9][0-9] | 100) ICON='' LABEL="$INFO% $AUDIO" ;;
+	[1-9] | [1-4][0-9]) ICON='' LABEL="$INFO% $AUDIO" ;;
+	*) ICON='' LABEL="$AUDIO" COLOR="$COLOR_RED" ;;
 	esac
 
 	sketchybar --set "$NAME" icon="$ICON" icon.color="$COLOR" label="$LABEL" label.color="$COLOR"

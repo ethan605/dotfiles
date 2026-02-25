@@ -19,19 +19,24 @@
     mpd = {
       serviceConfig = {
         ProgramArguments = [
-          "${pkgs.mpd}/bin/mpd"
+          # "${pkgs.mpd}/bin/mpd"
+          # "/opt/homebrew/Cellar/mpd/0.24.8_1/bin/mpd"
+          "/opt/homebrew/bin/mpd"
           "--no-daemon"
+          "--verbose"
           "${home-dir}/.config/mpd/mpd.conf"
         ];
-        KeepAlive = true;
         RunAtLoad = true;
+        KeepAlive = true;
+        StandardErrorPath = "/tmp/mpd.stderr.log";
+        StandardOutPath = "/tmp/mpd.stdout.log";
       };
     };
 
     mpd-idle = {
       serviceConfig = {
-        KeepAlive = true;
         RunAtLoad = true;
+        KeepAlive = true;
       };
 
       script = ''
