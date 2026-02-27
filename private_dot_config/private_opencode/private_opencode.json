@@ -94,16 +94,17 @@
     "general": {
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "system_prompt": "You are an Implementation Engineer. Read and strictly follow the instructions in ~/.config/opencode/GENERAL.md for your role and quality standards."
+      "system_prompt": "You are an Implementation Engineer. Read and strictly follow the instructions in ~/.config/opencode/GENERAL.md for your role and quality standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     },
     "explore": {
       "mode": "subagent",
-      "model": "anthropic/claude-haiku-4-5"
+      "model": "anthropic/claude-haiku-4-5",
+      "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     },
     "reviewer": {
       "mode": "subagent",
       "model": "google-vertex/gemini-3-pro-preview",
-      "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/GEMINI.md for your persona and review standards."
+      "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/GEMINI.md for your persona and review standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     }
   },
   "mcp": {
