@@ -12,34 +12,11 @@
       }
     }
   },
-  "model": "anthropic/claude-opus-4-5",
-  "theme": "system",
+  "model": "anthropic/claude-opus-4-6",
   "autoupdate": true,
   "compaction": {
     "auto": true,
     "prune": true
-  },
-  "keybinds": {
-    "leader": "\\",
-    "app_exit": "none",
-    "messages_toggle_conceal": "none",
-    "session_list": "none",
-    "session_parent": "<leader>k,<leader>up",
-    "session_child_cycle": "<leader>l,<leader>right",
-    "session_child_cycle_reverse": "<leader>h,<leader>left",
-    "messages_line_up": "ctrl+y",
-    "messages_line_down": "ctrl+e",
-    "messages_page_up": "ctrl+u",
-    "messages_page_down": "ctrl+d",
-    "messages_first": "ctrl+g",
-    "messages_last": "ctrl+alt+g"
-  },
-  "tui": {
-    "scroll_speed": 3,
-    "scroll_acceleration": {
-      "enabled": true
-    },
-    "diff_style": "auto"
   },
   "permission": {
     "*": "ask",
@@ -103,7 +80,7 @@
     },
     "reviewer": {
       "mode": "subagent",
-      "model": "google-vertex/gemini-3-pro-preview",
+      "model": "google-vertex/gemini-3.1-pro-preview",
       "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/GEMINI.md for your persona and review standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     }
   },
