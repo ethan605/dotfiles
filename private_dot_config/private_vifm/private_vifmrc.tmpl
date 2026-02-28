@@ -62,10 +62,12 @@ set scrolloff=4
 
 " Status line with:
 "   - file title
-"   - file attributes
 "   - file size (human-readable)
 "   - modification date
-set statusline=" %t%= %A %10s %20d "
+set statusline=" %t%= %10s %20d"
+
+" Left-aligned name, right-aligned perms and size
+set viewcolumns=-{name},11{perms},6{size}
 
 " Color scheme
 colorscheme minimal
