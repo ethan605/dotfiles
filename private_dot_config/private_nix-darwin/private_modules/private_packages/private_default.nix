@@ -90,6 +90,7 @@ let
   ];
 
   media = [
+    blueutil
     iina
     mpc
     mpd

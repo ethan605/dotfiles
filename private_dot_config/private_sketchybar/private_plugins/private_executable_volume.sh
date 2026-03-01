@@ -6,10 +6,12 @@
 COLOR_RED=0xffff5c57
 COLOR_WHITE=0xffeff0eb
 
-AUDIO_SOURCE="$(SwitchAudioSource -c -fjson -toutput | jq -r '.uid' | tr '[:upper:]' '[:lower:]')"
+AUDIO_SOURCE="$(SwitchAudioSource -c -fjson -toutput | jq -r '.uid' | cut -d: -f1)"
 
-if [[ $AUDIO_SOURCE == 'builtinspeakerdevice' ]]; then
+if [[ $AUDIO_SOURCE == 'BuiltInSpeakerDevice' ]]; then
 	AUDIO='󰓃'
+elif [[ $(blueutil --info "$AUDIO_SOURCE") ]]; then
+	AUDIO='󰂯'
 else
 	AUDIO='󰋋'
 fi
