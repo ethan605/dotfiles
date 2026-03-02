@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, home-dir, ... }:
 
 let
   minimal-functional-fox = pkgs.callPackage ./modules/packages/minimal-functional-fox.nix { inherit pkgs; };
@@ -57,7 +57,7 @@ in
 
   home.file.firefox-user-chrome = {
     enable = true;
-    target = "$HOME/Library/Application Support/Firefox/Profiles/${firefox-personal}/chrome";
+    target = "${home-dir}/Library/Application Support/Firefox/Profiles/${firefox-personal}/chrome";
     source = "${minimal-functional-fox}";
   };
 
