@@ -38,7 +38,7 @@
             "${home-dir}/Applications/Home Manager Apps/Firefox.app"
             dock-spacer
             "/Applications/Slack.app"
-            "/Applications/Notion.app"
+            # "/Applications/Notion.app"
             "/Applications/Linear.app"
             dock-spacer
             "/Applications/Telegram.app"
