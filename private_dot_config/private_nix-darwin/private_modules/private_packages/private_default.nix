@@ -54,6 +54,7 @@ let
     ffmpeg
     httpie
     hyperfine
+    imagemagick
     jq
     parallel
     qrencode
