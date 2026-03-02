@@ -30,6 +30,7 @@ ninja = "1.13.2"
 opencode = "1.2.15"
 pre-commit = "4.5.1"
 tree-sitter = "0.26.6"
+gcloud = "558.0.0"
 
 # And custom tools
 [tools."github:xjasonlyu/tun2socks"]
