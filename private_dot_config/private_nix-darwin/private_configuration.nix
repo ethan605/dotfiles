@@ -1,4 +1,4 @@
-{ username, ... }:
+{ pkgs, username, home-dir, ... }:
 
 {
   imports = [
@@ -19,7 +19,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.${username} = import ./home.nix;
+    users.${username} = import ./home.nix { inherit pkgs home-dir; };
     backupFileExtension = "bak.home-manager";
   };
 }
