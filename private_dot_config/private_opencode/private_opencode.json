@@ -86,18 +86,19 @@
   },
   "mcp": {
     "notion": {
+      "enabled": false,
       "type": "remote",
       "url": "https://mcp.notion.com/mcp",
-      "oauth": {},
-      "enabled": true
+      "oauth": {}
     },
     "linear": {
+      "enabled": true,
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
-      "oauth": {},
-      "enabled": true
+      "oauth": {}
     },
     "postgresql": {
+      "enabled": false,
       "type": "local",
       "command": [
         "npx",
@@ -107,8 +108,7 @@
         "stdio",
         "--dsn",
         "{env:POSTGRES_CONNECTION_STRING}"
-      ],
-      "enabled": true
+      ]
     }
   }
 }

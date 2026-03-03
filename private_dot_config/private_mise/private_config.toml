@@ -5,7 +5,7 @@ lockfile = true
 [tools]
 # Languages go first
 clang = "22.1.0"
-go = "1.25.7"
+go = "1.26.0"
 java = "openjdk-21.0.2"
 lua = "5.5.0"
 luajit = "2.1.1744318430"
