@@ -62,6 +62,7 @@
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
+        FXDefaultSearchScope = "SCcf"; # current folder
         FXPreferredViewStyle = "clmv";
         ShowExternalHardDrivesOnDesktop = false;
         ShowMountedServersOnDesktop = false;
