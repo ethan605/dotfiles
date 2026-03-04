@@ -4,16 +4,18 @@ return {
   build = ":TSUpdate",
   dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   config = function()
-    require("nvim-treesitter").setup({
-      auto_install = true,
-      ensure_installed = "all",
-      highlight = {
-        enable = true,
-        disable = { "csv", "tsv" },
-      },
-      ignore_install = { "ipkg" },
-      modules = {},
-      sync_install = false,
+    local treesitter = require("nvim-treesitter")
+
+    treesitter.setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
+
+    treesitter.install({
+      "bash", "zsh",
+      "cpp", "cmake", "make",
+      "go", "gosum", "python", "rust", "java",
+      "javascript", "jsx", "typescript", "tsx",
+      "comment", "json", "json5", "yaml",
     })
   end,
 }

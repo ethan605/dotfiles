@@ -70,3 +70,14 @@ vim.api.nvim_create_user_command("TodoFzf", function(args)
     todoFzf.todo({ keywords = { keyword } })
   end
 end, { desc = "Browse Todo comments by keyword", nargs = "?" })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "bash", "sh", "zsh",
+    "cpp", "cmake", "make",
+    "go", "gosum", "python", "rust", "java",
+    "javascript", "jsx", "typescript", "tsx",
+    "comment", "json", "json5", "yaml",
+  },
+  callback = function() vim.treesitter.start() end,
+})
