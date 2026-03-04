@@ -1,12 +1,21 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["anthropic", "google-vertex"],
+  "enabled_providers": ["anthropic", "google-vertex", "openai"],
   "provider": {
     "google-vertex": {
       "models": {
         "gemini-3-pro-preview": {
           "options": {
             "thinking_level": "high"
+          }
+        }
+      }
+    },
+    "openai": {
+      "models": {
+        "gpt-5.3-codex": {
+          "options": {
+            "thinking_level": "xhigh"
           }
         }
       }
@@ -80,8 +89,8 @@
     },
     "reviewer": {
       "mode": "subagent",
-      "model": "google-vertex/gemini-3.1-pro-preview",
-      "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/GEMINI.md for your persona and review standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
+      "model": "openai/gpt-5.3-codex",
+      "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/REVIEWER.md for your persona and review standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     }
   },
   "mcp": {

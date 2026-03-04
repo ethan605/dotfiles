@@ -7,6 +7,7 @@
     "messages_toggle_conceal": "none",
     "session_list": "none",
     "session_parent": "<leader>k,<leader>up",
+    "session_child_first": "<leader>j,<leader>down",
     "session_child_cycle": "<leader>l,<leader>right",
     "session_child_cycle_reverse": "<leader>h,<leader>left",
     "messages_line_up": "ctrl+y",
