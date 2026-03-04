@@ -21,6 +21,7 @@ clickhouse = "25.12.7.21-stable"
 cmake = "4.2.3"
 dotenvx = "1.52.0"
 firebase = "15.8.0"
+gcloud = "559.0.0"
 gh = "2.87.3"
 graphite = "1.7.20"
 helm = "4.1.1"
@@ -30,7 +31,6 @@ ninja = "1.13.2"
 opencode = "1.2.16"
 pre-commit = "4.5.1"
 tree-sitter = "0.26.6"
-gcloud = "559.0.0"
 
 # And custom tools
 [tools."github:xjasonlyu/tun2socks"]
