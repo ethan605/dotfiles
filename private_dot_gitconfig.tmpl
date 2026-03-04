@@ -12,6 +12,11 @@
 [includeIf "hasconfig:remote.*.url:git@gist.github.work:*"]
   path = .gitconfig_work
 
+[url "git@github.work:neo-technology"]
+  insteadOf = https://github.com/neo-technology
+[url "git@github.work:neo4j"]
+  insteadOf = https://github.com/neo4j
+
 [core]
   excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
   autocrlf = false
@@ -60,8 +65,6 @@
   clean = git-lfs clean -- %f
 [init]
   defaultBranch = main
-# [url "git@github.com:"]
-#   insteadOf = https://github.com/
 
 {{- if eq .chezmoi.os "darwin" }}
 
