@@ -20,4 +20,4 @@ source <(mise activate zsh)
 source <(gt completion)
 source <(helm completion zsh)
 # shellcheck disable=SC1091
-# source "$(mise where gcloud)/completion.zsh.inc"
+source "$(mise where gcloud)/completion.zsh.inc"
