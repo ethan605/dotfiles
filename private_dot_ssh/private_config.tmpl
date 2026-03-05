@@ -30,3 +30,16 @@ Host gist.github.work
   Hostname gist.github.com
   User git
   IdentityFile ~/.ssh/work_id_ed25519
+
+{{- if eq .machine_id "J6JX2CY3C5" }}
+# DevPod Start neo4j-cloud.devpod
+Host neo4j-cloud.devpod
+  ForwardAgent yes
+  LogLevel error
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  HostKeyAlgorithms rsa-sha2-256,rsa-sha2-512,ssh-rsa
+  ProxyCommand "/run/current-system/sw/bin/devpod" ssh --stdio --context default --user ubuntu neo4j-cloud
+  User ubuntu
+# DevPod End neo4j-cloud.devpod
+{{- end }}
