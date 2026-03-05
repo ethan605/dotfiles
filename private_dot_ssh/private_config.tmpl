@@ -32,6 +32,7 @@ Host gist.github.work
   IdentityFile ~/.ssh/work_id_ed25519
 
 {{- if eq .machine_id "J6JX2CY3C5" }}
+
 # DevPod Start neo4j-cloud.devpod
 Host neo4j-cloud.devpod
   ForwardAgent yes
@@ -42,4 +43,5 @@ Host neo4j-cloud.devpod
   ProxyCommand "/run/current-system/sw/bin/devpod" ssh --stdio --context default --user ubuntu neo4j-cloud
   User ubuntu
 # DevPod End neo4j-cloud.devpod
+
 {{- end }}
