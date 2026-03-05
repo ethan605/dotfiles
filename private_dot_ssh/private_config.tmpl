@@ -13,6 +13,7 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.
 Host *
   AddKeysToAgent yes
   IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_ed25519
 
 {{- if eq .chezmoi.os "darwin" }}
 
@@ -20,16 +21,6 @@ Host *
   UseKeychain yes
 
 {{- end }}
-
-Host github.work
-  Hostname github.com
-  User git
-  IdentityFile ~/.ssh/work_id_ed25519
-
-Host gist.github.work
-  Hostname gist.github.com
-  User git
-  IdentityFile ~/.ssh/work_id_ed25519
 
 {{- if eq .machine_id "J6JX2CY3C5" }}
 
