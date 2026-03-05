@@ -7,15 +7,15 @@
   path = .gitconfig_personal
 [includeIf "hasconfig:remote.*.url:git@gist.github.com:*"]
   path = .gitconfig_personal
-[includeIf "hasconfig:remote.*.url:git@github.work:*/*"]
-  path = .gitconfig_work
-[includeIf "hasconfig:remote.*.url:git@gist.github.work:*"]
-  path = .gitconfig_work
 
-[url "git@github.work:neo-technology"]
-  insteadOf = https://github.com/neo-technology
-[url "git@github.work:neo4j"]
-  insteadOf = https://github.com/neo4j
+[includeIf "hasconfig:remote.*.url:git@github.com:neo-technology/*"]
+  path = .gitconfig_work
+[includeIf "hasconfig:remote.*.url:git@github.com:neo4j/*"]
+  path = .gitconfig_work
+[includeIf "hasconfig:remote.*.url:git@gist.github.com:neo-technology/*"]
+  path = .gitconfig_work
+[includeIf "hasconfig:remote.*.url:git@gist.github.com:neo4j/*"]
+  path = .gitconfig_work
 
 [core]
   excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
