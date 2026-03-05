@@ -22,6 +22,11 @@ Host *
 
 {{- end }}
 
+Host github.work
+  Hostname github.com
+  User git
+  IdentityFile ~/.ssh/work_id_ed25519
+
 {{- if eq .machine_id "J6JX2CY3C5" }}
 
 # DevPod Start neo4j-cloud.devpod
