@@ -13,7 +13,7 @@ return {
     treesitter.install({
       "bash", "zsh",
       "cpp", "cmake", "make",
-      "go", "gosum", "python", "rust", "java",
+      "go", "gosum", "java", "nix", "python", "rust",
       "javascript", "jsx", "typescript", "tsx",
       "comment", "json", "json5", "yaml",
     })

@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "bash", "sh", "zsh",
     "cpp", "cmake", "make",
-    "go", "gosum", "python", "rust", "java",
+    "go", "gosum", "java", "nix", "python", "rust",
     "javascript", "jsx", "typescript", "tsx",
     "comment", "json", "json5", "yaml",
   },
