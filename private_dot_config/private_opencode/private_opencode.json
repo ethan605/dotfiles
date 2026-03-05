@@ -118,6 +118,11 @@
         "--dsn",
         "{env:POSTGRES_CONNECTION_STRING}"
       ]
+    },
+    "miro": {
+      "type": "remote",
+      "url": "https://mcp.miro.com",
+      "oauth": {}
     }
   }
 }
