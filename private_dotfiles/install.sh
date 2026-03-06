@@ -10,7 +10,7 @@ rm -rf "$HOME/dotfiles"
 
 chezmoi init \
 	--promptString machine_id=devpod \
-  --promptString work_email=thanh.nguyen@neo4j.com \
+	--promptString work_email=thanh.nguyen@neo4j.com \
 	--apply https://github.com/ethan605/dotfiles
 
 # shellcheck disable=SC2024
