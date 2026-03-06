@@ -84,7 +84,6 @@ Library
 
 .Brewfile
 .config
-!.config/starship.toml
 .default-cloud-sdk-components
 .default-gems
 .default-go-packages
