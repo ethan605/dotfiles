@@ -65,6 +65,12 @@ sketchybar \
 	--subscribe battery system_woke power_source_change
 
 sketchybar \
+	--add item input_source right \
+	--set input_source script="$PLUGIN_DIR/input_source.sh" \
+	--add event input_change AppleSelectedInputSourcesChangedNotification \
+	--subscribe input_source input_change
+
+sketchybar \
 	--add item mpd right \
 	--set mpd script="$PLUGIN_DIR/mpd.sh" \
 	--set mpd click_script="mpc toggle" \
