@@ -2,6 +2,7 @@
 # Official modules
 zmodule archive
 # zmodule completion # disabled due to conflicts with fzf-tab
+zmodule direnv
 zmodule environment
 zmodule exa
 zmodule fzf
@@ -14,4 +15,8 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-syntax-highlighting
 
 zmodule ethan605/fzfsh
+zmodule joke/zim-chezmoi
+zmodule joke/zim-starship
+zmodule kiesman99/zim-zoxide
+zmodule pXius/zim-gcloud
 zmodule Aloxaf/fzf-tab
