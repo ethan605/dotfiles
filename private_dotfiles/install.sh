@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Remove everything else
+rm -rf ~/dotfiles/*
+
 if ! command -v chezmoi &>/dev/null; then
 	curl -fsLS https://chezmoi.io/getlb | sh -
 	export PATH="$HOME/.local/bin:$PATH"
 fi
-
-rm -rf ~/dotfiles/.*
-rm -rf ~/dotfiles/LICENSE
-rm -rf ~/dotfiles/README
-rm -rf ~/dotfiles/misc
-rm -rf ~/dotfiles/private_Library
-rm -rf ~/dotfiles/private_dot_*
 
 chezmoi init \
 	--promptString machine_id=devpod \
