@@ -10,7 +10,6 @@ misc
 .config/kitty
 .config/ncmpcpp
 .local/bin/ibus-engines
-.zshrc.d/00-path.zsh
 
 # >>>
 
@@ -58,7 +57,7 @@ misc
 # >>>
 
 # <<< Work-related exclusive files
-{{ if ne .chezmoi.hostname "PF3XSEPR" }}
+{{ if ne .machine_id "PF3XSEPR" }}
 
 .config/sway/keymaps/thinkpad.xkb
 .local/bin/brightness-utils
@@ -72,6 +71,36 @@ misc
 
 .config/karabiner
 .config/nix-darwin
+Library
+
+{{ end }}
+# >>>
+
+# <<< DevPod-excluded files
+{{ if eq .machine_id "devpod" }}
+
+.Brewfile
+.config
+.default-cloud-sdk-components
+.default-gems
+.default-go-packages
+.default-npm-packages
+.default-python-packages
+.gitconfig
+.gitconfig_personal
+.gitconfig_work
+.gitignore_global
+.gnupg
+.gtkrc-2.0
+.icons
+.ideavimrc
+.local
+.mozilla
+.pdbrc
+.pdbrc.py
+.ssh
+.tmux.conf
+.xkb
 Library
 
 {{ end }}
