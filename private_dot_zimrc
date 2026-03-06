@@ -1,13 +1,11 @@
 # vim:fileencoding=utf-8:filetype=zsh
-# Default modules
-zmodule environment
-zmodule utility
-
 # Official modules
 zmodule archive
-# zmodule completion # due to conflict with fzf-tab
+# zmodule completion # disabled due to conflicts with fzf-tab
+zmodule environment
 zmodule exa
 zmodule fzf
+zmodule utility
 
 # Community modules
 zmodule zsh-users/zsh-autosuggestions
