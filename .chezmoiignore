@@ -3,9 +3,6 @@ LICENSE
 README.md
 misc
 
-# DevPod only
-install.sh
-
 # <<< Obsolete configs - keep for future reference only
 
 .Brewfile
@@ -84,6 +81,7 @@ Library
 
 dotfiles
 dotfiles/.bashrc
+dotfiles/install.sh
 
 {{ else }}
 
