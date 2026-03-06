@@ -94,6 +94,7 @@ Library
 .gtkrc-2.0
 .icons
 .ideavimrc
+.ipython
 .local
 .mozilla
 .pdbrc
