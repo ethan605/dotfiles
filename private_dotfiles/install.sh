@@ -23,5 +23,5 @@ rm -rf ~/dotfiles/private_dotfiles
 
 # shellcheck disable=SC2024
 sudo -S apt install -y \
-	bat eza neovim vivid zoxide \
+	bat eza fzf kubecolor kubectx neovim vivid zoxide \
 	<"$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw"
