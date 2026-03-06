@@ -3,6 +3,9 @@ LICENSE
 README.md
 misc
 
+# DevPod only
+devpod-install.sh
+
 # <<< Obsolete configs - keep for future reference only
 
 .Brewfile
@@ -76,11 +79,12 @@ Library
 {{ end }}
 # >>>
 
-# <<< DevPod-excluded files
+# <<< DebBox-excluded files
 {{ if eq .machine_id "devpod" }}
 
 .Brewfile
 .config
+!.config/starship
 .default-cloud-sdk-components
 .default-gems
 .default-go-packages
