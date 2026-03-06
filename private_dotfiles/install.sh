@@ -6,6 +6,8 @@ if ! command -v chezmoi &>/dev/null; then
 	export PATH="$HOME/.local/bin:$PATH"
 fi
 
+rm -rf "$HOME/dotfiles"
+
 chezmoi init \
 	--promptString machine_id=devpod \
   --promptString work_email=thanh.nguyen@neo4j.com \
