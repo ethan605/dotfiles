@@ -83,6 +83,7 @@ Library
 {{ if ne .machine_id "devpod" }}
 
 dotfiles
+dotfiles/.bashrc
 
 {{ else }}
 
