@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-curl -fsLS https://chezmoi.io/getlb | sh -
+curl -fsLS https://chezmoi.io/getlb | sh - -- -b "$HOME/.local/bin"
 
 # Remove everything else
 rm -rf ~/dotfiles/.*
@@ -11,7 +11,7 @@ rm -rf ~/dotfiles/misc
 rm -rf ~/dotfiles/private_Library
 rm -rf ~/dotfiles/private_dot_*
 
-~/.local/bin/chezmoi init \
+.local/bin/chezmoi init \
 	--promptString machine_id=devpod \
 	--promptString work_email=thanh.nguyen@neo4j.com \
 	--apply https://github.com/ethan605/dotfiles \
