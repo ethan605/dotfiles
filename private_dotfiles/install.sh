@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b "$HOME/.local/bin"
-export PATH="$HOME/.local/bin:$PATH"
+if ! command -v chezmoi &>/dev/null; then
+	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b "$HOME/.local/bin"
+	export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Remove everything else
 rm -rf ~/dotfiles/.*
