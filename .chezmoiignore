@@ -82,7 +82,8 @@ Library
 # <<< DebBox-exclusive files
 {{ if ne .machine_id "devpod" }}
 
-.bashrc.d
+dotfiles/.bashrc
+dotfiles/.bashrc.d
 
 {{ else }}
 
