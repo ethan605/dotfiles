@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if ! command -v chezmoi &>/dev/null; then
-	curl -fsLS https://get.chezmoi.io | sh -
+	curl -fsLS https://chezmoi.io/getlb | sh -
 	export PATH="$HOME/.local/bin:$PATH"
 fi
 
