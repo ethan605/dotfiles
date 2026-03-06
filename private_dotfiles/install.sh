@@ -8,7 +8,11 @@ fi
 
 # Remove everything else
 rm -rf ~/dotfiles/.*
-rm -rf ~/dotfiles/*
+rm -rf ~/dotfiles/LICENSE
+rm -rf ~/dotfiles/README.md
+rm -rf ~/dotfiles/misc
+rm -rf ~/dotfiles/private_Library
+rm -rf ~/dotfiles/private_dot_*
 
 chezmoi init \
 	--promptString machine_id=devpod \
