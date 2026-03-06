@@ -18,7 +18,7 @@ chezmoi init \
 	--promptString machine_id=devpod \
 	--promptString work_email=thanh.nguyen@neo4j.com \
 	--apply https://github.com/ethan605/dotfiles \
-  --force
+	--force
 
 # Remove the final bits
 rm -rf ~/dotfiles/private_dotfiles
