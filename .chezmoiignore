@@ -79,20 +79,16 @@ Library
 {{ end }}
 # >>>
 
-# <<< DebBox-excluded files
-{{ if eq .machine_id "devpod" }}
+# <<< DebBox-exclusive files
+{{ if ne .machine_id "devpod" }}
 
-.Brewfile
+.bashrc.d
+
+{{ else }}
+
 .config
-.default-cloud-sdk-components
-.default-gems
-.default-go-packages
-.default-npm-packages
-.default-python-packages
-.gitconfig
-.gitconfig_personal
-.gitconfig_work
-.gitignore_global
+.default-*
+.git*
 .gnupg
 .gtkrc-2.0
 .icons
@@ -100,18 +96,11 @@ Library
 .ipython
 .local
 .mozilla
-.pdbrc
-.pdbrc.py
+.pdbrc*
 .ssh
 .tmux.conf
 .xkb
-.zimrc
-.zlogin
-.zlogout
-.zprofile
-.zshenv
-.zshrc
-.zshrc.d
+.z*
 Library
 
 {{ end }}
