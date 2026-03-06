@@ -102,6 +102,13 @@ Library
 .ssh
 .tmux.conf
 .xkb
+.zimrc
+.zlogin
+.zlogout
+.zprofile
+.zshenv
+.zshrc
+.zshrc.d
 Library
 
 {{ end }}
