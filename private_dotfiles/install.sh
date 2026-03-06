@@ -20,6 +20,9 @@ chezmoi init \
 	--apply https://github.com/ethan605/dotfiles \
   --force
 
+# Remove the final bits
+rm -rf ~/dotfiles/private_dotfiles
+
 # shellcheck disable=SC2024
 sudo -S apt install -y \
 	bat eza neovim vivid zoxide \
