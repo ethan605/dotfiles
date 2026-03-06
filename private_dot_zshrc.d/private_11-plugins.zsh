@@ -9,8 +9,6 @@ fi
 source "$ZIM_HOME/init.zsh"
 
 # System plugins
-source <(direnv hook zsh)
-source <(starship init zsh)
 source <(zoxide init zsh)
 
 # Mise plugins
@@ -19,5 +17,6 @@ source "$(mise where gcloud)/completion.zsh.inc"
 
 # Expensive executions - use on demand
 # source <(devpod completion zsh)
+# source <(gh completion -s zsh)
 # source <(gt completion)
 # source <(helm completion zsh)
