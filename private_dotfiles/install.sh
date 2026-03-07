@@ -34,6 +34,8 @@ chezmoi init \
 rm -rf ~/dotfiles/private_dotfiles
 
 if ! command -v ble &>/dev/null; then
+  rm -rf ~/ble.sh
+
 	git clone --recursive --depth 1 --shallow-submodules \
 		https://github.com/akinomyoga/ble.sh.git \
 		~/ble.sh
