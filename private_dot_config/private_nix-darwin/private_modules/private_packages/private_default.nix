@@ -3,7 +3,6 @@
 with pkgs;
 let
   base = [
-    axel
     bash
     chezmoi
     coreutils
@@ -99,9 +98,7 @@ let
     switchaudio-osx
   ];
 
-  cli = [
-    _1password-cli
-  ] ++ archives ++ gpg ++ media;
+  cli = archives ++ gpg ++ media;
 
   tui = [
     aria2
