@@ -65,6 +65,3 @@ git clone \
 rm -rf \
   ~/dotfiles/private_dotfiles \
   ~/dotfiles/ble.sh
-
-# shellcheck disable=SC1091
-source "$HOME/dotfiles/.bashrc"
