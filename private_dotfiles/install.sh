@@ -13,11 +13,9 @@ sudo apt upgrade &&
 	sudo apt clean &&
 	sudo rm -rf /var/lib/apt/lists/*
 
-if ! command -v chezmoi >/dev/null; then
-  rm -rf ~/.local/share/chezmoi
+rm -rf ~/.local/share/chezmoi
 
-	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b ~/.local/bin
-fi
+sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b ~/.local/bin
 
 # Remove unrelated files
 rm -rf ~/dotfiles/.* \
@@ -36,25 +34,24 @@ chezmoi init \
 # Remove the final bits
 rm -rf ~/dotfiles/private_dotfiles
 
-if ! command -v ble >/dev/null; then
-  rm -rf ~/ble.sh
+# === ble.sh ===
+rm -rf ~/ble.sh
 
-	git clone --recursive --depth 1 --shallow-submodules \
-		https://github.com/akinomyoga/ble.sh.git \
-		~/ble.sh
+git clone --recursive --depth 1 --shallow-submodules \
+	https://github.com/akinomyoga/ble.sh.git \
+	~/ble.sh
 
-	make -C ~/ble.sh
-fi
+make -C ~/ble.sh
 
-if ! command -v fzf >/dev/null; then
-  rm -rf ~/.fzf
+# === fzf ===
 
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+rm -rf ~/.fzf
 
-  ~/.fzf/install \
-    --key-bindings \
-    --no-completion \
-    --no-update-rc \
-    --no-zsh \
-    --no-fish
-fi
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+
+~/.fzf/install \
+	--key-bindings \
+	--no-completion \
+	--no-update-rc \
+	--no-zsh \
+	--no-fish
