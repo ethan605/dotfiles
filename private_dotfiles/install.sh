@@ -34,7 +34,9 @@ chezmoi init \
 	--force
 
 # === ble.sh ===
-rm -rf ~/.local/share/ble.sh
+rm -rf \
+  ./ble.sh \
+  ~/.local/share/ble.sh
 
 git clone --recursive --depth 1 --shallow-submodules \
   https://github.com/akinomyoga/ble.sh.git
