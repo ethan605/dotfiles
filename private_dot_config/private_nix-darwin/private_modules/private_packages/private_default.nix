@@ -113,6 +113,7 @@ let
   ];
 
   gui = [
+    appcleaner
     aerospace
     alacritty
     flameshot
