@@ -27,7 +27,10 @@ export FZF_CTRL_R_OPTS='
 '
 
 # Plugins
-eval "$(zoxide init bash)"
+if [ -f "$HOME/ble.sh/out/ble.sh" ]; then
+  # shellcheck disable=SC1091
+  source "$HOME/ble.sh/out/ble.sh"
+fi
 
 if [ -f /etc/profile.d/bash_completion.sh ]; then
   # shellcheck disable=SC1091
@@ -36,6 +39,7 @@ fi
 
 ble-import -d integration/fzf-completion
 ble-import -d integration/fzf-key-bindings
+eval "$(zoxide init bash)"
 
 # Aliases
 alias bat=batcat

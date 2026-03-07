@@ -32,3 +32,11 @@ chezmoi init \
 
 # Remove the final bits
 rm -rf ~/dotfiles/private_dotfiles
+
+if ! command -v ble &>/dev/null; then
+	git clone --recursive --depth 1 --shallow-submodules \
+		https://github.com/akinomyoga/ble.sh.git \
+		~/ble.sh
+
+	make -C ~/ble.sh
+fi
