@@ -29,15 +29,14 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-sketchybar --add event aerospace_workspace_change
-
 WORKSPACE_LABELS=(
 	[1]=" ₁" [2]=" ₂" [3]=" ₃" [4]=" ₄" [5]=" ₅"
-	[6]=" ₆" [7]=" ₇" [8]=" ₈" [9]=" ₉" [0]=""
+	[6]=" ₆" [7]=" ₇" [8]=" ₈" [9]=" ₉" [0]=""
 )
 for sid in $(/run/current-system/sw/bin/aerospace list-workspaces --all); do
 	sketchybar \
 		--add item space."$sid" left \
+		--add event aerospace_workspace_change \
 		--subscribe space."$sid" aerospace_workspace_change \
 		--set space."$sid" \
 		background.color="$COLOR_BLUE" \

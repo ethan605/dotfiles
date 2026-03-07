@@ -126,12 +126,8 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
-  if.app-id = 'notion.id'
-  run = 'move-node-to-workspace 7'
-
-[[on-window-detected]]
   if.app-id = 'com.linear'
-  run = 'move-node-to-workspace 8'
+  run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
   if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
