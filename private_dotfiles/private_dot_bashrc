@@ -47,16 +47,24 @@ if [ -f "$HOME/.fzf.bash" ]; then
   source "$HOME/.fzf.bash"
 fi
 
+if [ -f "$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh" ]; then
+  # shellcheck disable=SC1091
+  source "$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh"
+  bind -x '"\t": fzf_bash_completion'
+fi
+
 if command -v zoxide >/dev/null; then
   eval "$(zoxide init bash)"
 fi
 
 # Aliases
-alias bat=batcat
 alias nano=nvim
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
+
+alias bat=batcat
+alias fd=fdfind
 alias where=which
 
 # Eza
