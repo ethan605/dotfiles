@@ -5,6 +5,14 @@ export PATH="$HOME/.local/bin:$PATH"
 
 cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
+# Remove unrelated files
+rm -rf ~/dotfiles/.* \
+	~/dotfiles/LICENSE \
+	~/dotfiles/README.md \
+	~/dotfiles/misc \
+	~/dotfiles/private_Library \
+	~/dotfiles/private_dot_*
+
 sudo apt upgrade &&
 	sudo -S apt install -y \
 		bat eza fd-find gawk kubecolor \
@@ -13,17 +21,10 @@ sudo apt upgrade &&
 	sudo apt clean &&
 	sudo rm -rf /var/lib/apt/lists/*
 
+# === chezmoi ===
 rm -rf ~/.local/share/chezmoi
 
 sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b ~/.local/bin
-
-# Remove unrelated files
-rm -rf ~/dotfiles/.* \
-	~/dotfiles/LICENSE \
-	~/dotfiles/README.md \
-	~/dotfiles/misc \
-	~/dotfiles/private_Library \
-	~/dotfiles/private_dot_*
 
 chezmoi init \
 	--promptString machine_id=devpod \
@@ -44,13 +45,12 @@ git clone --recursive --depth 1 --shallow-submodules \
 make -C ~/ble.sh
 
 # === fzf ===
-
 rm -rf ~/.fzf
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 ~/.fzf/install \
-	--key-bindings \
+	--no-key-bindings \
 	--no-completion \
 	--no-update-rc \
 	--no-zsh \
