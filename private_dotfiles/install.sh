@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
+
+sudo apt upgrade &&
+	sudo -S apt install -y \
+		bat eza fd fzf kubecolor kubectx neovim ripgrep vivid zoxide &&
+	sudo apt autoremove &&
+	sudo apt clean &&
+	sudo rm -rf /var/lib/apt/lists/*
+
 if ! command -v chezmoi &>/dev/null; then
 	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b "$HOME/.local/bin"
 	export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Remove everything else
-rm -rf ~/dotfiles/.*
-rm -rf ~/dotfiles/LICENSE
-rm -rf ~/dotfiles/README.md
-rm -rf ~/dotfiles/misc
-rm -rf ~/dotfiles/private_Library
-rm -rf ~/dotfiles/private_dot_*
+# Remove unrelated files
+rm -rf ~/dotfiles/.* \
+	~/dotfiles/LICENSE \
+	~/dotfiles/README.md \
+	~/dotfiles/misc \
+	~/dotfiles/private_Library \
+	~/dotfiles/private_dot_*
 
 chezmoi init \
 	--promptString machine_id=devpod \
@@ -22,13 +31,3 @@ chezmoi init \
 
 # Remove the final bits
 rm -rf ~/dotfiles/private_dotfiles
-
-# shellcheck disable=SC2024
-sudo -S apt update <"$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw"
-
-sudo apt upgrade &&
-	sudo apt autoremove &&
-	sudo -S apt install -y \
-		bat eza fzf kubecolor kubectx neovim vivid zoxide &&
-	sudo apt clean &&
-	sudo rm -rf /var/lib/apt/lists/*
