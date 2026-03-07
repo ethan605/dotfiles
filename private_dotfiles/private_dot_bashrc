@@ -21,13 +21,21 @@ export FZF_DEFAULT_OPTS='
   --no-height
 '
 export FZF_CTRL_R_OPTS='
-  --preview="echo {2..} | bat --language=zsh --color=always"
+  --preview="echo {2..} | batcat --language=zsh --color=always"
   --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
   --header="Press CTRL-Y to copy command into clipboard"
 '
 
 # Plugins
 eval "$(zoxide init bash)"
+
+if [ -f /etc/profile.d/bash_completion.sh ]; then
+  # shellcheck disable=SC1091
+  source /etc/profile.d/bash_completion.sh
+fi
+
+ble-import -d integration/fzf-completion
+ble-import -d integration/fzf-key-bindings
 
 # Aliases
 alias bat=batcat

@@ -5,8 +5,8 @@ cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
 sudo apt upgrade &&
 	sudo -S apt install -y \
-		bat eza fd-find fzf kubecolor kubectx \
-		neovim ripgrep vivid zoxide &&
+		bat eza fd-find fzf gawk kubecolor \
+		kubectx neovim ripgrep vivid zoxide &&
 	sudo apt autoremove &&
 	sudo apt clean &&
 	sudo rm -rf /var/lib/apt/lists/*
