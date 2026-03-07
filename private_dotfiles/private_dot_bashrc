@@ -22,9 +22,18 @@ export FZF_DEFAULT_OPTS='
 '
 export FZF_CTRL_R_OPTS='
   --preview="echo {2..} | batcat --color=always --language=zsh --number --plain"
-  --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
-  --header="Press CTRL-Y to copy command into clipboard"
 '
+export FZF_CTRL_T_COMMAND='command fdfind -H --no-ignore-vcs -E .git -td -tf'
+export FZF_CTRL_T_OPTS="
+  --bind ctrl-/:toggle-preview
+  --preview '
+    if [[ -d {} ]]; then
+      eza --group-directories-first --color=always -1F {};
+    else
+      bat --color=always --line-range :500 {};
+    fi
+  '
+"
 
 # Plugins
 if [ -f "$HOME/ble.sh/out/ble.sh" ]; then
