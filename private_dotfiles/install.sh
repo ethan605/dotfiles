@@ -6,7 +6,8 @@ export PATH="$HOME/.local/bin:$PATH"
 cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
 # Remove unrelated files
-rm -rf ~/dotfiles/.* \
+rm -rf \
+  ~/dotfiles/.* \
 	~/dotfiles/LICENSE \
 	~/dotfiles/README.md \
 	~/dotfiles/misc \
@@ -32,17 +33,13 @@ chezmoi init \
 	--apply https://github.com/ethan605/dotfiles \
 	--force
 
-# Remove the final bits
-rm -rf ~/dotfiles/private_dotfiles
-
 # === ble.sh ===
-rm -rf ~/ble.sh
+rm -rf ~/.local/share/ble.sh
 
 git clone --recursive --depth 1 --shallow-submodules \
-	https://github.com/akinomyoga/ble.sh.git \
-	~/ble.sh
+  https://github.com/akinomyoga/ble.sh.git
 
-make -C ~/ble.sh
+make -C ble.sh install PREFIX=~/.local
 
 # === fzf ===
 rm -rf ~/.fzf
@@ -55,3 +52,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	--no-update-rc \
 	--no-zsh \
 	--no-fish
+
+# Clean-up
+rm -rf \
+  ~/dotfiles/private_dotfiles \
+  ~/dotfiles/ble.sh

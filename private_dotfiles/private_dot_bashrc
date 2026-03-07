@@ -37,14 +37,9 @@ export FZF_CTRL_T_OPTS="
 "
 
 # Plugins
-if [ -f "$HOME/ble.sh/out/ble.sh" ]; then
+if [ -f "$HOME/.local/share/blesh/ble.sh" ]; then
   # shellcheck disable=SC1091
-  source "$HOME/ble.sh/out/ble.sh"
-
-  set -o vi
-
-  ble-import -d integration/fzf-completion
-  ble-import -d integration/fzf-key-bindings
+  source -- "$HOME/.local/share/blesh/ble.sh"
 fi
 
 if [ -f "$HOME/.fzf.bash" ]; then
