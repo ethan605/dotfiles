@@ -3,8 +3,6 @@ set -euo pipefail
 
 export PATH="$HOME/.local/bin:$PATH"
 
-cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
-
 # Remove unrelated files
 rm -rf \
   ~/dotfiles/.* \
@@ -14,12 +12,14 @@ rm -rf \
 	~/dotfiles/private_Library \
 	~/dotfiles/private_dot_*
 
-sudo apt upgrade &&
-	sudo -S apt install -y \
+cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
+
+sudo apt upgrade -y &&
+	sudo apt install -y \
 		bat eza fd-find gawk kubecolor \
 		kubectx neovim ripgrep vivid zoxide &&
-	sudo apt autoremove &&
-	sudo apt clean &&
+	sudo apt autoremove -y &&
+	sudo apt clean -y &&
 	sudo rm -rf /var/lib/apt/lists/*
 
 # === chezmoi ===
