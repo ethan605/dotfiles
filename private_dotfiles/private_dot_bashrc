@@ -30,16 +30,19 @@ export FZF_CTRL_R_OPTS='
 if [ -f "$HOME/ble.sh/out/ble.sh" ]; then
   # shellcheck disable=SC1091
   source "$HOME/ble.sh/out/ble.sh"
+
+  if [ -f /etc/profile.d/bash_completion.sh ]; then
+    # shellcheck disable=SC1091
+    source /etc/profile.d/bash_completion.sh
+  fi
+
+  ble-import -d integration/fzf-completion
+  ble-import -d integration/fzf-key-bindings
 fi
 
-if [ -f /etc/profile.d/bash_completion.sh ]; then
-  # shellcheck disable=SC1091
-  source /etc/profile.d/bash_completion.sh
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init bash)"
 fi
-
-ble-import -d integration/fzf-completion
-ble-import -d integration/fzf-key-bindings
-eval "$(zoxide init bash)"
 
 # Aliases
 alias bat=batcat
