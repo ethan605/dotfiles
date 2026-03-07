@@ -31,6 +31,8 @@ if [ -f "$HOME/ble.sh/out/ble.sh" ]; then
   # shellcheck disable=SC1091
   source "$HOME/ble.sh/out/ble.sh"
 
+  set -o vi
+
   if [ -f /etc/profile.d/bash_completion.sh ]; then
     # shellcheck disable=SC1091
     source /etc/profile.d/bash_completion.sh
