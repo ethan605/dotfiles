@@ -53,6 +53,12 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	--no-zsh \
 	--no-fish
 
+rm -rf ~/.local/share/fzf-tab-completion
+
+git clone \
+  https://github.com/lincheney/fzf-tab-completion \
+  ~/.local/share/fzf-tab-completion
+
 # Clean-up
 rm -rf \
   ~/dotfiles/private_dotfiles \
