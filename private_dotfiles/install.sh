@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export PATH="$HOME/.local/bin:$PATH"
+
 cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
 sudo apt upgrade &&
@@ -11,9 +13,10 @@ sudo apt upgrade &&
 	sudo apt clean &&
 	sudo rm -rf /var/lib/apt/lists/*
 
-if ! command -v chezmoi &>/dev/null; then
-	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b "$HOME/.local/bin"
-	export PATH="$HOME/.local/bin:$PATH"
+if ! command -v chezmoi >/dev/null; then
+  rm -rf ~/.local/share/chezmoi
+
+	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b ~/.local/bin
 fi
 
 # Remove unrelated files
@@ -33,7 +36,7 @@ chezmoi init \
 # Remove the final bits
 rm -rf ~/dotfiles/private_dotfiles
 
-if ! command -v ble &>/dev/null; then
+if ! command -v ble >/dev/null; then
   rm -rf ~/ble.sh
 
 	git clone --recursive --depth 1 --shallow-submodules \
@@ -41,4 +44,17 @@ if ! command -v ble &>/dev/null; then
 		~/ble.sh
 
 	make -C ~/ble.sh
+fi
+
+if ! command -v fzf >/dev/null; then
+  rm -rf ~/.fzf
+
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+
+  ~/.fzf/install \
+    --no-key-bindings \
+    --no-completion \
+    --no-update-rc \
+    --no-zsh \
+    --no-fish
 fi

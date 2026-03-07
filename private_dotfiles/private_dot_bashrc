@@ -37,7 +37,12 @@ if [ -f "$HOME/ble.sh/out/ble.sh" ]; then
   ble-import -d integration/fzf-key-bindings
 fi
 
-if command -v zoxide &>/dev/null; then
+if [ -f "$HOME/.fzf.bash" ]; then
+  # shellcheck disable=SC1091
+  source "$HOME/.fzf.bash"
+fi
+
+if command -v zoxide >/dev/null; then
   eval "$(zoxide init bash)"
 fi
 
