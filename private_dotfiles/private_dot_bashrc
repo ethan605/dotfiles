@@ -21,7 +21,7 @@ export FZF_DEFAULT_OPTS='
   --no-height
 '
 export FZF_CTRL_R_OPTS='
-  --preview="echo {2..} | batcat --language=zsh --color=always"
+  --preview="echo {2..} | batcat --color=always --language=zsh --number --plain"
   --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
   --header="Press CTRL-Y to copy command into clipboard"
 '
