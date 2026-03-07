@@ -30,7 +30,7 @@ export FZF_CTRL_T_OPTS="
     if [[ -d {} ]]; then
       eza --group-directories-first --color=always -1F {};
     else
-      bat --color=always --line-range :500 {};
+      batcat --color=always {};
     fi
   '
 "
