@@ -7,7 +7,7 @@ cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
 sudo apt upgrade &&
 	sudo -S apt install -y \
-		bat eza fd-find fzf gawk kubecolor \
+		bat eza fd-find gawk kubecolor \
 		kubectx neovim ripgrep vivid zoxide &&
 	sudo apt autoremove &&
 	sudo apt clean &&
@@ -52,7 +52,7 @@ if ! command -v fzf >/dev/null; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
   ~/.fzf/install \
-    --no-key-bindings \
+    --key-bindings \
     --no-completion \
     --no-update-rc \
     --no-zsh \

@@ -34,7 +34,7 @@ if [ -f "$HOME/ble.sh/out/ble.sh" ]; then
   set -o vi
 
   # ble-import -d integration/fzf-completion
-  ble-import -d integration/fzf-key-bindings
+  # ble-import -d integration/fzf-key-bindings
 fi
 
 if [ -f "$HOME/.fzf.bash" ]; then
