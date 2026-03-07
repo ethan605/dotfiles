@@ -20,9 +20,10 @@ export FZF_DEFAULT_OPTS='
   --reverse
   --no-height
 '
-export FZF_CTRL_R_OPTS='
-  --preview="echo {2..} | batcat --color=always --language=zsh --number --plain"
-'
+BAT_PREVIEW_COMMAND='batcat --color=always --number --plain'
+export FZF_CTRL_R_OPTS="
+  --preview='echo {2..} | $BAT_PREVIEW_COMMAND --language=bash'
+"
 export FZF_CTRL_T_COMMAND='command fdfind -H --no-ignore-vcs -E .git -td -tf'
 export FZF_CTRL_T_OPTS="
   --bind ctrl-/:toggle-preview
@@ -30,7 +31,7 @@ export FZF_CTRL_T_OPTS="
     if [[ -d {} ]]; then
       eza --group-directories-first --color=always -1F {};
     else
-      batcat --color=always {};
+      $BAT_PREVIEW_COMMAND {};
     fi
   '
 "
