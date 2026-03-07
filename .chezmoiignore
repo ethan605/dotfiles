@@ -79,6 +79,7 @@ Library
 # <<< DebBox-exclusive files
 {{ if ne .machine_id "devpod" }}
 
+.blerc
 dotfiles
 dotfiles/.bashrc
 dotfiles/install.sh

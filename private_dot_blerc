@@ -1,0 +1,5 @@
+# vim:filetype=bash
+set -o vi
+
+ble-import -d integration/fzf-completion
+ble-import -d integration/fzf-key-bindings
