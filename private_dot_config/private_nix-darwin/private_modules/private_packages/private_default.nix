@@ -104,10 +104,10 @@ let
   tui = [
     aria2
     bottom
-    cmatrix
     duf
     gdu
     jless
+    neo
     pipes-rs
     smug
     tmux
