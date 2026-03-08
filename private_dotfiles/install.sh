@@ -62,6 +62,4 @@ git clone \
   ~/.local/share/fzf-tab-completion
 
 # Clean-up
-rm -rf \
-  ~/dotfiles/private_dotfiles \
-  ~/dotfiles/ble.sh
+rm -rf ~/dotfiles/ble.sh
