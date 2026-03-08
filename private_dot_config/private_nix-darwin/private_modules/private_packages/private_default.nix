@@ -92,6 +92,7 @@ let
 
   media = [
     blueutil
+    catt
     iina
     mpc
     mpd
@@ -103,6 +104,7 @@ let
   tui = [
     aria2
     bottom
+    cmatrix
     duf
     gdu
     jless
@@ -143,7 +145,7 @@ in
       "karabiner-elements" # can't use services.karabiner-elements
       "linear-linear"
       "logi-options+"
-      "logitune"
+      # "logitune"
       "telegram"
       "whatsapp"
 
