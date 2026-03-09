@@ -29,25 +29,6 @@ __configure-fzf() {
 		--no-fish
 }
 
-__configure-bash() {
-	rm -rf \
-		./ble.sh \
-		~/.local/share/ble.sh
-
-	git clone --recursive --depth 1 --shallow-submodules \
-		https://github.com/akinomyoga/ble.sh.git
-
-	make -C ble.sh install PREFIX=~/.local
-
-	rm -rf ~/dotfiles/ble.sh
-
-	rm -rf ~/.local/share/fzf-tab-completion
-
-	git clone \
-		https://github.com/lincheney/fzf-tab-completion \
-		~/.local/share/fzf-tab-completion
-}
-
 __configure-zsh() {
 	rm -rf ~/.zim
 
@@ -79,9 +60,5 @@ __configure-chezmoi() {
 
 __install-system-packages
 __configure-fzf
-
-# Shell-specific configs
-__configure-bash
 __configure-zsh
-
 __configure-chezmoi
