@@ -1,4 +1,6 @@
 {{- $machine_id := promptString "machine_id" -}}
+{{- $personal_gpg_id := promptString "personal_gpg_id" -}}
+{{- $work_gpg_id := promptString "work_gpg_id" -}}
 {{- $work_email := promptString "work_email" -}}
 
 [merge]
@@ -9,4 +11,6 @@
   autoPush = true
 [data]
   machine_id = "{{ $machine_id }}"
+  personal_gpg_id = "{{ $personal_gpg_id }}"
+  work_gpg_id = "{{ $work_gpg_id }}"
   work_email = "{{ $work_email }}"
