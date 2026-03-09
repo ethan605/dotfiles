@@ -107,7 +107,7 @@ Library
 !.zprofile
 !.zshenv
 !.zshrc
-.zshrc.d
+.zshrc.d/*
 !.zshrc.d/11-plugins.zsh
 !.zshrc.d/12-key-bindings.zsh
 !.zshrc.d/13-settings.zsh.tmpl
