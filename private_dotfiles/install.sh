@@ -75,7 +75,6 @@ __configure-chezmoi() {
 		--force
 }
 
-__pre-clean-up
 __install-system-packages
 __configure-fzf
 
