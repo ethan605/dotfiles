@@ -13,6 +13,8 @@ __install-system-packages() {
 		sudo apt autoremove -y &&
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
+
+  sudo ln -sf /usr/bin/batcat /usr/bin/bat
 }
 
 __configure-fzf() {
