@@ -32,7 +32,7 @@ __configure-fzf() {
 __configure-zsh() {
 	rm -rf ~/.zim
 
-	url -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+	curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
   sh -c "$(curl -sS https://starship.rs/install.sh)" -- -y
 }
