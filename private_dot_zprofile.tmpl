@@ -8,6 +8,8 @@
 #
 # This file contains only environment terraform
 
+{{ if ne .machine_id "devpod" }}
+
 export LANG=en_GB.UTF-8
 export LC_COLLATE="$LANG"
 export LC_CTYPE="$LANG"
@@ -16,6 +18,8 @@ export LC_MONETARY="$LANG"
 export LC_NUMERIC="$LANG"
 export LC_TIME="$LANG"
 export LC_ALL="$LANG"
+
+{{ end }}
 
 export EDITOR=nvim
 export REACT_EDITOR=nvim
