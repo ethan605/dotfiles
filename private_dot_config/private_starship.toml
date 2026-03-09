@@ -39,6 +39,7 @@ $line_break\
 $jobs\
 $nix_shell\
 ${custom.venv}\
+${custom.devpod}\
 $character"""
 
 [sudo]
@@ -88,7 +89,7 @@ format = ' \([$state $progress_current/$progress_total]($style)\)'
 format = " [$duration]($style)"
 
 [nix_shell]
-format = '[$state $name]($style) '
+format = "[$state $name]($style) "
 style = "bright-black"
 
 [character]
@@ -99,16 +100,23 @@ vicmd_symbol = "[ε](bold purple)"
 # Custom
 [custom.proxy]
 command = 'echo $HTTPS_PROXY | sed "s/http\:\/\///gi;s/\/$//gi"'
+when = 'test "$HTTPS_PROXY" != ""'
 format = " [$symbol$output]($style)"
 style = "#ffaf87"
-when = 'test "$HTTPS_PROXY" != ""'
 symbol = "󰒄 "
 
 [custom.venv]
 command = 'basename "$VIRTUAL_ENV"'
+when = 'test "$VIRTUAL_ENV" != ""'
 format = "[$output]($style) "
 style = "bright-black"
-when = 'test "$VIRTUAL_ENV" != ""'
+
+[custom.devpod]
+command = "echo $DEVPOD_WORKSPACE_ID"
+when = 'test "$DEVPOD_WORKSPACE_ID" != ""'
+format = "[$symbol$output]($style) "
+style = "bright-black"
+symbol = " "
 
 # Platforms support
 [aws]
@@ -128,7 +136,7 @@ style = "bold #326ce5"
 symbol = "󱃾 "
 
 [gcloud]
-format = ' [$symbol( $project[@](bright-black)$region)]($style)'
+format = " [$symbol( $project[@](bright-black)$region)]($style)"
 symbol = "󱇶"
 style = "bold #4285f4"
 
