@@ -3,17 +3,6 @@ set -euo pipefail
 
 export PATH="$HOME/.local/bin:$PATH"
 
-__pre-clean-up() {
-	# Remove unrelated files
-	rm -rf \
-		~/dotfiles/.* \
-		~/dotfiles/LICENSE \
-		~/dotfiles/README.md \
-		~/dotfiles/misc \
-		~/dotfiles/private_Library \
-		~/dotfiles/private_dot_*
-}
-
 __install-system-packages() {
 	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
@@ -26,16 +15,16 @@ __install-system-packages() {
 		sudo rm -rf /var/lib/apt/lists/*
 }
 
-__configure-chezmoi() {
-	rm -rf ~/.local/share/chezmoi
+__configure-fzf() {
+	rm -rf ~/.fzf
 
-	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b ~/.local/bin
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
-	chezmoi init \
-		--promptString machine_id=devpod \
-		--promptString work_email=thanh.nguyen@neo4j.com \
-		--apply https://github.com/ethan605/dotfiles \
-		--force
+	~/.fzf/install \
+		--no-key-bindings \
+		--no-completion \
+		--no-update-rc \
+		--no-fish
 }
 
 __configure-bash() {
@@ -47,6 +36,8 @@ __configure-bash() {
 		https://github.com/akinomyoga/ble.sh.git
 
 	make -C ble.sh install PREFIX=~/.local
+
+	rm -rf ~/dotfiles/ble.sh
 
 	rm -rf ~/.local/share/fzf-tab-completion
 
@@ -63,29 +54,33 @@ __configure-zsh() {
   sh -c "$(curl -sS https://starship.rs/install.sh)" -- -y
 }
 
-__configure-fzf() {
-	rm -rf ~/.fzf
+__configure-chezmoi() {
+	# Remove unrelated files
+	rm -rf \
+		~/dotfiles/.* \
+		~/dotfiles/LICENSE \
+		~/dotfiles/README.md \
+		~/dotfiles/misc \
+		~/dotfiles/private_Library \
+		~/dotfiles/private_dot_*
 
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	rm -rf ~/.local/share/chezmoi
 
-	~/.fzf/install \
-		--no-key-bindings \
-		--no-completion \
-		--no-update-rc \
-		--no-fish
-}
+	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b ~/.local/bin
 
-__post-clean-up() {
-	rm -rf ~/dotfiles/ble.sh
+	chezmoi init \
+		--promptString machine_id=devpod \
+		--promptString work_email=thanh.nguyen@neo4j.com \
+		--apply https://github.com/ethan605/dotfiles \
+		--force
 }
 
 __pre-clean-up
 __install-system-packages
-__configure-chezmoi
 __configure-fzf
 
 # Shell-specific configs
 __configure-bash
 __configure-zsh
 
-__post-clean-up
+__configure-chezmoi
