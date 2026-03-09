@@ -19,6 +19,9 @@ source <(zoxide init zsh)
 
 {{- if eq .machine_id "devpod" }}
 
+autoload bashcompinit && bashcompinit
+complete -C "$(which aws_completer)" aws
+
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 
