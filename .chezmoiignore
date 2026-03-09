@@ -80,9 +80,7 @@ Library
 {{ if ne .machine_id "devpod" }}
 
 .blerc
-dotfiles
-dotfiles/.bashrc
-dotfiles/install.sh
+# dotfiles
 
 {{ else }}
 
@@ -100,8 +98,14 @@ dotfiles/install.sh
 .ssh
 .tmux.conf
 .xkb
-.z*
 Library
+!.zimrc
+!.zlogin
+!.zlogout
+!.zprofile
+!.zshenv
+!.zshrc
+!.zshrc.d
 
 {{ end }}
 # >>>
