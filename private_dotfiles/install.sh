@@ -20,7 +20,7 @@ __install-system-packages() {
 	sudo apt upgrade -y &&
 		sudo apt install -y \
 			bat eza fd-find gawk kubecolor kubectx \
-      neovim ripgrep vivid zoxide zsh &&
+			neovim ripgrep vivid zoxide zsh &&
 		sudo apt autoremove -y &&
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
@@ -49,7 +49,7 @@ __configure-blesh() {
 	make -C ble.sh install PREFIX=~/.local
 }
 
-__configure-zim() {
+__configure-zimfw() {
 	rm -rf ~/.zim
 
 	curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
@@ -83,8 +83,8 @@ __install-system-packages
 __configure-chezmoi
 __configure-fzf
 
-if [[ -n "$BASH_VERSION" ]]; then
-	__configure-blesh
-fi
+# Shell-specific configs
+__configure-blesh
+__configure-zimfw
 
 __post-clean-up
