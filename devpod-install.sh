@@ -36,6 +36,8 @@ __configure-zsh() {
 	rm -rf ~/.zim
 
 	curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+
+  zsh -ic 'zimfw build && zimfw compile'
 }
 
 __configure-chezmoi() {
@@ -50,8 +52,6 @@ __configure-chezmoi() {
 		--promptString work_email=thanh.nguyen@neo4j.com \
 		--apply https://github.com/ethan605/dotfiles \
 		--force
-
-  zsh -ilc 'zim'
 }
 
 __install-system-packages
