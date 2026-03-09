@@ -11,9 +11,13 @@ source "$ZIM_HOME/init.zsh"
 # System plugins
 source <(zoxide init zsh)
 
+{{ if ne .machine_id "devpod" }}
+
 # Mise plugins
 source <(mise activate zsh)
 source "$(mise where gcloud)/completion.zsh.inc"
+
+{{ end }}
 
 # Expensive executions - use on demand
 # source <(devpod completion zsh)
