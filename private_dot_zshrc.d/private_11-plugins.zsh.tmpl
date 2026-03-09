@@ -19,13 +19,15 @@ source <(zoxide init zsh)
 
 {{- if eq .machine_id "devpod" }}
 
-source "$HOME/google-cloud-sdk/bin/gcloud/completion.zsh.inc"
+source "$HOME/google-cloud-sdk/completion.zsh.inc"
+source "$HOME/google-cloud-sdk/path.zsh.inc"
 
 {{- else }}
 
 # Mise plugins
 source <(mise activate zsh)
 source "$(mise where gcloud)/completion.zsh.inc"
+source "$(mise where gcloud)/path.zsh.inc"
 
 {{- end }}
 
