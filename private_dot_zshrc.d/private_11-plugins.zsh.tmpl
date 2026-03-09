@@ -11,7 +11,11 @@ source "$ZIM_HOME/init.zsh"
 # System plugins
 source <(zoxide init zsh)
 
-{{- if ne .machine_id "devpod" }}
+{{- if .machine_id "devpod" }}
+
+source "$HOME/.fzf.zsh"
+
+{{- else }}
 
 # Mise plugins
 source <(mise activate zsh)
