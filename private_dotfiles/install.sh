@@ -8,8 +8,8 @@ __install-system-packages() {
 
 	sudo apt upgrade -y &&
 		sudo apt install -y \
-			bat eza fd-find gawk kubecolor kubectx \
-			neovim ripgrep vivid zoxide zsh &&
+			bat eza fd-find gawk git-delta kubecolor \
+      kubectx neovim ripgrep vivid zoxide zsh &&
 		sudo apt autoremove -y &&
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
