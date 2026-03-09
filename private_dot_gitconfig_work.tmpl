@@ -1,6 +1,6 @@
 # vim:filetype=gitconfig
 [user]
   email = {{ .work_email }}
-  signingkey = B84E246F04C6B53EA50AE5C5A6021728C6B91B6B
+  signingkey = {{ .work_gpg_id }}
 [core]
   sshCommand = "ssh -i ~/.ssh/work_id_ed25519.pub"
