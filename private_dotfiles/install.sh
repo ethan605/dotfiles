@@ -38,7 +38,7 @@ __configure-chezmoi() {
 		--force
 }
 
-__configure-blesh() {
+__configure-bash() {
 	rm -rf \
 		./ble.sh \
 		~/.local/share/ble.sh
@@ -47,12 +47,20 @@ __configure-blesh() {
 		https://github.com/akinomyoga/ble.sh.git
 
 	make -C ble.sh install PREFIX=~/.local
+
+	rm -rf ~/.local/share/fzf-tab-completion
+
+	git clone \
+		https://github.com/lincheney/fzf-tab-completion \
+		~/.local/share/fzf-tab-completion
 }
 
-__configure-zimfw() {
+__configure-zsh() {
 	rm -rf ~/.zim
 
 	curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+
+  sh -c "$(curl -sS https://starship.rs/install.sh)" -- -y
 }
 
 __configure-fzf() {
@@ -64,14 +72,7 @@ __configure-fzf() {
 		--no-key-bindings \
 		--no-completion \
 		--no-update-rc \
-		--no-zsh \
 		--no-fish
-
-	rm -rf ~/.local/share/fzf-tab-completion
-
-	git clone \
-		https://github.com/lincheney/fzf-tab-completion \
-		~/.local/share/fzf-tab-completion
 }
 
 __post-clean-up() {
@@ -84,7 +85,7 @@ __configure-chezmoi
 __configure-fzf
 
 # Shell-specific configs
-__configure-blesh
-__configure-zimfw
+__configure-bash
+__configure-zsh
 
 __post-clean-up
