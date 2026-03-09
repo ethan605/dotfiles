@@ -77,10 +77,11 @@ Library
 # >>>
 
 # <<< DebBox-exclusive files
+dotfiles
+
 {{ if ne .machine_id "devpod" }}
 
 .blerc
-# dotfiles
 
 {{ else }}
 
