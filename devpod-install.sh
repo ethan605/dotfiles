@@ -53,6 +53,8 @@ __configure-chezmoi() {
 
 	chezmoi init \
 		--promptString machine_id=devpod \
+		--promptString personal_gpg_id=xxx \
+		--promptString work_gpg_id=xxx \
 		--promptString work_email=thanh.nguyen@neo4j.com \
 		--apply https://github.com/ethan605/dotfiles \
 		--force
