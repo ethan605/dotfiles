@@ -85,7 +85,7 @@ dotfiles
 
 {{ else }}
 
-.config
+.config/*
 !.config/starship.toml
 .default-*
 .git*
