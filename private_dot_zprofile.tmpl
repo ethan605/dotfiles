@@ -8,7 +8,7 @@
 #
 # This file contains only environment terraform
 
-{{- if .machine_id "devpod" }}
+{{- if eq .machine_id "devpod" }}
 
 export LANG=C
 
