@@ -1,6 +1,7 @@
 # vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=<<<,>>>
 LICENSE
 README.md
+devpod-install.sh
 misc
 
 # <<< Obsolete configs - keep for future reference only
@@ -77,13 +78,7 @@ Library
 # >>>
 
 # <<< DebBox-exclusive files
-dotfiles
-
-{{ if ne .machine_id "devpod" }}
-
-.blerc
-
-{{ else }}
+{{ if eq .machine_id "devpod" }}
 
 .config/*
 !.config/starship.toml
