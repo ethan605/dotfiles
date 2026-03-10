@@ -143,14 +143,18 @@ fileviewer <text/*>,<application/json>
   \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
 
 " Archives
-fileviewer *.7z 7za l %c
-fileviewer *.ear,*.jar,*.oxt,*.war,*.zip zip -sf %c
-fileviewer *.rar unrar lb %c
-fileviewer *.tar tar -tf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.gz,*.tgz tar -tzf %c
-fileviewer *.tar.txz,*.txz xz --list --verbose %c
-fileviewer *.tlz lzip --list --verbose %c
+fileviewer *.7z,*.001 7za l %c
+fileviewer *.rar (( ${+commands[unrar]} )) && unrar l ${1} || rar l %c
+fileviewer *.tar.bz,*.tar.bz2,*.tbz,*.tbz2 tar -tvjf %c
+fileviewer *.tar.gz,*.tgz tar -tvzf %c
+fileviewer *.tar.lzma,*.tlz tar --lzma --help &> /dev/null && XZ_OPT=-T0 tar --lzma -tvf %c || lzcat %c | tar -tvf -
+fileviewer *.tar.xz,*.txz tar -J --help &> /dev/null && XZ_OPT=-T0 tar -tvJf %c || xzcat %c | tar -tvf -
+fileviewer *.tar.zst,*.tzst XZ_OPT=-T0 tar --use-compress-program=unzstd -tvf %c
+fileviewer *.tar tar -tvf %c
+fileviewer *.zip unzip -l %c
+fileviewer *.gz gunzip -l %c
+fileviewer *.xz unxz -T0 -l %c
+fileviewer *.zst zstd -T0 -l %c
 
 " All other files
 fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
