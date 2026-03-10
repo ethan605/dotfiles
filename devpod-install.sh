@@ -3,18 +3,6 @@ set -euo pipefail
 
 export PATH="$HOME/.local/bin:$PATH"
 
-__install-fzf() {
-	rm -rf ~/.fzf
-
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-
-	~/.fzf/install \
-		--no-key-bindings \
-		--no-completion \
-		--no-update-rc \
-		--no-fish
-}
-
 __install-system-packages() {
 	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
