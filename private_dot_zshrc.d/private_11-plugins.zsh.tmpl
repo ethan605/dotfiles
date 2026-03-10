@@ -1,4 +1,5 @@
 # vim:filetype=zsh
+source <(mise activate zsh)
 
 # Zimfw
 if [[ ! "$ZIM_HOME/init.zsh" -nt "${ZDOTDIR:-$HOME}/.zimrc" ]]; then
@@ -7,11 +8,6 @@ if [[ ! "$ZIM_HOME/init.zsh" -nt "${ZDOTDIR:-$HOME}/.zimrc" ]]; then
 fi
 
 source "$ZIM_HOME/init.zsh"
-
-# Mise plugins
-source <(mise activate zsh)
-source "$(mise where gcloud)/completion.zsh.inc"
-source "$(mise where gcloud)/path.zsh.inc"
 
 # System plugins
 source <(zoxide init zsh)
@@ -25,6 +21,10 @@ autoload bashcompinit && bashcompinit
 complete -C "$(which aws_completer)" aws
 
 {{- end }}
+
+# Mise plugins
+source "$(mise where gcloud)/completion.zsh.inc"
+source "$(mise where gcloud)/path.zsh.inc"
 
 # Expensive executions - use on demand
 # source <(devpod completion zsh)
