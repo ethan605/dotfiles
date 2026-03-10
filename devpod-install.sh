@@ -8,8 +8,7 @@ __install-system-packages() {
 
 	sudo apt upgrade -y &&
 		sudo apt install --no-install-recommends -y \
-      libyaml-dev \ # for ruby
-      zsh &&
+			libyaml-dev zsh &&
 		sudo apt autoremove -y &&
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
