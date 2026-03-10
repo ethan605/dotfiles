@@ -82,6 +82,7 @@ Library
 
 .config/*
 !.config/starship.toml
+!.config/nvim
 .default-*
 .git*
 .gnupg

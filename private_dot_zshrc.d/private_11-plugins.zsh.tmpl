@@ -1,11 +1,5 @@
 # vim:filetype=zsh
 
-{{- if eq .machine_id "devpod" }}
-
-source "$HOME/.fzf.zsh"
-
-{{- end }}
-
 # Zimfw
 if [[ ! "$ZIM_HOME/init.zsh" -nt "${ZDOTDIR:-$HOME}/.zimrc" ]]; then
   # Update static initialization script if it does not exist or it's outdated, before sourcing it
@@ -17,20 +11,15 @@ source "$ZIM_HOME/init.zsh"
 # System plugins
 source <(zoxide init zsh)
 
-{{- if eq .machine_id "devpod" }}
-
-autoload bashcompinit && bashcompinit
-complete -C "$(which aws_completer)" aws
-
-source "$HOME/google-cloud-sdk/completion.zsh.inc"
-source "$HOME/google-cloud-sdk/path.zsh.inc"
-
-{{- else }}
-
 # Mise plugins
 source <(mise activate zsh)
 source "$(mise where gcloud)/completion.zsh.inc"
 source "$(mise where gcloud)/path.zsh.inc"
+
+{{- if eq .machine_id "devpod" }}
+
+autoload bashcompinit && bashcompinit
+complete -C "$(which aws_completer)" aws
 
 {{- end }}
 

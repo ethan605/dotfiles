@@ -19,17 +19,27 @@ __install-system-packages() {
 	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
 	sudo apt upgrade -y &&
-		sudo apt install -y \
-			bat eza fd-find gawk git-delta kubecolor \
-			kubectx neovim ripgrep vivid zoxide zsh &&
+		sudo apt install -y gawk zsh &&
 		sudo apt autoremove -y &&
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
 
-	sudo ln -sf /usr/bin/batcat /usr/bin/bat
+	curl https://mise.run | sh
 
-	__install-fzf
-	sh -c "$(curl -sS https://starship.rs/install.sh)" -- -y
+	mise use -g \
+		bat@latest \
+		chezmoi@latest \
+		delta@latest \
+		eza@latest \
+		fd@latest \
+		fzf@latest \
+		kubecolor@latest \
+		kubectx@latest \
+		neovim@latest \
+		ripgrep@latest \
+		starship@latest \
+		vivid@latest \
+		zoxide@latest
 }
 
 __configure-zsh() {
@@ -37,13 +47,11 @@ __configure-zsh() {
 
 	curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
-  zsh -ic 'zimfw build && zimfw compile'
+	zsh -ic 'zimfw build && zimfw compile'
 }
 
 __configure-chezmoi() {
 	rm -rf ~/.local/share/chezmoi
-
-	sh -c "$(curl -fsLS https://chezmoi.io/getlb)" -- -b ~/.local/bin
 
 	chezmoi init \
 		--promptString machine_id=devpod \
