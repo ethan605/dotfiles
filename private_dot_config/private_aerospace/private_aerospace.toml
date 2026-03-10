@@ -69,15 +69,15 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   l = 'resize smart +50'
 
 [workspace-to-monitor-force-assignment]
-  1 = ['secondary', 1, 'built-in']
+  1 = ['secondary', 'built-in']
   2 = 'built-in'
   3 = 'built-in'
   4 = 'built-in'
-  5 = ['secondary', 1, 'built-in']
-  6 = [2, 'built-in']
-  7 = [2, 'built-in']
-  8 = [2, 'built-in']
-  9 = [2, 'built-in']
+  5 = ['secondary', 'built-in']
+  6 = 'built-in'
+  7 = 'built-in'
+  8 = 'built-in'
+  9 = 'built-in'
 
 ### Windows that always float. These conditions need to preceed others ###
 
