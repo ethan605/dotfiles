@@ -15,6 +15,7 @@ __install-system-packages() {
 	curl -fsSL https://mise.run | sh
 
 	mise use -g \
+		awscli@latest \
 		bat@latest \
 		chezmoi@latest \
 		delta@latest \
@@ -24,14 +25,16 @@ __install-system-packages() {
 		gcloud@latest \
 		kubecolor@latest \
 		kubectx@latest \
+		lua@latest \
 		neovim@latest \
 		ripgrep@latest \
+		rust@latest \
 		starship@latest \
 		tree-sitter@latest \
 		vivid@latest \
 		zoxide@latest
 
-  eval "$(mise activate bash)"
+	eval "$(mise activate bash)"
 }
 
 __configure-zsh() {
@@ -54,6 +57,14 @@ __configure-chezmoi() {
 		--force
 }
 
+__configure-nvim() {
+	nvim --headless \
+    '+Lazy! sync' \
+    +MasonUpdate +qa \
+    +MasonLockRestore
+}
+
 __install-system-packages &&
 	__configure-zsh &&
-	__configure-chezmoi
+	__configure-chezmoi &&
+  __configure-nvim
