@@ -81,8 +81,9 @@ Library
 {{ if eq .machine_id "devpod" }}
 
 .config/*
-!.config/starship.toml
 !.config/nvim
+!.config/starship.toml
+!.config/vifm
 .default-*
 .git*
 .gnupg
