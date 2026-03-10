@@ -10,10 +10,14 @@
 
 {{- if eq .machine_id "devpod" }}
 
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/gcc
 export LANG=C
 
 {{- else }}
 
+export CC=clang
+export CXX=clang
 export LANG=en_GB.UTF-8
 
 {{- end }}
@@ -34,8 +38,6 @@ export VISUAL=nvim
 export BAT_THEME=base16
 export MANPAGER='nvim +Man!'
 
-export CC=clang
-export CXX=clang
 export COMPOSE_BAKE=true
 export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
 export NODE_OPTIONS="--max-old-space-size=8192"
