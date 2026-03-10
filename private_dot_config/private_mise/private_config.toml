@@ -6,7 +6,7 @@ lockfile = true
 # Languages go first
 clang = "22.1.0"
 go = "1.26.1"
-java = "openjdk-21.0.2"
+java = "openjdk-26.0.0"
 lua = "5.5.0"
 luajit = "2.1.1744318430"
 node = "22.17.1"
@@ -16,9 +16,8 @@ rust = "1.94.0"
 terraform = "1.14.6"
 
 # Then tools
-awscli = { version = "2.34.4", symlink_bins = "true" }
+awscli = { version = "2.34.5", symlink_bins = "true" }
 cmake = "4.2.3"
-firebase = "15.9.0"
 gcloud = "559.0.0"
 gh = "2.87.3"
 helm = "4.1.1"
