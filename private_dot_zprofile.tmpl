@@ -8,20 +8,7 @@
 #
 # This file contains only environment terraform
 
-{{- if eq .machine_id "devpod" }}
-
-export CC=/usr/bin/gcc
-export CXX=/usr/bin/gcc
-export LANG=C
-
-{{- else }}
-
-export CC=clang
-export CXX=clang
 export LANG=en_GB.UTF-8
-
-{{- end }}
-
 export LC_ALL="$LANG"
 export LC_COLLATE="$LANG"
 export LC_CTYPE="$LANG"
@@ -38,6 +25,17 @@ export VISUAL=nvim
 export BAT_THEME=base16
 export MANPAGER='nvim +Man!'
 
+{{- if eq .machine_id "devpod" }}
+
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/gcc
+
+{{- else }}
+
+export CC=clang
+export CXX=clang
+
+{{- end }}
 export COMPOSE_BAKE=true
 export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
 export NODE_OPTIONS="--max-old-space-size=8192"
