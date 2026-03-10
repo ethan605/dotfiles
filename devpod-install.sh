@@ -59,12 +59,12 @@ __configure-chezmoi() {
 
 __configure-nvim() {
 	nvim --headless \
-    '+Lazy! sync' \
-    +MasonUpdate +qa \
-    +MasonLockRestore
+		'+Lazy! sync' \
+		+MasonUpdate +qa \
+		+MasonLockRestore
 }
 
 __install-system-packages &&
 	__configure-zsh &&
 	__configure-chezmoi &&
-  __configure-nvim
+	__configure-nvim
