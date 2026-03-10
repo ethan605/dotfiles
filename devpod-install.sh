@@ -33,11 +33,13 @@ __install-system-packages() {
 		eza@latest \
 		fd@latest \
 		fzf@latest \
+		gcloud@latest \
 		kubecolor@latest \
 		kubectx@latest \
 		neovim@latest \
 		ripgrep@latest \
 		starship@latest \
+		tree-sitter@latest \
 		vivid@latest \
 		zoxide@latest
 }
