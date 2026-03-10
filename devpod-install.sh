@@ -18,10 +18,10 @@ __install-fzf() {
 __install-system-packages() {
 	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
-	sudo apt upgrade -y &&
-		sudo apt install -y gawk zsh &&
+	sudo apt upgrade &&
+		sudo apt install --no-install-recommends -y zsh &&
 		sudo apt autoremove -y &&
-		sudo apt clean -y &&
+		sudo apt clean &&
 		sudo rm -rf /var/lib/apt/lists/*
 
 	curl https://mise.run | sh
