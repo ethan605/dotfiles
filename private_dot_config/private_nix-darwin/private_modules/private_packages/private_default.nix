@@ -56,6 +56,7 @@ let
     hyperfine
     imagemagick
     jq
+    nil # nil depends on nix, so installing here instead of Mason
     parallel
     qrencode
     uv
