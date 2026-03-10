@@ -63,6 +63,5 @@ __configure-chezmoi() {
 }
 
 __install-system-packages
-__install-fzf
 __configure-zsh
 __configure-chezmoi
