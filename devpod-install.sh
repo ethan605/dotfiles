@@ -52,6 +52,6 @@ __configure-chezmoi() {
 		--force
 }
 
-__install-system-packages
-__configure-zsh
-__configure-chezmoi
+__install-system-packages &&
+	__configure-zsh &&
+	__configure-chezmoi
