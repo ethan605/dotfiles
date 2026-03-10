@@ -12,7 +12,7 @@ __install-system-packages() {
 		sudo apt clean &&
 		sudo rm -rf /var/lib/apt/lists/*
 
-	curl https://mise.run | sh
+	curl -fsSL https://mise.run | sh
 
 	mise use -g \
 		bat@latest \
