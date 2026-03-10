@@ -8,13 +8,16 @@ fi
 
 source "$ZIM_HOME/init.zsh"
 
-# System plugins
-source <(zoxide init zsh)
-
 # Mise plugins
 source <(mise activate zsh)
 source "$(mise where gcloud)/completion.zsh.inc"
 source "$(mise where gcloud)/path.zsh.inc"
+
+# System plugins
+source <(zoxide init zsh)
+
+LS_COLORS="$(vivid generate molokai)"
+export LS_COLORS
 
 {{- if eq .machine_id "devpod" }}
 
