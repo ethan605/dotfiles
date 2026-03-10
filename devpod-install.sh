@@ -30,6 +30,8 @@ __install-system-packages() {
 		tree-sitter@latest \
 		vivid@latest \
 		zoxide@latest
+
+  eval "$(mise activate bash)"
 }
 
 __configure-zsh() {
