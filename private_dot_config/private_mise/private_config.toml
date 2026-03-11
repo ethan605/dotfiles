@@ -16,10 +16,10 @@ rust = "1.94.0"
 terraform = "1.14.6"
 
 # Then tools
-awscli = { version = "2.34.5", symlink_bins = "true" }
+awscli = { version = "2.34.6", symlink_bins = "true" }
 cmake = "4.2.3"
-gcloud = "559.0.0"
-gh = "2.87.3"
+gcloud = "560.0.0"
+gh = "2.88.0"
 helm = "4.1.1"
 make = "4.4.1"
 ninja = "1.13.2"
