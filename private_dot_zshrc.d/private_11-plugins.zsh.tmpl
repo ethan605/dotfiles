@@ -26,10 +26,6 @@ autoload -U +X bashcompinit && bashcompinit
 
 complete -C "$(which aws_completer)" aws
 
-{{- else }}
-
-complete -o nospace -C "$(mise where terraform)/terraform" terraform
-
 {{- end }}
 
 # Expensive executions - use on demand
@@ -37,3 +33,4 @@ complete -o nospace -C "$(mise where terraform)/terraform" terraform
 # source <(gh completion -s zsh)
 # source <(gt completion)
 # source <(helm completion zsh)
+# complete -o nospace -C "$(mise where terraform)/terraform" terraform
