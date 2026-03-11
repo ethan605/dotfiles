@@ -15,7 +15,7 @@ return {
       "cpp", "cmake", "make",
       "go", "gosum", "java", "nix", "python", "rust",
       "javascript", "jsx", "typescript", "tsx",
-      "comment", "json", "json5", "yaml",
+      "comment", "json", "json5", "terraform", "yaml",
     })
   end,
 }
