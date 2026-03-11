@@ -49,6 +49,7 @@
         autohide-time-modifier = 0.0;
         dashboard-in-overlay = false;
         expose-animation-duration = 0.0;
+        expose-group-apps = true;
         magnification = false;
         mineffect = "scale";
         minimize-to-application = true;

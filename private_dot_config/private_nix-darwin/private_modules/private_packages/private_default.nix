@@ -59,14 +59,9 @@ let
     nil # nil depends on nix, so installing here instead of Mason
     parallel
     qrencode
-    uv
     watch
     yq
     zbar
-
-    # PostgreSQL and utils
-    postgresql_15
-    postgresql_15.pg_config
   ] ++ docs ++ cloud-native ++ svc;
 
   archives = [
@@ -116,11 +111,10 @@ let
   ];
 
   gui = [
-    appcleaner
     aerospace
     alacritty
+    appcleaner
     flameshot
-    ghostty-bin
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
@@ -141,15 +135,16 @@ in
 
     casks = [
       "contexts"
+      "ghostty"
       "grammarly-desktop"
       "homerow"
       "karabiner-elements" # can't use services.karabiner-elements
       "linear-linear"
       "logi-options+"
-      # "logitune"
       "telegram"
       "whatsapp"
 
+      # "logitune"
       # "megasync"
     ];
   };

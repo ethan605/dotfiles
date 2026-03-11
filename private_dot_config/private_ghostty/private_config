@@ -27,15 +27,15 @@ foreground = #eff0eb
 # selection-foreground = #c6d0f5
 
 font-family = "OperatorMonoSSm Nerd Font"
-font-size = 17
+font-size = 18
 font-style = "Light"
 font-style-bold = "Regular"
 font-style-italic = "Light Italic"
 font-style-bold-italic = "Italic"
 font-thicken = true
 adjust-underline-thickness = -75%
-adjust-cell-width = -10%
-adjust-cell-height = -2%
+adjust-cell-height = +10%
+adjust-cell-width = -5%
 
 term = "xterm-ghostty" 
 
