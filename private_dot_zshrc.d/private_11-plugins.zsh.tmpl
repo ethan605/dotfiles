@@ -1,7 +1,7 @@
 # vim:filetype=zsh
 source <(mise activate zsh)
 
-# Zimfw
+# === Zimfw ===
 if [[ ! "$ZIM_HOME/init.zsh" -nt "${ZDOTDIR:-$HOME}/.zimrc" ]]; then
   # Update static initialization script if it does not exist or it's outdated, before sourcing it
   source "$ZIM_HOME/zimfw.zsh" init -q
@@ -9,17 +9,17 @@ fi
 
 source "$ZIM_HOME/init.zsh"
 
-# System plugins
+# === System plugins ===
 source <(zoxide init zsh)
 
 LS_COLORS="$(vivid generate molokai)"
 export LS_COLORS
 
-# Mise plugins
+# === Mise plugins ===
 source "$(mise where gcloud)/completion.zsh.inc"
 source "$(mise where gcloud)/path.zsh.inc"
 
-# For bash completions
+# === For bash completions ===
 autoload -U +X bashcompinit && bashcompinit
 
 {{- if eq .machine_id "devpod" }}
@@ -28,9 +28,11 @@ complete -C "$(which aws_completer)" aws
 
 {{- end }}
 
-# Expensive executions - use on demand
+# === Expensive executions - use on demand ==
 # source <(devpod completion zsh)
 # source <(gh completion -s zsh)
 # source <(gt completion)
 # source <(helm completion zsh)
+# source <(uv generate-shell-completion zsh)
+# source <(uvx --generate-shell-completion zsh)
 # complete -o nospace -C "$(mise where terraform)/terraform" terraform
