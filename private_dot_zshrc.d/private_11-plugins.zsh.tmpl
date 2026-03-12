@@ -22,11 +22,7 @@ source "$(mise where gcloud)/path.zsh.inc"
 # === For bash completions ===
 autoload -U +X bashcompinit && bashcompinit
 
-{{- if eq .machine_id "devpod" }}
-
-complete -C "$(which aws_completer)" aws
-
-{{- end }}
+command -v aws_completer >/dev/null && complete -C "$(which aws_completer)" aws
 
 # === Expensive executions - use on demand ==
 __source-completions() {
@@ -37,9 +33,8 @@ __source-completions() {
   command -v uv >/dev/null && source <(uv generate-shell-completion zsh)
   command -v uvx >/dev/null && source <(uvx --generate-shell-completion zsh)
 
-  command -v register-python-argcomplete >dev/null &&
+  command -v register-python-argcomplete >/dev/null &&
     source <(register-python-argcomplete --shell=zsh pytest pytest-xdist)
 
-  [[ -f "$(mise where terraform)/terraform" ]] &&
-    complete -o nospace -C "$(mise where terraform)/terraform" terraform
+  command -v terraform >/dev/null && complete -o nospace -C "$(which terraform)" terraform
 }
