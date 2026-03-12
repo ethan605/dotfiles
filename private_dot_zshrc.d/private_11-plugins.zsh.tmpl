@@ -29,10 +29,17 @@ complete -C "$(which aws_completer)" aws
 {{- end }}
 
 # === Expensive executions - use on demand ==
-# source <(devpod completion zsh)
-# source <(gh completion -s zsh)
-# source <(gt completion)
-# source <(helm completion zsh)
-# source <(uv generate-shell-completion zsh)
-# source <(uvx --generate-shell-completion zsh)
-# complete -o nospace -C "$(mise where terraform)/terraform" terraform
+__source-completions() {
+  command -v devpod >/dev/null && source <(devpod completion zsh)
+  command -v gh >/dev/null && source <(gh completion -s zsh)
+  command -v gt >/dev/null && source <(gt completion)
+  command -v helm >/dev/null && source <(helm completion zsh)
+  command -v uv >/dev/null && source <(uv generate-shell-completion zsh)
+  command -v uvx >/dev/null && source <(uvx --generate-shell-completion zsh)
+
+  command -v register-python-argcomplete >dev/null &&
+    source <(register-python-argcomplete --shell=zsh pytest pytest-xdist)
+
+  [[ -f "$(mise where terraform)/terraform" ]] &&
+    complete -o nospace -C "$(mise where terraform)/terraform" terraform
+}
