@@ -1,0 +1,29 @@
+# vim:filetype=gitconfig
+[includeIf "hasconfig:remote.*.url:git@github.com:team-alpha/*"]
+  path = .gitconfig_work_id
+[includeIf "hasconfig:remote.*.url:git@gist.github.com:team-alpha/*"]
+  path = .gitconfig_work_id
+[includeIf "hasconfig:remote.*.url:git@github.com:team-beta/*"]
+  path = .gitconfig_work_id
+[includeIf "hasconfig:remote.*.url:git@gist.github.com:team-beta/*"]
+  path = .gitconfig_work_id
+
+# .gitconfig_work_id template
+# [user]
+#   email = thanh@workplace.com
+#   signingkey = ABCDEFGH12345678
+# [core]
+#   sshCommand = "ssh -i ~/.ssh/work_id_ed25519.pub"
+
+[url "git@github.work:team-alpha"]
+  insteadOf = https://github.com/team-alpha
+[url "git@github.work:team-alpha"]
+  insteadOf = git@github.com:team-alpha
+[url "ssh://git@github.work/team-alpha"]
+  insteadOf = ssh://git@github.com/team-alpha
+[url "git@github.work:team-beta"]
+  insteadOf = https://github.com/team-beta
+[url "git@github.work:team-beta"]
+  insteadOf = git@github.com:team-beta
+[url "ssh://git@github.work/team-beta"]
+  insteadOf = ssh://git@github.com/team-beta
