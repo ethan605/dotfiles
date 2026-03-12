@@ -1,51 +1,14 @@
 # vim:filetype=gitconfig
 [user]
   name = Thanh Nguyen
-  email = hello@ethanify.me
+  email = xtnguyen605@gmail.com
+  signingkey = 1BA6C5C897381F1628E1E0AF57F2FDD038EB1C58
 
-[includeIf "hasconfig:remote.*.url:git@github.com:*/*"]
-  path = .gitconfig_personal
-[includeIf "hasconfig:remote.*.url:git@gist.github.com:*"]
-  path = .gitconfig_personal
-
-{{- if eq .machine_id "Q77QGJJXMR" }}
-
-[includeIf "hasconfig:remote.*.url:git@github.com:encord-team/*"]
+[include]
   path = .gitconfig_work
-[includeIf "hasconfig:remote.*.url:git@gist.github.com:encord-team/*"]
-  path = .gitconfig_work
-
-[url "git@github.work:encord-team"]
-  insteadOf = https://github.com/encord-team
-[url "git@github.work:encord-team"]
-  insteadOf = git@github.com:encord-team
-
-{{- end }}
-
-{{- if eq .machine_id "J6JX2CY3C5" }}
-
-[includeIf "hasconfig:remote.*.url:git@github.com:neo-technology/*"]
-  path = .gitconfig_work
-[includeIf "hasconfig:remote.*.url:git@github.com:neo4j/*"]
-  path = .gitconfig_work
-[includeIf "hasconfig:remote.*.url:git@gist.github.com:neo-technology/*"]
-  path = .gitconfig_work
-[includeIf "hasconfig:remote.*.url:git@gist.github.com:neo4j/*"]
-  path = .gitconfig_work
-
-[url "git@github.work:neo-technology"]
-  insteadOf = https://github.com/neo-technology
-[url "git@github.work:neo-technology"]
-  insteadOf = git@github.com:neo-technology
-[url "git@github.work:neo4j"]
-  insteadOf = https://github.com/neo4j
-[url "git@github.work:neo4j"]
-  insteadOf = git@github.com:neo4j
-
-{{- end }}
 
 [core]
-  excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
+  excludesfile = .gitignore_global
   autocrlf = false
   pager = delta
 [commit]
