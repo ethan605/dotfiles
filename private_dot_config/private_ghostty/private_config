@@ -34,8 +34,8 @@ font-style-italic = "Light Italic"
 font-style-bold-italic = "Italic"
 font-thicken = true
 adjust-underline-thickness = -75%
-adjust-cell-height = +10%
-adjust-cell-width = -5%
+# adjust-cell-height = +10%
+# adjust-cell-width = -5%
 
 term = "xterm-ghostty" 
 
