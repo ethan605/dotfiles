@@ -1,3 +1,4 @@
+argcomplete
 ipdb
 ipython
 mypy
@@ -8,4 +9,3 @@ pynvim
 pytest-language-server
 rich
 ruff
-sqlglot[rs]
