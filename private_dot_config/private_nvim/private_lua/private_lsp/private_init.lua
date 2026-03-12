@@ -1,5 +1,6 @@
 vim.lsp.config("*", require("lsp.common"))
 
+vim.lsp.config.basedpyright = require("lsp.basedpyright")
 vim.lsp.config.bashls = require("lsp.bashls")
 vim.lsp.config.clangd = require("lsp.clangd")
 vim.lsp.config.docker_compose = require("lsp.docker_compose")
@@ -42,7 +43,7 @@ vim.lsp.enable({
   "luals",
   "nginx",
   "nil_ls",
-  "pyright",
+  "basedpyright",
   "pytest_lsp",
   "ruff",
   "rust_analyzer",
@@ -57,6 +58,7 @@ vim.lsp.enable({
   -- "harper", -- on demand
   -- "postgres_lsp", -- not mature enough
   -- "pyrefly", -- not stable enough
+  -- "pyright",
   -- "sqruff", -- need fine tunes
 })
 
