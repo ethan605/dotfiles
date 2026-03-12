@@ -23,7 +23,12 @@ return {
     return {
       sources = {
         -- diagnostics
-        none_ls.builtins.diagnostics.mypy,
+        none_ls.builtins.diagnostics.mypy.with({
+          condition = function()
+            local env_var = os.getenv("NONE_LS_MYPY_DISABLED") or "false"
+            return string.lower(env_var) ~= "true"
+          end,
+        }),
         none_ls.builtins.diagnostics.sqlfluff.with(sqlfluff_config),
         none_ls.builtins.diagnostics.terraform_validate,
         none_ls.builtins.diagnostics.zsh,
