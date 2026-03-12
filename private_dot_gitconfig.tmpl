@@ -8,7 +8,7 @@
   path = .gitconfig_work
 
 [core]
-  excludesfile = {{ .chezmoi.homeDir }}.gitignore_global
+  excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global # relative paths don't work
   autocrlf = false
   pager = delta
 [commit]
