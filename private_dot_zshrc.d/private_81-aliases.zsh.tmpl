@@ -43,9 +43,7 @@ alias vrestore!='nvim --headless "+Lazy! restore" +qa'
 alias vsync='nvim --headless "+Lazy! sync" +MasonUpdate +qa'
 
 # Python
-alias pre-commit-fix='pre-commit run --color=always --all-files --hook-stage=pre-push'
-alias ptest='uv run pytest -n auto -W ignore::DeprecationWarning -W ignore::UserWarning --log-cli-level=INFO'
-alias itest='ptest -vvn0 --pdb --pdbcls=IPython.terminal.debugger:Pdb'
+alias ptest='uv run pytest -vv --capture=no --pdb --pdbcls=IPython.terminal.debugger:Pdb'
 
 # Shortcuts
 alias c=chezmoi
