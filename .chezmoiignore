@@ -2,6 +2,7 @@
 LICENSE
 README.md
 devpod-install.sh
+gitconfig_work.template
 misc
 
 # <<< Obsolete configs - keep for future reference only
