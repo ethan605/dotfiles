@@ -54,8 +54,6 @@ __configure-chezmoi() {
 	chezmoi init \
 		--promptString machine_id=devpod \
 		--promptString personal_gpg_id=not_applicable \
-		--promptString work_gpg_id=not_applicable \
-		--promptString work_email=not_applicable \
 		--apply https://github.com/ethan605/dotfiles \
 		--force
 }
