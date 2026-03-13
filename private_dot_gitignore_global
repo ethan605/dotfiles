@@ -1,3 +1,5 @@
+# vim:filetype=gitignore
 .envrc
 .null-ls*
 mise.toml
+**/docs/plans/*.md
