@@ -114,8 +114,11 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-  # if.app-id = 'org.mozilla.firefox' # the original Firefox
-  if.app-id = 'org.nixos.firefox' # nix-managed Firefox
+  if.app-id = 'org.mozilla.firefox' # Nix's firefox-bin
+  run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+  if.app-id = 'org.nixos.firefox' # Nix's firefox-unwrapped
   run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
