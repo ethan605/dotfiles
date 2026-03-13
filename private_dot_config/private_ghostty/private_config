@@ -40,6 +40,8 @@ adjust-underline-thickness = -75%
 term = "xterm-ghostty" 
 
 window-decoration = false
-window-width = 9999
-window-height = 9999
-fullscreen = false
+window-subtitle = false
+# window-width = 9999
+# window-height = 9999
+fullscreen = "non-native"
+title = ""
