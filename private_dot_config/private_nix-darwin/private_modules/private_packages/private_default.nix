@@ -59,6 +59,7 @@ let
     nil # nil depends on nix, so installing here instead of Mason
     parallel
     qrencode
+    viddy
     watch
     yq
     zbar

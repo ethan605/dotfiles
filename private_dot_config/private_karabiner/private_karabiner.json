@@ -15,7 +15,7 @@
                                         "optional": ["right_shift"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open -b org.alacritty" }],
+                                "to": [{ "shell_command": "open -b com.mitchellh.ghostty" }],
                                 "type": "basic"
                             },
                             {

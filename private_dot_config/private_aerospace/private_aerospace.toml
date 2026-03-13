@@ -105,7 +105,8 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 ### Windows that have a dedicated workspace ###
 
 [[on-window-detected]]
-  if.app-id = 'org.alacritty'
+  # if.app-id = 'org.alacritty'
+  if.app-id = 'com.mitchellh.ghostty'
   run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -116,10 +117,6 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   # if.app-id = 'org.mozilla.firefox' # the original Firefox
   if.app-id = 'org.nixos.firefox' # nix-managed Firefox
   run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-  if.app-id = 'com.mitchellh.ghostty'
-  run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
   if.app-id = 'com.tinyspeck.slackmacgap'
