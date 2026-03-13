@@ -5,7 +5,7 @@
   signingkey = {{ .personal_gpg_id }}
 
 [include]
-  path = .gitconfig_work # see gitconfig_work.template
+  path = ~/.gitconfig_work # see gitconfig_work.template
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -51,7 +51,7 @@
   inspect-raw-lines = false
   line-numbers = true
   navigate = true
-  syntax-theme = "Sublime Snazzy"
+  syntax-theme = base16
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
