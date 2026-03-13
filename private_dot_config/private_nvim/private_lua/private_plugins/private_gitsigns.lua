@@ -23,7 +23,7 @@ return {
     current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> • <summary>",
   },
   keys = {
-    { "[h", ":Gitsigns prev_hunk<CR>", desc = "Jump to previous hunk" },
-    { "]h", ":Gitsigns next_hunk<CR>", desc = "Jump to next hunk" },
+    { "[g", ":Gitsigns prev_hunk<CR>", desc = "Jump to previous hunk" },
+    { "]g", ":Gitsigns next_hunk<CR>", desc = "Jump to next hunk" },
   },
 }
