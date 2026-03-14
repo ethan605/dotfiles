@@ -41,5 +41,5 @@ term = "xterm-ghostty"
 
 window-decoration = false
 window-subtitle = false
-fullscreen = "non-native"
+fullscreen = "non-native-padded-notch"
 title = ""
