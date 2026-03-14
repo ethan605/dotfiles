@@ -17,14 +17,14 @@ alias psql-prd-eu-rw!='psql $(wpass postgres/uri-prd-eu-rw)'
 alias psql-prd-us-ro='psql $(wpass postgres/uri-prd-us-ro)'
 alias psql-prd-us-rw!='psql $(wpass postgres/uri-prd-us-rw)'
 
-function __wpass-insert() {
+__wpass-insert() {
   local pass_name=${1}
   wpass insert --force --multiline "$pass_name" >/dev/null
 
   echo "Loaded $pass_name to wpass"
 }
 
-function dbee-clickhouse() {
+dbee-clickhouse() {
   export SQL_TARGET=clickhouse
 
   export DBEE_CONNECTIONS='[
@@ -38,7 +38,7 @@ function dbee-clickhouse() {
   nvim +Dbee
 }
 
-function dbee-postgres() {
+dbee-postgres() {
   export SQL_TARGET=postgres
 
   export DBEE_CONNECTIONS='[
