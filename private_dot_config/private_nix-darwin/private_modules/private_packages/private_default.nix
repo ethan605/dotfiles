@@ -121,7 +121,11 @@ let
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
 in
 {
-  fonts.packages = [ self-host-fonts ];
+  fonts.packages = [
+    pkgs.source-code-pro
+    self-host-fonts
+  ];
+
   programs.zsh.enable = true;
 
   # Homebrew for GUI apps

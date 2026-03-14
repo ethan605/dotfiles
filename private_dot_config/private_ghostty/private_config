@@ -24,7 +24,7 @@ foreground = #eff0eb
 
 font-family = ""
 font-family = "OperatorMonoSSm Nerd Font"
-font-family = "SamsungSans Nerd Font"
+font-family = "Source Code Pro"
 font-size = 18
 font-style = "Light"
 font-style-bold = "Regular"
