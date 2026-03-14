@@ -114,7 +114,9 @@
 
     activationScripts.postActivation.text = ''
       chsh -s /run/current-system/sw/bin/zsh ${username};
-      ln -sf ${pkgs.file}/lib/libmagic.1.dylib /opt/homebrew/lib/libmagic.dylib; # for python-magic in uv
+
+      # for python-magic in uv
+      ln -sf ${pkgs.file}/lib/libmagic.1.dylib /opt/homebrew/lib/libmagic.dylib;
     '';
   };
 
