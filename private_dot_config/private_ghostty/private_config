@@ -1,4 +1,4 @@
-# vim:fileencoding=utf-8:filetype=dosini
+# vim:fileencoding=utf-8:filetype=config
 cursor-style = block
 shell-integration-features = no-cursor
 
@@ -22,7 +22,9 @@ palette = 15=#eff0eb
 background = #282a36
 foreground = #eff0eb
 
+font-family = ""
 font-family = "OperatorMonoSSm Nerd Font"
+font-family = "SamsungSans Nerd Font"
 font-size = 18
 font-style = "Light"
 font-style-bold = "Regular"
