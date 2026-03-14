@@ -1,6 +1,7 @@
 # vim:filetype=zsh
 {{- if eq .chezmoi.os "darwin" }}
 
+# Uncheck "Save to Keychain" in pinentry-mac dialogue
 defaults write org.gpgtools.common UseKeychain -bool false
 
 {{- end }}
