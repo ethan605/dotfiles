@@ -26,8 +26,21 @@ greek-letters() {
 }
 
 mux() {
-  local workspace=${1:-$(greek-letters)}
-  tmux attach -t "$workspace" || tmux new -s "$workspace"
+  local sessions workspace
+
+  sessions=$(tmux list-sessions -F '#S' 2>/dev/null)
+
+  if [[ -n "$1" ]]; then
+    workspace="$1"
+  elif [[ -n $sessions ]]; then
+    workspace=$(echo "$sessions" | fzf)
+  else
+    workspace="$(greek-letters)"
+  fi
+
+  if [[ -n "$workspace" ]]; then
+    tmux attach -t "$workspace" || tmux new -s "$workspace"
+  fi
 }
 
 {{- if eq .chezmoi.os "linux" }}
