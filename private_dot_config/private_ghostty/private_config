@@ -22,22 +22,24 @@ palette = 15=#eff0eb
 background = #282a36
 foreground = #eff0eb
 
-# Font fallback test: α β γ ε λ μ π φ ω
+# Font fallback test:
+# Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ . Τ Υ Φ Χ Ψ Ω
+# α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ ς τ υ φ χ ψ ω
 font-family = ""
-font-family = "OperatorMonoSSm Nerd Font"
-# font-family = "Operator Mono SSm"
-font-family = "Source Code Pro"
-font-style = "Regular"
-font-style-bold = "Medium"
-font-style-bold-italic = "Medium Italic"
-font-style-italic = "Regular Italic"
+font-family = OperatorMonoSSm Nerd Font
+font-family = Source Code Pro
+font-family = Roboto Mono
+font-style-bold = Medium
+font-style-bold-italic = Medium Italic
+font-style-italic = Italic
 font-size = 18
 adjust-underline-thickness = -75%
+# font-codepoint-map = U+0391-U+03C9=SamsungSans Nerd Font
 # font-thicken = true
 # adjust-cell-height = +10%
 # adjust-cell-width = -5%
 
-term = "xterm-ghostty" 
+term = xterm-ghostty 
 
 fullscreen = false
 link-previews = false

@@ -122,6 +122,7 @@ let
 in
 {
   fonts.packages = [
+    pkgs.roboto-mono
     pkgs.source-code-pro
     self-host-fonts
   ];

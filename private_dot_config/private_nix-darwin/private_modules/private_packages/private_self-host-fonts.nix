@@ -23,7 +23,6 @@ pkgs.stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    install -Dm444 $src/fonts/otf-operator-mono-ssm/*.otf -t $out/share/fonts/opentype/
     install -Dm444 $src/fonts/otf-operator-mono-ssm-nerd/*.otf -t $out/share/fonts/opentype/
     install -Dm444 $src/fonts/ttf-samsung-sans-nerd/*.ttf -t $out/share/fonts/truetype/
 
