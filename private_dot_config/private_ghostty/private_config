@@ -1,4 +1,4 @@
-# vim:fileencoding=utf-8:filetype=config
+# vim:filetype=config
 cursor-style = block
 shell-integration-features = no-cursor
 
@@ -26,15 +26,10 @@ foreground = #eff0eb
 font-family = ""
 font-family = "OperatorMonoSSm Nerd Font"
 font-family = "Source Code Pro"
-font-family-italic = ""
-font-family-italic = "OperatorMonoSSm Nerd Font Italic"
-font-family-italic = "Source Code Pro Italic"
-font-family-bold = ""
-font-family-bold = "OperatorMonoSSm Nerd Font Medium"
-font-family-bold = "Source Code Pro Medium"
-font-family-bold-italic = ""
-font-family-bold-italic = "OperatorMonoSSm Nerd Font Medium Italic"
-font-family-bold-italic = "Source Code Pro Medium Italic"
+font-style = "Regular"
+font-style-bold = "Medium"
+font-style-bold-italic = "Medium Italic"
+font-style-italic = "Italic"
 font-size = 18
 adjust-underline-thickness = -75%
 # font-thicken = true
