@@ -3,6 +3,7 @@ vim.lsp.config("*", require("lsp.common"))
 vim.lsp.config.basedpyright = require("lsp.basedpyright")
 vim.lsp.config.bashls = require("lsp.bashls")
 vim.lsp.config.clangd = require("lsp.clangd")
+vim.lsp.config.cypher_ls = require("lsp.cypher_ls")
 vim.lsp.config.docker_compose = require("lsp.docker_compose")
 vim.lsp.config.dockerls = require("lsp.dockerls")
 vim.lsp.config.eslint = require("lsp.eslint")
@@ -33,6 +34,7 @@ vim.lsp.config.yamlls = require("lsp.yamlls")
 vim.lsp.enable({
   "bashls",
   "clangd",
+  "cypher_ls",
   "docker_compose",
   "dockerls",
   "eslint",
