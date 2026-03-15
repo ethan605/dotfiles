@@ -4,6 +4,7 @@
   "bash-language-server": "5.6.0",
   "clang-format": "22.1.1",
   "cpplint": "2.0.2",
+  "cypher-language-server": "0.0.0-canary-20250423075344",
   "docker-compose-language-service": "0.5.0",
   "dockerfile-language-server": "0.15.0",
   "eslint-lsp": "4.10.0",
