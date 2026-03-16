@@ -82,6 +82,7 @@ Library
 {{ if eq .machine_id "devpod" }}
 
 .config/*
+!.config/bottom
 !.config/nvim
 !.config/starship.toml
 !.config/vifm

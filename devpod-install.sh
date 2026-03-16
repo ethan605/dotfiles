@@ -18,6 +18,7 @@ __install-system-packages() {
 	mise use -g \
 		awscli@latest \
 		bat@latest \
+		bottom@latest \
 		chezmoi@latest \
 		delta@latest \
 		direnv@latest \
