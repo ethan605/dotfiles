@@ -8,7 +8,7 @@ __install-system-packages() {
 
 	sudo apt upgrade -y &&
 		sudo apt install --no-install-recommends -y \
-			libyaml-dev zsh &&
+			libyaml-dev python3-venv zsh &&
 		sudo apt autoremove -y &&
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
@@ -85,7 +85,13 @@ __system-upgrade() {
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/* &&
 		mise plugins update &&
-		mise upgrade --bump
+		mise upgrade --bump &&
+		chezmoi apply --force &&
+		nvim --headless \
+			-c 'Lazy! sync' \
+			-c MasonUpdate \
+			-c MasonLockRestore \
+			-c qa
 }
 EOF
 }
