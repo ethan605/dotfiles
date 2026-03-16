@@ -75,6 +75,7 @@ __configure-dotfiles() {
 	rm -rf ~/dotfiles/.bashrc
 
 	cat <<EOF >~/dotfiles/.bashrc
+# shellcheck disable=SC2148
 PATH="\$HOME/.local/bin/:\$PATH"
 eval "\$(mise activate bash)"
 
@@ -87,10 +88,10 @@ __system-upgrade() {
 		mise plugins update &&
 		mise upgrade --bump &&
 		chezmoi apply --force &&
-		nvim --headless \
-			-c 'Lazy! sync' \
-			-c MasonUpdate \
-			-c MasonLockRestore \
+		nvim --headless \\
+			-c 'Lazy! sync' \\
+			-c MasonUpdate \\
+			-c MasonLockRestore \\
 			-c qa
 }
 EOF
