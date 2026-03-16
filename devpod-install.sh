@@ -57,6 +57,9 @@ __configure-chezmoi() {
 		--promptString personal_gpg_id=not_applicable \
 		--apply https://github.com/ethan605/dotfiles \
 		--force
+
+	git config --global user.email thanh.nguyen@neo4j.com &&
+		git config --global core.excludesfile ~/.gitignore_global
 }
 
 __configure-nvim() {

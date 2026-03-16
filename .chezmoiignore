@@ -87,6 +87,7 @@ Library
 !.config/vifm
 .default-*
 .git*
+!.gitignore_global
 .gnupg
 .gtkrc-2.0
 .icons
