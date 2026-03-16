@@ -20,6 +20,7 @@ __install-system-packages() {
 		bat@latest \
 		chezmoi@latest \
 		delta@latest \
+		direnv@latest \
 		eza@latest \
 		fd@latest \
 		fzf@latest \
@@ -77,6 +78,7 @@ export PATH="\$HOME/.local/bin/:\$PATH"
 
 # === Plugins ===
 eval "\$(mise activate bash)"
+eval "\$(direnv hook bash)"
 eval "\$(fzf --bash)"
 
 if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; then
