@@ -80,6 +80,7 @@ export PATH="\$HOME/.local/bin/:\$PATH"
 eval "\$(mise activate bash)"
 eval "\$(direnv hook bash)"
 eval "\$(fzf --bash)"
+eval "\$(zoxide init bash)"
 
 if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; then
   # shellcheck disable=SC1091
@@ -116,6 +117,7 @@ alias rm='rm -i'
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
+alias vserve='nvim --headless --listen=127.0.0.1:45678'
 alias where=which
 EOF
 }
