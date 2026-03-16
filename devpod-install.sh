@@ -79,6 +79,28 @@ __configure-dotfiles() {
 PATH="\$HOME/.local/bin/:\$PATH"
 eval "\$(mise activate bash)"
 
+export BAT_THEME=base16
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
+
+export FZF_DEFAULT_OPTS='
+  --ansi
+  --bind=ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-page-up,ctrl-d:preview-page-down
+  --color=fg+:7,bg+:0,hl:5,hl+:5
+  --color=gutter:0,header:4,marker:2,pointer:5,prompt:2,spinner:3
+  --cycle
+  --marker="›"
+  --pointer="›"
+  --prompt="❯ "
+  --reverse
+  --no-height
+'
+export FZF_CTRL_R_OPTS='
+  --preview="echo {2..} | bat --color=always --language=zsh --number --plain"
+  --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
+  --header="Press CTRL-Y to copy command into clipboard"
+'
+
 __system-upgrade() {
 	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
 		sudo apt upgrade -y &&
@@ -94,6 +116,14 @@ __system-upgrade() {
 			-c MasonLockRestore \\
 			-c qa
 }
+
+alias c=chezmoi
+alias k=kubecolor
+alias rm='rm -i'
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
+alias where=which
 EOF
 }
 
