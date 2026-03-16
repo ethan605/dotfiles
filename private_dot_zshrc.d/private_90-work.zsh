@@ -6,7 +6,7 @@ if [[ -f "$WORK_DIR/.zshrc" ]]; then
   source "$WORK_DIR/.zshrc"
 fi
 
-alias devpod-ssh='LC_ALL=C.UTF-8 TERM=xterm-256color ssh neo4j-cloud.devpod'
+alias devpod-ssh='LANG=C.UTF-8 LC_ALL=C.UTF-8 LC_CTYPE=C.UTF-8 TERM=xterm-256color ssh neo4j-cloud.devpod'
 alias wpass='PASSWORD_STORE_DIR="$WORK_DIR/.password-store" pass'
 
 alias psql-local='psql $(wpass postgres/uri-local)'
