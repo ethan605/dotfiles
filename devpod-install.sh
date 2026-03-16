@@ -26,6 +26,7 @@ __install-system-packages() {
 		gcloud@latest \
 		kubecolor@latest \
 		kubectx@latest \
+		kubens@latest \
 		lua@latest \
 		neovim@latest \
 		ripgrep@latest \
@@ -60,13 +61,34 @@ __configure-chezmoi() {
 
 __configure-nvim() {
 	nvim --headless \
-		'+Lazy! sync' \
-		+MasonUpdate \
-		+MasonLockRestore \
-		+qa
+		-c 'Lazy! sync' \
+		-c MasonUpdate \
+		-c MasonLockRestore \
+		-c qa
+}
+
+__configure-dotfiles() {
+  rm -rf ~/dotfiles/*
+  mkdir -p ~/dotfiles
+
+  cat <<EOF >~/dotfiles/.bashrc
+PATH="$HOME/.local/bin:$PATH"
+eval "$(mise activate bash)"
+
+__system-upgrade() {
+  cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
+    sudo apt upgrade -y &&
+    sudo apt autoremove -y &&
+    sudo apt clean -y &&
+    sudo rm -rf /var/lib/apt/lists/* &&
+    mise plugins update &&
+    mise upgrade --bump
+}
+EOF
 }
 
 __install-system-packages &&
 	__configure-zsh &&
 	__configure-chezmoi &&
-	__configure-nvim
+	__configure-nvim &&
+  __configure-dotfiles
