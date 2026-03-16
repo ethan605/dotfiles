@@ -68,21 +68,21 @@ __configure-nvim() {
 }
 
 __configure-dotfiles() {
-	rm -rf ~/dotfiles/*
 	mkdir -p ~/dotfiles
+	rm -rf ~/dotfiles/.bashrc
 
 	cat <<EOF >~/dotfiles/.bashrc
-PATH="$HOME/.local/bin/:$PATH"
-eval "$(mise activate bash)"
+PATH="\$HOME/.local/bin/:\$PATH"
+eval "\$(mise activate bash)"
 
 __system-upgrade() {
-  cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
-    sudo apt upgrade -y &&
-    sudo apt autoremove -y &&
-    sudo apt clean -y &&
-    sudo rm -rf /var/lib/apt/lists/* &&
-    mise plugins update &&
-    mise upgrade --bump
+	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
+		sudo apt upgrade -y &&
+		sudo apt autoremove -y &&
+		sudo apt clean -y &&
+		sudo rm -rf /var/lib/apt/lists/* &&
+		mise plugins update &&
+		mise upgrade --bump
 }
 EOF
 }
