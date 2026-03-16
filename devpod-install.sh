@@ -41,6 +41,78 @@ __install-system-packages() {
 	eval "$(mise activate bash)"
 }
 
+__configure-bash() {
+	rm -rf ~/.local/share/fzf-tab-completion
+	git clone https://github.com/lincheney/fzf-tab-completion ~/.local/share/fzf-tab-completion
+
+	mkdir -p ~/dotfiles
+	rm -rf ~/dotfiles/.bashrc
+
+	cat <<EOF >~/dotfiles/.bashrc
+# shellcheck disable=SC2148
+# === Environments ===
+export BAT_THEME=base16
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
+
+export FZF_DEFAULT_OPTS='
+  --ansi
+  --bind=ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-page-up,ctrl-d:preview-page-down
+  --color=fg+:7,bg+:0,hl:5,hl+:5
+  --color=gutter:0,header:4,marker:2,pointer:5,prompt:2,spinner:3
+  --cycle
+  --marker="›"
+  --pointer="›"
+  --prompt="❯ "
+  --reverse
+  --no-height
+'
+export FZF_CTRL_R_OPTS='
+  --preview="echo {2..} | bat --color=always --language=zsh --number --plain"
+  --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
+  --header="Press CTRL-Y to copy command into clipboard"
+'
+
+export PATH="\$HOME/.local/bin/:\$PATH"
+
+# === Plugins ===
+eval "\$(mise activate bash)"
+eval "\$(fzf --bash)"
+
+if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; then
+  # shellcheck disable=SC1091
+  source "\$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh"
+  bind -x '"\\t": fzf_bash_completion'
+fi
+
+# === Utils & aliases ===
+__system-upgrade() {
+  # shellcheck disable=SC2033
+	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
+		sudo apt upgrade -y &&
+		sudo apt autoremove -y &&
+		sudo apt clean -y &&
+		sudo rm -rf /var/lib/apt/lists/* &&
+		mise plugins update &&
+		mise upgrade --bump &&
+		chezmoi apply --force &&
+		nvim --headless \\
+			-c 'Lazy! sync' \\
+			-c MasonUpdate \\
+			-c MasonLockRestore \\
+			-c qa
+}
+
+alias c=chezmoi
+alias k=kubecolor
+alias rm='rm -i'
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
+alias where=which
+EOF
+}
+
 __configure-zsh() {
 	rm -rf ~/.zim
 
@@ -70,65 +142,8 @@ __configure-nvim() {
 		-c qa
 }
 
-__configure-dotfiles() {
-	mkdir -p ~/dotfiles
-	rm -rf ~/dotfiles/.bashrc
-
-	cat <<EOF >~/dotfiles/.bashrc
-# shellcheck disable=SC2148
-PATH="\$HOME/.local/bin/:\$PATH"
-eval "\$(mise activate bash)"
-
-export BAT_THEME=base16
-export EDITOR=nvim
-export MANPAGER='nvim +Man!'
-
-export FZF_DEFAULT_OPTS='
-  --ansi
-  --bind=ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-page-up,ctrl-d:preview-page-down
-  --color=fg+:7,bg+:0,hl:5,hl+:5
-  --color=gutter:0,header:4,marker:2,pointer:5,prompt:2,spinner:3
-  --cycle
-  --marker="›"
-  --pointer="›"
-  --prompt="❯ "
-  --reverse
-  --no-height
-'
-export FZF_CTRL_R_OPTS='
-  --preview="echo {2..} | bat --color=always --language=zsh --number --plain"
-  --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
-  --header="Press CTRL-Y to copy command into clipboard"
-'
-
-__system-upgrade() {
-	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
-		sudo apt upgrade -y &&
-		sudo apt autoremove -y &&
-		sudo apt clean -y &&
-		sudo rm -rf /var/lib/apt/lists/* &&
-		mise plugins update &&
-		mise upgrade --bump &&
-		chezmoi apply --force &&
-		nvim --headless \\
-			-c 'Lazy! sync' \\
-			-c MasonUpdate \\
-			-c MasonLockRestore \\
-			-c qa
-}
-
-alias c=chezmoi
-alias k=kubecolor
-alias rm='rm -i'
-alias v=nvim
-alias vi=nvim
-alias vim=nvim
-alias where=which
-EOF
-}
-
 __install-system-packages &&
+	__configure-bash &&
 	__configure-zsh &&
 	__configure-chezmoi &&
-	__configure-nvim &&
-	__configure-dotfiles
+	__configure-nvim
