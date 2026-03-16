@@ -72,7 +72,7 @@ __configure-dotfiles() {
 	mkdir -p ~/dotfiles
 
 	cat <<EOF >~/dotfiles/.bashrc
-PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin/:$PATH"
 eval "$(mise activate bash)"
 
 __system-upgrade() {
