@@ -105,6 +105,11 @@ __system-upgrade() {
 
 alias c=chezmoi
 alias k=kubecolor
+alias l1='ls --oneline'
+alias l='ls --long --icons=always --header'
+alias lk='l --total-size --sort=size --reverse'
+alias lr='l --tree --level=2'
+alias ls='eza --group-directories-first --color=always --git --all'
 alias rm='rm -i'
 alias v=nvim
 alias vi=nvim
