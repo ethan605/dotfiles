@@ -88,7 +88,27 @@ vim.opt.shortmess:append("c")           -- Don't give 'ins-completion-menu' mess
 
 {{- if eq .machine_id "devpod" }}
 
-vim.g.clipboard = "osc52"
+local function non_osc52_paste()
+  return {
+    vim.fn.split(vim.fn.getreg(""), "\n"),
+    vim.fn.getregtype(""),
+  }
+end
+
+local osc52 = require("vim.ui.clipboard.osc52")
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = osc52.copy("+"),
+    ["*"] = osc52.copy("*"),
+  },
+  paste = {
+    ["+"] = non_osc52_paste,
+    ["*"] = non_osc52_paste,
+  },
+}
+
 vim.opt.runtimepath:append(vim.fn.expand("~/.local/share/mise/shims/fzf"))
 
 {{- else if eq .chezmoi.os "linux" }}
