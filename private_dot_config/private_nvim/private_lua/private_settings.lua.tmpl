@@ -86,9 +86,17 @@ vim.opt.clipboard:append("unnamedplus") -- Use system clipboard over vim's buffe
 vim.opt.formatoptions:append("o")       -- Continue comment marker in new lines.
 vim.opt.shortmess:append("c")           -- Don't give 'ins-completion-menu' messages.
 
--- Add fzf to run time path, OS-dependent
-{{- if eq .chezmoi.os "linux" }}
+{{- if eq .machine_id "devpod" }}
+
+vim.g.clipboard = "osc52"
+vim.opt.runtimepath:append(vim.fn.expand("~/.local/share/mise/shims/fzf"))
+
+{{- else if eq .chezmoi.os "linux" }}
+
 vim.opt.runtimepath:append("/usr/local/opt/fzf")
+
 {{- else }}
+
 vim.opt.runtimepath:append("/run/current-system/sw/bin/fzf")
+
 {{- end }}
