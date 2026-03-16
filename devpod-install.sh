@@ -84,9 +84,9 @@ eval "\$(fzf --bash)"
 eval "\$(zoxide init bash)"
 
 if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; then
-  # shellcheck disable=SC1091
-  source "\$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh"
-  bind -x '"\\t": fzf_bash_completion'
+	# shellcheck disable=SC1091
+	source "\$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh"
+	bind -x '"\\t": fzf_bash_completion'
 fi
 
 # === Utils & aliases ===
@@ -118,7 +118,7 @@ alias rm='rm -i'
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
-alias vserve='nvim --headless --listen=127.0.0.1:45678'
+alias vserve='nvim --headless --listen 127.0.0.1:45678'
 alias where=which
 EOF
 }
