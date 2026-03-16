@@ -68,10 +68,10 @@ __configure-nvim() {
 }
 
 __configure-dotfiles() {
-  rm -rf ~/dotfiles/*
-  mkdir -p ~/dotfiles
+	rm -rf ~/dotfiles/*
+	mkdir -p ~/dotfiles
 
-  cat <<EOF >~/dotfiles/.bashrc
+	cat <<EOF >~/dotfiles/.bashrc
 PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate bash)"
 
@@ -91,4 +91,4 @@ __install-system-packages &&
 	__configure-zsh &&
 	__configure-chezmoi &&
 	__configure-nvim &&
-  __configure-dotfiles
+	__configure-dotfiles
