@@ -58,7 +58,7 @@ __configure-chezmoi() {
 		--apply https://github.com/ethan605/dotfiles \
 		--force
 
-	git config --global user.email thanh.nguyen@neo4j.com &&
+	git config --global user.email "$WORK_EMAIL" &&
 		git config --global core.excludesfile ~/.gitignore_global
 }
 
