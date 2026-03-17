@@ -94,18 +94,6 @@
     }
   },
   "mcp": {
-    "notion": {
-      "enabled": false,
-      "type": "remote",
-      "url": "https://mcp.notion.com/mcp",
-      "oauth": {}
-    },
-    "linear": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.linear.app/mcp",
-      "oauth": {}
-    },
     "postgresql": {
       "enabled": false,
       "type": "local",
@@ -119,9 +107,19 @@
         "{env:POSTGRES_CONNECTION_STRING}"
       ]
     },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": {}
+    },
     "miro": {
       "type": "remote",
       "url": "https://mcp.miro.com",
+      "oauth": {}
+    },
+    "rivo": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp",
       "oauth": {}
     }
   }
