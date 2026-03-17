@@ -18,7 +18,7 @@
   "prettier": "3.8.1",
   "pyright": "1.1.408",
   "ruff": "0.15.6",
-  "rust-analyzer": "2026-03-09",
+  "rust-analyzer": "2026-03-16",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.13.0",
   "solargraph": "0.58.3",
