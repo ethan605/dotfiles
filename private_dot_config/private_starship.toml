@@ -3,7 +3,7 @@
 command_timeout = 1000
 continuation_prompt = "[›](yellow) "
 format = """
-$shlvl\
+$status\
 $sudo\
 $username\
 $hostname\
@@ -15,20 +15,15 @@ $git_metrics\
 $git_state\
 $hg_branch\
 $cmake\
-$elixir\
-$erlang\
 $golang\
 $helm\
 $java\
-$kotlin\
 $lua\
 $nodejs\
 $python\
 $ruby\
 $rust\
 $terraform\
-$vagrant\
-$vlang\
 $aws\
 $gcloud\
 $kubernetes\
@@ -54,10 +49,6 @@ format = "[$user]($style) "
 [hostname]
 format = "[@]($style) [$hostname]($style) "
 style = "bright-black"
-
-[shlvl]
-disabled = true
-symbol = " "
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style)"
@@ -92,12 +83,23 @@ format = " [$duration]($style)"
 format = "[$state $name]($style) "
 style = "bright-black"
 
+[status]
+disabled = false
+symbol = ""
+
 [character]
 error_symbol = "[λ](bold red)"
 success_symbol = "[λ](bold purple)"
 vicmd_symbol = "[ε](bold purple)"
 
 # Custom
+[custom.devpod]
+command = "echo $DEVPOD_WORKSPACE_ID"
+when = 'test "$DEVPOD_WORKSPACE_ID" != ""'
+format = "[$symbol$output]($style) "
+style = "bright-black"
+symbol = " "
+
 [custom.proxy]
 command = 'echo $HTTPS_PROXY | sed "s/http\:\/\///gi;s/\/$//gi"'
 when = 'test "$HTTPS_PROXY" != ""'
@@ -110,13 +112,6 @@ command = 'basename "$VIRTUAL_ENV"'
 when = 'test "$VIRTUAL_ENV" != ""'
 format = "[$output]($style) "
 style = "bright-black"
-
-[custom.devpod]
-command = "echo $DEVPOD_WORKSPACE_ID"
-when = 'test "$DEVPOD_WORKSPACE_ID" != ""'
-format = "[$symbol$output]($style) "
-style = "bright-black"
-symbol = " "
 
 # Platforms support
 [aws]
@@ -145,16 +140,6 @@ style = "bold #4285f4"
 format = " [$symbol($version)]($style)"
 style = "bold #e25241"
 
-[deno]
-format = " [$symbol$version]($style)"
-version_format = "$raw"
-
-[elixir]
-format = ' [$symbol$version \(OTP $otp_version\)]($style)'
-style = "bold #6e4a7e"
-symbol = " "
-version_format = "$raw"
-
 [golang]
 format = " [$symbol$version]($style)"
 style = "bold #29beb0"
@@ -165,12 +150,6 @@ version_format = "$raw"
 format = " [$symbol$version]($style)"
 style = "bold #ffa518"
 symbol = " "
-version_format = "$raw"
-
-[kotlin]
-format = " [$symbol$version]($style)"
-style = "bold #1aa2d4"
-symbol = " "
 version_format = "$raw"
 
 [lua]
@@ -207,15 +186,4 @@ version_format = "$raw"
 format = " [$symbol$version]($style)"
 style = "bold #844fba"
 symbol = "󱁢 "
-version_format = "$raw"
-
-[vagrant]
-format = " [$symbol$version]($style)"
-style = "bold #1868f2"
-symbol = " "
-
-[vlang]
-format = " [$symbol$version]($style)"
-style = "bold #5d87bf"
-symbol = " "
 version_format = "$raw"
