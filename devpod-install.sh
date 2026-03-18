@@ -97,6 +97,7 @@ __system-upgrade() {
 		sudo apt autoremove -y &&
 		sudo apt clean -y &&
 		sudo rm -rf /var/lib/apt/lists/* &&
+		chezmoi apply --force &&
 		mise plugins update &&
 		mise upgrade --bump &&
 		chezmoi apply --force &&
