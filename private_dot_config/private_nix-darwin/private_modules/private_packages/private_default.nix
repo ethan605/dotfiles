@@ -37,6 +37,7 @@ let
   cloud-native = [
     argo-rollouts
     devpod
+    k9s
     kubecolor
     kubectl
     kubectx
