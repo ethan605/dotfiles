@@ -87,6 +87,7 @@ Library
 !.config/starship.toml
 !.config/vifm
 .default-*
+.editrc
 .git*
 !.gitignore_global
 .gnupg
