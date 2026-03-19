@@ -103,17 +103,18 @@
         TrackpadThreeFingerVertSwipeGesture = 0;
         TrackpadTwoFingerDoubleTapGesture = true;
         TrackpadTwoFingerFromRightEdgeSwipeGesture = 3;
-
-        # Unsupported trackpad prefs
-        # defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 0;
-        # defaults write com.apple.AppleMultitouchTrackpad TrackpadHorizScroll -bool true;
-        # defaults write com.apple.AppleMultitouchTrackpad TrackpadScroll -bool true;
-        # defaults write com.apple.AppleMultitouchTrackpad UserPreferences -bool true;
       };
     };
 
     activationScripts.postActivation.text = ''
       chsh -s /run/current-system/sw/bin/zsh ${username};
+
+      # Manually update prefs that are not supported by nix-darwin
+      launchctl asuser "$(id -u ${username})" sudo --user=${username} -- defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 0;
+      launchctl asuser "$(id -u ${username})" sudo --user=${username} -- defaults write com.apple.AppleMultitouchTrackpad TrackpadHorizScroll -bool true;
+      launchctl asuser "$(id -u ${username})" sudo --user=${username} -- defaults write com.apple.AppleMultitouchTrackpad TrackpadScroll -bool true;
+      launchctl asuser "$(id -u ${username})" sudo --user=${username} -- defaults write com.apple.AppleMultitouchTrackpad UserPreferences -bool true;
+      launchctl asuser "$(id -u ${username})" sudo --user=${username} -- defaults write org.gpgtools.common UseKeychain -bool false;
 
       # for python-magic in uv
       ln -sf ${pkgs.file}/lib/libmagic.1.dylib /opt/homebrew/lib/libmagic.dylib;
