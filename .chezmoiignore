@@ -9,8 +9,10 @@ misc
 
 .Brewfile
 .claude/settings.json
+.config/.sqlfluff*
 .config/kitty
 .config/ncmpcpp
+.config/sqls
 .local/bin/ibus-engines
 
 # >>>
