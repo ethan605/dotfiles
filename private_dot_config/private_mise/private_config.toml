@@ -6,7 +6,7 @@ lockfile = true
 # Languages go first
 clang = "22.1.0"
 go = "1.26.1"
-java = "openjdk-26.0.0"
+java = "openjdk-25.0.2"
 lua = "5.5.0"
 luajit = "2.1.1744318430"
 node = "25.8.1"
@@ -26,3 +26,10 @@ ninja = "1.13.2"
 opencode = "1.2.27"
 tree-sitter = "0.26.7"
 uv = "0.10.12"
+
+# And custom tools
+[tools."http:cypher-shell"]
+version = "2026.02.2"
+bin = "cypher-shell"
+url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
+checksum = "sha256:3ff22a0c6cf1f69abcda5308468c3c2781d39c37611d6f05f54f6cb61c82f68e"

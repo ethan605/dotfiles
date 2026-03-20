@@ -107,6 +107,10 @@
         "{env:POSTGRES_CONNECTION_STRING}"
       ]
     },
+    "neo4j": {
+      "type": "local",
+      "command": ["uvx", "mcp-neo4j-cypher", "--transport", "stdio"]
+    },
     "linear": {
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
