@@ -30,6 +30,7 @@ __source-completions() {
   command -v gh >/dev/null && source <(gh completion -s zsh)
   command -v gt >/dev/null && source <(gt completion)
   command -v helm >/dev/null && source <(helm completion zsh)
+  command -v opencode >/dev/null && source <(opencode completion)
   command -v uv >/dev/null && source <(uv generate-shell-completion zsh)
   command -v uvx >/dev/null && source <(uvx --generate-shell-completion zsh)
 
