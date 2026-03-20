@@ -100,7 +100,7 @@ __system-upgrade() {
 		chezmoi apply --force &&
 		mise plugins update &&
 		mise upgrade --bump &&
-		chezmoi apply --force &&
+		mise cache prune &&
 		nvim --headless \\
 			-c 'Lazy! sync' \\
 			-c MasonUpdate \\
