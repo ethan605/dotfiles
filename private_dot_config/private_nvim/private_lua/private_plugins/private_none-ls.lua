@@ -1,5 +1,9 @@
 local function get_sqlfluff_config()
-  local target = os.getenv("SQL_TARGET") or "postgres"
+  local target = os.getenv("SQL_TARGET")
+
+  if target == nil then
+    return {}
+  end
 
   return {
     extra_args = {
