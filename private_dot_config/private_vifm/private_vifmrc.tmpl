@@ -102,6 +102,7 @@ set dotfiles
 
 command! diff nvim -d %f %F
 command! reload :write | restart
+command! zip zip -r '%d/out.zip' %f
 
 " Empty the ruler. By default, it shows the number of directories+files.
 " set rulerformat=
@@ -110,7 +111,7 @@ command! reload :write | restart
 " [[[ 2. File preview & file opening
 
 " Common files
-filetype <text/*>,<application/json> nvim %c
+filetype <text/*>,<application/json>,*.srt nvim %c
 filetype *.zip open -R %c
 
 {{- if eq .chezmoi.os "linux" }}
@@ -131,6 +132,23 @@ filetype * open -R %c
 
 {{- end }}
 
+" Archives - extracted from https://github.com/zimfw/archive/blob/master/functions/unarchive
+filetype *.7z|*.001 7za x %c
+filetype *.rar (( ${+commands[unrar]} )) && unrar x -ad %c || rar x -ad %c
+filetype *.tar.bz|*.tar.bz2|*.tbz|*.tbz2 tar -xvjf %c
+filetype *.tar.gz|*.tgz tar -xvzf %c
+filetype *.tar.lzma|*.tlz tar --lzma --help &> /dev/null && XZ_OPT=-T0 tar --lzma -xvf %c || lzcat %c | tar -xvf -
+filetype *.tar.xz|*.txz tar -J --help &> /dev/null && XZ_OPT=-T0 tar -xvJf %c || xzcat %c | tar -xvf -
+filetype *.tar.zst|*.tzst XZ_OPT=-T0 tar --use-compress-program=unzstd -xvf %c
+filetype *.tar tar -xvf %c
+filetype *.zip unzip %c
+filetype *.bz|*.bz2 bunzip2 %c
+filetype *.gz gunzip %c
+filetype *.lzma unlzma -T0 %c
+filetype *.xz unxz -T0 %c
+filetype *.zst zstd -T0 -d %c
+filetype *.Z uncompress %c
+
 " Dont show preview on ../
 fileviewer ../ echo > /dev/null
 
@@ -142,7 +160,7 @@ fileviewer .*/ eza --all --color=always --git --group-directories-first --icons=
 fileviewer <text/*>,<application/json>
   \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
 
-" Archives
+" Archives - extracted from https://github.com/zimfw/archive/blob/master/functions/lsarchive
 fileviewer *.7z,*.001 7za l %c
 fileviewer *.rar (( ${+commands[unrar]} )) && unrar l ${1} || rar l %c
 fileviewer *.tar.bz,*.tar.bz2,*.tbz,*.tbz2 tar -tvjf %c
