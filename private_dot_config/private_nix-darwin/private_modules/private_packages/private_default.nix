@@ -141,6 +141,7 @@ in
     };
 
     casks = [
+      "airflow"
       "contexts"
       "ghostty"
       "grammarly-desktop"
