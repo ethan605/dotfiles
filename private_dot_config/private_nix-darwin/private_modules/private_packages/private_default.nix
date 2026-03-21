@@ -90,7 +90,6 @@ let
 
   media = [
     blueutil
-    catt
     iina
     mpc
     mpd
