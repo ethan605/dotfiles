@@ -3,3 +3,4 @@
 .null-ls*
 mise.toml
 **/docs/plans/*.md
+**/.plans/*.md
