@@ -13,16 +13,20 @@ local snazzy_colors = {
 }
 
 -- Built-ins
-vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = snazzy_colors.gray })
-vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = snazzy_colors.white })
-vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
-vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
+-- vim.api.nvim_set_hl(0, "Normal", {})      -- clear
 vim.api.nvim_set_hl(0, "NormalFloat", {}) -- clear
-vim.api.nvim_set_hl(0, "PmenuSel", { fg = snazzy_colors.green })
+vim.api.nvim_set_hl(0, "WinBar", {})      -- clear
+vim.api.nvim_set_hl(0, "WinBarNC", {})    -- clear
+
+vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = snazzy_colors.gray })
+vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
+
 vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
-vim.api.nvim_set_hl(0, "WinBar", {})   -- clear
-vim.api.nvim_set_hl(0, "WinBarNC", {}) -- clear
+vim.api.nvim_set_hl(0, "CurSearch", { bg = snazzy_colors.cyan, fg = snazzy_colors.black })
+vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
+
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = snazzy_colors.white })
+vim.api.nvim_set_hl(0, "PmenuSel", { fg = snazzy_colors.green })
 
 -- Matched parentheses colors
 vim.api.nvim_set_hl(0, "MatchParen", { bold = true, fg = snazzy_colors.magenta })
