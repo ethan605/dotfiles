@@ -102,7 +102,7 @@ __system-upgrade() {
 		mise upgrade --bump &&
 		mise cache prune &&
 		nvim --headless \\
-			-c 'Lazy! sync' \\
+			-c 'Lazy! restore' \\
 			-c MasonUpdate \\
 			-c MasonLockRestore \\
 			-c qa
