@@ -77,7 +77,7 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   6 = 'built-in'
   7 = 'built-in'
   8 = 'built-in'
-  9 = 'built-in'
+  9 = ['secondary', 'built-in']
 
 ### Windows that always float. These conditions need to preceed others ###
 
