@@ -1,7 +1,9 @@
 # vim:filetype=config
 cursor-style = block
 shell-integration-features = no-cursor
+term = xterm-ghostty 
 
+# Colorscheme
 palette = 0=#282a36
 palette = 1=#ff5c57
 palette = 2=#5af78e
@@ -39,11 +41,19 @@ adjust-underline-thickness = -75%
 # adjust-cell-height = +10%
 # adjust-cell-width = -5%
 
-term = xterm-ghostty 
-
 fullscreen = false
 link-previews = false
 link-url = true
 title = ""
 window-decoration = false
 window-subtitle = false
+
+# Keybinds
+keybind = ctrl+x>c=new_split:auto
+keybind = ctrl+x>equal=equalize_splits
+keybind = ctrl+x>x=close_surface
+
+keybind = ctrl+x>h=goto_split:left
+keybind = ctrl+x>j=goto_split:down
+keybind = ctrl+x>k=goto_split:up
+keybind = ctrl+x>l=goto_split:right
