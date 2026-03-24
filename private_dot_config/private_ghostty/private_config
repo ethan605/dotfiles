@@ -31,14 +31,15 @@ font-family = ""
 font-family = OperatorMonoSSm Nerd Font
 font-family = Source Code Pro
 font-family = Roboto Mono
-font-style-bold = Medium
-font-style-bold-italic = Medium Italic
-font-style-italic = Italic
+font-style = Light
+font-style-bold = Regular
+font-style-bold-italic = Regular Italic
+font-style-italic = Light Italic
 font-size = 18
 adjust-underline-thickness = -75%
 # font-codepoint-map = U+0391-U+03C9=SamsungSans Nerd Font
-# font-thicken = true
-# adjust-cell-height = +10%
+font-thicken = true
+# adjust-cell-height = -5%
 # adjust-cell-width = -5%
 
 fullscreen = false

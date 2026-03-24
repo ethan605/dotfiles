@@ -1,7 +1,6 @@
 ---@type LazyPluginSpec
 return {
   "ibhagwan/fzf-lua",
-  commit = "6e41ba7505f35a6f054ca682b043aa0cea36c2ef",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     "fzf-native",
