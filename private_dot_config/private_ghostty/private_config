@@ -1,6 +1,6 @@
 # vim:filetype=config
 cursor-style = block
-shell-integration-features = no-cursor
+shell-integration = none
 term = xterm-ghostty 
 
 # Colorscheme
@@ -44,9 +44,11 @@ adjust-underline-thickness = -75%
 fullscreen = false
 link-previews = false
 link-url = true
+quit-after-last-window-closed = true
 title = ""
-window-decoration = false
+window-decoration = none
 window-subtitle = false
+working-directory = home
 
 # Keybinds
 keybind = ctrl+x>c=new_split:auto
