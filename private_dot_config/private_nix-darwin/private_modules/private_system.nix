@@ -32,7 +32,7 @@
             dock-spacer = { spacer = { small = true; }; };
           in
           [
-            "/Applications/Nix Apps/Alacritty.app"
+            # "/Applications/Nix Apps/Alacritty.app"
             "/Applications/Ghostty.app"
             dock-spacer
             "/Applications/Google Chrome.app"
