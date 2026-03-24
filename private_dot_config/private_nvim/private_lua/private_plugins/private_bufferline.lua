@@ -22,10 +22,16 @@ return {
     local clear_bg = { bg = snazzy_colors.black }
     local default_style = vim.tbl_extend("keep", clear_bg, { bold = false, italic = true })
     local selected_style = vim.tbl_extend("keep", clear_bg, { bold = true, italic = false })
+    local pick_style = vim.tbl_extend("keep", default_style, { fg = snazzy_colors.green })
+    local pick_selected_style = vim.tbl_extend("keep", selected_style, { fg = snazzy_colors.red })
     local error_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.red })
+    local error_selected_style = vim.tbl_extend("keep", error_style, { italic = false })
     local hint_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.blue })
+    local hint_selected_style = vim.tbl_extend("keep", hint_style, { italic = false })
     local info_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.green })
+    local info_selected_style = vim.tbl_extend("keep", info_style, { italic = false })
     local warn_style = vim.tbl_extend("keep", clear_bg, { fg = snazzy_colors.yellow })
+    local warn_selected_style = vim.tbl_extend("keep", warn_style, { italic = false })
 
     ---@type bufferline.UserConfig
     return {
@@ -37,45 +43,48 @@ return {
 
         -- Default styles
         diagnostic = default_style,
+        modified = default_style,
+        numbers = default_style,
+        pick = pick_style,
+
         error = default_style,
         error_diagnostic = default_style,
         hint = default_style,
         hint_diagnostic = default_style,
         info = default_style,
         info_diagnostic = default_style,
-        modified = default_style,
-        numbers = default_style,
-        pick = info_style,
         warning = default_style,
         warning_diagnostic = default_style,
 
         -- Selected styles
         buffer_selected = selected_style,
         diagnostic_selected = selected_style,
-        error_diagnostic_selected = error_style,
-        error_selected = error_style,
-        hint_diagnostic_selected = hint_style,
-        hint_selected = hint_style,
-        info_diagnostic_selected = info_style,
-        info_selected = info_style,
         modified_selected = selected_style,
         numbers_selected = selected_style,
-        pick_selected = error_style,
-        warning_diagnostic_selected = warn_style,
-        warning_selected = warn_style,
+        pick_selected = pick_selected_style,
+
+        error_diagnostic_selected = error_selected_style,
+        error_selected = error_selected_style,
+        hint_diagnostic_selected = hint_selected_style,
+        hint_selected = hint_selected_style,
+        info_diagnostic_selected = info_selected_style,
+        info_selected = info_selected_style,
+        warning_diagnostic_selected = warn_selected_style,
+        warning_selected = warn_selected_style,
 
         -- Visible styles
         buffer_visible = default_style,
         diagnostic_visible = default_style,
+        modified_visible = default_style,
+        numbers_visible = selected_style,
+        pick_visible = pick_style,
+
         error_diagnostic_visible = default_style,
         error_visible = default_style,
         hint_diagnostic_visible = default_style,
         hint_visible = default_style,
         info_diagnostic_visible = default_style,
         info_visible = default_style,
-        modified_visible = default_style,
-        numbers_visible = selected_style,
-        pick_visible = hint_style,
         warning_diagnostic_visible = default_style,
         warning_visible = default_style,
 
