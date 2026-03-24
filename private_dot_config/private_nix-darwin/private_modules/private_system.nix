@@ -117,9 +117,6 @@
 
       # Uncheck "Save to Keychain" for pinentry-mac
       sudo --user=${username} -- defaults write org.gpgtools.common UseKeychain -bool false;
-
-      # For python-magic in uv
-      ln -sf ${pkgs.file}/lib/libmagic.1.dylib /opt/homebrew/lib/libmagic.dylib;
     '';
   };
 

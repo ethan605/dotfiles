@@ -139,6 +139,11 @@ in
       upgrade = true;
     };
 
+    brews = [
+      "libmagic" # for python-magic
+      "libyaml" # for compiling ruby
+    ];
+
     casks = [
       "airflow"
       "contexts"
