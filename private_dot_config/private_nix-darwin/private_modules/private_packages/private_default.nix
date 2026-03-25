@@ -57,6 +57,7 @@ let
     hyperfine
     imagemagick
     jq
+    libyaml
     nil # nil depends on nix, so installing here instead of Mason
     parallel
     qrencode
@@ -139,11 +140,6 @@ in
       upgrade = true;
     };
 
-    brews = [
-      "libmagic" # for python-magic
-      "libyaml" # for compiling ruby
-    ];
-
     casks = [
       "airflow"
       "contexts"
@@ -165,5 +161,27 @@ in
     enableAllTerminfo = true;
     shells = [ pkgs.zsh ];
     systemPackages = base ++ devel ++ cli ++ tui ++ gui;
+    variables =
+      let
+        header_paths = builtins.concatStringsSep ":" [
+          "${pkgs.libyaml.dev}/include"
+        ];
+
+        lib_paths = builtins.concatStringsSep ":" [
+          "${pkgs.file}/lib"
+          "${pkgs.libyaml}/lib"
+        ];
+
+        pkg_paths = builtins.concatStringsSep ":" [
+          "${pkgs.libyaml.dev}/lib/pkgconfig"
+        ];
+      in
+      {
+        CPATH = header_paths;
+        # DYLD_FALLBACK_LIBRARY_PATH = lib_paths;
+        # DYLD_LIBRARY_PATH = lib_paths;
+        LIBRARY_PATH = lib_paths;
+        PKG_CONFIG_PATH = pkg_paths;
+      };
   };
 }
