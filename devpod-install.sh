@@ -114,6 +114,7 @@ __system-upgrade() {
 }
 
 alias c=chezmoi
+alias g=git
 alias k=kubecolor
 
 alias gcl='git clone --recurse-submodules'
