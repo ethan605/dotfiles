@@ -110,10 +110,36 @@ command! zip zip -r '%d/out.zip' %f
 
 " [[[ 2. File preview & file opening
 
-" Common files
-filetype <text/*>,<application/json>,*.srt nvim %c
+" Dont show preview on ../
+fileviewer ../ echo > /dev/null
 
-" Archives - extracted from https://github.com/zimfw/archive/blob/master/functions/unarchive
+" Show content tree in the preview window for directories
+fileviewer */ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
+fileviewer .*/ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
+
+" Text files
+fileviewer
+  \ <text/*>,<application/json>,*.js,*.json,*.md,*.srt,*.ts
+  \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
+filetype
+  \ <text/*>,<application/json>,*.js,*.json,*.md,*.srt,*.ts
+  \ nvim %c
+
+" Archives preview - extracted from https://github.com/zimfw/archive/blob/master/functions/lsarchive
+fileviewer *.7z,*.001 7za l %c
+fileviewer *.rar (( ${+commands[unrar]} )) && unrar l ${1} || rar l %c
+fileviewer *.tar.bz,*.tar.bz2,*.tbz,*.tbz2 tar -tvjf %c
+fileviewer *.tar.gz,*.tgz tar -tvzf %c
+fileviewer *.tar.lzma,*.tlz tar --lzma --help &> /dev/null && XZ_OPT=-T0 tar --lzma -tvf %c || lzcat %c | tar -tvf -
+fileviewer *.tar.xz,*.txz tar -J --help &> /dev/null && XZ_OPT=-T0 tar -tvJf %c || xzcat %c | tar -tvf -
+fileviewer *.tar.zst,*.tzst XZ_OPT=-T0 tar --use-compress-program=unzstd -tvf %c
+fileviewer *.tar tar -tvf %c
+fileviewer *.zip unzip -l %c
+fileviewer *.gz gunzip -l %c
+fileviewer *.xz unxz -T0 -l %c
+fileviewer *.zst zstd -T0 -l %c
+
+" Archives opening - extracted from https://github.com/zimfw/archive/blob/master/functions/unarchive
 filetype *.7z|*.001 7za x %c
 filetype *.rar (( ${+commands[unrar]} )) && unrar x -ad %c || rar x -ad %c
 filetype *.tar.bz|*.tar.bz2|*.tbz|*.tbz2 tar -xvjf %c
@@ -129,6 +155,8 @@ filetype *.lzma unlzma -T0 %c
 filetype *.xz unxz -T0 %c
 filetype *.zst zstd -T0 -d %c
 filetype *.Z uncompress %c
+
+fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
 
 {{- if eq .chezmoi.os "linux" }}
 
@@ -147,34 +175,6 @@ filetype <audio/*>,<video/*> iina %c
 filetype * open -R %c
 
 {{- end }}
-
-" Dont show preview on ../
-fileviewer ../ echo > /dev/null
-
-" Show content tree in the preview window for directories
-fileviewer */ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
-fileviewer .*/ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
-
-" Text files
-fileviewer <text/*>,<application/json>,*.srt
-  \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
-
-" Archives - extracted from https://github.com/zimfw/archive/blob/master/functions/lsarchive
-fileviewer *.7z,*.001 7za l %c
-fileviewer *.rar (( ${+commands[unrar]} )) && unrar l ${1} || rar l %c
-fileviewer *.tar.bz,*.tar.bz2,*.tbz,*.tbz2 tar -tvjf %c
-fileviewer *.tar.gz,*.tgz tar -tvzf %c
-fileviewer *.tar.lzma,*.tlz tar --lzma --help &> /dev/null && XZ_OPT=-T0 tar --lzma -tvf %c || lzcat %c | tar -tvf -
-fileviewer *.tar.xz,*.txz tar -J --help &> /dev/null && XZ_OPT=-T0 tar -tvJf %c || xzcat %c | tar -tvf -
-fileviewer *.tar.zst,*.tzst XZ_OPT=-T0 tar --use-compress-program=unzstd -tvf %c
-fileviewer *.tar tar -tvf %c
-fileviewer *.zip unzip -l %c
-fileviewer *.gz gunzip -l %c
-fileviewer *.xz unxz -T0 -l %c
-fileviewer *.zst zstd -T0 -l %c
-
-" All other files
-fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
 " ]]]
 
 " [[[ 3. Key mappings 
