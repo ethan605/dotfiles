@@ -193,17 +193,33 @@ ALWAYS prefer LSP tools over Grep/Glob for symbol-based code navigation.
 
 ## LSP Operations Reference
 
-| Task                               | LSP Operation          | Instead of                             |
-| ---------------------------------- | ---------------------- | -------------------------------------- |
-| Find where symbol is defined       | `goToDefinition`       | `grep "class Foo"` or `grep "def bar"` |
-| Find all usages of a symbol        | `findReferences`       | `grep "symbol_name"`                   |
-| Get type info / documentation      | `hover`                | Reading source manually                |
-| List symbols in a file             | `documentSymbol`       | `grep "def\|class"`                    |
-| Find interface implementations     | `goToImplementation`   | `grep "implements"`                    |
-| Prepare call hierarchy at position | `prepareCallHierarchy` | Manual tracing                         |
-| Find callers of a function         | `incomingCalls`        | `grep "function_name("`                |
-| Find callees from a function       | `outgoingCalls`        | Reading function body                  |
-| Search symbols across workspace    | `workspaceSymbol`      | `grep` across files                    |
+| Task                               | LSP Operation          | Instead of                              |
+| ---------------------------------- | ---------------------- | --------------------------------------- |
+| Find where symbol is defined       | `goToDefinition`       | `grep "class Foo"` or `grep "def bar"`  |
+| Find all usages of a symbol        | `findReferences` ¹     | `grep "symbol_name"`                    |
+| Get type info / documentation      | `hover`                | Reading source manually                 |
+| List symbols in a file             | `documentSymbol`       | `grep "def\|class"`                     |
+| Find interface implementations     | `goToImplementation`   | `grep "implements"`                     |
+| Prepare call hierarchy at position | `prepareCallHierarchy` | Manual tracing                          |
+| Find callers of a function         | `incomingCalls`        | `grep "function_name("`                 |
+| Find callees from a function       | `outgoingCalls`        | Reading function body                   |
+| Search symbols across workspace    | `workspaceSymbol` ²    | `grep` across files                     |
+
+¹ `findReferences` is **broken in Python (basedpyright)** for cross-file references. Use `incomingCalls` for function callers, or Grep for general symbol references.
+² `workspaceSymbol` **does not work in Python (basedpyright)**. Fall back to Grep.
+
+## Reach for LSP First
+
+When navigating code, LSP should be your first instinct:
+
+- **Where is this defined?** → `goToDefinition` — instant, precise
+- **What type is this?** → `hover` — faster than reading source
+- **What's in this file?** → `documentSymbol` — structured overview
+- **Who calls this function?** → `incomingCalls` — often cross-file; best first step for callers
+- **What does this function call?** → `outgoingCalls` — maps the call graph
+- **Where is this symbol referenced?** → `findReferences` (Go/TS), or `incomingCalls` for Python function call sites
+
+Note: `incomingCalls` covers **function/method call sites** only, not all symbol references (e.g., type annotations, variable assignments). For non-call references in Python, use Grep.
 
 ## Use Grep/Glob ONLY when:
 
@@ -212,33 +228,52 @@ ALWAYS prefer LSP tools over Grep/Glob for symbol-based code navigation.
 - LSP returns no results or errors
 - Searching for **file patterns** (use Glob, e.g., `**/*.py`)
 - Searching **non-code content** (configs, logs, YAML, JSON, etc.)
+- For **Python non-call symbol references** (`findReferences` is broken — use Grep)
+- For **Python workspace-wide symbol search** (`workspaceSymbol` is broken — use Grep)
 
 ## Examples
 
 ```
-# BAD - Don't use grep for symbol navigation
-grep -r "class EncordException" .
-grep -r "def authenticate" .
+# BAD — Don't use grep for symbol navigation
+grep -r "class DatabaseStatus" .
+grep -r "def get_database_details" .
+grep -r "get_database_details(" .
 
-# GOOD - Use LSP instead
-LSP goToDefinition on EncordException
-LSP findReferences on authenticate()
-LSP incomingCalls to find what calls a function
+# GOOD — Use LSP instead
+LSP goToDefinition on DatabaseStatus
+LSP documentSymbol on database_controller.py
+LSP incomingCalls on get_database_details  # finds all 14 callers across views
+LSP outgoingCalls on get_database_details  # finds get_by_dbid, verify_user_can_read_db, etc.
 ```
+
+## Cursor Positioning Tips
+
+`prepareCallHierarchy`, `incomingCalls`, and `outgoingCalls` require the cursor on the **function name**, not the keyword:
+- Python: cursor on `get_database_details`, NOT on `def`
+- Go: cursor on `GlobalPreUpdate`, NOT on `func`
+
+If call hierarchy returns empty, retry with cursor exactly on the identifier token.
 
 ## Language-Specific Notes
 
-### Python (Pyright)
+### Python (basedpyright)
 
-- ✅ `goToDefinition`, `findReferences`, `hover`, `documentSymbol` - work well
-- ✅ `incomingCalls`, `outgoingCalls`, `prepareCallHierarchy` - work well
-- ⚠️ `workspaceSymbol` - **does not work reliably with Pyright**; fall back to Grep for workspace-wide symbol search in Python
-- ⚠️ `goToImplementation` - only useful for abstract classes/protocols
+- ✅ `goToDefinition`, `hover`, `documentSymbol` — work well
+- ✅ `prepareCallHierarchy`, `incomingCalls`, `outgoingCalls` — work well (cross-file)
+- ⚠️ `findReferences` — **broken for cross-file references**; prefer `incomingCalls` for function callers, Grep for other references
+- ⚠️ `workspaceSymbol` — **does not work**; fall back to Grep
+- ⚠️ `goToImplementation` — only useful for abstract classes/protocols
+
+### Go (gopls)
+
+- ✅ `goToDefinition`, `hover`, `documentSymbol`, `findReferences` — work well
+- ✅ `prepareCallHierarchy`, `outgoingCalls` — work well (cross-module)
+- ⚠️ `incomingCalls` — may return empty if function is called by external frameworks
 
 ### TypeScript (tsserver)
 
 - ✅ All operations work well, including `workspaceSymbol`
-- ✅ `goToImplementation` - works for interfaces and abstract classes
+- ✅ `goToImplementation` — works for interfaces and abstract classes
 
 ### General
 

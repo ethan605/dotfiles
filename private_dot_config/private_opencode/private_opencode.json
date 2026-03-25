@@ -93,6 +93,15 @@
       "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/REVIEWER.md for your persona and review standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     }
   },
+  "lsp": {
+    "pyright": {
+      "disabled": true
+    },
+    "basedpyright": {
+      "command": ["basedpyright-langserver", "--stdio"],
+      "extensions": [".py", ".pyi"]
+    }
+  },
   "mcp": {
     "postgresql": {
       "enabled": false,
