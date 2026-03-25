@@ -136,9 +136,10 @@ __configure-chezmoi() {
 	rm -rf ~/.local/share/chezmoi
 
 	chezmoi init \
+		github.com/ethan605 \
 		--promptString machine_id=devpod \
 		--promptString personal_gpg_id=not_applicable \
-		--apply https://github.com/ethan605/dotfiles \
+		--apply \
 		--force
 
 	git config --global user.email "$WORK_EMAIL" &&
