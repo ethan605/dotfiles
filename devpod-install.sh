@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [[ -z "${WORK_EMAIL:-}" ]]; then
+	echo "Error: WORK_EMAIL is unset"
+	exit 1
+fi
+
 export PATH="$HOME/.local/bin:$PATH"
 
 __install-system-packages() {
@@ -110,11 +115,17 @@ __system-upgrade() {
 
 alias c=chezmoi
 alias k=kubecolor
+
+alias gcl='git clone --recurse-submodules'
+alias gfl='git fetch --prune origin && git pull origin \$(git branch --show-current)'
+alias gst='git status --short --untracked-files=all'
+
 alias l1='ls --oneline'
 alias l='ls --long --icons=always --header'
 alias lk='l --total-size --sort=size --reverse'
 alias lr='l --tree --level=2'
 alias ls='eza --group-directories-first --color=always --git --all'
+
 alias rm='rm -i'
 alias v=nvim
 alias vi=nvim
