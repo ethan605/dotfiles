@@ -178,8 +178,8 @@ in
       in
       {
         CPATH = header_paths;
-        # DYLD_FALLBACK_LIBRARY_PATH = lib_paths;
-        # DYLD_LIBRARY_PATH = lib_paths;
+        DYLD_FALLBACK_LIBRARY_PATH = lib_paths;
+        DYLD_LIBRARY_PATH = lib_paths;
         LIBRARY_PATH = lib_paths;
         PKG_CONFIG_PATH = pkg_paths;
       };
