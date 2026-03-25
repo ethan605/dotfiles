@@ -33,10 +33,10 @@ font-family = Source Code Pro
 font-family = Roboto Mono
 font-style = Light
 font-style-bold = Regular
-font-style-bold-italic = Regular Italic
+font-style-bold-italic = Italic
 font-style-italic = Light Italic
 font-size = 18
-adjust-underline-thickness = -75%
+adjust-underline-thickness = -50%
 # font-codepoint-map = U+0391-U+03C9=SamsungSans Nerd Font
 font-thicken = true
 # adjust-cell-height = -5%
