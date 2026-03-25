@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ -z "${WORK_EMAIL:-}" ]]; then
+if [[ -z "${WORK_EMAIL++}" ]]; then
 	echo "Error: WORK_EMAIL is unset"
 	exit 1
 fi
