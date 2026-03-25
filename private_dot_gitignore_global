@@ -1,7 +1,8 @@
 # vim:filetype=gitignore
+**/.plans/*.md
+**/docs/plans/*.md
+**/node_modules
 .envrc
 .null-ls*
+junit.xml
 mise.toml
-**/docs/plans/*.md
-**/.plans/*.md
-**/node_modules
