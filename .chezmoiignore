@@ -1,6 +1,6 @@
 # vim:fileencoding=utf-8:filetype=gitignore:foldenable:foldmethod=marker:foldmarker=<<<,>>>
+**/README.md
 LICENSE
-README.md
 devpod-install.sh
 gitconfig_work.template
 misc
