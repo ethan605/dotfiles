@@ -13,10 +13,10 @@ node = "25.8.2"
 python = "3.14.3"
 ruby = "4.0.2"
 rust = "1.94.0"
-terraform = "1.14.7"
+terraform = "1.14.8"
 
 # Then tools
-awscli = { version = "2.34.15", symlink_bins = "true" }
+awscli = { version = "2.34.16", symlink_bins = "true" }
 cmake = "4.3.0"
 gcloud = "562.0.0"
 gh = "2.88.1"
