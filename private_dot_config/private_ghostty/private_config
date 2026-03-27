@@ -60,3 +60,6 @@ keybind = ctrl+x>h=goto_split:left
 keybind = ctrl+x>j=goto_split:down
 keybind = ctrl+x>k=goto_split:up
 keybind = ctrl+x>l=goto_split:right
+
+keybind = ctrl+x>shift+h=resize_split:left,250
+keybind = ctrl+x>shift+l=resize_split:right,250
