@@ -1,27 +1,21 @@
 session: chores
 root: ""
 windows:
-  - name: console
+  - name: work
     layout: even-horizontal
-    root: ~/work/neo4j-cloud/
+    root: ~/work/neo4j-cloud
     commands:
       - git switch master &&
         git fetch --prune &&
         git pull origin master
-
-  - name: upx
-    root: ~/work/upx/
-    layout: even-horizontal
-    commands:
-      - git switch trunk &&
-        git fetch --prune &&
-        git pull origin trunk &&
-        pnpm install
     panes:
-      - commands:
-          - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
-            nvim --headless "+Lazy! sync" +MasonUpdate +qa &&
-            nvim +Mason
+      - root: ../upx
+        layout: even-horizontal
+        commands:
+          - git switch trunk &&
+            git fetch --prune &&
+            git pull origin trunk &&
+            pnpm install
 
   - name: system
     root: ~/.config
@@ -30,9 +24,19 @@ windows:
     layout: even-horizontal
     commands:
       - nix flake update --flake ./nix-darwin &&
-        sudo darwin-rebuild switch --flake ./nix-darwin
+        sudo darwin-rebuild switch --flake ./nix-darwin &&
+        aerospace reload-config &&
+        sketchybar --reload
     panes:
       - commands:
           - zim &&
             mise plugins update &&
             mise upgrade --bump --interactive
+
+  - name: nvim
+    root: ~/.config/nvim
+    layout: even-horizontal
+    commands:
+      - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
+        nvim --headless "+Lazy! sync" +MasonUpdate +qa &&
+        nvim +Mason
