@@ -115,9 +115,9 @@ __system-upgrade() {
 }
 
 alias c=chezmoi
-alias g=git
-alias k=kubecolor
+alias cst='chezmoi status'
 
+alias g=git
 alias gcl='git clone --recurse-submodules'
 alias gfl='git fetch --prune origin && git pull origin \$(git branch --show-current)'
 alias gst='git status --short --untracked-files=all'
@@ -128,11 +128,13 @@ alias lk='l --total-size --sort=size --reverse'
 alias lr='l --tree --level=2'
 alias ls='eza --group-directories-first --color=always --git --all'
 
-alias rm='rm -i'
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
 alias vserve='nvim --headless --listen 127.0.0.1:45678'
+
+alias k=kubecolor
+alias rm='rm -i'
 alias where=which
 EOF
 }
