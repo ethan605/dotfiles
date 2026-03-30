@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "bash", "sh", "zsh",
     "cpp", "cmake", "make",
     "go", "gosum", "java", "nix", "python", "rust",
-    "javascript", "jsx", "typescript", "tsx",
+    "javascript", "javascriptreact", "typescript", "typescriptreact",
     "comment", "json", "json5", "terraform", "yaml", "yaml.docker-compose",
   },
   callback = function() vim.treesitter.start() end,
