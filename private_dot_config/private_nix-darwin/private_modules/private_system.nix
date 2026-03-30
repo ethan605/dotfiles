@@ -33,7 +33,7 @@
           in
           [
             # "/Applications/Nix Apps/Alacritty.app"
-            "/Applications/Ghostty.app"
+            "/Applications/Nix Apps/Ghostty.app"
             dock-spacer
             "/Applications/Google Chrome.app"
             "${home-dir}/Applications/Home Manager Apps/Firefox.app"

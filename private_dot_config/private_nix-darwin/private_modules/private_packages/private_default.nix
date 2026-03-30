@@ -117,6 +117,7 @@ let
     alacritty
     appcleaner
     flameshot
+    ghostty-bin
   ];
 
   self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
@@ -143,7 +144,6 @@ in
     casks = [
       "airflow"
       "contexts"
-      "ghostty"
       "grammarly-desktop"
       "homerow"
       "karabiner-elements" # can't use services.karabiner-elements
@@ -152,6 +152,7 @@ in
       "telegram"
       "whatsapp"
 
+      # "ghostty"
       # "logitune"
       # "megasync"
     ];
