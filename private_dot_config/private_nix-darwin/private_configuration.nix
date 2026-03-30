@@ -11,16 +11,6 @@
   nix.enable = false;
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      direnv = prev.direnv.overrideAttrs {
-        buildPhase = ''
-          CGO_ENABLED=1 make BASH_PATH=$BASH_PATH
-        '';
-      };
-    })
-  ];
-
   nix-homebrew = {
     enable = true;
     user = username;
