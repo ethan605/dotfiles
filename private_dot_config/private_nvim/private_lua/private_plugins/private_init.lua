@@ -70,6 +70,7 @@ local plugins = {
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-java"),
   require("plugins.nvim-lightbulb"),
+  require("plugins.nvim-metals"),
   require("plugins.nvim-repl"),
   require("plugins.nvim-tree"),
   require("plugins.nvim-treesitter"),
