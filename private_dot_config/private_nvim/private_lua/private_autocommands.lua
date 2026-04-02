@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Auto CSV/TSV view
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
   pattern = { "csv", "tsv" },
   command = "CsvViewEnable",
 })
@@ -75,7 +75,8 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "bash", "sh", "zsh",
     "cpp", "cmake", "make",
-    "go", "gosum", "java", "nix", "python", "rust",
+    "go", "gosum", "java", "nix",
+    "python", "rust", "scala",
     "javascript", "javascriptreact", "typescript", "typescriptreact",
     "comment", "json", "json5", "terraform", "yaml", "yaml.docker-compose",
   },
