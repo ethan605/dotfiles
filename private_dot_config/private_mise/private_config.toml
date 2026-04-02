@@ -18,6 +18,7 @@ terraform = "1.14.8"
 # Then tools
 awscli = { version = "2.34.22", symlink_bins = "true" }
 cmake = "4.3.1"
+coursier = { version = "2.1.24", exe = "cs" }
 gcloud = "563.0.0"
 gh = "2.89.0"
 helm = "4.1.3"

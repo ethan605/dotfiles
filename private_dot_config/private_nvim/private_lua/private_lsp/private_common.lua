@@ -45,7 +45,7 @@ vim.api.nvim_create_user_command(
     if lsp_client == nil then
       vim.lsp.start(vim.lsp.config[name])
     else
-      vim.lsp.stop_client(lsp_client.id, true)
+      lsp_client:stop(true)
     end
   end,
   { desc = "Toggling a LSP by name", nargs = 1 }
