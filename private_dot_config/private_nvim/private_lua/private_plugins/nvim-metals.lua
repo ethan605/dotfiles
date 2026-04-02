@@ -4,7 +4,7 @@ return {
   ft = { "scala", "sbt" },
   opts = function()
     local metals_config = require("metals").bare_config()
-    -- local lsp_commons = require("lsp.common")
+    local lsp_commons = require("lsp.common")
 
     return vim.tbl_extend(
       "force",
@@ -12,8 +12,8 @@ return {
       {
         -- TODO: revisit https://github.com/scalameta/nvim-metals/issues/762
         init_options = { globSyntax = "vscode" },
-        -- capabilities = lsp_commons.capabilities,
-        -- on_attach = lsp_commons.on_attach,
+        capabilities = lsp_commons.capabilities,
+        on_attach = lsp_commons.on_attach,
       }
     )
   end,

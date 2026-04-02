@@ -134,9 +134,10 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescript", { link = "@c
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.typescriptreact", { link = "@constant.typescript" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary.typescript", { link = "@type.builtin.typescript" })
 
--- Semantic highlights - java
+-- Semantic highlights - java & scala
 vim.api.nvim_set_hl(0, "@lsp.type.modifier.java", { link = "Keyword" })
 vim.api.nvim_set_hl(0, "@lsp.typemod.property.readonly.java", { link = "Constant" })
+vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.scala", { link = "Constant" })
 
 -- Semantic highlights - lua
 vim.api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.lua", { link = "Special" })
