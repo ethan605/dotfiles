@@ -29,7 +29,8 @@ uv = "0.11.3"
 
 # And custom tools
 [tools."http:cypher-shell"]
-version = "2026.02.2"
+# Check latest version at: https://neo4j.com/deployment-center/?cypher-shell
+version = "2026.03.1"
 bin = "cypher-shell"
 url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
-checksum = "sha256:3ff22a0c6cf1f69abcda5308468c3c2781d39c37611d6f05f54f6cb61c82f68e"
+checksum = "sha256:9f8ed192c9cbbb9340e69992efc48799a017f5c187f761d220031750226d5345"
