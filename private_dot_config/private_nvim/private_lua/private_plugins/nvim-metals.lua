@@ -10,6 +10,7 @@ return {
       "force",
       metals_config,
       {
+        -- TODO: revisit https://github.com/scalameta/nvim-metals/issues/762
         init_options = { globSyntax = "vscode" },
         -- capabilities = lsp_commons.capabilities,
         -- on_attach = lsp_commons.on_attach,
