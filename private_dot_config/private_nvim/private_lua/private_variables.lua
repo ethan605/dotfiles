@@ -8,6 +8,8 @@ vim.g.loaded_python3_provider = 0
 -- vim.g.ruby_host_prog = vim.fn.expand("~/.local/share/mise/shims/neovim-ruby-host")
 -- vim.g.python3_host_prog = vim.fn.expand("~/.local/share/mise/shims/python")
 
--- For nvim-tree
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
+-- Replacing netrw with vifm
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.vifm_replace_netrw = 1
+vim.g.vifm_replace_netrw_cmd = "Vifm"

@@ -36,6 +36,7 @@ local plugins = {
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
   "yochem/jq-playground.nvim",
+  "vifm/vifm.vim",
 
   { "fei6409/log-highlight.nvim", config = true },
   { "kylechui/nvim-surround",     config = true },
