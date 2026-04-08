@@ -1,5 +1,6 @@
 # vim:filetype=gitignore
 **/.plans/*.md
+**/.worktrees
 **/docs/plans/*.md
 **/node_modules
 .envrc
