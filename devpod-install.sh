@@ -113,14 +113,18 @@ __system-upgrade() {
 		sudo rm -rf /var/lib/apt/lists/* &&
 		chezmoi git pull &&
 		chezmoi apply --force &&
-		mise plugins update &&
-		mise upgrade --bump &&
-		mise cache prune &&
 		nvim --headless \\
 			-c 'Lazy! restore' \\
 			-c MasonUpdate \\
 			-c MasonLockRestore \\
 			-c qa
+}
+
+__mise-upgrade() {
+	mise self-update &&
+	mise plugins update &&
+	mise upgrade --bump &&
+	mise cache prune &&
 }
 
 alias c=chezmoi
