@@ -123,7 +123,7 @@ __system-upgrade() {
 __mise-upgrade() {
 	mise self-update &&
 		mise plugins update &&
-		mise upgrade --bump &&
+		mise upgrade --bump --interactive &&
 		mise cache prune
 }
 
