@@ -104,6 +104,13 @@ if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; 
 fi
 
 # === Utils & aliases ===
+__mise-upgrade() {
+	mise self-update &&
+		mise plugins update &&
+		mise upgrade --bump --interactive &&
+		mise cache prune
+}
+
 __system-upgrade() {
 	# shellcheck disable=SC2033
 	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
@@ -118,13 +125,6 @@ __system-upgrade() {
 			-c MasonUpdate \\
 			-c MasonLockRestore \\
 			-c qa
-}
-
-__mise-upgrade() {
-	mise self-update &&
-		mise plugins update &&
-		mise upgrade --bump --interactive &&
-		mise cache prune
 }
 
 alias c=chezmoi
