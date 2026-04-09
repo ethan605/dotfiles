@@ -105,7 +105,7 @@ fi
 
 # === Utils & aliases ===
 __system-upgrade() {
-  # shellcheck disable=SC2033
+	# shellcheck disable=SC2033
 	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
 		sudo apt upgrade -y &&
 		sudo apt autoremove -y &&
@@ -122,9 +122,9 @@ __system-upgrade() {
 
 __mise-upgrade() {
 	mise self-update &&
-	mise plugins update &&
-	mise upgrade --bump &&
-	mise cache prune &&
+		mise plugins update &&
+		mise upgrade --bump &&
+		mise cache prune
 }
 
 alias c=chezmoi
