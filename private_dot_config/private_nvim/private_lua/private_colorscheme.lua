@@ -93,9 +93,9 @@ vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = snazzy_colors.gray })
 
 vim.api.nvim_set_hl(0, "DiffviewDiffAdd", { bg = "#1d4428" })
 vim.api.nvim_set_hl(0, "DiffviewDiffChange", { bg = "#542527" })
-vim.api.nvim_set_hl(0, "DiffviewDiffDelete", { bg = "#901011" })
+vim.api.nvim_set_hl(0, "DiffviewDiffDelete", { bg = "#701011" })
 vim.api.nvim_set_hl(0, "DiffviewDiffText", { bg = "#1e582e" })
-vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffDelete" })
+vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffviewDiffDelete" })
 vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
 
 -- LSP highlights
