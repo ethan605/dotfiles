@@ -104,6 +104,15 @@ if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; 
 fi
 
 # === Utils & aliases ===
+__system-upgrade() {
+	# shellcheck disable=SC2033
+	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
+		sudo apt upgrade -y &&
+		sudo apt autoremove -y &&
+		sudo apt clean -y &&
+		sudo rm -rf /var/lib/apt/lists/*
+}
+
 __mise-upgrade() {
 	mise self-update &&
 		mise plugins update &&
@@ -111,14 +120,8 @@ __mise-upgrade() {
 		mise cache prune
 }
 
-__system-upgrade() {
-	# shellcheck disable=SC2033
-	cat "\$HOME/.config/devbox/\$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
-		sudo apt upgrade -y &&
-		sudo apt autoremove -y &&
-		sudo apt clean -y &&
-		sudo rm -rf /var/lib/apt/lists/* &&
-		chezmoi git pull &&
+__config-sync() {
+	chezmoi git pull &&
 		chezmoi apply --force &&
 		nvim --headless \\
 			-c 'Lazy! restore' \\
