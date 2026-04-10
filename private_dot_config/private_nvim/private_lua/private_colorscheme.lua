@@ -91,12 +91,12 @@ vim.api.nvim_set_hl(0, "DiffviewStatusTypeChange", { fg = snazzy_colors.yellow }
 vim.api.nvim_set_hl(0, "DiffviewStatusUnmerged", { fg = snazzy_colors.red })
 vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = snazzy_colors.gray })
 
-vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#1d4428" })
-vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#901011" })
-vim.api.nvim_set_hl(0, "DiffChange", { bg = "#542527" })
-vim.api.nvim_set_hl(0, "DiffText", { bg = "#1e582e" })
-vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
+vim.api.nvim_set_hl(0, "DiffviewDiffAdd", { bg = "#1d4428" })
+vim.api.nvim_set_hl(0, "DiffviewDiffChange", { bg = "#542527" })
+vim.api.nvim_set_hl(0, "DiffviewDiffDelete", { bg = "#901011" })
+vim.api.nvim_set_hl(0, "DiffviewDiffText", { bg = "#1e582e" })
 vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffDelete" })
+vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
