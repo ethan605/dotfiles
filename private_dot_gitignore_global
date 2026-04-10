@@ -2,6 +2,7 @@
 **/.plans/*.md
 **/.worktrees
 **/docs/plans/*.md
+**/docs/superpowers/**/*.md
 **/node_modules
 .envrc
 .null-ls*
