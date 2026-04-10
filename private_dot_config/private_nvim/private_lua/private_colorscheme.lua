@@ -107,12 +107,12 @@ vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = snazzy_colors.cyan })
 vim.api.nvim_set_hl(0, "DiagnosticOk", { fg = snazzy_colors.green })
 vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = snazzy_colors.yellow })
 
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = snazzy_colors.red })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = snazzy_colors.blue })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = snazzy_colors.cyan })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { undercurl = true, sp = snazzy_colors.green })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = snazzy_colors.yellow })
-vim.api.nvim_set_hl(0, "DiagnosticDeprecated", { strikethrough = true, fg = snazzy_colors.gray })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { sp = snazzy_colors.red, undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { sp = snazzy_colors.blue, undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { sp = snazzy_colors.cyan, undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { sp = snazzy_colors.green, undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { sp = snazzy_colors.yellow, undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticDeprecated", { fg = snazzy_colors.gray, strikethrough = true })
 
 -- Override default Nvim palettes
 vim.api.nvim_set_hl(0, "Added", { fg = snazzy_colors.green })
