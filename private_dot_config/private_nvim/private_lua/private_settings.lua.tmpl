@@ -49,6 +49,18 @@ vim.opt.backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*"
 vim.opt.writebackup = false -- Some LSP servers have issues with backup files
 
 -- Code folding
+vim.opt.fillchars = {
+  fold = " ",
+  diff = "╱",
+  wbr = "─",
+  msgsep = "─",
+  horiz = " ",
+  horizup = "│",
+  horizdown = "│",
+  vertright = "│",
+  vertleft = "│",
+  verthoriz = "│",
+}
 vim.opt.foldenable = true
 vim.opt.foldcolumn = "auto:1"
 vim.opt.foldlevelstart = 99
