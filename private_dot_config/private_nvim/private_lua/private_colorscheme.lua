@@ -18,7 +18,7 @@ vim.api.nvim_set_hl(0, "NormalFloat", {}) -- clear
 vim.api.nvim_set_hl(0, "WinBar", {})      -- clear
 vim.api.nvim_set_hl(0, "WinBarNC", {})    -- clear
 
-vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = snazzy_colors.gray })
+vim.api.nvim_set_hl(0, "Comment", { fg = snazzy_colors.gray, italic = true })
 vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
 
 vim.api.nvim_set_hl(0, "Search", { bg = snazzy_colors.yellow, fg = snazzy_colors.black })
@@ -77,12 +77,11 @@ vim.api.nvim_set_hl(0, "LeapMatch", { fg = snazzy_colors.yellow, bold = true, no
 vim.api.nvim_set_hl(0, "LeapLabel", { fg = snazzy_colors.magenta, bold = true, nocombine = true })
 
 -- For nvim-ufo
-vim.api.nvim_set_hl(0, "Folded", { italic = true, bg = snazzy_colors.dark_gray })
+vim.api.nvim_set_hl(0, "Folded", { bg = snazzy_colors.dark_gray, italic = true })
 vim.api.nvim_set_hl(0, "UfoFoldedBg", { bg = snazzy_colors.dark_gray })
-vim.api.nvim_set_hl(0, "UfoFoldedEllipsis", { bold = true, fg = snazzy_colors.yellow })
+vim.api.nvim_set_hl(0, "UfoFoldedEllipsis", { fg = snazzy_colors.yellow, bold = true })
 
 -- For diffview.nvim
-vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
 vim.api.nvim_set_hl(0, "DiffviewFilePanelSelected", { fg = snazzy_colors.yellow })
 vim.api.nvim_set_hl(0, "DiffviewStatusCopied", { fg = snazzy_colors.green })
 vim.api.nvim_set_hl(0, "DiffviewStatusIgnored", { fg = snazzy_colors.gray })
@@ -92,11 +91,12 @@ vim.api.nvim_set_hl(0, "DiffviewStatusTypeChange", { fg = snazzy_colors.yellow }
 vim.api.nvim_set_hl(0, "DiffviewStatusUnmerged", { fg = snazzy_colors.red })
 vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = snazzy_colors.gray })
 
--- GitHub's theme
 vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#1d4428" })
 vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#901011" })
 vim.api.nvim_set_hl(0, "DiffChange", { bg = "#542527" })
 vim.api.nvim_set_hl(0, "DiffText", { bg = "#1e582e" })
+vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
+vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffDelete" })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
