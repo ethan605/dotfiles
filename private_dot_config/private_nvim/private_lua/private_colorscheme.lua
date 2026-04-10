@@ -82,11 +82,21 @@ vim.api.nvim_set_hl(0, "UfoFoldedBg", { bg = snazzy_colors.dark_gray })
 vim.api.nvim_set_hl(0, "UfoFoldedEllipsis", { bold = true, fg = snazzy_colors.yellow })
 
 -- For diffview.nvim
-vim.api.nvim_set_hl(0, "DiffviewStatusCopied", { link = "DiffAdd" })
-vim.api.nvim_set_hl(0, "DiffviewStatusModified", { link = "DiffChange" })
-vim.api.nvim_set_hl(0, "DiffviewStatusRenamed", { link = "DiffChange" })
-vim.api.nvim_set_hl(0, "DiffviewStatusTypeChange", { link = "DiffChange" })
-vim.api.nvim_set_hl(0, "DiffviewStatusUnmerged", { link = "DiffDelete" })
+vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
+vim.api.nvim_set_hl(0, "DiffviewFilePanelSelected", { fg = snazzy_colors.yellow })
+vim.api.nvim_set_hl(0, "DiffviewStatusCopied", { fg = snazzy_colors.green })
+vim.api.nvim_set_hl(0, "DiffviewStatusIgnored", { fg = snazzy_colors.gray })
+vim.api.nvim_set_hl(0, "DiffviewStatusModified", { fg = snazzy_colors.yellow })
+vim.api.nvim_set_hl(0, "DiffviewStatusRenamed", { fg = snazzy_colors.yellow })
+vim.api.nvim_set_hl(0, "DiffviewStatusTypeChange", { fg = snazzy_colors.yellow })
+vim.api.nvim_set_hl(0, "DiffviewStatusUnmerged", { fg = snazzy_colors.red })
+vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = snazzy_colors.gray })
+
+-- GitHub's theme
+vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#1d4428" })
+vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#901011" })
+vim.api.nvim_set_hl(0, "DiffChange", { bg = "#542527" })
+vim.api.nvim_set_hl(0, "DiffText", { bg = "#1e582e" })
 
 -- LSP highlights
 vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
