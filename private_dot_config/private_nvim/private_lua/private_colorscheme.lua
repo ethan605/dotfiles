@@ -1,7 +1,5 @@
 local snazzy_colors = {
-  -- gray = "NvimDarkGrey4",
-  gray      = "#78787e", -- base03
-  dark_gray = "#34353e", -- base01
+  -- Base colors
   black     = "#282a36",
   blue      = "#57c7ff",
   cyan      = "#9aedfe",
@@ -10,7 +8,10 @@ local snazzy_colors = {
   red       = "#ff5c57",
   white     = "#eff0eb",
   yellow    = "#f3f99d",
-  orange    = "#ff9f43",
+  -- Colors from base16-snazzy
+  dark_gray = "#34353e", -- base01
+  gray      = "#78787e", -- base03
+  orange    = "#ff9f43", -- base07
 }
 
 -- Built-ins
