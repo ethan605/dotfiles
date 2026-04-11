@@ -23,6 +23,9 @@ palette = 15=#eff0eb
 
 background = #282a36
 foreground = #eff0eb
+cursor-color = #eff0eb
+selection-background = #e2e4e5
+selection-foreground = #43454f
 
 # Font fallback test:
 # Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ _ Τ Υ Φ Χ Ψ Ω
