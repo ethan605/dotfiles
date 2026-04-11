@@ -1,7 +1,7 @@
 local snazzy_colors = {
   -- gray = "NvimDarkGrey4",
-  gray      = "#606580",
-  dark_gray = "#3a3a3a",
+  gray      = "#78787e", -- base03
+  dark_gray = "#34353e", -- base01
   black     = "#282a36",
   blue      = "#57c7ff",
   cyan      = "#9aedfe",
@@ -15,6 +15,7 @@ local snazzy_colors = {
 -- Built-ins
 -- vim.api.nvim_set_hl(0, "Normal", {})      -- clear
 vim.api.nvim_set_hl(0, "NormalFloat", {}) -- clear
+vim.api.nvim_set_hl(0, "StatusLine", {})  -- clear
 vim.api.nvim_set_hl(0, "WinBar", {})      -- clear
 vim.api.nvim_set_hl(0, "WinBarNC", {})    -- clear
 
