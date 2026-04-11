@@ -151,6 +151,7 @@ in
       "logi-options+"
       "telegram"
       "whatsapp"
+      "zed"
 
       # "ghostty"
       # "logitune"
