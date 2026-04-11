@@ -58,7 +58,7 @@
   "smartcolumn.nvim": { "branch": "main", "commit": "b9cdbdf42f7ac5a659204cd5926017c7ff724a19" },
   "spring-boot.nvim": { "branch": "main", "commit": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
-  "vifm.vim": { "branch": "master", "commit": "c164d93309af965eb7436f46c6365d396d21d990" },
+  "vifm.vim": { "branch": "master", "commit": "72b77e55eaddd3cabaa2b9018c8c83a268398666" },
   "vim-plist": { "branch": "master", "commit": "aa781a387c70a9ea30cbce8da988e19693f5aaec" },
   "vim-snazzy": { "branch": "master", "commit": "d979964b4dc0d6860f0803696c348c5a912afb9e" },
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
