@@ -12,7 +12,7 @@ palette = 4=#57c7ff
 palette = 5=#ff6ac1
 palette = 6=#9aedfe
 palette = 7=#eff0eb
-palette = 8=#686868
+palette = 8=#78787e
 palette = 9=#ff5c57
 palette = 10=#5af78e
 palette = 11=#f3f99d
@@ -25,7 +25,7 @@ background = #282a36
 foreground = #eff0eb
 
 # Font fallback test:
-# Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ . Τ Υ Φ Χ Ψ Ω
+# Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ _ Τ Υ Φ Χ Ψ Ω
 # α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ ς τ υ φ χ ψ ω
 font-family = ""
 font-family = OperatorMonoSSm Nerd Font
