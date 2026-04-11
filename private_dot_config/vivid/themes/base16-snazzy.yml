@@ -1,36 +1,16 @@
 colors:
-  # based off of solarized vivid theme and dracula/dircolors
-  # Based on 'dracula' theme
-  # (https://draculatheme.com/)
-  #
-  # The assignment of colors to file types roughly follows `dircolors`
-  # base00: "#282a36"
-  # base01: "#34353e"
-  # base02: "#43454f"
-  # base03: "#78787e"
-  # base04: "#a5a5a9"
-  # base05: "#e2e4e5"
-  # base06: "#eff0eb"
-  # base07: "#f1f1f0"
-  # base08: "#ff5c57"
-  # base09: "#ff9f43"
-  # base0A: "#f3f99d"
-  # base0B: "#5af78e"
-  # base0C: "#9aedfe"
-  # base0D: "#57c7ff"
-  # base0E: "#ff6ac1"
-  # base0F: "#b2643c"
+  # Based on https://github.com/tinted-theming/base16-vivid/blob/main/themes/base16-snazzy.yml
 
-  black:  "282a36"
-  red:    "ff5c57"
-  green:  "5af78e"
-  yellow: "f3f99d"
-  blue:   "57c7ff"
-  purple: "ff6ac1"
-  cyan:   "9aedfe"
-  orange: "ff9f43"
-  white:  "e2e4e5"
-  gray:   "78787e"
+  black:  "282a36" # base00
+  gray:   "78787e" # base03
+  white:  "e2e4e5" # base06
+  red:    "ff5c57" # base08
+  orange: "ff9f43" # base09
+  yellow: "f3f99d" # base0A
+  green:  "5af78e" # base0B
+  cyan:   "9aedfe" # base0C
+  blue:   "57c7ff" # base0D
+  purple: "ff6ac1" # base0E
 
 core:
   normal_text:
