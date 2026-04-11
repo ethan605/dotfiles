@@ -114,7 +114,7 @@ __system-upgrade() {
 }
 
 __mise-upgrade() {
-	mise self-update &&
+	mise self-update --yes &&
 		mise plugins update &&
 		mise upgrade --bump --interactive &&
 		mise cache prune
