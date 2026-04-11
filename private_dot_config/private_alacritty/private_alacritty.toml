@@ -30,6 +30,10 @@ white   = "0xeff0eb" # 15
 background = "0x282a36"
 foreground = "0xeff0eb"
 
+[colors.cursor]
+text = "0x282a36"
+cursor = "0xeff0eb"
+
 [cursor]
 style = "Block"
 unfocused_hollow = true
