@@ -4,6 +4,7 @@
 **/docs/plans/*.md
 **/docs/superpowers/**/*.md
 **/node_modules
+**/tmp
 .envrc
 .null-ls*
 junit.xml

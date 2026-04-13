@@ -82,19 +82,19 @@
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-6",
+      "model": "openai/gpt-5.4",
       "system_prompt": "You are an Implementation Engineer. Read and strictly follow the instructions in ~/.config/opencode/GENERAL.md for your role and quality standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     },
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "openai/gpt-5.4-mini",
+      "model": "anthropic/claude-sonnet-4-6",
       "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     },
     "reviewer": {
       "color": "#ff5c57",
       "mode": "subagent",
-      "model": "openai/gpt-5.4",
+      "model": "google-vertex/gemini-3.1-pro-preview",
       "system_prompt": "You are a Senior Software Engineer with a very high bar in terms of code review. Read and strictly follow the instructions in ~/.config/opencode/REVIEWER.md for your persona and review standards. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
     }
   },
