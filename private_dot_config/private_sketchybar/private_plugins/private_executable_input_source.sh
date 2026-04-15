@@ -6,10 +6,10 @@ COLOR_BLUE=0xff57c7ff
 VI_TELEX_ON=$(defaults read com.apple.HIToolbox AppleSelectedInputSources | grep -Po 'com.apple.inputmethod.VietnameseTelex')
 
 if [[ -z $VI_TELEX_ON ]]; then
-	ICON=' 󰬰'
+	ICON='󰬰'
 	COLOR="$COLOR_BLUE"
 else
-	ICON=' '
+	ICON=''
 	COLOR="$COLOR_RED"
 fi
 

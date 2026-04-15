@@ -14,23 +14,23 @@ sketchybar -m --bar \
 	topmost=off
 
 default=(
-	padding_left=5
-	padding_right=5
+	padding_left=16
+	padding_right=0
 
 	icon.font='SamsungSans Nerd Font:Regular:17.0'
 	icon.color="$COLOR_WHITE"
-	icon.padding_left=8
+	icon.padding_left=0
 	icon.padding_right=0
 
 	label.font='SamsungSans Nerd Font:Regular:17.0'
 	label.color="$COLOR_WHITE"
-	label.padding_left=8
-	label.padding_right=8
+	label.padding_left=4
+	label.padding_right=4
 )
 sketchybar --default "${default[@]}"
 
 WORKSPACE_LABELS=(
-	[1]=" ₁" [2]=" ₂" [3]=" ₃" [4]=" ₄" [5]=" ₅"
+	[1]=" ₁" [2]=" ₂" [3]=" ₃" [4]="󱁤 ₄" [5]=" ₅"
 	[6]=" ₆" [7]=" ₇" [8]=" ₈" [9]=" ₉" [0]=""
 )
 for sid in $(/run/current-system/sw/bin/aerospace list-workspaces --all); do
@@ -42,9 +42,13 @@ for sid in $(/run/current-system/sw/bin/aerospace list-workspaces --all); do
 		background.color="$COLOR_BLUE" \
 		background.corner_radius=0 \
 		background.height=40 \
+		padding_left=0 \
+		padding_right=8 \
 		icon="$sid" \
 		icon.drawing=off \
 		label="${WORKSPACE_LABELS[$sid]}" \
+		label.padding_left=8 \
+		label.padding_right=8 \
 		script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
 		click_script="/run/current-system/sw/bin/aerospace workspace $sid"
 done
