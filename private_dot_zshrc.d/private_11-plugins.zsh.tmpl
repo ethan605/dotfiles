@@ -15,15 +15,6 @@ source <(zoxide init zsh)
 LS_COLORS="$(vivid generate base16-snazzy)"
 export LS_COLORS
 
-# === Mise plugins ===
-source "$(mise where gcloud)/completion.zsh.inc"
-source "$(mise where gcloud)/path.zsh.inc"
-
-# === For bash completions ===
-autoload -U +X bashcompinit && bashcompinit
-
-command -v aws_completer >/dev/null && complete -C "$(which aws_completer)" aws
-
 # === Expensive executions - use on demand ==
 __source-completions() {
   command -v devpod >/dev/null && source <(devpod completion zsh)
@@ -34,8 +25,18 @@ __source-completions() {
   command -v uv >/dev/null && source <(uv generate-shell-completion zsh)
   command -v uvx >/dev/null && source <(uvx --generate-shell-completion zsh)
 
+  local gcloud_dir=$(mise where gcloud 2>/dev/null)
+
+  if [[ -d $gcloud_dir ]]; then
+    source "$gcloud_dir/completion.zsh.inc"
+    source "$gcloud_dir/path.zsh.inc"
+  fi
+
   command -v register-python-argcomplete >/dev/null &&
     source <(register-python-argcomplete --shell=zsh pytest pytest-xdist)
 
   command -v terraform >/dev/null && complete -o nospace -C "$(which terraform)" terraform
+
+  autoload -U +X bashcompinit && bashcompinit
+  command -v aws_completer >/dev/null && complete -C "$(which aws_completer)" aws
 }
