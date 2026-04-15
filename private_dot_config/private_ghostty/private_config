@@ -45,14 +45,16 @@ font-thicken = true
 # adjust-cell-height = -5%
 # adjust-cell-width = -5%
 
+confirm-close-surface = false
 fullscreen = false
 link-previews = false
 link-url = true
-quit-after-last-window-closed = true
+quit-after-last-window-closed = false
 title = ""
 window-decoration = none
+window-inherit-working-directory = true
 window-subtitle = false
-working-directory = home
+working-directory = inherit
 
 # Keybinds
 keybind = ctrl+x>c=new_split:auto
