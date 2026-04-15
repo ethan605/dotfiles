@@ -19,7 +19,7 @@ terraform = "1.14.8"
 awscli = { version = "2.34.30", symlink_bins = "true" }
 cmake = "4.3.1"
 coursier = { version = "2.1.24", exe = "cs" }
-gcloud = "565.0.0"
+gcloud = { version = "565.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
 gh = "2.89.0"
 helm = "4.1.4"
 make = "4.4.1"
