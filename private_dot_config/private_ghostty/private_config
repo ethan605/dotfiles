@@ -54,7 +54,7 @@ title = ""
 window-decoration = none
 window-inherit-working-directory = true
 window-subtitle = false
-working-directory = inherit
+working-directory = home
 
 # Keybinds
 keybind = ctrl+x>c=new_split:auto
