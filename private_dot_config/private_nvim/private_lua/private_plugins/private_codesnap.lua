@@ -1,4 +1,4 @@
-local snazzy_colors = require("lua.colorscheme").snazzy_colors
+local snazzy_colors = require("colorscheme").snazzy_colors
 
 ---@type LazyPluginSpec
 return {

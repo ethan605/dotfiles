@@ -19,7 +19,7 @@ local autoFormatGroup = vim.api.nvim_create_augroup("AutoFormatGroup", { clear =
 -- Call Stylua on save - using lua-language-server
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.lua", "*.luau" },
-  command = "lua vim.lsp.buf.format()",
+  callback = function() vim.lsp.buf.format() end,
   group = autoFormatGroup,
 })
 

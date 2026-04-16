@@ -16,7 +16,7 @@ return {
   "akinsho/bufferline.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = function()
-    local snazzy_colors = require("lua.colorscheme").snazzy_colors
+    local snazzy_colors = require("colorscheme").snazzy_colors
 
     ---@type bufferline.HLGroup
     local clear_bg = { bg = snazzy_colors.black }
