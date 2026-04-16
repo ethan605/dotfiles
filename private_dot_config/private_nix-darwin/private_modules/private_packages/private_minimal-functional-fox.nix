@@ -34,4 +34,3 @@ pkgs.stdenvNoCC.mkDerivation {
     platforms = platforms.all;
   };
 }
-

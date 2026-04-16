@@ -1,4 +1,10 @@
-{ pkgs, username, hostname, home-dir, ... }:
+{
+  pkgs,
+  username,
+  hostname,
+  home-dir,
+  ...
+}:
 
 {
   networking.hostName = hostname;
@@ -29,7 +35,11 @@
       dock = {
         persistent-apps =
           let
-            dock-spacer = { spacer = { small = true; }; };
+            dock-spacer = {
+              spacer = {
+                small = true;
+              };
+            };
           in
           [
             # "/Applications/Nix Apps/Alacritty.app"

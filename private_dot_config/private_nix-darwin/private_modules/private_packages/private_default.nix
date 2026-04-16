@@ -65,7 +65,10 @@ let
     watch
     yq
     zbar
-  ] ++ docs ++ cloud-native ++ svc;
+  ]
+  ++ docs
+  ++ cloud-native
+  ++ svc;
 
   archives = [
     lzip

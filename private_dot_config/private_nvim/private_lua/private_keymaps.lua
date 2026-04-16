@@ -12,6 +12,7 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", opts)
 
 -- LSP. See `:help vim.lsp.*` for documentation on any of the below functions
 vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format, opts)
 -- vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
 -- vim.keymap.set("n", "<space>gD", ":vsplit | lua vim.lsp.buf.declaration()<CR>", opts)
 -- vim.keymap.set("n", "<space>gI", ":vsplit | lua vim.lsp.buf.implementation()<CR>", opts)

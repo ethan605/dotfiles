@@ -28,10 +28,6 @@ local function on_attach(client, bufnr)
       { desc = "Toggling inlay_hint feature" }
     )
   end
-
-  if client:supports_method("textDocument/formatting", bufnr) then
-    vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end)
-  end
 end
 
 vim.api.nvim_create_user_command(
