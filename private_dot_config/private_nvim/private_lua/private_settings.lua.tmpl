@@ -4,7 +4,7 @@ vim.opt.autowrite = true                 -- Auto reload file from outside change
 vim.opt.background = "dark"              -- For dark themes
 vim.opt.cmdheight = 1                    -- Single line command section
 vim.opt.colorcolumn = "120"              -- Highlight column 120, to be overriden by smartcolumn.nvim
-vim.opt.completeopt = "menuone,noselect" -- For nvim-compe
+vim.opt.completeopt = "menuone,noselect" -- Completion menu behavior
 vim.opt.conceallevel = 0                 -- Disable markdown conceal
 vim.opt.directory = "/tmp"               -- Location for temporary files
 vim.opt.encoding = "UTF-8"               -- Encoding
@@ -39,6 +39,7 @@ vim.opt.tabstop = 2                      -- Render TABs using this many spaces.
 vim.opt.termguicolors = true             -- Use Term GUI colors
 vim.opt.textwidth = 0                    -- Hard-wrap long lines as you type them.
 vim.opt.updatetime = 300                 -- You will have bad experience for diagnostic messages when it's default 4000.
+vim.opt.pumborder = "rounded"            -- Popup menu border (0.12+)
 vim.opt.winborder = "rounded"            -- Default win borders.
 
 -- Backups
