@@ -1,6 +1,4 @@
 -- vim:fileencoding=utf-8:filetype=lua
-package.path = "{{ .chezmoi.homeDir }}/.config/nvim/?.lua;" .. package.path
-
 require("settings")
 require("variables")
 require("plugins")
