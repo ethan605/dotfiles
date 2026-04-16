@@ -5,6 +5,7 @@
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-nushell.url = "github:NixOS/nixpkgs?ref=eb7a08027dfdb8e814441d48e6da5b1bfd03c457";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nix-darwin = {
@@ -18,7 +19,15 @@
     };
   };
 
-  outputs = { determinate, nix-darwin, nix-homebrew, home-manager, ... }:
+  outputs =
+    {
+      determinate,
+      nix-darwin,
+      nix-homebrew,
+      home-manager,
+      nixpkgs-nushell,
+      ...
+    }:
     let
       username = "{{ .chezmoi.username }}";
       hostname = "macintosh-{{ .machine_id }}";
@@ -32,6 +41,21 @@
           determinate.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs = {
+                overlays = [
+                  (self: super: {
+                    nushell =
+                      (import nixpkgs-nushell {
+                        system = "aarch64-darwin";
+                      }).nushell;
+                  })
+                ];
+              };
+            }
+          )
           ./configuration.nix
         ];
       };
