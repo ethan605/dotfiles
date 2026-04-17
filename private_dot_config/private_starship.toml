@@ -99,7 +99,7 @@ symbol = ""
 
 [character]
 error_symbol = "[λ](bold red)"
-success_symbol = "[λ](bold purple)"
+success_symbol = "[λ](bold blue)"
 vicmd_symbol = "[ε](bold purple)"
 
 # Custom
