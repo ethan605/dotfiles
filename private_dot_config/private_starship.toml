@@ -68,9 +68,9 @@ tag_symbol = " "
 
 [git_status]
 format = "[$all_status$ahead_behind]($style)"
-ahead = "[󰶼${count}](green)"
-behind = "[󰶹${count}](green)"
-diverged = "[󰶼${ahead_count}](green)󰶹${behind_count}"
+ahead = " [󰶼${count}](green)"
+behind = " [󰶹${count}](green)"
+diverged = " [󰶼](green)󰶹"
 conflicted = "󰄽󰄽"
 deleted = ""
 modified = ""
