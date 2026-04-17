@@ -68,6 +68,16 @@ tag_symbol = " "
 
 [git_status]
 format = "[$all_status$ahead_behind]($style)"
+ahead = "[󰶼${count}](green)"
+behind = "[󰶹${count}](green)"
+diverged = "[󰶼${ahead_count}](green)󰶹${behind_count}"
+conflicted = "󰄽󰄽"
+deleted = ""
+modified = ""
+renamed = "󰄾󰄾"
+staged = ""
+stashed = ""
+untracked = "?"
 
 [git_metrics]
 disabled = false

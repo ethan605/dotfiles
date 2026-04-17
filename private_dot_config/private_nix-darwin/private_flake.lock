@@ -246,22 +246,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-nushell": {
-      "locked": {
-        "lastModified": 1772374720,
-        "narHash": "sha256-rjxtjIQtxY1pKIax/o1mQ/PTat7++Fbc8TiaOyN73Z8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "eb7a08027dfdb8e814441d48e6da5b1bfd03c457",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "eb7a08027dfdb8e814441d48e6da5b1bfd03c457",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -314,8 +298,7 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_3",
-        "nixpkgs-nushell": "nixpkgs-nushell"
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },
