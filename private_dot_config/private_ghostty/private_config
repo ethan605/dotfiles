@@ -40,6 +40,8 @@ font-family = ""
 # font-style-bold = Regular
 # font-style-bold-italic = Italic
 # font-style-italic = Light Italic
+# font-codepoint-map = U+0391-U+03C9=SamsungSans Nerd Font
+
 font-family = MonoLisa
 # widespace without coding ligatures: <$> </> -- {||} ##
 font-feature = -liga,+calt,+dlig
@@ -48,7 +50,6 @@ font-feature = +zero,+ss11,+ss04,+ss06,+ss08
 # script variant
 font-feature = +ss02
 
-# font-codepoint-map = U+0391-U+03C9=SamsungSans Nerd Font
 # adjust-cell-height = -5%
 # adjust-cell-width = -5%
 adjust-underline-thickness = -50%
