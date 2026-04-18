@@ -42,7 +42,7 @@ font-family = ""
 # font-style-italic = Light Italic
 font-family = MonoLisa
 # widespace without coding ligatures: <$> </> -- {||} ##
-font-feature = -liga,+calt
+font-feature = -liga,+calt,+dlig
 # slash zero, hex: 0xdeadc0de, alt g, @, ()
 font-feature = +zero,+ss11,+ss04,+ss06,+ss08
 # script variant
