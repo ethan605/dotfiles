@@ -30,20 +30,30 @@ selection-foreground = #43454f
 # Font fallback test:
 # Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ _ Τ Υ Φ Χ Ψ Ω
 # α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ ς τ υ φ χ ψ ω
-font-family = ""
-font-family = OperatorMonoSSm Nerd Font
-font-family = Source Code Pro
-font-family = Roboto Mono
-font-style = Light
-font-style-bold = Regular
-font-style-bold-italic = Italic
-font-style-italic = Light Italic
 font-size = 18
-adjust-underline-thickness = -50%
+font-family = ""
+# font-family = OperatorMonoSSm Nerd Font
+# font-family = Source Code Pro
+# font-family = Roboto Mono
+# font-thicken = true
+# font-style = Light
+# font-style-bold = Regular
+# font-style-bold-italic = Italic
+# font-style-italic = Light Italic
+font-family = MonoLisa
+# widespace without coding ligatures: <$> </> -- {||} ##
+font-feature = -liga,+calt
+# slash zero and hex: 0xdeadbeaf
+font-feature = +zero,+ss11
+# script variant, r without serif
+# font-feature = -ss02,+ss16
+# alt g, @, ()
+font-feature = +ss04,+ss06,+ss08
+
 # font-codepoint-map = U+0391-U+03C9=SamsungSans Nerd Font
-font-thicken = true
 # adjust-cell-height = -5%
 # adjust-cell-width = -5%
+adjust-underline-thickness = -50%
 
 confirm-close-surface = false
 fullscreen = false
