@@ -51,5 +51,8 @@ else
 fi
 
 sketchybar --set "$NAME" \
-	icon="$ICON" icon.color="$COLOR" \
-	label="$LABEL" label.color="$COLOR"
+	icon="$ICON" \
+	icon.color="$COLOR" \
+	icon.padding_right=4 \
+	label="$LABEL" \
+	label.color="$COLOR"
