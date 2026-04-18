@@ -5,6 +5,7 @@
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nix-darwin = {
@@ -24,6 +25,7 @@
       nix-darwin,
       nix-homebrew,
       home-manager,
+      nixpkgs-master,
       ...
     }:
     let
@@ -39,6 +41,23 @@
           determinate.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
+
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs = {
+                overlays = [
+                  (self: super: {
+                    nushell =
+                      (import nixpkgs-master {
+                        system = "aarch64-darwin";
+                      }).nushell;
+                  })
+                ];
+              };
+            }
+          )
+
           ./configuration.nix
         ];
       };
