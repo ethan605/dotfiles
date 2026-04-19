@@ -32,14 +32,14 @@ selection-foreground = #43454f
 # α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ ς τ υ φ χ ψ ω
 font-size = 18
 font-family = ""
-# font-family = OperatorMonoSSm Nerd Font
-# font-family = Source Code Pro
-# font-family = Roboto Mono
-# font-thicken = true
-# font-style = Light
-# font-style-bold = Regular
-# font-style-bold-italic = Italic
-# font-style-italic = Light Italic
+font-family = OperatorMonoSSm Nerd Font
+font-family = Source Code Pro
+font-family = Roboto Mono
+font-thicken = true
+font-style = Light
+font-style-bold = Regular
+font-style-bold-italic = Italic
+font-style-italic = Light Italic
 # font-codepoint-map = U+0391-U+03C9=SamsungSans Nerd Font
 
 font-family = MonoLisa
