@@ -18,7 +18,7 @@
   "prettier": "3.8.3",
   "pyright": "1.1.409",
   "ruff": "0.15.11",
-  "rust-analyzer": "2026-04-13",
+  "rust-analyzer": "2026-04-20",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.13.1",
   "solargraph": "0.58.3",
@@ -27,7 +27,7 @@
   "stylua": "v2.4.1",
   "tailwindcss-language-server": "0.14.29",
   "terraform-ls": "v0.38.6",
-  "tflint": "v0.61.0",
+  "tflint": "v0.62.0",
   "typescript-language-server": "5.1.3",
   "vim-language-server": "2.3.1",
   "yaml-language-server": "1.22.0"
