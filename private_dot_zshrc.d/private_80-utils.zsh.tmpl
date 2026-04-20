@@ -43,6 +43,16 @@ mux() {
   fi
 }
 
+vdiff() {
+  local arg=${1:-}
+
+  if [[ -z $arg ]]; then
+    nvim +DiffviewOpen
+  else
+    nvim "+DiffviewOpen $arg"
+  fi
+}
+
 {{- if eq .chezmoi.os "linux" }}
 
 nord_dns() {
