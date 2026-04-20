@@ -23,7 +23,7 @@ return {
       },
       keymaps = {
         view = {
-          { "n", "]l", actions.cycle_layout, { desc = "Cycle through available layouts." } },
+          { "n", "]g", actions.cycle_layout, { desc = "Cycle through available layouts." } },
         },
       },
     }
