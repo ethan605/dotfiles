@@ -13,23 +13,65 @@ vim.api.nvim_create_autocmd("BufLeave", {
   group = jsSyntaxGroup,
 })
 
--- Auto format
+-- Auto format on save
 local autoFormatGroup = vim.api.nvim_create_augroup("AutoFormatGroup", { clear = true })
 
--- Call Stylua on save - using lua-language-server
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.lua", "*.luau" },
+  pattern = { "*.lua", "*.luau", "*.nix" },
   callback = function() vim.lsp.buf.format() end,
   group = autoFormatGroup,
 })
 
 -- Open help window in a vertical split to the right.
 vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = vim.api.nvim_create_augroup("help_window_right", {}),
   pattern = { "*.txt" },
   callback = function()
-    if vim.o.filetype == "help" then vim.cmd.wincmd("L") end
+    if vim.o.filetype == "help" then
+      vim.cmd.wincmd("L")
+    end
   end,
+})
+
+-- Auto syntax
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { ".envrc" },
+  callback = function() vim.bo.syntax = "sh" end,
+})
+
+-- Treesitter
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "bash",
+    "cmake",
+    "comment",
+    "cpp",
+    "go",
+    "gosum",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "json5",
+    "make",
+    "nix",
+    "python",
+    "rust",
+    "scala",
+    "sh",
+    "terraform",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "yaml.docker-compose",
+    "zsh",
+  },
+  callback = function() vim.treesitter.start() end,
+})
+
+-- Auto CSV/TSV view
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "csv", "tsv" },
+  command = "CsvViewEnable",
 })
 
 -- Disable nvim-ufo for certain file types
@@ -38,13 +80,13 @@ vim.api.nvim_create_autocmd("FileType", {
     "NvimTree",
     "checkhealth",
     "dashboard",
+    "dbout",
+    "dbui",
     "help",
     "lazy",
     "lspinfo",
     "mason",
     "null-ls-info",
-    "dbui",
-    "dbout",
   },
   callback = function()
     require("ufo").detach()
@@ -54,31 +96,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Auto CSV/TSV view
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "csv", "tsv" },
-  command = "CsvViewEnable",
-})
+-- For todo-comments.nvim
+vim.api.nvim_create_user_command(
+  "TodoFzf",
+  function(args)
+    local todoFzf = require("todo-comments.fzf")
+    local keyword = args.args
 
-vim.api.nvim_create_user_command("TodoFzf", function(args)
-  local todoFzf = require("todo-comments.fzf")
-  local keyword = args.args
-
-  if string.len(keyword) == 0 then
-    todoFzf.todo()
-  else
-    todoFzf.todo({ keywords = { keyword } })
-  end
-end, { desc = "Browse Todo comments by keyword", nargs = "?" })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = {
-    "bash", "sh", "zsh",
-    "cpp", "cmake", "make",
-    "go", "gosum", "java", "nix",
-    "python", "rust", "scala",
-    "javascript", "javascriptreact", "typescript", "typescriptreact",
-    "comment", "json", "json5", "terraform", "yaml", "yaml.docker-compose",
-  },
-  callback = function() vim.treesitter.start() end,
-})
+    if string.len(keyword) == 0 then
+      todoFzf.todo()
+    else
+      todoFzf.todo({ keywords = { keyword } })
+    end
+  end,
+  { desc = "Browse Todo comments by keyword", nargs = "?" }
+)

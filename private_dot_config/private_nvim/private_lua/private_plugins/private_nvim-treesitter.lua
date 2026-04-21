@@ -11,12 +11,27 @@ return {
     })
 
     treesitter.install({
-      "bash", "zsh",
-      "cpp", "cmake", "make",
-      "go", "gosum", "java", "nix",
-      "python", "rust", "scala",
-      "javascript", "jsx", "typescript", "tsx",
-      "comment", "json", "json5", "terraform", "yaml",
+      "bash",
+      "cmake",
+      "comment",
+      "cpp",
+      "go",
+      "gosum",
+      "java",
+      "javascript",
+      "json",
+      "json5",
+      "jsx",
+      "make",
+      "nix",
+      "python",
+      "rust",
+      "scala",
+      "terraform",
+      "tsx",
+      "typescript",
+      "yaml",
+      "zsh",
     })
   end,
 }
