@@ -103,14 +103,21 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'layout floating'
 
 [[on-window-detected]]
+  if.app-id = 'dev.kdrag0n.MacVirt'
+  run = 'layout floating'
+
+[[on-window-detected]]
   if.app-id = 'net.freemacsoft.AppCleaner'
   run = 'layout floating'
 
 ### Windows that have a dedicated workspace ###
 
 [[on-window-detected]]
-  # if.app-id = 'org.alacritty'
   if.app-id = 'com.mitchellh.ghostty'
+  run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+  if.app-id = 'org.alacritty'
   run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -147,6 +154,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 
 [[on-window-detected]]
   if.app-id = 'net.whatsapp.WhatsApp'
+  run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+  if.app-id = 'dev.kdrag0n.MacVirt'
   run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
