@@ -11,7 +11,11 @@ export PATH="$HOME/.local/bin:$PATH"
 __install-system-packages() {
 	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
-	sudo apt upgrade -y &&
+	sudo add-apt-repository main -y &&
+		sudo add-apt-repository universe -y &&
+		sudo add-apt-repository restricted -y &&
+		sudo add-apt-repository multiverse -y &&
+		sudo apt upgrade -y &&
 		sudo apt install --no-install-recommends -y \
 			libyaml-dev python3-venv zsh &&
 		sudo apt autoremove -y &&
