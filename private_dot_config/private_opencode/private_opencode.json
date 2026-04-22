@@ -9,7 +9,6 @@
   "permission": {
     "*": "ask",
 
-    "edit": "allow",
     "glob": "allow",
     "grep": "allow",
     "lsp": "allow",
@@ -17,42 +16,99 @@
     "read": "allow",
     "skill": "allow",
     "task": "allow",
-    "todoread": "allow",
     "todowrite": "allow",
     "webfetch": "allow",
     "websearch": "allow",
 
+    "neo4j_get_*": "allow",
+    "neo4j_read_*": "allow",
+
+    "linear_get_*": "allow",
+    "linear_list_*": "allow",
+    "linear_search_*": "allow",
+    "linear_extract_*": "allow",
+
+    "rivo_get*": "allow",
+    "rivo_search*": "allow",
+    "rivo_lookup*": "allow",
+    "rivo_fetch": "allow",
+    "rivo_atlassianUserInfo": "allow",
+
+    "miro_context_*": "allow",
+    "miro_board_*": "allow",
+    "miro_diagram_get_dsl": "allow",
+    "miro_table_list_rows": "allow",
+    "miro_doc_get": "allow",
+    "miro_image_get_*": "allow",
+
     "bash": {
       "*": "ask",
 
-      "git branch*": "allow",
+      "git branch": "allow",
+      "git branch -a*": "allow",
+      "git branch -r*": "allow",
       "git diff*": "allow",
       "git log*": "allow",
-      "git remote*": "allow",
+      "git remote": "allow",
+      "git remote -v": "allow",
       "git show*": "allow",
       "git status*": "allow",
       "git worktree list*": "allow",
 
-      "gh api *": "allow",
+      "rtk git branch": "allow",
+      "rtk git branch -a*": "allow",
+      "rtk git branch -r*": "allow",
+      "rtk git diff*": "allow",
+      "rtk git log*": "allow",
+      "rtk git remote": "allow",
+      "rtk git remote -v": "allow",
+      "rtk git show*": "allow",
+      "rtk git status*": "allow",
+      "rtk git worktree list*": "allow",
+
       "gh pr list*": "allow",
       "gh pr view*": "allow",
       "gh repo view*": "allow",
+
+      "rtk gh pr list*": "allow",
+      "rtk gh pr view*": "allow",
+      "rtk gh repo view*": "allow",
 
       "uv run mypy *": "allow",
       "uv run pytest *": "allow",
       "uv run ruff *": "allow",
 
-      "pnpm *": "allow",
-      "npm *": "allow",
+      "rtk uv run mypy *": "allow",
+      "rtk uv run pytest *": "allow",
+      "rtk uv run ruff *": "allow",
 
-      "notion_notion-*": "allow",
-      "notion_notion-create-pages": "deny",
-      "notion_notion-update-page": "deny",
-      "notion_notion-move-pages": "deny",
-      "notion_notion-duplicate-page": "deny",
-      "notion_notion-create-database": "deny",
-      "notion_notion-update-database": "deny",
-      "notion_notion-create-comment": "deny"
+      "pnpm test*": "allow",
+      "pnpm list*": "allow",
+      "pnpm ls*": "allow",
+      "pnpm info *": "allow",
+      "pnpm outdated*": "allow",
+      "pnpm why *": "allow",
+
+      "rtk pnpm test*": "allow",
+      "rtk pnpm list*": "allow",
+      "rtk pnpm ls*": "allow",
+      "rtk pnpm info *": "allow",
+      "rtk pnpm outdated*": "allow",
+      "rtk pnpm why *": "allow",
+
+      "npm test*": "allow",
+      "npm list*": "allow",
+      "npm ls*": "allow",
+      "npm info *": "allow",
+      "npm outdated*": "allow",
+      "npm why *": "allow",
+
+      "rtk npm test*": "allow",
+      "rtk npm list*": "allow",
+      "rtk npm ls*": "allow",
+      "rtk npm info *": "allow",
+      "rtk npm outdated*": "allow",
+      "rtk npm why *": "allow"
     }
   },
   "agent": {
