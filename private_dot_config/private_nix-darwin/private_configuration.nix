@@ -1,5 +1,4 @@
 {
-  pkgs,
   username,
   home-dir,
   ...
@@ -22,9 +21,10 @@
   };
 
   home-manager = {
+    extraSpecialArgs = { inherit home-dir; };
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.${username} = import ./home.nix { inherit pkgs home-dir; };
+    users.${username} = ./home.nix;
     backupFileExtension = "bak.home-manager";
   };
 }
