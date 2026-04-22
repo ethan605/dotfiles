@@ -35,29 +35,20 @@
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit hostname username home-dir; };
+        specialArgs = {
+          inherit
+            hostname
+            username
+            home-dir
+            nixpkgs-master
+            ;
+        };
         system = "aarch64-darwin";
         modules = [
           determinate.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
-
-          (
-            { pkgs, ... }:
-            {
-              nixpkgs = {
-                overlays = [
-                  (self: super: {
-                    nushell =
-                      (import nixpkgs-master {
-                        system = "aarch64-darwin";
-                      }).nushell;
-                  })
-                ];
-              };
-            }
-          )
-
+          ./overlays.nix
           ./configuration.nix
         ];
       };
