@@ -43,6 +43,32 @@ mux() {
   fi
 }
 
+vdiff() {
+  local arg=${1:-}
+
+  if [[ -z $arg ]]; then
+    nvim +DiffviewOpen
+  else
+    nvim "+DiffviewOpen $arg"
+  fi
+}
+
+{{- if eq .chezmoi.os "linux" }}
+
+nord_dns() {
+  device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
+  nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
+}
+
+osc7_cwd() {
+  setopt localoptions extendedglob
+  input=( ${(s::)PWD} )
+  uri=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
+  print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
+}
+
+{{- else if eq .chezmoi.os "darwin" }}
+
 __nix-args() {
   if [[ $# == 1 ]]; then
     echo "nixpkgs#$1"
@@ -77,30 +103,6 @@ nix-sh() {
   fi
 
   nix shell "$(__nix-args $@)" --command "$SHELL"
-}
-
-vdiff() {
-  local arg=${1:-}
-
-  if [[ -z $arg ]]; then
-    nvim +DiffviewOpen
-  else
-    nvim "+DiffviewOpen $arg"
-  fi
-}
-
-{{- if eq .chezmoi.os "linux" }}
-
-nord_dns() {
-  device=$(/usr/bin/ls /sys/class/ieee80211/*/device/net)
-  nmcli dev mod $device ipv4.dns "103.86.96.100 103.86.99.100"
-}
-
-osc7_cwd() {
-  setopt localoptions extendedglob
-  input=( ${(s::)PWD} )
-  uri=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
-  print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
 }
 
 {{- end }}
