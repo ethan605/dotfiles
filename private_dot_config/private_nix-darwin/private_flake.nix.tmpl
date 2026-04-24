@@ -5,7 +5,8 @@
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-direnv.url = "github:NixOS/nixpkgs/a4fb16db2751d9c9e5f3512c697d2ac49d406789";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nix-darwin = {
@@ -25,7 +26,8 @@
       nix-darwin,
       nix-homebrew,
       home-manager,
-      nixpkgs-master,
+      nixpkgs-2511,
+      nixpkgs-direnv,
       ...
     }:
     let
@@ -40,7 +42,8 @@
             hostname
             username
             home-dir
-            nixpkgs-master
+            nixpkgs-2511
+            nixpkgs-direnv
             ;
         };
         system = "aarch64-darwin";
