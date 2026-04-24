@@ -26,32 +26,23 @@
       nix-darwin,
       nix-homebrew,
       home-manager,
-      nixpkgs-2511,
-      nixpkgs-direnv,
       ...
-    }:
+    }@inputs:
     let
+      system = "aarch64-darwin";
       username = "{{ .chezmoi.username }}";
       hostname = "macintosh-{{ .machine_id }}";
       home-dir = "/Users/${username}";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit
-            hostname
-            username
-            home-dir
-            nixpkgs-2511
-            nixpkgs-direnv
-            ;
-        };
-        system = "aarch64-darwin";
+        specialArgs = { inherit hostname username home-dir; };
+        system = system;
         modules = [
           determinate.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
-          ./overlays.nix
+          (import ./overlays.nix { inherit inputs system; })
           ./configuration.nix
         ];
       };
