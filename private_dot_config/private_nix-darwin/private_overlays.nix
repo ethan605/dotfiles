@@ -1,14 +1,12 @@
 {
+  inputs,
   system,
-  nixpkgs,
-  nixpkgs-2511,
-  nixpkgs-direnv,
   ...
 }:
 let
-  pkgs = (import nixpkgs { system = system; });
-  pkgs-2511 = (import nixpkgs-2511 { system = system; });
-  pkgs-direnv = (import nixpkgs-direnv { system = system; });
+  pkgs = (import inputs.nixpkgs { system = system; });
+  pkgs-2511 = (import inputs.nixpkgs-2511 { system = system; });
+  pkgs-direnv = (import inputs.nixpkgs-direnv { system = system; });
 in
 {
   nixpkgs = {
