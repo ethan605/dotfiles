@@ -6,13 +6,15 @@
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-25-11.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    # Based on the last successful build: https://hydra.nixos.org/job/nixpkgs/unstable/direnv.aarch64-darwin
     nixpkgs-direnv.url = "github:NixOS/nixpkgs/a4fb16db2751d9c9e5f3512c697d2ac49d406789";
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     home-manager = {
       url = "github:nix-community/home-manager";
