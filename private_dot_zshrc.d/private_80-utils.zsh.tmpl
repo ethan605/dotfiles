@@ -43,6 +43,42 @@ mux() {
   fi
 }
 
+__nix-args() {
+  if [[ $# == 1 ]]; then
+    echo "nixpkgs#$1"
+  else
+    echo "nixpkgs/$1#$2"
+  fi
+}
+
+nix-bld() {
+  sudo nix build --repair "$(__nix-args $@)"
+}
+
+nix-gc() {
+  local arg=${1:-}
+
+  if [[ $arg == "all" ]]; then
+    sudo nix-collect-garbage --delete-old && nix-collect-garbage --delete-old
+  else
+    sudo nix-collect-garbage --delete-older-than 1d && nix-collect-garbage --delete-older-than 1d
+  fi
+}
+
+nix-ls() {
+  nix eval --raw "$(__nix-args $@)"
+}
+
+nix-sh() {
+  if [[ $# == 1 ]]; then
+    pkg="nixpkgs#$1"
+  else
+    pkg="nixpkgs/$1#$2"
+  fi
+
+  nix shell "$(__nix-args $@)" --command "$SHELL"
+}
+
 vdiff() {
   local arg=${1:-}
 
