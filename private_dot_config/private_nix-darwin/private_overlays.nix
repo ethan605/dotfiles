@@ -1,14 +1,24 @@
-{ nixpkgs-2511, nixpkgs-direnv, ... }:
+{
+  system,
+  nixpkgs,
+  nixpkgs-2511,
+  nixpkgs-direnv,
+  ...
+}:
 let
-  pkgs-2511 = (import nixpkgs-2511 { system = "aarch64-darwin"; });
-  pkgs-direnv = (import nixpkgs-direnv { system = "aarch64-darwin"; });
+  pkgs = (import nixpkgs { system = system; });
+  pkgs-2511 = (import nixpkgs-2511 { system = system; });
+  pkgs-direnv = (import nixpkgs-direnv { system = system; });
 in
 {
   nixpkgs = {
     overlays = [
-      (self: super: {
+      (_: _: {
         mpd = pkgs-2511.mpd;
         direnv = pkgs-direnv.direnv;
+
+        minimal-functional-fox = pkgs.callPackage ./modules/packages/minimal-functional-fox.nix { };
+        self-host-fonts = pkgs.callPackage ./modules/packages/self-host-fonts.nix { };
       })
     ];
   };

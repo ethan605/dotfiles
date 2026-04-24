@@ -122,13 +122,11 @@ let
     flameshot
     ghostty-bin
   ];
-
-  self-host-fonts = pkgs.callPackage ./self-host-fonts.nix { inherit pkgs; };
 in
 {
-  fonts.packages = [
-    pkgs.roboto-mono
-    pkgs.source-code-pro
+  fonts.packages = with pkgs; [
+    roboto-mono
+    source-code-pro
     self-host-fonts
   ];
 
