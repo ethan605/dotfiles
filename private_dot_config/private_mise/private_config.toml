@@ -3,8 +3,6 @@ experimental = true
 lockfile = true
 
 [tools]
-# Languages go first
-clang = "22.1.4"
 go = "1.26.2"
 java = "openjdk-26.0.1"
 lua = "5.5.0"

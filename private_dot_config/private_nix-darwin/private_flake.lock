@@ -246,18 +246,18 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
+    "nixpkgs-2511-darwin": {
       "locked": {
-        "lastModified": 1777017186,
-        "narHash": "sha256-DkfoWekF/y1cK6xPr5y8kLzLf1eU3iS2IrW+cjuWz3k=",
+        "lastModified": 1776946615,
+        "narHash": "sha256-Q4SmvLr7PxHm9BLCcsKf4iH3IzIZgqFxV/bk5j4H6AM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "03ab2390a14960cfd1f66e2ac72f3f966058fbb6",
+        "rev": "6ea81a59ced133851d02042d2ba8c2911fd54546",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "master",
+        "ref": "nixpkgs-25.11-darwin",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -315,7 +315,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-master": "nixpkgs-master"
+        "nixpkgs-2511-darwin": "nixpkgs-2511-darwin"
       }
     }
   },

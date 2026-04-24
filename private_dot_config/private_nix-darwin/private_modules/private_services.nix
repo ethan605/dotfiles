@@ -16,35 +16,37 @@
       };
     };
 
-    mpd = {
-      serviceConfig = {
-        ProgramArguments = [
-          "${pkgs.mpd}/bin/mpd"
-          "--no-daemon"
-          "--verbose"
-          "${home-dir}/.config/mpd/mpd.conf"
-        ];
-        ProcessType = "Interactive";
-        RunAtLoad = true;
-        KeepAlive = true;
-        StandardErrorPath = "/tmp/mpd.stderr.log";
-        StandardOutPath = "/tmp/mpd.stdout.log";
-      };
-    };
-
-    mpd-idle = {
-      serviceConfig = {
-        ProcessType = "Background";
-        RunAtLoad = true;
-        KeepAlive = true;
+    /*
+      mpd = {
+        serviceConfig = {
+          ProgramArguments = [
+            "${pkgs.mpd}/bin/mpd"
+            "--no-daemon"
+            "--verbose"
+            "${home-dir}/.config/mpd/mpd.conf"
+          ];
+          ProcessType = "Interactive";
+          RunAtLoad = true;
+          KeepAlive = true;
+          StandardErrorPath = "/tmp/mpd.stderr.log";
+          StandardOutPath = "/tmp/mpd.stdout.log";
+        };
       };
 
-      script = ''
-        while true; do
-          ${pkgs.mpc}/bin/mpc idle
-          ${pkgs.sketchybar}/bin/sketchybar --trigger mpd_idle
-        done
-      '';
-    };
+      mpd-idle = {
+        serviceConfig = {
+          ProcessType = "Background";
+          RunAtLoad = true;
+          KeepAlive = true;
+        };
+
+        script = ''
+          while true; do
+            ${pkgs.mpc}/bin/mpc idle
+            ${pkgs.sketchybar}/bin/sketchybar --trigger mpd_idle
+          done
+        '';
+      };
+    */
   };
 }
