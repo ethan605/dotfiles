@@ -246,7 +246,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-2511": {
+    "nixpkgs-25-11": {
       "locked": {
         "lastModified": 1777014176,
         "narHash": "sha256-OzisFv/K6SRIKNOUsR+9Xij/HnS+UqXWhrheEHPJJ3E=",
@@ -331,7 +331,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-2511": "nixpkgs-2511",
+        "nixpkgs-25-11": "nixpkgs-25-11",
         "nixpkgs-direnv": "nixpkgs-direnv"
       }
     }
