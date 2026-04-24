@@ -13,11 +13,6 @@ alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
 
 alias audio="SwitchAudioSource -a -toutput -fcli | awk -F, '{ printf \"%-50s %s\n\", \$4, \$1 }' | fzf | awk '{ print \$1 }' | xargs SwitchAudioSource -u"
 alias wm-reload='aerospace reload-config && sketchybar --reload'
-alias nix-sh='nix-shell --command zsh --packages'
-alias nix-gc='sudo nix-collect-garbage --delete-older-than 1d && nix-collect-garbage --delete-older-than 1d'
-nix-ls() {
-  nix eval --raw "nixpkgs#$1"
-}
 
 {{- end }}
 
