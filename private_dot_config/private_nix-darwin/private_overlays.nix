@@ -13,6 +13,7 @@ in
     overlays = [
       (_: _: {
         mpd = pkgs-2511.mpd;
+        zsh = pkgs-2511.zsh;
         direnv = pkgs-direnv.direnv;
 
         minimal-functional-fox = pkgs.callPackage ./modules/packages/minimal-functional-fox.nix { };
