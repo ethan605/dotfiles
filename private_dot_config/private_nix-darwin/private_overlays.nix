@@ -1,12 +1,14 @@
-{ nixpkgs-2511-darwin, ... }:
+{ nixpkgs-2511, nixpkgs-direnv, ... }:
 let
-  pkgs-2511 = (import nixpkgs-2511-darwin { system = "aarch64-darwin"; });
+  pkgs-2511 = (import nixpkgs-2511 { system = "aarch64-darwin"; });
+  pkgs-direnv = (import nixpkgs-direnv { system = "aarch64-darwin"; });
 in
 {
   nixpkgs = {
     overlays = [
       (self: super: {
-        apple-sdk = pkgs-2511.apple-sdk;
+        mpd = pkgs-2511.mpd;
+        direnv = pkgs-direnv.direnv;
       })
     ];
   };

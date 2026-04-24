@@ -96,7 +96,7 @@ let
     blueutil
     iina
     mpc
-    mpd
+    # mpd
     switchaudio-osx
   ];
 
