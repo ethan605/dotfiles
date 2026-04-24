@@ -6,7 +6,8 @@ in
   nixpkgs = {
     overlays = [
       (self: super: {
-        nushell = pkgs-master.nushell;
+        apple-sdk = pkgs-master.apple-sdk;
+        # nushell = pkgs-master.nushell;
       })
     ];
   };
