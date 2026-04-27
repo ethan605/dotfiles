@@ -12,10 +12,12 @@ in
   nixpkgs = {
     overlays = [
       (_: _: {
+        # Overriden packages (due to instabilities, bugs, etc.)
         mpd = pkgs-25-11.mpd;
         zsh = pkgs-25-11.zsh;
         direnv = pkgs-direnv.direnv;
 
+        # Self-host packages
         minimal-functional-fox = pkgs.callPackage ./modules/packages/minimal-functional-fox.nix { };
         self-host-fonts = pkgs.callPackage ./modules/packages/self-host-fonts.nix { };
       })
