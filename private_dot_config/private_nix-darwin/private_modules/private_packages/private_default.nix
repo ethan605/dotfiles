@@ -119,8 +119,9 @@ let
     aerospace
     alacritty
     appcleaner
-    flameshot
+    # flameshot
     ghostty-bin
+    shottr
   ];
 in
 {
