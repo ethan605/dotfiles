@@ -118,11 +118,11 @@ fileviewer */ eza --all --color=always --git --group-directories-first --icons=a
 fileviewer .*/ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
 
 " Text files
-fileviewer
-  \ <text/*>,<application/json>,*.js,*.json,*.md,*.srt,*.ts
+fileviewer 
+  \ <text/plain>,<text/x-*>,<application/json>
   \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
 filetype
-  \ <text/*>,<application/json>,*.js,*.json,*.md,*.srt,*.ts
+  \ <text/plain>,<text/x-*>,<application/json>
   \ nvim %c
 
 " Archives preview - extracted from https://github.com/zimfw/archive/blob/master/functions/lsarchive
