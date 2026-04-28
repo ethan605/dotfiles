@@ -47,6 +47,7 @@
             dock-spacer
             "/Applications/Google Chrome.app"
             "${home-dir}/Applications/Home Manager Apps/Firefox.app"
+            # "${pkgs.firefox}/Applications/Firefox.app"
             dock-spacer
             "/Applications/Slack.app"
             "/Applications/Linear.app"

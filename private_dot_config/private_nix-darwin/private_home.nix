@@ -9,7 +9,8 @@ in
 
     firefox = {
       enable = true;
-      package = pkgs.firefox-bin;
+      package = pkgs.firefox;
+      # package = pkgs.firefox-bin;
 
       nativeMessagingHosts = with pkgs; [
         browserpass
