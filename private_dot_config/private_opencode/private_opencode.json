@@ -23,23 +23,27 @@
     "neo4j_get_*": "allow",
     "neo4j_read_*": "allow",
 
+    "linear_extract_*": "allow",
     "linear_get_*": "allow",
     "linear_list_*": "allow",
     "linear_search_*": "allow",
-    "linear_extract_*": "allow",
 
-    "rivo_get*": "allow",
-    "rivo_search*": "allow",
-    "rivo_lookup*": "allow",
-    "rivo_fetch": "allow",
     "rivo_atlassianUserInfo": "allow",
+    "rivo_fetch": "allow",
+    "rivo_get*": "allow",
+    "rivo_lookup*": "allow",
+    "rivo_search*": "allow",
 
-    "miro_context_*": "allow",
     "miro_board_*": "allow",
+    "miro_context_*": "allow",
     "miro_diagram_get_dsl": "allow",
-    "miro_table_list_rows": "allow",
     "miro_doc_get": "allow",
     "miro_image_get_*": "allow",
+    "miro_table_list_rows": "allow",
+
+    "google-docs_list*": "allow",
+    "google-docs_read*": "allow",
+    "google-docs_search*": "allow",
 
     "bash": {
       "*": "ask",
@@ -166,6 +170,14 @@
         "--dsn",
         "{env:POSTGRES_CONNECTION_STRING}"
       ]
+    },
+    "google-docs": {
+      "type": "local",
+      "command": ["npx", "-y", "@a-bonus/google-docs-mcp"],
+      "environment": {
+        "GOOGLE_CLIENT_ID": "{env:GOOGLE_DOCS_MCP_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "{env:GOOGLE_DOCS_MCP_CLIENT_SECRET}"
+      }
     },
     "neo4j": {
       "type": "local",
