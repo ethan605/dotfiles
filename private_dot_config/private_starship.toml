@@ -90,7 +90,9 @@ format = ' \([$state $progress_current/$progress_total]($style)\)'
 format = " [$duration]($style)"
 
 [nix_shell]
-format = "[$state $name]($style) "
+heuristic = true
+unknown_msg = "unknown"
+format = "[nix $state]($style) "
 style = "bright-black"
 
 [status]
