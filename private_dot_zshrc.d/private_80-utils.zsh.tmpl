@@ -97,12 +97,11 @@ nix-ls() {
 
 nix-sh() {
   if [[ $# == 1 ]]; then
-    pkg="nixpkgs#$1"
+    nix-shell --command "$SHELL" --packages "$1"
   else
-    pkg="nixpkgs/$1#$2"
+    local search_path="nixpkgs=https://github.com/NixOS/nixpkgs/archive/$1.tar.gz"
+    nix-shell -I "$search_path" --command "$SHELL" --packages "$2"
   fi
-
-  nix shell "$(__nix-args $@)" --command "$SHELL"
 }
 
 {{- end }}
