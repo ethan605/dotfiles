@@ -13,7 +13,6 @@ in
     overlays = [
       (_: _: {
         # Overriden packages (due to instabilities, bugs, etc.)
-        # mpd = pkgs-25-11.mpd;
         zsh = pkgs-25-11.zsh;
         direnv = pkgs-master.direnv;
 
