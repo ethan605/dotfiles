@@ -88,17 +88,18 @@ export PATH="\$HOME/.local/bin/:\$PATH"
 
 # === Keybinds ===
 bind "\C-w":backward-kill-word
-bind "\C-h":backward-word    # left
-bind "\C-l":forward-word     # right
-bind "\C-k":previous-history # up
-bind "\C-j":next-history     # down
+bind "\C-h":backward-word         # left
+bind "\C-l":forward-word          # right
+bind "\C-k":previous-history      # up
+bind "\C-j":next-history          # down
 bind "\C-a":beginning-of-line
 bind "\C-e":end-of-line
 
 # === Plugins ===
-eval "\$(mise activate bash)"
+eval "\$(mise activate bash)"     # must go first
 eval "\$(direnv hook bash)"
 eval "\$(fzf --bash)"
+eval "\$(starship init bash)"
 eval "\$(zoxide init bash)"
 
 if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; then
