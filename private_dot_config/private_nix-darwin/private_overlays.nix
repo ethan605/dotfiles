@@ -13,7 +13,8 @@ in
     overlays = [
       (_: _: {
         # Overriden packages (due to instabilities, bugs, etc.)
-        zsh = pkgs-25-11.zsh;
+        tmux = pkgs-25-11.tmux;
+        # zsh = pkgs-25-11.zsh;
 
         # Self-host packages
         minimal-functional-fox = pkgs.callPackage ./modules/packages/minimal-functional-fox.nix { };
