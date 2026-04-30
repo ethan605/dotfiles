@@ -149,7 +149,7 @@ in
       "grammarly-desktop"
       "homerow"
       "karabiner-elements" # can't use services.karabiner-elements
-      "linear-linear"
+      "linear"
       "logi-options+"
       "telegram"
       "whatsapp"
