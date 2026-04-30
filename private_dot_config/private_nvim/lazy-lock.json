@@ -24,7 +24,7 @@
   "log-highlight.nvim": { "branch": "main", "commit": "ca88628f6dd3b9bb46f9a7401669e24cf7de47a4" },
   "lspkind-nvim": { "branch": "master", "commit": "c7274c48137396526b59d86232eabcdc7fed8a32" },
   "lualine.nvim": { "branch": "master", "commit": "131a558e13f9f28b15cd235557150ccb23f89286" },
-  "markview.nvim": { "branch": "main", "commit": "86cf4bcede58e88497f7e5214efb281d4a6f633d" },
+  "markview.nvim": { "branch": "main", "commit": "e3829d35674fa0537ed2a3aceffb6f79b412d52b" },
   "mason-lock.nvim": { "branch": "main", "commit": "b75e2de585637a61b2fb818dc33dad7863b7b0c4" },
   "mason.nvim": { "branch": "main", "commit": "cb8445f8ce85d957416c106b780efd51c6298f89" },
   "neotest": { "branch": "master", "commit": "fd0b7986dd0ae04e38ec7dc0c78a432e3820839c" },

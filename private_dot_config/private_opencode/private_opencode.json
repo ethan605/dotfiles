@@ -158,6 +158,28 @@
     }
   },
   "mcp": {
+    "google-docs": {
+      "type": "local",
+      "command": ["npx", "-y", "@a-bonus/google-docs-mcp"],
+      "environment": {
+        "GOOGLE_CLIENT_ID": "{env:GOOGLE_DOCS_MCP_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "{env:GOOGLE_DOCS_MCP_CLIENT_SECRET}"
+      }
+    },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": {}
+    },
+    "miro": {
+      "type": "remote",
+      "url": "https://mcp.miro.com",
+      "oauth": {}
+    },
+    "neo4j": {
+      "type": "local",
+      "command": ["uvx", "mcp-neo4j-cypher", "--transport", "stdio"]
+    },
     "postgresql": {
       "enabled": false,
       "type": "local",
@@ -170,28 +192,6 @@
         "--dsn",
         "{env:POSTGRES_CONNECTION_STRING}"
       ]
-    },
-    "google-docs": {
-      "type": "local",
-      "command": ["npx", "-y", "@a-bonus/google-docs-mcp"],
-      "environment": {
-        "GOOGLE_CLIENT_ID": "{env:GOOGLE_DOCS_MCP_CLIENT_ID}",
-        "GOOGLE_CLIENT_SECRET": "{env:GOOGLE_DOCS_MCP_CLIENT_SECRET}"
-      }
-    },
-    "neo4j": {
-      "type": "local",
-      "command": ["uvx", "mcp-neo4j-cypher", "--transport", "stdio"]
-    },
-    "linear": {
-      "type": "remote",
-      "url": "https://mcp.linear.app/mcp",
-      "oauth": {}
-    },
-    "miro": {
-      "type": "remote",
-      "url": "https://mcp.miro.com",
-      "oauth": {}
     },
     "rivo": {
       "type": "remote",
