@@ -1,5 +1,5 @@
 # vim:filetype=zsh
-alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print $1 }'"
+alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }'"
 
 oc() {
   export OPENCODE_DISABLE_LSP_DOWNLOAD=true
