@@ -73,45 +73,4 @@ osc7_cwd() {
   print -n "\e]7;file://${HOSTNAME}${uri}\e\\"
 }
 
-{{- else if eq .chezmoi.os "darwin" }}
-
-__nix-args() {
-  if [[ $# == 1 ]]; then
-    echo "nixpkgs#$1"
-  else
-    echo "nixpkgs/$1#$2"
-  fi
-}
-
-alias nix-update='nix flake update --flake $HOME/.config/nix-darwin'
-alias nix-gen='sudo darwin-rebuild --list-generations'
-alias nix-switch='sudo darwin-rebuild switch --flake $HOME/.config/nix-darwin'
-
-nix-bld() {
-  sudo nix build --repair "$(__nix-args $@)"
-}
-
-nix-gc() {
-  local arg=${1:-}
-
-  if [[ $arg == "all" ]]; then
-    sudo nix-collect-garbage --delete-old && nix-collect-garbage --delete-old
-  else
-    sudo nix-collect-garbage --delete-older-than 1d && nix-collect-garbage --delete-older-than 1d
-  fi
-}
-
-nix-ls() {
-  nix eval --raw "$(__nix-args $@)"
-}
-
-nix-sh() {
-  if [[ $# == 1 ]]; then
-    nix-shell --command "$SHELL" --packages "$1"
-  else
-    local search_path="nixpkgs=https://github.com/NixOS/nixpkgs/archive/$1.tar.gz"
-    nix-shell -I "$search_path" --command "$SHELL" --packages "$2"
-  fi
-}
-
 {{- end }}
