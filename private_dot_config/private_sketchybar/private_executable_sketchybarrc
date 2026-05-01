@@ -80,4 +80,9 @@ sketchybar \
 	--add event mpd_idle \
 	--subscribe mpd mpd_idle
 
+sketchybar \
+	--add item reloader right \
+	--set reloader script="$PLUGIN_DIR/reloader.sh" \
+	--set reloader click_script="aerospace reload-config && sketchybar --reload"
+
 sketchybar --update
