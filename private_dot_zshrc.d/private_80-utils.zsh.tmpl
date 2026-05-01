@@ -1,4 +1,6 @@
 # vim:filetype=zsh
+alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print $1 }'"
+
 oc() {
   export OPENCODE_DISABLE_LSP_DOWNLOAD=true
   export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
@@ -80,6 +82,10 @@ __nix-args() {
     echo "nixpkgs/$1#$2"
   fi
 }
+
+alias nix-update='nix flake update --flake $HOME/.config/nix-darwin'
+alias nix-gen='sudo darwin-rebuild --list-generations'
+alias nix-switch='sudo darwin-rebuild switch --flake $HOME/.config/nix-darwin'
 
 nix-bld() {
   sudo nix build --repair "$(__nix-args $@)"
