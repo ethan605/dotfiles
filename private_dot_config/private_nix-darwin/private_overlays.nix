@@ -13,7 +13,6 @@ in
     overlays = [
       (_: _: {
         # Overriden packages (due to instabilities, bugs, etc.)
-        # tmux = pkgs-25-11.tmux;
         zsh = pkgs-25-11.zsh;
 
         # Self-host packages
