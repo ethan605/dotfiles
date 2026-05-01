@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
-with pkgs;
 let
-  base = [
+  base = with pkgs; [
     bash
     chezmoi
     coreutils
@@ -24,7 +23,7 @@ let
     zsh
   ];
 
-  docs = [
+  docs = with pkgs; [
     bat
     bat-extras.core
     less
@@ -34,7 +33,7 @@ let
     vivid
   ];
 
-  cloud-native = [
+  cloud-native = with pkgs; [
     argo-rollouts
     devpod
     k9s
@@ -44,13 +43,13 @@ let
     orbstack
   ];
 
-  svc = [
+  svc = with pkgs; [
     delta
     git
     git-lfs
   ];
 
-  devel = [
+  devel = with pkgs; [
     cppcheck
     ffmpeg
     httpie
@@ -70,14 +69,14 @@ let
   ++ cloud-native
   ++ svc;
 
-  archives = [
+  archives = with pkgs; [
     lzip
     p7zip
     xz
     zip
   ];
 
-  gpg = [
+  gpg = with pkgs; [
     gnupg # gpg and gpg-agent
     gpgme.dev
     libassuan
@@ -92,7 +91,7 @@ let
     )
   ];
 
-  media = [
+  media = with pkgs; [
     blueutil
     iina
     mpc
@@ -102,7 +101,7 @@ let
 
   cli = archives ++ gpg ++ media;
 
-  tui = [
+  tui = with pkgs; [
     aria2
     bottom
     duf
@@ -115,7 +114,7 @@ let
     vifm
   ];
 
-  gui = [
+  gui = with pkgs; [
     aerospace
     alacritty
     appcleaner
@@ -183,7 +182,7 @@ in
       {
         CPATH = header_paths;
         DYLD_FALLBACK_LIBRARY_PATH = lib_paths;
-        DYLD_LIBRARY_PATH = lib_paths;
+        # DYLD_LIBRARY_PATH = lib_paths; # SIP strips this for protected binaries
         LIBRARY_PATH = lib_paths;
         PKG_CONFIG_PATH = pkg_paths;
       };
