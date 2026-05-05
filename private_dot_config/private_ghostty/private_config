@@ -1,4 +1,5 @@
 # vim:filetype=config
+# command = /bin/bash
 cursor-style = block
 shell-integration = none
 term = xterm-ghostty 
