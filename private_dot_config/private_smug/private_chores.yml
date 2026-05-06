@@ -37,6 +37,5 @@ windows:
     root: ~/.config/nvim
     layout: even-horizontal
     commands:
-      - chezmoi re-add ~/.config/nvim/lazy-lock.json &&
-        nvim --headless "+Lazy! sync" +MasonUpdate +qa &&
+      - nvim --headless "+Lazy! sync" +MasonUpdate +qa &&
         nvim +Mason
