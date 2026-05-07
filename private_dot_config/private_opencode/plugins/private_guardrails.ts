@@ -3,10 +3,11 @@ import type { Plugin } from "@opencode-ai/plugin";
 /**
  * Guardrails plugin for OpenCode.
  *
- * Enforces three operational disciplines:
+ * Enforces four operational disciplines:
  *   1. Subagent nesting prevention — blocks subagents from spawning subagents
- *   2. LSP-first enforcement — blocks grep/glob for symbol-like patterns
- *   3. Skill activation nudges — reminds the model to invoke relevant skills
+ *   2. Orchestration skill blocking — prevents subagents from loading dispatch-heavy skills
+ *   3. LSP-first enforcement — blocks grep/glob for symbol-like patterns
+ *   4. Skill activation nudges — reminds the model to invoke relevant skills
  *
  * Works alongside the superpowers bootstrap and rtk plugins.
  */
@@ -23,6 +24,19 @@ const nudgedSkills = new Map<string, Set<string>>();
 
 /** Agents that must NOT spawn subagents via the task tool. */
 const SUBAGENTS = new Set(["general", "explore", "reviewer"]);
+
+/**
+ * Orchestration/lifecycle skills that require subagent dispatch.
+ * Blocked for subagents to avoid wasted tokens — the model would load the skill,
+ * plan the dispatch, call task, hit the nesting block, and have to recover.
+ */
+const SUBAGENT_BLOCKED_SKILLS = new Set([
+  "subagent-driven-development",
+  "dispatching-parallel-agents",
+  "requesting-code-review",
+  "executing-plans",
+  "finishing-a-development-branch",
+]);
 
 // ---------------------------------------------------------------------------
 // LSP enforcement config
@@ -143,7 +157,25 @@ export const GuardrailsPlugin: Plugin = async () => {
         }
       }
 
-      // --- 2. LSP-first enforcement ---
+      // --- 2. Orchestration skill blocking for subagents ---
+      if (input.tool === "skill") {
+        const skillName: unknown = output.args?.name;
+        const agent = sessionAgentMap.get(input.sessionID);
+        if (
+          agent &&
+          SUBAGENTS.has(agent) &&
+          typeof skillName === "string" &&
+          SUBAGENT_BLOCKED_SKILLS.has(skillName)
+        ) {
+          throw new Error(
+            `[Guardrail] Subagent "${agent}" cannot load skill "${skillName}". ` +
+              `This is an orchestration skill reserved for the main agent. ` +
+              `Execute your assigned task directly. DO NOT attempt to read the skill file manually.`,
+          );
+        }
+      }
+
+      // --- 3. LSP-first enforcement ---
       if (input.tool === "grep" || input.tool === "glob") {
         const pattern: unknown = output.args?.pattern;
         if (typeof pattern === "string" && SYMBOL_DEFINITION_RE.test(pattern)) {
