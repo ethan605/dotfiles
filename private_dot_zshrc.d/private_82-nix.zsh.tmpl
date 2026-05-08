@@ -32,6 +32,14 @@ nix-ls() {
   nix eval --raw "$(__nix-args $@)"
 }
 
+nix-search() {
+  if [[ $# == 1 ]]; then
+    nix search nixpkgs "$1"
+  else
+    nix search "nixpkgs/$1" "$2"
+  fi
+}
+
 nix-sh() {
   if [[ $# == 1 ]]; then
     nix-shell --command "$SHELL" --packages "$1"
