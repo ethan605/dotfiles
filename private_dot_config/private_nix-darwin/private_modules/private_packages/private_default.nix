@@ -120,9 +120,9 @@ let
     aerospace
     alacritty
     appcleaner
-    # flameshot
     ghostty-bin
-    shottr
+    # flameshot
+    # shottr
   ];
 in
 {
@@ -152,6 +152,7 @@ in
       "karabiner-elements" # can't use services.karabiner-elements
       "linear"
       "logi-options+"
+      "macshot"
       "telegram"
       "whatsapp"
       "zed"
