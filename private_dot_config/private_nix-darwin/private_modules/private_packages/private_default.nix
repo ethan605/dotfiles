@@ -49,25 +49,27 @@ let
     git-lfs
   ];
 
-  devel = with pkgs; [
-    cppcheck
-    ffmpeg
-    httpie
-    hyperfine
-    imagemagick
-    jq
-    libyaml
-    nil # nil depends on nix, so installing here instead of Mason
-    parallel
-    qrencode
-    viddy
-    watch
-    yq
-    zbar
-  ]
-  ++ docs
-  ++ cloud-native
-  ++ svc;
+  devel =
+    with pkgs;
+    [
+      cppcheck
+      ffmpeg
+      httpie
+      hyperfine
+      imagemagick
+      jq
+      libyaml
+      nil # nil depends on nix, so installing here instead of Mason
+      parallel
+      qrencode
+      viddy
+      watch
+      yq
+      zbar
+    ]
+    ++ docs
+    ++ cloud-native
+    ++ svc;
 
   archives = with pkgs; [
     lzip
