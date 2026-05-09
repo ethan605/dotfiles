@@ -47,7 +47,21 @@
       "find *": "allow",
       "grep *": "allow",
       "head *": "allow",
+      "ls *": "allow",
       "tail *": "allow",
+      "rtk echo*": "allow",
+      "rtk find*": "allow",
+      "rtk grep*": "allow",
+      "rtk head*": "allow",
+      "rtk ls*": "allow",
+      "rtk tail*": "allow",
+      "xargs echo *": "allow",
+      "xargs find *": "allow",
+      "xargs grep *": "allow",
+      "xargs head *": "allow",
+      "xargs ls *": "allow",
+      "xargs tail *": "allow",
+
       "git branch": "allow",
       "git branch -a*": "allow",
       "git branch -r*": "allow",
@@ -68,19 +82,21 @@
       "rtk git show*": "allow",
       "rtk git status*": "allow",
       "rtk git worktree list*": "allow",
-      "rtk grep*": "allow",
+      
       "gh pr list*": "allow",
       "gh pr view*": "allow",
       "gh repo view*": "allow",
       "rtk gh pr list*": "allow",
       "rtk gh pr view*": "allow",
       "rtk gh repo view*": "allow",
+
       "uv run mypy *": "allow",
       "uv run pytest *": "allow",
       "uv run ruff *": "allow",
       "rtk uv run mypy *": "allow",
       "rtk uv run pytest *": "allow",
       "rtk uv run ruff *": "allow",
+
       "pnpm test*": "allow",
       "pnpm list*": "allow",
       "pnpm ls*": "allow",
@@ -93,6 +109,7 @@
       "rtk pnpm info *": "allow",
       "rtk pnpm outdated*": "allow",
       "rtk pnpm why *": "allow",
+
       "npm test*": "allow",
       "npm list*": "allow",
       "npm ls*": "allow",
@@ -131,8 +148,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "openai/gpt-5.4",
-      "variant": "xhigh",
+      "model": "openai/gpt-5.5-fast",
       "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!",
       "options": {
         "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
