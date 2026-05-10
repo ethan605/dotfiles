@@ -58,7 +58,6 @@ let
       hyperfine
       imagemagick
       jq
-      libyaml
       nil # nil depends on nix, so installing here instead of Mason
       parallel
       qrencode
@@ -97,7 +96,7 @@ let
     blueutil
     iina
     mpc
-    # mpd
+    mpd
     switchaudio-osx
   ];
 
@@ -176,6 +175,7 @@ in
         lib_paths = builtins.concatStringsSep ":" [
           "${pkgs.file}/lib"
           "${pkgs.libyaml}/lib"
+          "${pkgs.pcre2.out}/lib"
         ];
 
         pkg_paths = builtins.concatStringsSep ":" [

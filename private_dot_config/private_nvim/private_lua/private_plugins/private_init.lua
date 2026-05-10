@@ -49,6 +49,7 @@ local plugins = {
 
   -- Plugins with more complex configs
   require("plugins.bufferline"),
+  require("plugins.codesnap"),
   require("plugins.colorscheme"),
   require("plugins.comment"),
   require("plugins.csvview"),
@@ -79,9 +80,6 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
-
-  -- Temp. disabled plugins
-  -- require("plugins.codesnap"), -- FIXME: needs libpcre2-8.0.dylib
 }
 
 require("lazy").setup(plugins, opts)
