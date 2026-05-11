@@ -46,7 +46,7 @@ local custom_modules = {
 }
 
 local function custom_theme_powerline()
-  local colors = require("colorscheme").snazzy_colors
+  local colors = require("highlights").snazzy_colors
   local powerline = require("lualine.themes.powerline")
 
   powerline.normal.c.fg = colors.white

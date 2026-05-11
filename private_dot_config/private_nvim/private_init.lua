@@ -1,10 +1,11 @@
 -- vim:fileencoding=utf-8:filetype=lua
-require("settings")
-require("variables")
-require("plugins")
-require("colorscheme")
-require("keymaps")
-require("autocommands")
+require("./settings")
+require("./variables")
+require("./plugins")
 
-require("lsp")
-require("filetype")
+require("./autocommands")
+require("./highlights")
+require("./keymaps")
+
+require("./lsp")
+require("./filetype")
