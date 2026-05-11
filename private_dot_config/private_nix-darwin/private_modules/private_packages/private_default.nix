@@ -143,6 +143,10 @@ in
       upgrade = true;
     };
 
+    brews = [
+      "zapp"
+    ];
+
     casks = [
       "airflow"
       "contexts"
