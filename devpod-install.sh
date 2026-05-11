@@ -135,6 +135,8 @@ __config-sync() {
 			-c qa
 }
 
+alias __devenv='source devenv && make environment && make environments-env'
+
 alias c=chezmoi
 alias cst='chezmoi status'
 
