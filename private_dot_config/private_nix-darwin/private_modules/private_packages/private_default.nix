@@ -143,15 +143,11 @@ in
       upgrade = true;
     };
 
-    brews = [
-      "zapp"
-    ];
-
     casks = [
       "airflow"
       "contexts"
-      "grammarly-desktop"
       "homerow"
+      "grammarly-desktop"
       "karabiner-elements" # can't use services.karabiner-elements
       "linear"
       "logi-options+"
