@@ -16,7 +16,11 @@
     "messages_page_up": "ctrl+u",
     "messages_page_down": "ctrl+d",
     "messages_first": "ctrl+g",
-    "messages_last": "ctrl+alt+g"
+    "messages_last": "ctrl+alt+g",
+    "input_submit": "shift+return",
+    "input_newline": "return",
+    "input_line_home": "ctrl+left",
+    "input_line_end": "ctrl+right"
   },
   "scroll_speed": 3,
   "scroll_acceleration": {
