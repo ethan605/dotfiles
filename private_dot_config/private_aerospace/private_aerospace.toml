@@ -45,6 +45,16 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   cmd-8 = 'workspace 8'
   cmd-9 = 'workspace 9'
 
+  cmd-keypad1 = 'workspace 1'
+  cmd-keypad2 = 'workspace 2'
+  cmd-keypad3 = 'workspace 3'
+  cmd-keypad4 = 'workspace 4'
+  cmd-keypad5 = 'workspace 5'
+  cmd-keypad6 = 'workspace 6'
+  cmd-keypad7 = 'workspace 7'
+  cmd-keypad8 = 'workspace 8'
+  cmd-keypad9 = 'workspace 9'
+
   cmd-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
   cmd-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
   cmd-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
@@ -54,6 +64,16 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   cmd-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
   cmd-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
   cmd-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+
+  cmd-shift-keypad1 = ['move-node-to-workspace 1', 'workspace 1']
+  cmd-shift-keypad2 = ['move-node-to-workspace 2', 'workspace 2']
+  cmd-shift-keypad3 = ['move-node-to-workspace 3', 'workspace 3']
+  cmd-shift-keypad4 = ['move-node-to-workspace 4', 'workspace 4']
+  cmd-shift-keypad5 = ['move-node-to-workspace 5', 'workspace 5']
+  cmd-shift-keypad6 = ['move-node-to-workspace 6', 'workspace 6']
+  cmd-shift-keypad7 = ['move-node-to-workspace 7', 'workspace 7']
+  cmd-shift-keypad8 = ['move-node-to-workspace 8', 'workspace 8']
+  cmd-shift-keypad9 = ['move-node-to-workspace 9', 'workspace 9']
 
   cmd-ctrl-leftSquareBracket = 'workspace prev'
   cmd-ctrl-rightSquareBracket = 'workspace next'
