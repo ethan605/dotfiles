@@ -76,6 +76,8 @@
         AppleShowAllFiles = true;
         FXDefaultSearchScope = "SCcf"; # current folder
         FXPreferredViewStyle = "clmv";
+        NewWindowTarget = "Other";
+        NewWindowTargetPath = "file://${home-dir}/Downloads";
         ShowExternalHardDrivesOnDesktop = false;
         ShowMountedServersOnDesktop = false;
         ShowPathbar = true;
