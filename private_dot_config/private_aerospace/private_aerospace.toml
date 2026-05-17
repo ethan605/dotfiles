@@ -30,10 +30,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
 #                   keypadMinus, keypadMultiply, keypadPlus
 [mode.main.binding]
-  cmd-left = 'focus left'
-  cmd-down = 'focus down'
-  cmd-up = 'focus up'
-  cmd-right = 'focus right'
+  ctrl-alt-h = 'focus left'
+  ctrl-alt-j = 'focus down'
+  ctrl-alt-k = 'focus up'
+  ctrl-alt-l = 'focus right'
 
   cmd-1 = 'workspace 1'
   cmd-2 = 'workspace 2'
@@ -79,7 +79,7 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   cmd-ctrl-rightSquareBracket = 'workspace next'
 
   cmd-alt-space = 'layout floating tiling'
-  cmd-alt-r = 'mode resize'
+  # cmd-alt-r = 'mode resize'
 
 [mode.resize.binding]
   enter = 'mode main'
