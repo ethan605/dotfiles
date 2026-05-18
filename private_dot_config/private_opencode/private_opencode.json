@@ -18,29 +18,40 @@
     "todowrite": "allow",
     "webfetch": "allow",
     "websearch": "allow",
+
     "neo4j_get_*": "allow",
     "neo4j_read_*": "allow",
+
     "linear_extract_*": "allow",
     "linear_get_*": "allow",
     "linear_list_*": "allow",
     "linear_search_*": "allow",
+
     "rivo_atlassianUserInfo": "allow",
     "rivo_fetch": "allow",
     "rivo_get*": "allow",
     "rivo_lookup*": "allow",
     "rivo_search*": "allow",
+
     "miro_board_*": "allow",
     "miro_context_*": "allow",
     "miro_diagram_get_dsl": "allow",
     "miro_doc_get": "allow",
     "miro_image_get_*": "allow",
     "miro_table_list_rows": "allow",
+
+    "google-docs_writeSpreadsheet": "deny",
+    "google-docs_batchWrite": "deny",
+    "google-docs_appendRows": "deny",
+    "google-docs_createSpreadsheet": "deny",
+    "google-docs_appendTableRows": "deny",
     "google-docs_download*": "allow",
     "google-docs_get*": "allow",
     "google-docs_list*": "allow",
     "google-docs_read*": "allow",
     "google-docs_search*": "allow",
     "google-docs_triageInbox": "allow",
+
     "bash": {
       "*": "ask",
       "echo *": "allow",
@@ -82,7 +93,7 @@
       "rtk git show*": "allow",
       "rtk git status*": "allow",
       "rtk git worktree list*": "allow",
-      
+
       "gh pr list*": "allow",
       "gh pr view*": "allow",
       "gh repo view*": "allow",
@@ -152,13 +163,6 @@
       "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!",
       "options": {
         "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
-      },
-      "permission": {
-        "google-docs_writeSpreadsheet": "deny",
-        "google-docs_batchWrite": "deny",
-        "google-docs_appendRows": "deny",
-        "google-docs_createSpreadsheet": "deny",
-        "google-docs_appendTableRows": "deny"
       }
     },
     "reviewer": {
