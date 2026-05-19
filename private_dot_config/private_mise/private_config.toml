@@ -14,7 +14,7 @@ rust = "1.95.0"
 terraform = "1.15.3"
 
 # Then tools
-awscli = { version = "2.34.48", symlink_bins = "true" }
+awscli = { version = "2.34.49", symlink_bins = "true" }
 cmake = "4.3.2"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "568.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
@@ -23,10 +23,10 @@ helm = "4.2.0"
 make = "4.4.1"
 maven = "3.9.16"
 ninja = "1.13.2"
-opencode = "1.15.4"
+opencode = "1.15.5"
 rtk = { version = "0.40.0", postinstall = "rtk init -g --opencode" }
 tree-sitter = "0.26.8"
-uv = "0.11.14"
+uv = "0.11.15"
 
 # And custom tools
 [tools."http:cypher-shell"]
