@@ -5,15 +5,32 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "marilari88/neotest-vitest",
     "nvim-lua/plenary.nvim",
+    "nvim-neotest/neotest-go",
     "nvim-neotest/neotest-python",
     "nvim-neotest/nvim-nio",
     "nvim-treesitter/nvim-treesitter",
   },
   opts = function()
+    local neotest_ns = vim.api.nvim_create_namespace("neotest")
+
+    vim.diagnostic.config({
+      virtual_text = {
+        format = function(diagnostic)
+          local message = diagnostic.message
+              :gsub("\n", " ")
+              :gsub("\t", " ")
+              :gsub("%s+", " ")
+              :gsub("^%s+", "")
+          return message
+        end,
+      },
+    }, neotest_ns)
+
     ---@type neotest.Config
     ---@diagnostic disable-next-line: missing-fields
     return {
       adapters = {
+        require("neotest-go"),
         require("neotest-python"),
         require("neotest-vitest"),
       },

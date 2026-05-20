@@ -69,6 +69,7 @@ local plugins = {
   require("plugins.nvim-cmp"),
   require("plugins.nvim-coverage"),
   require("plugins.nvim-dbee"),
+  require("plugins.nvim-go"),
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-java"),
   require("plugins.nvim-lightbulb"),
