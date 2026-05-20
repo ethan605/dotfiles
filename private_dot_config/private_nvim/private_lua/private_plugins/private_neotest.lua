@@ -2,13 +2,15 @@
 return {
   "nvim-neotest/neotest",
   dependencies = {
-    "antoinemadec/FixCursorHold.nvim",
-    "marilari88/neotest-vitest",
-    "nvim-lua/plenary.nvim",
-    "nvim-neotest/neotest-go",
-    "nvim-neotest/neotest-python",
+    -- common
     "nvim-neotest/nvim-nio",
     "nvim-treesitter/nvim-treesitter",
+    "nvim-lua/plenary.nvim",
+    "antoinemadec/FixCursorHold.nvim",
+    -- adapters
+    "marilari88/neotest-vitest",
+    "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-python",
   },
   opts = function()
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
