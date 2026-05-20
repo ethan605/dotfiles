@@ -11,7 +11,7 @@
   "codesnap.nvim": { "branch": "main", "commit": "207907f3eea4c9d695d48a6baf906e530e09972d" },
   "csvview.nvim": { "branch": "main", "commit": "5c22774c3ecc7f8883af5d143b366e45b1f0875d" },
   "dashboard-nvim": { "branch": "master", "commit": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe" },
-  "diffview.nvim": { "branch": "main", "commit": "d52621fe8a0b865e0971389bc36dd9220260cbc3" },
+  "diffview.nvim": { "branch": "main", "commit": "e94b7fd2fdf5521674e396218628a4872fbbb6d1" },
   "fyler.nvim": { "branch": "stable", "commit": "bb8b9f30c652c948d35211958b0deec3496bcc08" },
   "fzf-lua": { "branch": "main", "commit": "3ff77862f6c62f7b850668435ae43aa026de8758" },
   "gitlinker.nvim": { "branch": "master", "commit": "5e8d9f0deb34b079baf84ffe0abbe0475a6b5372" },
