@@ -1,0 +1,14 @@
+session: ω
+root: ~/work/neo4j-cloud
+windows:
+  - name: oc
+    root: ""
+    layout: main-vertical
+
+  - name: editor
+    root: ""
+    layout: main-vertical
+
+  - name: cli
+    root: ""
+    layout: main-vertical

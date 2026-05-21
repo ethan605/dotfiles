@@ -1,0 +1,10 @@
+session: π
+root: ~
+windows:
+  - name: personal
+    root: personal
+    layout: main-vertical
+
+  - name: config
+    root: .config
+    layout: main-vertical
