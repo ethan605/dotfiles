@@ -7,7 +7,7 @@ pkgs.stdenvNoCC.mkDerivation {
   src = pkgs.fetchFromGitHub {
     owner = "ethan605";
     repo = "arch-pkgs";
-    rev = "28b526465890292891c0299a31febebb6803c04b";
+    rev = "980cb73420f648b6a382d137e2d541a463c8f3ea";
     fetchLFS = true;
     hash = "sha256-mqlGC3LObXuGP3hiz0s911jOl2r2HWKq6sec07G9OPg=";
   };
