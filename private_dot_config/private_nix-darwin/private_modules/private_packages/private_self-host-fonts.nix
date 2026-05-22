@@ -9,7 +9,7 @@ pkgs.stdenvNoCC.mkDerivation {
     repo = "arch-pkgs";
     rev = "980cb73420f648b6a382d137e2d541a463c8f3ea";
     fetchLFS = true;
-    hash = "sha256-mqlGC3LObXuGP3hiz0s911jOl2r2HWKq6sec07G9OPg=";
+    hash = "sha256-6cp5oDd6Zzr3mzyDiOl404PdghMBR4Ei0iW4ySd02Zs=";
   };
 
   unpackPhase = ''

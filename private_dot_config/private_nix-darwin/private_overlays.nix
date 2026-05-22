@@ -10,6 +10,7 @@ in
   nixpkgs.overlays = [
     (_final: prev: {
       # Overriden packages (due to instabilities, bugs, etc.)
+      termite = pkgs-25-11.termite;
       zsh = pkgs-25-11.zsh;
 
       # Self-host packages
