@@ -78,6 +78,7 @@ local plugins = {
   require("plugins.nvim-tree"),
   require("plugins.nvim-treesitter"),
   require("plugins.nvim-ufo"),
+  require("plugins.nvim-web-devicons"),
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
