@@ -152,6 +152,7 @@ in
       "linear"
       "logi-options+"
       "macshot"
+      "megasync"
       "telegram"
       "whatsapp"
       "zed"
