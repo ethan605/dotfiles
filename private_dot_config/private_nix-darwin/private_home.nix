@@ -60,5 +60,5 @@ in
     source = "${pkgs.minimal-functional-fox}";
   };
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }

@@ -5,13 +5,14 @@
 }:
 let
   pkgs-25-11 = import inputs.nixpkgs-25-11 { inherit system; };
+  pkgs-26-05 = import inputs.nixpkgs-26-05 { inherit system; };
 in
 {
   nixpkgs.overlays = [
     (_final: prev: {
       # Overriden packages (due to instabilities, bugs, etc.)
       termite = pkgs-25-11.termite;
-      zsh = pkgs-25-11.zsh;
+      zsh = pkgs-26-05.zsh;
 
       # Self-host packages
       minimal-functional-fox = prev.callPackage ./modules/packages/minimal-functional-fox.nix { };
