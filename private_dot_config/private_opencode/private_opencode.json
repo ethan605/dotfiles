@@ -8,6 +8,8 @@
   },
   "permission": {
     "*": "ask",
+
+    "cat": "allow",
     "glob": "allow",
     "grep": "allow",
     "lsp": "allow",
