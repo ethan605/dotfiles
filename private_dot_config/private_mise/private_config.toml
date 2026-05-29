@@ -20,6 +20,7 @@ coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "570.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
 gh = "2.93.0"
 helm = "4.2.0"
+jb = "0.6.0"
 make = "4.4.1"
 maven = "3.9.16"
 ninja = "1.13.2"
