@@ -11,6 +11,7 @@
   "gopls": "v0.22.0",
   "html-lsp": "4.10.0",
   "json-lsp": "4.10.0",
+  "jsonnet-language-server": "v0.17.0",
   "ltex-ls-plus": "18.6.1",
   "lua-language-server": "3.18.2",
   "nginx-language-server": "0.9.0",

@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "javascriptreact",
     "json",
     "json5",
+    "jsonnet",
     "make",
     "nix",
     "python",

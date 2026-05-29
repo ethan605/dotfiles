@@ -21,6 +21,7 @@ return {
       "javascript",
       "json",
       "json5",
+      "jsonnet",
       "jsx",
       "make",
       "nix",
