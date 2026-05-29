@@ -196,6 +196,15 @@
         "GOOGLE_CLIENT_SECRET": "{env:GOOGLE_DOCS_MCP_CLIENT_SECRET}"
       }
     },
+    "grafana": {
+      "enabled": true,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "{env:GRAFANA_URL}",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{env:GRAFANA_SERVICE_ACCOUNT_TOKEN}"
+      }
+    },
     "linear": {
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
