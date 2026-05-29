@@ -10,6 +10,7 @@ vim.lsp.config.eslint = require("lsp.eslint")
 vim.lsp.config.gopls = require("lsp.gopls")
 vim.lsp.config.html = require("lsp.html")
 vim.lsp.config.jsonls = require("lsp.jsonls")
+vim.lsp.config.jsonnet_ls = require("lsp.jsonnet_ls")
 vim.lsp.config.ltex_plus = require("lsp.ltex_plus")
 vim.lsp.config.luals = require("lsp.luals")
 vim.lsp.config.nginx = require("lsp.nginx")
@@ -32,6 +33,7 @@ vim.lsp.config.yamlls = require("lsp.yamlls")
 -- vim.lsp.config.sqruff = require("lsp.sqruff") -- @TODO revisit later
 
 vim.lsp.enable({
+  "basedpyright",
   "bashls",
   "clangd",
   "cypher_ls",
@@ -41,11 +43,11 @@ vim.lsp.enable({
   "gopls",
   "html",
   "jsonls",
+  "jsonnet_ls",
   "ltex_plus",
   "luals",
   "nginx",
   "nil_ls",
-  "basedpyright",
   "pytest_lsp",
   "ruff",
   "rust_analyzer",
