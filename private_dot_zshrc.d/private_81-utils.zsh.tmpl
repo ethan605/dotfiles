@@ -21,6 +21,10 @@ oc() {
   export GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }')
   export GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1)
 
+  # For grafana MCP
+  export GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/
+  export GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam)
+
   opencode "$@"
 }
 
