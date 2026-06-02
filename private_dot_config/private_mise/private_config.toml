@@ -7,14 +7,14 @@ go = "1.26.3"
 java = "openjdk-26.0.1"
 lua = "5.1"
 luajit = "2.1.1744318430"
-node = "26.2.0"
+node = "26.3.0"
 python = "3.14.5"
 ruby = "4.0.5"
 rust = "1.96.0"
 terraform = "1.15.5"
 
 # Then tools
-awscli = { version = "2.34.57", symlink_bins = "true" }
+awscli = { version = "2.34.58", symlink_bins = "true" }
 cmake = "4.3.3"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "570.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
@@ -27,12 +27,12 @@ ninja = "1.13.2"
 opencode = "1.15.13"
 rtk = { version = "0.42.0", postinstall = "rtk init -g --opencode" }
 tree-sitter = "0.26.9"
-uv = "0.11.17"
+uv = "0.11.18"
 
 # And custom tools
 [tools."http:cypher-shell"]
 # Check latest version at: https://neo4j.com/deployment-center/?cypher-shell
-version = "2026.04.0"
+version = "2026.05.0"
 bin = "cypher-shell"
 url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
-checksum = "sha256:b4cb19331c8eefda3a16f8f82acee2a906f79a4943a510e9f5173ebc4c024a9f"
+checksum = "sha256:60936421a4af667876fdb7d6e17bdb4a22439d7e09254ffc5fcc2e4f9fbcc9ae"
