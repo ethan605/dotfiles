@@ -6,7 +6,6 @@ if [[ -f "$WORK_DIR/.zshrc" ]]; then
   source "$WORK_DIR/.zshrc"
 fi
 
-alias devpod-ssh='LANG=C.UTF-8 LC_ALL=C.UTF-8 LC_CTYPE=C.UTF-8 LC_COLLATE=C.UTF-8 TERM=xterm-256color ssh neo4j-cloud.devpod'
 alias wpass='PASSWORD_STORE_DIR="$WORK_DIR/.password-store" pass'
 
 alias psql-local='psql $(wpass postgres/uri-local)'
@@ -50,4 +49,19 @@ dbee-postgres() {
   ]'
 
   nvim +Dbee
+}
+
+devpod-ssh() {
+  LANG=C.UTF-8 LC_ALL=C.UTF-8 LC_CTYPE=C.UTF-8 LC_COLLATE=C.UTF-8
+  TERM=xterm-256color
+  OC_PORT=45678
+  ssh -o "SetEnv \
+    OC_PORT=$OC_PORT \
+    OC_GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }') \
+    OC_GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1) \
+    OC_GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/ \
+    OC_GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam) \
+  " \
+    -L "$OC_PORT::$OC_PORT" \
+    neo4j-cloud.devpod
 }

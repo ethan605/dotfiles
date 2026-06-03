@@ -145,7 +145,7 @@ oc() {
 	export OPENCODE_EXPERIMENTAL_MARKDOWN=true
 
 	# For LSP servers
-	export PATH="\$HOME/.local/share/nvim/mason/bin:\$PATH"
+	export PATH="$HOME/.local/share/nvim/mason/bin:\$HOME/.local/share/mise/shims:$PATH"
 
 	# For Gemini
 	GOOGLE_VERTEX_PROJECT=\$(gcloud config get project)
@@ -154,12 +154,12 @@ oc() {
 	export VERTEX_LOCATION=global
 
 	# For google-docs MCP
-  export GOOGLE_DOCS_MCP_CLIENT_ID="$OC_GOOGLE_DOCS_MCP_CLIENT_ID"
-  export GOOGLE_DOCS_MCP_CLIENT_SECRET="$OC_GOOGLE_DOCS_MCP_CLIENT_SECRET"
+  export GOOGLE_DOCS_MCP_CLIENT_ID="\$OC_GOOGLE_DOCS_MCP_CLIENT_ID"
+  export GOOGLE_DOCS_MCP_CLIENT_SECRET="\$OC_GOOGLE_DOCS_MCP_CLIENT_SECRET"
 
 	# For grafana MCP:
-  export GRAFANA_URL="$OC_GRAFANA_URL"
-  export GRAFANA_SERVICE_ACCOUNT_TOKEN="$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
+  export GRAFANA_URL="\$OC_GRAFANA_URL"
+  export GRAFANA_SERVICE_ACCOUNT_TOKEN="\$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
 
 	opencode "\$@"
 }
@@ -186,6 +186,7 @@ alias vim=nvim
 alias vserve='nvim --headless --listen 127.0.0.1:45678'
 
 alias k=kubecolor
+alias ocserve='oc serve --port=$OC_PORT'
 alias rm='rm -i'
 alias where=which
 EOF
