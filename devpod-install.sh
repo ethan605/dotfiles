@@ -154,12 +154,12 @@ oc() {
 	export VERTEX_LOCATION=global
 
 	# For google-docs MCP
-	# export GOOGLE_DOCS_MCP_CLIENT_ID=\$(pass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print \$2 }')
-	# export GOOGLE_DOCS_MCP_CLIENT_SECRET=\$(pass api-keys/google-docs-mcp | head -1)
+  export GOOGLE_DOCS_MCP_CLIENT_ID="$OC_GOOGLE_DOCS_MCP_CLIENT_ID"
+  export GOOGLE_DOCS_MCP_CLIENT_SECRET="$OC_GOOGLE_DOCS_MCP_CLIENT_SECRET"
 
-	# For grafana MCP
-	# export GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/
-	# export GRAFANA_SERVICE_ACCOUNT_TOKEN=\$(pass api-keys/grafana-deviam)
+	# For grafana MCP:
+  export GRAFANA_URL="$OC_GRAFANA_URL"
+  export GRAFANA_SERVICE_ACCOUNT_TOKEN="$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
 
 	opencode "\$@"
 }
