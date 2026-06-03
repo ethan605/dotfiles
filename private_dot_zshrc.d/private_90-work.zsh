@@ -65,3 +65,5 @@ devpod-ssh() {
     -L "$OC_PORT::$OC_PORT" \
     neo4j-cloud.devpod
 }
+
+alias ocattach='opencode attach http://127.0.0.1:45678'
