@@ -21,27 +21,6 @@
     "webfetch": "allow",
     "websearch": "allow",
 
-    "neo4j_get_*": "allow",
-    "neo4j_read_*": "allow",
-
-    "linear_extract_*": "allow",
-    "linear_get_*": "allow",
-    "linear_list_*": "allow",
-    "linear_search_*": "allow",
-
-    "rivo_atlassianUserInfo": "allow",
-    "rivo_fetch": "allow",
-    "rivo_get*": "allow",
-    "rivo_lookup*": "allow",
-    "rivo_search*": "allow",
-
-    "miro_board_*": "allow",
-    "miro_context_*": "allow",
-    "miro_diagram_get_dsl": "allow",
-    "miro_doc_get": "allow",
-    "miro_image_get_*": "allow",
-    "miro_table_list_rows": "allow",
-
     "google-docs_writeSpreadsheet": "deny",
     "google-docs_batchWrite": "deny",
     "google-docs_appendRows": "deny",
@@ -53,6 +32,27 @@
     "google-docs_read*": "allow",
     "google-docs_search*": "allow",
     "google-docs_triageInbox": "allow",
+
+    "linear_extract_*": "allow",
+    "linear_get_*": "allow",
+    "linear_list_*": "allow",
+    "linear_search_*": "allow",
+
+    "miro_board_*": "allow",
+    "miro_context_*": "allow",
+    "miro_diagram_get_dsl": "allow",
+    "miro_doc_get": "allow",
+    "miro_image_get_*": "allow",
+    "miro_table_list_rows": "allow",
+
+    "neo4j-cypher_get_*": "allow",
+    "neo4j-cypher_read_*": "allow",
+
+    "rivo_atlassianUserInfo": "allow",
+    "rivo_fetch": "allow",
+    "rivo_get*": "allow",
+    "rivo_lookup*": "allow",
+    "rivo_search*": "allow",
 
     "bash": {
       "*": "ask",

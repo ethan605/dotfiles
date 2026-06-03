@@ -75,6 +75,10 @@ devbox() {
       return 1
     fi
 
+    if [[ -z "$NEO4J_URI" ]]; then
+      source "$HOME/work/queries/deviam-neostore/.envrc"
+    fi
+
     ssh -o "SetEnv \
       OC_PORT=$oc_port \
       OC_GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }') \
