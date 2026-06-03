@@ -186,7 +186,7 @@ alias vim=nvim
 alias vserve='nvim --headless --listen 127.0.0.1:45678'
 
 alias k=kubecolor
-alias ocserve='oc serve --port=$OC_PORT'
+alias ocserve='oc serve --port=\$OC_PORT'
 alias rm='rm -i'
 alias where=which
 EOF
