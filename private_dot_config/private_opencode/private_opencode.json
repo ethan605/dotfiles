@@ -137,6 +137,7 @@
       "rtk npm why *": "allow"
     }
   },
+  "default_agent": "plan",
   "agent": {
     "plan": {
       "color": "#57c7ff",
@@ -189,6 +190,7 @@
   },
   "mcp": {
     "google-docs": {
+      "enabled": true,
       "type": "local",
       "command": ["npx", "-y", "@a-bonus/google-docs-mcp"],
       "environment": {
@@ -206,16 +208,19 @@
       }
     },
     "linear": {
+      "enabled": true,
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
       "oauth": {}
     },
     "miro": {
+      "enabled": true,
       "type": "remote",
       "url": "https://mcp.miro.com",
       "oauth": {}
     },
     "neo4j": {
+      "enabled": true,
       "type": "local",
       "command": ["uvx", "mcp-neo4j-cypher", "--transport", "stdio"]
     },
@@ -233,6 +238,7 @@
       ]
     },
     "rivo": {
+      "enabled": true,
       "type": "remote",
       "url": "https://mcp.atlassian.com/v1/mcp",
       "oauth": {}
