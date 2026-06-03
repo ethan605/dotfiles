@@ -145,7 +145,7 @@ oc() {
 	export OPENCODE_EXPERIMENTAL_MARKDOWN=true
 
 	# For LSP servers
-	export PATH="$HOME/.local/share/nvim/mason/bin:\$HOME/.local/share/mise/shims:$PATH"
+	export PATH="\$HOME/.local/share/nvim/mason/bin:\$HOME/.local/share/mise/shims:\$PATH"
 
 	# For Gemini
 	GOOGLE_VERTEX_PROJECT=\$(gcloud config get project)
