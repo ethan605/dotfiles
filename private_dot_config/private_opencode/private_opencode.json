@@ -162,7 +162,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "anthropic/claude-haiku-4-5",
+      "model": "openai/gpt-5.5-fast",
       "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!",
       "options": {
         "system_prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. DO NOT SPAWN SUBAGENTS - YOU NEED TO DO THE JOB YOURSELF!"
@@ -179,6 +179,7 @@
       }
     }
   },
+  "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git"],
   "lsp": {
     "pyright": {
       "disabled": true
