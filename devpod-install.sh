@@ -135,6 +135,31 @@ __config-sync() {
 			-c qa
 }
 
+oc () {
+	export OPENCODE_DISABLE_LSP_DOWNLOAD=true
+	export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
+	export OPENCODE_EXPERIMENTAL_MARKDOWN=true
+
+	# For LSP servers
+	export PATH="\$HOME/.local/share/nvim/mason/bin:\$PATH"
+
+	# For Gemini
+	GOOGLE_VERTEX_PROJECT=\$(gcloud config get project)
+	export GOOGLE_VERTEX_PROJECT
+	export GOOGLE_VERTEX_LOCATION=global
+	export VERTEX_LOCATION=global
+
+	# For google-docs MCP
+	# export GOOGLE_DOCS_MCP_CLIENT_ID=\$(pass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print \$2 }')
+	# export GOOGLE_DOCS_MCP_CLIENT_SECRET=\$(pass api-keys/google-docs-mcp | head -1)
+
+	# For grafana MCP
+	# export GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/
+	# export GRAFANA_SERVICE_ACCOUNT_TOKEN=\$(pass api-keys/grafana-deviam)
+
+	opencode "\$@"
+}
+
 alias __devenv='source devenv && make environment && make environments-env'
 
 alias c=chezmoi
