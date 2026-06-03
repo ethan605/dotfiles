@@ -135,7 +135,7 @@ __config-sync() {
 			-c qa
 }
 
-oc () {
+oc() {
 	export OPENCODE_DISABLE_LSP_DOWNLOAD=true
 	export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 	export OPENCODE_EXPERIMENTAL_MARKDOWN=true

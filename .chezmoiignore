@@ -86,6 +86,7 @@ Library
 .config/*
 !.config/bottom
 !.config/nvim
+!.config/opencode
 !.config/starship.toml
 !.config/vifm
 .default-*
