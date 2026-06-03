@@ -220,10 +220,16 @@
       "url": "https://mcp.miro.com",
       "oauth": {}
     },
-    "neo4j": {
+    "neo4j-cypher": {
       "enabled": true,
       "type": "local",
-      "command": ["uvx", "mcp-neo4j-cypher", "--transport", "stdio"]
+      "command": ["uvx", "mcp-neo4j-cypher", "--transport", "stdio"],
+      "environment": {
+        "NEO4J_URI": "{env:NEO4J_URI}",
+        "NEO4J_USERNAME": "{env:NEO4J_USERNAME}",
+        "NEO4J_PASSWORD": "{env:NEO4J_PASSWORD}",
+        "NEO4J_DATABASE": "{env:NEO4J_DATABASE}"
+      }
     },
     "postgresql": {
       "enabled": false,

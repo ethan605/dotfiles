@@ -81,6 +81,10 @@ devbox() {
       OC_GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1) \
       OC_GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/ \
       OC_GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam) \
+      OC_NEO4J_URI=$NEO4J_URI \
+      OC_NEO4J_USERNAME=$NEO4J_USERNAME \
+      OC_NEO4J_PASSWORD=$NEO4J_PASSWORD \
+      OC_NEO4J_DATABASE=$NEO4J_DATABASE \
       " \
       -L "$oc_port::$oc_port" \
       neo4j-cloud.devpod
