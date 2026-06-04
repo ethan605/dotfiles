@@ -60,6 +60,7 @@ sketchybar \
 sketchybar \
 	--add item volume right \
 	--set volume script="$PLUGIN_DIR/volume.sh" \
+	--set volume click_script='/run/current-system/sw/bin/SwitchAudioSource -m toggle' \
 	--subscribe volume volume_change
 
 sketchybar \

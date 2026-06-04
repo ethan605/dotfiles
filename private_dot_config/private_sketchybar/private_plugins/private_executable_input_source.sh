@@ -13,4 +13,12 @@ else
 	COLOR="$COLOR_RED"
 fi
 
+# if [[ $(macism) = "com.apple.inputmethod.VietnameseIM.VietnameseTelex" ]]; then
+# 	ICON=''
+# 	COLOR="$COLOR_RED"
+# else
+# 	ICON='󰬰'
+# 	COLOR="$COLOR_BLUE"
+# fi
+
 sketchybar --set "$NAME" icon="$ICON" icon.color="$COLOR"
