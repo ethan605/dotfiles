@@ -35,6 +35,7 @@ __install-system-packages() {
 		fd@latest \
 		fzf@latest \
 		gcloud@latest \
+		gh@latest \
 		kubecolor@latest \
 		kubectx@latest \
 		kubens@latest \
