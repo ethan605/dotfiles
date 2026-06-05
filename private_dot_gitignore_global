@@ -5,6 +5,7 @@
 **/docs/superpowers/**/*.md
 **/node_modules
 **/tmp
+**/.venv-host
 .envrc
 .null-ls*
 junit.xml
