@@ -18,13 +18,13 @@ windows:
             pnpm install
 
   - name: system
-    root: ~/.config
+    root: ~/.config/nix-darwin
     env:
       MISE_VEROBSE: 1
     layout: even-horizontal
     commands:
-      - nix flake update --flake ./nix-darwin &&
-        sudo darwin-rebuild switch --flake ./nix-darwin &&
+      - nix flake update --flake . &&
+        sudo darwin-rebuild switch --flake . &&
         aerospace reload-config &&
         sketchybar --reload
     panes:
