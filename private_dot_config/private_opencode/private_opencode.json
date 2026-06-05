@@ -160,7 +160,7 @@
       "color": "#f3f99d",
       "mode": "subagent",
       "model": "openai/gpt-5.4-fast",
-      "prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob"
+      "prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. You are a TERMINAL subagent. You MUST NOT dispatch other subagents."
     },
     "reviewer": {
       "color": "#ff5c57",
