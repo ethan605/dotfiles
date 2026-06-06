@@ -81,7 +81,7 @@ devbox() {
       source "$HOME/work/queries/deviam-neostore/.envrc"
     fi
 
-    passthru_envs+="
+    local oc_envs="
 OC_PORT=$oc_port
 OC_GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }')
 OC_GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1)
@@ -94,7 +94,7 @@ OC_NEO4J_DATABASE=$NEO4J_DATABASE
     "
 
     ssh neo4j-cloud.devpod \
-      -o "SetEnv $passthru_envs" \
+      -o "SetEnv $oc_envs" \
       -L "$oc_port::$oc_port"
   else
     ssh neo4j-cloud.devpod
