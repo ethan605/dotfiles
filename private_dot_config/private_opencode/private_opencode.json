@@ -212,7 +212,7 @@
       "oauth": {}
     },
     "neo4j-cypher": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": ["uvx", "mcp-neo4j-cypher", "--transport", "stdio"],
       "environment": {
