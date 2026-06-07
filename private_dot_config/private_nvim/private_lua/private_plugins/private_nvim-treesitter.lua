@@ -24,6 +24,7 @@ return {
       "json5",
       "jsonnet",
       "jsx",
+      "kconfig",
       "make",
       "nix",
       "python",

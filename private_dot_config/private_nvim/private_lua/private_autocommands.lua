@@ -54,6 +54,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "json",
     "json5",
     "jsonnet",
+    "kconfig",
     "make",
     "nix",
     "python",
