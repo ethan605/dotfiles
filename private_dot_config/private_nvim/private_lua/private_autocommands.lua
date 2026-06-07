@@ -45,6 +45,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "cmake",
     "comment",
     "cpp",
+    "dts",
     "go",
     "gosum",
     "java",

@@ -15,6 +15,7 @@ return {
       "cmake",
       "comment",
       "cpp",
+      "devicetree",
       "go",
       "gosum",
       "java",
