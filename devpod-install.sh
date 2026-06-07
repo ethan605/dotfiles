@@ -30,7 +30,6 @@ __install-system-packages() {
 		bottom@latest \
 		chezmoi@latest \
 		delta@latest \
-		direnv@latest \
 		eza@latest \
 		fd@latest \
 		fzf@latest \
@@ -101,11 +100,11 @@ bind "\C-a":beginning-of-line
 bind "\C-e":end-of-line
 
 # === Plugins ===
-eval "\$(mise activate bash)"     # must go first
-eval "\$(direnv hook bash)"
-eval "\$(fzf --bash)"
-eval "\$(starship init bash)"
-eval "\$(zoxide init bash)"
+command -v mise >/dev/null && eval "\$(mise activate bash)"     # must go first
+command -v direnv >/dev/null && eval "\$(direnv hook bash)"
+command -v fzf >/dev/null && eval "\$(fzf --bash)"
+command -v starship >/dev/null && eval "\$(starship init bash)"
+command -v zoxide >/dev/null && eval "\$(zoxide init bash)"
 
 if [[ -f \$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; then
 	# shellcheck disable=SC1091
