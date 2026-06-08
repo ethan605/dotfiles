@@ -178,10 +178,6 @@
     "basedpyright": {
       "command": ["basedpyright-langserver", "--stdio"],
       "extensions": [".py", ".pyi"]
-    },
-    "dts-lsp": {
-      "command": ["devicetree-language-server", "--stdio"],
-      "extensions": [".dts", ".dtsi", ".keymap", ".overlay"]
     }
   },
   "mcp": {
