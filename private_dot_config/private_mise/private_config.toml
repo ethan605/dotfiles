@@ -14,7 +14,7 @@ rust = "1.96.0"
 terraform = "1.15.5"
 
 # Then tools
-awscli = { version = "2.34.62", symlink_bins = "true" }
+awscli = { version = "2.34.63", symlink_bins = "true" }
 cmake = "4.3.3"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "571.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
@@ -24,8 +24,8 @@ jb = "0.6.0"
 make = "4.4.1"
 maven = "3.9.16"
 ninja = "1.13.2"
-opencode = "1.16.0"
-rtk = { version = "0.42.1", postinstall = "rtk init -g --opencode" }
+opencode = "1.16.2"
+rtk = { version = "0.42.3", postinstall = "rtk init -g --opencode" }
 tree-sitter = "0.26.9"
 uv = "0.11.19"
 
