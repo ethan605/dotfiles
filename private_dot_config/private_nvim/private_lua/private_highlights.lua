@@ -180,6 +180,9 @@ vim.api.nvim_set_hl(0, "@lsp.typemod.variable.readonly.scala", { link = "Constan
 -- Semantic highlights - lua
 vim.api.nvim_set_hl(0, "@lsp.typemod.function.defaultLibrary.lua", { link = "Special" })
 
+-- Semantic highlights - devicetree
+vim.api.nvim_set_hl(0, "@lsp.type.type.dts", { link = "Structure" })
+
 return {
   snazzy_colors = snazzy_colors,
 }

@@ -181,7 +181,7 @@
     },
     "dts-lsp": {
       "command": ["devicetree-language-server", "--stdio"],
-      "extensions": [".dts", ".dtsi"]
+      "extensions": [".dts", ".dtsi", ".keymap", ".overlay"]
     }
   },
   "mcp": {

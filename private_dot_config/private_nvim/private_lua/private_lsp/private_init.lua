@@ -6,6 +6,7 @@ vim.lsp.config.clangd = require("lsp.clangd")
 vim.lsp.config.cypher_ls = require("lsp.cypher_ls")
 vim.lsp.config.docker_compose = require("lsp.docker_compose")
 vim.lsp.config.dockerls = require("lsp.dockerls")
+vim.lsp.config.dts_lsp = require("lsp.dts_lsp")
 vim.lsp.config.eslint = require("lsp.eslint")
 vim.lsp.config.gopls = require("lsp.gopls")
 vim.lsp.config.html = require("lsp.html")
@@ -27,33 +28,6 @@ vim.lsp.config.tsls = require("lsp.tsls")
 vim.lsp.config.vimls = require("lsp.vimls")
 vim.lsp.config.yamlls = require("lsp.yamlls")
 
-vim.lsp.config.dts_lsp = {
-  cmd = { "devicetree-language-server", "--stdio" },
-  filetypes = { "dts", "dtsi" },
-  root_markers = { "zephyr", ".git", "." },
-  settings = {
-    devicetree = {
-      autoChangeContext = true,
-      allowAdhocContexts = true,
-      contexts = {},
-      cwd = "${workspaceFolder}",
-      -- defaultIncludePaths = {
-      --   "./zephyr/dts",
-      --   "./zephyr/dts/arm",
-      --   "./zephyr/dts/arm64/",
-      --   "./zephyr/dts/riscv",
-      --   "./zephyr/dts/common",
-      --   "./zephyr/dts/vendor",
-      --   "./zephyr/include",
-      -- },
-      -- defaultBindingType = "Zephyr",
-      -- defaultZephyrBindings = {
-      --   "./zephyr/dts/bindings",
-      -- },
-    },
-  },
-}
-
 -- vim.lsp.config.harper = require("lsp.harper")
 -- vim.lsp.config.postgres_lsp = require("lsp.postgres_lsp") -- @TODO: revisit later when it's more mature
 -- vim.lsp.config.pyrefly = require("lsp.pyrefly") -- @TODO: revisit later when it's more stable
@@ -66,6 +40,7 @@ vim.lsp.enable({
   "cypher_ls",
   "docker_compose",
   "dockerls",
+  "dts_lsp",
   "eslint",
   "gopls",
   "html",
