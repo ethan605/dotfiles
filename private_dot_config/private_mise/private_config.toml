@@ -14,7 +14,7 @@ rust = "1.96.0"
 terraform = "1.15.5"
 
 # Then tools
-awscli = { version = "2.34.63", symlink_bins = "true" }
+awscli = { version = "2.34.64", symlink_bins = "true" }
 cmake = "4.3.3"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "571.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
