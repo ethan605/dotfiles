@@ -3,6 +3,7 @@ experimental = true
 lockfile = true
 
 [tools]
+# Languages first
 go = "1.26.4"
 java = "openjdk-26.0.1"
 lua = "5.1"
@@ -16,6 +17,7 @@ terraform = "1.15.5"
 # Then tools
 awscli = { version = "2.35.1", symlink_bins = "true" }
 azure = { version = "2.87.0", uvx_args = "--prerelease=allow" }
+bun = "1.3.14"
 cmake = "4.3.3"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "572.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }

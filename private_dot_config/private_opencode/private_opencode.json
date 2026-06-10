@@ -9,7 +9,6 @@
   "permission": {
     "*": "ask",
 
-    "cat": "allow",
     "glob": "allow",
     "grep": "allow",
     "lsp": "allow",
@@ -56,20 +55,28 @@
 
     "bash": {
       "*": "ask",
-      "echo *": "allow",
+      "cat *": "allow",
       "find *": "allow",
+      "find *-exec*": "ask",
+      "find *-ok*": "ask",
+      "find *-delete*": "ask",
+      "find *-fprint*": "ask",
+      "find *-fls*": "ask",
       "grep *": "allow",
       "head *": "allow",
       "ls *": "allow",
       "tail *": "allow",
-      "rtk echo*": "allow",
+      "rtk cat*": "allow",
       "rtk find*": "allow",
+      "rtk find*-exec*": "ask",
+      "rtk find*-ok*": "ask",
+      "rtk find*-delete*": "ask",
+      "rtk find*-fprint*": "ask",
+      "rtk find*-fls*": "ask",
       "rtk grep*": "allow",
       "rtk head*": "allow",
       "rtk ls*": "allow",
       "rtk tail*": "allow",
-      "xargs echo *": "allow",
-      "xargs find *": "allow",
       "xargs grep *": "allow",
       "xargs head *": "allow",
       "xargs ls *": "allow",
@@ -154,23 +161,34 @@
       "mode": "subagent",
       "model": "anthropic/claude-opus-4-6",
       "variant": "max",
+      "permission": {
+        "task": "deny"
+      },
       "prompt": "{file:./GENERAL.md}"
     },
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
       "model": "openai/gpt-5.4-fast",
-      "prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool and postgresql MCP over search grep/glob. You are a TERMINAL subagent. You MUST NOT dispatch other subagents."
+      "permission": {
+        "edit": "deny",
+        "task": "deny"
+      },
+      "prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool (and the postgresql MCP when available) over search grep/glob. You are a TERMINAL subagent. You MUST NOT dispatch other subagents."
     },
     "reviewer": {
       "color": "#ff5c57",
       "mode": "subagent",
       "model": "google-vertex/gemini-3.1-pro-preview",
       "variant": "high",
+      "permission": {
+        "edit": "deny",
+        "task": "deny"
+      },
       "prompt": "{file:./REVIEWER.md}"
     }
   },
-  "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git"],
+  "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git#7ed6f5c"],
   "lsp": {
     "pyright": {
       "disabled": true

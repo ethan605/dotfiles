@@ -25,7 +25,7 @@ You are the primary implementation engineer, executing well-defined tasks with h
 
 ### After Writing Code
 
-- Run verification: `pnpm check:tsc`, `pnpm test:ci`
+- Run verification: the project's type check, lint, and test commands (check the project's AGENTS.md or package scripts)
 - Self-review before requesting reviewer
 - Document non-obvious decisions in comments
 

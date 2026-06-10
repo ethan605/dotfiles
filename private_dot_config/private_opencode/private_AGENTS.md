@@ -171,19 +171,21 @@ Both directories are at the **git repository root** and are git-ignored.
 
 # Database & SQL
 
-## PostgreSQL MCP (Priority)
+## PostgreSQL MCP (When Available)
 
-**ALWAYS use the `postgresql` MCP tools for SQL-related activities.** This includes:
+**Use the `postgresql` MCP tools for SQL-related activities whenever the MCP is available.** It is disabled by default in `opencode.json` — enable it (and set `POSTGRES_CONNECTION_STRING`) for database-heavy work. When available, this includes:
 
 - Exploring database schema (`postgresql_search_objects`)
 - Running queries (`postgresql_execute_sql`)
 - Validating SQL syntax against live database
 - Testing migrations and queries
 
-**Do NOT:**
+**When the MCP is available, do NOT:**
 - Write SQL queries without validating against the actual schema
 - Guess column names or types — use MCP to inspect
 - Rely solely on ORM definitions — verify with live database
+
+If the MCP is unavailable for a SQL-heavy task, say so and suggest enabling it rather than guessing against the schema.
 
 ---
 

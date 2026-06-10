@@ -3,11 +3,12 @@ import type { Plugin } from "@opencode-ai/plugin";
 /**
  * Guardrails plugin for OpenCode.
  *
- * Enforces four operational disciplines:
+ * Enforces five operational disciplines:
  *   1. Subagent nesting prevention — blocks subagents from spawning subagents
  *   2. Orchestration skill blocking — prevents subagents from loading dispatch-heavy skills
  *   3. LSP-first enforcement — blocks grep/glob for symbol-like patterns
- *   4. Skill activation nudges — reminds the model to invoke relevant skills
+ *   4. Plan-mode redirect blocking — blocks output redirects that bypass edit:deny
+ *   5. Skill activation nudges — reminds the model to invoke relevant skills
  *
  * Works alongside the superpowers bootstrap and rtk plugins.
  */
@@ -46,19 +47,26 @@ const SUBAGENT_BLOCKED_SKILLS = new Set([
  * Regex matching grep patterns that are clearly symbol-definition searches.
  * Anchored to start-of-pattern to avoid false positives on prose searches.
  *
- * Matches:  "class Foo", "def bar", "function baz", "interface Qux"
+ * Matches:  "class Foo", "function baz", "interface Qux"
  * Skips:    "error in class handling", "undefined function call"
+ *
+ * "def" is deliberately NOT in the list: it is Python's definition keyword,
+ * and grep is the documented fallback for Python symbol search because
+ * basedpyright's workspaceSymbol and cross-file findReferences are broken
+ * (see AGENTS.md, Language-Specific Notes).
  */
 const SYMBOL_DEFINITION_RE =
-  /^\s*\b(class|def|function|func|interface|struct|type|enum|impl|trait|module|package)\s+\w+/;
+  /^\s*\b(class|function|func|interface|struct|type|enum|impl|trait|module|package)\s+\w+/;
 
 /**
- * File extensions for which LSP servers are typically available.
- * If the grep `include` filter targets only non-LSP files, we let it through.
+ * File extensions for which LSP symbol search is reliable.
+ * If the grep `include` filter targets only other files, we let it through.
+ *
+ * Python (.py/.pyi) is deliberately EXCLUDED: basedpyright's workspaceSymbol
+ * and cross-file findReferences are broken (see AGENTS.md), so grep is the
+ * documented fallback for Python symbol searches.
  */
 const LSP_EXTENSIONS = new Set([
-  ".py",
-  ".pyi", // basedpyright
   ".ts",
   ".tsx", // tsserver
   ".js",
@@ -74,6 +82,28 @@ function includeTargetsLspFiles(include: string | undefined): boolean {
   }
   return false;
 }
+
+// ---------------------------------------------------------------------------
+// Plan-mode redirect guard config
+// ---------------------------------------------------------------------------
+
+/**
+ * Matches output redirections that write to a real file.
+ *
+ * opencode's bash permission matcher strips redirections from the matched
+ * command text (verified empirically: `git remote < /dev/null` auto-passes
+ * an exact-match `git remote` rule), so `ls > file` silently matches an
+ * `ls *` allow rule and writes a file even under edit:deny. Plugins see the
+ * RAW command string, so we block output redirects here — for the plan agent
+ * only; build mode keeps legitimate redirects (e.g. `cmd > log 2>&1`).
+ *
+ * Catches: `>`, `>>`, `2>`, `&>`, `12>` targeting real paths.
+ * Ignores: fd-dups (`2>&1`, `>&2`) and `/dev/null|stderr|stdout` sinks.
+ * Known false positive: a literal ">" inside quoted arguments (e.g. git
+ * pretty-format arrows) throws a recoverable error — acceptable in plan mode.
+ */
+const OUTPUT_REDIRECT_RE =
+  /(?:^|[^<])(?:&|\d+)?>{1,2}(?!&)\s*(?!\/dev\/(null|stderr|stdout)\b)\S/;
 
 // ---------------------------------------------------------------------------
 // Skill nudge config
@@ -189,7 +219,24 @@ export const GuardrailsPlugin: Plugin = async () => {
               `Symbol search detected: "${pattern}". ` +
                 `Use LSP tools instead — goToDefinition, findReferences, hover, documentSymbol, workspaceSymbol. ` +
                 `Grep/glob is only for string literals, comments, regex patterns, or non-code files. ` +
+                `Searching Python? basedpyright's workspaceSymbol/findReferences are broken, so grep IS ` +
+                `the documented fallback — add include="*.py" to bypass this guard. ` +
                 `See AGENTS.md for the full LSP-first policy.`,
+            );
+          }
+        }
+      }
+
+      // --- 4. Plan-mode output-redirect blocking ---
+      if (input.tool === "bash" || input.tool === "shell") {
+        const agent = sessionAgentMap.get(input.sessionID);
+        if (agent === "plan") {
+          const command: unknown = output.args?.command;
+          if (typeof command === "string" && OUTPUT_REDIRECT_RE.test(command)) {
+            throw new Error(
+              `[Guardrail] Output redirection is blocked in plan mode (read-only). ` +
+                `The permission matcher cannot see redirects, so this guard enforces edit:deny. ` +
+                `If the ">" is part of a quoted string, rephrase the command without it.`,
             );
           }
         }
