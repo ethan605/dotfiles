@@ -26,6 +26,7 @@ __install-system-packages() {
 
 	mise use -g \
 		awscli@latest \
+		azure@latest \
 		bat@latest \
 		bottom@latest \
 		chezmoi@latest \
