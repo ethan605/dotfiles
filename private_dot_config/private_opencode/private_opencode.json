@@ -191,7 +191,7 @@
       "prompt": "{file:./REVIEWER.md}"
     }
   },
-  "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git#7ed6f5c"],
+  "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git#7ed6f5cf5499eedb9d18fbd47b3aad0f11052ef8"],
   "lsp": {
     "pyright": {
       "disabled": true
