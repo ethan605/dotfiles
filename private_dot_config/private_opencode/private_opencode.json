@@ -141,18 +141,18 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-fable-5",
       "variant": "max"
     },
     "build": {
       "color": "#ff6ac1",
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-fable-5",
       "variant": "max"
     },
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-6",
+      "model": "anthropic/claude-opus-4-6",
       "variant": "max",
       "prompt": "{file:./GENERAL.md}"
     },
