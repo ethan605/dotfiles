@@ -25,6 +25,9 @@ oc() {
   export GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/
   export GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam)
 
+  # For teamcity MCP
+  export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
+
   opencode "$@"
 }
 
