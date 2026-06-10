@@ -53,6 +53,9 @@
     "rivo_lookup*": "allow",
     "rivo_search*": "allow",
 
+    "teamcity_teamcity_build_log": "allow",
+    "teamcity_teamcity_rest_get": "allow",
+
     "bash": {
       "*": "ask",
       "cat *": "allow",
@@ -258,6 +261,14 @@
       "type": "remote",
       "url": "https://mcp.atlassian.com/v1/mcp",
       "oauth": {}
+    },
+    "teamcity": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://live.neo4j-build.io/app/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:TC_AUTH_TOKEN}"
+      }
     }
   }
 }

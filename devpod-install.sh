@@ -168,6 +168,9 @@ oc() {
   export GRAFANA_URL="\$OC_GRAFANA_URL"
   export GRAFANA_SERVICE_ACCOUNT_TOKEN="\$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
 
+	# For teamcity MCP
+  export TC_AUTH_TOKEN="\$OC_TC_AUTH_TOKEN"
+
 	opencode "\$@"
 }
 
