@@ -27,7 +27,7 @@ jb = "0.6.0"
 make = "4.4.1"
 maven = "3.9.16"
 ninja = "1.13.2"
-opencode = "1.17.0"
+opencode = { version = "1.17.0", postinstall = "cd ~/.config/opencode && npm install @opencode-ai/plugin@latest" }
 rtk = { version = "0.42.3", postinstall = "rtk init -g --opencode" }
 tree-sitter = "0.26.9"
 uv = "0.11.19"
