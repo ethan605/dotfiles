@@ -141,9 +141,17 @@ __config-sync() {
 }
 
 oc() {
-	export OPENCODE_DISABLE_LSP_DOWNLOAD=true
-	export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
-	export OPENCODE_EXPERIMENTAL_MARKDOWN=true
+  # Stable features
+  export OPENCODE_DISABLE_CLAUDE_CODE=true
+  export OPENCODE_DISABLE_LSP_DOWNLOAD=true
+  export OPENCODE_DISABLE_TERMINAL_TITLE=true
+  export OPENCODE_ENABLE_EXA=true
+
+  # Experimental features
+  export OPENCODE_EXPERIMENTAL=true
+  export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
+  export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
+  export OPENCODE_EXPERIMENTAL_PARALLEL=true
 
 	# For LSP servers
 	export PATH="\$HOME/.local/share/nvim/mason/bin:\$HOME/.local/share/mise/shims:\$PATH"
