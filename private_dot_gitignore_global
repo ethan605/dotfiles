@@ -1,11 +1,12 @@
 # vim:filetype=gitignore
+**/.opencode
 **/.plans/*.md
 **/.worktrees
+**/.venv-host
 **/docs/plans/*.md
 **/docs/superpowers/**/*.md
 **/node_modules
 **/tmp
-**/.venv-host
 .envrc
 .null-ls*
 junit.xml
