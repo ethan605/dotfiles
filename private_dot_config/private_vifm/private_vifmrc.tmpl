@@ -125,36 +125,12 @@ filetype
   \ <text/plain>,<text/x-*>,<application/json>
   \ nvim %c
 
-" Archives preview - extracted from https://github.com/zimfw/archive/blob/master/functions/lsarchive
-fileviewer *.7z,*.001 7za l %c
-fileviewer *.rar (( ${+commands[unrar]} )) && unrar l ${1} || rar l %c
-fileviewer *.tar.bz,*.tar.bz2,*.tbz,*.tbz2 tar -tvjf %c
-fileviewer *.tar.gz,*.tgz tar -tvzf %c
-fileviewer *.tar.lzma,*.tlz tar --lzma --help &> /dev/null && XZ_OPT=-T0 tar --lzma -tvf %c || lzcat %c | tar -tvf -
-fileviewer *.tar.xz,*.txz tar -J --help &> /dev/null && XZ_OPT=-T0 tar -tvJf %c || xzcat %c | tar -tvf -
-fileviewer *.tar.zst,*.tzst XZ_OPT=-T0 tar --use-compress-program=unzstd -tvf %c
-fileviewer *.tar tar -tvf %c
-fileviewer *.zip unzip -l %c
-fileviewer *.gz gunzip -l %c
-fileviewer *.xz unxz -T0 -l %c
-fileviewer *.zst zstd -T0 -l %c
-
-" Archives opening - extracted from https://github.com/zimfw/archive/blob/master/functions/unarchive
-filetype *.7z|*.001 7za x %c
-filetype *.rar (( ${+commands[unrar]} )) && unrar x -ad %c || rar x -ad %c
-filetype *.tar.bz|*.tar.bz2|*.tbz|*.tbz2 tar -xvjf %c
-filetype *.tar.gz|*.tgz tar -xvzf %c
-filetype *.tar.lzma|*.tlz tar --lzma --help &> /dev/null && XZ_OPT=-T0 tar --lzma -xvf %c || lzcat %c | tar -xvf -
-filetype *.tar.xz|*.txz tar -J --help &> /dev/null && XZ_OPT=-T0 tar -xvJf %c || xzcat %c | tar -xvf -
-filetype *.tar.zst|*.tzst XZ_OPT=-T0 tar --use-compress-program=unzstd -xvf %c
-filetype *.tar tar -xvf %c
-filetype *.zip unzip %c
-filetype *.bz|*.bz2 bunzip2 %c
-filetype *.gz gunzip %c
-filetype *.lzma unlzma -T0 %c
-filetype *.xz unxz -T0 %c
-filetype *.zst zstd -T0 -d %c
-filetype *.Z uncompress %c
+fileviewer
+  \ *.7z,*.bz2,*.gz,*.rar,*.tar,*.tar*,*.tbz,*.tbz2,*.tgz,*.tlz,*.txz,*.tzst,*.xz,*.zip,*.zst
+  \ lsar -l %c
+filetype
+  \ *.7z,*.bz2,*.gz,*.rar,*.tar,*.tar*,*.tbz,*.tbz2,*.tgz,*.tlz,*.txz,*.tzst,*.xz,*.zip,*.zst
+  \ unar %c
 
 fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
 
