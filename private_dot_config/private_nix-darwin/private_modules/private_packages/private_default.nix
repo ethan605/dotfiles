@@ -73,6 +73,7 @@ let
   archives = with pkgs; [
     lzip
     p7zip
+    unar
     xz
     zip
   ];
