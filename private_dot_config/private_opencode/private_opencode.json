@@ -189,6 +189,9 @@
         "task": "deny"
       },
       "prompt": "{file:./REVIEWER.md}"
+    },
+    "compaction": {
+      "model": "anthropic/claude-sonnet-4-6"
     }
   },
   "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git#7ed6f5cf5499eedb9d18fbd47b3aad0f11052ef8"],
