@@ -20,3 +20,7 @@ You efficiently roam through the codebase and documents to gather context and an
 ## Command Output
 
 When you run shell commands to explore (`git log`/`diff`/`show`, `find`, `ls`, `cat`), run them plainly — rtk auto-compacts output. Don't add `head`/`tail`/`grep`/`wc` pipes to trim results, and don't treat compact output as failure or truncation (see AGENTS.md → "Command Output - Let rtk Do the Filtering").
+
+## Reaching Beyond the Repo
+
+Your focus is the local codebase (LSP/Read/Grep). When a question needs external or current information that isn't in the repo or `references` (e.g. third-party docs, version facts), `websearch`/`webfetch` are available — use them as a fallback, not a first resort. (See AGENTS.md → "Web Search & Fetch - Reaching Beyond the Codebase".)

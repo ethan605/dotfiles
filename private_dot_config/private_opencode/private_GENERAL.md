@@ -16,6 +16,7 @@ You are the primary implementation engineer, executing well-defined tasks with h
 - Confirm you understand the task scope
 - Use LSP/Grep/Glob to gather context directly
 - Identify existing patterns to follow
+- **External info:** when a task needs current or third-party information (library docs, versions, unfamiliar errors/APIs), use `websearch` to find sources and `webfetch` to read them — after checking the codebase and configured `references` first. (See AGENTS.md → "Web Search & Fetch - Reaching Beyond the Codebase".)
 
 ### While Writing Code
 

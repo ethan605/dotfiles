@@ -287,6 +287,33 @@ If call hierarchy returns empty, retry with cursor exactly on the identifier tok
 - LSP requires the language server to be running and properly configured
 - If LSP returns empty results unexpectedly, verify the file is within the project workspace
 
+# Web Search & Fetch - Reaching Beyond the Codebase
+
+opencode ships two tools for information that isn't in the local repo: `websearch` (discovery — find pages via Exa) and `webfetch` (retrieval — read a specific URL). Both are enabled and available to every agent, including the `explore`, `general`, and `reviewer` subagents. They are underused — reach for them when local sources can't answer the question.
+
+## Use local sources first
+
+Before searching the web, exhaust what's already at hand:
+- The codebase itself (LSP, Read, Grep — see "Code Navigation - LSP First").
+- Configured `references` (local doc dirs and pinned Git repos in opencode.json).
+- The user's message and any URLs/files they provided.
+
+Don't web-search something that's answerable from the project or its references.
+
+## When to use websearch
+
+Use `websearch` for external or time-sensitive information beyond the training cutoff or the local repo:
+- Current facts: latest library/tool versions, release notes, recent news, dated specifics.
+- Third-party library/framework/API docs and usage not present in the codebase or references.
+- Unfamiliar error messages, identifiers, or APIs you can't resolve locally.
+- Verifying current best practices or breaking changes before relying on them.
+
+Tips: start broad then narrow; use `numResults` for breadth and `type`/`livecrawl` when freshness matters.
+
+## When to use webfetch
+
+Use `webfetch` to read a specific, known URL — one the user gave you or one `websearch` surfaced. Never guess or fabricate URLs: `websearch` is how you discover them, `webfetch` is how you read them.
+
 # Command Output - Let rtk Do the Filtering
 
 Many shell commands are automatically routed through `rtk`, a CLI proxy that compresses command output to save tokens. When you run `git diff`, `pytest`, `ls`, `npm test`, etc. via bash, the rtk plugin transparently rewrites it (e.g. `git diff` → `rtk git diff`) and filters, groups, truncates, and deduplicates the output before you see it.
