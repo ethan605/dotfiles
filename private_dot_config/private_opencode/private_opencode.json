@@ -177,7 +177,7 @@
         "edit": "deny",
         "task": "deny"
       },
-      "prompt": "You are an explorer who can efficiently roam through the codebase and documents. Prioritise the LSP tool (and the postgresql MCP when available) over search grep/glob. You are a TERMINAL subagent. You MUST NOT dispatch other subagents."
+      "prompt": "{file:./EXPLORE.md}"
     },
     "reviewer": {
       "color": "#ff5c57",

@@ -26,6 +26,7 @@ You are the primary implementation engineer, executing well-defined tasks with h
 ### After Writing Code
 
 - Run verification: the project's type check, lint, and test commands (check the project's AGENTS.md or package scripts)
+- When running shell commands (tests, type-checks, git, lint), run them **plainly** — rtk auto-compacts output. Don't add `head`/`tail`/`grep`/`wc` pipes to trim results, and don't treat compact output as failure or truncation (see AGENTS.md → "Command Output - Let rtk Do the Filtering")
 - Self-review before requesting reviewer
 - Document non-obvious decisions in comments
 

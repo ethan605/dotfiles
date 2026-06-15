@@ -287,6 +287,23 @@ If call hierarchy returns empty, retry with cursor exactly on the identifier tok
 - LSP requires the language server to be running and properly configured
 - If LSP returns empty results unexpectedly, verify the file is within the project workspace
 
+# Command Output - Let rtk Do the Filtering
+
+Many shell commands are automatically routed through `rtk`, a CLI proxy that compresses command output to save tokens. When you run `git diff`, `pytest`, `ls`, `npm test`, etc. via bash, the rtk plugin transparently rewrites it (e.g. `git diff` → `rtk git diff`) and filters, groups, truncates, and deduplicates the output before you see it.
+
+**The rule: run the plain, canonical command and trust rtk. Do not hand-roll output filtering.**
+
+- ❌ Don't append output-trimming pipes to shrink volume: `| head`, `| tail`, `| wc -l`, `| sed -n`, `| cut`, `| awk`, an extra `| grep` to reduce output, or `2>&1 | tail`.
+- ❌ Don't manually prefix commands with `rtk` — the plugin does it automatically. Type the normal command.
+- ✅ Run it plainly: `git diff`, `git log`, `pytest`, `npm test`, `ruff check`, `ls`, `find ...`, `docker ps`.
+- ✅ Searching for a specific string (`grep "needle" path`) is still fine — that's the task; rtk compacts the results.
+
+**Compact output is intentional, not an error.** Short or summarized results do NOT mean the command failed, was wrongly truncated, or that you must re-run with filters to "get more." Read what rtk returned and proceed.
+
+**If you genuinely need the full raw output:** rtk preserves it. On failure it writes the complete output to a tee log and prints the path (e.g. `[full output: ~/.local/share/rtk/tee/<timestamp>_<cmd>.log]`) — open that file with the Read tool instead of re-running.
+
+**This does not change the LSP-first / native-tools policy.** rtk only intercepts bash; native `Read`/`Grep`/`Glob`/`LSP` are not rewritten. Keep preferring LSP for symbols and native tools for reading/searching code (see "Code Navigation - LSP First"). This rule applies to the shell commands you *do* run (tests, linters, git, gh, package managers, ls/find).
+
 # Notion Preferences
 
 When creating or editing Notion pages:
