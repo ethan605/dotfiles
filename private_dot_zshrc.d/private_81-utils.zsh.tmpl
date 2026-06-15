@@ -65,12 +65,12 @@ mux() {
 }
 
 vdiff() {
-  local arg=${1:-}
-
-  if [[ -z $arg ]]; then
+  if [[ $# == 0 ]]; then
     nvim +DiffviewOpen
+  elif [[ $# == 1 ]]; then
+    nvim "+DiffviewOpen $1..."
   else
-    nvim "+DiffviewOpen $arg"
+    nvim "+DiffviewOpen $1...$2"
   fi
 }
 
