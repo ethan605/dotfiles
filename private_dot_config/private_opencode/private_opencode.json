@@ -194,7 +194,7 @@
       "model": "anthropic/claude-sonnet-4-6"
     }
   },
-  "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git#7ed6f5cf5499eedb9d18fbd47b3aad0f11052ef8"],
+  "plugin": ["superpowers@git+https://github.com/ethan605/superpowers.git#899678fdbe1cc8a23daaa3af4e130025c70d02f7"],
   "lsp": {
     "pyright": {
       "disabled": true
