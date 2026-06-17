@@ -152,12 +152,12 @@
     "plan": {
       "color": "#57c7ff",
       "model": "anthropic/claude-opus-4-8",
-      "variant": "max"
+      "variant": "xhigh"
     },
     "build": {
       "color": "#ff6ac1",
       "model": "anthropic/claude-opus-4-8",
-      "variant": "max"
+      "variant": "xhigh"
     },
     "general": {
       "color": "#5af78e",
