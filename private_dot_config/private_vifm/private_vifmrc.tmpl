@@ -119,10 +119,10 @@ fileviewer .*/ eza --all --color=always --git --group-directories-first --icons=
 
 " Text files
 fileviewer 
-  \ <text/plain>,<text/x-*>,<application/json>
+  \ <text/plain>,<text/xml>,<text/x-*>,<application/json>
   \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
 filetype
-  \ <text/plain>,<text/x-*>,<application/json>
+  \ <text/plain>,<text/xml>,<text/x-*>,<application/json>
   \ nvim %c
 
 fileviewer
