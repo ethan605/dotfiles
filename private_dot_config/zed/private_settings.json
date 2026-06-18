@@ -48,6 +48,6 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Snazzy Theme",
-  },
+    "dark": "Snazzy Theme"
+  }
 }
