@@ -1,7 +1,6 @@
-{
-  inputs,
-  system,
-  ...
+{ inputs
+, system
+, ...
 }:
 let
   pkgs-25-11 = import inputs.nixpkgs-25-11 { inherit system; };

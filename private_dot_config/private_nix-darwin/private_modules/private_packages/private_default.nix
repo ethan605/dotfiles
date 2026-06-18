@@ -121,8 +121,7 @@ let
     alacritty
     appcleaner
     ghostty-bin
-    # flameshot
-    # shottr
+    zed-editor
   ];
 in
 {
@@ -156,11 +155,8 @@ in
       "megasync"
       "telegram"
       "whatsapp"
-      "zed"
 
-      # "ghostty"
       # "logitune"
-      # "megasync"
     ];
   };
 
