@@ -15,7 +15,7 @@
 
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
-      inputs.brew-src.url = "github:Homebrew/brew/5.1.14";
+      inputs.brew-src.url = "github:Homebrew/brew/master";
     };
 
     home-manager = {
@@ -25,12 +25,11 @@
   };
 
   outputs =
-    {
-      determinate,
-      nix-darwin,
-      nix-homebrew,
-      home-manager,
-      ...
+    { determinate
+    , nix-darwin
+    , nix-homebrew
+    , home-manager
+    , ...
     }@inputs:
     let
       system = "aarch64-darwin";
