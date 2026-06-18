@@ -149,8 +149,10 @@ style = "bold #4285f4"
 
 # Languages support
 [cmake]
-format = " [$symbol($version)]($style)"
+format = " [$symbol$version]($style)"
 style = "bold #e25241"
+symbol = " "
+version_format = "$raw"
 
 [golang]
 format = " [$symbol$version]($style)"
