@@ -32,6 +32,11 @@ alias l1='ls --oneline'
 alias lk='l --total-size --sort=size --reverse'
 alias lr='l --tree --level=2'
 
+# Kubectl
+alias kubectl=kubecolor
+compdef kubecolor=kubectl
+alias k=kubectl
+
 # Neovim
 alias v=nvim
 alias dbee='nvim +Dbee'
