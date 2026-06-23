@@ -89,6 +89,7 @@ Library
 !.config/opencode
 !.config/starship.toml
 !.config/vifm
+!.config/vivid
 .default-*
 .editrc
 .git*
