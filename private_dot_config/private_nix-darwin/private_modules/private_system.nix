@@ -1,8 +1,9 @@
-{ pkgs
-, username
-, hostname
-, home-dir
-, ...
+{
+  pkgs,
+  username,
+  hostname,
+  home-dir,
+  ...
 }:
 
 {

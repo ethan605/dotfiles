@@ -1,7 +1,4 @@
-{ username
-, home-dir
-, ...
-}:
+{ username, home-dir, ... }:
 
 {
   imports = [

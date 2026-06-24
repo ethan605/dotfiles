@@ -40,7 +40,7 @@ return {
         -- formatters
         none_ls.builtins.formatting.clang_format,
         none_ls.builtins.formatting.nginx_beautifier,
-        none_ls.builtins.formatting.nixpkgs_fmt,
+        none_ls.builtins.formatting.nixfmt,
         none_ls.builtins.formatting.prettier,
         none_ls.builtins.formatting.shfmt,
         none_ls.builtins.formatting.sqlfluff.with(sqlfluff_config),

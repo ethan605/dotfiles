@@ -59,6 +59,8 @@ let
       imagemagick
       jq
       nil # nil depends on nix, so installing here instead of Mason
+      nixfmt
+      nixfmt-tree
       parallel
       qrencode
       viddy

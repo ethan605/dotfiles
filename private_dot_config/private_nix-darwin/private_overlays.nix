@@ -1,16 +1,13 @@
-{ inputs
-, system
-, ...
-}:
+{ inputs, system, ... }:
+
 let
-  pkgs-25-11 = import inputs.nixpkgs-25-11 { inherit system; };
   pkgs-26-05 = import inputs.nixpkgs-26-05 { inherit system; };
 in
 {
   nixpkgs.overlays = [
     (_final: prev: {
       # Overriden packages (due to instabilities, bugs, etc.)
-      termite = pkgs-25-11.termite;
+      mise = pkgs-26-05.mise;
       zsh = pkgs-26-05.zsh;
 
       # Self-host packages
