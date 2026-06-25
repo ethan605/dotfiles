@@ -12,7 +12,7 @@ node = "26.3.1"
 python = "3.14.6"
 ruby = "4.0.5"
 rust = "1.96.0"
-terraform = "1.15.6"
+terraform = "1.15.7"
 
 # Then tools
 awscli = { version = "2.35.11", symlink_bins = "true" }
@@ -27,10 +27,10 @@ jb = "0.6.0"
 make = "4.4.1"
 maven = "3.9.16"
 ninja = "1.13.2"
-opencode = "1.17.9"
+opencode = "1.17.10"
 rtk = { version = "0.42.4", postinstall = "rtk init -g --opencode" }
 tree-sitter = "0.26.9"
-uv = "0.11.23"
+uv = "0.11.24"
 
 # And custom tools
 [tools."http:cypher-shell"]

@@ -17,7 +17,7 @@
   "nginx-language-server": "0.9.0",
   "prettier": "3.8.4",
   "pyright": "1.1.410",
-  "ruff": "0.15.18",
+  "ruff": "0.15.19",
   "rust-analyzer": "2026-06-22",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.13.1",
