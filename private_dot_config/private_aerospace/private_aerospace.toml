@@ -193,5 +193,9 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
+  if.app-name-regex-substring = 'Amtok'
+  run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
   if.app-id = 'com.colliderli.iina'
   run = ['layout floating', 'move-node-to-workspace 9']

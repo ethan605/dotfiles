@@ -152,12 +152,12 @@
     "plan": {
       "color": "#57c7ff",
       "model": "anthropic/claude-opus-4-8",
-      "variant": "xhigh"
+      "variant": "high"
     },
     "build": {
       "color": "#ff6ac1",
       "model": "anthropic/claude-opus-4-8",
-      "variant": "xhigh"
+      "variant": "high"
     },
     "general": {
       "color": "#5af78e",
@@ -172,7 +172,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "anthropic/claude-haiku-4-5",
+      "model": "openai/gpt-5.4-fast",
       "permission": {
         "edit": "deny",
         "task": "deny"
