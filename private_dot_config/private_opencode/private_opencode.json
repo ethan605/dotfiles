@@ -172,7 +172,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "openai/gpt-5.4-fast",
+      "model": "anthropic/claude-haiku-4-5",
       "permission": {
         "edit": "deny",
         "task": "deny"
