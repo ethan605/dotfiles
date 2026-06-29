@@ -55,7 +55,7 @@ local plugins = {
   require("plugins.csvview"),
   require("plugins.dashboard"),
   require("plugins.diffview"),
-  require("plugins.fyler"),
+  -- require("plugins.fyler"),
   require("plugins.fzf-lua"),
   require("plugins.gitlinker"),
   require("plugins.gitsigns"),
