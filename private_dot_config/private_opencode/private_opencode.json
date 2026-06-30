@@ -106,12 +106,23 @@
       "rtk git status*": "allow",
       "rtk git worktree list*": "allow",
 
+      "git add*": "allow",
+      "git commit*": "allow",
+      "rtk git add*": "allow",
+      "rtk git commit*": "allow",
+
+      "git push*": "ask",
+      "rtk git push*": "ask",
+
       "gh pr list*": "allow",
       "gh pr view*": "allow",
       "gh repo view*": "allow",
       "rtk gh pr list*": "allow",
       "rtk gh pr view*": "allow",
       "rtk gh repo view*": "allow",
+
+      "gh pr create*": "ask",
+      "rtk gh pr create*": "ask",
 
       "uv run mypy *": "allow",
       "uv run pytest *": "allow",
