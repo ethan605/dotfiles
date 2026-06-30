@@ -20,6 +20,11 @@
     "webfetch": "allow",
     "websearch": "allow",
 
+    "edit": {
+      "*": "ask",
+      "~/.config/**": "ask"
+    },
+
     "google-docs_writeSpreadsheet": "deny",
     "google-docs_batchWrite": "deny",
     "google-docs_appendRows": "deny",
@@ -155,7 +160,10 @@
       "rtk npm ls*": "allow",
       "rtk npm info *": "allow",
       "rtk npm outdated*": "allow",
-      "rtk npm why *": "allow"
+      "rtk npm why *": "allow",
+
+      "chezmoi *": "ask",
+      "rtk chezmoi *": "ask"
     }
   },
   "default_agent": "plan",
