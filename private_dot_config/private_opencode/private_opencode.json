@@ -236,7 +236,7 @@
       }
     },
     "grafana": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": ["uvx", "mcp-grafana"],
       "environment": {
