@@ -181,7 +181,7 @@
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-6",
+      "model": "opencode/claude-sonnet-5",
       "variant": "max",
       "permission": {
         "task": "deny"
