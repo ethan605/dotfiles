@@ -85,7 +85,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # For zimfw
 export ZIM_HOME="${ZDOTDIR:-$HOME}/.zim"
 
+{{- if ne .chezmoi.os "devpod" }}
+
 # For orbstack
 if [[ -f $HOME/.orbstack/shell/init.zsh ]]; then
   source "$HOME/.orbstack/shell/init.zsh"
 fi
+
+{{- end }}
