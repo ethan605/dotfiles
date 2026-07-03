@@ -1,9 +1,83 @@
 # vim:filetype=zsh
 {{- if eq .machine_id "devpod" }}
 
+command -v mise >/dev/null && eval "$(mise activate bash)" # must go first
+command -v direnv >/dev/null && eval "$(direnv hook bash)"
+command -v fzf >/dev/null && eval "$(fzf --bash)"
 command -v kubectl >/dev/null && source <(kubectl completion zsh)
+command -v starship >/dev/null && eval "$(starship init bash)"
+command -v zoxide >/dev/null && eval "$(zoxide init bash)"
 
+__system-upgrade() {
+	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
+		sudo apt upgrade -y &&
+		sudo apt autoremove -y &&
+		sudo apt clean -y &&
+		sudo rm -rf /var/lib/apt/lists/*
+}
+
+__mise-upgrade() {
+	mise self-update --yes &&
+		mise plugins update &&
+		mise upgrade --bump --interactive &&
+		mise cache prune
+}
+
+__config-sync() {
+	chezmoi git pull &&
+		chezmoi apply --force &&
+		nvim --headless \
+			-c 'Lazy! restore' \
+			-c MasonUpdate \
+			-c MasonLockRestore \
+			-c qa
+}
+
+oc() {
+	# Stable features
+	export OPENCODE_DISABLE_CLAUDE_CODE=true
+	export OPENCODE_DISABLE_LSP_DOWNLOAD=true
+	export OPENCODE_DISABLE_TERMINAL_TITLE=true
+	export OPENCODE_ENABLE_EXA=true
+
+	# Experimental features
+	export OPENCODE_EXPERIMENTAL=true
+	export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
+	export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
+	export OPENCODE_EXPERIMENTAL_PARALLEL=true
+
+	# For LSP servers
+	export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/share/mise/shims:$PATH"
+
+	# For Gemini
+	GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
+	export GOOGLE_VERTEX_PROJECT
+	export GOOGLE_VERTEX_LOCATION=global
+	export VERTEX_LOCATION=global
+
+	# For neo4j-cypher MCP
+	export NEO4J_URI="$OC_NEO4J_URI"
+	export NEO4J_USERNAME="$OC_NEO4J_USERNAME"
+	export NEO4J_PASSWORD="$OC_NEO4J_PASSWORD"
+	export NEO4J_DATABASE="$OC_NEO4J_DATABASE"
+
+	# For google-docs MCP
+	export GOOGLE_DOCS_MCP_CLIENT_ID="$OC_GOOGLE_DOCS_MCP_CLIENT_ID"
+	export GOOGLE_DOCS_MCP_CLIENT_SECRET="$OC_GOOGLE_DOCS_MCP_CLIENT_SECRET"
+
+	# For grafana MCP
+	export GRAFANA_URL="$OC_GRAFANA_URL"
+	export GRAFANA_SERVICE_ACCOUNT_TOKEN="$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
+
+	# For teamcity MCP
+	export TC_AUTH_TOKEN="$OC_TC_AUTH_TOKEN"
+
+	opencode "$@"
+}
+
+alias __devenv="bash -c 'source devenv && make environment && make environments-env'"
 alias ak='goak'
+alias ocserve='oc serve --port=$OC_PORT --log-level=INFO'
 
 {{- else }}
 
