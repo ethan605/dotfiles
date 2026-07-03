@@ -40,7 +40,6 @@ export LESS='--ignore-case --jump-target=4 --RAW-CONTROL-CHARS --LONG-PROMPT'
 export MANPAGER='nvim +Man!'
 
 export COMPOSE_BAKE=true
-export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
 export NODE_OPTIONS="--max-old-space-size=8192"
 export TOOLCHAINS=swift
 
@@ -88,6 +87,8 @@ export ZIM_HOME="${ZDOTDIR:-$HOME}/.zim"
 {{- if ne .machine_id "devpod" }}
 
 # For orbstack
+export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
+
 if [[ -f $HOME/.orbstack/shell/init.zsh ]]; then
   source "$HOME/.orbstack/shell/init.zsh"
 fi
