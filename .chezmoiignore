@@ -17,8 +17,8 @@ misc
 
 # >>>
 
-# <<< Linux-exclusive files
 {{- if ne .chezmoi.os "linux" }}
+# <<< Linux-exclusive files
 
 .config/autostart
 .config/chrome-dev-flags.conf
@@ -57,31 +57,31 @@ misc
 .mozilla
 .xkb
 
-{{- end }}
 # >>>
+{{- end }}
 
+{{- if ne .machine_id "PF3XSEPR" }}
 # <<< Work-related exclusive files
-{{ if ne .machine_id "PF3XSEPR" }}
 
 .config/sway/keymaps/thinkpad.xkb
 .local/bin/brightness-utils
 .local/bin/thinkpad-utils
 
-{{ end }}
 # >>>
+{{- end }}
 
+{{- if ne .chezmoi.os "darwin" }}
 # <<< MacOS-exclusive files
-{{ if ne .chezmoi.os "darwin" }}
 
 .config/karabiner
 .config/nix-darwin
 Library
 
-{{ end }}
 # >>>
+{{- end }}
 
+{{- if eq .machine_id "devpod" }}
 # <<< DebBox-exclusive files
-{{ if eq .machine_id "devpod" }}
 
 .config/*
 !.config/bottom
@@ -120,5 +120,5 @@ Library
 !.zshrc.d/80-utils.zsh
 !.zshrc.d/81-aliases.zsh
 
-{{ end }}
 # >>>
+{{- end }}
