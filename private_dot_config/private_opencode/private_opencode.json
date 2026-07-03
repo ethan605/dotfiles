@@ -211,7 +211,7 @@
     }
   },
   "plugin": [
-    "superpowers@git+https://github.com/ethan605/superpowers.git#b33ea475816f439a35ba7e72ca86a7ef82d4d003"
+    "superpowers@git+https://github.com/ethan605/superpowers.git#304b00295fad9cb18c47d170ff2872840a14d421"
   ],
   "lsp": {
     "pyright": {
