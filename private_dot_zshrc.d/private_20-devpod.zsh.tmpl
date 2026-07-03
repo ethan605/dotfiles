@@ -1,1 +1,12 @@
 # vim:filetype=zsh
+{{- if eq .machine_id "devpod" }}
+
+command -v kubectl >/dev/null && source <(kubectl completion zsh)
+
+alias ak='goak'
+
+{{- else }}
+
+# Devpod-only
+
+{{- end }}
