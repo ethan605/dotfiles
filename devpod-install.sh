@@ -31,12 +31,15 @@ __install-system-packages() {
 		bottom@latest \
 		chezmoi@latest \
 		delta@latest \
+		direnv@latest \
 		eza@latest \
 		fd@latest \
 		fzf@latest \
 		gcloud@latest \
 		gh@latest \
+		go@latest \
 		kubecolor@latest \
+		kubectl@latest \
 		kubectx@latest \
 		kubens@latest \
 		kustomize@latest \
@@ -44,12 +47,14 @@ __install-system-packages() {
 		neovim@latest \
 		nodejs@latest \
 		opencode@latest \
+		python@3.10 \
 		ripgrep@latest \
 		rtk@latest \
 		ruby@latest \
 		rust@latest \
 		starship@latest \
 		tree-sitter@latest \
+		usage@latest \
 		uv@latest \
 		vivid@latest \
 		zoxide@latest
