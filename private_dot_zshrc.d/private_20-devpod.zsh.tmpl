@@ -71,7 +71,7 @@ oc() {
   opencode "$@"
 }
 
-alias __devenv="source devenv 2>/dev/null && bash -c 'source devenv && make environment && make environments-env'"
+alias __devenv="source devenv 2>/dev/null; bash -c 'source devenv && make environment && make environments-env'"
 alias ak='goak'
 alias ocserve='oc serve --port=$OC_PORT --log-level=INFO'
 
