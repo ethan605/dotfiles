@@ -112,13 +112,7 @@ Library
 !.zprofile
 !.zshenv
 !.zshrc
-.zshrc.d/*
-!.zshrc.d/11-plugins.zsh
-!.zshrc.d/12-key-bindings.zsh
-!.zshrc.d/13-settings.zsh
-!.zshrc.d/14-fzf-tabs.zsh
-!.zshrc.d/80-utils.zsh
-!.zshrc.d/81-aliases.zsh
+!.zshrc.d/*
 
 # >>>
 {{- end }}
