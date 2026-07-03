@@ -1,6 +1,9 @@
 # vim:filetype=zsh
 {{- if eq .machine_id "devpod" }}
 
+# https://ghostty.org/docs/help/terminfo
+export TERMINFO="$HOME/.terminfo"
+
 command -v kubectl >/dev/null && source <(kubectl completion zsh)
 command -v omni >/dev/null && source <(omni completion zsh)
 
