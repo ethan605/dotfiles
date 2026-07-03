@@ -45,7 +45,7 @@ __install-system-packages() {
 		kustomize@latest \
 		lua@latest \
 		neovim@latest \
-		nodejs@latest \
+		node@latest \
 		opencode@latest \
 		python@3.10 \
 		ripgrep@latest \
