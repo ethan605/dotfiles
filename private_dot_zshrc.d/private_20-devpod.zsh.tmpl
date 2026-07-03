@@ -79,7 +79,7 @@ __devenv() {
   return $rc
 }
 
-oc() {
+ocserve() {
   # Stable features
   export OPENCODE_DISABLE_CLAUDE_CODE=true
   export OPENCODE_DISABLE_LSP_DOWNLOAD=true
@@ -118,11 +118,10 @@ oc() {
   # For teamcity MCP
   export TC_AUTH_TOKEN="$OC_TC_AUTH_TOKEN"
 
-  opencode "$@"
+  opencode serve --port=$OC_PORT --log-level=INFO
 }
 
 alias ak='goak'
-alias ocserve='oc serve --port=$OC_PORT --log-level=INFO'
 
 {{- else }}
 
