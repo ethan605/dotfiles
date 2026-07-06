@@ -80,11 +80,12 @@ let
     zip
   ];
 
-  gpg = with pkgs; [
+  openpgp = with pkgs; [
     gnupg # gpg and gpg-agent
     gpgme.dev
     libassuan
     pinentry_mac
+    yubikey-manager
 
     (
       # UNIX Password Store
@@ -103,7 +104,7 @@ let
     switchaudio-osx
   ];
 
-  cli = archives ++ gpg ++ media;
+  cli = archives ++ openpgp ++ media;
 
   tui = with pkgs; [
     aria2
@@ -123,7 +124,7 @@ let
     alacritty
     appcleaner
     ghostty-bin
-    zed-editor
+    # zed-editor
   ];
 in
 {
