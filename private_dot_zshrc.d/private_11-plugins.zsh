@@ -24,6 +24,7 @@ __source-completions() {
   command -v opencode >/dev/null && source <(opencode completion)
   command -v uv >/dev/null && source <(uv generate-shell-completion zsh)
   command -v uvx >/dev/null && source <(uvx --generate-shell-completion zsh)
+  command -v ykman >/dev/null && source <(_YKMAN_COMPLETE=zsh_source ykman)
 
   local gcloud_dir=$(mise where gcloud 2>/dev/null)
 
