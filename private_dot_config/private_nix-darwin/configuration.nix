@@ -8,6 +8,7 @@
   ];
 
   determinateNix.enable = true;
+  documentation.enable = false;
   nix.enable = false;
   nixpkgs.config.allowUnfree = true;
 

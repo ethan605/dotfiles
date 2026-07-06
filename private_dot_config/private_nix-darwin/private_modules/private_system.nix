@@ -19,6 +19,7 @@
   system = {
     stateVersion = 5;
     primaryUser = username;
+    tools.darwin-uninstaller.enable = false;
 
     defaults = {
       NSGlobalDomain = {
