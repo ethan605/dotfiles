@@ -7,7 +7,7 @@ in
   nixpkgs.overlays = [
     (_final: prev: {
       # Overriden packages (due to instabilities, bugs, etc.)
-      # mise = pkgs-26-05.mise;
+      nixos-render-docs = pkgs-26-05.nixos-render-docs;
       zsh = pkgs-26-05.zsh;
 
       # Self-host packages
