@@ -1,5 +1,4 @@
 # vim:filetype=zsh
-{{- if eq .chezmoi.os "linux" }}
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   export _JAVA_AWT_WM_NONREPARENTING=1
@@ -22,9 +21,3 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 
   exec sway -d 2> $HOME/.logs/sway.log
 fi
-
-{{- else }}
-
-# Linux-only
-
-{{- end }}

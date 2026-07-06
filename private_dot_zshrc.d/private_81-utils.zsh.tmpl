@@ -1,44 +1,6 @@
 # vim:filetype=zsh
 alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }'"
 
-oc() {
-  # Stable features
-  export OPENCODE_DISABLE_CLAUDE_CODE=true
-  export OPENCODE_DISABLE_LSP_DOWNLOAD=true
-  export OPENCODE_DISABLE_TERMINAL_TITLE=true
-  export OPENCODE_ENABLE_EXA=true
-
-  # Experimental features
-  export OPENCODE_EXPERIMENTAL=true
-  export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
-  export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
-  export OPENCODE_EXPERIMENTAL_PARALLEL=true
-
-  # For LSP servers
-  export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-
-  # For Gemini
-  export GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
-  export GOOGLE_VERTEX_LOCATION=global
-  export VERTEX_LOCATION=global
-
-  # For postgresql MCP
-  # export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
-
-  # For google-docs MCP
-  export GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }')
-  export GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1)
-
-  # For grafana MCP
-  export GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/
-  export GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam)
-
-  # For teamcity MCP
-  export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
-
-  opencode "$@"
-}
-
 greek-letters() {
   print -P "alpha: %F{red}α%f,beta: %F{red}β%f,gamma: %F{red}γ%f,delta: %F{red}δ%f,epsilon: %F{red}ε%f,theta: %F{red}θ%f,lambda: %F{red}λ%f,mu: %F{red}μ%f,pi: %F{red}π%f,sigma: %F{red}σ%f,phi: %F{red}φ%f,omega: %F{red}ω%f" \
     | tr ',' '\n' \

@@ -17,8 +17,8 @@ misc
 
 # >>>
 
-{{- if ne .chezmoi.os "linux" }}
 # <<< Linux-exclusive files
+{{- if ne .chezmoi.os "linux" }}
 
 .config/autostart
 .config/chrome-dev-flags.conf
@@ -56,32 +56,34 @@ misc
 .local/share/emoji.txt
 .mozilla
 .xkb
+.zshrc.d/10-sway.zsh
 
-# >>>
 {{- end }}
+# >>>
 
-{{- if ne .machine_id "PF3XSEPR" }}
+# <<< MacOS-exclusive files
+{{- if ne .chezmoi.os "darwin" }}
+
+.config/karabiner
+.config/nix-darwin
+.zshrc.d/82-nix.zsh
+Library
+
+{{- end }}
+# >>>
+
 # <<< Work-related exclusive files
+{{- if ne .machine_id "PF3XSEPR" }}
 
 .config/sway/keymaps/thinkpad.xkb
 .local/bin/brightness-utils
 .local/bin/thinkpad-utils
 
-# >>>
 {{- end }}
-
-{{- if ne .chezmoi.os "darwin" }}
-# <<< MacOS-exclusive files
-
-.config/karabiner
-.config/nix-darwin
-Library
-
 # >>>
-{{- end }}
 
-{{- if eq .machine_id "devpod" }}
 # <<< DebBox-exclusive files
+{{- if eq .machine_id "devpod" }}
 
 .config/*
 !.config/bottom
@@ -106,12 +108,6 @@ Library
 .tmux.conf
 .xkb
 Library
-!.zimrc
-!.zlogin
-!.zlogout
-!.zprofile
-!.zshenv
-!.zshrc
 .zshrc.d/*
 !.zshrc.d/11-plugins.zsh
 !.zshrc.d/12-key-bindings.zsh
@@ -121,5 +117,9 @@ Library
 !.zshrc.d/80-aliases.zsh
 !.zshrc.d/81-utils.zsh
 
-# >>>
+{{- else }}
+
+.zshrc.d/20-devpod.zsh
+
 {{- end }}
+# >>>

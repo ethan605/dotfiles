@@ -1,6 +1,3 @@
-# vim:filetype=zsh
-{{- if eq .machine_id "devpod" }}
-
 # https://ghostty.org/docs/help/terminfo
 export TERMINFO="$HOME/.terminfo"
 
@@ -122,9 +119,3 @@ ocserve() {
 }
 
 alias ak='goak'
-
-{{- else }}
-
-# Devpod-only
-
-{{- end }}
