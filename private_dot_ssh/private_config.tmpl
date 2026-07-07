@@ -12,8 +12,6 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.
 
 Host *
   AddKeysToAgent yes
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_ed25519
 
 {{- if eq .chezmoi.os "darwin" }}
 
@@ -22,12 +20,18 @@ Host *
 
 {{- end }}
 
+Host github.com
+  User git
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_ed25519
+
+{{- if eq .machine_id "J6JX2CY3C5" }}
+
 Host github.work
   Hostname github.com
   User git
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/work_id_ed25519
-
-{{- if eq .machine_id "J6JX2CY3C5" }}
 
 # DevPod Start neo4j-cloud.devpod
 Host neo4j-cloud.devpod
