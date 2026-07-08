@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ -z "${WORK_EMAIL++}" ]]; then
-	echo "Error: WORK_EMAIL is unset"
-	exit 1
-fi
-
 export PATH="$HOME/.local/bin:$PATH"
 
 __install-system-packages() {
@@ -233,8 +228,20 @@ __configure-chezmoi() {
 		--apply \
 		--force
 
-	git config --global user.email "$WORK_EMAIL" &&
-		git config --global core.excludesfile ~/.gitignore_global
+	cat >|"$HOME/.gitconfig" <<EOF
+[user]
+  name = Thanh Nguyen
+  email = {{work_email}}
+  signingKey = {{gpg_key}}
+[core]
+  excludesfile = ~/.gitignore_global
+  autocrlf = false
+  pager = delta
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
+EOF
 }
 
 __configure-nvim() {
