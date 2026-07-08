@@ -236,7 +236,6 @@ __configure-chezmoi() {
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = false
-  pager = delta
 [commit]
   gpgsign = true
 [tag]
