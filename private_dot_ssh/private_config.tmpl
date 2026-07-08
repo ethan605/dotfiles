@@ -40,7 +40,7 @@ Host neo4j-cloud.devpod
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
   HostKeyAlgorithms rsa-sha2-256,rsa-sha2-512,ssh-rsa
-  ProxyCommand "/run/current-system/sw/bin/devpod" ssh --stdio --context default --user ubuntu neo4j-cloud
+  ProxyCommand "/run/current-system/sw/bin/devpod" ssh --stdio --context default --user ubuntu neo4j-cloud --gpg-agent-forwarding
   User ubuntu
 # DevPod End neo4j-cloud.devpod
 
