@@ -231,11 +231,15 @@ __configure-chezmoi() {
 	cat >|"$HOME/.gitconfig" <<EOF
 [user]
   name = Thanh Nguyen
-  email = {{work_email}}
-  signingKey = {{gpg_key}}
+  email = thanh.nguyen@neo4j.com
+  signingKey = ~/.ssh/id_ecdsa.pub
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = false
+[gpg]
+  format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
 [commit]
   gpgsign = true
 [tag]

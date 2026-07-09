@@ -84,6 +84,7 @@ let
     gnupg # gpg and gpg-agent
     gpgme.dev
     libassuan
+    openssh
     pinentry_mac
     yubikey-manager
 
