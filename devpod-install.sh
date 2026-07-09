@@ -234,7 +234,7 @@ __configure-chezmoi() {
   email = thanh.nguyen@neo4j.com
   signingKey = ~/.ssh/id_ecdsa.pub
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore-global
   autocrlf = false
 [gpg]
   format = ssh
