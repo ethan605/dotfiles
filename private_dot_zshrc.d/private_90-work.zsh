@@ -1,5 +1,6 @@
 # vim:filetype=zsh
 export WORK_DIR="$HOME/work"
+export OC_PORT=45678
 
 if [[ -f "$WORK_DIR/.zshrc" ]]; then
   # shellcheck disable=SC1091
@@ -95,7 +96,7 @@ devbox() {
   LC_ALL=C LC_COLLATE=C.UTF-8 LC_CTYPE=C.UTF-8 LC_MESSAGES=C.UTF-8
   LC_MONETARY=C.UTF-8 LC_NUMERIC=C.UTF-8 LC_TIME=C.UTF-8
 
-  local for_oc=false oc_port=45678
+  local for_oc=false
 
   while (("$#")); do
     case "$1" in
@@ -120,7 +121,7 @@ devbox() {
     fi
 
     local oc_envs="
-OC_PORT=$oc_port \
+OC_PORT=$OC_PORT \
 OC_GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }') \
 OC_GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1) \
 OC_GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/ \
@@ -140,5 +141,5 @@ OC_NEO4J_DATABASE=$NEO4J_DATABASE
   fi
 }
 
-alias ocattach='opencode attach http://127.0.0.1:45678'
+alias ocattach="opencode attach http://127.0.0.1:$OC_PORT"
 alias ocbox='devbox --for-oc'
