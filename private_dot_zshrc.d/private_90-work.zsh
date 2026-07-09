@@ -90,7 +90,7 @@ dbee-postgres() {
 }
 
 devbox() {
-  # infocmp -x xterm-ghostty | ssh YOUR-SERVER -- tic -x -
+  # infocmp -x xterm-ghostty | ssh neo4j-cloud -- tic -x -
   LANG=C.UTF-8
   LC_ALL=C LC_COLLATE=C.UTF-8 LC_CTYPE=C.UTF-8 LC_MESSAGES=C.UTF-8
   LC_MONETARY=C.UTF-8 LC_NUMERIC=C.UTF-8 LC_TIME=C.UTF-8
@@ -141,3 +141,4 @@ OC_NEO4J_DATABASE=$NEO4J_DATABASE
 }
 
 alias ocattach='opencode attach http://127.0.0.1:45678'
+alias ocbox='devbox --for-oc'
