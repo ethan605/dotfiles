@@ -4,6 +4,14 @@
 # [user]
 #   email = thanh@workplace.com
 #   signingkey = ABCDEFGH12345678
+#   signingkey = ~/.ssh/work_id_ecdsa.pub
+# [gpg]
+#   format = ssh
+# [gpg "ssh"]
+# 	allowedSignersFile = ~/.ssh/allowed_signers
+
+# ~/.ssh/allowed_signers
+# thanh@workplace.com ecdsa-sha2-nistp256 AAA...
 
 [includeIf "hasconfig:remote.*.url:git@github.com:team-alpha/*"]
   path = ~/.gitconfig_work_id
