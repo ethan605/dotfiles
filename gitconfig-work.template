@@ -1,9 +1,8 @@
 # vim:filetype=gitconfig
 
-# .gitconfig_work_id
+# .gitconfig-work-id
 # [user]
 #   email = thanh@workplace.com
-#   signingkey = ABCDEFGH12345678
 #   signingkey = ~/.ssh/work_id_ecdsa.pub
 # [gpg]
 #   format = ssh
@@ -14,9 +13,9 @@
 # thanh@workplace.com ecdsa-sha2-nistp256 AAA...
 
 [includeIf "hasconfig:remote.*.url:git@github.com:team-alpha/*"]
-  path = ~/.gitconfig_work_id
+  path = ~/.gitconfig-work-id
 [includeIf "hasconfig:remote.*.url:git@gist.github.com:team-alpha/*"]
-  path = ~/.gitconfig_work_id
+  path = ~/.gitconfig-work-id
 [url "git@github.work:team-alpha"]
   insteadOf = https://github.com/team-alpha
 [url "git@github.work:team-alpha"]
@@ -25,9 +24,9 @@
   insteadOf = ssh://git@github.com/team-alpha
 
 [includeIf "hasconfig:remote.*.url:git@github.com:team-beta/*"]
-  path = ~/.gitconfig_work_id
+  path = ~/.gitconfig-work-id
 [includeIf "hasconfig:remote.*.url:git@gist.github.com:team-beta/*"]
-  path = ~/.gitconfig_work_id
+  path = ~/.gitconfig-work-id
 [url "git@github.work:team-beta"]
   insteadOf = https://github.com/team-beta
 [url "git@github.work:team-beta"]
