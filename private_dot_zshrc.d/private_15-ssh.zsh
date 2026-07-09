@@ -1,6 +1,10 @@
 # vim:filetype=zsh
 unset SSH_AGENT_PID
 
+if [[ -d "$HOME/.breakglass-gnupg" ]]; then
+  export GNUPGHOME="$HOME/.breakglass-gnupg"
+fi
+
 if [[ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]]; then
   SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
   export SSH_AUTH_SOCK
