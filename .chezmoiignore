@@ -95,7 +95,7 @@ Library
 .default-*
 .editrc
 .git*
-!.gitignore_global
+!.gitignore-global
 .gnupg
 .gtkrc-2.0
 .icons
