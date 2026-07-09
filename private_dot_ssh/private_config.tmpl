@@ -31,7 +31,7 @@ Host github.work
   Hostname github.com
   User git
   IdentitiesOnly yes
-  IdentityFile ~/.ssh/work_id_ed25519
+  IdentityFile ~/.ssh/work_id_ecdsa
 
 # DevPod Start neo4j-cloud.devpod
 Host neo4j-cloud.devpod
@@ -40,7 +40,7 @@ Host neo4j-cloud.devpod
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
   HostKeyAlgorithms rsa-sha2-256,rsa-sha2-512,ssh-rsa
-  ProxyCommand "/run/current-system/sw/bin/devpod" ssh --stdio --context default --user ubuntu neo4j-cloud --gpg-agent-forwarding
+  ProxyCommand "/run/current-system/sw/bin/devpod" ssh --stdio --context default --user ubuntu neo4j-cloud
   User ubuntu
 # DevPod End neo4j-cloud.devpod
 
