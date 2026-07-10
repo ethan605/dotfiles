@@ -111,8 +111,8 @@ devbox() {
   done
 
   if [[ "$for_oc" == "true" ]]; then
-    if lsof -Pi ":$oc_port" -sTCP:LISTEN -t >/dev/null; then
-      echo "Port $oc_port is in use"
+    if lsof -Pi ":$OC_PORT" -sTCP:LISTEN -t >/dev/null; then
+      echo "Port $OC_PORT is in use"
       return 1
     fi
 
@@ -135,7 +135,7 @@ OC_NEO4J_DATABASE=$NEO4J_DATABASE
 
     ssh neo4j-cloud.devpod \
       -o "SetEnv $oc_envs" \
-      -L "$oc_port::$oc_port"
+      -L "$OC_PORT::$OC_PORT"
   else
     ssh neo4j-cloud.devpod
   fi

@@ -25,6 +25,9 @@
       "~/.config/**": "ask"
     },
 
+    "auth0_auth0_get_*": "allow",
+    "auth0_auth0_list_*": "allow",
+
     "google-docs_writeSpreadsheet": "deny",
     "google-docs_batchWrite": "deny",
     "google-docs_appendRows": "deny",
@@ -228,6 +231,14 @@
     }
   },
   "mcp": {
+    "auth0": {
+      "enabled": true,
+      "type": "local",
+      "command": ["npx", "-y", "@auth0/auth0-mcp-server", "run"],
+      "environment": {
+        "DEBUG": "auth0-mcp"
+      }
+    },
     "google-docs": {
       "enabled": true,
       "type": "local",
@@ -253,7 +264,7 @@
       "oauth": {}
     },
     "miro": {
-      "enabled": true,
+      "enabled": false,
       "type": "remote",
       "url": "https://mcp.miro.com",
       "oauth": {}
