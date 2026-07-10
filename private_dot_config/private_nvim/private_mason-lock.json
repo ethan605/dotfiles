@@ -8,7 +8,7 @@
   "docker-compose-language-service": "0.5.0",
   "dockerfile-language-server": "0.15.0",
   "eslint-lsp": "4.10.0",
-  "gopls": "v0.22.0",
+  "gopls": "v0.23.0",
   "html-lsp": "4.10.0",
   "json-lsp": "4.10.0",
   "jsonnet-language-server": "v0.17.0",
