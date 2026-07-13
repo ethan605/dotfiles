@@ -228,25 +228,7 @@ __configure-chezmoi() {
 		--apply \
 		--force
 
-	cat >|"$HOME/.gitconfig" <<EOF
-[user]
-  name = Thanh Nguyen
-  email = thanh.nguyen@neo4j.com
-  signingKey = ~/.ssh/id_ecdsa.pub
-[url "git@github.com:neo-technology"]
-  insteadOf = https://github.com/neo-technology
-[core]
-  excludesfile = ~/.gitignore-global
-  autocrlf = false
-[gpg]
-  format = ssh
-[gpg "ssh"]
-	allowedSignersFile = ~/.ssh/allowed_signers
-[commit]
-  gpgsign = true
-[tag]
-  gpgsign = true
-EOF
+  mv ~/.config/devpod/.gitconfig ~/
 }
 
 __configure-nvim() {
