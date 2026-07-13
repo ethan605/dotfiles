@@ -232,7 +232,7 @@
   },
   "mcp": {
     "auth0": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": ["npx", "-y", "@auth0/auth0-mcp-server", "run"],
       "environment": {
