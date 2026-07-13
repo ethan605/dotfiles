@@ -2,7 +2,6 @@
 **/README.md
 LICENSE
 devpod-install.sh
-gitconfig-work.template
 misc
 
 # <<< Obsolete configs - keep for future reference only
@@ -120,7 +119,7 @@ Library
 
 {{- else }}
 
-!.config/devpod
+.config/devpod
 .zshrc.d/20-devpod.zsh
 
 {{- end }}
