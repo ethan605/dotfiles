@@ -2,7 +2,7 @@
 [user]
   name = Thanh Nguyen
   email = {{ .work_email }}
-  signingKey = ~/.ssh/id_ecdsa.pub
+  signingKey = ~/.ssh/work_id_ecdsa.pub
 [url "git@github.com:{{ .work_repo_alpha }}"]
   insteadOf = https://github.com/{{ .work_repo_alpha }}
 [url "git@github.com:{{ .work_repo_beta }}"]
@@ -14,7 +14,7 @@
   format = ssh
 [gpg "ssh"]
   allowedSignersFile = ~/.ssh/allowed_signers
-  program = devpod-ssh-signature
+  # program = devpod-ssh-signature
 [commit]
   gpgsign = true
 [tag]
