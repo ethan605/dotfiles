@@ -7,7 +7,9 @@ in
   nixpkgs.overlays = [
     (_final: prev: {
       # Overriden packages (due to instabilities, bugs, etc.)
-      nixos-render-docs = pkgs-26-05.nixos-render-docs;
+      blueutil = pkgs-26-05.blueutil;
+      sketchybar = pkgs-26-05.sketchybar;
+      unar = pkgs-26-05.unar;
       zsh = pkgs-26-05.zsh;
 
       # Self-host packages
