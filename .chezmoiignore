@@ -120,7 +120,7 @@ Library
 
 {{- else }}
 
-.config/devpod
+!.config/devpod
 .zshrc.d/20-devpod.zsh
 
 {{- end }}

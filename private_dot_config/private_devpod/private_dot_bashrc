@@ -1,0 +1,142 @@
+# shellcheck disable=SC2148
+# === Environments ===
+export BAT_THEME=base16
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
+
+export FZF_DEFAULT_OPTS='
+  --ansi
+  --bind=ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-page-up,ctrl-d:preview-page-down
+  --color=fg+:7,bg+:0,hl:5,hl+:5
+  --color=gutter:0,header:4,marker:2,pointer:5,prompt:2,spinner:3
+  --cycle
+  --marker="›"
+  --pointer="›"
+  --prompt="❯ "
+  --reverse
+  --no-height
+'
+export FZF_CTRL_R_OPTS='
+  --preview="echo {2..} | bat --color=always --language=zsh --number --plain"
+  --bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"
+  --header="Press CTRL-Y to copy command into clipboard"
+'
+
+export PATH="$HOME/.local/bin/:$PATH"
+
+# === Keybinds ===
+bind "\C-w":backward-kill-word
+bind "\C-h":backward-word    # left
+bind "\C-l":forward-word     # right
+bind "\C-k":previous-history # up
+bind "\C-j":next-history     # down
+bind "\C-a":beginning-of-line
+bind "\C-e":end-of-line
+
+# === Plugins ===
+command -v mise >/dev/null && eval "$(mise activate bash)" # must go first
+command -v direnv >/dev/null && eval "$(direnv hook bash)"
+command -v fzf >/dev/null && eval "$(fzf --bash)"
+command -v starship >/dev/null && eval "$(starship init bash)"
+command -v zoxide >/dev/null && eval "$(zoxide init bash)"
+
+if [[ -f $HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh ]]; then
+	# shellcheck disable=SC1091
+	source "$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh"
+	bind -x '"\t": fzf_bash_completion'
+fi
+
+# === Utils & aliases ===
+__system-upgrade() {
+	# shellcheck disable=SC2033
+	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update &&
+		sudo apt upgrade -y &&
+		sudo apt autoremove -y &&
+		sudo apt clean -y &&
+		sudo rm -rf /var/lib/apt/lists/*
+}
+
+__mise-upgrade() {
+	mise self-update --yes &&
+		mise plugins update &&
+		mise upgrade --bump --interactive &&
+		mise cache prune
+}
+
+__config-sync() {
+	chezmoi git pull &&
+		chezmoi apply --force &&
+		nvim --headless \
+			-c 'Lazy! restore' \
+			-c MasonUpdate \
+			-c MasonLockRestore \
+			-c qa
+}
+
+oc() {
+	# Stable features
+	export OPENCODE_DISABLE_CLAUDE_CODE=true
+	export OPENCODE_DISABLE_LSP_DOWNLOAD=true
+	export OPENCODE_DISABLE_TERMINAL_TITLE=true
+	export OPENCODE_ENABLE_EXA=true
+
+	# Experimental features
+	export OPENCODE_EXPERIMENTAL=true
+	export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
+	export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
+	export OPENCODE_EXPERIMENTAL_PARALLEL=true
+
+	# For LSP servers
+	export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/share/mise/shims:$PATH"
+
+	# For Gemini
+	GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
+	export GOOGLE_VERTEX_PROJECT
+	export GOOGLE_VERTEX_LOCATION=global
+	export VERTEX_LOCATION=global
+
+	# For neo4j-cypher MCP
+	export NEO4J_URI="$OC_NEO4J_URI"
+	export NEO4J_USERNAME="$OC_NEO4J_USERNAME"
+	export NEO4J_PASSWORD="$OC_NEO4J_PASSWORD"
+	export NEO4J_DATABASE="$OC_NEO4J_DATABASE"
+
+	# For google-docs MCP
+	export GOOGLE_DOCS_MCP_CLIENT_ID="$OC_GOOGLE_DOCS_MCP_CLIENT_ID"
+	export GOOGLE_DOCS_MCP_CLIENT_SECRET="$OC_GOOGLE_DOCS_MCP_CLIENT_SECRET"
+
+	# For grafana MCP
+	export GRAFANA_URL="$OC_GRAFANA_URL"
+	export GRAFANA_SERVICE_ACCOUNT_TOKEN="$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
+
+	# For teamcity MCP
+	export TC_AUTH_TOKEN="$OC_TC_AUTH_TOKEN"
+
+	opencode "$@"
+}
+
+alias __devenv='source devenv && make environment && make environments-env'
+
+alias c=chezmoi
+alias cst='chezmoi status'
+
+alias g=git
+alias gcl='git clone --recurse-submodules'
+alias gfl='git fetch --prune origin && git pull origin $(git branch --show-current)'
+alias gst='git status --short --untracked-files=all'
+
+alias l1='ls --oneline'
+alias l='ls --long --icons=always --header'
+alias lk='l --total-size --sort=size --reverse'
+alias lr='l --tree --level=2'
+alias ls='eza --group-directories-first --color=always --git --all'
+
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
+alias vserve='nvim --headless --listen 127.0.0.1:45678'
+
+alias k=kubecolor
+alias ocserve='oc serve --port=$OC_PORT --log-level=INFO'
+alias rm='rm -i'
+alias where=which
