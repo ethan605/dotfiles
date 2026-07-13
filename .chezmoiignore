@@ -87,6 +87,7 @@ Library
 
 .config/*
 !.config/bottom
+!.config/devpod
 !.config/nvim
 !.config/opencode
 !.config/starship.toml
@@ -119,6 +120,7 @@ Library
 
 {{- else }}
 
+.config/devpod
 .zshrc.d/20-devpod.zsh
 
 {{- end }}
