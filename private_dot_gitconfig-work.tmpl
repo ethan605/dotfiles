@@ -1,0 +1,22 @@
+# vim:filetype=gitconfig
+[includeIf "hasconfig:remote.*.url:git@github.com:{{ .work_repo_alpha }}/*"]
+  path = ~/.gitconfig-work-id
+[includeIf "hasconfig:remote.*.url:git@gist.github.com:{{ .work_repo_alpha }}/*"]
+  path = ~/.gitconfig-work-id
+[url "git@github.work:{{ .work_repo_alpha }}"]
+  insteadOf = https://github.com/{{ .work_repo_alpha }}
+[url "git@github.work:{{ .work_repo_alpha }}"]
+  insteadOf = git@github.com:{{ .work_repo_alpha }}
+[url "ssh://git@github.work/{{ .work_repo_alpha }}"]
+  insteadOf = ssh://git@github.com/{{ .work_repo_alpha }}
+
+[includeIf "hasconfig:remote.*.url:git@github.com:{{ .work_repo_beta }}/*"]
+  path = ~/.gitconfig-work-id
+[includeIf "hasconfig:remote.*.url:git@gist.github.com:{{ .work_repo_beta }}/*"]
+  path = ~/.gitconfig-work-id
+[url "git@github.work:{{ .work_repo_beta }}"]
+  insteadOf = https://github.com/{{ .work_repo_beta }}
+[url "git@github.work:{{ .work_repo_beta }}"]
+  insteadOf = git@github.com:{{ .work_repo_beta }}
+[url "ssh://git@github.work/{{ .work_repo_beta }}"]
+  insteadOf = ssh://git@github.com/{{ .work_repo_beta }}

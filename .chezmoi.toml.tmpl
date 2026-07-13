@@ -1,5 +1,9 @@
 {{- $machine_id := promptString "machine_id" -}}
 {{- $personal_gpg_id := promptString "personal_gpg_id" -}}
+{{- $work_email := promptString "work_email" -}}
+{{- $work_gpg_id := promptString "work_gpg_id" -}}
+{{- $work_repo_alpha := promptString "work_repo_alpha" -}}
+{{- $work_repo_beta := promptString "work_repo_beta" -}}
 
 [merge]
   command = "nvim"
@@ -8,5 +12,9 @@
   autoCommit = true
   autoPush = true
 [data]
-  machine_id = "{{ $machine_id }}"
-  personal_gpg_id = "{{ $personal_gpg_id }}"
+  machine_id = {{ $machine_id | quote }}
+  personal_gpg_id = {{ $personal_gpg_id | quote }}
+  work_email = {{ $work_email | quote }}
+  work_gpg_id = {{ $work_gpg_id | quote }}
+  work_repo_alpha = {{ $work_repo_alpha | quote }}
+  work_repo_beta = {{ $work_repo_beta | quote }}

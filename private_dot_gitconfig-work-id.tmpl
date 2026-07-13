@@ -1,0 +1,11 @@
+# vim:filetype=gitconfig
+[user]
+  email = {{ .work_email }}
+  #signingkey = {{ .work_gpg_id }}
+  signingkey = ~/.ssh/work_id_ecdsa.pub
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  # ~/.ssh/allowed_signers
+  # {{ .work_email }} ecdsa-sha2-nistp256 AAA...
+  allowedSignersFile = ~/.ssh/allowed_signers
