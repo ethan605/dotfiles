@@ -1,10 +1,12 @@
 # vim:filetype=gitconfig
 [user]
   name = Thanh Nguyen
-  email = thanh.nguyen@neo4j.com
+  email = {{ .work_email }}
   signingKey = ~/.ssh/id_ecdsa.pub
-[url "git@github.com:neo-technology"]
-  insteadOf = https://github.com/neo-technology
+[url "git@github.com:{{ .work_repo_alpha }}"]
+  insteadOf = https://github.com/{{ .work_repo_alpha }}
+[url "git@github.com:{{ .work_repo_beta }}"]
+  insteadOf = https://github.com/{{ .work_repo_beta }}
 [core]
   excludesfile = ~/.gitignore-global
   autocrlf = false
