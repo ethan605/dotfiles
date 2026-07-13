@@ -62,8 +62,6 @@ __configure-bash() {
 	git clone https://github.com/lincheney/fzf-tab-completion ~/.local/share/fzf-tab-completion
 
 	mkdir -p ~/dotfiles
-	rm -rf ~/dotfiles/.bashrc
-
 	mv ~/.config/devpod/.bashrc ~/dotfiles/.bashrc
 }
 
