@@ -233,6 +233,8 @@ __configure-chezmoi() {
   name = Thanh Nguyen
   email = thanh.nguyen@neo4j.com
   signingKey = ~/.ssh/id_ecdsa.pub
+[url "git@github.com"]
+  insteadOf = https://github.com
 [core]
   excludesfile = ~/.gitignore-global
   autocrlf = false
