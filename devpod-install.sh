@@ -60,9 +60,6 @@ __install-system-packages() {
 __configure-bash() {
 	rm -rf ~/.local/share/fzf-tab-completion
 	git clone https://github.com/lincheney/fzf-tab-completion ~/.local/share/fzf-tab-completion
-
-	mkdir -p ~/dotfiles
-	mv ~/.config/devpod/.bashrc ~/dotfiles/.bashrc
 }
 
 __configure-zsh() {
@@ -84,6 +81,9 @@ __configure-chezmoi() {
 		--force
 
 	mv ~/.config/devpod/.gitconfig ~
+
+	mkdir -p ~/dotfiles
+	mv ~/.config/devpod/.bashrc ~/dotfiles/.bashrc
 }
 
 __configure-nvim() {
@@ -95,7 +95,7 @@ __configure-nvim() {
 }
 
 __install-system-packages &&
-	__configure-chezmoi &&
 	__configure-bash &&
 	__configure-zsh &&
+  __configure-chezmoi &&
 	__configure-nvim
