@@ -2,18 +2,6 @@
 # Dedupe path/fpath
 typeset -U path fpath
 
-# Fast completion init
-autoload -Uz compinit
-_zdump="${ZDOTDIR:-$HOME}/.zcompdump-${ZSH_VERSION}"
-_zfresh=( ${_zdump}(Nmh-24) )          # non-empty only if dump exists AND <24h old
-if (( $#_zfresh )); then
-  compinit -C -d "$_zdump"             # reuse cached dump, no audit (~10ms)
-else
-  compinit -d "$_zdump"                # rebuild + re-scan fpath (once/day, or first run)
-fi
-[[ ! ${_zdump}.zwc -nt $_zdump ]] && zcompile -R "$_zdump" 2>/dev/null
-unset _zdump _zfresh
-
 # Cached tool inits
 _zcache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 [[ -d $_zcache ]] || mkdir -p "$_zcache"
