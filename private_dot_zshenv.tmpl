@@ -7,3 +7,38 @@
 #   - /etc/zlogout    & ~/.zlogout
 #
 # This file contains only environment terraforming for non-login shell
+
+{{- if eq .machine_id "devpod" }}
+
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/gcc
+export LANG=C.UTF-8
+
+{{- else }}
+
+export CC=clang
+export CXX=clang
+export LANG=en_GB.UTF-8
+
+{{- end }}
+
+export LC_ALL="$LANG"
+export LC_COLLATE="$LANG"
+export LC_CTYPE="$LANG"
+export LC_MESSAGES="$LANG"
+export LC_MONETARY="$LANG"
+export LC_NUMERIC="$LANG"
+export LC_TIME="$LANG"
+
+export EDITOR=nvim
+export REACT_EDITOR=nvim
+export VISUAL=nvim
+
+# export BAT_THEME=base16
+export BAT_THEME='Sublime Snazzy'
+export LESS='--ignore-case --jump-target=4 --RAW-CONTROL-CHARS --LONG-PROMPT'
+export MANPAGER='nvim +Man!'
+
+export COMPOSE_BAKE=true
+export NODE_OPTIONS="--max-old-space-size=8192"
+export TOOLCHAINS=swift
