@@ -135,7 +135,12 @@ in
     self-host-fonts
   ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableBashCompletion = false;
+    enableGlobalCompInit = false;
+    promptInit = "";
+  };
 
   # Homebrew for GUI apps
   homebrew = {
