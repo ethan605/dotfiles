@@ -7,12 +7,13 @@ zmodule exa
 zmodule fzf
 zmodule utility
 
-# zmodule completion        # disabled due to conflicts with fzf-tab
-zmodule Aloxaf/fzf-tab      # fzf-tab should load before widget-wrapping plugins
+# Completions
+zmodule zsh-users/zsh-completions     # populates fpath
+zmodule completion                    # compinit is invoked
+zmodule Aloxaf/fzf-tab                # fzf-tab should load before widget-wrapping plugins
 
 # Community modules
 zmodule zsh-users/zsh-autosuggestions
-zmodule zsh-users/zsh-completions
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-syntax-highlighting
 
