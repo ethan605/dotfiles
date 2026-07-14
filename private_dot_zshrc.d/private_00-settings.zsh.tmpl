@@ -1,6 +1,6 @@
 # vim:filetype=zsh
 # History settings
-HISTFILE="${XDG_DATA_HOME:-${HOME}}/.zhistory"
+HISTFILE="${XDG_DATA_HOME:-$HOME}/.zhistory"
 HISTSIZE=1000000                # 1 million entries
 SAVEHIST=1000000                # 1 million entries
 
@@ -27,6 +27,8 @@ WORDCHARS='*?_.~;!%'
 # Set what highlighters will be used.
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[comment]='fg=8' # bright black
 
 typeset -A ZSH_HIGHLIGHT_PATTERNS
