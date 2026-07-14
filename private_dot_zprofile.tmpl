@@ -26,15 +26,8 @@ export FZF_CTRL_R_OPTS='
   --header="Press CTRL-Y to copy command into clipboard"
 '
 
-# XDG base directories
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-
 {{- if eq .chezmoi.os "linux" }}
 
-export XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/flatpak/exports/share
-export XDG_CONFIG_DIRS=/etc/xdg
 export TERMINFO=/usr/share/terminfo
 
 # Input method
@@ -48,7 +41,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 {{- if ne .machine_id "devpod" }}
 
-# For orbstack
+# For orbstack - needs to be after $PATH rewrite
 export DOCKER_HOST="unix://$HOME/.orbstack/run/docker.sock"
 
 if [[ -f $HOME/.orbstack/shell/init.zsh ]]; then
