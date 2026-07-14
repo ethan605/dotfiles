@@ -91,7 +91,7 @@ dbee-postgres() {
 }
 
 devbox() {
-  # infocmp -x xterm-ghostty | ssh neo4j-cloud -- tic -x -
+  # infocmp -x xterm-ghostty | ssh neo4j-cloud.devpod -- tic -x -
   LANG=C.UTF-8
   LC_ALL=C LC_COLLATE=C.UTF-8 LC_CTYPE=C.UTF-8 LC_MESSAGES=C.UTF-8
   LC_MONETARY=C.UTF-8 LC_NUMERIC=C.UTF-8 LC_TIME=C.UTF-8
