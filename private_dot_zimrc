@@ -1,12 +1,14 @@
 # vim:fileencoding=utf-8:filetype=zsh
 # Official modules
 zmodule archive
-# zmodule completion # disabled due to conflicts with fzf-tab
 zmodule direnv
 zmodule environment
 zmodule exa
 zmodule fzf
 zmodule utility
+
+# zmodule completion        # disabled due to conflicts with fzf-tab
+zmodule Aloxaf/fzf-tab      # fzf-tab should load before widget-wrapping plugins
 
 # Community modules
 zmodule zsh-users/zsh-autosuggestions
@@ -19,4 +21,3 @@ zmodule joke/zim-chezmoi
 zmodule joke/zim-starship
 zmodule kiesman99/zim-zoxide
 zmodule pXius/zim-gcloud
-zmodule Aloxaf/fzf-tab

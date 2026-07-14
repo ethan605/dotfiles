@@ -1,19 +1,56 @@
 # vim:filetype=zsh
-source <(mise activate zsh)
+# Dedupe path/fpath
+typeset -U path fpath
+
+# Fast completion init
+autoload -Uz compinit
+_zdump="${ZDOTDIR:-$HOME}/.zcompdump-${ZSH_VERSION}"
+if [[ -n ${_zdump}(#qN.mh-24) ]]; then
+  compinit -C -d "$_zdump"
+else
+  compinit -d "$_zdump"
+fi
+[[ ! ${_zdump}.zwc -nt $_zdump ]] && zcompile -R "$_zdump" 2>/dev/null
+unset _zdump
+
+# Cached tool inits
+_zcache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+[[ -d $_zcache ]] || mkdir -p "$_zcache"
+
+# mise
+if (( ${+commands[mise]} )); then
+  if [[ ! $_zcache/mise.zsh -nt ${commands[mise]} ]]; then
+    mise activate zsh >| "$_zcache/mise.zsh"
+    zcompile -R "$_zcache/mise.zsh" 2>/dev/null
+  fi
+  source "$_zcache/mise.zsh"
+fi
 
 # === Zimfw ===
 if [[ ! "$ZIM_HOME/init.zsh" -nt "${ZDOTDIR:-$HOME}/.zimrc" ]]; then
-  # Update static initialization script if it does not exist or it's outdated, before sourcing it
   source "$ZIM_HOME/zimfw.zsh" init -q
 fi
 
 source "$ZIM_HOME/init.zsh"
 
 # === System plugins ===
-source <(zoxide init zsh)
+if (( ${+commands[zoxide]} )); then
+  if [[ ! $_zcache/zoxide.zsh -nt ${commands[zoxide]} ]]; then
+    zoxide init zsh >| "$_zcache/zoxide.zsh"
+    zcompile -R "$_zcache/zoxide.zsh" 2>/dev/null
+  fi
+  source "$_zcache/zoxide.zsh"
+fi
 
-LS_COLORS="$(vivid generate base16-snazzy)"
-export LS_COLORS
+# LS_COLORS via vivid
+if (( ${+commands[vivid]} )); then
+  if [[ ! $_zcache/ls-colors.zsh -nt ${commands[vivid]} ]]; then
+    print -r -- "export LS_COLORS='$(vivid generate base16-snazzy)'" >| "$_zcache/ls-colors.zsh"
+    zcompile -R "$_zcache/ls-colors.zsh" 2>/dev/null
+  fi
+  source "$_zcache/ls-colors.zsh"
+fi
+unset _zcache
 
 # === Expensive executions - use on demand ==
 __source-completions() {
