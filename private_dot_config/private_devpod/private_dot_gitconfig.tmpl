@@ -2,11 +2,11 @@
 [user]
   name = Thanh Nguyen
   email = {{ .work_email }}
-  signingKey = ~/.ssh/work_id_ecdsa.pub
-[url "git@github.com:{{ .work_repo_alpha }}"]
-  insteadOf = https://github.com/{{ .work_repo_alpha }}
-[url "git@github.com:{{ .work_repo_beta }}"]
-  insteadOf = https://github.com/{{ .work_repo_beta }}
+  signingKey = ~/.ssh/id_ecdsa.work.pub
+[url "git@github.com:{{ .work_org_alpha }}"]
+  insteadOf = https://github.com/{{ .work_org_alpha }}
+[url "git@github.com:{{ .work_org_beta }}"]
+  insteadOf = https://github.com/{{ .work_org_beta }}
 [core]
   excludesfile = ~/.gitignore-global
   autocrlf = false
