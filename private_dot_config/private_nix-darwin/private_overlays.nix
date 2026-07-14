@@ -10,7 +10,7 @@ in
       blueutil = pkgs-26-05.blueutil;
       sketchybar = pkgs-26-05.sketchybar;
       unar = pkgs-26-05.unar;
-      zsh = pkgs-26-05.zsh;
+      # zsh = pkgs-26-05.zsh;
 
       # Self-host packages
       minimal-functional-fox = prev.callPackage ./modules/packages/minimal-functional-fox.nix { };
