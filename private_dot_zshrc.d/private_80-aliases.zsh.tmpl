@@ -12,6 +12,8 @@ alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
 {{- else if eq .chezmoi.os "darwin" }}
 
 alias audio="SwitchAudioSource -a -toutput -fcli | awk -F, '{ printf \"%-50s %s\n\", \$4, \$1 }' | fzf | awk '{ print \$1 }' | xargs SwitchAudioSource -u"
+alias copen='open -b com.google.Chrome'
+alias fopen='open -b org.nixos.firefox'
 alias wm-reload='aerospace reload-config && sketchybar --reload'
 
 {{- end }}
