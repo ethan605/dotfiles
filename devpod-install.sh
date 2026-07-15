@@ -10,11 +10,11 @@ __install-system-packages() {
 		sudo add-apt-repository universe -y &&
 		sudo add-apt-repository restricted -y &&
 		sudo add-apt-repository multiverse -y &&
-		sudo apt upgrade -y &&
-		sudo apt install --no-install-recommends -y \
+		sudo apt-get upgrade -y &&
+		sudo apt-get install --no-install-recommends -y \
 			libyaml-dev python3-venv zsh &&
-		sudo apt autoremove -y &&
-		sudo apt clean -y &&
+		sudo apt-get autoremove -y &&
+		sudo apt-get clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
 
 	curl -fsSL https://mise.run | sh

@@ -1,3 +1,4 @@
+# vim:filetype=bash
 # shellcheck disable=SC2148
 # === Environments ===
 export BAT_THEME=base16
