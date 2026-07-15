@@ -10,6 +10,8 @@
 
 {{- if eq .machine_id "devpod" }}
 
+export skip_global_compinit=1
+
 export CC=/usr/bin/gcc
 export CXX=/usr/bin/gcc
 export LANG=C.UTF-8
