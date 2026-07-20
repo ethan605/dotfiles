@@ -81,11 +81,14 @@ let
   ];
 
   openpgp = with pkgs; [
-    gnupg # gpg and gpg-agent
+    # gpg, gpg-agent, and gpg-related
+    gnupg
     gpgme.dev
     libassuan
-    openssh
     pinentry_mac
+
+    keybase
+    openssh
     yubikey-manager
 
     (
@@ -125,6 +128,7 @@ let
     alacritty
     appcleaner
     ghostty-bin
+    # thunderbird
     # zed-editor
   ];
 in
@@ -155,9 +159,10 @@ in
     casks = [
       "airflow"
       "contexts"
-      "homerow"
       "grammarly-desktop"
+      "homerow"
       "karabiner-elements" # can't use services.karabiner-elements
+      "keybase"
       "linear"
       "logi-options+"
       "macshot"
