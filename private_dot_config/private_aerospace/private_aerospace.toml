@@ -127,6 +127,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'layout floating'
 
 [[on-window-detected]]
+  if.app-id = 'us.zoom.xos'
+  run = 'layout floating'
+
+[[on-window-detected]]
   if.app-id = 'dev.kdrag0n.MacVirt'
   run = 'layout floating'
 
