@@ -189,6 +189,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
+  if.app-id = 'keybase.Electron'
+  run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
   if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
   run = ['layout floating', 'move-node-to-workspace 4']
 
