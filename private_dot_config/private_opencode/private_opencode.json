@@ -219,6 +219,7 @@
     }
   },
   "plugin": [
+    "opencode-claude-bridge@1.10.12",
     "superpowers@git+https://github.com/ethan605/superpowers.git#304b00295fad9cb18c47d170ff2872840a14d421"
   ],
   "lsp": {
