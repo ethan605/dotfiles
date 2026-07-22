@@ -1,6 +1,6 @@
-alias nix-update='nix flake update --flake $HOME/.config/nix-darwin'
-alias nix-gen='sudo darwin-rebuild --list-generations'
+alias nix-stat='sudo darwin-rebuild --list-generations'
 alias nix-switch='sudo darwin-rebuild switch --flake $HOME/.config/nix-darwin'
+alias nix-update='nix flake update --flake $HOME/.config/nix-darwin'
 
 __nix-args() {
   if [[ $# == 1 ]]; then
