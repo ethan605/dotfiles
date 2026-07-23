@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["anthropic", "google-vertex", "openai", "fireworks-ai"],
+  "enabled_providers": ["anthropic", "openai", "fireworks-ai", "google-vertex"],
   "autoupdate": false,
   "compaction": {
     "auto": true,
@@ -14,7 +14,10 @@
     "lsp": "allow",
     "question": "allow",
     "read": "allow",
-    "skill": "allow",
+    "skill": {
+      "*": "allow",
+      "radio-4-english": "deny"
+    },
     "task": "allow",
     "todowrite": "allow",
     "webfetch": "allow",
@@ -184,12 +187,22 @@
     "plan": {
       "color": "#57c7ff",
       "model": "anthropic/claude-opus-4-8",
-      "variant": "high"
+      "variant": "xhigh",
+      "permission": {
+        "skill": {
+          "radio-4-english": "allow"
+        }
+      }
     },
     "build": {
       "color": "#ff6ac1",
       "model": "anthropic/claude-opus-4-8",
-      "variant": "high"
+      "variant": "xhigh",
+      "permission": {
+        "skill": {
+          "radio-4-english": "allow"
+        }
+      }
     },
     "general": {
       "color": "#5af78e",
@@ -223,7 +236,7 @@
       "prompt": "{file:./REVIEWER.md}"
     },
     "compaction": {
-      "model": "anthropic/claude-sonnet-5"
+      "model": "fireworks-ai/accounts/fireworks/models/glm-5p2"
     }
   },
   "plugin": [
