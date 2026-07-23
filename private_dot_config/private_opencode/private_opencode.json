@@ -40,6 +40,14 @@
     "google-docs_search*": "allow",
     "google-docs_triageInbox": "allow",
 
+    "launchdarkly_get-*": "allow",
+    "launchdarkly_list-*": "allow",
+    "launchdarkly_find-*": "allow",
+    "launchdarkly_search-*": "allow",
+    "launchdarkly_query-*": "allow",
+    "launchdarkly_check-*": "allow",
+    "launchdarkly_match-*": "allow",
+
     "linear_extract_*": "allow",
     "linear_get_*": "allow",
     "linear_list_*": "allow",
@@ -262,6 +270,12 @@
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
+      "oauth": {}
+    },
+    "launchdarkly": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.launchdarkly.com/mcp/launchdarkly",
       "oauth": {}
     },
     "miro": {
