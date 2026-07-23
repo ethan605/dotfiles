@@ -196,7 +196,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-5",
+      "model": "fireworks-ai/accounts/fireworks/routers/glm-5p2-fast",
       "permission": {
         "edit": "deny",
         "task": "deny"
