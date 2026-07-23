@@ -33,8 +33,8 @@ ${custom.proxy}\
 $line_break\
 $jobs\
 $nix_shell\
-${custom.venv}\
 ${custom.devpod}\
+${custom.venv}\
 $character"""
 
 [sudo]
@@ -109,7 +109,7 @@ vicmd_symbol = "[ε](bold purple)"
 command = "echo $DEVPOD_WORKSPACE_ID"
 when = 'test "$DEVPOD_WORKSPACE_ID" != ""'
 format = "[$symbol$output]($style) "
-style = "bright-black"
+style = "#bb53ff"
 symbol = " "
 
 [custom.proxy]
