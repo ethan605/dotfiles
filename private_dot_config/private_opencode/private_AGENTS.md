@@ -74,12 +74,14 @@ Before moving to the next task, STOP and verify:
 ## Working Style
 
 - **Use superpowers skills** for planning, brainstorming, implementation, and reviews
-- **Request reviews** from the `reviewer` subagent after completing significant work
+- **Request reviews** from the `reviewer` subagent after completing significant work (primary agents only — see "Interaction with Reviewer")
 - **Plan before coding** — Use TodoWrite to break down tasks; update progress as you go
 - **Verify before claiming done** — Run tests, type checks, and builds to confirm correctness
 - **Document decisions** — Capture "why" not just "what" in code comments and commit messages
 
 ## Interaction with Reviewer
+
+> **Scope:** Dispatching the `reviewer` is a **primary-agent (`plan`, `build`) responsibility**. Subagents (`general`, `explore`) never dispatch the reviewer — they self-review and hand back review-ready evidence for the primary agent to route.
 
 **Motto: "Bias for actions!"**
 
