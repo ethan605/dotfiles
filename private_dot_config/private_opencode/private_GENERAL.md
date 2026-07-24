@@ -65,11 +65,11 @@ Return to the orchestrator when:
 
 ## Reporting Back
 
-When you finish, hand the orchestrator a report it can act on without re-deriving your work:
+When you finish, hand the orchestrator a report it can act on without re-deriving your work. This applies to **both** implementation and investigation tasks. Include every field below; if one does not apply, write it out as "N/A" rather than silently dropping it.
 
-- **Summary** - what you did and the outcome
-- **Files changed** - paths, each with a one-line what/why
-- **Verification** - commands you ran and their results; note relevant checks you did NOT run and why
+- **Summary** - what you did or found, and the outcome
+- **Files changed** - paths, each with a one-line what/why ("N/A" for read-only investigations)
+- **Evidence & verification** - how you reached your conclusion: commands you ran and their results, and/or the key files read with `path:line`. Note relevant checks you did NOT run and why. Give enough that the reader need not redo your work.
 - **Deviations** - anything that differs from the plan or spec, and why
 - **Follow-ups / blockers** - open items, risks, or work left for others
-- **Commit(s)** - hash(es) and any residual working-tree state (see Committing)
+- **Commit(s)** - commit hash(es), or "N/A" if you did not commit; either way, always report any residual working-tree state, and if you stopped instead of committing, say why (see Committing)
