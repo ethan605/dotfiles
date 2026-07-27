@@ -80,8 +80,8 @@ __configure-chezmoi() {
 		--force
 
 	mkdir -p ~/dotfiles
-	ln -s ~/.config/devpod/.bashrc ~/dotfiles/.bashrc
-	ln -s ~/.config/devpod/.gitconfig ~/.gitconfig
+	ln -sf ~/.config/devpod/.bashrc ~/dotfiles/.bashrc
+	ln -sf ~/.config/devpod/.gitconfig ~/.gitconfig
 }
 
 __configure-nvim() {
