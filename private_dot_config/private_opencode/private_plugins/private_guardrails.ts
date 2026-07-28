@@ -19,11 +19,17 @@ import type { Plugin } from "@opencode-ai/plugin";
 // State
 // ---------------------------------------------------------------------------
 
-/** Maps sessionID → agent name. Populated from chat.params. */
+/** Maps sessionID → agent name. Populated from resolved chat messages and params. */
 const sessionAgentMap = new Map<string, string>();
 
 /** Maps sessionID → set of skill names already nudged. One nudge per skill per session. */
 const nudgedSkills = new Map<string, Set<string>>();
+
+/** Sessions currently producing or processing compaction messages. */
+const compactingSessions = new Set<string>();
+
+/** Reminder parts injected by this plugin into a live message array. */
+const injectedPrimaryReminderParts = new WeakSet<object>();
 
 /** Agents that must NOT spawn subagents via the task tool. */
 const SUBAGENTS = new Set(["general", "explore", "reviewer"]);
@@ -177,19 +183,21 @@ const SKILL_TRIGGERS: SkillTrigger[] = [
  * escalation path is `experimental.chat.system.transform` (its input lacks
  * agent info too, so the same sessionAgentMap lookup applies).
  *
- * Known gap (accepted, self-healing): on a resumed session that continues
- * WITHOUT a new user message (e.g. auto-continue after compaction right
- * after an opencode restart), sessionAgentMap is empty and the reminder is
- * skipped for that one turn. It resumes on the next user message.
+ * The resolved latest user message supplies the primary-agent fallback when
+ * a first turn transforms before the session map has been populated.
  *
  * Thresholds are taxonomy-based (task kind), NOT line counts — line-count
  * thresholds incentivize code-golfing to dodge dispatch.
  */
-const DISPATCH_REMINDER_MARKER = "<dispatch-reminder>";
+const PRIMARY_AGENT_TURN_REMINDER_MARKER = "<primary-agent-turn-reminder>";
+
+const PRIMARY_AGENT_TURN_REMINDER =
+  "Primary-agent turn start: Before any response or action on this turn, invoke `radio-4-english` once. If it has already been invoked for this turn, do not invoke it again. Invoke every applicable Superpowers skill alongside it. `radio-4-english` governs prose style only; it supplements and never replaces workflow/process skills.";
 
 const DISPATCH_REMINDERS: Record<string, string> = {
   build: `<system-reminder>
-${DISPATCH_REMINDER_MARKER}
+${PRIMARY_AGENT_TURN_REMINDER_MARKER}
+${PRIMARY_AGENT_TURN_REMINDER}
 Dispatch policy (primary agent): default loop is explore → \`general\` implements → \`reviewer\` reviews → repeat until greenlight.
 - Dispatch \`explore\`: understanding unfamiliar code, multi-file analysis, locating implementations.
 - Dispatch \`general\`: feature additions, logic changes, refactors, multi-file changes, anything requiring tests.
@@ -197,7 +205,8 @@ Dispatch policy (primary agent): default loop is explore → \`general\` impleme
 Direct work is allowed ONLY for: typo/string fixes in known locations, config tweaks, running verification commands, or when the user explicitly tells you to do it yourself.
 </system-reminder>`,
   plan: `<system-reminder>
-${DISPATCH_REMINDER_MARKER}
+${PRIMARY_AGENT_TURN_REMINDER_MARKER}
+${PRIMARY_AGENT_TURN_REMINDER}
 Dispatch policy (plan mode): research via \`explore\` subagent dispatches — do not bulk-read the codebase yourself. Reserve direct reads for 1-3 specific files you already know. Plans should assign implementation to \`general\` and reviews to \`reviewer\`.
 </system-reminder>`,
 };
@@ -216,12 +225,34 @@ export const GuardrailsPlugin: Plugin = async () => {
     // experimental.chat.messages.transform would otherwise run before
     // chat.params has populated the map.
     // -----------------------------------------------------------------------
-    "chat.message": async (input) => {
-      if (input.agent) sessionAgentMap.set(input.sessionID, input.agent);
+    "chat.message": async (input, output) => {
+      // A new real user message means a failed compaction cannot suppress the
+      // next turn indefinitely. The resolved output message is authoritative:
+      // input.agent is optional and can differ from the selected primary agent.
+      compactingSessions.delete(input.sessionID);
+      sessionAgentMap.set(input.sessionID, output.message.agent);
     },
 
     "chat.params": async (input) => {
+      if (input.agent === "compaction") {
+        compactingSessions.add(input.sessionID);
+        return;
+      }
       sessionAgentMap.set(input.sessionID, input.agent);
+    },
+
+    "experimental.session.compacting": async (input) => {
+      compactingSessions.add(input.sessionID);
+    },
+
+    "experimental.compaction.autocontinue": async (input) => {
+      compactingSessions.delete(input.sessionID);
+    },
+
+    "event": async (input) => {
+      if (input.event.type === "session.compacted") {
+        compactingSessions.delete(input.event.properties.sessionID);
+      }
     },
 
     // -----------------------------------------------------------------------
@@ -314,11 +345,15 @@ export const GuardrailsPlugin: Plugin = async () => {
       if (!lastUserMsg || lastUserMsg.parts.length === 0) return;
 
       const sessionID = lastUserMsg.info.sessionID;
+      if (compactingSessions.has(sessionID)) return;
+
       const refPart = lastUserMsg.parts[0];
       const appendReminder = (text: string) => {
         // Hook contract is mutate-in-place; idempotency guards below prevent
         // duplication when an already-transformed array re-enters the hook.
-        lastUserMsg!.parts.push({ ...refPart, type: "text", text } as any);
+        const part = { ...refPart, type: "text", text } as any;
+        lastUserMsg!.parts.push(part);
+        return part;
       };
 
       // --- 5. Skill activation nudges ---
@@ -355,22 +390,22 @@ export const GuardrailsPlugin: Plugin = async () => {
       }
 
       // --- 6. Subagent dispatch reminder (plan/build agents only) ---
-      const agent = sessionAgentMap.get(sessionID);
+      // Transform routing is always determined by the latest required resolved
+      // user agent. The session map is reserved for tool guards because it can
+      // temporarily hold internal agents such as title or summary.
+      const agent =
+        lastUserMsg.info.role === "user" ? lastUserMsg.info.agent : undefined;
       const dispatchReminder = agent ? DISPATCH_REMINDERS[agent] : undefined;
       if (!dispatchReminder) return;
 
-      // Idempotency guard: skip if this in-memory message already carries the
-      // reminder (opencode may pass an already-transformed array through the
-      // hook again — same pattern the superpowers bootstrap guards against).
+      // Idempotency applies only to a reminder this plugin inserted into this
+      // in-memory array; user-authored marker text must not suppress injection.
       const alreadyInjected = lastUserMsg.parts.some(
-        (p) =>
-          p.type === "text" &&
-          typeof (p as any).text === "string" &&
-          (p as any).text.includes(DISPATCH_REMINDER_MARKER),
+        (part) => injectedPrimaryReminderParts.has(part),
       );
       if (alreadyInjected) return;
 
-      appendReminder(dispatchReminder);
+      injectedPrimaryReminderParts.add(appendReminder(dispatchReminder));
     },
   };
 };
