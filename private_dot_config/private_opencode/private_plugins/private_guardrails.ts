@@ -3,13 +3,14 @@ import type { Plugin } from "@opencode-ai/plugin";
 /**
  * Guardrails plugin for OpenCode.
  *
- * Enforces six operational disciplines:
+ * Enforces seven operational disciplines:
  *   1. Subagent nesting prevention — blocks subagents from spawning subagents
  *   2. Orchestration skill blocking — prevents subagents from loading dispatch-heavy skills
  *   3. LSP-first enforcement — blocks grep/glob for symbol-like patterns
  *   4. Plan-mode redirect blocking — blocks output redirects that bypass edit:deny
- *   5. Skill activation nudges — reminds the model to invoke relevant skills
- *   6. Subagent dispatch reminders — per-turn reminder keeping plan/build agents
+ *   5. Hardware-key retry guard — stops signing/network workarounds after a missed touch
+ *   6. Skill activation nudges — reminds the model to invoke relevant skills
+ *   7. Subagent dispatch reminders — per-turn reminder keeping plan/build agents
  *      on the explore → implement → review dispatch loop
  *
  * Works alongside the superpowers bootstrap and rtk plugins.
@@ -112,6 +113,508 @@ function includeTargetsLspFiles(include: string | undefined): boolean {
  */
 const OUTPUT_REDIRECT_RE =
   /(?:^|[^<])(?:&|\d+)?>{1,2}(?!&)\s*(?!\/dev\/(null|stderr|stdout)\b)\S/;
+
+// ---------------------------------------------------------------------------
+// Hardware-key retry guard config
+// ---------------------------------------------------------------------------
+
+const HARDWARE_KEY_RETRY_MARKER = "<hardware-key-retry-guard>";
+const GPG_SIGNING_FAILURE_RE = /gpg failed to sign the data|gpg: signing failed/i;
+const COMMIT_WRITE_FAILURE_RE = /fatal: failed to write commit object/i;
+// Confirmed live: the bash tool reports a killed command as
+// "shell tool terminated command after exceeding timeout <N> ms". Matching the
+// diagnostic sentence (not a bare "exceeding timeout") avoids colliding with a
+// Git commit subject that happens to contain those words.
+const COMMAND_TIMEOUT_RE = /terminated command after exceeding timeout/i;
+const NETWORK_KEY_FAILURE_RE =
+  /Confirm user presence for key|Permission denied \(publickey\)/;
+
+const GIT_NETWORK_SUBCOMMANDS = new Set([
+  "push",
+  "fetch",
+  "pull",
+  "clone",
+  "ls-remote",
+]);
+const GIT_SIGNING_SUBCOMMANDS = new Set([
+  "commit",
+  "merge",
+  "rebase",
+  "cherry-pick",
+  "revert",
+  "am",
+  "pull",
+  "tag",
+]);
+const GIT_COMMIT_SIGNING_SUBCOMMANDS = new Set([
+  "commit",
+  "merge",
+  "rebase",
+  "cherry-pick",
+  "revert",
+  "am",
+  "pull",
+]);
+const GIT_GLOBAL_OPTIONS_WITH_OPERAND = new Set([
+  "-C",
+  "-c",
+  "--config-env",
+  "--git-dir",
+  "--work-tree",
+  "--namespace",
+  "--exec-path",
+]);
+const GIT_CONFIG_READ_OPTIONS = new Set([
+  "--get",
+  "--get-all",
+  "--get-regexp",
+  "--get-urlmatch",
+  "--list",
+]);
+const GIT_CONFIG_OPTIONS_WITH_OPERAND = new Set([
+  "--file",
+  "--blob",
+  "--type",
+  "--default",
+]);
+
+interface GitConfigValue {
+  key: string;
+  value: string;
+}
+
+interface GitConfigEnvironment {
+  key: string;
+  environmentName: string;
+}
+
+interface GitInvocation {
+  args: string[];
+  configValues: GitConfigValue[];
+  configEnvironment: GitConfigEnvironment[];
+  environment: Map<string, string>;
+  subcommand?: string;
+  subcommandIndex: number;
+}
+
+interface GitCommandClassification {
+  hasGit: boolean;
+  subcommands: string[];
+  hasNetwork: boolean;
+  hasSigningCapable: boolean;
+}
+
+/**
+ * Splits only the shell forms rtk emits: quotes, backslash escapes, and the
+ * chain operators &&, ||, ;, and |. Command substitution and subshells are
+ * deliberately unsupported; treating those commands as unclassifiable avoids
+ * making an unsafe guess about which git invocation will actually run.
+ */
+function tokenizeShell(command: string): string[][] | undefined {
+  const segments: string[][] = [];
+  let tokens: string[] = [];
+  let current = "";
+  let tokenStarted = false;
+  let quote: "'" | '"' | undefined;
+
+  const finishToken = () => {
+    if (tokenStarted) {
+      tokens.push(current);
+      current = "";
+      tokenStarted = false;
+    }
+  };
+
+  const finishSegment = () => {
+    finishToken();
+    if (tokens.length === 0) return false;
+    segments.push(tokens);
+    tokens = [];
+    return true;
+  };
+
+  for (let index = 0; index < command.length; index++) {
+    const character = command[index];
+
+    if (quote === "'") {
+      // POSIX single quotes preserve every character except their closing quote.
+      if (character === quote) {
+        quote = undefined;
+      } else {
+        current += character;
+      }
+      continue;
+    }
+
+    if (quote) {
+      if (character === quote) {
+        quote = undefined;
+      } else if (character === "\\") {
+        if (index + 1 >= command.length) return undefined;
+        current += command[++index];
+      } else if (character === "$" && command[index + 1] === "(") {
+        return undefined;
+      } else if (character === "`") {
+        return undefined;
+      } else {
+        current += character;
+      }
+      continue;
+    }
+
+    if (character === "'" || character === '"') {
+      quote = character;
+      tokenStarted = true;
+      continue;
+    }
+    if (character === "\\") {
+      if (index + 1 >= command.length) return undefined;
+      current += command[++index];
+      tokenStarted = true;
+      continue;
+    }
+    if (/\s/.test(character)) {
+      finishToken();
+      continue;
+    }
+    if (
+      character === "`" ||
+      character === "(" ||
+      character === ")" ||
+      (character === "$" && command[index + 1] === "(")
+    ) {
+      return undefined;
+    }
+    if (character === ";" || character === "|" || character === "&") {
+      if (character === "&" && command[index + 1] !== "&") {
+        current += character;
+        tokenStarted = true;
+        continue;
+      }
+      if (!finishSegment()) return undefined;
+      if (
+        (character === "&" && command[index + 1] === "&") ||
+        (character === "|" && command[index + 1] === "|")
+      ) {
+        index++;
+      }
+      continue;
+    }
+
+    current += character;
+    tokenStarted = true;
+  }
+
+  if (quote) return undefined;
+  finishToken();
+  if (tokens.length > 0) {
+    segments.push(tokens);
+  } else if (segments.length > 0) {
+    return undefined;
+  }
+  return segments;
+}
+
+function parseConfigValue(value: string | undefined): GitConfigValue | undefined {
+  if (!value) return undefined;
+  const separator = value.indexOf("=");
+  if (separator < 1) return undefined;
+  return {
+    key: value.slice(0, separator).toLowerCase(),
+    value: value.slice(separator + 1),
+  };
+}
+
+function parseConfigEnvironment(
+  value: string | undefined,
+): GitConfigEnvironment | undefined {
+  if (!value) return undefined;
+  const separator = value.indexOf("=");
+  if (separator < 1 || separator === value.length - 1) return undefined;
+  return {
+    key: value.slice(0, separator).toLowerCase(),
+    environmentName: value.slice(separator + 1),
+  };
+}
+
+function parseGitInvocation(tokens: string[]): GitInvocation | undefined {
+  const environment = new Map<string, string>();
+  let index = 0;
+
+  while (index < tokens.length) {
+    const assignment = /^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/.exec(tokens[index]);
+    if (!assignment) break;
+    environment.set(assignment[1], assignment[2]);
+    index++;
+  }
+
+  if (tokens[index] === "rtk") index++;
+  if (tokens[index] !== "git") return undefined;
+
+  const args = tokens.slice(index + 1);
+  const configValues: GitConfigValue[] = [];
+  const configEnvironment: GitConfigEnvironment[] = [];
+
+  for (let argIndex = 0; argIndex < args.length; argIndex++) {
+    const token = args[argIndex];
+
+    if (token === "-c") {
+      const configValue = parseConfigValue(args[argIndex + 1]);
+      if (configValue) configValues.push(configValue);
+      argIndex++;
+      continue;
+    }
+    if (token.startsWith("-c") && token.length > 2) {
+      const configValue = parseConfigValue(token.slice(2));
+      if (configValue) configValues.push(configValue);
+      continue;
+    }
+    if (token === "--config-env") {
+      const configValue = parseConfigEnvironment(args[argIndex + 1]);
+      if (configValue) configEnvironment.push(configValue);
+      argIndex++;
+      continue;
+    }
+    if (token.startsWith("--config-env=")) {
+      const configValue = parseConfigEnvironment(token.slice("--config-env=".length));
+      if (configValue) configEnvironment.push(configValue);
+      continue;
+    }
+    if (GIT_GLOBAL_OPTIONS_WITH_OPERAND.has(token)) {
+      argIndex++;
+      continue;
+    }
+    if (
+      token.startsWith("-C") ||
+      token.startsWith("--git-dir=") ||
+      token.startsWith("--work-tree=") ||
+      token.startsWith("--namespace=") ||
+      token.startsWith("--exec-path=")
+    ) {
+      continue;
+    }
+    if (token.startsWith("-")) continue;
+
+    return {
+      args,
+      configValues,
+      configEnvironment,
+      environment,
+      subcommand: token.toLowerCase(),
+      subcommandIndex: argIndex,
+    };
+  }
+
+  return {
+    args,
+    configValues,
+    configEnvironment,
+    environment,
+    subcommandIndex: -1,
+  };
+}
+
+function parseGitInvocations(command: string): GitInvocation[] {
+  const segments = tokenizeShell(command);
+  if (!segments) return [];
+
+  const invocations: GitInvocation[] = [];
+  for (const segment of segments) {
+    const invocation = parseGitInvocation(segment);
+    if (invocation) invocations.push(invocation);
+  }
+  return invocations;
+}
+
+function firstSubcommandArgument(invocation: GitInvocation): string | undefined {
+  for (
+    let index = invocation.subcommandIndex + 1;
+    index < invocation.args.length;
+    index++
+  ) {
+    const token = invocation.args[index];
+    if (!token.startsWith("-")) return token.toLowerCase();
+  }
+  return undefined;
+}
+
+function isSigningCapableGitInvocation(invocation: GitInvocation): boolean {
+  if (
+    invocation.subcommand === undefined ||
+    !GIT_SIGNING_SUBCOMMANDS.has(invocation.subcommand)
+  ) {
+    return false;
+  }
+  if (invocation.subcommand !== "tag") return true;
+
+  return !invocation.args.slice(invocation.subcommandIndex + 1).some(
+    (arg) =>
+      arg === "-l" ||
+      arg === "--list" ||
+      arg.startsWith("--list=") ||
+      arg === "-n" ||
+      (arg.startsWith("-n") && arg.length > 2) ||
+      arg === "-v" ||
+      arg === "--verify",
+  );
+}
+
+function classifyGitCommand(command: string): GitCommandClassification {
+  const invocations = parseGitInvocations(command);
+  const subcommands = invocations.flatMap((invocation) =>
+    invocation.subcommand ? [invocation.subcommand] : [],
+  );
+
+  return {
+    hasGit: invocations.length > 0,
+    subcommands,
+    hasNetwork: invocations.some(
+      (invocation) =>
+        (invocation.subcommand !== undefined &&
+          GIT_NETWORK_SUBCOMMANDS.has(invocation.subcommand)) ||
+        (invocation.subcommand === "remote" &&
+          ["update", "prune"].includes(firstSubcommandArgument(invocation) ?? "")),
+    ),
+    hasSigningCapable: invocations.some(isSigningCapableGitInvocation),
+  };
+}
+
+function buildHardwareKeyRetryDirective(): string {
+  return `<system-reminder>
+${HARDWARE_KEY_RETRY_MARKER}
+This git operation most likely FAILED because your hardware security key (smartcard) was not touched/confirmed in time — NOT because of a code or configuration problem.
+
+Do the following, in order:
+1. STOP. Do not retry the command yet and do not run it in a loop.
+2. Do NOT work around this: do not disable or skip signing (no --no-gpg-sign, no --no-sign, no \`-c commit.gpgsign=false\`), do not change signing method, do not abandon the operation.
+3. Ask the user to insert/touch their security key and confirm they are ready.
+4. Only after the user confirms, retry the EXACT same command once.
+If the user says this was a genuine network or configuration error rather than a missing touch, follow their direction instead.
+</hardware-key-retry-guard>
+</system-reminder>`;
+}
+
+function removeEchoedCommandText(haystack: string, command: string): string {
+  return haystack.split(command).join("");
+}
+
+function metadataContainsTimeout(metadata: unknown, command: string): boolean {
+  try {
+    const serialized = JSON.stringify(metadata);
+    return (
+      typeof serialized === "string" &&
+      COMMAND_TIMEOUT_RE.test(removeEchoedCommandText(serialized, command))
+    );
+  } catch {
+    // Metadata can contain circular values; detection must never break the hook.
+    return false;
+  }
+}
+
+function detectHardwareKeyFailure(
+  command: string,
+  output: string,
+  metadata: unknown,
+): boolean {
+  if (output.includes(HARDWARE_KEY_RETRY_MARKER)) return false;
+
+  const classification = classifyGitCommand(command);
+  if (!classification.hasGit) return false;
+
+  const outputHasTimeout = COMMAND_TIMEOUT_RE.test(
+    removeEchoedCommandText(output, command),
+  );
+  const hasTimeout = outputHasTimeout || metadataContainsTimeout(metadata, command);
+  const hasSigningFailure =
+    GPG_SIGNING_FAILURE_RE.test(output) || COMMIT_WRITE_FAILURE_RE.test(output);
+  const hasNetworkKeyFailure = NETWORK_KEY_FAILURE_RE.test(output);
+
+  return (
+    (classification.hasSigningCapable && (hasSigningFailure || hasTimeout)) ||
+    (classification.hasNetwork && (hasTimeout || hasNetworkKeyFailure))
+  );
+}
+
+function isFalseyGitConfigValue(value: string | undefined): boolean {
+  return value !== undefined && ["false", "off", "no", "0"].includes(value.toLowerCase());
+}
+
+function hasFalseySigningConfig(
+  invocation: GitInvocation,
+  key: "commit.gpgsign" | "tag.gpgsign",
+): boolean {
+  return (
+    invocation.configValues.some(
+      (config) => config.key === key && isFalseyGitConfigValue(config.value),
+    ) ||
+    invocation.configEnvironment.some(
+      (config) =>
+        config.key === key &&
+        isFalseyGitConfigValue(invocation.environment.get(config.environmentName)),
+    )
+  );
+}
+
+function configWriteDisablesSigning(invocation: GitInvocation): boolean {
+  const configArgs = invocation.args.slice(invocation.subcommandIndex + 1);
+  if (configArgs.some((arg) => GIT_CONFIG_READ_OPTIONS.has(arg))) return false;
+
+  let isUnset = false;
+  const positional: string[] = [];
+  for (let index = 0; index < configArgs.length; index++) {
+    const token = configArgs[index];
+    if (token === "--unset" || token === "--unset-all") {
+      isUnset = true;
+      continue;
+    }
+    if (GIT_CONFIG_OPTIONS_WITH_OPERAND.has(token)) {
+      index++;
+      continue;
+    }
+    if (token.startsWith("--file=") || token.startsWith("--blob=") || token.startsWith("--type=")) {
+      continue;
+    }
+    if (token.startsWith("-")) continue;
+    positional.push(token);
+  }
+
+  const action = positional[0]?.toLowerCase();
+  if (action === "get" || action === "list") return false;
+
+  const usesModernSet = action === "set";
+  const usesModernUnset = action === "unset" || action === "unset-all";
+  const key = positional[usesModernSet || usesModernUnset ? 1 : 0]?.toLowerCase();
+  if (key !== "commit.gpgsign" && key !== "tag.gpgsign") return false;
+  if (isUnset || usesModernUnset) return true;
+  return isFalseyGitConfigValue(positional[usesModernSet ? 2 : 1]);
+}
+
+function detectSigningDisable(command: string): boolean {
+  for (const invocation of parseGitInvocations(command)) {
+    const subcommand = invocation.subcommand;
+    if (!subcommand) continue;
+
+    if (
+      GIT_COMMIT_SIGNING_SUBCOMMANDS.has(subcommand) &&
+      (invocation.args.includes("--no-gpg-sign") ||
+        hasFalseySigningConfig(invocation, "commit.gpgsign"))
+    ) {
+      return true;
+    }
+    if (
+      subcommand === "tag" &&
+      isSigningCapableGitInvocation(invocation) &&
+      (invocation.args.includes("--no-sign") ||
+        hasFalseySigningConfig(invocation, "tag.gpgsign"))
+    ) {
+      return true;
+    }
+    if (subcommand === "config" && configWriteDisablesSigning(invocation)) {
+      return true;
+    }
+  }
+  return false;
+}
 
 // ---------------------------------------------------------------------------
 // Skill nudge config
@@ -324,11 +827,37 @@ export const GuardrailsPlugin: Plugin = async () => {
           }
         }
       }
+
+      // --- 5. Hardware-key signing-disable guard ---
+      if (input.tool === "bash" || input.tool === "shell") {
+        const command: unknown = output.args?.command;
+        if (typeof command === "string" && detectSigningDisable(command)) {
+          throw new Error(
+            `[Guardrail] Git signing-disable command blocked: this is a deliberate guardrail against ` +
+              `bypassing a hardware-key touch failure. If an unsigned commit is genuinely intended, ` +
+              `the user should run it themselves outside the agent.`,
+          );
+        }
+      }
     },
 
     // -----------------------------------------------------------------------
-    // 5. Skill activation nudges (once per session per skill)
-    // 6. Subagent dispatch reminders (every prompt build, plan/build only)
+    // Post-execution hardware-key retry advisory
+    // -----------------------------------------------------------------------
+    "tool.execute.after": async (input, output) => {
+      if (input.tool !== "bash" && input.tool !== "shell") return;
+
+      const command: unknown = input.args?.command;
+      if (typeof command !== "string" || typeof output.output !== "string") return;
+
+      if (detectHardwareKeyFailure(command, output.output, output.metadata)) {
+        output.output = `${buildHardwareKeyRetryDirective()}\n\n${output.output}`;
+      }
+    },
+
+    // -----------------------------------------------------------------------
+    // 6. Skill activation nudges (once per session per skill)
+    // 7. Subagent dispatch reminders (every prompt build, plan/build only)
     // -----------------------------------------------------------------------
     "experimental.chat.messages.transform": async (_input, output) => {
       const messages = output.messages;
@@ -356,7 +885,7 @@ export const GuardrailsPlugin: Plugin = async () => {
         return part;
       };
 
-      // --- 5. Skill activation nudges ---
+      // --- 6. Skill activation nudges ---
       let latestUserText = "";
       for (const part of lastUserMsg.parts) {
         if (part.type === "text") {
@@ -389,7 +918,7 @@ export const GuardrailsPlugin: Plugin = async () => {
         }
       }
 
-      // --- 6. Subagent dispatch reminder (plan/build agents only) ---
+      // --- 7. Subagent dispatch reminder (plan/build agents only) ---
       // Transform routing is always determined by the latest required resolved
       // user agent. The session map is reserved for tool guards because it can
       // temporarily hold internal agents such as title or summary.
