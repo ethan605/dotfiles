@@ -312,7 +312,7 @@
       }
     },
     "okta-integrator": {
-      "enabled": true,
+      "enabled": false,
       "type": "local",
       "command": ["uvx", "okta-mcp-server"],
       "timeout": 60000,
