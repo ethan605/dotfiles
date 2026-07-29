@@ -324,7 +324,7 @@
     "rivo": {
       "enabled": true,
       "type": "remote",
-      "url": "https://mcp.atlassian.com/v1/mcp",
+      "url": "https://cf.mcp.atlassian.com/v1/mcp",
       "oauth": {}
     },
     "slack": {
