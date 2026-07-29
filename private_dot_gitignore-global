@@ -1,13 +1,12 @@
 # vim:filetype=gitignore
-**/.opencode
-**/.plans/*.md
 **/.worktrees
-**/.venv-host
 **/docs/plans/*.md
-**/docs/superpowers/**/*.md
+**/docs/superpowers
 **/node_modules
 **/tmp
 .envrc
 .null-ls*
 junit.xml
 mise.toml
+
+agents/skills/neo4j-iam/SKILL.md
