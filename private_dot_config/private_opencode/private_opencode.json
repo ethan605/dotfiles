@@ -66,6 +66,9 @@
     "neo4j-cypher_get_*": "allow",
     "neo4j-cypher_read_*": "allow",
 
+    "okta-integrator_get_*": "allow",
+    "okta-integrator_list_*": "allow",
+
     "rivo_atlassianUserInfo": "allow",
     "rivo_fetch": "allow",
     "rivo_get*": "allow",
@@ -306,6 +309,18 @@
         "NEO4J_USERNAME": "{env:NEO4J_USERNAME}",
         "NEO4J_PASSWORD": "{env:NEO4J_PASSWORD}",
         "NEO4J_DATABASE": "{env:NEO4J_DATABASE}"
+      }
+    },
+    "okta-integrator": {
+      "enabled": true,
+      "type": "local",
+      "command": ["uvx", "okta-mcp-server"],
+      "timeout": 60000,
+      "environment": {
+        "OKTA_ORG_URL": "{env:OKTA_ORG_URL}",
+        "OKTA_CLIENT_ID": "{env:OKTA_CLIENT_ID}",
+        "OKTA_SCOPES": "{env:OKTA_SCOPES}",
+        "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt"
       }
     },
     "postgresql": {

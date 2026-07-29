@@ -112,6 +112,11 @@ oc() {
   export GRAFANA_URL="$OC_GRAFANA_URL"
   export GRAFANA_SERVICE_ACCOUNT_TOKEN="$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
 
+  # For okta-integrator MCP
+  export OKTA_ORG_URL="$OC_OKTA_ORG_URL"
+  export OKTA_CLIENT_ID="$OC_OKTA_CLIENT_ID"
+  export OKTA_SCOPES="okta.users.read okta.users.manage okta.groups.read okta.groups.manage okta.apps.read okta.apps.manage okta.policies.read okta.policies.manage okta.deviceAssurance.read okta.deviceAssurance.manage okta.logs.read okta.brands.read okta.brands.manage okta.templates.read okta.templates.manage okta.domains.read okta.domains.manage okta.emailDomains.read okta.emailDomains.manage"
+
   # For teamcity MCP
   export TC_AUTH_TOKEN="$OC_TC_AUTH_TOKEN"
 

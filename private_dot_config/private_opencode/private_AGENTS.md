@@ -215,6 +215,30 @@ If the MCP is unavailable for a SQL-heavy task, say so and suggest enabling it r
 
 ---
 
+# Okta
+
+## Okta MCP (When Available)
+
+**Use the `okta-integrator` MCP tools for Okta administration whenever the MCP is available.** It is configured against an Integrator Free Plan org with the full set of read and manage scopes. When available, this includes:
+
+- Inspecting users, groups, applications, policies, brands, domains, email templates, and system logs
+- Investigating sign-in problems via `okta-integrator_get_login_failures`
+- Checking configured capabilities with `okta-integrator_get_scope_status`
+
+**When the MCP is available, do NOT:**
+- Use `curl` or raw HTTP against the Okta Management API
+- Make any write, activation, deactivation, deletion, or membership change without the user's explicit approval
+- Treat `get_scope_status` as proof the connection works — it reports the parsed `OKTA_SCOPES` string only, and never inspects the token's real grants. A `403` at call time means the Admin Console grant or the cached token is narrower than the configuration.
+
+Diagnosing failures: `'NoneType' object has no attribute 'status'` is the Okta Python SDK discarding a transport exception, not an authorization error — check TLS trust and `SSL_CERT_FILE` first. If device authentication has lapsed, ask the user to re-run the bootstrap in a terminal:
+
+```shell
+# OKTA_ORG_URL, OKTA_CLIENT_ID, and OKTA_SCOPES need pre-populated
+$ uvx okta-mcp-server
+```
+
+---
+
 # Code Navigation - LSP First
 
 ALWAYS prefer LSP tools over Grep/Glob for symbol-based code navigation.

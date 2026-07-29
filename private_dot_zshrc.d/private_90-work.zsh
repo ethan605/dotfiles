@@ -45,9 +45,6 @@ oc() {
   export GOOGLE_VERTEX_LOCATION=global
   export VERTEX_LOCATION=global
 
-  # For postgresql MCP
-  # export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
-
   # For google-docs MCP
   export GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }')
   export GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1)
@@ -55,6 +52,14 @@ oc() {
   # For grafana MCP
   export GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/
   export GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam)
+
+  # For okta-integrator MCP
+  export OKTA_ORG_URL=$(wpass api-keys/okta-integrator-mcp | rg 'org_url:' | awk '{ print $2 }')
+  export OKTA_CLIENT_ID=$(wpass api-keys/okta-integrator-mcp | head -1)
+  export OKTA_SCOPES="okta.users.read okta.users.manage okta.groups.read okta.groups.manage okta.apps.read okta.apps.manage okta.policies.read okta.policies.manage okta.deviceAssurance.read okta.deviceAssurance.manage okta.logs.read okta.brands.read okta.brands.manage okta.templates.read okta.templates.manage okta.domains.read okta.domains.manage okta.emailDomains.read okta.emailDomains.manage"
+
+  # For postgresql MCP
+  # export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
 
   # For teamcity MCP
   export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
@@ -126,6 +131,8 @@ OC_GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' 
 OC_GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1) \
 OC_GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/ \
 OC_GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam) \
+OC_OKTA_ORG_URL=$(wpass api-keys/okta-integrator-mcp | rg 'org_url:' | awk '{ print $2 }') \
+OC_OKTA_CLIENT_ID=$(wpass api-keys/okta-integrator-mcp | head -1) \
 OC_TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token) \
 OC_NEO4J_URI=$NEO4J_URI \
 OC_NEO4J_USERNAME=$NEO4J_USERNAME \
