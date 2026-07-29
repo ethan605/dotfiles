@@ -244,7 +244,7 @@
   },
   "plugin": [
     "opencode-claude-bridge@1.10.12",
-    "superpowers@git+https://github.com/ethan605/superpowers.git#c3a201fe236b9e5f94ac92f7a6723a7e391ab392"
+    "superpowers@git+https://github.com/ethan605/superpowers.git#a1479fc98f35f023e0862bb5e09d4115ba4d8d8a"
   ],
   "lsp": {
     "pyright": {
