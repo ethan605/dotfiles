@@ -1,8 +1,6 @@
 # vim:filetype=gitconfig
 [includeIf "hasconfig:remote.*.url:git@github.com:{{ .work_org_alpha }}/*"]
   path = ~/.gitconfig-work-id
-[includeIf "hasconfig:remote.*.url:git@gist.github.com:{{ .work_org_alpha }}/*"]
-  path = ~/.gitconfig-work-id
 [url "git@github.work:{{ .work_org_alpha }}"]
   insteadOf = https://github.com/{{ .work_org_alpha }}
 [url "git@github.work:{{ .work_org_alpha }}"]
@@ -11,8 +9,6 @@
   insteadOf = ssh://git@github.com/{{ .work_org_alpha }}
 
 [includeIf "hasconfig:remote.*.url:git@github.com:{{ .work_org_beta }}/*"]
-  path = ~/.gitconfig-work-id
-[includeIf "hasconfig:remote.*.url:git@gist.github.com:{{ .work_org_beta }}/*"]
   path = ~/.gitconfig-work-id
 [url "git@github.work:{{ .work_org_beta }}"]
   insteadOf = https://github.com/{{ .work_org_beta }}
