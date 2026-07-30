@@ -53,6 +53,7 @@ __install-system-packages() {
 		usage@latest \
 		uv@latest \
 		vivid@latest \
+		yarn@1.22.22 \
 		zoxide@latest
 
 	eval "$(mise activate bash)"
