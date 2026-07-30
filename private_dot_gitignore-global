@@ -9,4 +9,5 @@
 junit.xml
 mise.toml
 
+.agents
 agents/skills/neo4j-iam/SKILL.md
