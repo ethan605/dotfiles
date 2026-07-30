@@ -1,0 +1,36 @@
+{
+  "enabled": true,
+  "log": { "level": "info" },
+  "cooldownMs": 60000,
+  "fallbackMode": "cycle",
+  "enableSubagentFallback": true,
+  "maxSubagentDepth": 1,
+  "fallbackModels": [
+    { "providerID": "openai", "modelID": "gpt-5.6-terra" },
+    {
+      "providerID": "fireworks-ai",
+      "modelID": "accounts/fireworks/models/glm-5p2"
+    },
+    { "providerID": "anthropic", "modelID": "claude-sonnet-5" }
+  ],
+  "retryPolicy": {
+    "maxRetries": 3,
+    "strategy": "exponential",
+    "baseDelayMs": 1000,
+    "maxDelayMs": 30000,
+    "jitterEnabled": true,
+    "jitterFactor": 0.1
+  },
+  "circuitBreaker": {
+    "enabled": true,
+    "failureThreshold": 5,
+    "recoveryTimeoutMs": 60000,
+    "halfOpenMaxCalls": 1,
+    "successThreshold": 2
+  },
+  "metrics": {
+    "enabled": true,
+    "output": { "console": true, "format": "pretty" },
+    "resetInterval": "daily"
+  }
+}
