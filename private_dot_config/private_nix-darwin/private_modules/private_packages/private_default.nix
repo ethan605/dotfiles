@@ -128,6 +128,7 @@ let
     alacritty
     appcleaner
     ghostty-bin
+    syncthing-macos
     # thunderbird
     # zed-editor
   ];
