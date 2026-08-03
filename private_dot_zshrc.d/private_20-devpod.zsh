@@ -82,6 +82,7 @@ oc() {
   export OPENCODE_DISABLE_LSP_DOWNLOAD=true
   export OPENCODE_DISABLE_TERMINAL_TITLE=true
   export OPENCODE_ENABLE_EXA=true
+  export OPENCODE_SERVER_PASSWORD=$OC_SERVER_PW
 
   # Experimental features
   export OPENCODE_EXPERIMENTAL=true

@@ -17,6 +17,11 @@ alias psql-prd-eu-rw!='psql $(wpass postgres/uri-prd-eu-rw)'
 alias psql-prd-us-ro='psql $(wpass postgres/uri-prd-us-ro)'
 alias psql-prd-us-rw!='psql $(wpass postgres/uri-prd-us-rw)'
 
+__random-passwd() {
+  tr -dc 'A-Za-z0-9!#&()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom |
+    head -c 32
+}
+
 __wpass-insert() {
   local pass_name=${1}
   wpass insert --force --multiline "$pass_name" >/dev/null
@@ -116,6 +121,8 @@ devbox() {
   done
 
   if [[ "$for_oc" == "true" ]]; then
+    __random-passwd | wpass insert --echo --force oc_server_pw
+
     if lsof -Pi ":$OC_PORT" -sTCP:LISTEN -t >/dev/null; then
       echo "Port $OC_PORT is in use"
       return 1
@@ -127,6 +134,7 @@ devbox() {
 
     local oc_envs="
 OC_PORT=$OC_PORT \
+OC_SERVER_PW=$(wpass oc_server_pw) \
 OC_GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }') \
 OC_GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1) \
 OC_GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/ \
@@ -146,5 +154,5 @@ OC_NEO4J_DATABASE=$NEO4J_DATABASE
   fi
 }
 
-alias ocattach="opencode attach http://127.0.0.1:$OC_PORT"
+alias ocattach='opencode attach --password=$(wpass oc_server_pw) http://127.0.0.1:$OC_PORT'
 alias ocbox='devbox --for-oc'
