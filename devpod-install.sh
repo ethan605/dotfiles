@@ -17,6 +17,8 @@ __install-system-packages() {
 		sudo apt-get clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
 
+  sudo apt-key export 65F8F04B | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/adoptium.gpg &&
+
 	curl -fsSL https://mise.run | sh
 
 	mise use -g \
