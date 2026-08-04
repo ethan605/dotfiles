@@ -210,8 +210,8 @@
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      "model": "openai/gpt-5.6-terra",
-      "variant": "xhigh",
+      "model": "fireworks-ai/accounts/fireworks/models/kimi-k3",
+      "variant": "high",
       "permission": {
         "task": "deny"
       },
@@ -243,8 +243,8 @@
     }
   },
   "plugin": [
-    "opencode-claude-bridge@1.10.12",
     "superpowers@git+https://github.com/ethan605/superpowers.git#a1479fc98f35f023e0862bb5e09d4115ba4d8d8a",
+    "opencode-claude-bridge@1.10.12",
     "@azumag/opencode-rate-limit-fallback@1.70.0"
   ],
   "lsp": {
