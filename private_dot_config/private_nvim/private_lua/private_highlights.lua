@@ -51,12 +51,19 @@ vim.api.nvim_set_hl(0, "DiffviewStatusTypeChange", { fg = snazzy_colors.yellow }
 vim.api.nvim_set_hl(0, "DiffviewStatusUnmerged", { fg = snazzy_colors.red })
 vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = snazzy_colors.gray })
 
-vim.api.nvim_set_hl(0, "DiffviewDiffAdd", { bg = "#1d4428" })
-vim.api.nvim_set_hl(0, "DiffviewDiffChange", { bg = "#542527" })
-vim.api.nvim_set_hl(0, "DiffviewDiffDelete", { bg = "#701011" })
-vim.api.nvim_set_hl(0, "DiffviewDiffText", { bg = "#1e582e", bold = true })
-vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffviewDiffDelete" })
-vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
+-- vim.api.nvim_set_hl(0, "DiffviewDiffAdd", { bg = "#1d4428" })
+-- vim.api.nvim_set_hl(0, "DiffviewDiffChange", { bg = "#542527" })
+-- vim.api.nvim_set_hl(0, "DiffviewDiffDelete", { bg = "#701011" })
+-- vim.api.nvim_set_hl(0, "DiffviewDiffText", { bg = "#1e582e", bold = true })
+-- vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffviewDiffDelete" })
+-- vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
+
+-- Delta / GitHub diff palette. Consumed by the per-side winhighlight hook in lua/plugins/diffview.lua
+vim.api.nvim_set_hl(0, "DeltaDiffMinus", { bg = "#3f0001" })                -- removed line base
+vim.api.nvim_set_hl(0, "DeltaDiffMinusEmph", { bg = "#901011" })            -- removed changed span
+vim.api.nvim_set_hl(0, "DeltaDiffPlus", { bg = "#002800" })                 -- added line base
+vim.api.nvim_set_hl(0, "DeltaDiffPlusEmph", { bg = "#006000" })             -- added changed span
+vim.api.nvim_set_hl(0, "DeltaDiffFiller", { fg = snazzy_colors.dark_gray }) -- missing-counterpart filler
 
 -- For fzf-lua
 vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = snazzy_colors.gray })
