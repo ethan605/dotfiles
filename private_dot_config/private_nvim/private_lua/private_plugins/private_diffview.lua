@@ -69,10 +69,19 @@ return {
         end,
       },
       file_panel = {
-        show_branch_name = true,
+        always_show_marks = true, -- Always show the selection checkbox so "viewed" state is visible.
         always_show_sections = true,
-        -- Always show the selection checkbox so "viewed" state is visible.
-        always_show_marks = true,
+        show_branch_name = true,
+      },
+      signs = {
+        -- Dir selection, needs an extra space
+        partially_selected_dir = "󰡖 ",
+        selected_dir = " ",
+        unselected_dir = " ",
+
+        -- File selection, omit any extra spaces
+        selected_file = "",
+        unselected_file = "",
       },
       view = {
         cycle_layouts = {

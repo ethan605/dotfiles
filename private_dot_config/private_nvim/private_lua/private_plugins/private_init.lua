@@ -38,10 +38,9 @@ local plugins = {
   "yochem/jq-playground.nvim",
   "vifm/vifm.vim",
 
-  -- { "CoreyKaylor/diffbandit.nvim", config = true }, -- disabled for now; revisit later
-  { "fei6409/log-highlight.nvim",  config = true },
-  { "kylechui/nvim-surround",      config = true },
-  { "windwp/nvim-autopairs",       config = true, event = "InsertEnter" },
+  { "fei6409/log-highlight.nvim", config = true },
+  { "kylechui/nvim-surround",     config = true },
+  { "windwp/nvim-autopairs",      config = true, event = "InsertEnter" },
 
   {
     "brianhuster/live-preview.nvim",
@@ -56,7 +55,6 @@ local plugins = {
   require("plugins.csvview"),
   require("plugins.dashboard"),
   require("plugins.diffview"),
-  -- require("plugins.fyler"),
   require("plugins.fzf-lua"),
   require("plugins.gitlinker"),
   require("plugins.gitsigns"),
@@ -83,6 +81,10 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
+
+  -- Disabled for now; revisit later
+  -- { "CoreyKaylor/diffbandit.nvim", config = true },
+  -- require("plugins.fyler"),
 }
 
 require("lazy").setup(plugins, opts)
