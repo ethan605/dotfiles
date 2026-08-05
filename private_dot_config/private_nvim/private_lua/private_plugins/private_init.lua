@@ -38,7 +38,7 @@ local plugins = {
   "yochem/jq-playground.nvim",
   "vifm/vifm.vim",
 
-  { "CoreyKaylor/diffbandit.nvim", config = true },
+  -- { "CoreyKaylor/diffbandit.nvim", config = true }, -- disabled for now; revisit later
   { "fei6409/log-highlight.nvim",  config = true },
   { "kylechui/nvim-surround",      config = true },
   { "windwp/nvim-autopairs",       config = true, event = "InsertEnter" },
