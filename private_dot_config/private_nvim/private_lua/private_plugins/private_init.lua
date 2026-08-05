@@ -83,7 +83,6 @@ local plugins = {
   require("plugins.todo-comments"),
 
   -- Disabled for now; revisit later
-  -- { "CoreyKaylor/diffbandit.nvim", config = true },
   -- require("plugins.fyler"),
 }
 
