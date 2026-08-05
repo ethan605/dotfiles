@@ -210,7 +210,7 @@
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      "model": "fireworks-ai/accounts/fireworks/models/kimi-k3",
+      "model": "fireworks-ai/accounts/fireworks/models/glm-5p2",
       "variant": "high",
       "permission": {
         "task": "deny"
@@ -220,7 +220,8 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "fireworks-ai/accounts/fireworks/routers/glm-5p2-fast",
+      "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash",
+      "variant": "high",
       "permission": {
         "edit": "deny",
         "task": "deny"
