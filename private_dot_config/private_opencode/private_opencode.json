@@ -190,7 +190,7 @@
     "plan": {
       "color": "#57c7ff",
       "model": "anthropic/claude-opus-5",
-      "variant": "high",
+      "variant": "xhigh",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
@@ -199,7 +199,7 @@
     },
     "build": {
       "color": "#ff6ac1",
-      "model": "anthropic/claude-opus-5",
+      "model": "fireworks-ai/accounts/fireworks/models/kimi-k3",
       "variant": "high",
       "permission": {
         "skill": {
