@@ -22,6 +22,10 @@ __install-system-packages() {
 	curl -fsSL https://mise.run | sh
 
 	mise use -g \
+		go@1.25 \
+		node@20 \
+		python@3.10 \
+		yarn@1.22.22 \
 		awscli@latest \
 		azure@latest \
 		bat@latest \
@@ -35,7 +39,6 @@ __install-system-packages() {
 		fzf@latest \
 		gcloud@latest \
 		gh@latest \
-		go@latest \
 		kubecolor@latest \
 		kubectl@latest \
 		kubectx@latest \
@@ -43,9 +46,7 @@ __install-system-packages() {
 		kustomize@latest \
 		lua@latest \
 		neovim@latest \
-		node@latest \
 		opencode@latest \
-		python@3.10 \
 		ripgrep@latest \
 		rtk@latest \
 		ruby@latest \
@@ -55,7 +56,6 @@ __install-system-packages() {
 		usage@latest \
 		uv@latest \
 		vivid@latest \
-		yarn@1.22.22 \
 		zoxide@latest
 
 	eval "$(mise activate bash)"
