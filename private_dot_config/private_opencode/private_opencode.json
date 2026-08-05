@@ -189,8 +189,8 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "anthropic/claude-opus-5",
-      "variant": "xhigh",
+      "model": "anthropic/claude-opus-4-8",
+      "variant": "high",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
