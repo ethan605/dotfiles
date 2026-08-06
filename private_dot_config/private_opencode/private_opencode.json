@@ -100,26 +100,26 @@
     "slack_slack_search_*": "allow",
 
     // Bifrost MCP Gateway
-    "bifrost-mcp.linear_extract_*": "allow",
-    "bifrost-mcp.linear_get_*": "allow",
-    "bifrost-mcp.linear_list_*": "allow",
-    "bifrost-mcp.linear_search_*": "allow",
+    "bifrost.linear_extract_*": "allow",
+    "bifrost.linear_get_*": "allow",
+    "bifrost.linear_list_*": "allow",
+    "bifrost.linear_search_*": "allow",
 
-    "bifrost-mcp.miro_board_*": "allow",
-    "bifrost-mcp.miro_context_*": "allow",
-    "bifrost-mcp.miro_diagram_get_dsl": "allow",
-    "bifrost-mcp.miro_doc_get": "allow",
-    "bifrost-mcp.miro_image_get_*": "allow",
-    "bifrost-mcp.miro_table_list_rows": "allow",
+    "bifrost.miro_board_*": "allow",
+    "bifrost.miro_context_*": "allow",
+    "bifrost.miro_diagram_get_dsl": "allow",
+    "bifrost.miro_doc_get": "allow",
+    "bifrost.miro_image_get_*": "allow",
+    "bifrost.miro_table_list_rows": "allow",
 
-    "bifrost-mcp.rovo_atlassianUserInfo": "allow",
-    "bifrost-mcp.rovo_fetch": "allow",
-    "bifrost-mcp.rovo_get*": "allow",
-    "bifrost-mcp.rovo_lookup*": "allow",
-    "bifrost-mcp.rovo_search*": "allow",
+    "bifrost.rovo_atlassianUserInfo": "allow",
+    "bifrost.rovo_fetch": "allow",
+    "bifrost.rovo_get*": "allow",
+    "bifrost.rovo_lookup*": "allow",
+    "bifrost.rovo_search*": "allow",
 
-    "bifrost-mcp.teamcity_teamcity_build_log": "allow",
-    "bifrost-mcp.teamcity_teamcity_rest_get": "allow",
+    "bifrost.teamcity_teamcity_build_log": "allow",
+    "bifrost.teamcity_teamcity_rest_get": "allow",
 
     "bash": {
       "*": "ask",
@@ -372,7 +372,7 @@
         "redirectUri": "http://localhost:3118/callback"
       }
     },
-    "bifrost-mcp": {
+    "bifrost": {
       "type": "remote",
       "url": "http://localhost:9765/mcp",
       "enabled": true,
