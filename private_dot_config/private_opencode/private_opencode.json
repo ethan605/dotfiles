@@ -1,11 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["anthropic", "openai", "fireworks-ai", "google-vertex"],
+  "enabled_providers": ["fireworks-ai", "openai", "anthropic"],
   "provider": {
     "anthropic": {
       "name": "Bifrost",
       "options": {
-        "baseURL": "http://localhost:9765/anthropic/v1"
+        "baseURL": "http://localhost:9765/anthropic/v1",
+        "apiKey": "__LOCAL_PROXY_API_KEYS_NOT_REQUIRED__"
       },
       "models": {
         "claude-opus-4-8": {
@@ -18,7 +19,8 @@
       "name": "Bifrost",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
-        "baseURL": "http://localhost:9765/v1"
+        "baseURL": "http://localhost:9765/v1",
+        "apiKey": "__LOCAL_PROXY_API_KEYS_NOT_REQUIRED__"
       },
       "models": {
         "accounts/fireworks/models/deepseek-v4-flash": {

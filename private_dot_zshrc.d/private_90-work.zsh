@@ -47,9 +47,9 @@ oc() {
   export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
   # For Gemini
-  export GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
-  export GOOGLE_VERTEX_LOCATION=global
-  export VERTEX_LOCATION=global
+  # export GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
+  # export GOOGLE_VERTEX_LOCATION=global
+  # export VERTEX_LOCATION=global
 
   # For google-docs MCP
   export GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }')
