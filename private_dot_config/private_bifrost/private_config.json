@@ -1,12 +1,19 @@
 {
   "$schema": "https://www.getbifrost.ai/schema",
-  "source_of_truth": "config.json",
+  "source_of_truth": "split",
   "client": { "enforce_auth_on_inference": true },
   "config_store": {
     "enabled": true,
     "type": "sqlite",
     "config": {
-      "path": "/Users/thanh/.config/bifrost/config.db"
+      "path": "/app/data/config.db"
+    }
+  },
+  "logs_store": {
+    "enabled": true,
+    "type": "sqlite",
+    "config": {
+      "path": "/app/data/logs.db"
     }
   },
   "providers": {
