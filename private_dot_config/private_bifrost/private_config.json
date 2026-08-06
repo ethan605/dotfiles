@@ -1,5 +1,6 @@
 {
   "$schema": "https://www.getbifrost.ai/schema",
+  "source_of_truth": "config.json",
   "client": { "enforce_auth_on_inference": true },
   "config_store": {
     "enabled": true,
@@ -9,14 +10,39 @@
     }
   },
   "providers": {
-    "fireworks": {
+    "anthropic": {
+      "keys": [
+        {
+          "name": "claude-platform",
+          "value": "env.ANTHROPIC_API_KEY",
+          "models": ["claude-opus-5", "claude-opus-4-8", "claude-sonnet-5"],
+          "blacklisted_models": ["claude-fable-5"],
+          "weight": 1.0
+        }
+      ],
       "network_config": {
         "max_retries": 3,
         "retry_backoff_initial": 500,
         "retry_backoff_max": 5000
       }
     },
-    "anthropic": {
+    "fireworks": {
+      "keys": [
+        {
+          "name": "fireworks-ai",
+          "value": "env.FIREWORKS_API_KEY",
+          "models": [
+            "accounts/fireworks/models/kimi-k3",
+            "accounts/fireworks/models/glm-5p2",
+            "accounts/fireworks/models/deepseek-v4-flash"
+          ],
+          "blacklisted_models": [
+            "accounts/fireworks/routers/kimi-k3-fast",
+            "accounts/fireworks/routers/glm-5p2-fast"
+          ],
+          "weight": 1.0
+        }
+      ],
       "network_config": {
         "max_retries": 3,
         "retry_backoff_initial": 500,
@@ -25,6 +51,110 @@
     }
   },
   "governance": {
+    "virtual_keys": [
+      {
+        "id": "cbf31912-4166-4d2f-b6e9-f078c46850a6",
+        "name": "opencode-host",
+        "description": "OpenCode in Host",
+        "value": "env.BIFROST_VK_OPENCODE_HOST",
+        "is_active": true,
+        "provider_configs": [
+          {
+            "provider": "anthropic",
+            "allowed_models": ["*"],
+            "key_ids": ["*"],
+            "weight": 1
+          },
+          {
+            "provider": "fireworks",
+            "allowed_models": ["*"],
+            "key_ids": ["*"],
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b",
+        "name": "opencode-devpod",
+        "description": "OpenCode in devpod",
+        "value": "env.BIFROST_VK_OPENCODE_DEVPOD",
+        "is_active": true,
+        "provider_configs": [
+          {
+            "provider": "anthropic",
+            "allowed_models": ["*"],
+            "key_ids": ["*"],
+            "weight": 1
+          },
+          {
+            "provider": "fireworks",
+            "allowed_models": ["*"],
+            "key_ids": ["*"],
+            "weight": 1
+          }
+        ]
+      }
+    ],
+    "model_configs": [
+      {
+        "id": "d5559976-f181-450b-829c-55f6d39c5d4c",
+        "model_name": "*",
+        "provider": "anthropic",
+        "scope": "virtual_key",
+        "scope_id": "cbf31912-4166-4d2f-b6e9-f078c46850a6",
+        "budget_id": "9bf44a97-743c-47ec-9897-01af22fa3659"
+      },
+      {
+        "id": "dc6f568c-d646-4d78-8dcc-13d29fc53141",
+        "model_name": "*",
+        "provider": "fireworks",
+        "scope": "virtual_key",
+        "scope_id": "cbf31912-4166-4d2f-b6e9-f078c46850a6",
+        "budget_id": "e37c3d68-b442-47a6-a4a5-fef2047c3d82"
+      },
+      {
+        "id": "37214044-8ce6-47b4-bded-d64efb275e0a",
+        "model_name": "*",
+        "provider": "anthropic",
+        "scope": "virtual_key",
+        "scope_id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b",
+        "budget_id": "a16ab5c0-50ee-47e4-bfc4-55ecd5651afd"
+      },
+      {
+        "id": "2d4ff892-9012-46fb-978c-139f78331ee1",
+        "model_name": "*",
+        "provider": "fireworks",
+        "scope": "virtual_key",
+        "scope_id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b",
+        "budget_id": "33af11f2-cd9e-4f44-8c11-e53a7ac07910"
+      }
+    ],
+    "budgets": [
+      {
+        "id": "9bf44a97-743c-47ec-9897-01af22fa3659",
+        "max_limit": 25,
+        "reset_duration": "1w",
+        "model_config_id": "d5559976-f181-450b-829c-55f6d39c5d4c"
+      },
+      {
+        "id": "e37c3d68-b442-47a6-a4a5-fef2047c3d82",
+        "max_limit": 25,
+        "reset_duration": "1w",
+        "model_config_id": "dc6f568c-d646-4d78-8dcc-13d29fc53141"
+      },
+      {
+        "id": "a16ab5c0-50ee-47e4-bfc4-55ecd5651afd",
+        "max_limit": 80,
+        "reset_duration": "1w",
+        "model_config_id": "37214044-8ce6-47b4-bded-d64efb275e0a"
+      },
+      {
+        "id": "33af11f2-cd9e-4f44-8c11-e53a7ac07910",
+        "max_limit": 80,
+        "reset_duration": "1w",
+        "model_config_id": "2d4ff892-9012-46fb-978c-139f78331ee1"
+      }
+    ],
     "routing_rules": [
       {
         "id": "fb-fireworks-kimi-to-glm",
