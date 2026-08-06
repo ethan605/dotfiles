@@ -1,6 +1,41 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "enabled_providers": ["anthropic", "openai", "fireworks-ai", "google-vertex"],
+  "provider": {
+    "anthropic": {
+      "name": "Bifrost",
+      "options": {
+        "baseURL": "http://localhost:9765/anthropic/v1"
+      },
+      "models": {
+        "claude-opus-4-8": {
+          "name": "Claude Opus 4.8",
+          "limit": { "context": 1000000, "output": 128000 }
+        }
+      }
+    },
+    "fireworks-ai": {
+      "name": "Bifrost",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:9765/v1"
+      },
+      "models": {
+        "accounts/fireworks/models/deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash",
+          "limit": { "context": 1000000, "output": 384000 }
+        },
+        "accounts/fireworks/models/kimi-k3": {
+          "name": "Kimi K3",
+          "limit": { "context": 1048576, "output": 131072 }
+        },
+        "accounts/fireworks/models/glm-5p2": {
+          "name": "GLM 5p2",
+          "limit": { "context": 1048575, "output": 131072 }
+        }
+      }
+    }
+  },
   "autoupdate": false,
   "compaction": {
     "auto": true,
