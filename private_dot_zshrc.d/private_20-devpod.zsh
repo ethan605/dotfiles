@@ -94,12 +94,6 @@ oc() {
   # For LSP servers
   export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/share/mise/shims:$PATH"
 
-  # For Gemini
-  GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
-  export GOOGLE_VERTEX_PROJECT
-  export GOOGLE_VERTEX_LOCATION=global
-  export VERTEX_LOCATION=global
-
   # For neo4j-cypher MCP
   export NEO4J_URI="$OC_NEO4J_URI"
   export NEO4J_USERNAME="$OC_NEO4J_USERNAME"
@@ -114,8 +108,8 @@ oc() {
   export GRAFANA_URL="$OC_GRAFANA_URL"
   export GRAFANA_SERVICE_ACCOUNT_TOKEN="$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
 
-  # For teamcity MCP
-  export TC_AUTH_TOKEN="$OC_TC_AUTH_TOKEN"
+  # For Bifrost MCP Gateway
+  export BIFROST_VIRTUAL_KEY="$OC_BIFROST_VIRTUAL_KEY"
 
   opencode "$@"
 }
