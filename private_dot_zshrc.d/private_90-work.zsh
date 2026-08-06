@@ -150,5 +150,5 @@ OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-devpod)
   fi
 }
 
-alias ocattach='opencode attach --password=$(wpass oc_server_pw) http://127.0.0.1:$OC_PORT'
+alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.1:$OC_PORT'
 alias ocbox='devbox --for-oc'
