@@ -46,11 +46,6 @@ oc() {
   # For LSP servers
   export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
-  # For Gemini
-  # export GOOGLE_VERTEX_PROJECT=$(gcloud config get project)
-  # export GOOGLE_VERTEX_LOCATION=global
-  # export VERTEX_LOCATION=global
-
   # For google-docs MCP
   export GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }')
   export GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1)
@@ -67,8 +62,8 @@ oc() {
   # For postgresql MCP
   # export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
 
-  # For teamcity MCP
-  export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
+  # For Bifrost MCP Gateway
+  export BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-host)
 
   opencode "$@"
 }

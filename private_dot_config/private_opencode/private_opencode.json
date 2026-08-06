@@ -63,6 +63,7 @@
       "~/.config/**": "ask"
     },
 
+    // Local MCPs
     "auth0_auth0_get_*": "allow",
     "auth0_auth0_list_*": "allow",
 
@@ -78,6 +79,13 @@
     "google-docs_search*": "allow",
     "google-docs_triageInbox": "allow",
 
+    "neo4j-cypher_get_*": "allow",
+    "neo4j-cypher_read_*": "allow",
+
+    "okta-integrator_get_*": "allow",
+    "okta-integrator_list_*": "allow",
+
+    // Remote OAuth MCPs (direct - can't be configured via Bifrost)
     "launchdarkly_get-*": "allow",
     "launchdarkly_list-*": "allow",
     "launchdarkly_find-*": "allow",
@@ -86,37 +94,32 @@
     "launchdarkly_check-*": "allow",
     "launchdarkly_match-*": "allow",
 
-    "linear_extract_*": "allow",
-    "linear_get_*": "allow",
-    "linear_list_*": "allow",
-    "linear_search_*": "allow",
-
-    "miro_board_*": "allow",
-    "miro_context_*": "allow",
-    "miro_diagram_get_dsl": "allow",
-    "miro_doc_get": "allow",
-    "miro_image_get_*": "allow",
-    "miro_table_list_rows": "allow",
-
-    "neo4j-cypher_get_*": "allow",
-    "neo4j-cypher_read_*": "allow",
-
-    "okta-integrator_get_*": "allow",
-    "okta-integrator_list_*": "allow",
-
-    "rivo_atlassianUserInfo": "allow",
-    "rivo_fetch": "allow",
-    "rivo_get*": "allow",
-    "rivo_lookup*": "allow",
-    "rivo_search*": "allow",
-
     "slack_slack_get_*": "allow",
     "slack_slack_list_*": "allow",
     "slack_slack_read_*": "allow",
     "slack_slack_search_*": "allow",
 
-    "teamcity_teamcity_build_log": "allow",
-    "teamcity_teamcity_rest_get": "allow",
+    // Bifrost MCP Gateway
+    "bifrost-mcp.linear_extract_*": "allow",
+    "bifrost-mcp.linear_get_*": "allow",
+    "bifrost-mcp.linear_list_*": "allow",
+    "bifrost-mcp.linear_search_*": "allow",
+
+    "bifrost-mcp.miro_board_*": "allow",
+    "bifrost-mcp.miro_context_*": "allow",
+    "bifrost-mcp.miro_diagram_get_dsl": "allow",
+    "bifrost-mcp.miro_doc_get": "allow",
+    "bifrost-mcp.miro_image_get_*": "allow",
+    "bifrost-mcp.miro_table_list_rows": "allow",
+
+    "bifrost-mcp.rovo_atlassianUserInfo": "allow",
+    "bifrost-mcp.rovo_fetch": "allow",
+    "bifrost-mcp.rovo_get*": "allow",
+    "bifrost-mcp.rovo_lookup*": "allow",
+    "bifrost-mcp.rovo_search*": "allow",
+
+    "bifrost-mcp.teamcity_teamcity_build_log": "allow",
+    "bifrost-mcp.teamcity_teamcity_rest_get": "allow",
 
     "bash": {
       "*": "ask",
@@ -318,22 +321,10 @@
         "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{env:GRAFANA_SERVICE_ACCOUNT_TOKEN}"
       }
     },
-    "linear": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.linear.app/mcp",
-      "oauth": {}
-    },
     "launchdarkly": {
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.launchdarkly.com/mcp/launchdarkly",
-      "oauth": {}
-    },
-    "miro": {
-      "enabled": false,
-      "type": "remote",
-      "url": "https://mcp.miro.com",
       "oauth": {}
     },
     "neo4j-cypher": {
@@ -372,12 +363,6 @@
         "{env:POSTGRES_CONNECTION_STRING}"
       ]
     },
-    "rivo": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://cf.mcp.atlassian.com/v1/mcp",
-      "oauth": {}
-    },
     "slack": {
       "enabled": true,
       "type": "remote",
@@ -387,12 +372,12 @@
         "redirectUri": "http://localhost:3118/callback"
       }
     },
-    "teamcity": {
-      "enabled": true,
+    "bifrost-mcp": {
       "type": "remote",
-      "url": "https://live.neo4j-build.io/app/mcp",
+      "url": "http://localhost:9765/mcp",
+      "enabled": true,
       "headers": {
-        "Authorization": "Bearer {env:TC_AUTH_TOKEN}"
+        "Authorization": "Bearer {env:BIFROST_VIRTUAL_KEY}"
       }
     }
   }

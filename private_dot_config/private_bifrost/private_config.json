@@ -16,6 +16,29 @@
       "path": "/app/data/logs.db"
     }
   },
+  "vector_store": {
+    "enabled": true,
+    "type": "redis",
+    "config": {
+      "addr": "valkey:6379",
+      "db": 0,
+      "use_tls": false,
+      "cluster_mode": false
+    }
+  },
+  "plugins": [
+    {
+      "enabled": true,
+      "name": "semantic_cache",
+      "config": {
+        "dimension": 1,
+        "ttl": "24h",
+        "default_cache_key": "opencode",
+        "conversation_history_threshold": 50,
+        "vector_store_namespace": "OpenCodeSemanticCache"
+      }
+    }
+  ],
   "providers": {
     "anthropic": {
       "keys": [
@@ -206,6 +229,53 @@
         "fallbacks": ["fireworks/accounts/fireworks/models/kimi-k3"],
         "scope": "global",
         "priority": 3
+      }
+    ]
+  },
+  "mcp": {
+    "client_configs": [
+      {
+        "name": "linear",
+        "client_id": "36847e00-1aaa-40b6-bbe5-f1d02f91c346",
+        "connection_type": "http",
+        "connection_string": "https://mcp.linear.app/mcp",
+        "auth_type": "oauth",
+        "oauth_config_id": "e5842786-9fe8-417a-9b38-435f08b0282a",
+        "tools_to_execute": ["*"],
+        "is_ping_available": true,
+        "allow_on_all_virtual_keys": true
+      },
+      {
+        "name": "miro",
+        "client_id": "5329d378-e34e-40b3-96d7-4cc25083d44d",
+        "connection_type": "http",
+        "connection_string": "https://mcp.miro.com",
+        "auth_type": "oauth",
+        "oauth_config_id": "79ae29c6-13f7-40a4-802a-730677a2d226",
+        "tools_to_execute": ["*"],
+        "is_ping_available": true,
+        "allow_on_all_virtual_keys": true
+      },
+      {
+        "name": "rovo",
+        "client_id": "2baed050-dc5c-4139-a39b-195e2c4955e5",
+        "connection_type": "http",
+        "connection_string": "https://mcp.atlassian.com/v1/mcp/authv2",
+        "auth_type": "oauth",
+        "oauth_config_id": "8da8170e-394b-416f-9420-f7cebf7fb6c8",
+        "tools_to_execute": ["*"],
+        "is_ping_available": true,
+        "allow_on_all_virtual_keys": true
+      },
+      {
+        "name": "teamcity",
+        "connection_type": "http",
+        "connection_string": "https://live.neo4j-build.io/app/mcp",
+        "auth_type": "headers",
+        "headers": { "Authorization": "env.TEAMCITY_MCP_AUTH" },
+        "tools_to_execute": ["*"],
+        "is_ping_available": true,
+        "allow_on_all_virtual_keys": true
       }
     ]
   }
