@@ -5,8 +5,7 @@
     "anthropic": {
       "name": "Bifrost",
       "options": {
-        "baseURL": "http://localhost:9765/anthropic/v1",
-        "apiKey": "__LOCAL_PROXY_API_KEYS_NOT_REQUIRED__"
+        "baseURL": "http://localhost:9765/anthropic/v1"
       },
       "models": {
         "claude-opus-4-8": {
@@ -19,8 +18,7 @@
       "name": "Bifrost",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
-        "baseURL": "http://localhost:9765/v1",
-        "apiKey": "__LOCAL_PROXY_API_KEYS_NOT_REQUIRED__"
+        "baseURL": "http://localhost:9765/v1"
       },
       "models": {
         "accounts/fireworks/models/deepseek-v4-flash": {
@@ -32,7 +30,7 @@
           "limit": { "context": 1048576, "output": 131072 }
         },
         "accounts/fireworks/models/glm-5p2": {
-          "name": "GLM 5p2",
+          "name": "GLM 5.2",
           "limit": { "context": 1048575, "output": 131072 }
         }
       }
