@@ -245,8 +245,7 @@
   },
   "plugin": [
     "superpowers@git+https://github.com/ethan605/superpowers.git#a1479fc98f35f023e0862bb5e09d4115ba4d8d8a",
-    "opencode-claude-bridge@1.10.12",
-    "@azumag/opencode-rate-limit-fallback@1.70.0"
+    "opencode-claude-bridge@1.10.12"
   ],
   "lsp": {
     "pyright": {
