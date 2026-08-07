@@ -20,7 +20,6 @@ awscli = { version = "2.36.18", symlink_bins = "true" }
 azure = { version = "2.89.0", uvx_args = "--prerelease=allow" }
 bun = "1.3.14"
 clang-format = "22.1.8"
-claude-code = "2.1.223"
 cmake = "4.4.2"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "579.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
