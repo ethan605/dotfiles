@@ -8,6 +8,10 @@
         "baseURL": "http://localhost:9765/anthropic/v1"
       },
       "models": {
+        "claude-sonnet-5": {
+          "name": "Claude Sonnet 5",
+          "limit": { "context": 1000000, "output": 128000 }
+        },
         "claude-opus-4-8": {
           "name": "Claude Opus 4.8",
           "limit": { "context": 1000000, "output": 128000 }
@@ -21,10 +25,6 @@
         "baseURL": "http://localhost:9765/v1"
       },
       "models": {
-        "accounts/fireworks/models/deepseek-v4-flash": {
-          "name": "DeepSeek V4 Flash",
-          "limit": { "context": 1000000, "output": 384000 }
-        },
         "accounts/fireworks/models/kimi-k3": {
           "name": "Kimi K3",
           "limit": { "context": 1048576, "output": 131072 }
@@ -32,6 +32,10 @@
         "accounts/fireworks/models/glm-5p2": {
           "name": "GLM 5.2",
           "limit": { "context": 1048575, "output": 131072 }
+        },
+        "accounts/fireworks/models/deepseek-v4-flash-0731": {
+          "name": "DeepSeek V4 Flash 0731",
+          "limit": { "context": 1000000, "output": 384000 }
         }
       }
     }
@@ -258,7 +262,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash",
+      "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash-0731",
       "variant": "high",
       "permission": {
         "edit": "deny",

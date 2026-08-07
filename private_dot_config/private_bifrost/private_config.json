@@ -45,8 +45,8 @@
         {
           "name": "claude-platform",
           "value": "env.ANTHROPIC_API_KEY",
-          "models": ["claude-opus-5", "claude-opus-4-8", "claude-sonnet-5"],
-          "blacklisted_models": ["claude-fable-5"],
+          "models": ["claude-sonnet-5", "claude-opus-4-8"],
+          "blacklisted_models": ["claude-fable-5", "claude-opus-5"],
           "weight": 1.0
         }
       ],
@@ -64,11 +64,12 @@
           "models": [
             "accounts/fireworks/models/kimi-k3",
             "accounts/fireworks/models/glm-5p2",
-            "accounts/fireworks/models/deepseek-v4-flash"
+            "accounts/fireworks/models/deepseek-v4-flash-0731"
           ],
           "blacklisted_models": [
             "accounts/fireworks/routers/kimi-k3-fast",
-            "accounts/fireworks/routers/glm-5p2-fast"
+            "accounts/fireworks/routers/glm-5p2-fast",
+            "accounts/fireworks/models/deepseek-v4-flash"
           ],
           "weight": 1.0
         }
@@ -191,8 +192,13 @@
         "name": "Kimi K3 -> GLM 5p2 on failure",
         "description": "Same-provider failover for the build agent's model",
         "enabled": true,
-        "cel_expression": "model == 'accounts/fireworks/models/kimi-k3'",
-        "targets": [{ "provider": "fireworks", "weight": 1.0 }],
+        "targets": [
+          {
+            "provider": "fireworks",
+            "model": "accounts/fireworks/models/kimi-k3",
+            "weight": 1.0
+          }
+        ],
         "fallbacks": ["fireworks/accounts/fireworks/models/glm-5p2"],
         "scope": "global",
         "priority": 0
@@ -202,8 +208,13 @@
         "name": "GLM 5p2 -> Kimi K3 on failure",
         "description": "Same-provider failover for general/compaction agents' model",
         "enabled": true,
-        "cel_expression": "model == 'accounts/fireworks/models/glm-5p2'",
-        "targets": [{ "provider": "fireworks", "weight": 1.0 }],
+        "targets": [
+          {
+            "provider": "fireworks",
+            "model": "accounts/fireworks/models/glm-5p2",
+            "weight": 1.0
+          }
+        ],
         "fallbacks": ["fireworks/accounts/fireworks/models/kimi-k3"],
         "scope": "global",
         "priority": 1
@@ -213,22 +224,40 @@
         "name": "DeepSeek V4 Flash -> GLM 5p2 on failure",
         "description": "Same-provider failover for the explore agent's model",
         "enabled": true,
-        "cel_expression": "model == 'accounts/fireworks/models/deepseek-v4-flash'",
-        "targets": [{ "provider": "fireworks", "weight": 1.0 }],
+        "targets": [
+          {
+            "provider": "fireworks",
+            "model": "accounts/fireworks/models/deepseek-v4-flash-0731",
+            "weight": 1.0
+          }
+        ],
         "fallbacks": ["fireworks/accounts/fireworks/models/glm-5p2"],
         "scope": "global",
         "priority": 2
       },
       {
         "id": "fb-anthropic-claude-to-kimi",
-        "name": "Claude Opus 4.8 -> Kimi K3 on failure",
-        "description": "Cross-provider failover for the plan agent (user-approved)",
+        "name": "Claude Sonnet 5 -> Kimi K3 on failure",
+        "description": "Cross-provider failover for the plan agent",
         "enabled": true,
-        "cel_expression": "model == 'claude-opus-4-8'",
-        "targets": [{ "provider": "anthropic", "weight": 1.0 }],
+        "targets": [
+          { "provider": "anthropic", "model": "claude-sonnet-5", "weight": 1.0 }
+        ],
         "fallbacks": ["fireworks/accounts/fireworks/models/kimi-k3"],
         "scope": "global",
         "priority": 3
+      },
+      {
+        "id": "fb-anthropic-claude-to-kimi-2",
+        "name": "Claude Opus 4.8 -> Kimi K3 on failure",
+        "description": "Cross-provider failover for the plan agent",
+        "enabled": true,
+        "targets": [
+          { "provider": "anthropic", "model": "claude-opus-4-8", "weight": 1.0 }
+        ],
+        "fallbacks": ["fireworks/accounts/fireworks/models/kimi-k3"],
+        "scope": "global",
+        "priority": 4
       }
     ]
   },
@@ -247,11 +276,11 @@
       },
       {
         "name": "miro",
-        "client_id": "5329d378-e34e-40b3-96d7-4cc25083d44d",
+        "client_id": "51090700-49e2-4f12-a18f-cb3b7049619c",
         "connection_type": "http",
         "connection_string": "https://mcp.miro.com",
         "auth_type": "oauth",
-        "oauth_config_id": "79ae29c6-13f7-40a4-802a-730677a2d226",
+        "oauth_config_id": "5702f661-f63f-400c-bf4a-6c7ea33a2d66",
         "tools_to_execute": ["*"],
         "is_ping_available": true,
         "allow_on_all_virtual_keys": true
