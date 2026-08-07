@@ -227,7 +227,7 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "anthropic/claude-opus-4-8",
+      "model": "anthropic/claude-sonnet-5",
       "variant": "high",
       "permission": {
         "skill": {
