@@ -6,12 +6,8 @@ services:
       - "9765:8080"
     volumes:
       - ~/.config/bifrost/config.json:/app/data/config.json
-      - ~/.config/bifrost/config.db:/app/data/config.db
-      - ~/.config/bifrost/config.db-shm:/app/data/config.db-shm
-      - ~/.config/bifrost/config.db-wal:/app/data/config.db-wal
-      - ~/.config/bifrost/logs.db:/app/data/logs.db
-      - ~/.config/bifrost/logs.db-shm:/app/data/logs.db-shm
-      - ~/.config/bifrost/logs.db-wal:/app/data/logs.db-wal
+      - ~/.config/bifrost/dbs/:/app/data/dbs/
+      - ~/.config/bifrost/logs/:/app/data/logs/
     env_file:
       - .env
     depends_on:

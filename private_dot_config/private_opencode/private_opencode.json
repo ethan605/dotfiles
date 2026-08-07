@@ -25,21 +25,30 @@
       "models": {
         "agent-plan": {
           "name": "Claude Sonnet 5",
+          "cost": {
+            "input": 2,
+            "output": 10,
+            "cache_read": 0.2,
+            "cache_write": 2.5
+          },
           "limit": { "context": 1000000, "output": 128000 },
           "options": { "reasoningEffort": "high" }
         },
         "agent-build": {
           "name": "Kimi K3",
+          "cost": { "input": 3, "output": 15, "cache_read": 0.3 },
           "limit": { "context": 1048576, "output": 131072 },
           "options": { "reasoningEffort": "high" }
         },
         "agent-explore": {
           "name": "DeepSeek V4 Flash 0731 (Bifrost)",
+          "cost": { "input": 0.14, "output": 0.28, "cache_read": 0.028 },
           "limit": { "context": 1000000, "output": 384000 },
           "options": { "reasoningEffort": "high" }
         },
         "agent-general": {
           "name": "GLM 5.2 (Bifrost)",
+          "cost": { "input": 1.4, "output": 4.4, "cache_read": 0.14 },
           "limit": { "context": 1048575, "output": 131072 },
           "options": { "reasoningEffort": "high" }
         }

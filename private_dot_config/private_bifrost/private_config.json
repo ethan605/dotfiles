@@ -6,14 +6,14 @@
     "enabled": true,
     "type": "sqlite",
     "config": {
-      "path": "/app/data/config.db"
+      "path": "/app/data/dbs/config.db"
     }
   },
   "logs_store": {
     "enabled": true,
     "type": "sqlite",
     "config": {
-      "path": "/app/data/logs.db"
+      "path": "/app/data/dbs/logs.db"
     }
   },
   "vector_store": {
@@ -137,58 +137,28 @@
         "model_name": "*",
         "provider": "anthropic",
         "scope": "virtual_key",
-        "scope_id": "cbf31912-4166-4d2f-b6e9-f078c46850a6",
-        "budget_id": "9bf44a97-743c-47ec-9897-01af22fa3659"
+        "scope_id": "cbf31912-4166-4d2f-b6e9-f078c46850a6"
       },
       {
         "id": "dc6f568c-d646-4d78-8dcc-13d29fc53141",
         "model_name": "*",
         "provider": "fireworks",
         "scope": "virtual_key",
-        "scope_id": "cbf31912-4166-4d2f-b6e9-f078c46850a6",
-        "budget_id": "e37c3d68-b442-47a6-a4a5-fef2047c3d82"
+        "scope_id": "cbf31912-4166-4d2f-b6e9-f078c46850a6"
       },
       {
         "id": "37214044-8ce6-47b4-bded-d64efb275e0a",
         "model_name": "*",
         "provider": "anthropic",
         "scope": "virtual_key",
-        "scope_id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b",
-        "budget_id": "a16ab5c0-50ee-47e4-bfc4-55ecd5651afd"
+        "scope_id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b"
       },
       {
         "id": "2d4ff892-9012-46fb-978c-139f78331ee1",
         "model_name": "*",
         "provider": "fireworks",
         "scope": "virtual_key",
-        "scope_id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b",
-        "budget_id": "33af11f2-cd9e-4f44-8c11-e53a7ac07910"
-      }
-    ],
-    "budgets": [
-      {
-        "id": "9bf44a97-743c-47ec-9897-01af22fa3659",
-        "max_limit": 25,
-        "reset_duration": "1w",
-        "model_config_id": "d5559976-f181-450b-829c-55f6d39c5d4c"
-      },
-      {
-        "id": "e37c3d68-b442-47a6-a4a5-fef2047c3d82",
-        "max_limit": 25,
-        "reset_duration": "1w",
-        "model_config_id": "dc6f568c-d646-4d78-8dcc-13d29fc53141"
-      },
-      {
-        "id": "a16ab5c0-50ee-47e4-bfc4-55ecd5651afd",
-        "max_limit": 80,
-        "reset_duration": "1w",
-        "model_config_id": "37214044-8ce6-47b4-bded-d64efb275e0a"
-      },
-      {
-        "id": "33af11f2-cd9e-4f44-8c11-e53a7ac07910",
-        "max_limit": 80,
-        "reset_duration": "1w",
-        "model_config_id": "2d4ff892-9012-46fb-978c-139f78331ee1"
+        "scope_id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b"
       }
     ],
     "routing_rules": [
@@ -263,39 +233,6 @@
       "disable_auto_tool_inject": true
     },
     "client_configs": [
-      {
-        "name": "linear",
-        "client_id": "36847e00-1aaa-40b6-bbe5-f1d02f91c346",
-        "connection_type": "http",
-        "connection_string": "https://mcp.linear.app/mcp",
-        "auth_type": "oauth",
-        "oauth_config_id": "e5842786-9fe8-417a-9b38-435f08b0282a",
-        "tools_to_execute": ["*"],
-        "is_ping_available": true,
-        "allow_on_all_virtual_keys": true
-      },
-      {
-        "name": "miro",
-        "client_id": "51090700-49e2-4f12-a18f-cb3b7049619c",
-        "connection_type": "http",
-        "connection_string": "https://mcp.miro.com",
-        "auth_type": "oauth",
-        "oauth_config_id": "5702f661-f63f-400c-bf4a-6c7ea33a2d66",
-        "tools_to_execute": ["*"],
-        "is_ping_available": true,
-        "allow_on_all_virtual_keys": true
-      },
-      {
-        "name": "rovo",
-        "client_id": "2baed050-dc5c-4139-a39b-195e2c4955e5",
-        "connection_type": "http",
-        "connection_string": "https://mcp.atlassian.com/v1/mcp/authv2",
-        "auth_type": "oauth",
-        "oauth_config_id": "8da8170e-394b-416f-9420-f7cebf7fb6c8",
-        "tools_to_execute": ["*"],
-        "is_ping_available": true,
-        "allow_on_all_virtual_keys": true
-      },
       {
         "name": "teamcity",
         "connection_type": "http",
