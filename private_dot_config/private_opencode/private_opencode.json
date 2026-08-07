@@ -1,41 +1,47 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["fireworks-ai", "openai", "anthropic"],
+  "enabled_providers": ["bifrost", "openai"],
   "provider": {
-    "anthropic": {
-      "name": "Bifrost",
-      "options": {
-        "baseURL": "http://localhost:9765/anthropic/v1"
-      },
+    "openai": {
       "models": {
-        "claude-sonnet-5": {
-          "name": "Claude Sonnet 5",
-          "limit": { "context": 1000000, "output": 128000 }
+        "gpt-5.6-sol": {
+          "options": { "reasoningEffort": "xhigh" }
         },
-        "claude-opus-4-8": {
-          "name": "Claude Opus 4.8",
-          "limit": { "context": 1000000, "output": 128000 }
-        }
+        "gpt-5.6-terra": {
+          "options": { "reasoningEffort": "xhigh" }
+        },
+        "gpt-5.6-luna": {}
       }
     },
-    "fireworks-ai": {
+    "bifrost": {
       "name": "Bifrost",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
-        "baseURL": "http://localhost:9765/v1"
+        "baseURL": "http://localhost:9765/v1",
+        "headers": {
+          "anthropic-beta": "context-1m-2025-08-07,interleaved-thinking-2025-05-14"
+        }
       },
       "models": {
-        "accounts/fireworks/models/kimi-k3": {
+        "agent-plan": {
+          "name": "Claude Sonnet 5",
+          "limit": { "context": 1000000, "output": 128000 },
+          "options": { "reasoningEffort": "high" }
+        },
+        "agent-build": {
           "name": "Kimi K3",
-          "limit": { "context": 1048576, "output": 131072 }
+          "limit": { "context": 1048576, "output": 131072 },
+          "options": { "reasoningEffort": "high" }
         },
-        "accounts/fireworks/models/glm-5p2": {
-          "name": "GLM 5.2",
-          "limit": { "context": 1048575, "output": 131072 }
+        "agent-explore": {
+          "name": "DeepSeek V4 Flash 0731 (Bifrost)",
+          "limit": { "context": 1000000, "output": 384000 },
+          "options": { "reasoningEffort": "high" }
         },
-        "accounts/fireworks/models/deepseek-v4-flash-0731": {
-          "name": "DeepSeek V4 Flash 0731",
-          "limit": { "context": 1000000, "output": 384000 }
+        "agent-general": {
+          "name": "GLM 5.2 (Bifrost)",
+          "limit": { "context": 1048575, "output": 131072 },
+          "options": { "reasoningEffort": "high" }
         }
       }
     }
@@ -104,26 +110,26 @@
     "slack_slack_search_*": "allow",
 
     // Bifrost MCP Gateway
-    "bifrost.linear_extract_*": "allow",
-    "bifrost.linear_get_*": "allow",
-    "bifrost.linear_list_*": "allow",
-    "bifrost.linear_search_*": "allow",
+    "bifrost_linear_extract_*": "allow",
+    "bifrost_linear_get_*": "allow",
+    "bifrost_linear_list_*": "allow",
+    "bifrost_linear_search_*": "allow",
 
-    "bifrost.miro_board_*": "allow",
-    "bifrost.miro_context_*": "allow",
-    "bifrost.miro_diagram_get_dsl": "allow",
-    "bifrost.miro_doc_get": "allow",
-    "bifrost.miro_image_get_*": "allow",
-    "bifrost.miro_table_list_rows": "allow",
+    "bifrost_miro_board_*": "allow",
+    "bifrost_miro_context_*": "allow",
+    "bifrost_miro_diagram_get_dsl": "allow",
+    "bifrost_miro_doc_get": "allow",
+    "bifrost_miro_image_get_*": "allow",
+    "bifrost_miro_table_list_rows": "allow",
 
-    "bifrost.rovo_atlassianUserInfo": "allow",
-    "bifrost.rovo_fetch": "allow",
-    "bifrost.rovo_get*": "allow",
-    "bifrost.rovo_lookup*": "allow",
-    "bifrost.rovo_search*": "allow",
+    "bifrost_rovo_atlassianUserInfo": "allow",
+    "bifrost_rovo_fetch": "allow",
+    "bifrost_rovo_get*": "allow",
+    "bifrost_rovo_lookup*": "allow",
+    "bifrost_rovo_search*": "allow",
 
-    "bifrost.teamcity_teamcity_build_log": "allow",
-    "bifrost.teamcity_teamcity_rest_get": "allow",
+    "bifrost_teamcity_teamcity_build_log": "allow",
+    "bifrost_teamcity_teamcity_rest_get": "allow",
 
     "bash": {
       "*": "ask",
@@ -231,8 +237,7 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "anthropic/claude-sonnet-5",
-      "variant": "high",
+      "model": "bifrost/agent-plan",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
@@ -241,8 +246,7 @@
     },
     "build": {
       "color": "#ff6ac1",
-      "model": "fireworks-ai/accounts/fireworks/models/kimi-k3",
-      "variant": "high",
+      "model": "bifrost/agent-build",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
@@ -252,8 +256,7 @@
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      "model": "fireworks-ai/accounts/fireworks/models/glm-5p2",
-      "variant": "high",
+      "model": "bifrost/agent-general",
       "permission": {
         "task": "deny"
       },
@@ -262,8 +265,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash-0731",
-      "variant": "high",
+      "model": "bifrost/agent-explore",
       "permission": {
         "edit": "deny",
         "task": "deny"
@@ -274,7 +276,6 @@
       "color": "#ff5c57",
       "mode": "subagent",
       "model": "openai/gpt-5.6-sol",
-      "variant": "xhigh",
       "permission": {
         "edit": "deny",
         "task": "deny"
@@ -282,12 +283,11 @@
       "prompt": "{file:./REVIEWER.md}"
     },
     "compaction": {
-      "model": "fireworks-ai/accounts/fireworks/models/glm-5p2"
+      "model": "bifrost/agent-general"
     }
   },
   "plugin": [
-    "superpowers@git+https://github.com/ethan605/superpowers.git#a1479fc98f35f023e0862bb5e09d4115ba4d8d8a",
-    "opencode-claude-bridge@1.10.12"
+    "superpowers@git+https://github.com/ethan605/superpowers.git#a1479fc98f35f023e0862bb5e09d4115ba4d8d8a"
   ],
   "lsp": {
     "pyright": {
