@@ -31,7 +31,6 @@ __install-system-packages() {
 		bat@latest \
 		bottom@latest \
 		chezmoi@latest \
-		claude-code@latest \
 		delta@latest \
 		direnv@latest \
 		eza@latest \
