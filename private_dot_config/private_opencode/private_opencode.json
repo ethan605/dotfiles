@@ -54,7 +54,7 @@
           "options": { "reasoningEffort": "high" }
         },
         "agent-reviewer": {
-          "name": "Gemini 3.6 Pro Preview (Bifrost)",
+          "name": "Gemini 3.1 Pro Preview (Bifrost)",
           "cost": { "input": 2, "output": 12, "cache_read": 0.2 },
           "limit": { "context": 1048576, "output": 65536 },
           "options": { "reasoningEffort": "high" }
@@ -253,7 +253,7 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "bifrost/agent-plan",
+      "model": "bifrost/agent-build",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
