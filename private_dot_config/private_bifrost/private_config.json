@@ -66,11 +66,6 @@
             "accounts/fireworks/models/glm-5p2",
             "accounts/fireworks/models/deepseek-v4-flash-0731"
           ],
-          "aliases": {
-            "kimi-k3": "accounts/fireworks/models/kimi-k3",
-            "glm-5p2": "accounts/fireworks/models/glm-5p2",
-            "deepseek-flash-v4-0731": "accounts/fireworks/models/deepseek-flash-v4-0731"
-          },
           "blacklisted_models": [
             "accounts/fireworks/routers/kimi-k3-fast",
             "accounts/fireworks/routers/glm-5p2-fast",
@@ -84,6 +79,21 @@
         "retry_backoff_initial": 500,
         "retry_backoff_max": 5000
       }
+    },
+    "vertex": {
+      "keys": [
+        {
+          "name": "vertex-adc-key",
+          "value": "",
+          "models": ["gemini-3.1-pro-preview", "gemini-3.6-flash"],
+          "weight": 1.0,
+          "vertex_key_config": {
+            "project_id": "env.VERTEX_PROJECT_ID",
+            "region": "global",
+            "auth_credentials": "env.VERTEX_CREDENTIALS"
+          }
+        }
+      ]
     }
   },
   "governance": {
@@ -106,6 +116,12 @@
             "allowed_models": ["*"],
             "key_ids": ["*"],
             "weight": 1
+          },
+          {
+            "provider": "vertex",
+            "allowed_models": ["*"],
+            "key_ids": ["*"],
+            "weight": 1
           }
         ]
       },
@@ -124,6 +140,12 @@
           },
           {
             "provider": "fireworks",
+            "allowed_models": ["*"],
+            "key_ids": ["*"],
+            "weight": 1
+          },
+          {
+            "provider": "vertex",
             "allowed_models": ["*"],
             "key_ids": ["*"],
             "weight": 1
@@ -225,6 +247,23 @@
         "fallbacks": ["fireworks/accounts/fireworks/models/kimi-k3"],
         "scope": "global",
         "priority": 3
+      },
+      {
+        "id": "alias-agent-reviewer",
+        "name": "Alias: agent-reviewer -> Gemini 3.1 Pro Preview",
+        "description": "Route the reviewer agents' alias to Vertex AI Gemini 3.1 Pro Preview",
+        "enabled": true,
+        "cel_expression": "model == 'agent-reviewer'",
+        "targets": [
+          {
+            "provider": "vertex",
+            "model": "gemini-3.1-pro-preview",
+            "weight": 1.0
+          }
+        ],
+        "fallbacks": ["vertex/gemini-3.6-flash"],
+        "scope": "global",
+        "priority": 4
       }
     ]
   },

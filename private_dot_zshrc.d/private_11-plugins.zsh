@@ -43,6 +43,15 @@ if (( ${+commands[vivid]} )); then
 fi
 unset _zcache
 
+if (( ${+commands[kubectl]} )) && (( ${+commands[kubecolor]} )); then
+  source <(kubectl completion zsh)
+
+  alias kubectl=kubecolor
+  alias k=kubectl
+
+  compdef kubecolor=kubectl
+fi
+
 # === Expensive executions - use on demand ==
 __source-completions() {
   command -v devpod >/dev/null && source <(devpod completion zsh)
