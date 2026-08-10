@@ -2,6 +2,11 @@ services:
   bifrost:
     image: maximhq/bifrost:v1.6.9
     container_name: bifrost
+    deploy:
+      resources:
+        limits:
+          cpus: 0.5
+          memory: 512M
     ports:
       - "9765:8080"
     volumes:
@@ -18,6 +23,11 @@ services:
   valkey:
     image: valkey/valkey-bundle:9.1.2
     container_name: bifrost-valkey
+    deploy:
+      resources:
+        limits:
+          cpus: 1.0
+          memory: 2GB
     command:
       - valkey-server
       - "--save"
