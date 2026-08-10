@@ -105,9 +105,9 @@
     "virtual_keys": [
       {
         "id": "cbf31912-4166-4d2f-b6e9-f078c46850a6",
-        "name": "opencode-host",
-        "description": "OpenCode in Host",
-        "value": "env.BIFROST_VK_OPENCODE_HOST",
+        "name": "opencode-personal",
+        "description": "OpenCode for Personal uses",
+        "value": "env.BIFROST_VK_OPENCODE_PERSONAL",
         "is_active": true,
         "provider_configs": [
           {
@@ -132,9 +132,9 @@
       },
       {
         "id": "cd5069d7-8900-4ad1-8831-8b5513b6d40b",
-        "name": "opencode-devpod",
-        "description": "OpenCode in devpod",
-        "value": "env.BIFROST_VK_OPENCODE_DEVPOD",
+        "name": "opencode-work",
+        "description": "OpenCode for Work",
+        "value": "env.BIFROST_VK_OPENCODE_WORK",
         "is_active": true,
         "provider_configs": [
           {

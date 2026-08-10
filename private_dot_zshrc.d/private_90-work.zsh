@@ -29,7 +29,7 @@ __wpass-insert() {
   echo "Loaded $pass_name to wpass"
 }
 
-oc() {
+__oc() {
   # Stable features
   export OPENCODE_DISABLE_CLAUDE_CODE=1
   export OPENCODE_DISABLE_LSP_DOWNLOAD=1
@@ -61,9 +61,6 @@ oc() {
 
   # For postgresql MCP
   # export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
-
-  # For Bifrost MCP Gateway
-  export BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-host)
 
   opencode "$@"
 }
@@ -139,7 +136,7 @@ OC_NEO4J_URI=$NEO4J_URI \
 OC_NEO4J_USERNAME=$NEO4J_USERNAME \
 OC_NEO4J_PASSWORD=$NEO4J_PASSWORD \
 OC_NEO4J_DATABASE=$NEO4J_DATABASE \
-OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-devpod)
+OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work)
 "
 
     ssh neo4j-cloud.devpod \
@@ -152,3 +149,5 @@ OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-devpod)
 
 alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.1:$OC_PORT'
 alias ocbox='devbox --for-oc'
+alias ocp='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-personal) __oc'
+alias ocw='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) __oc'

@@ -18,6 +18,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "options": {
         "baseURL": "http://localhost:9765/v1",
+        "apiKey": "{env:BIFROST_VIRTUAL_KEY}",
         "headers": {
           "anthropic-beta": "context-1m-2025-08-07,interleaved-thinking-2025-05-14"
         }
