@@ -1,6 +1,6 @@
 services:
   bifrost:
-    image: maximhq/bifrost:v1.6.8
+    image: maximhq/bifrost:v1.6.9
     container_name: bifrost
     ports:
       - "9765:8080"

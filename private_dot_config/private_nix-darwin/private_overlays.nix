@@ -1,13 +1,13 @@
 { inputs, system, ... }:
 
 let
-  _pkgs-26-05 = import inputs.nixpkgs-26-05 { inherit system; };
+  pkgs-26-05 = import inputs.nixpkgs-26-05 { inherit system; };
 in
 {
   nixpkgs.overlays = [
     (_final: prev: {
       # Overriden packages (due to instabilities, bugs, etc.)
-      # unar = pkgs-26-05.unar;
+      rio = pkgs-26-05.rio;
 
       # Self-host packages
       minimal-functional-fox = prev.callPackage ./modules/packages/minimal-functional-fox.nix { };

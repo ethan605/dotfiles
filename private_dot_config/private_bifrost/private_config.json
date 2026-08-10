@@ -97,6 +97,11 @@
     }
   },
   "governance": {
+    "auth_config": {
+      "is_enabled": true,
+      "admin_username": "env.BIFROST_ADMIN_USERNAME",
+      "admin_password": "env.BIFROST_ADMIN_PASSWORD"
+    },
     "virtual_keys": [
       {
         "id": "cbf31912-4166-4d2f-b6e9-f078c46850a6",
