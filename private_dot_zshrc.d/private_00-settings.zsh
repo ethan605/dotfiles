@@ -40,10 +40,3 @@ zstyle ':zim:completion' dumpfile "${ZDOTDIR:-$HOME}/.zcompdump-$ZSH_VERSION"
 
 # Dedupe path/fpath
 typeset -U path fpath
-
-{{- if eq .chezmoi.os "linux" }}
-
-autoload -Uz add-zsh-hook
-add-zsh-hook -Uz chpwd osc7_cwd
-
-{{- end }}
