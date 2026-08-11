@@ -1,10 +1,4 @@
 # vim:filetype=zsh
-# Remap system commands
-alias nano=nvim
-alias rm='rm -i'
-alias vi=nvim
-alias vim=nvim
-
 {{- if eq .chezmoi.os "linux" }}
 
 alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
@@ -23,8 +17,6 @@ alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698
 alias dcompose='docker compose --profile'
 alias kargo='kubecolor argo rollouts'
 alias load-time='hyperfine --warmup=3 --min-runs=10 "$SHELL -ic exit"'
-alias matrix='neo --async --bold=2 --defaultbg --fullwidth --screensaver --speed=16'
-alias pipes='pipes-rs --fps=60 --kinds=light,curved,knobby --pipe-num=$(($(od -vAn -N1 -tu1 < /dev/urandom) % 10))'
 alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
 
 # Eza
@@ -33,16 +25,6 @@ alias l='ls --long --icons=always --header'
 alias l1='ls --oneline'
 alias lk='l --total-size --sort=size --reverse'
 alias lr='l --tree --level=2'
-
-# Neovim
-alias v=nvim
-alias dbee='nvim +Dbee'
-alias mason='nvim +Mason'
-alias repl='nvim +Repl'
-alias vremote='nvim --remote-ui --server localhost:45678'
-alias vrestore!='nvim --headless "+Lazy! restore" +qa'
-alias vserve='nvim --headless --listen 127.0.0.1:45678'
-alias vsync='nvim --headless "+Lazy! sync" +MasonUpdate +qa'
 
 # Python
 alias ptest='uv run pytest -vv --capture=no --pdb --pdbcls=IPython.terminal.debugger:Pdb'
