@@ -30,6 +30,11 @@ __wpass-insert() {
 }
 
 __oc() {
+  if [[ -z $BIFROST_VIRTUAL_KEY ]]; then
+    echo "Missing env var \$BIFROST_VIRTUAL_KEY"
+    return 1
+  fi
+
   # Stable features
   export OPENCODE_DISABLE_CLAUDE_CODE=1
   export OPENCODE_DISABLE_LSP_DOWNLOAD=1
@@ -147,7 +152,9 @@ OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work)
   fi
 }
 
-alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.1:$OC_PORT'
 alias ocbox='devbox --for-oc'
+alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.1:$OC_PORT'
+alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
 alias ocp='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-personal) __oc'
 alias ocw='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) __oc'
+
