@@ -5,10 +5,10 @@ windows:
     root: ""
     layout: main-vertical
 
-  - name: ocattach
+  - name: octui
     root: ""
     layout: main-vertical
 
-  - name: cli
+  - name: tools
     root: ""
     layout: main-vertical
