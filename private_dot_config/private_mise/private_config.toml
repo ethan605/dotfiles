@@ -24,7 +24,6 @@ cmake = "4.4.2"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "579.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
 gh = "2.97.0"
-helm = "4.2.3"
 jb = "0.6.0"
 make = "4.4.1"
 maven = "3.9.16"
