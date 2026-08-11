@@ -1,6 +1,5 @@
 # vim:filetype=zsh
 # === Cached tool inits - setup ===
-# To nuke caches: rm -rf ~/.cache/zsh/*.zsh*
 _zcache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 [[ -d $_zcache ]] || mkdir -p "$_zcache"
 
@@ -22,6 +21,13 @@ __load-zim() {
   fi
 
   source "$ZIM_HOME/init.zsh"
+
+  alias zim='zimfw upgrade &&
+    zimfw update &&
+    zimfw clean &&
+    zimfw build &&
+    zimfw compile &&
+    rm -rf $XDG_CACHE_HOME/zsh/*.zsh*'
 }
 
 __autocmp-devpod() {
