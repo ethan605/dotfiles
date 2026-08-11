@@ -38,6 +38,9 @@ ZSH_HIGHLIGHT_PATTERNS+=('sudo rm' 'fg=red,bold,bg=yellow')
 # If none is provided, the default ${ZDOTDIR:-$HOME}/.zcompdump is used.
 zstyle ':zim:completion' dumpfile "${ZDOTDIR:-$HOME}/.zcompdump-$ZSH_VERSION"
 
+# Dedupe path/fpath
+typeset -U path fpath
+
 {{- if eq .chezmoi.os "linux" }}
 
 autoload -Uz add-zsh-hook
