@@ -174,7 +174,8 @@ __autocmp-on-demand() {
     source <(register-python-argcomplete --shell=zsh pytest pytest-xdist)
   fi
 
+  # Bash completions
   autoload -U +X bashcompinit && bashcompinit
-  command -v terraform >/dev/null && complete -o nospace -C "$(which terraform)" terraform
-  command -v aws_completer >/dev/null && complete -o nospace -C "$(which aws_completer)" aws
+  (( ${+commands[aws_completer]} )) && complete -o nospace -C "$(which aws_completer)" aws
+  (( ${+commands[terraform]} )) && complete -o nospace -C "$(which terraform)" terraform
 }
