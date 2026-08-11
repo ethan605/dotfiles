@@ -29,6 +29,7 @@ maven = "3.9.16"
 ninja = "1.13.2"
 opencode = "1.18.16"
 rtk = { version = "0.45.0", postinstall = "rtk init -g --opencode" }
+terraform = "1.15.8"
 tree-sitter = "0.26.12"
 uv = "0.12.3"
 
