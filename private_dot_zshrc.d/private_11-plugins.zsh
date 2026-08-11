@@ -158,6 +158,24 @@ __autocmp-zoxide() {
   fi
 }
 
+__configure-aliases() {
+  if (( ${+commands[eza]} )); then
+    alias ls='eza --group-directories-first --color=always --git --all'
+    alias l='ls --long --icons=always --header'
+    alias l1='ls --oneline'
+    alias lk='l --total-size --sort=size --reverse'
+    alias lr='l --tree --level=2'
+  fi
+
+  if (( ${+commands[chezmoi]} )); then
+    alias c=chezmoi
+  fi
+
+  if (( ${+commands[vifm]} )); then
+    alias f=vifm
+  fi
+}
+
 __load-mise
 __load-zim
 # __autocmp-devpod
@@ -171,6 +189,7 @@ __autocmp-uv-uvx
 __autocmp-vivid
 __autocmp-ykman
 __autocmp-zoxide
+__configure-aliases
 
 # === Cached tool inits - tear-down ===
 unset _zcache
