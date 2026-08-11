@@ -114,6 +114,7 @@ Library
 !.zshrc.d/11-plugins.zsh
 !.zshrc.d/12-fzf-tabs.zsh
 !.zshrc.d/13-key-bindings.zsh
+!.zshrc.d/21-nvim.zsh
 !.zshrc.d/29-devpod.zsh
 !.zshrc.d/80-aliases.zsh
 !.zshrc.d/81-utils.zsh
