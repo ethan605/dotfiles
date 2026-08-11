@@ -1,10 +1,7 @@
 # vim:filetype=zsh
 alias cdtmp='builtin cd -- $(mktemp -d)'
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias dcompose='docker compose --profile'
-alias kargo='kubecolor argo rollouts'
 alias load-time='hyperfine --warmup=3 --min-runs=10 "$SHELL -ic exit"'
-alias zim='zimfw upgrade && zimfw update && zimfw clean && zimfw build && zimfw compile'
 
 {{- if eq .chezmoi.os "linux" }}
 
