@@ -5,7 +5,7 @@ alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698
 if (( ${+commands[hyperfine]} )); then
   alias load-time='hyperfine --warmup=3 --min-runs=10 "$SHELL -ic exit"'
 else
-  alias load-time='for _ in 1..10; do time $SHELL -ic exit; done'
+  alias load-time='for _ in {1..10}; do time $SHELL -ic exit; done'
 fi
 
 {{- if eq .chezmoi.os "linux" }}
