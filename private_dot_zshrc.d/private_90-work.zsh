@@ -67,6 +67,9 @@ __oc() {
   # For postgresql MCP
   # export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
 
+  # For teamcity MCP
+  export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
+
   opencode "$@"
 }
 
@@ -141,6 +144,7 @@ OC_NEO4J_URI=$NEO4J_URI \
 OC_NEO4J_USERNAME=$NEO4J_USERNAME \
 OC_NEO4J_PASSWORD=$NEO4J_PASSWORD \
 OC_NEO4J_DATABASE=$NEO4J_DATABASE \
+OC_TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token) \
 OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work)
 "
 

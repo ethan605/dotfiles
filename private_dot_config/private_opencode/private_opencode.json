@@ -111,7 +111,13 @@
     "okta-integrator_get_*": "allow",
     "okta-integrator_list_*": "allow",
 
-    // Remote OAuth MCPs (direct - can't be configured via Bifrost)
+    // Remote OAuth MCPs
+    "atlassian_atlassianUserInfo": "allow",
+    "atlassian_fetch": "allow",
+    "atlassian_get*": "allow",
+    "atlassian_lookup*": "allow",
+    "atlassian_search*": "allow",
+
     "launchdarkly_get-*": "allow",
     "launchdarkly_list-*": "allow",
     "launchdarkly_find-*": "allow",
@@ -120,32 +126,25 @@
     "launchdarkly_check-*": "allow",
     "launchdarkly_match-*": "allow",
 
+    "linear_extract_*": "allow",
+    "linear_get_*": "allow",
+    "linear_list_*": "allow",
+    "linear_search_*": "allow",
+
+    "miro_board_*": "allow",
+    "miro_context_*": "allow",
+    "miro_diagram_get_dsl": "allow",
+    "miro_doc_get": "allow",
+    "miro_image_get_*": "allow",
+    "miro_table_list_rows": "allow",
+
     "slack_slack_get_*": "allow",
     "slack_slack_list_*": "allow",
     "slack_slack_read_*": "allow",
     "slack_slack_search_*": "allow",
 
-    // Bifrost MCP Gateway
-    "bifrost_linear_extract_*": "allow",
-    "bifrost_linear_get_*": "allow",
-    "bifrost_linear_list_*": "allow",
-    "bifrost_linear_search_*": "allow",
-
-    "bifrost_miro_board_*": "allow",
-    "bifrost_miro_context_*": "allow",
-    "bifrost_miro_diagram_get_dsl": "allow",
-    "bifrost_miro_doc_get": "allow",
-    "bifrost_miro_image_get_*": "allow",
-    "bifrost_miro_table_list_rows": "allow",
-
-    "bifrost_rovo_atlassianUserInfo": "allow",
-    "bifrost_rovo_fetch": "allow",
-    "bifrost_rovo_get*": "allow",
-    "bifrost_rovo_lookup*": "allow",
-    "bifrost_rovo_search*": "allow",
-
-    "bifrost_teamcity_teamcity_build_log": "allow",
-    "bifrost_teamcity_teamcity_rest_get": "allow",
+    "teamcity_teamcity_build_log": "allow",
+    "teamcity_teamcity_rest_get": "allow",
 
     "bash": {
       "*": "ask",
@@ -315,6 +314,12 @@
     }
   },
   "mcp": {
+    "atlassian": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
+      "oauth": {}
+    },
     "auth0": {
       "enabled": false,
       "type": "local",
@@ -345,6 +350,18 @@
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.launchdarkly.com/mcp/launchdarkly",
+      "oauth": {}
+    },
+    "linear": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": {}
+    },
+    "miro": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.miro.com",
       "oauth": {}
     },
     "neo4j-cypher": {
@@ -392,12 +409,12 @@
         "redirectUri": "http://localhost:3118/callback"
       }
     },
-    "bifrost": {
-      "type": "remote",
-      "url": "http://localhost:9765/mcp",
+    "teamcity": {
       "enabled": true,
+      "type": "remote",
+      "url": "https://live.neo4j-build.io/app/mcp",
       "headers": {
-        "Authorization": "Bearer {env:BIFROST_VIRTUAL_KEY}"
+        "Authorization": "Bearer {env:TC_AUTH_TOKEN}"
       }
     }
   }
