@@ -167,10 +167,6 @@ __configure-aliases() {
     alias lr='l --tree --level=2'
   fi
 
-  if (( ${+commands[chezmoi]} )); then
-    alias c=chezmoi
-  fi
-
   if (( ${+commands[vifm]} )); then
     alias f=vifm
   fi
