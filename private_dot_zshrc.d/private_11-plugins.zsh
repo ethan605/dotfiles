@@ -175,5 +175,6 @@ __autocmp-on-demand() {
   fi
 
   autoload -U +X bashcompinit && bashcompinit
-  command -v aws_completer >/dev/null && complete -C "$(which aws_completer)" aws
+  command -v terraform >/dev/null && complete -o nospace -C "$(which terraform)" terraform
+  command -v aws_completer >/dev/null && complete -o nospace -C "$(which aws_completer)" aws
 }
