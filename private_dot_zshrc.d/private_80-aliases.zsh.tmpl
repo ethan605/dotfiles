@@ -1,7 +1,12 @@
 # vim:filetype=zsh
 alias cdtmp='builtin cd -- $(mktemp -d)'
 alias color-palette='curl -s https://gist.githubusercontent.com/ethan605/ea1b698c3395b9339748e8a0131136a5/raw | bash'
-alias load-time='hyperfine --warmup=3 --min-runs=10 "$SHELL -ic exit"'
+
+if (( ${+commands[hyperfine]} )); then
+  alias load-time='hyperfine --warmup=3 --min-runs=10 "$SHELL -ic exit"'
+else
+  alias load-time='for _ in 1..10; do time $SHELL -ic exit; done'
+fi
 
 {{- if eq .chezmoi.os "linux" }}
 
@@ -9,25 +14,20 @@ alias clippick='clipman pick --print0 --tool=CUSTOM --tool-args="fzf --read0"'
 
 {{- else if eq .chezmoi.os "darwin" }}
 
-alias audio="SwitchAudioSource -a -toutput -fcli | awk -F, '{ printf \"%-50s %s\n\", \$4, \$1 }' | fzf | awk '{ print \$1 }' | xargs SwitchAudioSource -u"
+if (( ${+commands[SwitchAudioSource]} )); then
+  alias audio="SwitchAudioSource -a -toutput -fcli |
+    awk -F, '{ printf \"%-50s %s\n\", \$4, \$1 }' |
+    fzf |
+    awk '{ print \$1 }' |
+    xargs SwitchAudioSource -u"
+fi
+
 alias copen='open -b com.google.Chrome'
 alias fopen='open -b org.nixos.firefox'
 alias wm-reload='aerospace reload-config && sketchybar --reload'
 
 {{- end }}
 
-# Eza
-alias ls='eza --group-directories-first --color=always --git --all'
-alias l='ls --long --icons=always --header'
-alias l1='ls --oneline'
-alias lk='l --total-size --sort=size --reverse'
-alias lr='l --tree --level=2'
-
 # Python
 alias ptest='uv run pytest -vv --capture=no --pdb --pdbcls=IPython.terminal.debugger:Pdb'
 alias pvenv='source "${UV_PROJECT_ENVIRONMENT:-.venv}/bin/activate"'
-
-# Shortcuts
-alias c=chezmoi
-alias f=vifm
-alias w='watch --color --differences --errexit --exec'
