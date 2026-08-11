@@ -275,18 +275,6 @@
   "mcp": {
     "tool_manager_config": {
       "disable_auto_tool_inject": true
-    },
-    "client_configs": [
-      {
-        "name": "teamcity",
-        "connection_type": "http",
-        "connection_string": "https://live.neo4j-build.io/app/mcp",
-        "auth_type": "headers",
-        "headers": { "Authorization": "env.TEAMCITY_MCP_AUTH" },
-        "tools_to_execute": ["*"],
-        "is_ping_available": true,
-        "allow_on_all_virtual_keys": true
-      }
-    ]
+    }
   }
 }
