@@ -55,6 +55,7 @@ misc
 .local/share/emoji.txt
 .mozilla
 .xkb
+.zshrc.d/01-osc7-cwd.zsh
 .zshrc.d/10-sway.zsh
 
 {{- end }}

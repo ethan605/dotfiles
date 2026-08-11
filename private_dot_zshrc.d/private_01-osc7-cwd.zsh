@@ -1,6 +1,4 @@
 # vim:filetype=zsh
-{{- if eq .chezmoi.os "linux" }}
-
 __osc7-cwd() {
   setopt localoptions extendedglob
   input=( ${(s::)PWD} )
@@ -10,5 +8,3 @@ __osc7-cwd() {
 
 autoload -Uz add-zsh-hook
 add-zsh-hook -Uz chpwd osc7-cwd
-
-{{- end }}
