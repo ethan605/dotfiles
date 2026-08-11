@@ -13,7 +13,6 @@ node = "26.7.0"
 python = "3.14.7"
 ruby = "4.0.6"
 rust = "1.97.1"
-terraform = "1.15.8"
 
 # Then tools
 awscli = { version = "2.36.20", symlink_bins = "true" }
@@ -36,7 +35,7 @@ uv = "0.12.3"
 # And custom tools
 [tools."http:cypher-shell"]
 # Check latest version at: https://neo4j.com/deployment-center/?cypher-shell
-version = "2026.06.0"
+version = "2026.07.1"
 bin = "cypher-shell"
 url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
-checksum = "sha256:ac198108b6a4a5d74de29f01e26dc18219060164343bcaad7de12cd768fe0cc0"
+checksum = "sha256:beae24efc0bf4bff48498825ac497addce28d932d8c2cbe2e845c7f2fb761d41"

@@ -1,5 +1,6 @@
 # vim:filetype=zsh
 # === Cached tool inits - setup ===
+# To nuke caches: rm -rf ~/.cache/zsh/*.zsh*
 _zcache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 [[ -d $_zcache ]] || mkdir -p "$_zcache"
 
@@ -78,7 +79,7 @@ __autocmp-kubectl() {
       kubectl completion zsh >| "$_zcache/kubectl.zsh"
       zcompile -R "$_zcache/kubectl.zsh" 2>/dev/null
     fi
-    source "$_zcache/zoxide.zsh"
+    source "$_zcache/kubectl.zsh"
 
     if (( ${+commands[kubecolor]} )); then
       alias kubectl=kubecolor
@@ -99,18 +100,6 @@ __autocmp-opencode() {
 
     compdef ocw=opencode
     compdef ocp=opencode
-  fi
-}
-
-__autocmp-pytest() {
-  if (( ${+commands[register-python-argcomplete]} )); then
-    if [[ ! $_zcache/pytest.zsh -nt ${commands[pytest]} ]]; then
-      register-python-argcomplete --shell=zsh pytest pytest-xdist >| "$_zcache/pytest.zsh"
-      zcompile -R "$_zcache/pytest.zsh" 2>/dev/null
-    fi
-    source "$_zcache/pytest.zsh"
-
-    compdef ptest=pytest
   fi
 }
 
@@ -171,7 +160,6 @@ __autocmp-gt
 __autocmp-helm
 __autocmp-kubectl
 __autocmp-opencode
-__autocmp-pytest
 __autocmp-uv-uvx
 __autocmp-vivid
 __autocmp-ykman
@@ -180,9 +168,11 @@ __autocmp-zoxide
 # === Cached tool inits - tear-down ===
 unset _zcache
 
-# === Expensive executions - use on demand ==
-__source-completions() {
-  command -v terraform >/dev/null && complete -o nospace -C "$(which terraform)" terraform
+# Expensive executions - use on demand
+__autocmp-on-demand() {
+  if (( ${+commands[register-python-argcomplete]} )); then
+    source <(register-python-argcomplete --shell=zsh pytest pytest-xdist)
+  fi
 
   autoload -U +X bashcompinit && bashcompinit
   command -v aws_completer >/dev/null && complete -C "$(which aws_completer)" aws
