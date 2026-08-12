@@ -17,20 +17,27 @@ windows:
             git pull origin trunk &&
             pnpm install
 
-  - name: system
+  - name: nix
     root: ~/.config/nix-darwin
-    env:
-      MISE_VEROBSE: 1
     layout: even-horizontal
     commands:
       - nix flake update --flake . &&
         sudo darwin-rebuild switch --flake . &&
         aerospace reload-config &&
         sketchybar --reload
+
+  - name: configs
+    root: ~/.config
+    env:
+      MISE_VEROBSE: 1
+    layout: even-vertical
+    commands:
+      - zim &&
+        ~/.tmux/plugins/tpm/scripts/update_plugin_prompt_handler.sh all
     panes:
-      - commands:
-          - zim &&
-            mise plugins update &&
+      - root: ./mise
+        commands:
+          - mise plugins update &&
             mise upgrade --bump --interactive --exclude=lua &&
             mise cache prune
 
