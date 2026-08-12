@@ -23,25 +23,15 @@
           "anthropic-beta": "context-1m-2025-08-07,interleaved-thinking-2025-05-14"
         }
       },
+      // Data fetched from https://models.dev/catalog.json
       "models": {
-        "agent-plan": {
-          "name": "Claude Sonnet 5",
-          "cost": {
-            "input": 2,
-            "output": 10,
-            "cache_read": 0.2,
-            "cache_write": 2.5
-          },
-          "limit": { "context": 1000000, "output": 128000 },
-          "options": { "reasoningEffort": "high" }
-        },
-        "agent-build": {
+        "agent-primary": {
           "name": "Kimi K3",
           "cost": { "input": 3, "output": 15, "cache_read": 0.3 },
           "limit": { "context": 1048576, "output": 131072 },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-explore": {
+        "agent-flash": {
           "name": "DeepSeek V4 Flash 0731 (Bifrost)",
           "cost": { "input": 0.14, "output": 0.28, "cache_read": 0.028 },
           "limit": { "context": 1000000, "output": 384000 },
@@ -57,6 +47,17 @@
           "name": "Gemini 3.1 Pro Preview (Bifrost)",
           "cost": { "input": 2, "output": 12, "cache_read": 0.2 },
           "limit": { "context": 1048576, "output": 65536 },
+          "options": { "reasoningEffort": "high" }
+        },
+        "agent-claude": {
+          "name": "Claude Sonnet 5",
+          "cost": {
+            "input": 2,
+            "output": 10,
+            "cache_read": 0.2,
+            "cache_write": 2.5
+          },
+          "limit": { "context": 1000000, "output": 128000 },
           "options": { "reasoningEffort": "high" }
         }
       }
@@ -252,7 +253,8 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "bifrost/agent-build",
+      "model": "bifrost/agent-primary",
+      // "model": "bifrost/agent-claude",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
@@ -261,7 +263,7 @@
     },
     "build": {
       "color": "#ff6ac1",
-      "model": "bifrost/agent-build",
+      "model": "bifrost/agent-primary",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
@@ -271,6 +273,7 @@
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
+      // "model": "bifrost/agent-general"
       "model": "openai/gpt-5.6-terra",
       "permission": {
         "task": "deny"
@@ -280,7 +283,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "bifrost/agent-explore",
+      "model": "bifrost/agent-flash",
       "permission": {
         "edit": "deny",
         "task": "deny"
@@ -290,6 +293,7 @@
     "reviewer": {
       "color": "#ff5c57",
       "mode": "subagent",
+      // "model": "bifrost/agent-reviewer",
       "model": "openai/gpt-5.6-sol",
       "permission": {
         "edit": "deny",
