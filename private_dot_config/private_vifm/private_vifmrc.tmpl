@@ -114,25 +114,27 @@ command! zip zip -r '%d/out.zip' %f
 fileviewer ../ echo > /dev/null
 
 " Show content tree in the preview window for directories
-fileviewer */ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
-fileviewer .*/ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
+fileviewer <inode/directory>
+  \ eza --all --color=always --git --group-directories-first --icons=always --level=1 --tree %c
 
 " Text files
 fileviewer 
-  \ <text/plain>,<text/xml>,<text/x-*>,<application/json>
+  \ <text/plain>,<text/html>,<text/x-makefile>,<text/x-java>,<text/xml>,<application/json>
+  \ file --brief %c && file --brief --mime %c && echo "" &&
   \ bat --number --color=always --pager=never --theme=base16 --wrap=never %c
 filetype
-  \ <text/plain>,<text/xml>,<text/x-*>,<application/json>
+  \ <text/plain>,<text/html>,<text/x-makefile>,<text/x-java>,<text/xml>,<application/json>
   \ nvim %c
 
 fileviewer
   \ *.7z,*.bz2,*.gz,*.rar,*.tar,*.tar*,*.tbz,*.tbz2,*.tgz,*.tlz,*.txz,*.tzst,*.xz,*.zip,*.zst
+  \ file --brief %c && file --brief --mime %c && echo "" &&
   \ lsar -l %c
 filetype
   \ *.7z,*.bz2,*.gz,*.rar,*.tar,*.tar*,*.tbz,*.tbz2,*.tgz,*.tlz,*.txz,*.tzst,*.xz,*.zip,*.zst
   \ unar %c
 
-fileviewer *,.DS_Store file --brief %c && echo "Mime: $(file --brief --mime %c)"
+fileviewer *,.DS_Store file --brief %c && file --brief --mime %c
 
 {{- if eq .chezmoi.os "linux" }}
 
