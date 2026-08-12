@@ -44,5 +44,23 @@ services:
       retries: 5
     restart: unless-stopped
 
+  backup:
+    build:
+      context: ./ops/backup
+      dockerfile: Dockerfile
+    image: bifrost-sqlite-backup:1.0.0
+    container_name: bifrost-backup
+    environment:
+      TZ: ${BACKUP_TZ:-UTC}
+    volumes:
+      - ~/.config/bifrost/dbs/:/data/:ro
+      - ~/.config/bifrost/backups/:/backups/
+    deploy:
+      resources:
+        limits:
+          cpus: 0.25
+          memory: 128M
+    restart: unless-stopped
+
 volumes:
   valkey-data:
