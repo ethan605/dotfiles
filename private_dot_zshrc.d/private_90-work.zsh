@@ -161,4 +161,3 @@ alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.
 alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
 alias ocp='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-personal) __oc'
 alias ocw='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) __oc'
-
