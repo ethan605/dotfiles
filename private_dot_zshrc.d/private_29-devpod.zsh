@@ -9,7 +9,8 @@ __system-upgrade() {
     sudo apt upgrade -y &&
     sudo apt autoremove -y &&
     sudo apt clean -y &&
-    sudo rm -rf /var/lib/apt/lists/*
+    sudo rm -rf /var/lib/apt/lists/* &&
+    zim
 }
 
 __mise-upgrade() {
