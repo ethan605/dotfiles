@@ -15,7 +15,11 @@ __system-upgrade() {
 __mise-upgrade() {
   mise self-update --yes &&
     mise plugins update &&
-    mise upgrade --bump --interactive &&
+    mise upgrade --bump --interactive \
+      --exclude=go \
+      --exclude=node \
+      --exclude=python \
+      --exclude=yarn &&
     mise cache prune
 }
 

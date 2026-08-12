@@ -31,7 +31,8 @@ windows:
       - commands:
           - zim &&
             mise plugins update &&
-            mise upgrade --bump --interactive
+            mise upgrade --bump --interactive --exclude=lua &&
+            mise cache prune
 
   - name: nvim
     root: ~/.config/nvim
