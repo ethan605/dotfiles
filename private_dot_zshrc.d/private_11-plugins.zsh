@@ -27,7 +27,7 @@ __load-zim() {
     zimfw clean &&
     zimfw build &&
     zimfw compile &&
-    rm -rf $XDG_CACHE_HOME/zsh/*.zsh*'
+    rm -rf $XDG_CACHE_HOME/zsh/*.zsh* >/dev/null'
 }
 
 __autocmp-devpod() {
