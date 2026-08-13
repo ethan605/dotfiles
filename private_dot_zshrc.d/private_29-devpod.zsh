@@ -21,8 +21,7 @@ __tools-upgrade() {
       --exclude=python \
       --exclude=yarn &&
     mise cache prune &&
-    zim &&
-    exit 0
+    zim
 }
 
 __config-sync() {
