@@ -9,11 +9,10 @@ __system-upgrade() {
     sudo apt upgrade -y &&
     sudo apt autoremove -y &&
     sudo apt clean -y &&
-    sudo rm -rf /var/lib/apt/lists/* &&
-    zim
+    sudo rm -rf /var/lib/apt/lists/*
 }
 
-__mise-upgrade() {
+__tools-upgrade() {
   mise self-update --yes &&
     mise plugins update &&
     mise upgrade --bump --interactive \
@@ -21,7 +20,9 @@ __mise-upgrade() {
       --exclude=node \
       --exclude=python \
       --exclude=yarn &&
-    mise cache prune
+    mise cache prune &&
+    zim &&
+    exit 0
 }
 
 __config-sync() {
