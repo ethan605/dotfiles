@@ -21,11 +21,13 @@ __install-system-packages() {
 
 	curl -fsSL https://mise.run | sh
 
-	mise use -g \
+	mise use -g --pin \
 		go@1.25 \
 		node@20.20 \
 		python@3.10 \
-		yarn@1.22.22 \
+		yarn@1.22.22
+
+	mise use -g \
 		awscli@latest \
 		azure@latest \
 		bat@latest \
