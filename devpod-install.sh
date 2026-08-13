@@ -30,6 +30,7 @@ __install-system-packages() {
 		azure@latest \
 		bat@latest \
 		bottom@latest \
+		bun@latest \
 		chezmoi@latest \
 		delta@latest \
 		direnv@latest \
