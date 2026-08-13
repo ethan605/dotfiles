@@ -1,7 +1,6 @@
 # https://ghostty.org/docs/help/terminfo
 export TERMINFO="$HOME/.terminfo"
 
-command -v kubectl >/dev/null && source <(kubectl completion zsh)
 command -v omni >/dev/null && source <(omni completion zsh)
 
 __system-upgrade() {
@@ -123,4 +122,5 @@ oc() {
 }
 
 alias ak='goak'
+alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
 alias ocserve='oc serve --port=$OC_PORT --log-level=INFO'
