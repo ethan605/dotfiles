@@ -7,4 +7,4 @@ __osc7-cwd() {
 }
 
 autoload -Uz add-zsh-hook
-add-zsh-hook -Uz chpwd osc7-cwd
+add-zsh-hook -Uz chpwd __osc7-cwd
