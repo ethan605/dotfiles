@@ -23,7 +23,7 @@ __install-system-packages() {
 
 	mise use -g \
 		go@1.25 \
-		node@20 \
+		node@20.20 \
 		python@3.10 \
 		yarn@1.22.22 \
 		awscli@latest \
