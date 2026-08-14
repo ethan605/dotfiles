@@ -7,7 +7,7 @@ import type { Plugin } from "@opencode-ai/plugin";
  *   1. Subagent nesting prevention — blocks subagents from spawning subagents
  *   2. Orchestration skill blocking — prevents subagents from loading dispatch-heavy skills
  *   3. LSP-first enforcement — blocks grep/glob for symbol-like patterns
- *   4. Plan-mode redirect blocking — blocks output redirects that bypass edit:deny
+ *   4. Plan-mode redirect blocking — blocks output redirects that bypass edit approval
  *   5. Hardware-key retry guard — stops signing/network workarounds after a missed touch
  *   6. Skill activation nudges — reminds the model to invoke relevant skills
  *   7. Subagent dispatch reminders — per-turn reminder keeping plan/build agents
@@ -102,9 +102,10 @@ function includeTargetsLspFiles(include: string | undefined): boolean {
  * opencode's bash permission matcher strips redirections from the matched
  * command text (verified empirically: `git remote < /dev/null` auto-passes
  * an exact-match `git remote` rule), so `ls > file` silently matches an
- * `ls *` allow rule and writes a file even under edit:deny. Plugins see the
- * RAW command string, so we block output redirects here — for the plan agent
- * only; build mode keeps legitimate redirects (e.g. `cmd > log 2>&1`).
+ * `ls *` allow rule and writes a file without an edit approval. Plugins see
+ * the RAW command string, so we block output redirects here for the plan
+ * agent: redirects must not bypass the normal `edit:ask` approval. Build mode
+ * keeps legitimate redirects (e.g. `cmd > log 2>&1`).
  *
  * Catches: `>`, `>>`, `2>`, `&>`, `12>` targeting real paths.
  * Ignores: fd-dups (`2>&1`, `>&2`) and `/dev/null|stderr|stdout` sinks.
@@ -679,7 +680,7 @@ const SKILL_TRIGGERS: SkillTrigger[] = [
  * dispatch loop (explore → general implements → reviewer reviews).
  *
  * Anchor choice: appended to the LATEST user message — the same mechanism
- * opencode itself uses for the (empirically reliable) plan-mode read-only
+ * opencode itself uses for the (empirically reliable) plan-mode workflow
  * reminder. The dispatch decision happens early in a turn, before tool
  * results stack, which is exactly when this anchor is freshest. If context
  * drift during long tool loops ever proves to be a real problem, the
@@ -702,15 +703,17 @@ const DISPATCH_REMINDERS: Record<string, string> = {
 ${PRIMARY_AGENT_TURN_REMINDER_MARKER}
 ${PRIMARY_AGENT_TURN_REMINDER}
 Dispatch policy (primary agent): default loop is explore → \`general\` implements → \`reviewer\` reviews → repeat until greenlight.
-- Dispatch \`explore\`: understanding unfamiliar code, multi-file analysis, locating implementations.
-- Dispatch \`general\`: feature additions, logic changes, refactors, multi-file changes, anything requiring tests.
-- Dispatch \`reviewer\`: after ANY completed implementation or refactor, BEFORE claiming done.
-Direct work is allowed ONLY for: typo/string fixes in known locations, config tweaks, running verification commands, or when the user explicitly tells you to do it yourself.
+- Dispatch \`explore\` for unfamiliar code, multi-file analysis, and locating implementations.
+- Dispatch \`general\` for implementation, web research, and multi-step debugging. Parallelise independent tasks only; SAME-FILE tasks run sequentially. Use worktrees only for isolated parallel work.
+- Verify before done: run relevant tests, type checks, lint, and build; use actual output as evidence.
+- Dispatch \`reviewer\` after every implementation or refactor, BEFORE claiming done.
+- Report blockers and material detours promptly. Route scope or design problems back to \`plan\`; do not improvise them.
+Direct work is allowed ONLY for: known typo/string fixes, config tweaks, running verification commands, reading 1–3 known files, or explicit user instruction.
 </system-reminder>`,
   plan: `<system-reminder>
 ${PRIMARY_AGENT_TURN_REMINDER_MARKER}
 ${PRIMARY_AGENT_TURN_REMINDER}
-Dispatch policy (plan mode): research via \`explore\` subagent dispatches — do not bulk-read the codebase yourself. Reserve direct reads for 1-3 specific files you already know. Plans should assign implementation to \`general\` and reviews to \`reviewer\`.
+Planning policy: research via \`explore\` dispatches — do not bulk-read the codebase yourself. Reserve direct reads for 1–3 specific files you already know. Build a correct, robust masterplan; assign implementation to \`general\` and reviews to \`reviewer\`. Dispatch \`reviewer\` for sign-off on the draft plan before \`plan_exit\`. The harness supplies the plan workflow and plan-file path: follow them. The plan file is the intended edit target; other edits require approval.
 </system-reminder>`,
 };
 
@@ -820,8 +823,8 @@ export const GuardrailsPlugin: Plugin = async () => {
           const command: unknown = output.args?.command;
           if (typeof command === "string" && OUTPUT_REDIRECT_RE.test(command)) {
             throw new Error(
-              `[Guardrail] Output redirection is blocked in plan mode (read-only). ` +
-                `The permission matcher cannot see redirects, so this guard enforces edit:deny. ` +
+              `[Guardrail] Output redirection is blocked in plan mode. ` +
+                `The permission matcher cannot see redirects, so this guard prevents redirects from bypassing edit approval. ` +
                 `If the ">" is part of a quoted string, rephrase the command without it.`,
             );
           }

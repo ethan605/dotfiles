@@ -254,6 +254,7 @@
     "plan": {
       "color": "#57c7ff",
       "model": "bifrost/agent-primary",
+      "prompt": "{file:./PLAN.md}",
       // "model": "bifrost/agent-claude",
       "permission": {
         "skill": {
@@ -264,6 +265,7 @@
     "build": {
       "color": "#ff6ac1",
       "model": "bifrost/agent-primary",
+      "prompt": "{file:./BUILD.md}",
       "permission": {
         "skill": {
           "radio-4-english": "allow"
