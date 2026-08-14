@@ -257,6 +257,7 @@
       "prompt": "{file:./PLAN.md}",
       // "model": "bifrost/agent-claude",
       "permission": {
+        "plan_exit": "ask",
         "skill": {
           "radio-4-english": "allow"
         }
@@ -304,7 +305,11 @@
       "prompt": "{file:./REVIEWER.md}"
     },
     "compaction": {
-      "model": "bifrost/agent-general"
+      "model": "bifrost/agent-general",
+      "permission": {
+        "webfetch": "allow",
+        "websearch": "allow"
+      },
     }
   },
   "plugin": [

@@ -693,6 +693,7 @@ const SKILL_TRIGGERS: SkillTrigger[] = [
  * Thresholds are taxonomy-based (task kind), NOT line counts — line-count
  * thresholds incentivize code-golfing to dodge dispatch.
  */
+const USE_RADIO_4_ENGLISH = false;
 const PRIMARY_AGENT_TURN_REMINDER_MARKER = "<primary-agent-turn-reminder>";
 
 const PRIMARY_AGENT_TURN_REMINDER =
@@ -925,19 +926,21 @@ export const GuardrailsPlugin: Plugin = async () => {
       // Transform routing is always determined by the latest required resolved
       // user agent. The session map is reserved for tool guards because it can
       // temporarily hold internal agents such as title or summary.
-      const agent =
-        lastUserMsg.info.role === "user" ? lastUserMsg.info.agent : undefined;
-      const dispatchReminder = agent ? DISPATCH_REMINDERS[agent] : undefined;
-      if (!dispatchReminder) return;
+      if (USE_RADIO_4_ENGLISH) {
+        const agent =
+          lastUserMsg.info.role === "user" ? lastUserMsg.info.agent : undefined;
+        const dispatchReminder = agent ? DISPATCH_REMINDERS[agent] : undefined;
+        if (!dispatchReminder) return;
 
-      // Idempotency applies only to a reminder this plugin inserted into this
-      // in-memory array; user-authored marker text must not suppress injection.
-      const alreadyInjected = lastUserMsg.parts.some(
-        (part) => injectedPrimaryReminderParts.has(part),
-      );
-      if (alreadyInjected) return;
+        // Idempotency applies only to a reminder this plugin inserted into this
+        // in-memory array; user-authored marker text must not suppress injection.
+        const alreadyInjected = lastUserMsg.parts.some(
+          (part) => injectedPrimaryReminderParts.has(part),
+        );
+          if (alreadyInjected) return;
 
-      injectedPrimaryReminderParts.add(appendReminder(dispatchReminder));
+          injectedPrimaryReminderParts.add(appendReminder(dispatchReminder));
+      }
     },
   };
 };
