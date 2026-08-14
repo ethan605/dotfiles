@@ -25,7 +25,13 @@
       },
       // Data fetched from https://models.dev/catalog.json
       "models": {
-        "agent-primary": {
+        "agent-architect": {
+          "name": "Kimi K3",
+          "cost": { "input": 3, "output": 15, "cache_read": 0.3 },
+          "limit": { "context": 1048576, "output": 131072 },
+          "options": { "reasoningEffort": "high" }
+        },
+        "agent-mason": {
           "name": "Kimi K3",
           "cost": { "input": 3, "output": 15, "cache_read": 0.3 },
           "limit": { "context": 1048576, "output": 131072 },
@@ -37,19 +43,19 @@
           "limit": { "context": 1000000, "output": 384000 },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-general": {
+        "agent-allrounder": {
+          "name": "DeepSeek V4 Pro 0813 (Bifrost)",
+          "cost": { "input": 1.32, "output": 3.96, "cache_read": 0.044 },
+          "limit": { "context": 1000000, "output": 384000 },
+          "options": { "reasoningEffort": "high" }
+        },
+        "agent-watchdog": {
           "name": "GLM 5.2 (Bifrost)",
           "cost": { "input": 1.4, "output": 4.4, "cache_read": 0.14 },
           "limit": { "context": 1048575, "output": 131072 },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-reviewer": {
-          "name": "Gemini 3.1 Pro Preview (Bifrost)",
-          "cost": { "input": 2, "output": 12, "cache_read": 0.2 },
-          "limit": { "context": 1048576, "output": 65536 },
-          "options": { "reasoningEffort": "high" }
-        },
-        "agent-claude": {
+        "agent-richkid": {
           "name": "Claude Sonnet 5",
           "cost": {
             "input": 2,
@@ -253,9 +259,9 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "bifrost/agent-primary",
+      "model": "bifrost/agent-architect",
       "prompt": "{file:./PLAN.md}",
-      // "model": "bifrost/agent-claude",
+      // "model": "bifrost/agent-richkid",
       "permission": {
         "plan_exit": "ask",
         "skill": {
@@ -265,7 +271,7 @@
     },
     "build": {
       "color": "#ff6ac1",
-      "model": "bifrost/agent-primary",
+      "model": "bifrost/agent-mason",
       "prompt": "{file:./BUILD.md}",
       "permission": {
         "skill": {
@@ -276,8 +282,8 @@
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      // "model": "bifrost/agent-general"
-      "model": "openai/gpt-5.6-terra",
+      "model": "bifrost/agent-allrounder",
+      // "model": "openai/gpt-5.6-terra",
       "permission": {
         "task": "deny"
       },
@@ -296,7 +302,7 @@
     "reviewer": {
       "color": "#ff5c57",
       "mode": "subagent",
-      // "model": "bifrost/agent-reviewer",
+      // "model": "bifrost/agent-watchdog",
       "model": "openai/gpt-5.6-sol",
       "permission": {
         "edit": "deny",
@@ -305,7 +311,7 @@
       "prompt": "{file:./REVIEWER.md}"
     },
     "compaction": {
-      "model": "bifrost/agent-general",
+      "model": "bifrost/agent-allrounder",
       "permission": {
         "webfetch": "allow",
         "websearch": "allow"
@@ -314,7 +320,7 @@
   },
   "plugin": [
     "superpowers@git+ssh://github.com/ethan605/superpowers.git#4ca60a63f68a9537219dc6e26637d8964446d328",
-    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#123a4ab13654871fe71b9078472344cdcfcc3c00"
+    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#52b70c45ca1cad56cd8af53e2e53c4e215e43b44"
   ],
   "lsp": {
     "pyright": {
