@@ -9,15 +9,16 @@ __install-system-packages() {
 	sudo add-apt-repository main -y &&
 		sudo add-apt-repository universe -y &&
 		sudo add-apt-repository restricted -y &&
-		sudo add-apt-repository multiverse -y &&
-		sudo apt-get upgrade -y &&
+		sudo add-apt-repository multiverse -y
+
+  sudo apt-key export 65F8F04B | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/adoptium.gpg
+
+  sudo apt-get upgrade -y &&
 		sudo apt-get install --no-install-recommends -y \
 			libyaml-dev python3-venv vifm zsh &&
 		sudo apt-get autoremove -y &&
 		sudo apt-get clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
-
-  sudo apt-key export 65F8F04B | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/adoptium.gpg &&
 
 	curl -fsSL https://mise.run | sh
 
