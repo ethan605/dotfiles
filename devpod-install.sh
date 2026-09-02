@@ -11,7 +11,7 @@ __install-system-packages() {
 		sudo add-apt-repository restricted -y &&
 		sudo add-apt-repository multiverse -y
 
-  sudo apt-key export 65F8F04B | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/adoptium.gpg
+  sudo apt-key export 65F8F04B | sudo gpg --dearmour --yes -o /etc/apt/trusted.gpg.d/adoptium.gpg
 
   sudo apt-get upgrade -y &&
 		sudo apt-get install --no-install-recommends -y \
