@@ -3,6 +3,13 @@
   "enabled_providers": ["bifrost", "openai"],
   "provider": {
     "openai": {
+      "options": {
+        "baseURL": "http://localhost:9765/chatgpt_passthrough/backend-api/codex",
+        "headers": {
+          "x-bf-vk": "{env:BIFROST_VIRTUAL_KEY}",
+          "x-bf-direct-key": "true"
+        }
+      },
       "models": {
         "gpt-5.6-sol": {
           "options": { "reasoningEffort": "xhigh" }
