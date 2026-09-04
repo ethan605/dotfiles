@@ -5,7 +5,7 @@ lockfile = true
 [tools]
 # Languages first
 clang = "23.1.0"
-go = "1.27.0"
+go = "1.27.1"
 java = "openjdk-26.0.2"
 lua = "5.1"
 luajit = "2.1.1744318430"
@@ -15,23 +15,23 @@ ruby = "4.0.6"
 rust = "1.98.0"
 
 # Then tools
-awscli = { version = "2.36.37", symlink_bins = "true" }
+awscli = { version = "2.36.39", symlink_bins = "true" }
 azure = { version = "2.90.0", uvx_args = "--prerelease=allow" }
 bun = "1.4.0"
 clang-format = "23.1.0"
 cmake = "4.4.3"
 coursier = { version = "2.1.24", exe = "cs" }
 gcloud = { version = "583.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
-gh = "2.98.0"
+gh = "2.99.0"
 jb = "0.6.0"
 make = "4.4.1"
 maven = "3.9.16"
 ninja = "1.13.2"
-opencode = "1.18.25"
-rtk = { version = "0.46.0", postinstall = "rtk init -g --opencode" }
-terraform = "1.16.0"
+opencode = "1.18.27"
+rtk = { version = "0.47.0", postinstall = "rtk init -g --opencode" }
+terraform = "1.16.1"
 tree-sitter = "0.27.0"
-uv = "0.12.8"
+uv = "0.12.9"
 
 # And custom tools
 [tools."http:cypher-shell"]
