@@ -4,18 +4,18 @@ alias pipes='pipes-rs --fps=60 --kinds=light,curved,knobby --pipe-num=$(($(od -v
 
 greek-letters() {
   local items=$(print -P "
-    alpha: %F{red}α%f
-    beta: %F{red}β%f
-    gamma: %F{red}γ%f
-    delta: %F{red}δ%f
-    epsilon: %F{red}ε%f
-    theta: %F{red}θ%f
-    lambda: %F{red}λ%f
-    mu: %F{red}μ%f
-    pi: %F{red}π%f
-    sigma: %F{red}σ%f
-    phi: %F{red}φ%f
-    omega: %F{red}ω%f
+alpha: %F{red}α%f
+beta: %F{red}β%f
+gamma: %F{red}γ%f
+delta: %F{red}δ%f
+epsilon: %F{red}ε%f
+theta: %F{red}θ%f
+lambda: %F{red}λ%f
+mu: %F{red}μ%f
+pi: %F{red}π%f
+sigma: %F{red}σ%f
+phi: %F{red}φ%f
+omega: %F{red}ω%f
   ")
 
   echo "$items" |

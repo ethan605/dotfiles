@@ -18,7 +18,7 @@
   "nixpkgs-fmt": "1.3.0",
   "prettier": "3.9.6",
   "pyright": "1.1.413",
-  "ruff": "0.16.5",
+  "ruff": "0.16.6",
   "rust-analyzer": "2026-08-31",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.14.0",
