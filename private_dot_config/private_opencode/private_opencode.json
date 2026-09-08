@@ -51,15 +51,19 @@
           "options": { "reasoningEffort": "high" }
         },
         "agent-allrounder": {
-          "name": "DeepSeek V4 Pro 0813 (Bifrost)",
-          "cost": { "input": 1.32, "output": 3.96, "cache_read": 0.044 },
-          "limit": { "context": 1000000, "output": 384000 },
+          "name": "GLM 5.3 (Bifrost)",
+          "cost": { "input": 1.4, "output": 4.4, "cache_read": 0.26 },
+          "limit": { "context": 1048573, "output": 262144 },
           "options": { "reasoningEffort": "high" }
         },
         "agent-watchdog": {
-          "name": "GLM 5.3 (Bifrost)",
-          "cost": { "input": 1.4, "output": 4.4, "cache_read": 0.26 },
-          "limit": { "context": 1000000, "output": 131072 },
+          "name": "Gemini 3.8 Flash (Bifrost)",
+          "cost": {
+            "input": 0.75,
+            "output": 3.75,
+            "cache_read": 0.075
+          },
+          "limit": { "context": 1048576, "output": 65536 },
           "options": { "reasoningEffort": "high" }
         },
         "agent-richkid": {
@@ -322,7 +326,7 @@
       "permission": {
         "webfetch": "allow",
         "websearch": "allow"
-      },
+      }
     }
   },
   "plugin": [
