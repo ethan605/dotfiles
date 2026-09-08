@@ -120,7 +120,8 @@ const OUTPUT_REDIRECT_RE =
 // ---------------------------------------------------------------------------
 
 const HARDWARE_KEY_RETRY_MARKER = "<hardware-key-retry-guard>";
-const GPG_SIGNING_FAILURE_RE = /gpg failed to sign the data|gpg: signing failed/i;
+const GPG_SIGNING_FAILURE_RE =
+  /gpg failed to sign the data|gpg: signing failed/i;
 const COMMIT_WRITE_FAILURE_RE = /fatal: failed to write commit object/i;
 // Confirmed live: the bash tool reports a killed command as
 // "shell tool terminated command after exceeding timeout <N> ms". Matching the
@@ -316,7 +317,9 @@ function tokenizeShell(command: string): string[][] | undefined {
   return segments;
 }
 
-function parseConfigValue(value: string | undefined): GitConfigValue | undefined {
+function parseConfigValue(
+  value: string | undefined,
+): GitConfigValue | undefined {
   if (!value) return undefined;
   const separator = value.indexOf("=");
   if (separator < 1) return undefined;
@@ -377,7 +380,9 @@ function parseGitInvocation(tokens: string[]): GitInvocation | undefined {
       continue;
     }
     if (token.startsWith("--config-env=")) {
-      const configValue = parseConfigEnvironment(token.slice("--config-env=".length));
+      const configValue = parseConfigEnvironment(
+        token.slice("--config-env=".length),
+      );
       if (configValue) configEnvironment.push(configValue);
       continue;
     }
@@ -427,7 +432,9 @@ function parseGitInvocations(command: string): GitInvocation[] {
   return invocations;
 }
 
-function firstSubcommandArgument(invocation: GitInvocation): string | undefined {
+function firstSubcommandArgument(
+  invocation: GitInvocation,
+): string | undefined {
   for (
     let index = invocation.subcommandIndex + 1;
     index < invocation.args.length;
@@ -448,16 +455,18 @@ function isSigningCapableGitInvocation(invocation: GitInvocation): boolean {
   }
   if (invocation.subcommand !== "tag") return true;
 
-  return !invocation.args.slice(invocation.subcommandIndex + 1).some(
-    (arg) =>
-      arg === "-l" ||
-      arg === "--list" ||
-      arg.startsWith("--list=") ||
-      arg === "-n" ||
-      (arg.startsWith("-n") && arg.length > 2) ||
-      arg === "-v" ||
-      arg === "--verify",
-  );
+  return !invocation.args
+    .slice(invocation.subcommandIndex + 1)
+    .some(
+      (arg) =>
+        arg === "-l" ||
+        arg === "--list" ||
+        arg.startsWith("--list=") ||
+        arg === "-n" ||
+        (arg.startsWith("-n") && arg.length > 2) ||
+        arg === "-v" ||
+        arg === "--verify",
+    );
 }
 
 function classifyGitCommand(command: string): GitCommandClassification {
@@ -474,7 +483,9 @@ function classifyGitCommand(command: string): GitCommandClassification {
         (invocation.subcommand !== undefined &&
           GIT_NETWORK_SUBCOMMANDS.has(invocation.subcommand)) ||
         (invocation.subcommand === "remote" &&
-          ["update", "prune"].includes(firstSubcommandArgument(invocation) ?? "")),
+          ["update", "prune"].includes(
+            firstSubcommandArgument(invocation) ?? "",
+          )),
     ),
     hasSigningCapable: invocations.some(isSigningCapableGitInvocation),
   };
@@ -525,7 +536,8 @@ function detectHardwareKeyFailure(
   const outputHasTimeout = COMMAND_TIMEOUT_RE.test(
     removeEchoedCommandText(output, command),
   );
-  const hasTimeout = outputHasTimeout || metadataContainsTimeout(metadata, command);
+  const hasTimeout =
+    outputHasTimeout || metadataContainsTimeout(metadata, command);
   const hasSigningFailure =
     GPG_SIGNING_FAILURE_RE.test(output) || COMMIT_WRITE_FAILURE_RE.test(output);
   const hasNetworkKeyFailure = NETWORK_KEY_FAILURE_RE.test(output);
@@ -537,7 +549,10 @@ function detectHardwareKeyFailure(
 }
 
 function isFalseyGitConfigValue(value: string | undefined): boolean {
-  return value !== undefined && ["false", "off", "no", "0"].includes(value.toLowerCase());
+  return (
+    value !== undefined &&
+    ["false", "off", "no", "0"].includes(value.toLowerCase())
+  );
 }
 
 function hasFalseySigningConfig(
@@ -551,7 +566,9 @@ function hasFalseySigningConfig(
     invocation.configEnvironment.some(
       (config) =>
         config.key === key &&
-        isFalseyGitConfigValue(invocation.environment.get(config.environmentName)),
+        isFalseyGitConfigValue(
+          invocation.environment.get(config.environmentName),
+        ),
     )
   );
 }
@@ -572,7 +589,11 @@ function configWriteDisablesSigning(invocation: GitInvocation): boolean {
       index++;
       continue;
     }
-    if (token.startsWith("--file=") || token.startsWith("--blob=") || token.startsWith("--type=")) {
+    if (
+      token.startsWith("--file=") ||
+      token.startsWith("--blob=") ||
+      token.startsWith("--type=")
+    ) {
       continue;
     }
     if (token.startsWith("-")) continue;
@@ -584,7 +605,8 @@ function configWriteDisablesSigning(invocation: GitInvocation): boolean {
 
   const usesModernSet = action === "set";
   const usesModernUnset = action === "unset" || action === "unset-all";
-  const key = positional[usesModernSet || usesModernUnset ? 1 : 0]?.toLowerCase();
+  const key =
+    positional[usesModernSet || usesModernUnset ? 1 : 0]?.toLowerCase();
   if (key !== "commit.gpgsign" && key !== "tag.gpgsign") return false;
   if (isUnset || usesModernUnset) return true;
   return isFalseyGitConfigValue(positional[usesModernSet ? 2 : 1]);
@@ -696,8 +718,9 @@ const SKILL_TRIGGERS: SkillTrigger[] = [
 const USE_RADIO_4_ENGLISH = false;
 const PRIMARY_AGENT_TURN_REMINDER_MARKER = "<primary-agent-turn-reminder>";
 
-const PRIMARY_AGENT_TURN_REMINDER =
-  "Primary-agent turn start: Before any response or action on this turn, invoke `radio-4-english` once. If it has already been invoked for this turn, do not invoke it again. Invoke every applicable Superpowers skill alongside it. `radio-4-english` governs prose style only; it supplements and never replaces workflow/process skills.";
+const PRIMARY_AGENT_TURN_REMINDER = USE_RADIO_4_ENGLISH
+  ? "Primary-agent turn start: Before any response or action on this turn, invoke `radio-4-english` once. If it has already been invoked for this turn, do not invoke it again. Invoke every applicable Superpowers skill alongside it. `radio-4-english` governs prose style only; it supplements and never replaces workflow/process skills."
+  : "";
 
 const DISPATCH_REMINDERS: Record<string, string> = {
   build: `<system-reminder>
@@ -756,7 +779,7 @@ export const GuardrailsPlugin: Plugin = async () => {
       compactingSessions.delete(input.sessionID);
     },
 
-    "event": async (input) => {
+    event: async (input) => {
       if (input.event.type === "session.compacted") {
         compactingSessions.delete(input.event.properties.sessionID);
       }
@@ -852,7 +875,8 @@ export const GuardrailsPlugin: Plugin = async () => {
       if (input.tool !== "bash" && input.tool !== "shell") return;
 
       const command: unknown = input.args?.command;
-      if (typeof command !== "string" || typeof output.output !== "string") return;
+      if (typeof command !== "string" || typeof output.output !== "string")
+        return;
 
       if (detectHardwareKeyFailure(command, output.output, output.metadata)) {
         output.output = `${buildHardwareKeyRetryDirective()}\n\n${output.output}`;
@@ -934,12 +958,12 @@ export const GuardrailsPlugin: Plugin = async () => {
 
         // Idempotency applies only to a reminder this plugin inserted into this
         // in-memory array; user-authored marker text must not suppress injection.
-        const alreadyInjected = lastUserMsg.parts.some(
-          (part) => injectedPrimaryReminderParts.has(part),
+        const alreadyInjected = lastUserMsg.parts.some((part) =>
+          injectedPrimaryReminderParts.has(part),
         );
-          if (alreadyInjected) return;
+        if (alreadyInjected) return;
 
-          injectedPrimaryReminderParts.add(appendReminder(dispatchReminder));
+        injectedPrimaryReminderParts.add(appendReminder(dispatchReminder));
       }
     },
   };
