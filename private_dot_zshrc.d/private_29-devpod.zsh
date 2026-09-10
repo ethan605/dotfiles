@@ -16,6 +16,7 @@ __tools-upgrade() {
     mise plugins update &&
     mise upgrade --bump --interactive \
       --exclude=go \
+      --exclude=kubectl \
       --exclude=node \
       --exclude=python \
       --exclude=yarn &&
