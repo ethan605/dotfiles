@@ -11,6 +11,9 @@
         }
       },
       "models": {
+        "gpt-6-astra": {
+          "options": { "reasoningEffort": "xhigh" }
+        },
         "gpt-5.6-sol": {
           "options": { "reasoningEffort": "xhigh" }
         },
@@ -343,7 +346,7 @@
   },
   "plugin": [
     "superpowers@git+ssh://github.com/ethan605/superpowers.git#4ca60a63f68a9537219dc6e26637d8964446d328",
-    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#87862c6e911bdb9ef0f6e8b44c244cbdb5207b6e"
+    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#d015205a445f0f9910ab86796ba2eee2afadc525"
   ],
   "lsp": {
     "pyright": {
