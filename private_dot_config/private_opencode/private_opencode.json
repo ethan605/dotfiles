@@ -291,7 +291,7 @@
       "permission": {
         "plan_exit": "ask",
         "skill": {
-          "radio-4-english": "allow"
+          // "radio-4-english": "allow"
         }
       }
     },
@@ -301,7 +301,7 @@
       "prompt": "{file:./BUILD.md}",
       "permission": {
         "skill": {
-          "radio-4-english": "allow"
+          // "radio-4-english": "allow"
         }
       }
     },
