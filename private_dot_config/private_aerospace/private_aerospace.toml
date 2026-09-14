@@ -110,6 +110,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = 'layout floating'
 
 [[on-window-detected]]
+  if.app-id = 'com.apple.clock'
+  run = 'layout floating'
+
+[[on-window-detected]]
   if.app-id = 'com.apple.finder'
   run = 'layout floating'
 
