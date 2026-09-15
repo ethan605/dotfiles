@@ -45,7 +45,7 @@ return {
     cmdline = {
       keymap = {
         preset = "inherit",
-        ["<CR>"] = { "accept_and_enter", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
       },
       completion = { menu = { auto_show = true } },
       sources = { "path", "cmdline", "buffer" },
