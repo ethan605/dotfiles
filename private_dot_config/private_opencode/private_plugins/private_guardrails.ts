@@ -36,7 +36,7 @@ type GitWriteApprovalState = "pending" | "approved";
 /** sessionID → (raw command string → state). Raw string = exact bash tool arg. */
 const gitWriteApprovals = new Map<string, Map<string, GitWriteApprovalState>>();
 const MAX_PENDING_GIT_WRITE_COMMANDS = 32; // per session
-const MAX_GIT_WRITE_SESSIONS = 64;         // total tracked sessions
+const MAX_GIT_WRITE_SESSIONS = 64; // total tracked sessions
 
 /**
  * Flips every pending git-write approval for the session to approved.
@@ -374,7 +374,7 @@ function parseConfigEnvironment(
 }
 
 interface ExecutableResolution {
-  index: number;                    // index of the executable token (may be >= tokens.length)
+  index: number; // index of the executable token (may be >= tokens.length)
   environment: Map<string, string>; // leading AND env-wrapper assignments
 }
 
@@ -428,7 +428,8 @@ function resolveExecutable(tokens: string[]): ExecutableResolution {
       index++;
       // Common non-operand flags, then operand-taking flags with their operand.
       while (index < tokens.length && tokens[index].startsWith("-")) {
-        if (["-u", "-g", "-h", "-p", "-C", "-T", "-U"].includes(tokens[index])) index++;
+        if (["-u", "-g", "-h", "-p", "-C", "-T", "-U"].includes(tokens[index]))
+          index++;
         index++;
       }
       moved = true;
@@ -439,7 +440,8 @@ function resolveExecutable(tokens: string[]): ExecutableResolution {
 
 function parseGitInvocation(tokens: string[]): GitInvocation | undefined {
   const { index, environment } = resolveExecutable(tokens);
-  if (tokens[index] !== "git" && !tokens[index]?.endsWith("/git")) return undefined;
+  if (tokens[index] !== "git" && !tokens[index]?.endsWith("/git"))
+    return undefined;
 
   const args = tokens.slice(index + 1);
   const configValues: GitConfigValue[] = [];
@@ -781,7 +783,8 @@ function tagInvocationIsWrite(invocation: GitInvocation): boolean {
     (token.startsWith("-n") && token.length > 2) ||
     token === "-v" ||
     token === "--verify" ||
-    (token.startsWith("--") && TAG_EXTENDED_LIST_FLAGS.has(token.split("=")[0]));
+    (token.startsWith("--") &&
+      TAG_EXTENDED_LIST_FLAGS.has(token.split("=")[0]));
   if (args.some(isListEvidence)) return false;
   if (args.some((token) => token === "-d" || token === "--delete")) return true;
   // `git tag v1` and `git tag -a v1 -m x` create a tag; any positional writes.
@@ -952,9 +955,7 @@ function replaceInvocationIsWrite(invocation: GitInvocation): boolean {
 
 /** -w writes the object into the object database; the default only reads. */
 function hashObjectInvocationIsWrite(invocation: GitInvocation): boolean {
-  return invocation.args
-    .slice(invocation.subcommandIndex + 1)
-    .includes("-w");
+  return invocation.args.slice(invocation.subcommandIndex + 1).includes("-w");
 }
 
 /** --lost-found writes .git/lost-found/* objects. */
@@ -1045,11 +1046,7 @@ function shellLauncherMentionsGit(segment: string[]): boolean {
     executable === "dash" ||
     /\/(sh|bash|zsh|dash)$/.test(executable);
   if (!isLauncher) return false;
-  for (
-    let flagIndex = index + 1;
-    flagIndex + 1 < segment.length;
-    flagIndex++
-  ) {
+  for (let flagIndex = index + 1; flagIndex + 1 < segment.length; flagIndex++) {
     const token = segment[flagIndex];
     if (token === "-c" || /^-[a-z]*c[a-z]*$/.test(token)) {
       if (/\bgit\b/.test(segment[flagIndex + 1])) return true;
