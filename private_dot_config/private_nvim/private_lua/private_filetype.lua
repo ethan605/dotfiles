@@ -5,9 +5,9 @@ vim.filetype.add({
     ["docker-compose.yaml"] = "yaml.docker-compose",
   },
   pattern = {
-    [".env.*"] = "config",
-    ["docker%-compose.*.yml"] = "yaml.docker-compose",
-    ["docker%-compose.*.yaml"] = "yaml.docker-compose",
+    ["%.env%..*"] = { "config", { priority = 10 } },
+    ["docker%-compose%..*%.yml"] = "yaml.docker-compose",
+    ["docker%-compose%..*%.yaml"] = "yaml.docker-compose",
   },
   extension = {
     bash = "bash",

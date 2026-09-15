@@ -66,7 +66,7 @@ return {
             filter = function(client) return client.name == "null-ls" end,
             timeout_ms = 5000,
           })
-        end, { noremap = true, silent = true, buffer = true })
+        end, { noremap = true, silent = true, buf = 0 })
       end,
     }
   end,

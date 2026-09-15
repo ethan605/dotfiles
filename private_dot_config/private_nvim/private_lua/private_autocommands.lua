@@ -1,18 +1,3 @@
--- Performance tweaks for large files
-local jsSyntaxGroup = vim.api.nvim_create_augroup("JsSyntaxGroup", { clear = true })
-
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*js", "*.jsx", "*.ts", "*.tsx" },
-  command = "syntax sync fromstart",
-  group = jsSyntaxGroup,
-})
-
-vim.api.nvim_create_autocmd("BufLeave", {
-  pattern = { "*js", "*.jsx", "*.ts", "*.tsx" },
-  command = "syntax sync clear",
-  group = jsSyntaxGroup,
-})
-
 -- Auto format on save
 local autoFormatGroup = vim.api.nvim_create_augroup("AutoFormatGroup", { clear = true })
 
@@ -43,7 +28,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "bash",
     "cmake",
-    "comment",
     "cpp",
     "dts",
     "go",
@@ -74,7 +58,8 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Auto CSV/TSV view
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "csv", "tsv" },
-  command = "CsvViewEnable",
+  ---@diagnostic disable-next-line: undefined-field
+  callback = function() require("csvview").enable() end,
 })
 
 -- Disable nvim-ufo for certain file types

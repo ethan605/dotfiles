@@ -3,14 +3,20 @@ local function ensure_lazy()
   local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
   if not vim.uv.fs_stat(lazypath) then
-    vim.fn.system({
+    local out = vim.system({
       "git",
       "clone",
       "--filter=blob:none",
       "https://github.com/folke/lazy.nvim.git",
       "--branch=stable",
       lazypath,
-    })
+    }):wait()
+
+    if out.code ~= 0 then
+      vim.api.nvim_echo({
+        { "Failed to clone lazy.nvim:\n" .. out.stderr, "ErrorMsg" },
+      }, true, {})
+    end
   end
 
   vim.opt.runtimepath:prepend(lazypath)
@@ -48,10 +54,10 @@ local plugins = {
   },
 
   -- Plugins with more complex configs
+  require("plugins.blink"),
   require("plugins.bufferline"),
   require("plugins.codesnap"),
   require("plugins.colorscheme"),
-  require("plugins.comment"),
   require("plugins.csvview"),
   require("plugins.dashboard"),
   require("plugins.diffview"),
@@ -65,10 +71,8 @@ local plugins = {
   require("plugins.mason"),
   require("plugins.neotest"),
   require("plugins.none-ls"),
-  require("plugins.nvim-cmp"),
   require("plugins.nvim-coverage"),
   require("plugins.nvim-dbee"),
-  require("plugins.nvim-go"),
   require("plugins.nvim-highlight-colors"),
   require("plugins.nvim-java"),
   require("plugins.nvim-lightbulb"),
@@ -81,9 +85,15 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
-
-  -- Disabled for now; revisit later
-  -- require("plugins.fyler"),
 }
 
 require("lazy").setup(plugins, opts)
+
+-- codesnap.nvim appends a template-less full .so path to package.cpath,
+-- which shadows every later-appended cpath entry for C-module requires (breaks blink.cmp's rust matcher).
+-- Drop cpath entries without a '?' template.
+-- codesnap is unaffected: it loads its generator during setup, before this runs.
+local entries = vim.split(package.cpath, ";")
+package.cpath = table.concat(vim.tbl_filter(
+  function(entry) return entry:find("?", 1, true) ~= nil end, entries
+), ";")

@@ -51,13 +51,6 @@ vim.api.nvim_set_hl(0, "DiffviewStatusTypeChange", { fg = snazzy_colors.yellow }
 vim.api.nvim_set_hl(0, "DiffviewStatusUnmerged", { fg = snazzy_colors.red })
 vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = snazzy_colors.gray })
 
--- vim.api.nvim_set_hl(0, "DiffviewDiffAdd", { bg = "#1d4428" })
--- vim.api.nvim_set_hl(0, "DiffviewDiffChange", { bg = "#542527" })
--- vim.api.nvim_set_hl(0, "DiffviewDiffDelete", { bg = "#701011" })
--- vim.api.nvim_set_hl(0, "DiffviewDiffText", { bg = "#1e582e", bold = true })
--- vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffviewDiffDelete" })
--- vim.api.nvim_set_hl(0, "DiffviewDiffDeleteDim", { fg = snazzy_colors.dark_gray })
-
 -- Delta / GitHub diff palette. Consumed by the per-side winhighlight hook in lua/plugins/diffview.lua
 vim.api.nvim_set_hl(0, "DeltaDiffMinus", { bg = "#3f0001" })                -- removed line base
 vim.api.nvim_set_hl(0, "DeltaDiffMinusEmph", { bg = "#901011" })            -- removed changed span
@@ -77,36 +70,44 @@ vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Conceal" })
 vim.api.nvim_set_hl(0, "LeapMatch", { fg = snazzy_colors.yellow, bold = true, nocombine = true })
 vim.api.nvim_set_hl(0, "LeapLabel", { fg = snazzy_colors.magenta, bold = true, nocombine = true })
 
--- For nvim-cmp
-vim.api.nvim_set_hl(0, "CmpDocumentation", { link = "@variable" })
-vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { link = "@variable" })
-vim.api.nvim_set_hl(0, "CmpItemAbbr", { link = "@variable" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { link = "DiagnosticDeprecated" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { link = "Function" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "Function" })
-vim.api.nvim_set_hl(0, "CmpItemKindClass", { link = "Structure" })
-vim.api.nvim_set_hl(0, "CmpItemKindConstant", { link = "Constant" })
-vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { link = "Structure" })
-vim.api.nvim_set_hl(0, "CmpItemKindDefault", { link = "Constant" })
-vim.api.nvim_set_hl(0, "CmpItemKindEnum", { link = "Type" })
-vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { link = "Identifier" })
-vim.api.nvim_set_hl(0, "CmpItemKindEvent", { link = "Type" })
-vim.api.nvim_set_hl(0, "CmpItemKindField", { link = "Keyword" })
-vim.api.nvim_set_hl(0, "CmpItemKindFunction", { link = "Function" })
-vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "Type" })
-vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { link = "Keyword" })
-vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "Function" })
-vim.api.nvim_set_hl(0, "CmpItemKindModule", { link = "Structure" })
-vim.api.nvim_set_hl(0, "CmpItemKindOperator", { link = "Keyword" })
-vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "Identifier" })
-vim.api.nvim_set_hl(0, "CmpItemKindReference", { link = "Special" })
-vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { link = "Type" })
-vim.api.nvim_set_hl(0, "CmpItemKindStruct", { link = "Structure" })
-vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { link = "Type" })
-vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "Special" })
-vim.api.nvim_set_hl(0, "CmpItemKindValue", { link = "Special" })
-vim.api.nvim_set_hl(0, "CmpItemKindVariable", { link = "Special" })
-vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "Conceal" })
+-- For blink.cmp
+vim.api.nvim_set_hl(0, "BlinkCmpDoc", { link = "@variable" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { link = "@variable" })
+vim.api.nvim_set_hl(0, "BlinkCmpKind", { link = "Constant" })
+vim.api.nvim_set_hl(0, "BlinkCmpLabel", { link = "@variable" })
+vim.api.nvim_set_hl(0, "BlinkCmpLabelDeprecated", { link = "DiagnosticDeprecated" })
+vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { link = "Function" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "@variable" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "@variable" })
+vim.api.nvim_set_hl(0, "BlinkCmpSource", { link = "Conceal" })
+
+-- Per-kind icons: mirrors the previous lspkind/CmpItemKind palette
+local blink_kind_links = {
+  Class = "Structure",
+  Constant = "Constant",
+  Constructor = "Structure",
+  Enum = "Type",
+  EnumMember = "Identifier",
+  Event = "Type",
+  Field = "Keyword",
+  Function = "Function",
+  Interface = "Type",
+  Keyword = "Keyword",
+  Method = "Function",
+  Module = "Structure",
+  Operator = "Keyword",
+  Property = "Identifier",
+  Reference = "Special",
+  Snippet = "Type",
+  Struct = "Structure",
+  TypeParameter = "Type",
+  Unit = "Special",
+  Value = "Special",
+  Variable = "Special",
+}
+for kind, link in pairs(blink_kind_links) do
+  vim.api.nvim_set_hl(0, "BlinkCmpKind" .. kind, { link = link })
+end
 
 -- For nvim-foldsign
 vim.api.nvim_set_hl(0, "FoldColumn", { link = "Conceal" })

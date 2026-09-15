@@ -1,17 +1,24 @@
 ---@type lsp.ClientCapabilities
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
+-- blink.cmp capabilities + the pre-existing resolveSupport / ufo folding tweaks
+local capabilities = require("blink.cmp").get_lsp_capabilities({
+  textDocument = {
+    completion = {
+      completionItem = {
+        resolveSupport = {
+          properties = {
+            "additionalTextEdits",
+            "detail",
+            "documentation",
+          },
+        },
+      },
+    },
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    },
   },
-}
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
+})
 
 ---Use an on_attach function to only map the following keys
 ---after the language server attaches to the current buffer
