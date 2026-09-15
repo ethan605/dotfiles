@@ -12,15 +12,17 @@
       },
       "models": {
         "gpt-6-astra": {
-          "options": { "reasoningEffort": "xhigh" }
+          "options": { "reasoningEffort": "high" }
         },
         "gpt-5.6-sol": {
-          "options": { "reasoningEffort": "xhigh" }
+          "options": { "reasoningEffort": "high" }
         },
         "gpt-5.6-terra": {
-          "options": { "reasoningEffort": "xhigh" }
+          "options": { "reasoningEffort": "high" }
         },
-        "gpt-5.6-luna": {}
+        "gpt-5.6-luna": {
+          "options": { "reasoningEffort": "high" }
+        }
       }
     },
     "bifrost": {
