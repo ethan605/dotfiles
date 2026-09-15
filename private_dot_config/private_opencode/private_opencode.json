@@ -2,18 +2,39 @@
   "$schema": "https://opencode.ai/config.json",
   "enabled_providers": ["bifrost", "openai"],
   "provider": {
-    "openai": {
+    "xopenai": {
       "options": {
         "baseURL": "http://localhost:9765/chatgpt_passthrough/backend-api/codex",
         "headers": {
           "x-bf-vk": "{env:BIFROST_VIRTUAL_KEY}",
-          "x-bf-direct-key": "true"
+          "x-bf-direct-key": "true",
+          "x-bf-passthrough-extra-params": "true"
         }
       },
       "models": {
         "gpt-6-astra": {
           "options": { "reasoningEffort": "high" }
         },
+        "gpt-5.6-sol": {
+          "options": { "reasoningEffort": "high" }
+        },
+        "gpt-5.6-terra": {
+          "options": { "reasoningEffort": "high" }
+        },
+        "gpt-5.6-luna": {
+          "options": { "reasoningEffort": "high" }
+        }
+      }
+    },
+    "openai": {
+      "name": "Bifrost",
+      "options": {
+        "baseURL": "http://localhost:9765/openai",
+        "headers": {
+          "x-bf-vk": "{env:BIFROST_VIRTUAL_KEY}",
+        }
+      },
+      "models": {
         "gpt-5.6-sol": {
           "options": { "reasoningEffort": "high" }
         },

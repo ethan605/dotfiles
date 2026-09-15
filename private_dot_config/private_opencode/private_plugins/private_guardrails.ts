@@ -671,7 +671,53 @@ const BRANCH_SHORT_MUTATION_CHARS = new Set([
   "t",
 ]);
 
-const TAG_EXTENDED_LIST_FLAGS = new Set([
+/**
+ * Creation options that take their operand as a separate token. `git tag`
+ * only accepts these when creating a tag, so one seen in option position
+ * (i.e. NOT consumed as another option's operand) is creation intent, and
+ * the result is fail-closed WRITE even when the tag name is missing
+ * (`git tag -m -l` — git consumes `-l` as the message and then errors
+ * "no tag name?", so gating is harmless). Like every operand-taking
+ * option, the separate-form operand is consumed WHATEVER it looks like
+ * (git 2.55 parse-options takes the next token as the operand even when
+ * it starts with `-` or is `--`): `git tag -m -v v1` creates `v1` with
+ * message `-v`, so `-v` must not be mistaken for a verify flag. Attached
+ * forms (`-mfoo`, `-ukey`, `-Fpath`, `--message=x`) are skipped as plain
+ * flags by the startsWith("-") check; a tag name next to them still
+ * creates via the positional rule.
+ */
+const TAG_CREATION_FLAGS_WITH_OPERAND = new Set([
+  "-m",
+  "--message",
+  "-F",
+  "--file",
+  "-u",
+  "--local-user",
+]);
+
+/**
+ * Filter and display modifier options that take their operand as a
+ * separate token. These options do NOT settle the read/write question by
+ * themselves — with no tag-name positional, git still lists (`git tag
+ * --points-at HEAD` reads). The distinction when a positional IS present:
+ * `--sort`/`--format` are display modifiers that do not imply list mode,
+ * so the positional creates a tag (`git tag --sort refname created-tag`
+ * creates; note an INVALID sort key like `name` or `--` makes git 2.55
+ * error out before creating anything, so gating such forms is harmless).
+ * The FILTER options (`--contains`, `--no-contains`, `--merged`,
+ * `--no-merged`, `--points-at`) DO imply list mode and the positional is
+ * a list pattern — but gating that form as a write is the accepted
+ * fail-closed false positive. Their separate-form operands must not be
+ * mistaken for tag names either way, and are consumed below whatever
+ * they look like (same parse-options rule as the creation set above).
+ * Attached forms (`--sort=refname`) are skipped as plain flags by the
+ * startsWith("-") check and need no operand consumption. Together with
+ * TAG_CREATION_FLAGS_WITH_OPERAND this covers every operand-taking
+ * `git tag` option; `-n` is deliberately absent — its operand is
+ * attached-only in git (`-n5`), and `git tag -n 5` is a list where `5`
+ * is a pattern.
+ */
+const TAG_FILTER_DISPLAY_FLAGS_WITH_OPERAND = new Set([
   "--contains",
   "--no-contains",
   "--merged",
@@ -679,10 +725,6 @@ const TAG_EXTENDED_LIST_FLAGS = new Set([
   "--points-at",
   "--format",
   "--sort",
-  "--column",
-  "--no-column",
-  "-i",
-  "--ignore-case",
 ]);
 
 const SYMBOLIC_REF_WRITE_FLAGS = new Set([
@@ -772,23 +814,93 @@ function branchInvocationIsWrite(invocation: GitInvocation): boolean {
  * Dedicated tag logic — does NOT reuse isSigningCapableGitInvocation, which
  * returns "write" for bare `git tag` (that helper serves the signing-disable
  * guard and stays untouched). Bare `git tag` LISTS tags and must be a read.
+ *
+ * A single left-to-right, token-role-aware pass over the args after the
+ * subcommand (mirrors git 2.55 builtin/tag.c parse-options behavior):
+ *   1. `-d`/`--delete` anywhere → write (deletion wins over everything;
+ *      kept as a global pre-scan — it over-gates bundled forms, which is
+ *      fail-closed).
+ *   2. After `--`, every token is a positional (tag name) → write.
+ *   3. ANY operand-taking option — creation (`-m`, `--message`, `-F`,
+ *      `--file`, `-u`, `--local-user`) and filter/display (`--contains`,
+ *      `--no-contains`, `--merged`, `--no-merged`, `--points-at`,
+ *      `--format`, `--sort`) — consumes the next token WHATEVER it looks
+ *      like: parse-options takes the operand even when it starts with `-`
+ *      or is `--` (verified against git 2.55 — the bypasses this fixed:
+ *      `git tag --format -l name` creates, because `-l` is `--format`'s
+ *      operand; `git tag --sort -- v1` treats `--` as `--sort`'s operand
+ *      and then dies on the invalid sort key, so gating it is harmless;
+ *      `git tag -m -v v1` creates `v1` with message `-v`, because `-v` is
+ *      `-m`'s operand). Creation options additionally set creationSeen:
+ *      they are creation intent even with no tag name (`git tag -m -l`
+ *      leaves no name after `-m` eats `-l`, git errors "no tag name?",
+ *      and gating is fail-closed).
+ *   4. Strict list/verify flag seen (not consumed as an operand) → read:
+ *      these force list mode even when a tag name is present
+ *      (`git tag -l 'v*'` reads; the trailing name is a pattern), and
+ *      they win over creationSeen too (`git tag -m msg -l` lists).
+ *   5. Any tag-name positional → write (creation). Note the distinction
+ *      among the "modifier" flags: `--sort`/`--format` are display modifiers
+ *      that do NOT imply list mode, so a positional next to them really does
+ *      create a tag (`git tag --sort refname created-tag` creates; an
+ *      invalid sort key such as `name` or `--` makes git error out before
+ *      creating anything, so gating it is harmless). The FILTER options
+ *      (`--contains`, `--no-contains`, `--merged`, `--no-merged`,
+ *      `--points-at`) DO imply list mode when no positional is given, and a
+ *      positional alongside them is still a list PATTERN — but they are
+ *      deliberately treated the same as display modifiers here: gating
+ *      `git tag --points-at HEAD <pattern>` as a write is the known accepted
+ *      false positive (fail-closed), and treating filters as list evidence
+ *      was the original bypass bug.
+ *   6. Otherwise → read: with no name positional, git lists (`git tag`,
+ *      `git tag --sort=-creatordate`, `git tag --points-at HEAD`).
  */
 function tagInvocationIsWrite(invocation: GitInvocation): boolean {
   const args = invocation.args.slice(invocation.subcommandIndex + 1);
-  const isListEvidence = (token: string): boolean =>
+  if (args.some((token) => token === "-d" || token === "--delete")) return true;
+  const isStrictListFlag = (token: string): boolean =>
     token === "-l" ||
     token === "--list" ||
     token.startsWith("--list=") ||
     token === "-n" ||
     (token.startsWith("-n") && token.length > 2) ||
     token === "-v" ||
-    token === "--verify" ||
-    (token.startsWith("--") &&
-      TAG_EXTENDED_LIST_FLAGS.has(token.split("=")[0]));
-  if (args.some(isListEvidence)) return false;
-  if (args.some((token) => token === "-d" || token === "--delete")) return true;
-  // `git tag v1` and `git tag -a v1 -m x` create a tag; any positional writes.
-  return args.some((token) => !token.startsWith("-"));
+    token === "--verify";
+  let afterDoubleDash = false;
+  let strictListSeen = false;
+  let creationSeen = false;
+  let positionalSeen = false;
+  for (let index = 0; index < args.length; index++) {
+    const token = args[index];
+    if (afterDoubleDash) {
+      positionalSeen = true; // everything after `--` is a tag-name positional
+      continue;
+    }
+    if (token === "--") {
+      afterDoubleDash = true;
+      continue;
+    }
+    if (TAG_CREATION_FLAGS_WITH_OPERAND.has(token)) {
+      index++; // consume separate-form operand — even if it starts with '-' or is '--'
+      creationSeen = true; // creation-only options: write intent even without a tag name
+      continue;
+    }
+    if (TAG_FILTER_DISPLAY_FLAGS_WITH_OPERAND.has(token)) {
+      index++; // consume separate-form operand — even if it starts with '-' or is '--'
+      continue;
+    }
+    if (isStrictListFlag(token)) {
+      strictListSeen = true; // `-l`/`-n`/`-v` force list mode; positionals are patterns
+      continue;
+    }
+    if (token.length > 1 && token.startsWith("-")) {
+      continue; // other option, incl. attached `--opt=value` / `-mfoo` forms
+    }
+    positionalSeen = true; // tag-name positional: `git tag v1`, `git tag -a v1 -m x` create
+  }
+  if (strictListSeen) return false;
+  if (creationSeen || positionalSeen) return true;
+  return false; // bare `git tag`, or filter/display modifiers only → list
 }
 
 /**
