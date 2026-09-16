@@ -9,8 +9,6 @@
 junit.xml
 mise.toml
 
-.agents
-agents/skills/neo4j-iam/SKILL.md
-agents/skills/omni-explore/SKILL.md
-
+# OpenCode
+.ignore
 .opencode/plans
