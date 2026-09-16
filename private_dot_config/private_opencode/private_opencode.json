@@ -2,6 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "enabled_providers": ["bifrost", "openai"],
   "provider": {
+    // Bifrost passthrough for ChatGPT Codex subscription
     "chatgpt": {
       "options": {
         "baseURL": "http://localhost:9765/chatgpt_passthrough/backend-api/codex",
@@ -26,6 +27,7 @@
         }
       }
     },
+    // Bifrost proxy for OpenAI API usage
     "openai": {
       "name": "Bifrost",
       "options": {
@@ -46,12 +48,15 @@
         }
       }
     },
+    // Bifrost proxy for other providers (API usage)
     "bifrost": {
       "name": "Bifrost",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
         "baseURL": "http://localhost:9765/v1",
-        "apiKey": "{env:BIFROST_VIRTUAL_KEY}"
+        "headers": {
+          "x-bf-vk": "{env:BIFROST_VIRTUAL_KEY}"
+        }
       },
       // Data fetched from https://models.dev/catalog.json
       "models": {
@@ -347,12 +352,12 @@
       "prompt": "{file:./REVIEWER.md}"
     },
     "compaction": {
-      "model": "bifrost/model-libero",
+      "model": "bifrost/model-libero"
     }
   },
   "plugin": [
     "superpowers@git+ssh://github.com/ethan605/superpowers.git#4ca60a63f68a9537219dc6e26637d8964446d328",
-    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#d015205a445f0f9910ab86796ba2eee2afadc525"
+    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#e18ed99931a50de7cfe500fa9869a51a4ba6a4a4"
   ],
   "lsp": {
     "pyright": {
