@@ -55,36 +55,36 @@
       },
       // Data fetched from https://models.dev/catalog.json
       "models": {
-        "agent-architect": {
-          "name": "Kimi K3",
+        "model-architect": {
+          "name": "Architect (Kimi K3)",
           "cost": { "input": 3, "output": 15, "cache_read": 0.3 },
           "limit": { "context": 1048576, "output": 131072 },
           "modalities": { "input": ["text", "image"], "output": ["text"] },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-mason": {
-          "name": "Kimi K3",
+        "model-mason": {
+          "name": "Mason (Kimi K3)",
           "cost": { "input": 3, "output": 15, "cache_read": 0.3 },
           "limit": { "context": 1048576, "output": 131072 },
           "modalities": { "input": ["text", "image"], "output": ["text"] },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-flash": {
-          "name": "DeepSeek V4.1 Flash (Bifrost)",
+        "model-scout": {
+          "name": "Scout (DeepSeek V4.1 Flash)",
           "cost": { "input": 0.22, "output": 0.66, "cache_read": 0.007 },
           "limit": { "context": 1000000, "output": 384000 },
           "modalities": { "input": ["text", "image"], "output": ["text"] },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-allrounder": {
-          "name": "GLM 5.3 (Bifrost)",
+        "model-libero": {
+          "name": "Libero (GLM 5.3)",
           "cost": { "input": 1.4, "output": 4.4, "cache_read": 0.26 },
           "limit": { "context": 1048573, "output": 262144 },
           "modalities": { "input": ["text"], "output": ["text"] },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-watchdog": {
-          "name": "Gemini 3.8 Flash (Bifrost)",
+        "model-watchdog": {
+          "name": "Watchdog (Gemini 3.8 Flash)",
           "cost": {
             "input": 0.75,
             "output": 3.75,
@@ -97,8 +97,8 @@
           },
           "options": { "reasoningEffort": "high" }
         },
-        "agent-richkid": {
-          "name": "Claude Sonnet 5",
+        "model-richkid": {
+          "name": "Richkid (Claude Sonnet 5)",
           "cost": {
             "input": 2,
             "output": 10,
@@ -305,31 +305,21 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "bifrost/agent-architect",
+      "model": "bifrost/model-architect",
       "prompt": "{file:./PLAN.md}",
-      // "model": "bifrost/agent-richkid",
       "permission": {
-        "plan_exit": "ask",
-        "skill": {
-          // "radio-4-english": "allow"
-        }
+        "plan_exit": "ask"
       }
     },
     "build": {
       "color": "#ff6ac1",
-      "model": "bifrost/agent-mason",
-      "prompt": "{file:./BUILD.md}",
-      "permission": {
-        "skill": {
-          // "radio-4-english": "allow"
-        }
-      }
+      "model": "bifrost/model-mason",
+      "prompt": "{file:./BUILD.md}"
     },
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
-      "model": "bifrost/agent-allrounder",
-      // "model": "openai/gpt-5.6-terra",
+      "model": "bifrost/model-libero",
       "permission": {
         "task": "deny"
       },
@@ -338,7 +328,7 @@
     "explore": {
       "color": "#f3f99d",
       "mode": "subagent",
-      "model": "bifrost/agent-flash",
+      "model": "bifrost/model-scout",
       "permission": {
         "edit": "deny",
         "task": "deny"
@@ -348,7 +338,7 @@
     "reviewer": {
       "color": "#ff5c57",
       "mode": "subagent",
-      // "model": "bifrost/agent-watchdog",
+      // "model": "bifrost/model-watchdog",
       "model": "openai/gpt-5.6-sol",
       "permission": {
         "edit": "deny",
@@ -357,11 +347,7 @@
       "prompt": "{file:./REVIEWER.md}"
     },
     "compaction": {
-      "model": "bifrost/agent-allrounder",
-      "permission": {
-        "webfetch": "allow",
-        "websearch": "allow"
-      }
+      "model": "bifrost/model-libero",
     }
   },
   "plugin": [
