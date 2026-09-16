@@ -52,7 +52,7 @@ return {
     cmdline = {
       keymap = {
         ["<Tab>"] = { "show", "select_next" },
-        ["<CR>"] = { "accept_and_enter", "fallback" },
+        ["<CR>"] = { "select_and_accept", "fallback" },
       },
       completion = { menu = { auto_show = true } },
     },
