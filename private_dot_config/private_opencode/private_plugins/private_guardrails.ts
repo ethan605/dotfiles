@@ -215,6 +215,18 @@ interface GitConfigValue {
   value: string;
 }
 
+/**
+ * Shell-structural residue that makes a statically-seen config key or value
+ * unknowable: expansion characters (`$`, backtick, parens, braces — content
+ * of a QUOTED expansion, which the tokenizer keeps as literal token text)
+ * or a backslash (ANSI-C `$'…'` escape kept literally, e.g. the `\x3d` that
+ * hides the `=` in `$'commit.gpgsign\x3d0'`). Any hit on a gpgsign-relevant
+ * config operand fails closed to "signing disable" — a legitimate gpgsign
+ * value is always a clean boolean-ish literal, so this only over-blocks
+ * pathological commands.
+ */
+const CONFIG_UNKNOWABLE_RESIDUE_RE = /[$`(){}'"\\]/;
+
 interface GitConfigEnvironment {
   key: string;
   environmentName: string;
@@ -230,19 +242,104 @@ interface GitInvocation {
 }
 
 /**
- * Splits only the shell forms rtk emits: quotes, backslash escapes, and the
- * chain operators &&, ||, ;, and |. Unquoted newlines also separate segments
- * (blank lines are tolerated; a trailing separator is accepted as valid
- * shell). Command substitution and subshells are deliberately unsupported;
- * treating those commands as unclassifiable avoids making an unsafe guess
- * about which git invocation will actually run.
+ * Matches whitespace that is NOT shell IFS whitespace (space, tab, LF).
+ * JavaScript's `\s` also matches CR and Unicode whitespace (NBSP U+00A0,
+ * U+2000–U+200A, U+2028/U+2029, U+202F, U+205F, U+3000, U+FEFF, …), but
+ * shells field-split ONLY on IFS whitespace — a tokenizer splitting on
+ * anything else diverges from the shell and can be bypassed (round-6
+ * finding B3: `git tag --format=x<NBSP>-l v1` tokenized as a read while
+ * zsh/bash passed `--format=x<NBSP>-l` as ONE argument, making git CREATE
+ * tag `v1`; round-7 residual: CR — bash/zsh keep a bare `\r` INSIDE words,
+ * it is not an IFS separator, so `git tag --format=x<CR>-l v1` passed one
+ * `--format=x\r-l` argument and CREATED `v1` while the tokenizer split at
+ * the CR, saw `-l`, and misclassified READ).
+ * Legit commands essentially never contain these characters, so treating
+ * any hit as untrustworthy costs ~zero false positives.
  */
-function tokenizeShell(command: string): string[][] | undefined {
+const EXOTIC_WHITESPACE_RE = /[^\S \t\n]/;
+
+function containsExoticWhitespace(command: string): boolean {
+  return EXOTIC_WHITESPACE_RE.test(command);
+}
+
+/**
+ * Strips backslash escapes the way the shell does outside quotes (`g\it`
+ * runs as `git`). Applied to the RAW command for git-mention tests so
+ * escaped-executable/`g\pg\sign`-style tricks cannot evade them. De-escaping
+ * inside single quotes is technically wrong, but it can only CREATE false
+ * git mentions — the fail-closed direction — and it is only ever used on
+ * commands that are gated or raw-signal-checked regardless.
+ */
+function deEscapeShell(command: string): string {
+  return command.replace(/\\(.)/g, "$1");
+}
+
+/**
+ * Characters that can follow an unquoted `$` and still form an expansion —
+ * a parameter name (`$VAR`, `$1`), a brace expansion (`${…}`), or a special
+ * parameter (`$@ $* $# $? $$ $! $-`). A `$` before anything else (end of
+ * string, whitespace, `.`, `/`, `>` …) is a literal dollar sign in every
+ * POSIX shell, so it sets no flag and the command stays classifiable
+ * (e.g. `git log --grep="v1$"`).
+ */
+const UNQUOTED_DOLLAR_EXPANSION_FOLLOW_RE = /[A-Za-z0-9_@*#?!{$-]/;
+
+interface ShellTokenization {
+  segments: string[][] | undefined;
+  /** True when a parseable command contains an unquoted `$…` expansion. */
+  containsUnquotedExpansion: boolean;
+}
+
+/**
+ * Splits only the shell forms rtk emits: quotes (including ANSI-C `$'…'` and
+ * locale `$"…"`, which open exactly like `'…'` / `"…"`), backslash escapes,
+ * and the chain operators &&, ||, ;, and |. Field splitting uses ONLY the
+ * shell's IFS whitespace (space, tab, newline) — see EXOTIC_WHITESPACE_RE
+ * for why any other `\s` character (including CR: bash/zsh keep a bare `\r`
+ * inside words) makes the command unclassifiable instead of split. Unquoted
+ * newlines also separate segments (blank lines are tolerated; a trailing
+ * separator is accepted as valid shell).
+ *
+ * Unquoted command substitution (`$(…)`), backticks, subshells, and any
+ * unquoted paren make the whole command unparseable (segments: undefined);
+ * treating those commands as unclassifiable avoids making an unsafe guess
+ * about which git invocation will actually run. QUOTED expansions
+ * (`"$(…)"`, `` `…` `` inside quotes) are deliberately kept as literal token
+ * content instead: a quoted expansion always yields exactly ONE word, so
+ * the classifier can treat it as a single opaque positional — the
+ * fail-closed direction — rather than refusing the whole command (round 8,
+ * B5: `git commit -m "$(date)"` must stay a classifiable commit write).
+ *
+ * ANSI-C `$'…'` content is kept literally WITHOUT processing its backslash
+ * escapes: the option text of a disable attempt survives verbatim
+ * (`$'--no-gpg-sign'` → `--no-gpg-sign`, caught by the anchored disable
+ * regexes), and residual escapes (`$'commit.gpgsign\x3d0'`) fail closed via
+ * the config-operand residue check in parseGitInvocation.
+ *
+ * `containsUnquotedExpansion` flags unquoted `$…` expansions in an otherwise
+ * parseable command (`git tag $X`, `git${IFS}tag`): word splitting and the
+ * expanded value are both statically unknowable, so the write gate treats
+ * such commands as unclassifiable (round 8, B5.2).
+ */
+function tokenizeShellDetailed(command: string): ShellTokenization {
+  // B3 fail-closed: exotic whitespace means token boundaries here can
+  // diverge from the shell's, so no token-based classification is safe.
+  // Both consumers handle undefined: the write gate blocks any git-mentioning
+  // command (classifyGitWrite), and detectSigningDisable applies its own
+  // raw-signal fail-closed check before ever reaching this parser.
+  if (containsExoticWhitespace(command)) {
+    return { segments: undefined, containsUnquotedExpansion: false };
+  }
+  const failure = (): ShellTokenization => ({
+    segments: undefined,
+    containsUnquotedExpansion: true,
+  });
   const segments: string[][] = [];
   let tokens: string[] = [];
   let current = "";
   let tokenStarted = false;
   let quote: "'" | '"' | undefined;
+  let containsUnquotedExpansion = false;
 
   const finishToken = () => {
     if (tokenStarted) {
@@ -264,7 +361,9 @@ function tokenizeShell(command: string): string[][] | undefined {
     const character = command[index];
 
     if (quote === "'") {
-      // POSIX single quotes preserve every character except their closing quote.
+      // POSIX single quotes preserve every character except their closing
+      // quote. This branch also serves $'…' content (see the comment above
+      // for why the escapes inside are deliberately not processed).
       if (character === quote) {
         quote = undefined;
       } else {
@@ -277,25 +376,34 @@ function tokenizeShell(command: string): string[][] | undefined {
       if (character === quote) {
         quote = undefined;
       } else if (character === "\\") {
-        if (index + 1 >= command.length) return undefined;
+        if (index + 1 >= command.length) return failure();
         current += command[++index];
-      } else if (character === "$" && command[index + 1] === "(") {
-        return undefined;
-      } else if (character === "`") {
-        return undefined;
       } else {
+        // Quoted expansions ("$(…)" / "`…`") stay as literal content — one
+        // opaque word, fail-closed for the classifiers (round 8, B5).
         current += character;
       }
       continue;
     }
 
+    if (character === "$") {
+      const next = command[index + 1];
+      if (next === "'" || next === '"') {
+        // Round 8 (B6): ANSI-C ($'…') / locale ($"…") quoting — the `$`
+        // opens the quote; content handling is the branches above.
+        quote = next;
+        index++;
+        tokenStarted = true;
+        continue;
+      }
+    }
     if (character === "'" || character === '"') {
       quote = character;
       tokenStarted = true;
       continue;
     }
     if (character === "\\") {
-      if (index + 1 >= command.length) return undefined;
+      if (index + 1 >= command.length) return failure();
       current += command[++index];
       tokenStarted = true;
       continue;
@@ -308,7 +416,10 @@ function tokenizeShell(command: string): string[][] | undefined {
       }
       continue; // blank lines are ignored, NOT an error (unlike `;;`)
     }
-    if (/\s/.test(character)) {
+    if (character === " " || character === "\t") {
+      // Shell IFS whitespace only — never the broader Unicode `\s` set,
+      // and never CR (bash/zsh keep `\r` inside words); both are
+      // guaranteed unreachable here via containsExoticWhitespace above.
       finishToken();
       continue;
     }
@@ -318,7 +429,16 @@ function tokenizeShell(command: string): string[][] | undefined {
       character === ")" ||
       (character === "$" && command[index + 1] === "(")
     ) {
-      return undefined;
+      return failure();
+    }
+    if (
+      character === "$" &&
+      index + 1 < command.length &&
+      UNQUOTED_DOLLAR_EXPANSION_FOLLOW_RE.test(command[index + 1])
+    ) {
+      // Unquoted $VAR / ${…} / special parameter: statically unknowable →
+      // flag for the write gate's B5.2 unclassifiable branch.
+      containsUnquotedExpansion = true;
     }
     if (character === ";" || character === "|" || character === "&") {
       if (character === "&" && command[index + 1] !== "&") {
@@ -326,7 +446,7 @@ function tokenizeShell(command: string): string[][] | undefined {
         tokenStarted = true;
         continue;
       }
-      if (!finishSegment()) return undefined;
+      if (!finishSegment()) return failure();
       if (
         (character === "&" && command[index + 1] === "&") ||
         (character === "|" && command[index + 1] === "|")
@@ -340,13 +460,20 @@ function tokenizeShell(command: string): string[][] | undefined {
     tokenStarted = true;
   }
 
-  if (quote) return undefined;
+  if (quote) return failure();
   finishToken();
   if (tokens.length > 0) segments.push(tokens);
   // A trailing `;` or newline is valid shell, so classify what came before it
-  // instead of returning undefined — undefined would make the NEW gate fail
-  // closed (fine) but the signing-disable guard fail OPEN (regression).
-  return segments.length > 0 ? segments : undefined;
+  // instead of failing — failing would make the NEW gate fail closed (fine)
+  // but the signing-disable guard fail OPEN (regression).
+  return {
+    segments: segments.length > 0 ? segments : undefined,
+    containsUnquotedExpansion,
+  };
+}
+
+function tokenizeShell(command: string): string[][] | undefined {
+  return tokenizeShellDetailed(command).segments;
 }
 
 function parseConfigValue(
@@ -383,7 +510,10 @@ interface ExecutableResolution {
  * env-assignments and transparent wrappers (env, rtk, command, builtin, time,
  * nice, sudo), returning the executable token index and the collected
  * environment (leading assignments plus the env wrapper's own VAR=value
- * operands — the latter feed hasFalseySigningConfig for --config-env).
+ * operands). The environment map is retained on GitInvocation for
+ * diagnostics; round 8's --config-env handling reads the
+ * configEnvironment list directly instead (the named variable's value is
+ * treated as statically unknowable).
  *
  * Documented residual bypasses (accepted, out of scope): `xargs git`,
  * `nohup git`, exotic env/sudo option forms, shell aliases, and scripts
@@ -451,14 +581,33 @@ function parseGitInvocation(tokens: string[]): GitInvocation | undefined {
     const token = args[argIndex];
 
     if (token === "-c") {
-      const configValue = parseConfigValue(args[argIndex + 1]);
-      if (configValue) configValues.push(configValue);
+      const operand = args[argIndex + 1];
+      const configValue = parseConfigValue(operand);
+      if (configValue) {
+        configValues.push(configValue);
+      } else if (
+        operand !== undefined &&
+        CONFIG_UNKNOWABLE_RESIDUE_RE.test(operand)
+      ) {
+        // Round 8 (B6 judgment call): an operand WITHOUT a literal `=` but
+        // WITH shell-structural residue may be a `$'…'` form whose escape
+        // hid the `=` (e.g. $'commit.gpgsign\x3d0' → commit.gpgsign=0).
+        // Record it raw so hasFalseySigningConfig fails closed on it. A
+        // CLEAN bare key keeps its git meaning (no `=` → TRUE → not a
+        // disable), unchanged.
+        configValues.push({ key: operand, value: "" });
+      }
       argIndex++;
       continue;
     }
     if (token.startsWith("-c") && token.length > 2) {
-      const configValue = parseConfigValue(token.slice(2));
-      if (configValue) configValues.push(configValue);
+      const operand = token.slice(2);
+      const configValue = parseConfigValue(operand);
+      if (configValue) {
+        configValues.push(configValue);
+      } else if (CONFIG_UNKNOWABLE_RESIDUE_RE.test(operand)) {
+        configValues.push({ key: operand, value: "" }); // same residue rule
+      }
       continue;
     }
     if (token === "--config-env") {
@@ -508,18 +657,6 @@ function parseGitInvocation(tokens: string[]): GitInvocation | undefined {
   };
 }
 
-function parseGitInvocations(command: string): GitInvocation[] {
-  const segments = tokenizeShell(command);
-  if (!segments) return [];
-
-  const invocations: GitInvocation[] = [];
-  for (const segment of segments) {
-    const invocation = parseGitInvocation(segment);
-    if (invocation) invocations.push(invocation);
-  }
-  return invocations;
-}
-
 function firstSubcommandArgument(
   invocation: GitInvocation,
 ): string | undefined {
@@ -565,7 +702,8 @@ interface GitWriteClassification {
   hasGit: boolean;
   isWrite: boolean;
   writeSubcommands: string[];
-  unclassifiable: boolean; // tokenizeShell failed AND command mentions git
+  /** True when the command must gate but no per-subcommand label applies: tokenization failed with a git mention, or round-8 B5 found an exotic executable / unquoted expansion. */
+  unclassifiable: boolean;
 }
 
 /**
@@ -682,9 +820,30 @@ const BRANCH_SHORT_MUTATION_CHARS = new Set([
  * (git 2.55 parse-options takes the next token as the operand even when
  * it starts with `-` or is `--`): `git tag -m -v v1` creates `v1` with
  * message `-v`, so `-v` must not be mistaken for a verify flag. Attached
- * forms (`-mfoo`, `-ukey`, `-Fpath`, `--message=x`) are skipped as plain
- * flags by the startsWith("-") check; a tag name next to them still
- * creates via the positional rule.
+ * forms (`-mfoo`, `-ukey`, `-Fpath`, `--message=x`, `--trailer=x`) carry
+ * the operand in the same token; the whitelist branches in
+ * tagInvocationIsWrite recognize them and set creationSeen WITHOUT
+ * consuming the next token.
+ *
+ * Round 5 added `--trailer` (OPT_STRVEC) and `--cleanup`: both take a
+ * required separate operand and are creation-mode options — `git tag
+ * --trailer -v -m msg v1` has `--trailer` consume `-v` and then CREATE
+ * `v1` (probed against git 2.55: option parsing succeeds, the run dies
+ * only on resolving HEAD), and combining `--trailer` with `-l` makes git
+ * usage-error before doing anything. `--cleanup` likewise ALWAYS consumes
+ * the next token as its operand: `git tag --cleanup -l v1` consumes `-l`
+ * and then creates `v1` (probed: HEAD-resolve path). The reason bare `git
+ * tag --cleanup -l` still exits 0 LISTING (probed against git 2.55) is
+ * NOT that list mode tolerates `--cleanup` — it is that `-l` was eaten as
+ * `--cleanup`'s operand, leaving no tag name, so git falls back to its
+ * default list behavior. Our creation-set placement consumes `-l` the
+ * same way and sets creationSeen, so such forms over-gate to WRITE —
+ * fail-closed, the accepted cost (the command only ever lists or
+ * usage-errors, never creates). The hidden `--with`/
+ * `--without` are deliberately NOT here: they are commit-ish FILTERS
+ * (deprecated aliases of `--contains`/`--no-contains`, probed: identical
+ * "malformed object name <arg>" behavior) and live in
+ * TAG_FILTER_DISPLAY_FLAGS_WITH_OPERAND.
  */
 const TAG_CREATION_FLAGS_WITH_OPERAND = new Set([
   "-m",
@@ -693,6 +852,8 @@ const TAG_CREATION_FLAGS_WITH_OPERAND = new Set([
   "--file",
   "-u",
   "--local-user",
+  "--trailer",
+  "--cleanup",
 ]);
 
 /**
@@ -710,21 +871,72 @@ const TAG_CREATION_FLAGS_WITH_OPERAND = new Set([
  * fail-closed false positive. Their separate-form operands must not be
  * mistaken for tag names either way, and are consumed below whatever
  * they look like (same parse-options rule as the creation set above).
- * Attached forms (`--sort=refname`) are skipped as plain flags by the
- * startsWith("-") check and need no operand consumption. Together with
- * TAG_CREATION_FLAGS_WITH_OPERAND this covers every operand-taking
- * `git tag` option; `-n` is deliberately absent — its operand is
+ * `--with`/`--without` are hidden options — deprecated aliases of
+ * `--contains`/`--no-contains`' commit filter — that likewise take a
+ * required commit-ish operand (probed against git 2.55: `git tag --with
+ * -l` dies with "malformed object name -l", i.e. `-l` was consumed as
+ * its operand), so their operands must be consumed here too, never
+ * mistaken for tag names. Attached forms (`--sort=refname`,
+ * `--points-at=HEAD`) are recognized by the stripped-name lookup in
+ * tagInvocationIsWrite and need no next-token consumption. Together, the
+ * two operand sets, TAG_KNOWN_NO_OPERAND_FLAGS, the strict-list forms,
+ * and the fail-closed default in tagInvocationIsWrite cover the entire
+ * option surface: every recognized option is attributed to its set, and
+ * everything else — including unambiguous abbreviations of
+ * operand-taking options (`--mess` for `--message`) — classifies WRITE.
+ * `-n` is deliberately absent from the operand sets — its operand is
  * attached-only in git (`-n5`), and `git tag -n 5` is a list where `5`
  * is a pattern.
  */
 const TAG_FILTER_DISPLAY_FLAGS_WITH_OPERAND = new Set([
   "--contains",
   "--no-contains",
+  "--with",
+  "--without",
   "--merged",
   "--no-merged",
   "--points-at",
   "--format",
   "--sort",
+]);
+
+/**
+ * `git tag` options that take NO operand and are safe to skip when seen
+ * in option position. This is a WHITELIST — the corresponding classifier
+ * branch fails closed: any option-position token that is NOT in this
+ * set, NOT in an operand set (separate or attached form), and NOT a
+ * strict-list form classifies WRITE. That inversion is required because
+ * git parse-options accepts UNAMBIGUOUS long-option abbreviations (`git
+ * tag --mess -v v2` resolves `--mess` to `--message`, consumes `-v`, and
+ * CREATES `v2` — probed against git 2.55), plus hidden and future
+ * options, so no fixed list can recognize every read-only form. The
+ * accepted cost: real reads spelled as unambiguous abbreviations of
+ * whitelisted options (`--li` for `--list`), auto-generated negations
+ * (`--no-column`), and unrecognized short bundles (`-al`) over-gate to
+ * WRITE — safe, since git errors on genuinely unknown options (git
+ * itself usage-errors on `-al`'s annotate/list mode conflict), so an
+ * over-gate only ever demands a needless confirmation. Attached
+ * `--color=always` / `--column=always` forms are recognized via the
+ * stripped-name lookup in the classifier, so only the base names are
+ * listed here. The strict-list forms and both operand sets are handled
+ * by their own branches and are deliberately absent.
+ */
+const TAG_KNOWN_NO_OPERAND_FLAGS = new Set([
+  "-a",
+  "--annotate",
+  "-s",
+  "--sign",
+  "--no-sign",
+  "-e",
+  "--edit",
+  "-f",
+  "--force",
+  "--create-reflog",
+  "--omit-empty",
+  "-i",
+  "--ignore-case",
+  "--color",
+  "--column",
 ]);
 
 const SYMBOLIC_REF_WRITE_FLAGS = new Set([
@@ -822,38 +1034,61 @@ function branchInvocationIsWrite(invocation: GitInvocation): boolean {
  *      fail-closed).
  *   2. After `--`, every token is a positional (tag name) → write.
  *   3. ANY operand-taking option — creation (`-m`, `--message`, `-F`,
- *      `--file`, `-u`, `--local-user`) and filter/display (`--contains`,
- *      `--no-contains`, `--merged`, `--no-merged`, `--points-at`,
- *      `--format`, `--sort`) — consumes the next token WHATEVER it looks
- *      like: parse-options takes the operand even when it starts with `-`
- *      or is `--` (verified against git 2.55 — the bypasses this fixed:
- *      `git tag --format -l name` creates, because `-l` is `--format`'s
+ *      `--file`, `-u`, `--local-user`, `--trailer`, `--cleanup`) and
+ *      filter/display (`--contains`, `--no-contains`, `--with`,
+ *      `--without`, `--merged`, `--no-merged`, `--points-at`, `--format`,
+ *      `--sort`) — consumes the next token WHATEVER it looks like:
+ *      parse-options takes the operand even when it starts with `-` or is
+ *      `--` (verified against git 2.55 — the bypasses this fixed: `git
+ *      tag --format -l name` creates, because `-l` is `--format`'s
  *      operand; `git tag --sort -- v1` treats `--` as `--sort`'s operand
  *      and then dies on the invalid sort key, so gating it is harmless;
  *      `git tag -m -v v1` creates `v1` with message `-v`, because `-v` is
- *      `-m`'s operand). Creation options additionally set creationSeen:
- *      they are creation intent even with no tag name (`git tag -m -l`
- *      leaves no name after `-m` eats `-l`, git errors "no tag name?",
- *      and gating is fail-closed).
+ *      `-m`'s operand; `git tag --trailer -v -m msg v1` creates `v1`
+ *      because `--trailer` consumes `-v`). Creation options additionally
+ *      set creationSeen: they are creation intent even with no tag name
+ *      (`git tag -m -l` leaves no name after `-m` eats `-l`, git errors
+ *      "no tag name?", and gating is fail-closed).
  *   4. Strict list/verify flag seen (not consumed as an operand) → read:
  *      these force list mode even when a tag name is present
  *      (`git tag -l 'v*'` reads; the trailing name is a pattern), and
- *      they win over creationSeen too (`git tag -m msg -l` lists).
- *   5. Any tag-name positional → write (creation). Note the distinction
+ *      they win over creationSeen too (`git tag -m msg -l` lists; `git
+ *      tag --trailer=x -l` is read the same way — harmless, because git
+ *      2.55 usage-errors on trailer+list before doing anything).
+ *   5. WHITELIST, fail-closed: any OTHER option-position token must be a
+ *      recognized no-operand flag (TAG_KNOWN_NO_OPERAND_FLAGS) or an
+ *      ATTACHED operand form — a long `--opt=value` is stripped at `=`
+ *      and looked up in the operand sets (`--message=x` → creationSeen,
+ *      `--trailer=x` likewise, `--format=%s` / `--sort=-x` → skip), and a
+ *      short `-mfoo` / `-Fpath` / `-ukey` sets creationSeen without
+ *      consuming the next token — else the invocation is WRITE. Rationale
+ *      (round 4 finding B2): git parse-options accepts unambiguous
+ *      long-option abbreviations, so `git tag --mess -v v2` resolves
+ *      `--mess` to `--message`, consumes `-v`, and CREATES `v2` (probed
+ *      against git 2.55); no fixed option list can recognize every
+ *      read-only form, so everything unrecognized gates. Accepted false
+ *      positives, all fail-closed WRITE on commands that either error or
+ *      read: read abbreviations (`--li` for `--list`), auto-negations
+ *      (`--no-column`), filter-option patterns (`--points-at HEAD
+ *      'v*'`), and unrecognized short bundles (`-al`; git bundles `-a
+ *      -l` but usage-errors on the mode conflict, and `-lm`-style mixes
+ *      over-gate).
+ *   6. Any tag-name positional → write (creation). Note the distinction
  *      among the "modifier" flags: `--sort`/`--format` are display modifiers
  *      that do NOT imply list mode, so a positional next to them really does
  *      create a tag (`git tag --sort refname created-tag` creates; an
  *      invalid sort key such as `name` or `--` makes git error out before
  *      creating anything, so gating it is harmless). The FILTER options
- *      (`--contains`, `--no-contains`, `--merged`, `--no-merged`,
- *      `--points-at`) DO imply list mode when no positional is given, and a
- *      positional alongside them is still a list PATTERN — but they are
- *      deliberately treated the same as display modifiers here: gating
- *      `git tag --points-at HEAD <pattern>` as a write is the known accepted
- *      false positive (fail-closed), and treating filters as list evidence
- *      was the original bypass bug.
- *   6. Otherwise → read: with no name positional, git lists (`git tag`,
- *      `git tag --sort=-creatordate`, `git tag --points-at HEAD`).
+ *      (`--contains`, `--no-contains`, `--with`, `--without`, `--merged`,
+ *      `--no-merged`, `--points-at`) DO imply list mode when no positional
+ *      is given, and a positional alongside them is still a list PATTERN —
+ *      but they are deliberately treated the same as display modifiers
+ *      here: gating `git tag --points-at HEAD <pattern>` as a write is the
+ *      known accepted false positive (fail-closed), and treating filters
+ *      as list evidence was the original bypass bug.
+ *   7. Otherwise → read: with no name positional, git lists (`git tag`,
+ *      `git tag --sort=-creatordate`, `git tag --points-at HEAD`,
+ *      `git tag --with HEAD`).
  */
 function tagInvocationIsWrite(invocation: GitInvocation): boolean {
   const args = invocation.args.slice(invocation.subcommandIndex + 1);
@@ -893,8 +1128,36 @@ function tagInvocationIsWrite(invocation: GitInvocation): boolean {
       strictListSeen = true; // `-l`/`-n`/`-v` force list mode; positionals are patterns
       continue;
     }
+    if (token.startsWith("--")) {
+      // Long option not matched by any set yet: strip an attached `=value`
+      // and attribute the option to its set. No next-token consumption —
+      // the operand rides in the same token.
+      const name = token.split("=")[0]!;
+      if (TAG_KNOWN_NO_OPERAND_FLAGS.has(name)) continue; // `--color=always`
+      if (TAG_CREATION_FLAGS_WITH_OPERAND.has(name)) {
+        creationSeen = true; // attached creation operand: `--message=x`, `--trailer=x`
+        continue;
+      }
+      if (TAG_FILTER_DISPLAY_FLAGS_WITH_OPERAND.has(name)) continue; // `--format=%s`, `--sort=-x`
+      // Unrecognized long option — unambiguous abbreviation (`--mess`),
+      // hidden option, or future option — fails closed to WRITE.
+      return true;
+    }
     if (token.length > 1 && token.startsWith("-")) {
-      continue; // other option, incl. attached `--opt=value` / `-mfoo` forms
+      // Single-dash short token.
+      if (TAG_KNOWN_NO_OPERAND_FLAGS.has(token)) continue; // `-a`, `-s`, `-e`, `-f`, `-i`
+      if (token.length === 2) {
+        return true; // unrecognized exact short flag (`-x`); known shorts matched above
+      }
+      if (
+        token.startsWith("-m") ||
+        token.startsWith("-F") ||
+        token.startsWith("-u")
+      ) {
+        creationSeen = true; // attached operand: `-mfoo`, `-Fpath`, `-ukey`
+        continue;
+      }
+      return true; // unrecognized short bundle (`-al`, `-lm`) fails closed
     }
     positionalSeen = true; // tag-name positional: `git tag v1`, `git tag -a v1 -m x` create
   }
@@ -1167,35 +1430,170 @@ function shellLauncherMentionsGit(segment: string[]): boolean {
   return false;
 }
 
+/**
+ * Round 8 (B5.1): characters that make a RESOLVED EXECUTABLE token
+ * unclassifiable — shell expansion/glob/tilde/brace characters (`$`, ``
+ * ``, `*`, `?`, `~`, `{`, `}`), quote/paren residue from quoted words, or
+ * backslash escape residue (`gi\\t`). Any of these means the executable
+ * the shell will actually run is not statically knowable (`$'git'`,
+ * `g?t`, `~/bin/git`, `g{,}it` all resolve to git at runtime), so the
+ * whole command is treated as unclassifiable and write-gated. Executable
+ * names in legitimate commands never contain these characters; the only
+ * cost is gating pathological commands that were gated or broken anyway.
+ * (Unquoted `$(…)`, backticks, and parens never reach this check — the
+ * tokenizer already refuses them.)
+ */
+const EXOTIC_EXECUTABLE_RE = /[$`*?~{}()"'\\]/;
+
+/**
+ * Round 8 (B5): an unparseable command whose EXECUTABLE position is itself
+ * an expansion — any `;`/`|`/`&`/newline-separated piece of the de-escaped
+ * raw string starting with `$` or a backtick (`$(printf g%s it) tag v1`).
+ * The resolved executable is unknowable, so the command is unclassifiable
+ * and gated unconditionally (no git-mention requirement: `$(printf g%s it)
+ * tag v1` carries no literal git word). `echo $(date)` is untouched — its
+ * expansion is in ARGUMENT position. Accepted over-gate: a bare `$(…)` or
+ * backtick command (e.g. `$(date)`) also gates; such commands are
+ * pathological in agent hands.
+ */
+function hasExpansionExecutable(deEscaped: string): boolean {
+  return deEscaped
+    .split(/[\n;|&]+/)
+    .some((piece) => /^[$`]/.test(piece.trim()));
+}
+
+/**
+ * Round 8 (B5) — accepted residuals, deliberately NOT handled (documented
+ * per the round-8 brief; this is the final hardening round):
+ *   - Glob characters in ARGUMENT position: `git diff -- *.ts` can match a
+ *     maliciously named local file and change the diff, but cannot turn a
+ *     read subcommand into a history/remote mutation; requires attacker-
+ *     controlled filenames on disk.
+ *   - Tilde/brace expansion in ARGUMENT position (same reasoning).
+ *   - Shell aliases, shell functions, `eval`, scripts, `xargs git`,
+ *     `nohup git`, and other wrappers that invoke git internally.
+ *   - Cross-command environment tricks via files or a prior bash
+ *     invocation (e.g. GIT_CONFIG_* exported by an earlier command): only
+ *     the same command string is scanned.
+ *   - Backslash escapes inside $'…' that rebuild disable text WITHOUT a
+ *     prefix-anchored or residue-tripped signal (e.g.
+ *     $'--no-gpg-\x73ign' IS caught — the disable regexes are prefix-
+ *     anchored — but a fully opaque $'$(…)'-free construct carrying no
+ *     gpgsign literal and no residue is not).
+ *   - Expansion-built config/executable text with neither a gpgsign
+ *     literal nor shell-structural residue (e.g. -c "$(printf
+ *     'commit.gpg%s=false' sign)" — no literal "gpgsign", no residue in
+ *     the recorded key).
+ *   - Leading env assignments before an expansion executable
+ *     (`FOO=1 $(printf g%s it) tag v1`) — no expansion-at-segment-start,
+ *     no git mention; the executable is still unknowable.
+ */
 function classifyGitWrite(command: string): GitWriteClassification {
-  const segments = tokenizeShell(command);
+  const deEscaped = deEscapeShell(command);
+  const { segments, containsUnquotedExpansion } =
+    tokenizeShellDetailed(command);
   if (!segments) {
-    // Fail closed: any unparseable command mentioning git is gated.
-    const mentionsGit = /\bgit\b/.test(command);
+    // B3 residual (round 7): exotic (non-IFS) whitespace — Unicode
+    // whitespace or a bare CR — makes token boundaries here diverge from
+    // the shell's, AND escaped-executable forms (`g\it`) evade a raw
+    // /\bgit\b/ mention test. Exotic whitespace in a shell command is
+    // pathological and never legit, so block UNCONDITIONALLY — no
+    // git-mention requirement. Accepted over-gate: `echo a<NBSP>b` and
+    // `echo a<CR>b` also gate (approvably, via the question tool).
+    if (containsExoticWhitespace(command)) {
+      return {
+        hasGit: /\bgit\b/.test(deEscaped),
+        isWrite: true,
+        writeSubcommands: ["<exotic whitespace>"],
+        unclassifiable: true,
+      };
+    }
+    // Round 8 (B5): the mention test runs on the DE-ESCAPED raw string so
+    // `<(g\it tag v1)`-style escaped executables cannot evade it (the
+    // shell resolves `g\it` to git; the tokenizer refused the command at
+    // the paren, so this raw check is the only line of defense).
+    const mentionsGit = /\bgit\b/.test(deEscaped);
+    if (mentionsGit) {
+      // Fail closed: any other unparseable command mentioning git is gated.
+      return {
+        hasGit: true,
+        isWrite: true,
+        writeSubcommands: ["<unparseable>"],
+        unclassifiable: true,
+      };
+    }
+    // Round 8 (B5): an expansion-resolved executable with no literal git
+    // mention (`$(printf g%s it) tag v1`) is equally unclassifiable — the
+    // executable could resolve to git — so it gates unconditionally.
+    if (hasExpansionExecutable(deEscaped)) {
+      return {
+        hasGit: false,
+        isWrite: true,
+        writeSubcommands: ["<unclassifiable executable>"],
+        unclassifiable: true,
+      };
+    }
     return {
-      hasGit: mentionsGit,
-      isWrite: mentionsGit,
-      writeSubcommands: mentionsGit ? ["<unparseable>"] : [],
-      unclassifiable: mentionsGit,
+      hasGit: false,
+      isWrite: false,
+      writeSubcommands: [],
+      unclassifiable: false,
     };
   }
 
   const writeSubcommands: string[] = [];
   const invocations: GitInvocation[] = [];
+  let hasExoticExecutable = false;
   for (const segment of segments) {
+    // B5.1: an executable token spelled with expansion/glob/tilde/brace/
+    // residue characters is unclassifiable — skip classification entirely.
+    const { index } = resolveExecutable(segment);
+    const executable = segment[index];
+    if (executable !== undefined && EXOTIC_EXECUTABLE_RE.test(executable)) {
+      hasExoticExecutable = true;
+      continue;
+    }
     if (shellLauncherMentionsGit(segment)) {
       writeSubcommands.push("<sh -c>");
       continue;
     }
-    // parseGitInvocation (NOT parseGitInvocations) distinguishes "no git"
-    // from "unparseable"; it re-runs resolveExecutable internally — a
-    // harmless duplicate pure computation, one normalization path either way.
+    // parseGitInvocation distinguishes "no git" from "unparseable"; it
+    // re-runs resolveExecutable internally — a harmless duplicate pure
+    // computation, one normalization path either way.
     const invocation = parseGitInvocation(segment);
     if (!invocation) continue;
     invocations.push(invocation);
     if (gitInvocationIsWrite(invocation)) {
       writeSubcommands.push(invocation.subcommand ?? "<git>");
     }
+  }
+  if (hasExoticExecutable) {
+    return {
+      hasGit: true,
+      isWrite: true,
+      writeSubcommands: ["<unclassifiable executable>"],
+      unclassifiable: true,
+    };
+  }
+  // B5.2: an unquoted expansion ($VAR, ${…}, $@/special params) anywhere in
+  // a git-mentioning command (mention tested on the de-escaped raw string —
+  // `git${IFS}tag` must count) makes the shell's word structure statically
+  // unknowable → unclassifiable. QUOTED expansions do NOT trigger this:
+  // they produce exactly one word and the classifier already treats unknown
+  // words as positionals — the fail-closed direction — so
+  // `git commit -m "$(date)"` stays a classified commit write.
+  if (
+    containsUnquotedExpansion &&
+    (invocations.length > 0 ||
+      writeSubcommands.length > 0 ||
+      /\bgit\b/.test(deEscaped))
+  ) {
+    return {
+      hasGit: true,
+      isWrite: true,
+      writeSubcommands: ["<shell expansion>"],
+      unclassifiable: true,
+    };
   }
 
   // An `sh -c` hit gates even though it yields no GitInvocation, so isWrite
@@ -1250,10 +1648,7 @@ Recovery procedure — follow EXACTLY:
   const suffixes: string[] = [];
   if (classification.unclassifiable) {
     suffixes.push(
-      `This command could not be parsed safely; any unparseable command ` +
-        `mentioning git is blocked conservatively. Rewrite it in a simpler ` +
-        `form (a single plain command, no command substitution or subshells) ` +
-        `and try again.`,
+      `This command could not be parsed safely. Conservatively blocked forms include: unparseable commands mentioning git; commands containing exotic (non-IFS) whitespace (Unicode whitespace such as NBSP, or a bare carriage return); commands whose EXECUTABLE is spelled with shell expansion/glob characters ($, backtick, *, ?, ~, braces, or quote/backslash residue — e.g. g?t, ~/bin/git, $(…)); and unquoted shell expansions ($VAR, \${…}, command/process substitution) in a git-mentioning command — the shell's word structure is statically unknowable in all of these, so no token-based classification can match what will actually run. Rewrite it in a simpler form (a single plain command, plain executable name, no command substitution, subshells, or unquoted variables — quote any argument that needs $ or glob characters) and try again.`,
     );
   }
   if (agent !== undefined && SUBAGENTS.has(agent)) {
@@ -1266,27 +1661,158 @@ Recovery procedure — follow EXACTLY:
   return suffixes.length > 0 ? `${body}\n\n${suffixes.join("\n\n")}` : body;
 }
 
+/**
+ * Git 2.55 boolean parsing: `false`, `0`, `no`, `off` (any case) AND empty
+ * (`-c commit.gpgsign=` / `git config commit.gpgsign ''`) all mean
+ * disabled. A bare `-c commit.gpgsign` (no `=`) is not a falsey value —
+ * it means TRUE — and is handled structurally: parseConfigValue rejects
+ * keys without `=`, so no configValue is ever recorded for that form.
+ */
 function isFalseyGitConfigValue(value: string | undefined): boolean {
   return (
     value !== undefined &&
-    ["false", "off", "no", "0"].includes(value.toLowerCase())
+    (value === "" || ["false", "off", "no", "0"].includes(value.toLowerCase()))
   );
 }
 
-function hasFalseySigningConfig(
-  invocation: GitInvocation,
-  key: "commit.gpgsign" | "tag.gpgsign",
+/**
+ * Any `*.gpgsign` config key (or a bare `gpgsign`, which git rejects as a
+ * key without a section anyway — harmless to match). Keys arrive already
+ * lowercased from parseConfigValue/parseConfigEnvironment, covering git's
+ * case-insensitive key matching (`commit.GPGSign` ≡ `commit.gpgsign`).
+ * Matching ANY section's gpgsign key (not just commit.gpgsign/tag.gpgsign)
+ * is deliberate fail-closed: a signing-capable command carrying some other
+ * section's gpgsign key with a falsey value is pathological, and the
+ * residual false positive (e.g. `-c tag.gpgsign=false commit`, which does
+ * not actually disable commit signing) only over-blocks a command nobody
+ * legitimately writes.
+ */
+function isGpgsignConfigKey(key: string): boolean {
+  return key === "gpgsign" || key.endsWith(".gpgsign");
+}
+
+/** git's `GIT_CONFIG_KEY_<i>=<key>` environment-assignment form (exact case — env names are case-sensitive). */
+const GIT_CONFIG_ENV_KEY_RE = /^GIT_CONFIG_KEY_(\d+)=(.*)$/;
+/** git's `GIT_CONFIG_VALUE_<i>=<value>` environment-assignment form. */
+const GIT_CONFIG_ENV_VALUE_RE = /^GIT_CONFIG_VALUE_(\d+)=(.*)$/;
+
+/**
+ * Round 8 (B6.1), round 9 masking fix: scan for git's GIT_CONFIG_*
+ * environment config channel (git ≥ 2.31). `GIT_CONFIG_COUNT=1
+ * GIT_CONFIG_KEY_0=commit.gpgsign GIT_CONFIG_VALUE_0=false git commit`
+ * resolves commit.gpgsign=false and produces an UNSIGNED commit, and the
+ * assignments may appear anywhere — leading tokens (resolveExecutable skips
+ * them), `env` operands, or `export VAR=…;` statements in earlier segments
+ * (the exported environment persists across `;`-chained segments).
+ * GIT_CONFIG_COUNT is deliberately ignored: requiring it would open a bypass
+ * via a mis-parsed count, while ignoring it only over-blocks.
+ *
+ * Scope (round 9, pinned): a signing-capable invocation in segment k is
+ * evaluated against the GIT_CONFIG_* tokens of segments 0..k ONLY. Earlier
+ * segments are all treated as in effect (fail-closed approximation of export
+ * persistence — an `echo GIT_CONFIG_VALUE_0=false` argument in an earlier
+ * segment also counts, over-blocking in the safe direction). Segments AFTER
+ * k are invisible to the invocation: they execute later and cannot change its
+ * environment, so a trailing `echo GIT_CONFIG_VALUE_0=true` can neither mask
+ * a real disable nor fabricate one.
+ *
+ * Accumulation (round 9 masking fix — the old index-keyed Map let a LATER
+ * token overwrite an EARLIER same-index assignment, so `…VALUE_0=false git
+ * commit; echo VALUE_0=true` ran the commit with gpgsign=false while the
+ * echo argument masked the disable): every assignment token in scope is
+ * evaluated independently and a disable, once earned, is never cleared.
+ *   - ANY KEY_<i> token carrying shell-structural residue → disable
+ *     (unknowable key; checked per token, not last-wins)
+ *   - once ANY KEY_<i> token names a gpgsign key, index i stays gpgsign —
+ *     a later `KEY_<i>=user.name` never clears it (masking may only weaken)
+ *   - for a gpgsign index i: NO VALUE_<i> token in scope → disable
+ *     (fail-closed; the value may come from the caller's real environment)
+ *   - for a gpgsign index i: ANY VALUE_<i> token with residue → disable;
+ *     ANY falsey VALUE_<i> token → disable — a later "true" NEVER clears an
+ *     earlier "false"
+ *
+ * Decision table for a KEY_<i> whose key is (or could be) gpgsign:
+ *   - key carries shell-structural residue       → disable (unknowable key)
+ *   - key is gpgsign + VALUE_<i> missing         → disable (fail-closed;
+ *     the value may come from the caller's real environment — statically
+ *     unknowable, and a gpgsign KEY without a VALUE has ~zero legit use)
+ *   - key is gpgsign + VALUE carries residue     → disable (unknowable value)
+ *   - key is gpgsign + VALUE falsey              → disable
+ *   - key is gpgsign + every VALUE token in scope is clean and truey
+ *                                               → not a disable (normal
+ *     write gate applies)
+ *   - key is not gpgsign and carries no residue  → not a disable
+ *
+ * Accepted fail-closed over-blocks (round 9, deliberate):
+ *   - `…VALUE_0=false git commit; …VALUE_0=true git commit` — the second
+ *     commit would run signed (leading assignments do not persist across
+ *     `;`), but the first invocation's disable blocks the whole command.
+ *   - `export KEY_0=commit.gpgsign; export KEY_0=user.name; git commit` —
+ *     the final exported key is user.name, yet the latched gpgsign index
+ *     with a missing VALUE still disables.
+ */
+function gitConfigEnvDisablesSigning(
+  segments: string[][],
+  lastSegmentIndex: number,
 ): boolean {
+  const gpgsignIndices = new Set<string>();
+  const values = new Map<string, string[]>();
+  for (let segmentIndex = 0; segmentIndex <= lastSegmentIndex; segmentIndex++) {
+    for (const token of segments[segmentIndex]) {
+      const keyAssignment = GIT_CONFIG_ENV_KEY_RE.exec(token);
+      if (keyAssignment) {
+        if (CONFIG_UNKNOWABLE_RESIDUE_RE.test(keyAssignment[2])) return true;
+        if (isGpgsignConfigKey(keyAssignment[2].toLowerCase())) {
+          gpgsignIndices.add(keyAssignment[1]);
+        }
+      }
+      const valueAssignment = GIT_CONFIG_ENV_VALUE_RE.exec(token);
+      if (valueAssignment) {
+        const indexValues = values.get(valueAssignment[1]);
+        if (indexValues === undefined) {
+          values.set(valueAssignment[1], [valueAssignment[2]]);
+        } else {
+          indexValues.push(valueAssignment[2]);
+        }
+      }
+    }
+  }
+  for (const index of gpgsignIndices) {
+    const indexValues = values.get(index);
+    if (indexValues === undefined) return true;
+    for (const value of indexValues) {
+      if (CONFIG_UNKNOWABLE_RESIDUE_RE.test(value)) return true;
+      if (isFalseyGitConfigValue(value)) return true;
+    }
+  }
+  return false;
+}
+
+function hasFalseySigningConfig(invocation: GitInvocation): boolean {
   return (
     invocation.configValues.some(
-      (config) => config.key === key && isFalseyGitConfigValue(config.value),
-    ) ||
-    invocation.configEnvironment.some(
       (config) =>
-        config.key === key &&
-        isFalseyGitConfigValue(
-          invocation.environment.get(config.environmentName),
-        ),
+        (isGpgsignConfigKey(config.key) &&
+          (isFalseyGitConfigValue(config.value) ||
+            // Quoted-expansion / escape residue under a gpgsign key: the
+            // runtime value is unknowable (e.g. -c "$(echo
+            // commit.gpgsign=false)" → key "$(echo commit.gpgsign", value
+            // "false)") → fail closed.
+            CONFIG_UNKNOWABLE_RESIDUE_RE.test(config.value))) ||
+        // A key carrying residue could BE a gpgsign key in disguise
+        // (`commit.$(echo gpgsign)`) — block when it mentions gpgsign.
+        (CONFIG_UNKNOWABLE_RESIDUE_RE.test(config.key) &&
+          /gpgsign/i.test(config.key)),
+    ) ||
+    // Round 8 (B6.2): --config-env feeds the key's value from a NAMED
+    // environment variable. When that variable is not assigned inside the
+    // command itself, the value is statically unknowable — and even when a
+    // leading assignment makes it look truey, pathological construction
+    // outweighs legitimate use. ANY gpgsign key via --config-env (attached
+    // `--config-env=commit.gpgsign=V` or separate `--config-env
+    // commit.gpgsign=V` form) is therefore blocked unconditionally.
+    invocation.configEnvironment.some((config) =>
+      isGpgsignConfigKey(config.key),
     )
   );
 }
@@ -1325,28 +1851,124 @@ function configWriteDisablesSigning(invocation: GitInvocation): boolean {
   const usesModernUnset = action === "unset" || action === "unset-all";
   const key =
     positional[usesModernSet || usesModernUnset ? 1 : 0]?.toLowerCase();
-  if (key !== "commit.gpgsign" && key !== "tag.gpgsign") return false;
+  if (key === undefined || !isGpgsignConfigKey(key)) return false;
   if (isUnset || usesModernUnset) return true;
   return isFalseyGitConfigValue(positional[usesModernSet ? 2 : 1]);
 }
 
+/**
+ * Long-option signing-disable signals (git 2.55, reviewer-verified facts):
+ * - Long-option names are CASE-SENSITIVE (`--No-GPG-Sign` is an unknown
+ *   option; git errors on it, so not flagging it is fine).
+ * - parse-options accepts unambiguous abbreviations: `--no-g`, `--no-gp`,
+ *   … all resolve to `--no-gpg-sign`, and NO other commit/tag option
+ *   starts `--no-g`, so the prefix `/^--no-g/` covers every unambiguous
+ *   abbreviation without over-matching.
+ * - `--no-sign` prefixes: only the EXACT forms `--no-s`, `--no-si`,
+ *   `--no-sig`, `--no-sign` count — `--no-signoff`/`--no-signo`… and
+ *   `--no-status`/other `--no-*` options must NOT match (they are legit,
+ *   approvable commands, and this guard is unconditional).
+ */
+const GPG_SIGN_DISABLE_OPTION_RE = /^--no-g/;
+const TAG_SIGN_DISABLE_OPTION_RE = /^--no-s(i(g(n)?)?)?$/;
+
+/** True when any argument token is a --no-gpg-sign/--no-sign disable form. */
+// Both regexes are checked against every signing-capable subcommand,
+// not scoped per-branch: the cross-branch forms (`git commit --no-s…`,
+// `git tag --no-g…`) are unknown or ambiguous options that git errors on
+// anyway, so flagging them is fail-closed with no false cost, and it
+// keeps git-accepted disable forms from slipping through on subcommand
+// drift.
+function argsDisableSigning(args: string[]): boolean {
+  return args.some(
+    (arg) =>
+      GPG_SIGN_DISABLE_OPTION_RE.test(arg) ||
+      TAG_SIGN_DISABLE_OPTION_RE.test(arg),
+  );
+}
+
+/**
+ * Raw-signal fail-closed check for commands tokenizeShell refuses (exotic
+ * whitespace, unquoted `$(…)`, backticks, parens, unbalanced quotes). The
+ * parsed path cannot run for these, so without this check the guard would
+ * fail OPEN. Approximations are safe here: any command reaching this branch
+ * is gated by the write gate regardless, so a boundary mistake can only
+ * hard-block a command that was gated anyway (or over-block a pathological
+ * unparseable command that mentions both git and gpgsign, e.g.
+ * `git log --grep=gpgsign$(date)`).
+ */
+function rawSignalsSigningDisable(deEscaped: string): boolean {
+  if (!/\bgit\b/.test(deEscaped)) return false;
+  // Any signing disable the shell can actually execute must carry the
+  // signal inside a gpgsign key (covers GIT_CONFIG_KEY_0=commit.gpgsign
+  // triplets too) or as a whole option token.
+  if (/gpgsign/i.test(deEscaped)) return true;
+  return deEscaped
+    .split(/\s+/)
+    .some(
+      (token) =>
+        GPG_SIGN_DISABLE_OPTION_RE.test(token) ||
+        TAG_SIGN_DISABLE_OPTION_RE.test(token),
+    );
+}
+
 function detectSigningDisable(command: string): boolean {
-  for (const invocation of parseGitInvocations(command)) {
+  const deEscaped = deEscapeShell(command);
+  if (containsExoticWhitespace(command)) {
+    // B3 fail-closed: tokenizeShell refuses this command, so the parsed
+    // path below would silently fail OPEN. Fail closed on a raw-signal
+    // basis instead.
+    //
+    // Defense-in-depth (round 7): the git-write gate also blocks every
+    // exotic-whitespace command unconditionally, but that gate is
+    // APPROVABLE (question tool) while this guard is not — without this
+    // branch, a user confirmation would let `g\it -c commit.gpgsign=0
+    // commit …<NBSP>…` run and disable signing. Backslash de-escaping
+    // first: outside quotes the shell treats `\x` as `x`, so `g\it` RUNS
+    // as git while evading a raw /\bgit\b/ test (and `commit.gpg\sign=0`
+    // reaches git as a real gpgsign key).
+    return rawSignalsSigningDisable(deEscaped);
+  }
+  const segments = tokenizeShell(command);
+  if (!segments) {
+    // Round 8 extension of the same logic: ANY unparseable command (not
+    // just exotic whitespace) would leave the parsed path below with zero
+    // invocations and fail OPEN — e.g. `git$(x) -c commit.gpgsign=0
+    // commit` never reaches hasFalseySigningConfig without this branch.
+    return rawSignalsSigningDisable(deEscaped);
+  }
+  // Round 8 (B6.1) / round 9: GIT_CONFIG_KEY_i/GIT_CONFIG_VALUE_i
+  // assignments can sit in ANY segment up to and including the invocation's
+  // own (export statements, env wrappers, leading tokens; earlier segments
+  // are conservatively treated as persisting). The env-config scan is
+  // therefore computed PER INVOCATION with scope segments[0..k] — a token in
+  // a later segment executes after the invocation and can neither mask a
+  // disable (round 9 fix) nor trigger one — and OR'd into every
+  // signing-capable branch below.
+  for (let segmentIndex = 0; segmentIndex < segments.length; segmentIndex++) {
+    const invocation = parseGitInvocation(segments[segmentIndex]);
+    if (!invocation) continue;
     const subcommand = invocation.subcommand;
     if (!subcommand) continue;
+    const envConfigDisables = gitConfigEnvDisablesSigning(
+      segments,
+      segmentIndex,
+    );
 
     if (
       GIT_COMMIT_SIGNING_SUBCOMMANDS.has(subcommand) &&
-      (invocation.args.includes("--no-gpg-sign") ||
-        hasFalseySigningConfig(invocation, "commit.gpgsign"))
+      (argsDisableSigning(invocation.args) ||
+        hasFalseySigningConfig(invocation) ||
+        envConfigDisables)
     ) {
       return true;
     }
     if (
       subcommand === "tag" &&
       isSigningCapableGitInvocation(invocation) &&
-      (invocation.args.includes("--no-sign") ||
-        hasFalseySigningConfig(invocation, "tag.gpgsign"))
+      (argsDisableSigning(invocation.args) ||
+        hasFalseySigningConfig(invocation) ||
+        envConfigDisables)
     ) {
       return true;
     }
