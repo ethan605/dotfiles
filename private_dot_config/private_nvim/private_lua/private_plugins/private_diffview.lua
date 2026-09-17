@@ -11,7 +11,7 @@ return {
         DiffviewOpen = { "--imply-local" },
       },
       enhanced_diff_hl = false, -- Keep this off for custom per-side colouring below
-      persist_selections = true,
+      persist_selections = { enabled = true },
       hooks = {
         diff_buf_win_enter = function(_, winid, ctx)
           local layout = ctx.layout_name or ""
