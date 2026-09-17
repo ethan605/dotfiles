@@ -43,7 +43,6 @@ __install-system-packages() {
 		gcloud@latest \
 		gh@latest \
 		kubecolor@latest \
-		kubectl@latest \
 		kubectx@latest \
 		kubens@latest \
 		kustomize@latest \
