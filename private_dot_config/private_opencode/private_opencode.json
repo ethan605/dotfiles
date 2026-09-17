@@ -346,7 +346,7 @@
   },
   "plugin": [
     "superpowers@git+ssh://github.com/ethan605/superpowers.git#4ca60a63f68a9537219dc6e26637d8964446d328",
-    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#e18ed99931a50de7cfe500fa9869a51a4ba6a4a4"
+    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#91da4a3cbb2ad2c2c07cf8a3c6039a60f32894c4"
   ],
   "lsp": {
     "pyright": {
