@@ -11,9 +11,9 @@ __install-system-packages() {
 		sudo add-apt-repository restricted -y &&
 		sudo add-apt-repository multiverse -y
 
-  sudo apt-key export 65F8F04B | sudo gpg --dearmour --yes -o /etc/apt/trusted.gpg.d/adoptium.gpg
+	sudo apt-key export 65F8F04B | sudo gpg --dearmour --yes -o /etc/apt/trusted.gpg.d/adoptium.gpg
 
-  sudo apt-get upgrade -y &&
+	sudo apt-get upgrade -y &&
 		sudo apt-get install --no-install-recommends -y \
 			libyaml-dev python3-venv vifm zsh &&
 		sudo apt-get autoremove -y &&
@@ -21,6 +21,8 @@ __install-system-packages() {
 		sudo rm -rf /var/lib/apt/lists/*
 
 	curl -fsSL https://mise.run | sh
+
+	mise set -g GOBIN="$HOME/go/bin"
 
 	mise use -g --pin \
 		go@1.25 \
@@ -100,5 +102,5 @@ __configure-nvim() {
 __install-system-packages &&
 	__configure-bash &&
 	__configure-zsh &&
-  __configure-chezmoi &&
+	__configure-chezmoi &&
 	__configure-nvim
