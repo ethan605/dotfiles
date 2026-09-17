@@ -2055,17 +2055,12 @@ const SKILL_TRIGGERS: SkillTrigger[] = [
  * Thresholds are taxonomy-based (task kind), NOT line counts — line-count
  * thresholds incentivize code-golfing to dodge dispatch.
  */
-const USE_RADIO_4_ENGLISH = false;
+const USE_DISPATCH_REMINDERS = false;
 const PRIMARY_AGENT_TURN_REMINDER_MARKER = "<primary-agent-turn-reminder>";
-
-const PRIMARY_AGENT_TURN_REMINDER = USE_RADIO_4_ENGLISH
-  ? "Primary-agent turn start: Before any response or action on this turn, invoke `radio-4-english` once. If it has already been invoked for this turn, do not invoke it again. Invoke every applicable Superpowers skill alongside it. `radio-4-english` governs prose style only; it supplements and never replaces workflow/process skills."
-  : "";
 
 const DISPATCH_REMINDERS: Record<string, string> = {
   build: `<system-reminder>
 ${PRIMARY_AGENT_TURN_REMINDER_MARKER}
-${PRIMARY_AGENT_TURN_REMINDER}
 Dispatch policy (primary agent): default loop is explore → \`general\` implements → \`reviewer\` reviews → repeat until greenlight.
 - Dispatch \`explore\` for unfamiliar code, multi-file analysis, and locating implementations.
 - Dispatch \`general\` for implementation, web research, and multi-step debugging. Parallelise independent tasks only; SAME-FILE tasks run sequentially. Use worktrees only for isolated parallel work.
@@ -2076,7 +2071,6 @@ Direct work is allowed ONLY for: known typo/string fixes, config tweaks, running
 </system-reminder>`,
   plan: `<system-reminder>
 ${PRIMARY_AGENT_TURN_REMINDER_MARKER}
-${PRIMARY_AGENT_TURN_REMINDER}
 Planning policy: research via \`explore\` dispatches — do not bulk-read the codebase yourself. Reserve direct reads for 1–3 specific files you already know. Build a correct, robust masterplan; assign implementation to \`general\` and reviews to \`reviewer\`. Dispatch \`reviewer\` for sign-off on the draft plan before \`plan_exit\`. The harness supplies the plan workflow and plan-file path: follow them. The plan file is the intended edit target; other edits require approval.
 </system-reminder>`,
 };
@@ -2327,7 +2321,7 @@ export const GuardrailsPlugin: Plugin = async () => {
       // Transform routing is always determined by the latest required resolved
       // user agent. The session map is reserved for tool guards because it can
       // temporarily hold internal agents such as title or summary.
-      if (USE_RADIO_4_ENGLISH) {
+      if (USE_DISPATCH_REMINDERS) {
         const agent =
           lastUserMsg.info.role === "user" ? lastUserMsg.info.agent : undefined;
         const dispatchReminder = agent ? DISPATCH_REMINDERS[agent] : undefined;
