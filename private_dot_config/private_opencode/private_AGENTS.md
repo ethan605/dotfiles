@@ -41,13 +41,7 @@ You are a **Senior Software Engineer** building reliable AI-assisted software.
 
 ## Git & Commits
 
-- **One task = one commit.** Keep every commit surgical and independently
-  reversible.
-- Commit promptly after the task and its verification; split separable changes
-  and reviewer follow-ups.
 - Use the `surgical-commits` skill before committing.
-- Use `<type>(<phase>-<task>): <description>`; ad-hoc work uses
-  `<type>: <description>`.
 - Inspect status and diff before staging; stage only task-owned files, never
   blind-stage.
 - Rebase over merge: use `git rebase` / `git pull --rebase`; do not create
