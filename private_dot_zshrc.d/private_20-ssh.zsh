@@ -22,10 +22,9 @@ fi
 export GPG_TTY=$TTY
 
 # Defer `gpg-connect-agent updatestartuptty` to the first prompt (off the critical path).
-autoload -Uz add-zsh-hook
-_gpg_update_tty() {
+__gpg-update-tty() {
   gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
-  add-zsh-hook -d precmd _gpg_update_tty
-  unfunction _gpg_update_tty
+  add-zsh-hook -d precmd __gpg-update-tty
+  unfunction __gpg-update-tty
 }
-add-zsh-hook precmd _gpg_update_tty
+add-zsh-hook precmd __gpg-update-tty

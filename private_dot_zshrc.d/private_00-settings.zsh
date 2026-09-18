@@ -40,3 +40,5 @@ zstyle ':zim:completion' dumpfile "${ZDOTDIR:-$HOME}/.zcompdump-$ZSH_VERSION"
 
 # Dedupe path/fpath
 typeset -U path fpath
+
+autoload -Uz add-zsh-hook
