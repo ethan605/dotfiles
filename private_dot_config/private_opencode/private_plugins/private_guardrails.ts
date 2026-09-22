@@ -307,11 +307,233 @@ function includeTargetsLspFiles(include: string | undefined): boolean {
  *
  * Catches: `>`, `>>`, `2>`, `&>`, `12>` targeting real paths.
  * Ignores: fd-dups (`2>&1`, `>&2`) and `/dev/null|stderr|stdout` sinks.
- * Known false positive: a literal ">" inside quoted arguments (e.g. git
- * pretty-format arrows) throws a recoverable error — acceptable in plan mode.
+ * Direct use is replaced by hasOutputRedirect; this regex is retained as the
+ * fail-closed fallback for parse anomalies and interpreter-wrapped commands.
  */
 const OUTPUT_REDIRECT_RE =
   /(?:^|[^<])(?:&|\d+)?>{1,2}(?!&)\s*(?!\/dev\/(null|stderr|stdout)\b)\S/;
+
+const DEV_SINK_PREFIXES = ["/dev/null", "/dev/stderr", "/dev/stdout"] as const;
+
+function isJsWhitespace(ch: string): boolean {
+  return /\s/.test(ch);
+}
+
+function isDevSink(command: string, targetStart: number): boolean {
+  for (const prefix of DEV_SINK_PREFIXES) {
+    if (!command.startsWith(prefix, targetStart)) continue;
+    const after = command[targetStart + prefix.length];
+    if (after === undefined || !/[A-Za-z0-9_]/.test(after)) return true;
+  }
+  return false;
+}
+
+/**
+ * Measures a `$((...))` region. A non-arithmetic-shaped form is scanned
+ * normally because it can be a subshell redirect; uncertain forms fail closed.
+ */
+function measureArithmetic(command: string, openStart: number): number {
+  let depth = 2;
+  for (let index = openStart + 2; index < command.length; index++) {
+    const character = command[index];
+    if (
+      character === "'" ||
+      character === '"' ||
+      character === "\\" ||
+      character === "`" ||
+      (character === "$" && command[index + 1] === "(")
+    ) {
+      return -2;
+    }
+    if (character === "(") {
+      depth++;
+    } else if (character === ")") {
+      depth--;
+      if (depth === 0) return command[index - 1] === ")" ? index + 1 : -1;
+    }
+  }
+  return -2;
+}
+
+/**
+ * Identifies chunks that delegate their quoted operand to an inner interpreter.
+ * The all-token heuristic intentionally over-blocks rather than resolving an
+ * executable, because leading redirects and wrappers make that resolution
+ * unsafe. Tokenization failure uses a raw keyword fallback.
+ */
+function chunkHasInnerShell(chunk: string): boolean {
+  const tokenization = tokenizeShellDetailed(chunk);
+  if (!tokenization.segments) {
+    return /\b(eval|sh|bash|zsh|dash|ksh|ash|fish|ssh)\b/.test(
+      deEscapeShell(chunk),
+    );
+  }
+  const tokens = tokenization.segments.flat();
+  if (tokens.includes("eval")) return true;
+
+  const isShellName = (token: string): boolean =>
+    /(?:^|\/)(?:sh|bash|zsh|dash|ksh|ash|fish)$/.test(token);
+  for (let index = 0; index < tokens.length; index++) {
+    if (!isShellName(tokens[index])) continue;
+    for (let optionIndex = index + 1; optionIndex < tokens.length; optionIndex++) {
+      if (
+        (tokens[optionIndex] === "-c" ||
+          /^-[a-z]*c[a-z]*$/.test(tokens[optionIndex])) &&
+        optionIndex + 1 < tokens.length
+      ) {
+        return true;
+      }
+    }
+  }
+
+  for (let index = 0; index < tokens.length; index++) {
+    if (tokens[index] !== "ssh") continue;
+    const hostIndex = tokens.findIndex(
+      (token, tokenIndex) => tokenIndex > index && !token.startsWith("-"),
+    );
+    if (hostIndex >= 0 && hostIndex + 1 < tokens.length) return true;
+  }
+  return false;
+}
+
+/**
+ * Detects unquoted, unescaped output redirects while preserving the legacy
+ * regex as a fail-closed fallback.
+ *
+ * Residuals: heredoc bodies still block; bare `(( x > 5 ))` still blocks
+ * because dash can treat it as a subshell redirect; and `"$(( 1 > 2 ))"`
+ * blocks through the double-quote fallback even though it is harmless. `<>`,
+ * `1<>`, and `2<>` still pass as pre-existing read-write-open holes. This is
+ * not a sandbox: indirect interpreters and launchers such as awk `system`,
+ * make, perl, `env -S "sh -c …"`, dynamic launchers, and shells outside the
+ * narrow name set remain out of scope. Syntax-error `>&` forms (`cmd >&`,
+ * `cmd 2>& ;`, `cmd >&\nls`, `cmd >& #note`, `cmd >& )`, `cmd >& <`, trailing
+ * `cmd >& >`, and `cmd >& <<EOF`) also pass, matching the old regex; only an
+ * `>&` followed by a target-word start is the approved stricter behavior.
+ */
+function hasOutputRedirect(command: string): boolean {
+  const fallback = (): boolean => OUTPUT_REDIRECT_RE.test(command);
+  const chunks: string[] = [];
+  let chunkStart = 0;
+  let quote: "'" | '"' | undefined;
+  const finishChunk = (end: number, nextStart: number) => {
+    chunks.push(command.slice(chunkStart, end));
+    chunkStart = nextStart;
+  };
+
+  for (let index = 0; index < command.length; index++) {
+    const character = command[index];
+    if (quote === "'") {
+      if (character === "'") quote = undefined;
+      continue;
+    }
+    if (quote === '"') {
+      if (character === '"') {
+        quote = undefined;
+      } else if (character === "\\") {
+        if (index + 1 >= command.length) return fallback();
+        index++;
+      } else if (
+        (character === "$" && command[index + 1] === "(") ||
+        character === "`"
+      ) {
+        return fallback();
+      }
+      continue;
+    }
+
+    if (character === "\\") {
+      if (index + 1 >= command.length) return fallback();
+      index++;
+      continue;
+    }
+    if (character === "$" && (command[index + 1] === "'" || command[index + 1] === '"')) {
+      quote = command[++index] as "'" | '"';
+      continue;
+    }
+    if (character === "'" || character === '"') {
+      quote = character;
+      continue;
+    }
+    if (character === "$" && command[index + 1] === "(" && command[index + 2] === "(") {
+      const arithmeticEnd = measureArithmetic(command, index + 1);
+      if (arithmeticEnd === -2) return fallback();
+      if (arithmeticEnd > 0) {
+        index = arithmeticEnd - 1;
+        continue;
+      }
+    }
+    if (character === ";" || character === "|" || character === "\n") {
+      const separatorLength =
+        (character === "|" && command[index + 1] === "|") ? 2 : 1;
+      finishChunk(index, index + separatorLength);
+      index += separatorLength - 1;
+      continue;
+    }
+    if (
+      character === "&" &&
+      (command[index + 1] === "&" ||
+        (!["&", ">", "<", "|"].includes(command[index - 1] ?? "") &&
+          command[index + 1] !== ">"))
+    ) {
+      const separatorLength = command[index + 1] === "&" ? 2 : 1;
+      finishChunk(index, index + separatorLength);
+      index += separatorLength - 1;
+      continue;
+    }
+    if (character !== ">") continue;
+
+    let runEnd = index;
+    while (command[runEnd + 1] === ">") runEnd++;
+    const runLength = runEnd - index + 1;
+    const next = command[runEnd + 1];
+    if (index > 0 && command[index - 1] === "<") {
+      index = runEnd;
+      continue;
+    }
+    if (runLength === 1 && next === "&") {
+      let targetStart = runEnd + 2;
+      while (
+        command[targetStart] === " " ||
+        command[targetStart] === "\t"
+      ) {
+        targetStart++;
+      }
+      const target = command[targetStart];
+      if (
+        target !== undefined &&
+        ![";", "|", "&", "\n", "#", "(", ")", "<", ">", "-"].includes(target) &&
+        !/\d/.test(target)
+      ) {
+        return true;
+      }
+      index = runEnd + 1;
+      continue;
+    }
+    if (runLength >= 2 && next === "&") return true;
+
+    let targetStart = runEnd + 1;
+    while (
+      targetStart < command.length &&
+      isJsWhitespace(command[targetStart])
+    ) {
+      targetStart++;
+    }
+    if (targetStart >= command.length) {
+      index = targetStart - 1;
+      continue;
+    }
+    if (isDevSink(command, targetStart)) {
+      index = targetStart - 1;
+      continue;
+    }
+    return true;
+  }
+
+  if (quote !== undefined) return fallback();
+  finishChunk(command.length, command.length);
+  return chunks.some(chunkHasInnerShell) ? fallback() : false;
+}
 
 // ---------------------------------------------------------------------------
 // Git write-confirmation gate and signing-disable config
@@ -2376,11 +2598,15 @@ export const GuardrailsPlugin: Plugin = async () => {
         const agent = sessionAgentMap.get(input.sessionID);
         if (agent === "plan") {
           const command: unknown = output.args?.command;
-          if (typeof command === "string" && OUTPUT_REDIRECT_RE.test(command)) {
+          if (typeof command === "string" && hasOutputRedirect(command)) {
             throw new Error(
               `[Guardrail] Output redirection is blocked in plan mode. ` +
                 `The permission matcher cannot see redirects, so this guard prevents redirects from bypassing edit approval. ` +
-                `If the ">" is part of a quoted string, rephrase the command without it.`,
+                `A ">" that is quoted or escaped is normally allowed, so this block means an unquoted redirect was ` +
+                `detected (or the command shape fell back to strict checking: unparseable quoting, a command substitution ` +
+                `inside double quotes, or a redirect wrapped in an inner interpreter such as eval, sh -c, bash -c, or ssh). ` +
+                `Write simple, auditable commands instead: run the inner command directly rather than through eval or a shell ` +
+                `wrapper, and keep ">" out of arguments unless it is quoted.`,
             );
           }
         }
