@@ -1,6 +1,21 @@
+---@return table<string>
+local function get_cmd()
+  local ts7_cmd = { "tsc", "--lsp", "--stdio" }
+  local tsserver_cmd = { "typescript-language-server", "--stdio" }
+
+  local ts7_try = vim.system(ts7_cmd, { text = true })
+  local result = ts7_try:wait(200)
+
+  if (result.code == 0) then
+    return ts7_cmd
+  else
+    return tsserver_cmd
+  end
+end
+
 ---@type vim.lsp.Config
 return {
-  cmd = { "typescript-language-server", "--stdio" },
+  cmd = get_cmd(),
   filetypes = {
     "javascript",
     "javascriptreact",
