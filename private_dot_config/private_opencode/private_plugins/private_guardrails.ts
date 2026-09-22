@@ -11,7 +11,9 @@ import type { Plugin } from "@opencode-ai/plugin";
  *   5. Git write-confirmation gate — blocks every git operation that can
  *      modify the working tree, history, or remotes until the user confirms
  *      the exact command via the question tool (one approval per command,
- *      every time); includes a signing-disable guard as defense-in-depth
+ *      every time), or until a one-shot blanket pre-approval granted by an
+ *      affirmative answer to a git-mentioning question asked BEFORE the
+ *      write; includes a signing-disable guard as defense-in-depth
  *   6. Skill activation nudges — reminds the model to invoke relevant skills
  *   7. Subagent dispatch reminders — per-turn reminder keeping plan/build agents
  *      on the explore → implement → review dispatch loop
@@ -73,6 +75,155 @@ function recordPendingGitWrite(sessionID: string, command: string): void {
     const oldestCommand = perSession.keys().next().value;
     if (oldestCommand === undefined) break;
     perSession.delete(oldestCommand);
+  }
+}
+
+/**
+ * Round 9 blanket one-shot git-write pre-approval: sessions where the user
+ * answered an affirmative, git-mentioning question BEFORE any write was
+ * blocked (ask-first flow). Consumed once by the NEXT git write in that
+ * session regardless of exact command string — covers benign mutation
+ * between ask and run (e.g. the agent adding an rtk prefix).
+ *
+ * Keyed by sessionID exactly like `gitWriteApprovals` — therefore LOST on
+ * /compact (which creates a new sessionID; the gate then re-asks —
+ * fail-closed, the accepted step-P behavior) and cleared on
+ * session.deleted. No TTL: it survives until consumed (documented
+ * residual). Set semantics collapse repeated affirmative questions into a
+ * single arm.
+ */
+const blanketGitWriteArmed = new Set<string>();
+
+/** True iff the session has at least one command recorded as "pending". */
+function hasPendingGitWrites(sessionID: string): boolean {
+  const perSession = gitWriteApprovals.get(sessionID);
+  if (!perSession) return false;
+  for (const state of perSession.values()) {
+    if (state === "pending") return true;
+  }
+  return false;
+}
+
+/**
+ * Arms the blanket one-shot pre-approval. Delete-then-add refreshes the
+ * insertion-order position so a re-arm is not FIFO-evicted early; eviction
+ * mirrors the approvals-map cap to bound the long-lived server process.
+ */
+function armBlanketGitWrite(sessionID: string): void {
+  blanketGitWriteArmed.delete(sessionID);
+  blanketGitWriteArmed.add(sessionID);
+  while (blanketGitWriteArmed.size > MAX_GIT_WRITE_SESSIONS) {
+    const oldestSession = blanketGitWriteArmed.keys().next().value;
+    if (oldestSession === undefined) break;
+    blanketGitWriteArmed.delete(oldestSession);
+  }
+}
+
+/**
+ * Negation/revocation/refusal tokens in a question-answer label — checked
+ * FIRST, globally fail-closed: any label containing one makes the whole
+ * answer negative. Includes boundary-less `n't` because `\bn't\b` can never
+ * match "shouldn't" (the apostrophe follows the `n`). Deliberately
+ * over-blocks affirmatives like "Yes, but commit it later" → negative
+ * (accepted cost: one extra prompt, never a wrong approval).
+ */
+const QUESTION_ANSWER_NEGATIVE_RE =
+  /\b(no|nope|nah|nay|never|not|block|cancel|cannot|cant|reject|deny|denied|stop|decline|refuse|refused|refusal|disapprove|disapproved|disagree|disagreed|object|objected|veto|forbid|negative|don'?t|do not|wait|hold|abort|skip|postpone|defer|delay|instead|later)\b|n't/i;
+
+/**
+ * Affirmative consent requires a leading consent token with a trailing word
+ * boundary (mandatory — `^go`-style prefix traps verified empirically).
+ * Bare verb anchors (run|go|commit|push) are deliberately DROPPED: they
+ * misclassified "Run tests first" / "Commit message is wrong" /
+ * "Push back; let us discuss" as consent.
+ */
+const QUESTION_ANSWER_AFFIRMATIVE_ANCHOR_RE =
+  /^(yes|yep|yeah|ok|okay|sure|approve[ds]?|confirm(?:ed)?|lgtm|affirmative|absolutely|agreed)\b/i;
+
+/** Whole-label consent phrases only — "proceed with caution" stays neutral. */
+const QUESTION_ANSWER_AFFIRMATIVE_EXACT_RE =
+  /^(go ahead|ship it|run it|do it|commit it|push it|proceed|looks good|sounds good)[.!\s]*$/i;
+
+/**
+ * Normalizes a question-answer label: apostrophe-like characters are
+ * replaced with ASCII `'` BEFORE NFKC — ORDER MATTERS, because NFKC
+ * decomposes U+00B4 into space + combining accent before a replace could
+ * see it, while replace-first maps it cleanly. NFKC additionally folds
+ * full-width text ("ｙｅｓ" → "yes").
+ */
+function normalizeQuestionAnswerLabel(label: string): string {
+  return label
+    .replace(/[\u2018\u2019\u02BC\u02C8\u0060\u00B4]/g, "'")
+    .normalize("NFKC");
+}
+
+/**
+ * Classifies one question's answer labels. NEGATIVE is checked first and is
+ * fail-closed across the label set: mixed "Yes" + "No, block it" → negative.
+ * Otherwise any anchor or whole-label consent match → affirmative;
+ * everything else is neutral and grants nothing. "Unanswered" and custom
+ * typed answers ("Type your own answer" renderings) fall out neutral.
+ */
+function classifyQuestionAnswerLabels(
+  labels: string[],
+): "negative" | "affirmative" | "neutral" {
+  const normalized = labels.map(normalizeQuestionAnswerLabel);
+  if (normalized.some((label) => QUESTION_ANSWER_NEGATIVE_RE.test(label))) {
+    return "negative";
+  }
+  if (
+    normalized.some(
+      (label) =>
+        QUESTION_ANSWER_AFFIRMATIVE_ANCHOR_RE.test(label) ||
+        QUESTION_ANSWER_AFFIRMATIVE_EXACT_RE.test(label),
+    )
+  ) {
+    return "affirmative";
+  }
+  return "neutral";
+}
+
+/**
+ * Extracts PER-QUESTION label groups from a question-tool result payload
+ * (`metadata.answers` array-of-arrays, or a flat v2 `answers` array).
+ * Flattening would lose question↔answer correlation, so group structure is
+ * preserved. A bare string entry normalizes to `[entry]`; any non-array /
+ * non-string entry → undefined (unreadable — callers fail closed).
+ */
+function extractQuestionAnswerGroups(
+  raw: unknown,
+): string[][] | undefined {
+  if (!Array.isArray(raw)) return undefined;
+  const groups: string[][] = [];
+  for (const entry of raw) {
+    if (typeof entry === "string") {
+      groups.push([entry]);
+    } else if (Array.isArray(entry)) {
+      const labels: string[] = [];
+      for (const label of entry) {
+        if (typeof label !== "string") return undefined;
+        labels.push(label);
+      }
+      groups.push(labels);
+    } else {
+      return undefined;
+    }
+  }
+  return groups;
+}
+
+/**
+ * Whether ONE question object (question + header + options incl.
+ * descriptions, serialized as JSON) mentions git. `\bgit\b` — "github" does
+ * not match. try/catch: a circular structure throws and reads as no-git
+ * (false), like any other non-git question.
+ */
+function questionMentionsGit(question: unknown): boolean {
+  try {
+    const serialized = JSON.stringify(question);
+    return serialized !== undefined && /\bgit\b/i.test(serialized);
+  } catch {
+    return false;
   }
 }
 
@@ -699,6 +850,16 @@ function isSigningCapableGitInvocation(invocation: GitInvocation): boolean {
 // ---------------------------------------------------------------------------
 
 interface GitWriteClassification {
+  /**
+   * True only when the command is actually attributable to git: a parseable
+   * git invocation (or an `sh -c` inner command mentioning git), or a
+   * literal git word in the de-escaped raw string. Deliberately false for
+   * commands gated purely because they are unclassifiable with NO git
+   * signal (`$(date)`, `g?t x`, exotic-whitespace `echo a<CR>b`) — guard 5b
+   * consumes the round-9 blanket pre-approval only when this is true, so
+   * the arm is spent on the "NEXT git write" it promises and never on an
+   * unrelated non-git gated command.
+   */
   hasGit: boolean;
   isWrite: boolean;
   writeSubcommands: string[];
@@ -1487,6 +1648,14 @@ function hasExpansionExecutable(deEscaped: string): boolean {
  *   - Leading env assignments before an expansion executable
  *     (`FOO=1 $(printf g%s it) tag v1`) — no expansion-at-segment-start,
  *     no git mention; the executable is still unknowable.
+ *   - Round 9 blanket pre-approval bait-and-switch: the question names
+ *     command X, but the blanket approves the NEXT git write once even if
+ *     it is command Y. Benign mutation (e.g. an added rtk prefix) is the
+ *     point of the blanket; a malicious swap is the residual. Mitigations:
+ *     one-shot, session-scoped, and requires an affirmative answer to a
+ *     git-mentioning question; the bash permission backstop ("*": "ask")
+ *     still shows the user the true raw command, and guard 5a is
+ *     unconditional.
  */
 function classifyGitWrite(command: string): GitWriteClassification {
   const deEscaped = deEscapeShell(command);
@@ -1568,8 +1737,18 @@ function classifyGitWrite(command: string): GitWriteClassification {
     }
   }
   if (hasExoticExecutable) {
+    // hasGit must reflect genuine git attribution, not just "gated because
+    // unclassifiable": an exotic executable alone (g?t, ~/bin/foo) does not
+    // attribute the command to git, so it must not be hardcoded true here —
+    // guard 5b consumes the blanket pre-approval only when hasGit is true,
+    // and a hardcoded true would let a non-git pathological command spend
+    // the arm. A parseable git invocation from another segment, or a
+    // literal git word in the de-escaped raw string, does count.
     return {
-      hasGit: true,
+      hasGit:
+        invocations.length > 0 ||
+        writeSubcommands.length > 0 ||
+        /\bgit\b/.test(deEscaped),
       isWrite: true,
       writeSubcommands: ["<unclassifiable executable>"],
       unclassifiable: true,
@@ -1623,6 +1802,14 @@ Every git command that can modify the working tree, history, or a remote
 explicitly confirmed by the user BEFORE it runs — every time, no exceptions.
 This also guarantees the user is present to touch their hardware security key
 when the operation is signed.
+
+Asking FIRST avoids this block entirely: before running a git write you
+already expect to need, call the \`question\` tool and mention "git" in the
+question. An affirmative answer ("Yes…", "OK", "Approve") approves the NEXT
+write attempt once — even if you adjust the command afterward. Any other
+answer grants nothing; a typed answer starting with an approval word counts
+as affirmative. After an affirmative answer, run the write
+immediately.
 
 Recovery procedure — follow EXACTLY:
 1. Call the \`question\` tool and ask the user for permission, quoting the
@@ -2116,13 +2303,16 @@ export const GuardrailsPlugin: Plugin = async () => {
     event: async (input) => {
       if (input.event.type === "session.compacted") {
         compactingSessions.delete(input.event.properties.sessionID);
-        // Approval state deliberately survives compaction — it's a
-        // real-world fact, not a session restart.
+        // /compact creates a NEW sessionID, so approval state (exact-string
+        // approvals AND the blanket pre-approval) is effectively LOST — the
+        // gate re-asks. Accepted fail-closed behavior.
       }
       // Unlike session.compacted (properties.sessionID), session.deleted
       // carries its id at properties.info.id (verified against SDK types).
       if (input.event.type === "session.deleted") {
-        gitWriteApprovals.delete(input.event.properties.info.id);
+        const deletedSessionID = input.event.properties.info.id;
+        gitWriteApprovals.delete(deletedSessionID);
+        blanketGitWriteArmed.delete(deletedSessionID);
       }
     },
 
@@ -2213,7 +2403,14 @@ export const GuardrailsPlugin: Plugin = async () => {
       // --- 5b. Git write-confirmation gate ---
       // Blocks every git write on first attempt; the exact same command
       // string is allowed exactly once after the user answers a question-tool
-      // prompt, then the gate re-arms.
+      // prompt, then the gate re-arms. A blanket one-shot pre-approval
+      // (round 9: armed by an affirmative answer to a git-mentioning
+      // question asked BEFORE any write was blocked) allows the NEXT git
+      // write once regardless of exact string — but only when the
+      // classification actually attributes the command to git (the hasGit
+      // check below). Blanket consumption lives only inside this isWrite
+      // branch — guard 5a above throws first, so no approval (exact-string
+      // or blanket) can ever bypass the signing guard.
       if (input.tool === "bash" || input.tool === "shell") {
         const command: unknown = output.args?.command;
         if (typeof command === "string") {
@@ -2222,6 +2419,26 @@ export const GuardrailsPlugin: Plugin = async () => {
             const perSession = gitWriteApprovals.get(input.sessionID);
             if (perSession?.get(command) === "approved") {
               perSession.delete(command); // one-shot: consume, re-arm
+            } else if (
+              classification.hasGit &&
+              blanketGitWriteArmed.delete(input.sessionID)
+            ) {
+              // Git-attribution check (final review, Important finding):
+              // the blanket promises to approve the NEXT GIT WRITE, but
+              // isWrite alone is also true for NON-git commands gated
+              // purely because they are unclassifiable (expansion
+              // executables like $(date), exotic whitespace, glob
+              // executables like g?t x). Consuming the arm on those would
+              // silently approve an unrelated command AND re-prompt the
+              // intended git write. hasGit is true only when the
+              // classification actually attributes the command to git
+              // (parseable git invocation / sh -c git / literal git word),
+              // so an armed + non-git gated command falls through to the
+              // record-pending + throw path below — blocked normally, with
+              // the arm preserved. Set.delete stays an atomic
+              // consume-and-allow; exact-string approval above keeps
+              // priority, and the blanket covers only a different (or
+              // mutated) command string.
             } else {
               recordPendingGitWrite(input.sessionID, command);
               throw new Error(
@@ -2238,19 +2455,92 @@ export const GuardrailsPlugin: Plugin = async () => {
     },
 
     // -----------------------------------------------------------------------
-    // Post-execution question-tool attention signal
+    // Post-execution question-tool approval signal
     //
     // Sole approval signal for the git write gate: the question tool
     // completing in the same session. Verified against OpenCode 1.18.30:
     // every registry tool (question included) is wrapped with
     // tool.execute.before → execute → tool.execute.after, and the question
-    // tool resolves after the user answers. chat.message is deliberately NOT
-    // an approval signal — a plain user message cannot be tied to consent for
-    // a specific command.
+    // tool resolves after the user answers. A dismissed (esc) question
+    // throws QuestionRejectedError, so this hook never fires for it.
+    // chat.message is deliberately NOT an approval signal — a plain user
+    // message cannot be tied to consent for a specific command.
+    //
+    // Round 9: answers are classified per question. Negative screening runs
+    // FIRST and globally — any readable negative label grants nothing, ever
+    // (closes the latent hole where ANY answered question, including "No,
+    // block it", approved pendings). The SAME question must carry BOTH the
+    // git mention and the affirmative answer; and when nothing was pending,
+    // an affirmative git-mentioning answer arms a one-shot blanket
+    // pre-approval for the NEXT git write regardless of exact string — the
+    // ask-first flow, where the agent may reword the command (e.g. add an
+    // rtk prefix) between asking and running.
     // -----------------------------------------------------------------------
-    "tool.execute.after": async (input) => {
-      if (input.tool === "question") {
-        approvePendingGitWrites(input.sessionID);
+    "tool.execute.after": async (input, output) => {
+      if (input.tool !== "question") return;
+      const sessionID = input.sessionID;
+      // v1 question tool: output.metadata.answers; v2 variant: flat
+      // output.answers. Read defensively — either shape, or neither.
+      const answers: unknown =
+        output.metadata?.answers ??
+        (output as unknown as { answers?: unknown }).answers;
+      const groups = extractQuestionAnswerGroups(answers);
+      const questions: unknown = (input.args as { questions?: unknown })
+        ?.questions;
+
+      // Negative screening FIRST — before the compat branch below, so a
+      // readable "No, block it" cannot approve pendings through the
+      // unreadable-questions path. Global negative precedence: grant
+      // nothing, ever.
+      if (
+        groups !== undefined &&
+        groups.some(
+          (group) => classifyQuestionAnswerLabels(group) === "negative",
+        )
+      ) {
+        return;
+      }
+
+      // Unreadable-compat branch: keep the legacy any-answer behavior
+      // (approve pendings) so the recovery flow cannot dead-loop on an
+      // unknown payload shape. Deliberately NEVER arms the blanket — an
+      // unverifiable payload must not create a NEW grant. Accepted
+      // residual: when answers are unreadable this may approve a pending
+      // command even when the unobservable true answer was negative
+      // (pre-existing behavior, kept only for deadlock-freedom).
+      if (groups === undefined || !Array.isArray(questions)) {
+        approvePendingGitWrites(sessionID);
+        return;
+      }
+
+      // The SAME question must carry both the git mention and the
+      // affirmative answer — a "Yes" to an unrelated question must not arm
+      // a git question answered neutrally. A question with no answer group
+      // reads as neutral here (there is no group to classify).
+      const affirmativeGitQuestion = groups.some((group, i) => {
+        if (classifyQuestionAnswerLabels(group) !== "affirmative") {
+          return false;
+        }
+        return questionMentionsGit(questions[i]);
+      });
+      if (!affirmativeGitQuestion) return;
+
+      // Snapshot BEFORE approving: approving flips pendings to approved, so
+      // testing after would always see none and always arm.
+      const hadPendings = hasPendingGitWrites(sessionID);
+      // The pending path is now also gated on a git-mentioning affirmative
+      // question (tightened vs. the old any-answer behavior; the gate error
+      // already instructs quoting the verbatim command, which contains
+      // "git", so compliant recovery flows are unaffected).
+      approvePendingGitWrites(sessionID);
+      if (!hadPendings) {
+        // Arm only when nothing was pending: targets the ask-first flow
+        // precisely and avoids granting an extra free write after a
+        // recovery flow. Stale-pending edge: abandoned pendings make a
+        // pre-approval approve those instead of arming; the new command
+        // blocks once and the normal recovery flow handles it —
+        // self-healing, accepted.
+        armBlanketGitWrite(sessionID);
       }
     },
 
