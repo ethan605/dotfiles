@@ -1,8 +1,26 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["bifrost"],
+  "enabled_providers": ["bifrost", "bifrost-compat"],
   "provider": {
-    // Bifrost proxy for other providers (API usage)
+    // Using /v1/chat/completions endpoints
+    // TODO: revisit when Moonshot make Kimi K3's reasoning stable for /v1/responses endpoints
+    "bifrost-compat": {
+      "name": "Bifrost",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:9765/v1",
+        "apiKey": "{env:BIFROST_VIRTUAL_KEY}"
+      },
+      "models": {
+        "model-architect": {
+          "name": "Architect",
+          "limit": { "context": 1048576, "output": 131072 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "options": { "reasoningEffort": "high" }
+        }
+      }
+    },
+    // Using /v1/responses endpoints
     "bifrost": {
       "name": "Bifrost",
       "npm": "@ai-sdk/openai",
@@ -12,23 +30,32 @@
       },
       // Data fetched from https://models.dev/catalog.json
       "models": {
-        "model-architect": {
-          "name": "Architect",
-          "limit": { "context": 1048576, "output": 131072 },
-          "modalities": { "input": ["text", "image"], "output": ["text"] },
-          "options": { "reasoningEffort": "high" }
-        },
+        // "model-architect": {
+        //   "name": "Architect",
+        //   "limit": { "context": 1048576, "output": 131072 },
+        //   "modalities": { "input": ["text", "image"], "output": ["text"] },
+        //   "options": {
+        //     "reasoningEffort": "high",
+        //     "reasoningSummary": "auto"
+        //   }
+        // },
         "model-mason": {
           "name": "Mason",
-          "limit": { "context": 1048576, "output": 131072 },
-          "modalities": { "input": ["text", "image"], "output": ["text"] },
-          "options": { "reasoningEffort": "high" }
+          "limit": { "context": 1048573, "output": 262144 },
+          "modalities": { "input": ["text"], "output": ["text"] },
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto"
+          }
         },
         "model-scout": {
           "name": "Scout",
           "limit": { "context": 1000000, "output": 384000 },
           "modalities": { "input": ["text", "image"], "output": ["text"] },
-          "options": { "reasoningEffort": "high" }
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto"
+          }
         },
         "model-libero": {
           "name": "Libero",
@@ -37,16 +64,22 @@
             "input": ["text", "image", "pdf"],
             "output": ["text"]
           },
-          "options": { "reasoningEffort": "high" }
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto"
+          }
         },
         "model-watchdog": {
-          "name": "Watchdog (GPT-6 Sol)",
+          "name": "Watchdog",
           "limit": { "context": 1050000, "input": 922000, "output": 128000 },
           "modalities": {
             "input": ["text", "image", "pdf"],
             "output": ["text"]
           },
-          "options": { "reasoningEffort": "high" }
+          "options": {
+            "reasoningEffort": "high",
+            "reasoningSummary": "auto"
+          }
         }
       }
     }
@@ -233,7 +266,7 @@
   "agent": {
     "plan": {
       "color": "#57c7ff",
-      "model": "bifrost/model-architect",
+      "model": "bifrost-compat/model-architect",
       "prompt": "{file:./PLAN.md}",
       "permission": {
         "plan_exit": "ask"
@@ -279,7 +312,7 @@
   },
   "plugin": [
     "superpowers@git+ssh://github.com/ethan605/superpowers.git#c47c96c19706664d42c5cd3603ee71526e3569b9",
-    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#bf088d8bfc15cdacc97d2731ba0a39b89f868d65",
+    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#fbac6e9342cde347b2ca380bdf1003f612786e12",
     "simple-english@git+ssh://github.com/ethan605/SimpleEnglish.git#81a0f379147f74f374bb22389d6fe3d786d278bb"
   ],
   "lsp": {
