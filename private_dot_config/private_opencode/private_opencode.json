@@ -279,7 +279,7 @@
   },
   "plugin": [
     "superpowers@git+ssh://github.com/ethan605/superpowers.git#c47c96c19706664d42c5cd3603ee71526e3569b9",
-    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#6c20f291888f4a93fb43b8e8323d50b65f54f1b2",
+    "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#bf088d8bfc15cdacc97d2731ba0a39b89f868d65",
     "simple-english@git+ssh://github.com/ethan605/SimpleEnglish.git#81a0f379147f74f374bb22389d6fe3d786d278bb"
   ],
   "lsp": {
