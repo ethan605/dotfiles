@@ -3,14 +3,15 @@ local function get_cmd()
   local ts7_cmd = { "tsc", "--lsp", "--stdio" }
   local tsserver_cmd = { "typescript-language-server", "--stdio" }
 
-  local ts7_try = vim.system(ts7_cmd, { text = true })
-  local result = ts7_try:wait(200)
+  if vim.fn.executable("tsc") == 1 then
+    local result = vim.system(ts7_cmd, { text = true }):wait(200)
 
-  if (result.code == 0) then
-    return ts7_cmd
-  else
-    return tsserver_cmd
+    if result.code == 0 then
+      return ts7_cmd
+    end
   end
+
+  return tsserver_cmd
 end
 
 ---@type vim.lsp.Config

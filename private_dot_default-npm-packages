@@ -3,5 +3,3 @@ devicetree-language-server
 graphql
 neovim
 nginxbeautifier
-ts-node
-typescript
