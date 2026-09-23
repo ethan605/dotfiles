@@ -2,7 +2,7 @@
   "exclusionRules": [
     {
       "passKeys": "",
-      "pattern": "https?://docs.google.com/spreadsheets*"
+      "pattern": "https?://docs.google.com/spreadsheets/*"
     },
     {
       "passKeys": "",
@@ -15,14 +15,6 @@
     {
       "passKeys": "",
       "pattern": "https?://app.excalidraw.com/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://docs.google.com/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://docs.google.com/*"
     },
     {
       "passKeys": "",
