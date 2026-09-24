@@ -70,6 +70,9 @@ __oc() {
   # For teamcity MCP
   export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
 
+  # For fixReasoning
+  export OPENAI_SDK_NPM_PATH="file://$HOME/personal/ai-sdk-openai-kimi"
+
   opencode "$@"
 }
 

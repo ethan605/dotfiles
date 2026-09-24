@@ -26,7 +26,7 @@
     // Using /v1/responses endpoints
     "bifrost": {
       "name": "Bifrost",
-      "npm": "@ai-sdk/openai",
+      "npm": "{env:OPENAI_SDK_NPM_PATH}",
       "options": {
         "baseURL": "http://localhost:9765/openai",
         "apiKey": "{env:BIFROST_VIRTUAL_KEY}",
@@ -42,7 +42,8 @@
           "modalities": { "input": ["text", "image"], "output": ["text"] },
           "options": {
             "reasoningEffort": "high",
-            "reasoningSummary": "auto"
+            "reasoningSummary": "auto",
+            "forceReasoning": true
           }
         },
         "model-mason": {
