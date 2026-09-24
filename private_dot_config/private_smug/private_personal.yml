@@ -1,8 +1,8 @@
 session: π
 root: ~
 windows:
-  - name: personal
-    root: personal
+  - name: bifrost
+    root: personal/bifrost-local
     layout: main-vertical
 
   - name: config
