@@ -28,10 +28,12 @@ return {
 
     keymap = {
       preset = "default",
-      ["<C-e>"] = { "cancel", "fallback" },
-      ["<CR>"] = { "select_and_accept", "fallback" },
+
       ["<Tab>"] = { "select_next", "fallback" },
       ["<S-Tab>"] = { "select_prev", "fallback" },
+      ["<C-e>"] = { "cancel", "fallback" },
+      ["<C-y>"] = { "select_and_accept", "fallback" },
+      ["<CR>"] = { "select_and_accept", "fallback" },
     },
 
     completion = {
@@ -51,8 +53,13 @@ return {
 
     cmdline = {
       keymap = {
-        ["<Tab>"] = { "show", "select_next" },
-        ["<CR>"] = { "accept_and_enter", "fallback" },
+        preset = "cmdline",
+
+        ["<Tab>"] = { "accept", "show_and_insert" },
+        ["<S-Tab>"] = { "show_and_insert", "select_prev" },
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<CR>"] = { "select_accept_and_enter", "fallback" },
       },
       completion = { menu = { auto_show = true } },
     },
