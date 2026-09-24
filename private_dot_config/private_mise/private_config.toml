@@ -14,7 +14,7 @@ ruby = "4.0.7"
 rust = "1.98.1"
 
 # Then tools
-awscli = { version = "2.37.0", symlink_bins = "true" }
+awscli = { version = "2.37.1", symlink_bins = "true" }
 azure = { version = "2.90.0", uvx_args = "--prerelease=allow" }
 bun = "1.4.2"
 clang-format = "23.1.1"
@@ -30,7 +30,7 @@ opencode = "1.18.32"
 rtk = { version = "0.49.0", postinstall = "rtk init -g --opencode" }
 terraform = "1.16.3"
 tree-sitter = "0.27.0"
-uv = "0.12.17"
+uv = "0.12.18"
 java = "openjdk-26.0.2.1"
 
 # And custom tools
