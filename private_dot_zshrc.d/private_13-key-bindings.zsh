@@ -31,3 +31,8 @@ fi
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+# Source - https://superuser.com/a/983018
+# Posted by theDrifter, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-09-24, License - CC BY-SA 4.0
+bindkey "\e[3~" delete-char
