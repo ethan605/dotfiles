@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["bifrost"],
+  "enabled_providers": ["bifrost", "bifrost-compat"],
   "provider": {
     // Using /v1/chat/completions endpoints
     // TODO: revisit when Moonshot make Kimi K3's reasoning stable for /v1/responses endpoints
