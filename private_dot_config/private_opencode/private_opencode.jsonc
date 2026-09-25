@@ -11,17 +11,17 @@
         "baseURL": "http://localhost:9765/v1",
         "apiKey": "{env:BIFROST_VIRTUAL_KEY}",
         "headers": {
-          "x-bf-store-raw-request-response": "{env:BIFROST_DEBUG}"
-        }
+          "x-bf-store-raw-request-response": "{env:BIFROST_DEBUG}",
+        },
       },
       "models": {
         "model-architect": {
           "name": "Architect (Compat)",
           "limit": { "context": 1048576, "output": 131072 },
           "modalities": { "input": ["text", "image"], "output": ["text"] },
-          "options": { "reasoningEffort": "high" }
-        }
-      }
+          "options": { "reasoningEffort": "high" },
+        },
+      },
     },
     // Using /v1/responses endpoints
     "bifrost": {
@@ -31,8 +31,8 @@
         "baseURL": "http://localhost:9765/openai",
         "apiKey": "{env:BIFROST_VIRTUAL_KEY}",
         "headers": {
-          "x-bf-store-raw-request-response": "{env:BIFROST_DEBUG}"
-        }
+          "x-bf-store-raw-request-response": "{env:BIFROST_DEBUG}",
+        },
       },
       // Data fetched from https://models.dev/catalog.json
       "models": {
@@ -43,8 +43,8 @@
           "options": {
             "reasoningEffort": "high",
             "reasoningSummary": "auto",
-            "forceReasoning": true
-          }
+            "forceReasoning": true,
+          },
         },
         "model-mason": {
           "name": "Mason",
@@ -52,8 +52,8 @@
           "modalities": { "input": ["text"], "output": ["text"] },
           "options": {
             "reasoningEffort": "high",
-            "reasoningSummary": "auto"
-          }
+            "reasoningSummary": "auto",
+          },
         },
         "model-scout": {
           "name": "Scout",
@@ -61,40 +61,40 @@
           "modalities": { "input": ["text", "image"], "output": ["text"] },
           "options": {
             "reasoningEffort": "high",
-            "reasoningSummary": "auto"
-          }
+            "reasoningSummary": "auto",
+          },
         },
         "model-libero": {
           "name": "Libero",
           "limit": { "context": 1050000, "input": 922000, "output": 128000 },
           "modalities": {
             "input": ["text", "image", "pdf"],
-            "output": ["text"]
+            "output": ["text"],
           },
           "options": {
             "reasoningEffort": "high",
-            "reasoningSummary": "auto"
-          }
+            "reasoningSummary": "auto",
+          },
         },
         "model-watchdog": {
           "name": "Watchdog",
           "limit": { "context": 1050000, "input": 922000, "output": 128000 },
           "modalities": {
             "input": ["text", "image", "pdf"],
-            "output": ["text"]
+            "output": ["text"],
           },
           "options": {
             "reasoningEffort": "high",
-            "reasoningSummary": "auto"
-          }
-        }
-      }
-    }
+            "reasoningSummary": "auto",
+          },
+        },
+      },
+    },
   },
   "autoupdate": false,
   "compaction": {
     "auto": true,
-    "prune": true
+    "prune": true,
   },
   "permission": {
     "*": "ask",
@@ -266,8 +266,8 @@
       "rtk npm why *": "allow",
 
       "chezmoi *": "ask",
-      "rtk chezmoi *": "ask"
-    }
+      "rtk chezmoi *": "ask",
+    },
   },
   "default_agent": "plan",
   "agent": {
@@ -276,22 +276,22 @@
       "model": "bifrost/model-architect",
       "prompt": "{file:./PLAN.md}",
       "permission": {
-        "plan_exit": "ask"
-      }
+        "plan_exit": "ask",
+      },
     },
     "build": {
       "color": "#ff6ac1",
       "model": "bifrost/model-mason",
-      "prompt": "{file:./BUILD.md}"
+      "prompt": "{file:./BUILD.md}",
     },
     "general": {
       "color": "#5af78e",
       "mode": "subagent",
       "model": "bifrost/model-libero",
       "permission": {
-        "task": "deny"
+        "task": "deny",
       },
-      "prompt": "{file:./GENERAL.md}"
+      "prompt": "{file:./GENERAL.md}",
     },
     "explore": {
       "color": "#f3f99d",
@@ -299,9 +299,9 @@
       "model": "bifrost/model-scout",
       "permission": {
         "edit": "deny",
-        "task": "deny"
+        "task": "deny",
       },
-      "prompt": "{file:./EXPLORE.md}"
+      "prompt": "{file:./EXPLORE.md}",
     },
     "reviewer": {
       "color": "#ff5c57",
@@ -309,42 +309,43 @@
       "model": "bifrost/model-watchdog",
       "permission": {
         "edit": "deny",
-        "task": "deny"
+        "task": "deny",
       },
-      "prompt": "{file:./REVIEWER.md}"
+      "prompt": "{file:./REVIEWER.md}",
     },
     "compaction": {
-      "model": "bifrost/model-libero"
-    }
+      "color": "#9aedfe",
+      "model": "bifrost/model-libero",
+    },
   },
   "plugin": [
     "superpowers@git+ssh://github.com/ethan605/superpowers.git#c47c96c19706664d42c5cd3603ee71526e3569b9",
     "bifrost-session-metrics-plugin@git+ssh://github.com/ethan605/bifrost-local.git#e649796afdfe1105ea3857e97c060442913c6819",
-    "simple-english@git+ssh://github.com/ethan605/SimpleEnglish.git#81a0f379147f74f374bb22389d6fe3d786d278bb"
+    "simple-english@git+ssh://github.com/ethan605/SimpleEnglish.git#81a0f379147f74f374bb22389d6fe3d786d278bb",
   ],
   "lsp": {
     "pyright": {
-      "disabled": true
+      "disabled": true,
     },
     "basedpyright": {
       "command": ["basedpyright-langserver", "--stdio"],
-      "extensions": [".py", ".pyi"]
-    }
+      "extensions": [".py", ".pyi"],
+    },
   },
   "mcp": {
     "atlassian": {
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.atlassian.com/v1/mcp/authv2",
-      "oauth": {}
+      "oauth": {},
     },
     "auth0": {
       "enabled": false,
       "type": "local",
       "command": ["npx", "-y", "@auth0/auth0-mcp-server", "run"],
       "environment": {
-        "DEBUG": "auth0-mcp"
-      }
+        "DEBUG": "auth0-mcp",
+      },
     },
     "google-docs": {
       "enabled": true,
@@ -352,8 +353,8 @@
       "command": ["npx", "-y", "@a-bonus/google-docs-mcp"],
       "environment": {
         "GOOGLE_CLIENT_ID": "{env:GOOGLE_DOCS_MCP_CLIENT_ID}",
-        "GOOGLE_CLIENT_SECRET": "{env:GOOGLE_DOCS_MCP_CLIENT_SECRET}"
-      }
+        "GOOGLE_CLIENT_SECRET": "{env:GOOGLE_DOCS_MCP_CLIENT_SECRET}",
+      },
     },
     "grafana": {
       "enabled": false,
@@ -361,26 +362,26 @@
       "command": ["uvx", "mcp-grafana"],
       "environment": {
         "GRAFANA_URL": "{env:GRAFANA_URL}",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{env:GRAFANA_SERVICE_ACCOUNT_TOKEN}"
-      }
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{env:GRAFANA_SERVICE_ACCOUNT_TOKEN}",
+      },
     },
     "launchdarkly": {
       "enabled": false,
       "type": "remote",
       "url": "https://mcp.launchdarkly.com/mcp/launchdarkly",
-      "oauth": {}
+      "oauth": {},
     },
     "linear": {
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
-      "oauth": {}
+      "oauth": {},
     },
     "miro": {
       "enabled": false,
       "type": "remote",
       "url": "https://mcp.miro.com",
-      "oauth": {}
+      "oauth": {},
     },
     "neo4j-cypher": {
       "enabled": false,
@@ -390,8 +391,8 @@
         "NEO4J_URI": "{env:NEO4J_URI}",
         "NEO4J_USERNAME": "{env:NEO4J_USERNAME}",
         "NEO4J_PASSWORD": "{env:NEO4J_PASSWORD}",
-        "NEO4J_DATABASE": "{env:NEO4J_DATABASE}"
-      }
+        "NEO4J_DATABASE": "{env:NEO4J_DATABASE}",
+      },
     },
     "okta-integrator": {
       "enabled": false,
@@ -402,8 +403,8 @@
         "OKTA_ORG_URL": "{env:OKTA_ORG_URL}",
         "OKTA_CLIENT_ID": "{env:OKTA_CLIENT_ID}",
         "OKTA_SCOPES": "{env:OKTA_SCOPES}",
-        "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt"
-      }
+        "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt",
+      },
     },
     "postgresql": {
       "enabled": false,
@@ -415,8 +416,8 @@
         "--transport",
         "stdio",
         "--dsn",
-        "{env:POSTGRES_CONNECTION_STRING}"
-      ]
+        "{env:POSTGRES_CONNECTION_STRING}",
+      ],
     },
     "slack": {
       "enabled": true,
@@ -424,16 +425,16 @@
       "url": "https://mcp.slack.com/mcp",
       "oauth": {
         "clientId": "1601185624273.8899143856786",
-        "redirectUri": "http://localhost:3118/callback"
-      }
+        "redirectUri": "http://localhost:3118/callback",
+      },
     },
     "teamcity": {
       "enabled": true,
       "type": "remote",
       "url": "https://live.neo4j-build.io/app/mcp",
       "headers": {
-        "Authorization": "Bearer {env:TC_AUTH_TOKEN}"
-      }
-    }
-  }
+        "Authorization": "Bearer {env:TC_AUTH_TOKEN}",
+      },
+    },
+  },
 }
