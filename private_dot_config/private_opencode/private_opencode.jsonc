@@ -49,11 +49,13 @@
         },
         "model-mason": {
           "name": "Mason",
-          "limit": { "context": 1048573, "output": 262144 },
-          "modalities": { "input": ["text"], "output": ["text"] },
+          "limit": { "context": 1048576, "output": 131072 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
           "options": {
             "reasoningEffort": "high",
             "reasoningSummary": "auto",
+            // NOTE: requires the v3-fixReasoning patch
+            "fixReasoning": true,
           },
         },
         "model-scout": {
