@@ -1,9 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "enabled_providers": ["bifrost", "bifrost-compat"],
+  "enabled_providers": ["bifrost"],
   "provider": {
     // Using /v1/chat/completions endpoints
-    // TODO: revisit when Moonshot make Kimi K3's reasoning stable for /v1/responses endpoints
     "bifrost-compat": {
       "name": "Bifrost",
       "npm": "@ai-sdk/openai-compatible",
@@ -26,6 +25,7 @@
     // Using /v1/responses endpoints
     "bifrost": {
       "name": "Bifrost",
+      // TODO: revisit when @ai-sdk/openai fixes reasoning in history replay
       "npm": "{env:OPENAI_SDK_NPM_PATH}",
       "options": {
         "baseURL": "http://localhost:9765/openai",
@@ -43,7 +43,8 @@
           "options": {
             "reasoningEffort": "high",
             "reasoningSummary": "auto",
-            "forceReasoning": true,
+            // NOTE: requires the v3-fixReasoning patch
+            "fixReasoning": true,
           },
         },
         "model-mason": {

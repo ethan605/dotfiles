@@ -118,7 +118,7 @@ oc() {
   # For Bifrost MCP Gateway
   export BIFROST_VIRTUAL_KEY="$OC_BIFROST_VIRTUAL_KEY"
 
-  export OPENAI_SDK_NPM_PATH="@ai-sdk/openai"
+  export OPENAI_SDK_NPM_PATH="file://$HOME/vercel-ai-sdk/packages/openai"
 
   opencode "$@"
 }

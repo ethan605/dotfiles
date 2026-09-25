@@ -71,7 +71,7 @@ __oc() {
   export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
 
   # For fixReasoning
-  export OPENAI_SDK_NPM_PATH="file://$HOME/personal/ai-sdk-openai-kimi"
+  export OPENAI_SDK_NPM_PATH="file://$HOME/personal/vercel-ai-sdk/packages/openai"
 
   opencode "$@"
 }
