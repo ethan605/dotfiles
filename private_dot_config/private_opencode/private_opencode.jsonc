@@ -43,7 +43,7 @@
           "options": {
             "reasoningEffort": "high",
             "reasoningSummary": "auto",
-            // NOTE: requires the v3-fixReasoning patch
+            // Requires the v3-fixReasoning patch from `npm`
             "fixReasoning": true,
           },
         },
@@ -54,7 +54,7 @@
           "options": {
             "reasoningEffort": "high",
             "reasoningSummary": "auto",
-            // NOTE: requires the v3-fixReasoning patch
+            // Requires the v3-fixReasoning patch from `npm`
             "fixReasoning": true,
           },
         },
@@ -77,6 +77,8 @@
           "options": {
             "reasoningEffort": "high",
             "reasoningSummary": "auto",
+            "store": false,
+            "forceReasoning": true,
           },
         },
         "model-watchdog": {
@@ -89,6 +91,8 @@
           "options": {
             "reasoningEffort": "high",
             "reasoningSummary": "auto",
+            "store": false,
+            "forceReasoning": true,
           },
         },
       },
