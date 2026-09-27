@@ -190,9 +190,7 @@ function classifyQuestionAnswerLabels(
  * preserved. A bare string entry normalizes to `[entry]`; any non-array /
  * non-string entry → undefined (unreadable — callers fail closed).
  */
-function extractQuestionAnswerGroups(
-  raw: unknown,
-): string[][] | undefined {
+function extractQuestionAnswerGroups(raw: unknown): string[][] | undefined {
   if (!Array.isArray(raw)) return undefined;
   const groups: string[][] = [];
   for (const entry of raw) {
@@ -226,9 +224,6 @@ function questionMentionsGit(question: unknown): boolean {
     return false;
   }
 }
-
-/** Reminder parts injected by this plugin into a live message array. */
-const injectedPrimaryReminderParts = new WeakSet<object>();
 
 /** Agents that must NOT spawn subagents via the task tool. */
 const SUBAGENTS = new Set(["general", "explore", "reviewer"]);
@@ -375,7 +370,11 @@ function chunkHasInnerShell(chunk: string): boolean {
     /(?:^|\/)(?:sh|bash|zsh|dash|ksh|ash|fish)$/.test(token);
   for (let index = 0; index < tokens.length; index++) {
     if (!isShellName(tokens[index])) continue;
-    for (let optionIndex = index + 1; optionIndex < tokens.length; optionIndex++) {
+    for (
+      let optionIndex = index + 1;
+      optionIndex < tokens.length;
+      optionIndex++
+    ) {
       if (
         (tokens[optionIndex] === "-c" ||
           /^-[a-z]*c[a-z]*$/.test(tokens[optionIndex])) &&
@@ -447,7 +446,10 @@ function hasOutputRedirect(command: string): boolean {
       index++;
       continue;
     }
-    if (character === "$" && (command[index + 1] === "'" || command[index + 1] === '"')) {
+    if (
+      character === "$" &&
+      (command[index + 1] === "'" || command[index + 1] === '"')
+    ) {
       quote = command[++index] as "'" | '"';
       continue;
     }
@@ -455,7 +457,11 @@ function hasOutputRedirect(command: string): boolean {
       quote = character;
       continue;
     }
-    if (character === "$" && command[index + 1] === "(" && command[index + 2] === "(") {
+    if (
+      character === "$" &&
+      command[index + 1] === "(" &&
+      command[index + 2] === "("
+    ) {
       const arithmeticEnd = measureArithmetic(command, index + 1);
       if (arithmeticEnd === -2) return fallback();
       if (arithmeticEnd > 0) {
@@ -465,7 +471,7 @@ function hasOutputRedirect(command: string): boolean {
     }
     if (character === ";" || character === "|" || character === "\n") {
       const separatorLength =
-        (character === "|" && command[index + 1] === "|") ? 2 : 1;
+        character === "|" && command[index + 1] === "|" ? 2 : 1;
       finishChunk(index, index + separatorLength);
       index += separatorLength - 1;
       continue;
@@ -493,10 +499,7 @@ function hasOutputRedirect(command: string): boolean {
     }
     if (runLength === 1 && next === "&") {
       let targetStart = runEnd + 2;
-      while (
-        command[targetStart] === " " ||
-        command[targetStart] === "\t"
-      ) {
+      while (command[targetStart] === " " || command[targetStart] === "\t") {
         targetStart++;
       }
       const target = command[targetStart];
@@ -2443,48 +2446,6 @@ const SKILL_TRIGGERS: SkillTrigger[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Subagent dispatch reminder config
-// ---------------------------------------------------------------------------
-
-/**
- * Per-prompt-build reminders that keep primary agents on the subagent
- * dispatch loop (explore → general implements → reviewer reviews).
- *
- * Anchor choice: appended to the LATEST user message — the same mechanism
- * opencode itself uses for the (empirically reliable) plan-mode workflow
- * reminder. The dispatch decision happens early in a turn, before tool
- * results stack, which is exactly when this anchor is freshest. If context
- * drift during long tool loops ever proves to be a real problem, the
- * escalation path is `experimental.chat.system.transform` (its input lacks
- * agent info too, so the same sessionAgentMap lookup applies).
- *
- * The resolved latest user message supplies the primary-agent fallback when
- * a first turn transforms before the session map has been populated.
- *
- * Thresholds are taxonomy-based (task kind), NOT line counts — line-count
- * thresholds incentivize code-golfing to dodge dispatch.
- */
-const USE_DISPATCH_REMINDERS = false;
-const PRIMARY_AGENT_TURN_REMINDER_MARKER = "<primary-agent-turn-reminder>";
-
-const DISPATCH_REMINDERS: Record<string, string> = {
-  build: `<system-reminder>
-${PRIMARY_AGENT_TURN_REMINDER_MARKER}
-Dispatch policy (primary agent): default loop is explore → \`general\` implements → \`reviewer\` reviews → repeat until greenlight.
-- Dispatch \`explore\` for unfamiliar code, multi-file analysis, and locating implementations.
-- Dispatch \`general\` for implementation, web research, and multi-step debugging. Parallelise independent tasks only; SAME-FILE tasks run sequentially. Use worktrees only for isolated parallel work.
-- Verify before done: run relevant tests, type checks, lint, and build; use actual output as evidence.
-- Dispatch \`reviewer\` after every implementation or refactor, BEFORE claiming done.
-- Report blockers and material detours promptly. Route scope or design problems back to \`plan\`; do not improvise them.
-Direct work is allowed ONLY for: known typo/string fixes, config tweaks, running verification commands, reading 1–3 known files, or explicit user instruction.
-</system-reminder>`,
-  plan: `<system-reminder>
-${PRIMARY_AGENT_TURN_REMINDER_MARKER}
-Planning policy: research via \`explore\` dispatches — do not bulk-read the codebase yourself. Reserve direct reads for 1–3 specific files you already know. Build a correct, robust masterplan; assign implementation to \`general\` and reviews to \`reviewer\`. Dispatch \`reviewer\` for sign-off on the draft plan before \`plan_exit\`. The harness supplies the plan workflow and plan-file path: follow them. The plan file is the intended edit target; other edits require approval.
-</system-reminder>`,
-};
-
-// ---------------------------------------------------------------------------
 // Plugin
 // ---------------------------------------------------------------------------
 
@@ -2831,26 +2792,6 @@ export const GuardrailsPlugin: Plugin = async () => {
               `\nInvoke these skills using the skill tool if you haven't already.\n</system-reminder>`,
           );
         }
-      }
-
-      // --- 7. Subagent dispatch reminder (plan/build agents only) ---
-      // Transform routing is always determined by the latest required resolved
-      // user agent. The session map is reserved for tool guards because it can
-      // temporarily hold internal agents such as title or summary.
-      if (USE_DISPATCH_REMINDERS) {
-        const agent =
-          lastUserMsg.info.role === "user" ? lastUserMsg.info.agent : undefined;
-        const dispatchReminder = agent ? DISPATCH_REMINDERS[agent] : undefined;
-        if (!dispatchReminder) return;
-
-        // Idempotency applies only to a reminder this plugin inserted into this
-        // in-memory array; user-authored marker text must not suppress injection.
-        const alreadyInjected = lastUserMsg.parts.some((part) =>
-          injectedPrimaryReminderParts.has(part),
-        );
-        if (alreadyInjected) return;
-
-        injectedPrimaryReminderParts.add(appendReminder(dispatchReminder));
       }
     },
   };
