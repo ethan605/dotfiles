@@ -16,9 +16,9 @@
   "lua-language-server": "3.19.1",
   "nginx-language-server": "0.9.0",
   "nixpkgs-fmt": "1.3.0",
-  "prettier": "3.9.8",
+  "prettier": "3.9.9",
   "pyright": "1.1.414",
-  "ruff": "0.16.8",
+  "ruff": "0.16.9",
   "rust-analyzer": "2026-09-21",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.14.1",
@@ -29,7 +29,7 @@
   "tailwindcss-language-server": "0.16.0",
   "terraform-ls": "v0.39.0",
   "tflint": "v0.64.0",
-  "typescript-language-server": "6.0.0",
+  "typescript-language-server": "6.0.1",
   "vim-language-server": "2.3.1",
   "yaml-language-server": "1.24.0"
 }
