@@ -51,24 +51,8 @@ __oc() {
   # For LSP servers
   export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
-  # For google-docs MCP
-  export GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }')
-  export GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1)
-
-  # For grafana MCP
-  export GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/
-  export GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam)
-
-  # For okta-integrator MCP
-  export OKTA_ORG_URL=$(wpass api-keys/okta-integrator-mcp | rg 'org_url:' | awk '{ print $2 }')
-  export OKTA_CLIENT_ID=$(wpass api-keys/okta-integrator-mcp | head -1)
-  export OKTA_SCOPES="okta.users.read okta.users.manage okta.groups.read okta.groups.manage okta.apps.read okta.apps.manage okta.policies.read okta.policies.manage okta.deviceAssurance.read okta.deviceAssurance.manage okta.logs.read okta.brands.read okta.brands.manage okta.templates.read okta.templates.manage okta.domains.read okta.domains.manage okta.emailDomains.read okta.emailDomains.manage"
-
-  # For postgresql MCP
-  # export POSTGRES_CONNECTION_STRING="postgres://postgres:postgres@localhost:5432/postgres"
-
-  # For teamcity MCP
-  export TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token)
+  # For mcphub
+  export MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
 
   # For fixReasoning
   export OPENAI_SDK_NPM_PATH="file://$HOME/personal/vercel-ai-sdk/packages/openai"
@@ -139,16 +123,8 @@ devbox() {
     local oc_envs="
 OC_PORT=$OC_PORT \
 OC_SERVER_PW=$(wpass oc-server-pw) \
-OC_GOOGLE_DOCS_MCP_CLIENT_ID=$(wpass api-keys/google-docs-mcp | rg 'client_id:' | awk '{ print $2 }') \
-OC_GOOGLE_DOCS_MCP_CLIENT_SECRET=$(wpass api-keys/google-docs-mcp | head -1) \
-OC_GRAFANA_URL=https://grafana-deviam.neo4j-dev.io/ \
-OC_GRAFANA_SERVICE_ACCOUNT_TOKEN=$(wpass api-keys/grafana-deviam) \
-OC_NEO4J_URI=$NEO4J_URI \
-OC_NEO4J_USERNAME=$NEO4J_USERNAME \
-OC_NEO4J_PASSWORD=$NEO4J_PASSWORD \
-OC_NEO4J_DATABASE=$NEO4J_DATABASE \
-OC_TC_AUTH_TOKEN=$(wpass api-keys/teamcity-access-token) \
 OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work)
+OC_MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
 "
 
     ssh neo4j-cloud.devpod \

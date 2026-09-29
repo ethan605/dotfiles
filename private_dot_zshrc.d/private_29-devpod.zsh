@@ -98,25 +98,11 @@ oc() {
   # For LSP servers
   export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/share/mise/shims:$PATH"
 
-  # For neo4j-cypher MCP
-  export NEO4J_URI="$OC_NEO4J_URI"
-  export NEO4J_USERNAME="$OC_NEO4J_USERNAME"
-  export NEO4J_PASSWORD="$OC_NEO4J_PASSWORD"
-  export NEO4J_DATABASE="$OC_NEO4J_DATABASE"
-
-  # For google-docs MCP
-  export GOOGLE_DOCS_MCP_CLIENT_ID="$OC_GOOGLE_DOCS_MCP_CLIENT_ID"
-  export GOOGLE_DOCS_MCP_CLIENT_SECRET="$OC_GOOGLE_DOCS_MCP_CLIENT_SECRET"
-
-  # For grafana MCP
-  export GRAFANA_URL="$OC_GRAFANA_URL"
-  export GRAFANA_SERVICE_ACCOUNT_TOKEN="$OC_GRAFANA_SERVICE_ACCOUNT_TOKEN"
-
-  # For teamcity MCP
-  export TC_AUTH_TOKEN="$OC_TC_AUTH_TOKEN"
-
-  # For Bifrost MCP Gateway
+  # For Bifrost LLM Gateway
   export BIFROST_VIRTUAL_KEY="$OC_BIFROST_VIRTUAL_KEY"
+
+  # For MCPHub
+  export MCPHUB_BEARER_TOKEN="$OC_MCPHUB_BEARER_TOKEN"
 
   export OPENAI_SDK_NPM_PATH="file://$HOME/vercel-ai-sdk/packages/openai"
 
