@@ -1,8 +1,8 @@
 session: π
 root: ~
 windows:
-  - name: bifrost
-    root: personal/bifrost-local
+  - name: .agents
+    root: .agents
     layout: main-vertical
 
   - name: config
