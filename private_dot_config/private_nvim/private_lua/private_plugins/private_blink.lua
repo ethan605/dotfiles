@@ -3,7 +3,7 @@ local default_keymaps = {
   ["<S-Tab>"] = { "show_and_insert", "select_prev" },
   ["<Up>"] = { "select_prev", "fallback" },
   ["<Down>"] = { "select_next", "fallback" },
-  ["<CR>"] = { "select_and_accept", "fallback" },
+  ["<CR>"] = { "select_accept_and_enter", "fallback" },
   ["<C-e>"] = { "cancel", "fallback" },
   ["<C-y>"] = { "select_and_accept", "fallback" },
 }
