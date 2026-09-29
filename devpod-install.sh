@@ -60,6 +60,7 @@ __install-system-packages() {
 		usage@latest \
 		uv@latest \
 		vivid@latest \
+		yq@latest \
 		zoxide@latest
 
 	eval "$(mise activate bash)"
