@@ -1,3 +1,13 @@
+local default_keymaps = {
+  ["<Tab>"] = { "accept", "show_and_insert" },
+  ["<S-Tab>"] = { "show_and_insert", "select_prev" },
+  ["<Up>"] = { "select_prev", "fallback" },
+  ["<Down>"] = { "select_next", "fallback" },
+  ["<CR>"] = { "select_and_accept", "fallback" },
+  ["<C-e>"] = { "cancel", "fallback" },
+  ["<C-y>"] = { "select_and_accept", "fallback" },
+}
+
 ---@type LazyPluginSpec
 return {
   "saghen/blink.cmp",
@@ -26,15 +36,7 @@ return {
 
     snippets = { preset = "default" },
 
-    keymap = {
-      preset = "default",
-
-      ["<Tab>"] = { "select_next", "fallback" },
-      ["<S-Tab>"] = { "select_prev", "fallback" },
-      ["<C-e>"] = { "cancel", "fallback" },
-      ["<C-y>"] = { "select_and_accept", "fallback" },
-      ["<CR>"] = { "select_and_accept", "fallback" },
-    },
+    keymap = vim.tbl_extend("keep", { preset = "default" }, default_keymaps),
 
     completion = {
       documentation = {
@@ -52,15 +54,7 @@ return {
     },
 
     cmdline = {
-      keymap = {
-        preset = "cmdline",
-
-        ["<Tab>"] = { "accept", "show_and_insert" },
-        ["<S-Tab>"] = { "show_and_insert", "select_prev" },
-        ["<Up>"] = { "select_prev", "fallback" },
-        ["<Down>"] = { "select_next", "fallback" },
-        ["<CR>"] = { "select_accept_and_enter", "fallback" },
-      },
+      keymap = vim.tbl_extend("keep", { preset = "cmdline" }, default_keymaps),
       completion = { menu = { auto_show = true } },
     },
   },
