@@ -123,7 +123,7 @@ devbox() {
     local oc_envs="
 OC_PORT=$OC_PORT \
 OC_SERVER_PW=$(wpass oc-server-pw) \
-OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work)
+OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) \
 OC_MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
 "
 
