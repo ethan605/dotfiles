@@ -2,6 +2,10 @@
   "exclusionRules": [
     {
       "passKeys": "",
+      "pattern": "https?://docs.google.com/document/*"
+    },
+    {
+      "passKeys": "",
       "pattern": "https?://docs.google.com/spreadsheets/*"
     },
     {
