@@ -31,6 +31,8 @@ __config-sync() {
       -c MasonUpdate \
       -c MasonLockRestore \
       -c qa
+
+  git -C "$HOME/.agents" pull origin main
 }
 
 # `devenv` is bash-only (declare -gA, printf -v, ${!var}, ${BASH_SOURCE}, bash traps/arrays)
