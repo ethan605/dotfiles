@@ -5,6 +5,6 @@ windows:
     root: .agents
     layout: main-vertical
 
-  - name: config
+  - name: .config
     root: .config
     layout: main-vertical
