@@ -13,3 +13,17 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.vifm_replace_netrw = 1
 vim.g.vifm_replace_netrw_cmd = "Vifm"
+
+---@type rest.Opts
+vim.g.rest_nvim = {
+  response = {
+    hooks = {
+      decode_url = true,
+      format = true,
+    },
+  },
+  highlight = {
+    enable = true,
+    timeout = 750,
+  },
+}

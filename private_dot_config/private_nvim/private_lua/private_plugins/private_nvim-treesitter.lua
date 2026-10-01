@@ -18,6 +18,7 @@ return {
       "devicetree",
       "go",
       "gosum",
+      "http",
       "java",
       "javascript",
       "json",

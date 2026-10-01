@@ -41,8 +41,9 @@ local plugins = {
   "OXY2DEV/helpview.nvim",
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
-  "yochem/jq-playground.nvim",
+  "rest-nvim/rest.nvim",
   "vifm/vifm.vim",
+  "yochem/jq-playground.nvim",
 
   { "fei6409/log-highlight.nvim", config = true },
   { "kylechui/nvim-surround",     config = true },
