@@ -95,7 +95,7 @@ oc() {
   export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=1
   export OPENCODE_EXPERIMENTAL_LSP_TOOL=1
   export OPENCODE_EXPERIMENTAL_PARALLEL=1
-  export OPENCODE_EXPERIMENTAL_PLAN_MODE=1
+  export OPENCODE_EXPERIMENTAL_PLAN_MODE=0
 
   # For LSP servers
   export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/share/mise/shims:$PATH"
