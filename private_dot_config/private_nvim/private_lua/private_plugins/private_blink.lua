@@ -2,7 +2,6 @@ local default_keymaps = {
   ["<S-Tab>"] = { "show", "select_prev" },
   ["<Up>"] = { "select_prev", "fallback" },
   ["<Down>"] = { "select_next", "fallback" },
-  ["<CR>"] = { "select_and_accept", "fallback" },
   ["<C-e>"] = { "cancel", "fallback" },
 }
 
@@ -36,7 +35,9 @@ return {
 
     keymap = vim.tbl_extend("keep", default_keymaps, {
       preset = "default",
+
       ["<Tab>"] = { "select_and_accept", "fallback" },
+      ["<CR>"] = { "select_and_accept", "fallback" },
     }),
 
     completion = {
@@ -57,7 +58,9 @@ return {
     cmdline = {
       keymap = vim.tbl_extend("keep", default_keymaps, {
         preset = "cmdline",
+
         ["<Tab>"] = { "show", "select_and_accept" },
+        ["<CR>"] = { "select_accept_and_enter", "fallback" },
       }),
       completion = { menu = { auto_show = true } },
     },

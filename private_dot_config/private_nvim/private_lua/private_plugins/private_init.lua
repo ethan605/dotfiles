@@ -41,7 +41,6 @@ local plugins = {
   "OXY2DEV/helpview.nvim",
   "darfink/vim-plist",
   "mg979/vim-visual-multi",
-  "rest-nvim/rest.nvim",
   "vifm/vifm.vim",
   "yochem/jq-playground.nvim",
 
@@ -86,6 +85,23 @@ local plugins = {
   require("plugins.nvim-window"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
+
+  -- {
+  --   "rest-nvim/rest.nvim",
+  --   ft = "http",
+  --   config = function()
+  --     ---@class rest.Config
+  --     vim.g.rest_nvim = {
+  --     }
+  --
+  --     vim.bo.formatexpr = ""
+  --     vim.bo.formatprg = "jq"
+  --
+  --     vim.keymap.set("n", "<leader>rr", "<cmd>Rest run<CR>", { desc = "Run rest command" })
+  --     vim.keymap.set("n", "<leader>re", "<cmd>Rest env select<CR>", { desc = "Select rest env" })
+  --     vim.keymap.set("n", "<leader>rl", "<cmd>Rest run last<CR>", { desc = "Run last rest command" })
+  --   end,
+  -- },
 }
 
 require("lazy").setup(plugins, opts)
