@@ -31,12 +31,11 @@ rtk = { version = "0.50.0", postinstall = "rtk init -g --opencode" }
 terraform = "1.16.4"
 tree-sitter = "0.27.0"
 uv = "0.12.21"
-java = "openjdk-26.0.2.1"
 
 # And custom tools
 [tools."http:cypher-shell"]
 # Check latest version at: https://neo4j.com/deployment-center/?cypher-shell
-version = "2026.07.1"
+version = "2026.09.0"
 bin = "cypher-shell"
 url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
-checksum = "sha256:beae24efc0bf4bff48498825ac497addce28d932d8c2cbe2e845c7f2fb761d41"
+checksum = "sha256:e0201a56380d13889511ad71ee0239403ddf5c6ec84108698d51b1bc42a5fde4"
