@@ -83,25 +83,9 @@ local plugins = {
   require("plugins.nvim-ufo"),
   require("plugins.nvim-web-devicons"),
   require("plugins.nvim-window"),
+  require("plugins.rest-nvim"),
   require("plugins.smartcolumn"),
   require("plugins.todo-comments"),
-
-  -- {
-  --   "rest-nvim/rest.nvim",
-  --   ft = "http",
-  --   config = function()
-  --     ---@class rest.Config
-  --     vim.g.rest_nvim = {
-  --     }
-  --
-  --     vim.bo.formatexpr = ""
-  --     vim.bo.formatprg = "jq"
-  --
-  --     vim.keymap.set("n", "<leader>rr", "<cmd>Rest run<CR>", { desc = "Run rest command" })
-  --     vim.keymap.set("n", "<leader>re", "<cmd>Rest env select<CR>", { desc = "Select rest env" })
-  --     vim.keymap.set("n", "<leader>rl", "<cmd>Rest run last<CR>", { desc = "Run last rest command" })
-  --   end,
-  -- },
 }
 
 require("lazy").setup(plugins, opts)

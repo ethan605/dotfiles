@@ -138,7 +138,7 @@ return {
     { "g{", ":BufferLineMovePrev<CR>",  desc = "Move buffer to left" },
     { "g}", ":BufferLineMoveNext<CR>",  desc = "Move buffer to right" },
     { "gs", ":BufferLinePick<CR>",      desc = "Pick buffer" },
-    { "gq", ":BufferLinePickClose<CR>", desc = "Pick buffer to close" },
+    { "gX", ":BufferLinePickClose<CR>", desc = "Pick buffer to close" },
     { "gC", ":bdelete!<CR>",            desc = "Close buffer" },
     { "gc", ":close<CR>",               desc = "Force close buffer" },
     { "t[", ":tabprevious<CR>",         desc = "Switch to left tab" },
