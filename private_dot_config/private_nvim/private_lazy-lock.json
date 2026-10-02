@@ -6,7 +6,7 @@
   "csvview.nvim": { "branch": "main", "commit": "2466bdda54047f525d4faca53040fe657c9c33db" },
   "dashboard-nvim": { "branch": "master", "commit": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe" },
   "diffview.nvim": { "branch": "main", "commit": "875d16dd8c8aa86f1a5c3b5cef49e1133980ae94" },
-  "fzf-lua": { "branch": "main", "commit": "eab53acb3fd36479f084f854b4418d02b5c70382" },
+  "fzf-lua": { "branch": "main", "commit": "d5c12c6d72ed84554f0f8dacb84f20da094b6a2d" },
   "gitlinker.nvim": { "branch": "master", "commit": "1fa9fc0c384a57b5e3ee8b454a4e61c987c06eb1" },
   "gitsigns.nvim": { "branch": "main", "commit": "070a5d7b985546cc57e1fc61e5bc507fecac6045" },
   "helpview.nvim": { "branch": "main", "commit": "06006b471890f19efeb199ffab5da49a2d624619" },
@@ -51,7 +51,7 @@
   "smartcolumn.nvim": { "branch": "main", "commit": "3a760dc239de71264072f829a184aafcf7d4d3e7" },
   "spring-boot.nvim": { "branch": "main", "commit": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
-  "vifm.vim": { "branch": "master", "commit": "4327c00ecc8c3dcefb5f898bbfaa2ca20bac9927" },
+  "vifm.vim": { "branch": "master", "commit": "a2a66fd3c43144dad1fb15e9e99a7fcdb77707a3" },
   "vim-plist": { "branch": "master", "commit": "aa781a387c70a9ea30cbce8da988e19693f5aaec" },
   "vim-snazzy": { "branch": "master", "commit": "d979964b4dc0d6860f0803696c348c5a912afb9e" },
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" }
