@@ -101,9 +101,11 @@ oc() {
   export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/share/mise/shims:$PATH"
 
   # For Bifrost LLM Gateway
+  export BIFROST_BASE_URL=localhost:9765
   export BIFROST_VIRTUAL_KEY="$OC_BIFROST_VIRTUAL_KEY"
 
   # For MCPHub
+  export MCPHUB_BASE_URL=localhost:3579
   export MCPHUB_BEARER_TOKEN="$OC_MCPHUB_BEARER_TOKEN"
 
   export OPENAI_SDK_NPM_PATH="file://$HOME/vercel-ai-sdk/packages/openai"

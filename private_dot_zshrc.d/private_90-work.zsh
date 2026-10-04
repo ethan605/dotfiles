@@ -51,7 +51,11 @@ __oc() {
   # For LSP servers
   export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
-  # For mcphub
+  # For Bifrost LLM Gateway
+  export BIFROST_BASE_URL=localhost:9765
+
+  # For MCPHub
+  export MCPHUB_BASE_URL=localhost:3579
   export MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
 
   # For fixReasoning
