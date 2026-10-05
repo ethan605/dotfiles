@@ -48,6 +48,8 @@
   clean = git-lfs clean -- %f
 [init]
   defaultBranch = main
+[worktree]
+  useRelativePaths = true
 
 {{- if eq .chezmoi.os "darwin" }}
 
