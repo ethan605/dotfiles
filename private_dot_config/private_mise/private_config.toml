@@ -11,14 +11,14 @@ luajit = "2.1.1744318430"
 node = "26.10.0"
 python = "3.14.8"
 ruby = "4.0.7"
-rust = "1.98.1"
+rust = "1.99.0"
 
 # Then tools
-awscli = { version = "2.37.8", symlink_bins = "true" }
+awscli = { version = "2.37.9", symlink_bins = "true" }
 azure = { version = "2.90.0", uvx_args = "--prerelease=allow" }
 bun = "1.4.2"
 clang-format = "23.1.2"
-cmake = "4.4.3"
+cmake = "4.4.4"
 coursier = { version = "2.1.26", exe = "cs" }
 gcloud = { version = "587.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
 gh = "2.102.0"
@@ -27,11 +27,11 @@ make = "4.4.1"
 maven = "3.10.0"
 ninja = "1.13.2"
 opencode = "1.18.34"
-pi = "0.99.2"
-rtk = { version = "0.50.0", postinstall = "rtk init -g --opencode" }
-terraform = "1.16.4"
+pi = "1.0.2"
+rtk = { version = "0.51.0", postinstall = "rtk init -g --opencode" }
+terraform = "1.16.5"
 tree-sitter = "0.27.0"
-uv = "0.12.21"
+uv = "0.12.23"
 
 # And custom tools
 [tools."http:cypher-shell"]
