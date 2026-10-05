@@ -27,6 +27,7 @@ __install-system-packages() {
 
 	mise use -g --pin \
 		go@1.25 \
+		lua@5.1 \
 		node@20.20 \
 		python@3.10 \
 		yarn@1.22.22
@@ -49,7 +50,6 @@ __install-system-packages() {
 		kubectx@latest \
 		kubens@latest \
 		kustomize@latest \
-		lua@latest \
 		neovim@latest \
 		opencode@latest \
 		ripgrep@latest \
