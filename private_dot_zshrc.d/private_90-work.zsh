@@ -41,50 +41,6 @@ devbox() {
   LC_MONETARY=C.UTF-8 LC_NUMERIC=C.UTF-8 LC_TIME=C.UTF-8
 
   ssh neo4j-cloud.devpod
-
-#   local for_oc=false
-#
-#   while (("$#")); do
-#     case "$1" in
-#     --for-oc)
-#       for_oc=true
-#       shift
-#       ;;
-#     *)
-#       shift
-#       ;;
-#     esac
-#   done
-#
-#   if [[ "$for_oc" == "true" ]]; then
-#     __random-passwd | wpass insert --echo --force oc-server-pw
-#
-#     if lsof -Pi ":$OC_PORT" -sTCP:LISTEN -t >/dev/null; then
-#       echo "Port $OC_PORT is in use"
-#       return 1
-#     fi
-#
-#     if [[ -z "$NEO4J_URI" ]]; then
-#       source "$HOME/work/queries/deviam-neostore/.envrc"
-#     fi
-#
-#     local oc_envs="
-# OC_PORT=$OC_PORT \
-# OC_SERVER_PW=$(wpass oc-server-pw) \
-# OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) \
-# OC_MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
-# "
-#
-#     ssh neo4j-cloud.devpod \
-#       -o "SetEnv $oc_envs" \
-#       -L "$OC_PORT::$OC_PORT"
-#   else
-#     ssh neo4j-cloud.devpod
-#   fi
 }
 
 alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
-
-# export OC_PORT=45678
-# alias ocbox='devbox --for-oc'
-# alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.1:$OC_PORT'
