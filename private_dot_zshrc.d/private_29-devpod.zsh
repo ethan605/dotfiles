@@ -83,37 +83,4 @@ __devenv() {
   return $rc
 }
 
-oc() {
-  # Stable features
-  export OPENCODE_DISABLE_CLAUDE_CODE=1
-  export OPENCODE_DISABLE_LSP_DOWNLOAD=1
-  export OPENCODE_DISABLE_TERMINAL_TITLE=1
-  export OPENCODE_ENABLE_EXA=1
-  export OPENCODE_SERVER_PASSWORD=$OC_SERVER_PW
-
-  # Experimental features
-  export OPENCODE_EXPERIMENTAL=1
-  export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=1
-  export OPENCODE_EXPERIMENTAL_LSP_TOOL=1
-  export OPENCODE_EXPERIMENTAL_PARALLEL=1
-  export OPENCODE_EXPERIMENTAL_PLAN_MODE=0
-
-  # For LSP servers
-  export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/share/mise/shims:$PATH"
-
-  # For Bifrost LLM Gateway
-  export BIFROST_BASE_URL=localhost:9765
-  export BIFROST_VIRTUAL_KEY="$OC_BIFROST_VIRTUAL_KEY"
-
-  # For MCPHub
-  export MCPHUB_BASE_URL=localhost:3579
-  export MCPHUB_BEARER_TOKEN="$OC_MCPHUB_BEARER_TOKEN"
-
-  export OPENAI_SDK_NPM_PATH="file://$HOME/vercel-ai-sdk/packages/openai"
-
-  opencode "$@"
-}
-
 alias ak='goak'
-alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
-alias ocserve='oc serve --port=$OC_PORT --log-level=INFO'
