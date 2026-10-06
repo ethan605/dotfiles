@@ -1,6 +1,6 @@
 {
   "autotools-language-server": "0.1.3",
-  "basedpyright": "1.40.1",
+  "basedpyright": "1.40.2",
   "bash-language-server": "5.8.1",
   "clang-format": "23.1.2",
   "cpplint": "2.0.2",
