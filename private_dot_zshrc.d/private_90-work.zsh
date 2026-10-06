@@ -1,9 +1,7 @@
 # vim:filetype=zsh
 export WORK_DIR="$HOME/work"
-export OC_PORT=45678
 
 if [[ -f "$WORK_DIR/.zshrc" ]]; then
-  # shellcheck disable=SC1091
   source "$WORK_DIR/.zshrc"
 fi
 
@@ -20,62 +18,6 @@ alias psql-prd-us-rw!='psql $(wpass postgres/uri-prd-us-rw)'
 __random-passwd() {
   tr -dc 'A-Za-z0-9!#&()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom |
     head -c 32
-}
-
-__wpass-insert() {
-  local pass_name=${1}
-  wpass insert --force --multiline "$pass_name" >/dev/null
-
-  echo "Loaded $pass_name to wpass"
-}
-
-__oc() {
-  if [[ -z $BIFROST_VIRTUAL_KEY ]]; then
-    echo "Missing env var \$BIFROST_VIRTUAL_KEY"
-    return 1
-  fi
-
-  # Stable features
-  export OPENCODE_DISABLE_CLAUDE_CODE=1
-  export OPENCODE_DISABLE_LSP_DOWNLOAD=1
-  export OPENCODE_DISABLE_TERMINAL_TITLE=1
-  export OPENCODE_ENABLE_EXA=1
-
-  # Experimental features
-  export OPENCODE_EXPERIMENTAL=1
-  export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=1
-  export OPENCODE_EXPERIMENTAL_LSP_TOOL=1
-  export OPENCODE_EXPERIMENTAL_PARALLEL=1
-  export OPENCODE_EXPERIMENTAL_PLAN_MODE=0
-
-  # For LSP servers
-  export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-
-  # For Bifrost LLM Gateway
-  export BIFROST_BASE_URL=localhost:9765
-
-  # For MCPHub
-  export MCPHUB_BASE_URL=localhost:3579
-  export MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
-
-  # For fixReasoning
-  export OPENAI_SDK_NPM_PATH="file://$HOME/personal/vercel-ai-sdk/packages/openai"
-
-  opencode "$@"
-}
-
-dbee-clickhouse() {
-  export SQL_TARGET=clickhouse
-
-  export DBEE_CONNECTIONS='[
-    { "type": "clickhouse", "name": "5-clickhouse-local", "url": "'$(wpass clickhouse/uri-local)'" },
-    { "type": "clickhouse", "name": "4-clickhouse-dev", "url": "'$(wpass clickhouse/uri-dev)'?secure=true" },
-    { "type": "clickhouse", "name": "3-clickhouse-stg", "url": "'$(wpass clickhouse/uri-stg)'?secure=true" },
-    { "type": "clickhouse", "name": "2-clickhouse-prd-us-ro", "url": "'$(wpass clickhouse/uri-prd-us-ro)'?secure=true" },
-    { "type": "clickhouse", "name": "1-clickhouse-prd-eu-ro", "url": "'$(wpass clickhouse/uri-prd-eu-ro)'?secure=true" }
-  ]'
-
-  nvim +Dbee
 }
 
 dbee-postgres() {
@@ -98,52 +40,51 @@ devbox() {
   LC_ALL=C LC_COLLATE=C.UTF-8 LC_CTYPE=C.UTF-8 LC_MESSAGES=C.UTF-8
   LC_MONETARY=C.UTF-8 LC_NUMERIC=C.UTF-8 LC_TIME=C.UTF-8
 
-  local for_oc=false
+  ssh neo4j-cloud.devpod
 
-  while (("$#")); do
-    case "$1" in
-    --for-oc)
-      for_oc=true
-      shift
-      ;;
-    *)
-      shift
-      ;;
-    esac
-  done
-
-  if [[ "$for_oc" == "true" ]]; then
-    __random-passwd | wpass insert --echo --force oc-server-pw
-
-    if lsof -Pi ":$OC_PORT" -sTCP:LISTEN -t >/dev/null; then
-      echo "Port $OC_PORT is in use"
-      return 1
-    fi
-
-    if [[ -z "$NEO4J_URI" ]]; then
-      source "$HOME/work/queries/deviam-neostore/.envrc"
-    fi
-
-    local oc_envs="
-OC_PORT=$OC_PORT \
-OC_SERVER_PW=$(wpass oc-server-pw) \
-OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) \
-OC_MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
-"
-
-    ssh neo4j-cloud.devpod \
-      -o "SetEnv $oc_envs" \
-      -L "$OC_PORT::$OC_PORT"
-  else
-    ssh neo4j-cloud.devpod
-  fi
+#   local for_oc=false
+#
+#   while (("$#")); do
+#     case "$1" in
+#     --for-oc)
+#       for_oc=true
+#       shift
+#       ;;
+#     *)
+#       shift
+#       ;;
+#     esac
+#   done
+#
+#   if [[ "$for_oc" == "true" ]]; then
+#     __random-passwd | wpass insert --echo --force oc-server-pw
+#
+#     if lsof -Pi ":$OC_PORT" -sTCP:LISTEN -t >/dev/null; then
+#       echo "Port $OC_PORT is in use"
+#       return 1
+#     fi
+#
+#     if [[ -z "$NEO4J_URI" ]]; then
+#       source "$HOME/work/queries/deviam-neostore/.envrc"
+#     fi
+#
+#     local oc_envs="
+# OC_PORT=$OC_PORT \
+# OC_SERVER_PW=$(wpass oc-server-pw) \
+# OC_BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) \
+# OC_MCPHUB_BEARER_TOKEN=$(wpass mcphub/bearer-token)
+# "
+#
+#     ssh neo4j-cloud.devpod \
+#       -o "SetEnv $oc_envs" \
+#       -L "$OC_PORT::$OC_PORT"
+#   else
+#     ssh neo4j-cloud.devpod
+#   fi
 }
 
 alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
-alias ocp='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-personal) __oc'
-alias ocw='BIFROST_VIRTUAL_KEY=$(wpass bifrost/vk-opencode-work) __oc'
 
-alias ocbox='devbox --for-oc'
-alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.1:$OC_PORT'
-
-alias oc2='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" npx @opencode/cli'
+# export OC_PORT=45678
+# alias ocbox='devbox --for-oc'
+# alias ocattach='opencode attach --password=$(wpass oc-server-pw) http://127.0.0.1:$OC_PORT'
