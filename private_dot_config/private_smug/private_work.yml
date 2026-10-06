@@ -1,11 +1,11 @@
 session: ω
 root: ~/work/neo4j-cloud
 windows:
-  - name: ocbox
+  - name: oc
     root: ""
     layout: main-vertical
 
-  - name: octui
+  - name: worktrees
     root: ""
     layout: main-vertical
 

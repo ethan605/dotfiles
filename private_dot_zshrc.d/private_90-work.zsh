@@ -44,3 +44,9 @@ devbox() {
 }
 
 alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
+
+alias ocp='opencode attach --password=$(wpass opencode-server/personal-pw) http://127.0.0.1:4096'
+compdef ocp=opencode
+
+alias ocw='opencode attach --password=$(wpass opencode-server/work-pw) http://127.0.0.1:4097'
+compdef ocw=opencode
