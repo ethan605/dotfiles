@@ -14,13 +14,13 @@ ruby = "4.0.7"
 rust = "1.99.0"
 
 # Then tools
-awscli = { version = "2.37.9", symlink_bins = "true" }
+awscli = { version = "2.37.10", symlink_bins = "true" }
 azure = { version = "2.90.0", uvx_args = "--prerelease=allow" }
 bun = "1.4.2"
 clang-format = "23.1.2"
 cmake = "4.4.4"
 coursier = { version = "2.1.26", exe = "cs" }
-gcloud = { version = "587.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
+gcloud = { version = "588.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
 gh = "2.102.0"
 jb = "0.6.0"
 make = "4.4.1"

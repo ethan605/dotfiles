@@ -12,3 +12,5 @@ mise.toml
 # OpenCode
 .ignore
 .opencode/plans
+opencode.jsonc
+!opencode/opencode.jsonc
