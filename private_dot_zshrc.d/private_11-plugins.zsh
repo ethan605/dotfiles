@@ -104,7 +104,6 @@ __autocmp-opencode() {
     fi
     source "$_zcache/opencode.zsh"
 
-    compdef __oc=opencode
     compdef ocw=opencode
     compdef ocp=opencode
   fi
