@@ -4,11 +4,11 @@ lockfile = true
 
 [tools]
 # Languages first
-clang = "23.1.2"
+clang = "23.1.3"
 go = "1.27.1"
 lua = "5.1"
 luajit = "2.1.1744318430"
-node = "26.10.0"
+node = "26.11.1"
 python = "3.14.8"
 ruby = "4.0.7"
 rust = "1.99.0"
@@ -17,7 +17,7 @@ rust = "1.99.0"
 awscli = { version = "2.37.10", symlink_bins = "true" }
 azure = { version = "2.90.0", uvx_args = "--prerelease=allow" }
 bun = "1.4.2"
-clang-format = "23.1.2"
+clang-format = "23.1.3"
 cmake = "4.4.4"
 coursier = { version = "2.1.26", exe = "cs" }
 gcloud = { version = "588.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
@@ -26,7 +26,7 @@ jb = "0.6.0"
 make = "4.4.1"
 maven = "3.10.0"
 ninja = "1.13.2"
-opencode = "1.18.34"
+opencode = "1.18.35"
 rtk = { version = "0.51.0", postinstall = "rtk init -g --opencode" }
 terraform = "1.16.5"
 tree-sitter = "0.27.0"
@@ -39,3 +39,10 @@ version = "2026.09.0"
 bin = "cypher-shell"
 url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
 checksum = "sha256:e0201a56380d13889511ad71ee0239403ddf5c6ec84108698d51b1bc42a5fde4"
+
+[tools."http:opencode2"]
+version = "2.0.24"
+bin = "opencode"
+rename_exe = { "opencode" = "opencode2" }
+url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
+checksum = "sha256:64036a08d34959638a67e09137add101259abb4c8f50d2bf75bc7112ff8c8042"
