@@ -1,4 +1,5 @@
 # vim:filetype=zsh
+export OPENCHAMBER_SKIP_LOCAL_SERVER=1
 export WORK_DIR="$HOME/work"
 
 if [[ -f "$WORK_DIR/.zshrc" ]]; then
