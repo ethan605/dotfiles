@@ -103,9 +103,6 @@ __autocmp-opencode() {
       zcompile -R "$_zcache/opencode.zsh" 2>/dev/null
     fi
     source "$_zcache/opencode.zsh"
-
-    compdef ocw=opencode
-    compdef ocp=opencode
   fi
 }
 
