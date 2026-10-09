@@ -45,5 +45,5 @@ devbox() {
 }
 
 alias ocs="opencode session list | fzf --header-lines=2 --sync | awk '{ print \$1 }' | tr -d '\n'"
-alias ocp='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" OPENCODE_SERVER_PASSWORD=$(wpass opencode-server/personal-pw) opencode2 --server=http://localhost:4096 "$@"'
+alias ocp='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" OPENCODE_SERVER_PASSWORD=$(wpass opencode-server/personal-pw) opencode2 --server=http://$(docker inspect opencode-personal | jq -r ".[0].NetworkSettings.Networks.dotagents_default.IPAddress"):4096 "$@"'
 alias ocw='opencode attach --password=$(wpass opencode-server/personal-pw) http://127.0.0.1:4097'

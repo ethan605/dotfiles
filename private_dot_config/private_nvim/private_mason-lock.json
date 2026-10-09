@@ -22,7 +22,7 @@
   "rust-analyzer": "2026-10-05",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.14.1",
-  "solargraph": "0.60.4",
+  "solargraph": "0.61.0",
   "sqlfluff": "4.4.0",
   "sqls": "v0.2.48",
   "stylua": "v2.5.2",

@@ -168,6 +168,7 @@ in
       "logi-options+"
       "macshot"
       "megasync"
+      "openchamber"
       "telegram"
       "whatsapp"
 

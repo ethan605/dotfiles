@@ -14,7 +14,7 @@ ruby = "4.0.7"
 rust = "1.99.0"
 
 # Then tools
-awscli = { version = "2.37.10", symlink_bins = "true" }
+awscli = { version = "2.37.11", symlink_bins = "true" }
 azure = { version = "2.90.0", uvx_args = "--prerelease=allow" }
 bun = "1.4.2"
 clang-format = "23.1.3"
