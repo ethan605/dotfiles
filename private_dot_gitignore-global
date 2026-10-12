@@ -1,7 +1,5 @@
 # vim:filetype=gitignore
 **/.worktrees
-**/docs/plans/*.md
-**/docs/superpowers
 **/node_modules
 **/tmp
 .envrc
@@ -11,6 +9,7 @@ mise.toml
 
 # OpenCode
 .ignore
-.opencode/plans
-opencode.jsonc
-!opencode/opencode.jsonc
+**/.opencode/plan/
+**/.opencode/plans/
+**/docs/plans/
+**/docs/superpowers/
