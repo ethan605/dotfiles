@@ -9,6 +9,7 @@ mise.toml
 
 # OpenCode
 .ignore
+**/.opencode/opencode.json?
 **/.opencode/plan/
 **/.opencode/plans/
 **/docs/plans/
