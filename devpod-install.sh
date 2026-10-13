@@ -16,52 +16,33 @@ __install-system-packages() {
 
 	sudo apt-get upgrade -y &&
 		sudo apt-get install --no-install-recommends -y \
-			git libyaml-dev python3-venv vifm zsh &&
+			git libyaml-dev python3-venv vifm &&
 		sudo apt-get autoremove -y &&
 		sudo apt-get clean -y &&
 		sudo rm -rf /var/lib/apt/lists/*
 
 	curl -fsSL https://mise.run | sh
 
-	mise set -g GOBIN="$HOME/go/bin"
-
-	mise use -g --pin \
-		go@1.25 \
-		lua@5.1 \
-		node@20.20 \
-		python@3.10 \
-		yarn@1.22.22
+	mise use -g --pin lua@5.1
 
 	mise use -g \
-		awscli@latest \
-		azure@latest \
 		bat@latest \
-		bottom@latest \
-		bun@latest \
 		chezmoi@latest \
 		delta@latest \
 		direnv@latest \
 		eza@latest \
 		fd@latest \
 		fzf@latest \
-		gcloud@latest \
-		gh@latest \
+		hyperfine@latest \
 		kubecolor@latest \
 		kubectx@latest \
 		kubens@latest \
 		kustomize@latest \
 		neovim@latest \
-		opencode@latest \
 		ripgrep@latest \
-		rtk@latest \
-		ruby@latest \
-		rust@latest \
 		starship@latest \
 		tree-sitter@latest \
-		usage@latest \
-		uv@latest \
 		vivid@latest \
-		yq@latest \
 		zoxide@latest
 
 	eval "$(mise activate bash)"
@@ -70,12 +51,6 @@ __install-system-packages() {
 __configure-bash() {
 	rm -rf ~/.local/share/fzf-tab-completion
 	git clone https://github.com/lincheney/fzf-tab-completion ~/.local/share/fzf-tab-completion
-}
-
-__configure-zsh() {
-	rm -rf ~/.zim
-	curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-	zsh -ic 'zimfw build && zimfw compile'
 }
 
 __configure-chezmoi() {
@@ -103,6 +78,5 @@ __configure-nvim() {
 
 __install-system-packages &&
 	__configure-bash &&
-	__configure-zsh &&
 	__configure-chezmoi &&
 	__configure-nvim
