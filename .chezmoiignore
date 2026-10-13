@@ -111,7 +111,7 @@ Library
 .zlogout
 .zprofile
 .zshenv
-.zshrc.d/*
+.zshrc*
 
 {{- else }}
 
