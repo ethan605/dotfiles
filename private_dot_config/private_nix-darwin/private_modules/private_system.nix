@@ -49,6 +49,7 @@
             "${home-dir}/Applications/Home Manager Apps/Firefox.app"
             # "${pkgs.firefox}/Applications/Firefox.app"
             dock-spacer
+            "/Applications/OpenChamber.app"
             "/Applications/Slack.app"
             "/Applications/Linear.app"
             dock-spacer
