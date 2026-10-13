@@ -116,7 +116,6 @@ Library
 {{- else }}
 
 .config/devpod
-.zshrc.d/29-devpod.zsh
 
 {{- end }}
 # >>>
