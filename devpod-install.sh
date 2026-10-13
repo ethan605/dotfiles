@@ -37,7 +37,6 @@ __install-system-packages() {
 		kubecolor@latest \
 		kubectx@latest \
 		kubens@latest \
-		kustomize@latest \
 		neovim@latest \
 		ripgrep@latest \
 		starship@latest \
