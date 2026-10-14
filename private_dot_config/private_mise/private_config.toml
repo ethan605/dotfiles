@@ -41,9 +41,9 @@ url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
 checksum = "sha256:e0201a56380d13889511ad71ee0239403ddf5c6ec84108698d51b1bc42a5fde4"
 
 [tools."http:opencode2"]
-# Check latest version at https://github.com/anomalyco/opencode/tags
-version = "2.0.27"
+# Check latest version at: https://github.com/anomalyco/opencode/tags
+version = "2.0.28"
 bin = "opencode"
 rename_exe = { "opencode" = "opencode2" }
 url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
-checksum = "sha256:391b1061dc3f1f4394b7fd19513b2e6ff12f31739ee12f33880506ed6ee008bc"
+checksum = "sha256:0fbb2c8778f7ec45e92cd2f0c90fca47e0255ef501091298dd85d1f93a1a04ef"
