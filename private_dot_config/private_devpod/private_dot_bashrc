@@ -82,10 +82,10 @@ gwc() {
 
 gwm() {
   local worktrees
-  worktrees=$(g worktree list | fzf --header-lines=1 --multi | awk '{ print $1 }' | tr -d '\n')
+  worktrees=$(g worktree list | fzf --header-lines=1 --multi | awk '{ print $1 }')
 
-  [[ -z $worktree ]] && return 1
-  echo "$worktrees"
+  [[ -z $worktrees ]] && return 1
+  echo "${worktrees[@]}"
 }
 
 alias __devenv='source devenv && make environment && make environments-env'
