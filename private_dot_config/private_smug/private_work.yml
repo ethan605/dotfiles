@@ -1,7 +1,7 @@
 session: ω
 root: ~/work/neo4j-cloud
 windows:
-  - name: oc
+  - name: devbox
     root: ""
     layout: main-vertical
 
