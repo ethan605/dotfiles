@@ -74,6 +74,20 @@ __config-sync() {
       -c qa
 }
 
+gwc() {
+  local worktree
+  worktree=$(g worktree list | fzf --header-lines=1 | awk '{ print $1 }' | tr -d '\n')
+  cd "$worktree" || return 1
+}
+
+gwm() {
+  local worktrees
+  worktrees=$(g worktree list | fzf --header-lines=1 --multi | awk '{ print $1 }' | tr -d '\n')
+
+  [[ -z $worktree ]] && return 1
+  echo "$worktrees"
+}
+
 alias __devenv='source devenv && make environment && make environments-env'
 
 alias c=chezmoi
