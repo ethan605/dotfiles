@@ -6,6 +6,10 @@ export PATH="$HOME/.local/bin:$PATH"
 __install-system-packages() {
 	cat "$HOME/.config/devbox/$DEVPOD_WORKSPACE_UID/ubuntu_pw" | sudo -S apt update
 
+  if ! grep -wq orbstack /etc/hosts; then
+    printf "127.0.0.1\torbstack" | sudo tee -a /etc/hosts
+  fi
+
 	sudo add-apt-repository main -y &&
 		sudo add-apt-repository universe -y &&
 		sudo add-apt-repository restricted -y &&
