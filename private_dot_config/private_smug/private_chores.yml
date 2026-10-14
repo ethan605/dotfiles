@@ -38,7 +38,9 @@ windows:
       - root: ./mise
         commands:
           - mise plugins update &&
-            mise upgrade --bump --interactive --exclude=lua &&
+            mise upgrade --bump --interactive \
+              --exclude=kubectl \
+              --exclude=lua &&
             mise cache prune
 
   - name: nvim

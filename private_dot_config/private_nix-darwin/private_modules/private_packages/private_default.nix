@@ -38,7 +38,6 @@ let
     devpod
     k9s
     kubecolor
-    kubectl
     kubectx
     orbstack
   ];
