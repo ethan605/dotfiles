@@ -54,7 +54,7 @@ vim.lsp.enable({
   "ruff",
   "rust_analyzer",
   "solargraph",
-  "sqls",
+  -- "sqls", -- temp
   "tailwindcss",
   "terraformls",
   "tsls",
