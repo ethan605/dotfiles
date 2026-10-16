@@ -6,6 +6,7 @@
 .null-ls*
 junit.xml
 mise.toml
+mise.lock
 
 # OpenCode
 .ignore
