@@ -28,4 +28,4 @@ dwd() {
   fi
 }
 
-alias oc2='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" opencode2 "$@"'
+alias oc2='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" XDG_CACHE_HOME="$HOME/.oc2/cache" opencode2'
