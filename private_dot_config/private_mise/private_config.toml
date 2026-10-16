@@ -22,8 +22,8 @@ gcloud = { version = "589.0.0", postinstall = "gcloud components install $(cat ~
 gh = "2.102.0"
 kubectl = "1.35.9"
 maven = "3.10.0"
-opencode = "1.19.0"
-terraform = "1.16.5"
+opencode = "1.19.2"
+terraform = "1.16.6"
 tree-sitter = "0.27.1"
 uv = "0.13.1"
 
@@ -37,8 +37,8 @@ checksum = "sha256:e0201a56380d13889511ad71ee0239403ddf5c6ec84108698d51b1bc42a5f
 
 [tools."http:opencode2"]
 # Check latest version at: https://github.com/anomalyco/opencode/tags
-version = "2.0.29"
+version = "2.0.30"
 bin = "opencode"
 rename_exe = { "opencode" = "opencode2" }
 url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
-checksum = "sha256:cde9292948a79f910384b246ebec90dce02654158ad63cec61ed912aabc7f601"
+checksum = "sha256:1d5cb2a30272f070c9c55b6d8895bda1d1929e7702f5e6beb02b5d3a17de8961"
