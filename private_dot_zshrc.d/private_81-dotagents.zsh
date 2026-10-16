@@ -1,4 +1,5 @@
-# .agents docker-compose
+export OPENCHAMBER_SKIP_LOCAL_SERVER=1
+
 alias dcompose='docker compose -p dotagents'
 alias dexec='dcompose exec'
 
@@ -26,3 +27,5 @@ dwd() {
     dexec -w "$workdir" "opencode-$variant" "$@"
   fi
 }
+
+alias oc2='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" opencode2 "$@"'

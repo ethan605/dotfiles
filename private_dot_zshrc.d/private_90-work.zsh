@@ -1,5 +1,4 @@
 # vim:filetype=zsh
-export OPENCHAMBER_SKIP_LOCAL_SERVER=1
 export WORK_DIR="$HOME/work"
 
 if [[ -f "$WORK_DIR/.zshrc" ]]; then
@@ -43,5 +42,3 @@ devbox() {
 
   ssh neo4j-cloud.devpod
 }
-
-alias oc2='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" opencode2 "$@"'

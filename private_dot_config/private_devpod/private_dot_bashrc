@@ -23,6 +23,13 @@ export FZF_CTRL_R_OPTS='
   --header="Press CTRL-Y to copy command into clipboard"
 '
 
+# For sandbox docker client
+export DOCKER_HOST=tcp://opencode-sandbox.orb.local:2376
+export DOCKER_TLS_VERIFY=1
+export DOCKER_CERT_PATH=/home/opencode/.docker/sandbox
+export TESTCONTAINERS_RYUK_DISABLED=false
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/run/user/502/docker.sock
+
 export PATH="$HOME/.local/bin/:$PATH"
 
 # === Keybinds ===
