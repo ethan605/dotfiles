@@ -5,7 +5,7 @@ lockfile = true
 [tools]
 # Languages first
 clang = "23.1.3"
-go = "1.27.2"
+go = "1.27.3"
 lua = "5.1"
 luajit = "2.1.1744318430"
 node = "26.12.0"
@@ -18,27 +18,28 @@ bun = "1.4.3"
 clang-format = "23.1.3"
 cloudflared = "2026.10.1"
 cmake = "4.4.4"
-gcloud = { version = "589.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
+difftastic = "latest"
+gcloud = { version = "590.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
 gh = "2.102.0"
 kubectl = "1.35.9"
 maven = "3.10.0"
 opencode = "1.19.3"
 terraform = "1.16.6"
 tree-sitter = "0.27.1"
-uv = "0.13.1"
+uv = "0.13.3"
 
 # And custom tools
 [tools."http:cypher-shell"]
 # Check latest version at: https://neo4j.com/deployment-center/?cypher-shell
-version = "2026.09.0"
+version = "2026.10.0"
 bin = "cypher-shell"
 url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
-checksum = "sha256:e0201a56380d13889511ad71ee0239403ddf5c6ec84108698d51b1bc42a5fde4"
+checksum = "sha256:2d5859c25fafd174253b3601b8df369bc7b7d4f53b13d93d8056bbb29521219f"
 
 [tools."http:opencode2"]
 # Check latest version at: https://github.com/anomalyco/opencode/tags
-version = "2.0.32"
+version = "2.1.2"
 bin = "opencode"
 rename_exe = { "opencode" = "opencode2" }
 url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
-checksum = "sha256:e431e369025ba9554445d0ea8ad65457fbca59aa385ca790724ec6ab488d271b"
+checksum = "sha256:1051221bbce68e541f432be07d58beb66c1827dae9e04417a49f56115e0e0d4c"
