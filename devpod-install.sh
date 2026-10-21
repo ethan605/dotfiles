@@ -33,6 +33,7 @@ __install-system-packages() {
 		bat@latest \
 		chezmoi@latest \
 		delta@latest \
+		difftastic@latest \
 		direnv@latest \
 		eza@latest \
 		fd@latest \
