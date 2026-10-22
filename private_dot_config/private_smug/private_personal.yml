@@ -1,10 +1,10 @@
 session: π
 root: ~
 windows:
-  - name: .agents
+  - name: agents
     root: .agents
     layout: main-vertical
 
-  - name: .config
+  - name: config
     root: .config
     layout: main-vertical
