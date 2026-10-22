@@ -118,5 +118,6 @@ alias vim=nvim
 alias vserve='nvim --headless --listen 127.0.0.1:45678'
 
 alias k=kubecolor
+alias f=vifm
 alias rm='rm -i'
 alias where=which
