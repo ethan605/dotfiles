@@ -61,6 +61,7 @@ link-previews = false
 link-url = true
 macos-custom-icon = ~/.config/ghostty/tokyo-night.icns
 macos-icon = custom
+macos-option-as-alt = true
 quit-after-last-window-closed = false
 title = ""
 window-decoration = none
