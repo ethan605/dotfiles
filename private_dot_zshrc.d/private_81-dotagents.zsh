@@ -28,4 +28,4 @@ dwd() {
   fi
 }
 
-alias oc2='XDG_CONFIG_HOME="$HOME/.oc2" XDG_DATA_HOME="$HOME/.oc2/data" XDG_STATE_HOME="$HOME/.oc2/state" XDG_CACHE_HOME="$HOME/.oc2/cache" opencode2'
+alias oc1='XDG_CONFIG_HOME="$HOME/.oc1" XDG_DATA_HOME="$HOME/.oc1/data" XDG_STATE_HOME="$HOME/.oc1/state" XDG_CACHE_HOME="$HOME/.oc1/cache" "$HOME/.local/share/mise/installs/opencode/latest/opencode"'

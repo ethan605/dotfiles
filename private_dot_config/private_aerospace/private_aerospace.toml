@@ -162,7 +162,7 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 
 [[on-window-detected]]
   if.app-id = 'dev.openchamber.desktop'
-  run = ['layout floating', 'move-node-to-workspace 5']
+  run = ['move-node-to-workspace 5']
 
 [[on-window-detected]]
   if.app-id = 'com.tinyspeck.slackmacgap'
