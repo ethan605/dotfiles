@@ -99,7 +99,7 @@ __autocmp-kubectl() {
 __autocmp-opencode() {
   if (( ${+commands[opencode]} )); then
     if [[ ! $_zcache/opencode.zsh -nt ${commands[opencode]} ]]; then
-      opencode completion >| "$_zcache/opencode.zsh"
+      opencode --completions zsh >| "$_zcache/opencode.zsh"
       zcompile -R "$_zcache/opencode.zsh" 2>/dev/null
     fi
     source "$_zcache/opencode.zsh"
