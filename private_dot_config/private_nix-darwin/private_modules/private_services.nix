@@ -6,6 +6,7 @@
   launchd.user.agents = {
     aerospace = {
       serviceConfig = {
+        ProcessType = "Background";
         ProgramArguments = [
           "/usr/bin/open"
           "-b"
@@ -16,15 +17,32 @@
       };
     };
 
+    # launchd lifecycle:
+    #   - boot-up:    launchctl bootstrap     "gui/$(id -u)" ~/Library/LaunchAgents/org.nixos.caffeinate.plist
+    #   - run:        launchctl kickstart -k  "gui/$(id -u)/org.nixos.caffeinate"
+    #   - stop:       launchctl kill SIGINT   "gui/$(id -u)/org.nixos.caffeinate"
+    #   - tear-down:  launchctl bootout       "gui/$(id -u)" ~/Library/LaunchAgents/org.nixos.caffeinate.plist
+    caffeinate = {
+      serviceConfig = {
+        ProcessType = "Interactive";
+        ProgramArguments = [
+          "/usr/bin/caffeinate"
+          "-dimsu"
+        ];
+        RunAtLoad = false;
+        KeepAlive = false;
+      };
+    };
+
     mpd = {
       serviceConfig = {
+        ProcessType = "Interactive";
         ProgramArguments = [
           "${pkgs.mpd}/bin/mpd"
           "--no-daemon"
           "--verbose"
           "${home-dir}/.config/mpd/mpd.conf"
         ];
-        ProcessType = "Interactive";
         RunAtLoad = true;
         KeepAlive = true;
         StandardErrorPath = "/tmp/mpd.stderr.log";
