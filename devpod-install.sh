@@ -44,6 +44,7 @@ __install-system-packages() {
 		kubens@latest \
 		neovim@latest \
 		ripgrep@latest \
+		rust@latest \
 		starship@latest \
 		tree-sitter@latest \
 		vivid@latest \
