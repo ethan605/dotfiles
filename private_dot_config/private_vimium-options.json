@@ -2,10 +2,6 @@
   "exclusionRules": [
     {
       "passKeys": "",
-      "pattern": "https?://docs.google.com/document/*"
-    },
-    {
-      "passKeys": "",
       "pattern": "https?://docs.google.com/spreadsheets/*"
     },
     {
@@ -31,6 +27,14 @@
     {
       "passKeys": "",
       "pattern": "https?://www.how-to-type.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://docs.google.com/document/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://excalidraw.com/*"
     }
   ],
   "grabBackFocus": true,

@@ -10,17 +10,17 @@ lua = "5.1"
 luajit = "2.1.1744318430"
 node = "26.12.1"
 python = "3.15.1"
-ruby = "4.0.8"
+ruby = "4.0.9"
 rust = "1.99.1"
 
 # Then tools
-bun = "1.4.3"
+bun = "1.4.4"
 clang-format = "23.1.4"
 cloudflared = "2026.10.3"
 cmake = "4.4.4"
 difftastic = "latest"
-gcloud = { version = "590.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
-gh = "2.103.0"
+gcloud = { version = "590.0.1", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
+gh = "2.103.2"
 kubectl = "1.35.9"
 maven = "3.10.0"
 terraform = "1.17.0"
@@ -38,7 +38,7 @@ checksum = "sha256:2d5859c25fafd174253b3601b8df369bc7b7d4f53b13d93d8056bbb295212
 
 [tools."http:opencode2"]
 # Check latest version at: https://github.com/anomalyco/opencode/tags
-version = "2.1.2"
+version = "2.1.4"
 bin = "opencode"
 url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
-checksum = "sha256:1051221bbce68e541f432be07d58beb66c1827dae9e04417a49f56115e0e0d4c"
+checksum = "sha256:f9edc1dded080e39aa61db94270a51af66772ac572be7d6b15fa6f87251a3dff"

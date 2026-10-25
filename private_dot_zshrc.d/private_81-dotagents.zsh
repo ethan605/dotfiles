@@ -2,6 +2,7 @@ export OPENCHAMBER_SKIP_LOCAL_SERVER=1
 
 alias dcompose='docker compose -p dotagents'
 alias dexec='dcompose exec'
+alias dup='dcompose up -d --force-recreate -t0'
 
 dwd() {
   local container_dir=/home/opencode/data
