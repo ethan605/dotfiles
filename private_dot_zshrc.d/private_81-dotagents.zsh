@@ -4,6 +4,14 @@ alias dcompose='docker compose -p dotagents'
 alias dexec='dcompose exec'
 alias dup='dcompose up -d --force-recreate -t0'
 
+dbx() {
+  set -a
+  source "$HOME/.docker-sandbox-client/.envrc"
+  set +a
+
+  docker "$@"
+}
+
 dwd() {
   local container_dir=/home/opencode/data
   local pwd=$(pwd)

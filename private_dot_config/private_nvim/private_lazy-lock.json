@@ -5,7 +5,7 @@
   "codesnap.nvim": { "branch": "main", "commit": "207907f3eea4c9d695d48a6baf906e530e09972d" },
   "csvview.nvim": { "branch": "main", "commit": "f190de76d2eca0380ddcb2425cd582d740699b55" },
   "dashboard-nvim": { "branch": "master", "commit": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe" },
-  "diffview.nvim": { "branch": "main", "commit": "b297353e82c0390a2ca0c549b1c1acb6802e0c4c" },
+  "diffview.nvim": { "branch": "main", "commit": "3aba39f4d1704cc7aa26af487ab5579b5c614437" },
   "fidget.nvim": { "branch": "main", "commit": "9e0201673e08e997e7cf52afca5565c70bd117f3" },
   "fzf-lua": { "branch": "main", "commit": "5b88d6f0af7fcb41d4a8bb340bf70d7e3824ee9d" },
   "gitlinker.nvim": { "branch": "master", "commit": "b710fe0e0c997236104f43db49905ab67f8d1f64" },
