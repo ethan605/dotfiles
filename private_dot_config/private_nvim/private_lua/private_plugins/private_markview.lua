@@ -14,6 +14,7 @@ return {
   ---@type markview.config
   opts = {
     preview = {
+      enable = false,
       filetypes = supported_filetypes,
       icon_provider = "internal",
       ignore_buftypes = { "nofile" },
