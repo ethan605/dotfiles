@@ -11,6 +11,7 @@ dbx() {
 
   docker "$@"
 }
+compdef dbx=docker
 
 dwd() {
   local container_dir=/home/opencode/data
