@@ -43,7 +43,6 @@
             };
           in
           [
-            # "/Applications/Ghostty.app"
             "/Applications/Nix Apps/Ghostty.app"
             dock-spacer
             "/Applications/Google Chrome.app"

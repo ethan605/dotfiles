@@ -30,16 +30,6 @@ __load-zim() {
     rm -rf $XDG_CACHE_HOME/zsh/*.zsh* >/dev/null'
 }
 
-__autocmp-devpod() {
-  if (( ${+commands[devpod]} )); then
-    if [[ ! $_zcache/devpod.zsh -nt ${commands[devpod]} ]]; then
-      devpod completion zsh >| "$_zcache/devpod.zsh"
-      zcompile -R "$_zcache/devpod.zsh" 2>/dev/null
-    fi
-    source "$_zcache/devpod.zsh"
-  fi
-}
-
 __autocmp-gcloud() {
   local gcloud_dir=$(mise where gcloud 2>/dev/null)
 
@@ -176,7 +166,6 @@ __configure-aliases() {
 
 __load-mise
 __load-zim
-# __autocmp-devpod
 # __autocmp-gcloud
 __autocmp-gh
 __autocmp-gt
