@@ -5,11 +5,13 @@ alias dexec='dcompose exec'
 alias dup='dcompose up -d --force-recreate -t0'
 
 dbx() {
-  set -a
-  source "$HOME/.docker-sandbox-client/.envrc"
-  set +a
+  (
+    set -a
+    source "$HOME/.docker-sandbox-client/.envrc"
+    set +a
 
-  docker "$@"
+    docker "$@"
+  )
 }
 compdef dbx=docker
 
