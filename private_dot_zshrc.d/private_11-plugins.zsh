@@ -166,6 +166,12 @@ __configure-aliases() {
   if (( ${+commands[vifm]} )); then
     alias f=vifm
   fi
+
+  if (( ${+commands[viddy]} )); then
+    alias w='viddy --disable_auto_save -dstwx'
+  else
+    alias w=watch
+  fi
 }
 
 __load-mise
