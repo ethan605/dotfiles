@@ -38,7 +38,7 @@ checksum = "sha256:cd3604b5bcaa45079d2ea64746ae9bbc880a262d09f92d4d8fa89576fd048
 
 [tools."http:opencode2"]
 # Check latest version at: https://github.com/anomalyco/opencode/tags
-version = "2.2.0"
+version = "2.2.1"
 bin = "opencode"
 url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
-checksum = "sha256:c71b1cd96541539ad38e2a75377d2f43d2a27567289a14371a182e9a0800db3d"
+checksum = "sha256:9df6ca3d031565c61080c717374ba846d238ec5b1c411eebe6b1b85835998ffe"
