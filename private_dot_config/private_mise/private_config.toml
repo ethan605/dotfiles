@@ -23,7 +23,7 @@ gcloud = { version = "591.0.0", postinstall = "gcloud components install $(cat ~
 gh = "2.103.3"
 kubectl = "1.35.9"
 maven = "3.10.0"
-terraform = "1.17.0"
+terraform = "1.17.1"
 tree-sitter = "0.27.1"
 uv = "0.13.6"
 postgres = "18.6"

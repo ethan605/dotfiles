@@ -26,7 +26,7 @@
   "sqls": "v0.2.48",
   "stylua": "v2.6.0",
   "tailwindcss-language-server": "0.16.0",
-  "terraform-ls": "v0.39.0",
+  "terraform-ls": "v0.39.1",
   "tflint": "v0.65.0",
   "typescript-language-server": "6.0.2",
   "vim-language-server": "2.3.1",

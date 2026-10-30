@@ -33,7 +33,7 @@ ${custom.proxy}\
 $line_break\
 $jobs\
 $nix_shell\
-${custom.devpod}\
+${custom.devbox}\
 ${custom.venv}\
 $character"""
 
@@ -105,9 +105,9 @@ success_symbol = "[λ](bold blue)"
 vicmd_symbol = "[ε](bold purple)"
 
 # Custom
-[custom.devpod]
-command = "echo $DEVPOD_WORKSPACE_ID"
-when = 'test "$DEVPOD_WORKSPACE_ID" != ""'
+[custom.devbox]
+command = "echo $DEVBOX_WORKSPACE_ID"
+when = 'test "$DEVBOX_WORKSPACE_ID" != ""'
 format = "[$symbol$output]($style) "
 style = "#bb53ff"
 symbol = " "
