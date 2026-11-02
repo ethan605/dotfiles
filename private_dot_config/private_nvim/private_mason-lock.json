@@ -22,7 +22,7 @@
   "rust-analyzer": "2026-10-26",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.14.1",
-  "sqlfluff": "4.4.0",
+  "sqlfluff": "4.5.0",
   "sqls": "v0.2.48",
   "stylua": "v2.6.0",
   "tailwindcss-language-server": "0.16.0",
