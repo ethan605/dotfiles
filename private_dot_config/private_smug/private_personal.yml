@@ -5,6 +5,10 @@ windows:
     root: .agents
     layout: main-vertical
 
+  - name: worktrees
+    root: .agents
+    layout: main-vertical
+
   - name: config
     root: .config
     layout: main-vertical
