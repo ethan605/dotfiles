@@ -1,6 +1,7 @@
 # vim:filetype=bash
 # shellcheck disable=SC2148
 # === Environments ===
+export DEVBOX_WORKSPACE_ID=devpod
 export BAT_THEME=base16
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
