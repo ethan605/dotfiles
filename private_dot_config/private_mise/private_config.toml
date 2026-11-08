@@ -31,14 +31,14 @@ postgres = "18.6"
 # And custom tools
 [tools."http:cypher-shell"]
 # Check latest version at: https://neo4j.com/deployment-center/?cypher-shell
-version = "2026.10.1"
+version = "2026.10.2"
 bin = "cypher-shell"
 url = "https://dist.neo4j.org/cypher-shell/cypher-shell-{{ version }}.zip"
-checksum = "sha256:cd3604b5bcaa45079d2ea64746ae9bbc880a262d09f92d4d8fa89576fd0484b8"
+checksum = "sha256:b60df0d21b3b236e4a4f359277477f5595b3d8a6253eaa2226f724641ff2677c"
 
 [tools."http:opencode2"]
 # Check latest version at: https://github.com/anomalyco/opencode/tags
-version = "2.2.5"
+version = "2.2.6"
 bin = "opencode"
 url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
-checksum = "sha256:25ba9908979fa7d764792c82589b4b5768ab1511154e0317d98aa77d216ce767"
+checksum = "sha256:15491608f6b0bc4debe5eac35eab629a2b07ea9a1fbac68ad53bcea59fcc4b45"
