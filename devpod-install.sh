@@ -10,13 +10,13 @@ __install-system-packages() {
     printf "127.0.0.1\torbstack" | sudo tee -a /etc/hosts
   fi
 
+	sudo apt-key export 65F8F04B | sudo gpg --dearmour --yes -o /etc/apt/trusted.gpg.d/adoptium.gpg
+
 	sudo add-apt-repository main -y &&
 		sudo add-apt-repository universe -y &&
 		sudo add-apt-repository restricted -y &&
 		sudo add-apt-repository multiverse -y &&
 		sudo add-apt-repository ppa:git-core/ppa -y
-
-	sudo apt-key export 65F8F04B | sudo gpg --dearmour --yes -o /etc/apt/trusted.gpg.d/adoptium.gpg
 
 	sudo apt-get upgrade -y &&
 		sudo apt-get install --no-install-recommends -y \
