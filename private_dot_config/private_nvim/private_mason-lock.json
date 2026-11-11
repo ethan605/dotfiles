@@ -19,7 +19,7 @@
   "prettier": "3.9.10",
   "pyright": "1.1.414",
   "ruff": "0.17.4",
-  "rust-analyzer": "2026-11-02",
+  "rust-analyzer": "2026-11-09",
   "shellcheck": "v0.11.0",
   "shfmt": "v3.14.1",
   "sqlfluff": "4.5.0",
