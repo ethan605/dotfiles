@@ -2,6 +2,7 @@ export OPENCHAMBER_SKIP_LOCAL_SERVER=1
 
 alias dcompose='docker compose'
 alias dagents='docker compose -p dotagents'
+alias dtests='docker compose -p dotagents-tests'
 alias dbnc='dagents build --no-cache'
 alias dexec='dagents exec'
 alias dup='dagents up -d --force-recreate -t0'

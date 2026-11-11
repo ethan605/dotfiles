@@ -29,8 +29,8 @@
           "/usr/bin/caffeinate"
           "-dimsu"
         ];
-        RunAtLoad = false;
-        KeepAlive = false;
+        RunAtLoad = true;
+        KeepAlive = true;
       };
     };
 
