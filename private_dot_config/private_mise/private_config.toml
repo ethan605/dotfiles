@@ -4,22 +4,22 @@ lockfile = true
 
 [tools]
 # Languages first
-clang = "23.1.4"
-go = "1.27.3"
+clang = "23.1.5"
+go = "1.27.4"
 lua = "5.1"
 luajit = "2.1.1744318430"
-node = "26.13.0"
+node = "26.13.1"
 python = "3.15.2"
 ruby = "4.0.9"
 rust = "1.99.1"
 
 # Then tools
 bun = "1.4.4"
-clang-format = "23.1.4"
+clang-format = "23.1.5"
 cloudflared = "2026.10.7"
 cmake = "4.4.5"
 difftastic = "latest"
-gcloud = { version = "592.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
+gcloud = { version = "593.0.0", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
 gh = "2.103.3"
 kubectl = "1.35.9"
 maven = "3.10.0"
@@ -38,7 +38,7 @@ checksum = "sha256:b60df0d21b3b236e4a4f359277477f5595b3d8a6253eaa2226f724641ff26
 
 [tools."http:opencode2"]
 # Check latest version at: https://github.com/anomalyco/opencode/tags
-version = "2.2.6"
+version = "2.2.7"
 bin = "opencode"
 url = "https://opencode.ai/files/bin/{{ version }}/opencode-darwin-arm64.zip"
-checksum = "sha256:15491608f6b0bc4debe5eac35eab629a2b07ea9a1fbac68ad53bcea59fcc4b45"
+checksum = "sha256:811c42be9cad489ea8c411ead49e06f691deee4957ba9a0a56a159a7d6c1abdc"
