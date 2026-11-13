@@ -128,12 +128,11 @@ let
     appcleaner
     ghostty-bin
     syncthing-macos
-    # thunderbird
-    # zed-editor
   ];
 in
 {
   fonts.packages = with pkgs; [
+    nunito-sans
     roboto-mono
     source-code-pro
     self-host-fonts

@@ -183,6 +183,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
   run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
+  if.app-id = 'com.utmapp.UTM'
+  run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
   if.app-id = 'dev.kdrag0n.MacVirt'
   run = ['layout floating', 'move-node-to-workspace 4']
 
