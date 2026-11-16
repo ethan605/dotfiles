@@ -33,7 +33,6 @@ ${custom.proxy}\
 $line_break\
 $jobs\
 $nix_shell\
-${custom.devbox}\
 ${custom.venv}\
 $character"""
 
@@ -44,11 +43,14 @@ style = "bold red"
 symbol = "󰯄 "
 
 [username]
-format = "[$user]($style) "
+format = "[$user]($style)"
+detect_env_vars = ["STARSHIP_SHOW_HOSTNAME"]
 
 [hostname]
-format = "[@]($style) [$hostname]($style) "
-style = "bright-black"
+format = "[@]($style)[$hostname]($style) "
+style = "#ff70cd"
+ssh_only = false
+detect_env_vars = ["STARSHIP_SHOW_HOSTNAME"]
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style)"
@@ -105,13 +107,6 @@ success_symbol = "[λ](bold blue)"
 vicmd_symbol = "[ε](bold purple)"
 
 # Custom
-[custom.devbox]
-command = "echo $DEVBOX_WORKSPACE_ID"
-when = 'test "$DEVBOX_WORKSPACE_ID" != ""'
-format = "[$symbol$output]($style) "
-style = "#bb53ff"
-symbol = " "
-
 [custom.proxy]
 command = 'echo $HTTPS_PROXY | sed "s/http\:\/\///gi;s/\/$//gi"'
 when = 'test "$HTTPS_PROXY" != ""'
