@@ -179,6 +179,10 @@ on-focus-changed = ['move-mouse monitor-lazy-center']
 ### Floating windows ###
 
 [[on-window-detected]]
+  if.app-id = 'com.apple.Image_Capture'
+  run = ['layout floating', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
   if.app-id = 'com.bitcavehq.Airflow'
   run = ['layout floating', 'move-node-to-workspace 4']
 
