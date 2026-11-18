@@ -50,7 +50,6 @@ vim.api.nvim_create_autocmd("FileType", {
     "typescriptreact",
     "yaml",
     "yaml.docker-compose",
-    "zsh",
   },
   callback = function() vim.treesitter.start() end,
 })

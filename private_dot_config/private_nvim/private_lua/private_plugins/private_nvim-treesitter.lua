@@ -35,7 +35,6 @@ return {
       "tsx",
       "typescript",
       "yaml",
-      "zsh",
     })
 
     local textobjects = require("nvim-treesitter-textobjects")
