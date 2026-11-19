@@ -43,3 +43,10 @@ dwd() {
     dexec -w "$workdir" "opencode-$variant" "$@"
   fi
 }
+
+__restore-envs() {
+  builtin cd -- $(mktemp -d)
+  age_file=$(fd 'dotagents-env.*.tar.age' "$HOME/.agents/db-backup/backups" | fzf)
+  age --decrypt --identity=<(pass dotagents/env-backup-age | head -1) "$age_file" >| ./dotagents-env.tar.gz
+  tar --list --file=dotagents-env.tar.gz
+}
