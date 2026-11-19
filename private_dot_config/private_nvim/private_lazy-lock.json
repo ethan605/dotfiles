@@ -14,7 +14,7 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d" },
   "jq-playground.nvim": { "branch": "main", "commit": "8bf7d17677d837e62575ddaa48906f4cc21e89bc" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
-  "leap.nvim": { "branch": "main", "commit": "277e04fad21e3af05a55cc414757b09a704f2a92" },
+  "leap.nvim": { "branch": "main", "commit": "5af48b78f6c1310ab1f61131d785387faae4cdd4" },
   "live-preview.nvim": { "branch": "main", "commit": "dad92ae9599f9b19a7dffe7d597d3376c110b818" },
   "log-highlight.nvim": { "branch": "main", "commit": "b2e00cfd41ca94338265a595f3f3f423d9f9322e" },
   "lua-mimetypes": { "branch": "main", "commit": "7c899be0c402067d11e50d802f0135ba64eccb51" },
