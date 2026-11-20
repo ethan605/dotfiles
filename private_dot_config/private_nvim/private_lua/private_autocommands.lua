@@ -32,6 +32,8 @@ vim.api.nvim_create_autocmd("FileType", {
     "cpp",
     "dts",
     "gitconfig",
+    "gitcommit",
+    "gitrebase",
     "go",
     "gosum",
     "hcl",

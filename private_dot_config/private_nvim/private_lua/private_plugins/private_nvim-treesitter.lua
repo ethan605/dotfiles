@@ -18,6 +18,8 @@ return {
       "cpp",
       "devicetree",
       "git_config",
+      "git_rebase",
+      "gitcommit",
       "go",
       "gosum",
       "hcl",
