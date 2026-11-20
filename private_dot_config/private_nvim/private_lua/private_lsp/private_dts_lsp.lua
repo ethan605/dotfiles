@@ -1,7 +1,7 @@
 ---@type vim.lsp.Config
 return {
   cmd = { "devicetree-language-server", "--stdio" },
-  filetypes = { "dts", "dtsi" },
+  filetypes = { "dts" },
   root_markers = { ".zephyr", ".git", "." },
   settings = {
     devicetree = {
