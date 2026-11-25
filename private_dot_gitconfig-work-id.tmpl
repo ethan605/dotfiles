@@ -1,8 +1,9 @@
 # vim:filetype=gitconfig
 [user]
   email = {{ .work_email }}
+  signingkey = ~/.ssh/id_ecdsa.token2.pub
+  # signingkey = ~/.ssh/id_ecdsa.yubikey.pub
   # signingkey = {{ .work_gpg_id }}
-  signingkey = ~/.ssh/id_ecdsa.work.pub
 [gpg]
   format = ssh
 [gpg "ssh"]
