@@ -86,6 +86,10 @@ let
     libassuan
     pinentry_mac
 
+    opensc
+    # openpgp-card-tools
+    # sequoia-sq
+
     keybase
     openssh
     yubikey-manager
