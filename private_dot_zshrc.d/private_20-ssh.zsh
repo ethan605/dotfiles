@@ -26,6 +26,12 @@ __gpg-fix-scd() {
   gpg-connect-agent --hex "scd apdu 00A4040006${aid}" /bye
 }
 
+__pkcs11-ssh() {
+  local provider="$(nix eval --raw 'nixpkgs#opensc')/lib/opensc-pkcs11.so"
+  launchctl kickstart -k "gui/$(id -u)/org.nixos.pkcs11-ssh-agent"
+  SSH_AUTH_SOCK="$HOME/.ssh/pkcs11-ssh-agent.sock" ssh-add -s "$provider"
+}
+
 # Defer `gpg-connect-agent updatestartuptty` to the first prompt (off the critical path).
 __gpg-update-tty() {
   gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
