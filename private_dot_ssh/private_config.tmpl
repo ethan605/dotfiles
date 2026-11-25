@@ -31,7 +31,9 @@ Host github.work
   Hostname github.com
   User git
   IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_ecdsa.work
-  IdentityFile ~/.ssh/id_ed25519.work           # For break-glass only
+  IdentityAgent ~/.ssh/token2-piv.sock
+  IdentityFile ~/.ssh/id_ecdsa.token2
+  IdentityFile ~/.ssh/id_ecdsa.yubikey
+  # IdentityFile ~/.ssh/id_ed25519.openpgp           # For break-glass only
 
 {{- end }}
