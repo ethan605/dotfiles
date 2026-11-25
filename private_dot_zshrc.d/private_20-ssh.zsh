@@ -28,8 +28,12 @@ __gpg-fix-scd() {
 
 __pkcs11-ssh() {
   local provider="$(nix eval --raw 'nixpkgs#opensc')/lib/opensc-pkcs11.so"
+  local sock="$HOME/.ssh/pkcs11-ssh-agent.sock"
+
   launchctl kickstart -k "gui/$(id -u)/org.nixos.pkcs11-ssh-agent"
-  SSH_AUTH_SOCK="$HOME/.ssh/pkcs11-ssh-agent.sock" ssh-add -s "$provider"
+  until [[ -S $sock ]]; do sleep 1; done
+
+  SSH_AUTH_SOCK="$sock" ssh-add -s "$provider"
 }
 
 # Defer `gpg-connect-agent updatestartuptty` to the first prompt (off the critical path).
