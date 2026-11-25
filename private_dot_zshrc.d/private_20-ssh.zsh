@@ -26,11 +26,11 @@ __gpg-fix-scd() {
   gpg-connect-agent --hex "scd apdu 00A4040006${aid}" /bye
 }
 
-__pkcs11-ssh() {
+__piv-ssh() {
   local provider="$(nix eval --raw 'nixpkgs#opensc')/lib/opensc-pkcs11.so"
-  local sock="$HOME/.ssh/pkcs11-ssh-agent.sock"
+  local sock="$HOME/.ssh/piv-ssh-agent.sock"
 
-  launchctl kickstart -k "gui/$(id -u)/org.nixos.pkcs11-ssh-agent"
+  launchctl kickstart -k "gui/$(id -u)/org.nixos.piv-ssh-agent"
   until [[ -S $sock ]]; do sleep 1; done
 
   SSH_AUTH_SOCK="$sock" ssh-add -s "$provider"

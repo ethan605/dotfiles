@@ -65,7 +65,7 @@
       '';
     };
 
-    pkcs11-ssh-agent = {
+    piv-ssh-agent = {
       environment = {
         OPENSC_DRIVER = "PIV-II";
       };
@@ -76,14 +76,14 @@
           "${pkgs.openssh}/bin/ssh-agent"
           "-d"
           "-a"
-          "${home-dir}/.ssh/pkcs11-ssh-agent.sock"
+          "${home-dir}/.ssh/piv-ssh-agent.sock"
           "-P"
           "${pkgs.opensc}/lib/opensc-pkcs11.so"
         ];
         RunAtLoad = true;
         KeepAlive = true;
-        StandardErrorPath = "/tmp/pkcs11-ssh-agent.stderr.log";
-        StandardOutPath = "/tmp/pkcs11-ssh-agent.stdout.log";
+        StandardErrorPath = "/tmp/piv-ssh-agent.stderr.log";
+        StandardOutPath = "/tmp/piv-ssh-agent.stdout.log";
       };
     };
   };
