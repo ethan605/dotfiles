@@ -21,6 +21,11 @@ fi
 
 export GPG_TTY=$TTY
 
+__gpg-fix-scd() {
+  aid=$(gpg-connect-agent 'scd serialno' /bye | awk '/^S SERIALNO/ { print substr($3,1,12) }')
+  gpg-connect-agent --hex "scd apdu 00A4040006${aid}" /bye
+}
+
 # Defer `gpg-connect-agent updatestartuptty` to the first prompt (off the critical path).
 __gpg-update-tty() {
   gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1

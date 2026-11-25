@@ -64,5 +64,27 @@
         done
       '';
     };
+
+    pkcs11-ssh-agent = {
+      environment = {
+        OPENSC_DRIVER = "PIV-II";
+      };
+
+      serviceConfig = {
+        ProcessType = "Interactive";
+        ProgramArguments = [
+          "${pkgs.openssh}/bin/ssh-agent"
+          "-d"
+          "-a"
+          "${home-dir}/.ssh/pkcs11-ssh-agent.sock"
+          "-P"
+          "${pkgs.opensc}/lib/opensc-pkcs11.so"
+        ];
+        RunAtLoad = true;
+        KeepAlive = true;
+        StandardErrorPath = "/tmp/pkcs11-ssh-agent.stderr.log";
+        StandardOutPath = "/tmp/pkcs11-ssh-agent.stdout.log";
+      };
+    };
   };
 }
