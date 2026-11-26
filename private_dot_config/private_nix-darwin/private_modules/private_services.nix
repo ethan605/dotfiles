@@ -3,6 +3,11 @@
 {
   services.sketchybar.enable = true;
 
+  # launchd lifecycle:
+  #   - boot-up:    launchctl bootstrap     "gui/$(id -u)" ~/Library/LaunchAgents/org.nixos.${service}.plist
+  #   - run:        launchctl kickstart -k  "gui/$(id -u)/org.nixos.${service}"
+  #   - stop:       launchctl kill SIGINT   "gui/$(id -u)/org.nixos.${service}"
+  #   - tear-down:  launchctl bootout       "gui/$(id -u)" ~/Library/LaunchAgents/org.nixos.${service}.plist
   launchd.user.agents = {
     aerospace = {
       serviceConfig = {
@@ -17,11 +22,6 @@
       };
     };
 
-    # launchd lifecycle:
-    #   - boot-up:    launchctl bootstrap     "gui/$(id -u)" ~/Library/LaunchAgents/org.nixos.caffeinate.plist
-    #   - run:        launchctl kickstart -k  "gui/$(id -u)/org.nixos.caffeinate"
-    #   - stop:       launchctl kill SIGINT   "gui/$(id -u)/org.nixos.caffeinate"
-    #   - tear-down:  launchctl bootout       "gui/$(id -u)" ~/Library/LaunchAgents/org.nixos.caffeinate.plist
     caffeinate = {
       serviceConfig = {
         ProcessType = "Interactive";
@@ -79,6 +79,8 @@
           "${home-dir}/.ssh/piv-ssh-agent.sock"
           "-P"
           "${pkgs.opensc}/lib/opensc-pkcs11.so"
+          "-t"
+          "1h"
         ];
         RunAtLoad = true;
         KeepAlive = true;

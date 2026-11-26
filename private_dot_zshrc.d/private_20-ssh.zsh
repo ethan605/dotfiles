@@ -30,10 +30,12 @@ __piv-ssh() {
   local provider="$(nix eval --raw 'nixpkgs#opensc')/lib/opensc-pkcs11.so"
   local sock="$HOME/.ssh/piv-ssh-agent.sock"
 
-  launchctl kickstart -k "gui/$(id -u)/org.nixos.piv-ssh-agent"
-  until [[ -S $sock ]]; do sleep 0.5; done
+  if [[ $# = 1 && $1 = "--restart" ]]; then
+    launchctl kickstart -k "gui/$(id -u)/org.nixos.piv-ssh-agent"
+  fi
 
-  SSH_AUTH_SOCK="$sock" ssh-add -s "$provider" -t 15m
+  until [[ -S $sock ]]; do sleep 0.5; done
+  SSH_AUTH_SOCK="$sock" ssh-add -s "$provider"
 }
 
 # Defer `gpg-connect-agent updatestartuptty` to the first prompt (off the critical path).
