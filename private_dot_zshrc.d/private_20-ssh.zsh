@@ -31,9 +31,9 @@ __piv-ssh() {
   local sock="$HOME/.ssh/piv-ssh-agent.sock"
 
   launchctl kickstart -k "gui/$(id -u)/org.nixos.piv-ssh-agent"
-  until [[ -S $sock ]]; do sleep 1; done
+  until [[ -S $sock ]]; do sleep 0.5; done
 
-  SSH_AUTH_SOCK="$sock" ssh-add -s "$provider"
+  SSH_AUTH_SOCK="$sock" ssh-add -s "$provider" -t 15m
 }
 
 # Defer `gpg-connect-agent updatestartuptty` to the first prompt (off the critical path).
