@@ -21,21 +21,34 @@ fi
 
 export GPG_TTY=$TTY
 
-__gpg-fix-scd() {
+scfix() {
+  if gpg --card-status &>/dev/null; then
+    return 0
+  fi
+
   aid=$(gpg-connect-agent 'scd serialno' /bye | awk '/^S SERIALNO/ { print substr($3,1,12) }')
   gpg-connect-agent --hex "scd apdu 00A4040006${aid}" /bye
 }
 
-__piv-ssh() {
+piv-ssh() {
   local provider="$(nix eval --raw 'nixpkgs#opensc')/lib/opensc-pkcs11.so"
   local sock="$HOME/.ssh/piv-ssh-agent.sock"
 
+  # Force restart
   if [[ $# = 1 && $1 = "--restart" ]]; then
     launchctl kickstart -k "gui/$(id -u)/org.nixos.piv-ssh-agent"
   fi
 
+  # Wait until the socket is up and running
   until [[ -S $sock ]]; do sleep 0.5; done
-  SSH_AUTH_SOCK="$sock" ssh-add -s "$provider"
+
+  # Check if the identities are already added
+  SSH_AUTH_SOCK="$sock" ssh-add -L >/dev/null
+
+  # No identities added
+  if [[ $? != 0 ]]; then
+    SSH_AUTH_SOCK="$sock" ssh-add -s "$provider"
+  fi
 }
 
 # Defer `gpg-connect-agent updatestartuptty` to the first prompt (off the critical path).
