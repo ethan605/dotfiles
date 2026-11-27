@@ -88,7 +88,6 @@ let
 
     opensc
     # openpgp-card-tools
-    # sequoia-sq
 
     keybase
     openssh
