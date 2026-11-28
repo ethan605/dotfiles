@@ -21,7 +21,7 @@ cloudflared = "2026.11.2"
 cmake = "4.5.1"
 difftastic = "latest"
 gcloud = { version = "594.0.1", postinstall = "gcloud components install $(cat ~/.default-cloud-sdk-components)" }
-gh = "2.105.0"
+gh = "2.106.0"
 kubectl = "1.35.9"
 maven = "3.10.2"
 postgres = "19.0"
